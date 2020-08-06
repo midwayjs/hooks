@@ -1,0 +1,22 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "ES2018",
+    "incremental": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "inlineSourceMap": true,
+    "noImplicitThis": false,
+    "noUnusedLocals": false,
+    "stripInternal": false,
+    "pretty": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "downlevelIteration": true
+  },
+  "exclude": ["dist", "node_modules", "**/__tests__"]
+}

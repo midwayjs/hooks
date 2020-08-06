@@ -1,0 +1,713 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NeXT Hooks Compiler hooks/arrow.ts 1`] = `
+"
+// 源文件
+
+export const useDemo = (name: string) => {}
+
+export const useArrow = (name: string) => {
+  useDemo(name + '666')
+}
+
+export const useAsyncArrow = async (name: string) => {
+  await useDemo(name + '666')
+}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.useAsyncArrow = exports.useArrow = exports.useDemo = void 0;
+exports.useDemo = function useDemo(name) { const $lambda = this; };
+exports.useArrow = function useArrow(name) { const $lambda = this; useDemo.bind($lambda)(name + '666'); };
+exports.useAsyncArrow = async function useAsyncArrow(name) { const $lambda = this; await useDemo.bind($lambda)(name + '666'); };
+//# sourceMappingURL=arrow.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler hooks/arrow-default-export.ts 1`] = `
+"
+// 源文件
+
+export default async (name: string) => {}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.default = async (name) => { };
+//# sourceMappingURL=arrow-default-export.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler hooks/builtin-hooks.ts 1`] = `
+"
+// 源文件
+
+import { useContext, useInject, useConfig, useLogger } from '@midwayjs/hooks'
+
+export function useBuiltinHooks() {
+  useConfig()
+  useLogger()
+  useContext()
+  useInject('')
+}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.useBuiltinHooks = void 0;
+const hooks_1 = require(\\"@midwayjs/hooks\\");
+function useBuiltinHooks() {
+    const $lambda = this;
+    $lambda.ctx.hooks.useConfig();
+    $lambda.ctx.hooks.useLogger();
+    $lambda.ctx.hooks.useContext();
+    $lambda.ctx.hooks.useInject('');
+}
+exports.useBuiltinHooks = useBuiltinHooks;
+//# sourceMappingURL=builtin-hooks.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler hooks/func-default-export.ts 1`] = `
+"
+// 源文件
+
+export default function (name: string) {}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+function default_1(name) { }
+exports.default = default_1;
+//# sourceMappingURL=func-default-export.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler hooks/import-hook.ts 1`] = `
+"
+// 源文件
+
+import { useDemo } from './useDemo'
+import { useContext } from '@midwayjs/hooks'
+
+export function useQuery(name: any) {
+  useContext()
+  useDemo(name)
+  console.log(useFakeHooks)
+}
+
+export class ThisNotHooks {}
+
+export const useFakeHooks = ''
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.useFakeHooks = exports.ThisNotHooks = exports.useQuery = void 0;
+const useDemo_1 = require(\\"./useDemo\\");
+const hooks_1 = require(\\"@midwayjs/hooks\\");
+function useQuery(name) {
+    const $lambda = this;
+    $lambda.ctx.hooks.useContext();
+    useDemo_1.useDemo.bind($lambda)(name);
+    console.log(useFakeHooks);
+}
+exports.useQuery = useQuery;
+class ThisNotHooks {
+}
+exports.ThisNotHooks = ThisNotHooks;
+exports.useFakeHooks = '';
+//# sourceMappingURL=import-hook.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler hooks/import-namespace.ts 1`] = `
+"
+// 源文件
+
+import * as hooks from './import-hook'
+
+export function useNamespace() {
+  const n = new hooks.ThisNotHooks()
+  console.log(hooks.useFakeHooks)
+  return hooks.useQuery(n)
+}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.useNamespace = void 0;
+const hooks = require(\\"./import-hook\\");
+function useNamespace() {
+    const $lambda = this;
+    const n = new hooks.ThisNotHooks();
+    console.log(hooks.useFakeHooks);
+    return hooks.useQuery.bind($lambda)(n);
+}
+exports.useNamespace = useNamespace;
+//# sourceMappingURL=import-namespace.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler hooks/useDemo.ts 1`] = `
+"
+// 源文件
+
+import { useContext } from '@midwayjs/hooks'
+
+export function useDemo(name: string) {
+  useContext()
+}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.useDemo = void 0;
+const hooks_1 = require(\\"@midwayjs/hooks\\");
+function useDemo(name) { const $lambda = this; $lambda.ctx.hooks.useContext(); }
+exports.useDemo = useDemo;
+//# sourceMappingURL=useDemo.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/arrow-hook-ref-arrow-hook.ts 1`] = `
+"
+// 源文件
+
+export const useQuery = (id: string) => {
+  return ''
+}
+
+export const useInner = async () => {
+  useQuery('123')
+  const inner = () => {
+    console.log(useQuery('123'))
+  }
+  inner()
+}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.useInner = exports.useQuery = void 0;
+exports.useQuery = function useQuery(id) { const $lambda = this; return ''; };
+exports.useInner = async function useInner() {
+    const $lambda = this;
+    useQuery.bind($lambda)('123');
+    const inner = () => {
+        console.log(useQuery.bind($lambda)('123'));
+    };
+    inner();
+};
+//# sourceMappingURL=arrow-hook-ref-arrow-hook.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/export-arrow.ts 1`] = `
+"
+// 源文件
+
+export const hello = (name: string) => {
+  console.log(name)
+}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.hello = void 0;
+exports.hello = function hello(name) { const $lambda = this; console.log(name); };
+//# sourceMappingURL=export-arrow.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/export-default-anonymous.ts 1`] = `
+"
+// 源文件
+
+export default () => {}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+function $default() { const $lambda = this; }
+exports.default = $default;
+//# sourceMappingURL=export-default-anonymous.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/export-default-func.ts 1`] = `
+"
+// 源文件
+
+export default function (name: string) {}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+function $default(name) { const $lambda = this; }
+exports.default = $default;
+//# sourceMappingURL=export-default-func.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/export-default-named.ts 1`] = `
+"
+// 源文件
+
+export default function named(name: string) {}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+function named(name) { const $lambda = this; }
+exports.default = named;
+//# sourceMappingURL=export-default-named.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/hook-ref-hook.ts 1`] = `
+"
+// 源文件
+
+export function useQuery(id: string) {
+  return ''
+}
+
+export async function useInner() {
+  useQuery('123')
+  const inner = () => {
+    console.log(useQuery('123'))
+  }
+  inner()
+}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.useInner = exports.useQuery = void 0;
+function useQuery(id) { const $lambda = this; return ''; }
+exports.useQuery = useQuery;
+async function useInner() {
+    const $lambda = this;
+    useQuery.bind($lambda)('123');
+    const inner = () => {
+        console.log(useQuery.bind($lambda)('123'));
+    };
+    inner();
+}
+exports.useInner = useInner;
+//# sourceMappingURL=hook-ref-hook.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/hook-ref-lambda.ts 1`] = `
+"
+// 源文件
+
+export function hello() {
+  normal()
+}
+
+function normal() {}
+
+function useDemo(name: string) {
+  return hello()
+}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.hello = void 0;
+function hello() { const $lambda = this; normal(); }
+exports.hello = hello;
+function normal() { }
+function useDemo(name) { const $lambda = this; return hello.bind($lambda)(); }
+//# sourceMappingURL=hook-ref-lambda.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/import-hook.ts 1`] = `
+"
+// 源文件
+
+import { useDemo } from '../hooks/useDemo'
+
+export function hello() {
+  useDemo('666')
+}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.hello = void 0;
+const useDemo_1 = require(\\"../hooks/useDemo\\");
+function hello() { const $lambda = this; useDemo_1.useDemo.bind($lambda)('666'); }
+exports.hello = hello;
+//# sourceMappingURL=import-hook.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/index.ts 1`] = `
+"
+// 源文件
+
+export function hello() {}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.hello = void 0;
+function hello() { const $lambda = this; }
+exports.hello = hello;
+//# sourceMappingURL=index.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/lambda-ref-hook.ts 1`] = `
+"
+// 源文件
+
+export function hello() {
+  useDemo('666')
+  normal()
+}
+
+function normal() {}
+
+function useDemo(name: string) {}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.hello = void 0;
+function hello() {
+    const $lambda = this;
+    useDemo.bind($lambda)('666');
+    normal();
+}
+exports.hello = hello;
+function normal() { }
+function useDemo(name) { const $lambda = this; }
+//# sourceMappingURL=lambda-ref-hook.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/lambda-ref-lambda.ts 1`] = `
+"
+// 源文件
+
+export function hello(name: string, value: string) {}
+
+const hello3 = (name: string) => {}
+
+export function hello2(name: string) {
+  hello(name, '1')
+  hello3(name)
+}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.hello2 = exports.hello = void 0;
+function hello(name, value) { const $lambda = this; }
+exports.hello = hello;
+const hello3 = (name) => { };
+function hello2(name) {
+    const $lambda = this;
+    hello.bind($lambda)(name, '1');
+    hello3(name);
+}
+exports.hello2 = hello2;
+//# sourceMappingURL=lambda-ref-lambda.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/normal-function.ts 1`] = `
+"
+// 源文件
+
+export function hello() {
+  normal()
+}
+
+function normal() {}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.hello = void 0;
+function hello() { const $lambda = this; normal(); }
+exports.hello = hello;
+function normal() { }
+//# sourceMappingURL=normal-function.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler 路由信息应该生成正确 1`] = `
+Object {
+  "arrow-hook-ref-arrow-hook-useinner": Object {
+    "argsPath": "",
+    "exportFunction": "useInner",
+    "gatewayConfig": Object {
+      "handler": "arrow-hook-ref-arrow-hook-useinner",
+      "meta": Object {
+        "functionName": "useInner",
+      },
+      "method": "GET",
+      "url": "/api/arrow-hook-ref-arrow-hook/_useInner",
+    },
+    "handler": "arrow-hook-ref-arrow-hook-useinner.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
+  },
+  "arrow-hook-ref-arrow-hook-usequery": Object {
+    "argsPath": "",
+    "exportFunction": "useQuery",
+    "gatewayConfig": Object {
+      "handler": "arrow-hook-ref-arrow-hook-usequery",
+      "meta": Object {
+        "functionName": "useQuery",
+      },
+      "method": "POST",
+      "url": "/api/arrow-hook-ref-arrow-hook/_useQuery",
+    },
+    "handler": "arrow-hook-ref-arrow-hook-usequery.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
+  },
+  "export-arrow-hello": Object {
+    "argsPath": "",
+    "exportFunction": "hello",
+    "gatewayConfig": Object {
+      "handler": "export-arrow-hello",
+      "meta": Object {
+        "functionName": "hello",
+      },
+      "method": "POST",
+      "url": "/api/export-arrow/_hello",
+    },
+    "handler": "export-arrow-hello.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/export-arrow.js",
+  },
+  "export-default-anonymous": Object {
+    "argsPath": "",
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "handler": "export-default-anonymous",
+      "meta": Object {
+        "functionName": "$default",
+      },
+      "method": "GET",
+      "url": "/api/export-default-anonymous",
+    },
+    "handler": "export-default-anonymous.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/export-default-anonymous.js",
+  },
+  "export-default-func": Object {
+    "argsPath": "",
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "handler": "export-default-func",
+      "meta": Object {
+        "functionName": "$default",
+      },
+      "method": "POST",
+      "url": "/api/export-default-func",
+    },
+    "handler": "export-default-func.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/export-default-func.js",
+  },
+  "export-default-named": Object {
+    "argsPath": "",
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "handler": "export-default-named",
+      "meta": Object {
+        "functionName": "named",
+      },
+      "method": "POST",
+      "url": "/api/export-default-named",
+    },
+    "handler": "export-default-named.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/export-default-named.js",
+  },
+  "hook-ref-hook-useinner": Object {
+    "argsPath": "",
+    "exportFunction": "useInner",
+    "gatewayConfig": Object {
+      "handler": "hook-ref-hook-useinner",
+      "meta": Object {
+        "functionName": "useInner",
+      },
+      "method": "GET",
+      "url": "/api/hook-ref-hook/_useInner",
+    },
+    "handler": "hook-ref-hook-useinner.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/hook-ref-hook.js",
+  },
+  "hook-ref-hook-usequery": Object {
+    "argsPath": "",
+    "exportFunction": "useQuery",
+    "gatewayConfig": Object {
+      "handler": "hook-ref-hook-usequery",
+      "meta": Object {
+        "functionName": "useQuery",
+      },
+      "method": "POST",
+      "url": "/api/hook-ref-hook/_useQuery",
+    },
+    "handler": "hook-ref-hook-usequery.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/hook-ref-hook.js",
+  },
+  "hook-ref-lambda-hello": Object {
+    "argsPath": "",
+    "exportFunction": "hello",
+    "gatewayConfig": Object {
+      "handler": "hook-ref-lambda-hello",
+      "meta": Object {
+        "functionName": "hello",
+      },
+      "method": "GET",
+      "url": "/api/hook-ref-lambda/_hello",
+    },
+    "handler": "hook-ref-lambda-hello.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/hook-ref-lambda.js",
+  },
+  "import-hook-hello": Object {
+    "argsPath": "",
+    "exportFunction": "hello",
+    "gatewayConfig": Object {
+      "handler": "import-hook-hello",
+      "meta": Object {
+        "functionName": "hello",
+      },
+      "method": "GET",
+      "url": "/api/import-hook/_hello",
+    },
+    "handler": "import-hook-hello.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/import-hook.js",
+  },
+  "index-hello": Object {
+    "argsPath": "",
+    "exportFunction": "hello",
+    "gatewayConfig": Object {
+      "handler": "index-hello",
+      "meta": Object {
+        "functionName": "hello",
+      },
+      "method": "GET",
+      "url": "/api/_hello",
+    },
+    "handler": "index-hello.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/index.js",
+  },
+  "lambda-ref-hook-hello": Object {
+    "argsPath": "",
+    "exportFunction": "hello",
+    "gatewayConfig": Object {
+      "handler": "lambda-ref-hook-hello",
+      "meta": Object {
+        "functionName": "hello",
+      },
+      "method": "GET",
+      "url": "/api/lambda-ref-hook/_hello",
+    },
+    "handler": "lambda-ref-hook-hello.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/lambda-ref-hook.js",
+  },
+  "lambda-ref-lambda-hello": Object {
+    "argsPath": "",
+    "exportFunction": "hello",
+    "gatewayConfig": Object {
+      "handler": "lambda-ref-lambda-hello",
+      "meta": Object {
+        "functionName": "hello",
+      },
+      "method": "POST",
+      "url": "/api/lambda-ref-lambda/_hello",
+    },
+    "handler": "lambda-ref-lambda-hello.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/lambda-ref-lambda.js",
+  },
+  "lambda-ref-lambda-hello2": Object {
+    "argsPath": "",
+    "exportFunction": "hello2",
+    "gatewayConfig": Object {
+      "handler": "lambda-ref-lambda-hello2",
+      "meta": Object {
+        "functionName": "hello2",
+      },
+      "method": "POST",
+      "url": "/api/lambda-ref-lambda/_hello2",
+    },
+    "handler": "lambda-ref-lambda-hello2.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/lambda-ref-lambda.js",
+  },
+  "normal-function-hello": Object {
+    "argsPath": "",
+    "exportFunction": "hello",
+    "gatewayConfig": Object {
+      "handler": "normal-function-hello",
+      "meta": Object {
+        "functionName": "hello",
+      },
+      "method": "GET",
+      "url": "/api/normal-function/_hello",
+    },
+    "handler": "normal-function-hello.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/normal-function.js",
+  },
+}
+`;

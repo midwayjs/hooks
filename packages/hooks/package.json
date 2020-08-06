@@ -1,0 +1,29 @@
+{
+  "name": "@midwayjs/hooks",
+  "version": "0.0.25",
+  "description": "Midway Hooks 致力于通过函数式提供云端一体解决方案",
+  "keywords": [
+    "midway",
+    "hooks"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/midway",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/midway.git"
+  },
+  "devDependencies": {
+    "@midwayjs/faas": "^1.1.10",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "@midwayjs/hooks-request": "^0.0.25"
+  }
+}
