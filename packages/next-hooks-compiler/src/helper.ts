@@ -5,6 +5,7 @@ import { resolve, dirname, join, relative, basename, extname } from 'path'
 import chalk from 'chalk'
 
 export class RouteHelper {
+  rules: any
   root: string
   prefix = '/api'
   routes = new Map<string, string>()
@@ -22,6 +23,10 @@ export class RouteHelper {
   }
 
   get source() {
+    // if exits rule, source base is root
+    if (this.rules) {
+      return this.root
+    }
     const source = resolve(this.root, 'src')
     const apis = resolve(source, 'apis')
 
@@ -42,7 +47,36 @@ export class RouteHelper {
   }
 
   isLambdaFile(sourceFilePath: string) {
+    if (this.rules) {
+      return !!this.findFileMatchRule(sourceFilePath)
+    }
     return inside(sourceFilePath, this.lambdaDirectory)
+  }
+
+  getLambdaDirectoryByRule(rule) {
+    return resolve(this.source, rule?.baseDir || '')
+  }
+
+  getLambdaDirectory(sourceFilePath: string) {
+    if (this.rules) {
+      const rule = this.findFileMatchRule(sourceFilePath)
+      if (rule) {
+        return this.getLambdaDirectoryByRule(rule)
+      }
+    }
+    return this.lambdaDirectory
+  }
+
+  findFileMatchRule(sourceFilePath: string, matchEvent?: string) {
+    return this.rules.find((rule) => {
+      if (matchEvent) {
+        const findEvent = rule.events?.find((event) => !!event[matchEvent])
+        if (!findEvent) {
+          return false
+        }
+      }
+      return inside(sourceFilePath, this.getLambdaDirectoryByRule(rule))
+    })
   }
 
   isProjectFile(sourceFilePath: string) {
@@ -54,13 +88,23 @@ export class RouteHelper {
     const file = filename === 'index' ? '' : filename
     const func = isExportDefault ? '' : `${LambdaMethodPrefix}${method}`
 
+    let prefix = this.prefix
+    let lambdaDirectory = this.lambdaDirectory
+
+    if (this.rules) {
+      const rule = this.findFileMatchRule(filePath, 'http')
+      const event = rule.events?.find((event) => !!event.http)
+      prefix = event?.http?.basePath || this.prefix
+      lambdaDirectory = this.getLambdaDirectoryByRule(rule)
+    }
+
     const api = join(
-      this.prefix,
+      prefix,
       /**
        * /apis/lambda/index.ts -> ''
        * /apis/lambda/todo/index.ts -> 'todo'
        */
-      relative(this.lambdaDirectory, dirname(filePath)),
+      relative(lambdaDirectory, dirname(filePath)),
       /**
        * index -> ''
        * demo -> '/demo'
