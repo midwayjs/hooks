@@ -23,21 +23,6 @@ export class RouteHelper {
   }
 
   get source() {
-    // if exits rule, source base is root
-    if (this.rules) {
-      return this.root
-    }
-    const source = resolve(this.root, 'src')
-    const apis = resolve(source, 'apis')
-
-    if (fse.existsSync(apis)) {
-      return apis
-    }
-
-    if (fse.existsSync(source)) {
-      return source
-    }
-
     return this.root
   }
 
@@ -47,10 +32,7 @@ export class RouteHelper {
   }
 
   isLambdaFile(sourceFilePath: string) {
-    if (this.rules) {
-      return !!this.findFileMatchRule(sourceFilePath)
-    }
-    return inside(sourceFilePath, this.lambdaDirectory)
+    return !!this.findFileMatchRule(sourceFilePath)
   }
 
   getLambdaDirectoryByRule(rule) {
@@ -58,16 +40,14 @@ export class RouteHelper {
   }
 
   getLambdaDirectory(sourceFilePath: string) {
-    if (this.rules) {
-      const rule = this.findFileMatchRule(sourceFilePath)
-      if (rule) {
-        return this.getLambdaDirectoryByRule(rule)
-      }
+    const rule = this.findFileMatchRule(sourceFilePath)
+    if (rule) {
+      return this.getLambdaDirectoryByRule(rule)
     }
     return this.lambdaDirectory
   }
 
-  findFileMatchRule(sourceFilePath: string, matchEvent?: string) {
+  findFileMatchRule(sourceFilePath: string, matchEvent?: 'http') {
     return this.rules.find((rule) => {
       if (matchEvent) {
         const findEvent = rule.events?.find((event) => !!event[matchEvent])
@@ -88,15 +68,10 @@ export class RouteHelper {
     const file = filename === 'index' ? '' : filename
     const func = isExportDefault ? '' : `${LambdaMethodPrefix}${method}`
 
-    let prefix = this.prefix
-    let lambdaDirectory = this.lambdaDirectory
-
-    if (this.rules) {
-      const rule = this.findFileMatchRule(filePath, 'http')
-      const event = rule.events?.find((event) => !!event.http)
-      prefix = event?.http?.basePath || this.prefix
-      lambdaDirectory = this.getLambdaDirectoryByRule(rule)
-    }
+    const rule = this.findFileMatchRule(filePath, 'http')
+    const event = rule.events?.find((event) => !!event.http)
+    const prefix = event?.http?.basePath || this.prefix
+    const lambdaDirectory = this.getLambdaDirectoryByRule(rule)
 
     const api = join(
       prefix,
@@ -142,7 +117,7 @@ export interface helperRuleItem {
     http: {
       basePath: string
     }
-    [othEvt: string]: any
+    [otherEvent: string]: any
   }
 }
 
