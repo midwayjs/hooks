@@ -5,7 +5,7 @@ import { resolve, dirname, join, relative, basename, extname } from 'path'
 import chalk from 'chalk'
 
 export class RouteHelper {
-  rules: any
+  rules: helperRuleItems
   root: string
   prefix = '/api'
   routes = new Map<string, string>()
@@ -135,3 +135,15 @@ export class RouteHelper {
 }
 
 export const helper = new RouteHelper()
+
+export interface helperRuleItem {
+  baseDir: string
+  events: {
+    http: {
+      basePath: string
+    }
+    [othEvt: string]: any
+  }
+}
+
+export type helperRuleItems = helperRuleItem[]
