@@ -25,5 +25,8 @@
   },
   "dependencies": {
     "@midwayjs/hooks-request": "^0.0.25"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

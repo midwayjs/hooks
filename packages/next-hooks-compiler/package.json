@@ -34,5 +34,8 @@
     "@types/path-is-inside": "^1.0.0",
     "globby": "^11.0.0",
     "typescript": "^3.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -23,5 +23,8 @@
   "dependencies": {
     "@midwayjs/hooks-shared": "^0.0.25",
     "isomorphic-unfetch": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
