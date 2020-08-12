@@ -1,7 +1,7 @@
 {
   "name": "midway-hooks",
   "version": "0.0.1",
-  "description": "Midway Hooks - 更快的一体化应用交付方案",
+  "description": "Midway Hooks - 更快的云端一体应用交付方案",
   "main": "index.js",
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/midway",
