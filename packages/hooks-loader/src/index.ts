@@ -160,7 +160,7 @@ export default async function loader(this: loader.LoaderContext, source: string,
     return
   }
 
-  const code = buildRequest(funcs, this.rootContext)
+  const code = buildRequest(funcs, this.rootContext, this.query)
   debug('compile %s', resourcePath)
   callback(null, code)
 }
