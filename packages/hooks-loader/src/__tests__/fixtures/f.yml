@@ -1,0 +1,19 @@
+# 服务名必须少于15个字符，ginkgo 有要求
+# 此服务名需要和前端调用处同步修改
+service: fusion-demo
+
+provider:
+  name: ginkgo
+  runtime: nodejs10
+
+functions:
+  proxy:
+    handler: proxy.handler
+    events:
+      - hsf: true
+    layers:
+      - remote-debug
+
+layers:
+  remote-debug:
+    path: oss:remote-debug-layer@latest

@@ -1,0 +1,18 @@
+import { request } from '@midwayjs/hooks/request'
+
+{{each funcs}}
+export {{if $value.isExportDefault}} default {{/if}} function {{$value.functionId}} (...args) {
+  return request({
+    url: '{{$value.url}}',
+    method: '{{$value.method}}',
+    data: {
+      args: args,
+    },
+    meta: {
+      functionName: '{{$value.meta.functionName}}',
+      functionGroup: '{{functionGroup}}',
+      gateway: '{{gateway}}'
+    }
+  })
+}
+{{/each}}

@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks",
-  "version": "0.0.27",
+  "version": "0.0.30",
   "description": "Midway Hooks 致力于通过函数式提供云端一体解决方案",
   "keywords": [
     "midway",
@@ -24,7 +24,7 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "@midwayjs/hooks-request": "^0.0.27"
+    "@midwayjs/hooks-request": "^0.0.30"
   },
   "publishConfig": {
     "access": "public"

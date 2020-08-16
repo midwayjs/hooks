@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Compile export default arrow 1`] = `
+"import { request } from '@midwayjs/hooks/request'
+
+
+export  default  function $default (...args) {
+  return request({
+    url: '/api/arrow',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+      functionName: 'arrow',
+      functionGroup: 'fusion-demo',
+      gateway: 'http'
+    }
+  })
+}
+
+"
+`;
+
+exports[`Compile export types 1`] = `
+"import { request } from '@midwayjs/hooks/request'
+
+
+export  function normal (...args) {
+  return request({
+    url: '/api/type/_normal',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+      functionName: 'type-normal',
+      functionGroup: 'fusion-demo',
+      gateway: 'http'
+    }
+  })
+}
+
+"
+`;
+
+exports[`Compile nest function 1`] = `
+"import { request } from '@midwayjs/hooks/request'
+
+
+export  function nestFunc (...args) {
+  return request({
+    url: '/api/nest/_nestFunc',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+      functionName: 'nest-index-nestfunc',
+      functionGroup: 'fusion-demo',
+      gateway: 'http'
+    }
+  })
+}
+
+"
+`;
+
+exports[`Compile normally exported functions 1`] = `
+"import { request } from '@midwayjs/hooks/request'
+
+
+export  function variableFuncExpression (...args) {
+  return request({
+    url: '/api/_variableFuncExpression',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+      functionName: 'index-variablefuncexpression',
+      functionGroup: 'fusion-demo',
+      gateway: 'http'
+    }
+  })
+}
+
+export  function variableFuncExpressionWithArgs (...args) {
+  return request({
+    url: '/api/_variableFuncExpressionWithArgs',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+      functionName: 'index-variablefuncexpressionwithargs',
+      functionGroup: 'fusion-demo',
+      gateway: 'http'
+    }
+  })
+}
+
+export  function variableArrowFunction (...args) {
+  return request({
+    url: '/api/_variableArrowFunction',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+      functionName: 'index-variablearrowfunction',
+      functionGroup: 'fusion-demo',
+      gateway: 'http'
+    }
+  })
+}
+
+export  function variableArrowFunctionWithArgs (...args) {
+  return request({
+    url: '/api/_variableArrowFunctionWithArgs',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+      functionName: 'index-variablearrowfunctionwithargs',
+      functionGroup: 'fusion-demo',
+      gateway: 'http'
+    }
+  })
+}
+
+export  function functionDeclartion (...args) {
+  return request({
+    url: '/api/_functionDeclartion',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+      functionName: 'index-functiondeclartion',
+      functionGroup: 'fusion-demo',
+      gateway: 'http'
+    }
+  })
+}
+
+export  function functionDeclartionWithArgs (...args) {
+  return request({
+    url: '/api/_functionDeclartionWithArgs',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+      functionName: 'index-functiondeclartionwithargs',
+      functionGroup: 'fusion-demo',
+      gateway: 'http'
+    }
+  })
+}
+
+export  default  function hasName (...args) {
+  return request({
+    url: '/api',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+      functionName: 'index',
+      functionGroup: 'fusion-demo',
+      gateway: 'http'
+    }
+  })
+}
+
+export  function dotdotdotArgs (...args) {
+  return request({
+    url: '/api/_dotdotdotArgs',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+      functionName: 'index-dotdotdotargs',
+      functionGroup: 'fusion-demo',
+      gateway: 'http'
+    }
+  })
+}
+
+"
+`;
+
+exports[`Compile type assert 1`] = `
+"import { request } from '@midwayjs/hooks/request'
+
+
+export  function typeAssert (...args) {
+  return request({
+    url: '/api/type-assert/_typeAssert',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+      functionName: 'type-assert-typeassert',
+      functionGroup: 'fusion-demo',
+      gateway: 'http'
+    }
+  })
+}
+
+"
+`;
