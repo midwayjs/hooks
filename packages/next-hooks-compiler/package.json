@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/next-hooks-compiler",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "将 Midway Hooks 编译为 Lambda & 普通函数",
   "main": "dist/index.js",
   "bin": {
@@ -19,8 +19,8 @@
     "url": "git@github.com:midwayjs/midway.git"
   },
   "dependencies": {
-    "@midwayjs/hooks": "^0.0.30",
-    "@midwayjs/hooks-shared": "^0.0.30",
+    "@midwayjs/hooks": "^0.0.31",
+    "@midwayjs/hooks-shared": "^0.0.31",
     "@midwayjs/mwcc": "^0.3.3",
     "@types/lodash": "^4.14.159",
     "chalk": "^4.0.0",
