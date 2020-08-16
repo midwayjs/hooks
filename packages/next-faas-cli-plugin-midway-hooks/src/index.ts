@@ -65,7 +65,13 @@ export class MidwayHooksPlugin extends BasePlugin {
 
     debug('beforeCompile')
 
-    helper.root = this.apis
+    if (this.core.service.functionsRule) {
+      helper.rules = this.core.service.functionsRule
+      helper.root = resolve(this.root, 'src')
+    } else {
+      helper.root = this.apis
+    }
+
     clearRoutes()
 
     this.setStore('mwccHintConfig', hintConfig, true)
