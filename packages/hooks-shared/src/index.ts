@@ -12,6 +12,7 @@ export type LambdaParam = {
     functionName?: string
     functionGroup?: string
     gateway?: string
+    [key: string]: any
   }
 }
 

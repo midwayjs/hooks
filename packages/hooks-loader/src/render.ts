@@ -12,23 +12,30 @@ art.defaults.htmlMinifierOptions = {
   ignoreCustomFragments: [],
 }
 
+art.defaults.imports.stringify = (json: string) => JSON.stringify(json, null, 2)
+;(art.defaults as any).escape = false
+
 export interface RenderParam extends Partial<LambdaParam> {
   isExportDefault?: boolean
   functionId?: string
 }
 
-export function buildRequest(funcs: RenderParam[], cwd: string) {
+export interface BuildOptions {
+  beforeBuildRequest(params: RenderParam[]): void
+}
+
+export function buildRequest(funcs: RenderParam[], cwd: string, options?: BuildOptions) {
   const { gateway, functionGroup } = getFunctionConfig(cwd)
 
+  funcs.forEach((func) => {
+    func.meta.functionGroup = functionGroup
+    func.meta.gateway = gateway
+  })
+
+  options?.beforeBuildRequest?.(funcs)
+
   const template = readFileSync(resolve(__dirname, `../templates/request.art`), { encoding: 'utf-8' })
-
-  const params = {
-    gateway,
-    functionGroup,
-    funcs,
-  }
-
-  return art.render(template, params)
+  return art.render(template, { funcs })
 }
 
 function getFunctionConfig(cwd: string) {

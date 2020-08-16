@@ -8,11 +8,7 @@ export {{if $value.isExportDefault}} default {{/if}} function {{$value.functionI
     data: {
       args: args,
     },
-    meta: {
-      functionName: '{{$value.meta.functionName}}',
-      functionGroup: '{{functionGroup}}',
-      gateway: '{{gateway}}'
-    }
+    meta: {{$imports.stringify($value.meta)}}
   })
 }
 {{/each}}
