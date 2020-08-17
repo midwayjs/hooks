@@ -3,9 +3,6 @@
   "version": "0.0.32",
   "description": "将 Midway Hooks 编译为 Lambda & 普通函数",
   "main": "dist/index.js",
-  "bin": {
-    "next-hooks-compiler": "./bin/build.js"
-  },
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist",
