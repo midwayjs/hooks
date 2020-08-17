@@ -47,13 +47,14 @@ exports[`NeXT Hooks Compiler hooks/builtin-hooks.ts 1`] = `
 "
 // 源文件
 
-import { useContext, useInject, useConfig, useLogger } from '@midwayjs/hooks'
+import { useContext, useInject, useConfig, useLogger, usePlugin } from '@midwayjs/hooks'
 
 export function useBuiltinHooks() {
   useConfig()
   useLogger()
   useContext()
   useInject('')
+  usePlugin('')
 }
 
 
@@ -69,6 +70,7 @@ function useBuiltinHooks() {
     $lambda.ctx.hooks.useLogger();
     $lambda.ctx.hooks.useContext();
     $lambda.ctx.hooks.useInject('');
+    $lambda.ctx.hooks.usePlugin('');
 }
 exports.useBuiltinHooks = useBuiltinHooks;
 //# sourceMappingURL=builtin-hooks.js.map
