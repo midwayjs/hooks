@@ -1,9 +1,9 @@
-import { usePlugin } from '@midwayjs/hooks'
+import { useFakePlugin } from '@midwayjs/hooks'
 
 export function useSimpleConfig() {
-  return usePlugin()
+  return useFakePlugin()
 }
 
 declare module '@midwayjs/hooks' {
-  export function usePlugin(): any
+  export function useFakePlugin(): any
 }

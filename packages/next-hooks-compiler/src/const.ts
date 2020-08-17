@@ -1,11 +1,5 @@
 export const MidwayDecoratorPackage = '@midwayjs/decorator'
-export const BuiltinHooks = [
-  'useContext',
-  'useInject',
-  'useConfig',
-  'useLogger',
-  // 'usePlugin'
-]
+export const BuiltinHooks = ['useContext', 'useInject', 'useConfig', 'useLogger', 'usePlugin']
 export const FunctionHandler = 'handler'
 export const MidwayHookDecorator = 'MidwayHooks'
 export const MidwayHookContext = '$lambda'
