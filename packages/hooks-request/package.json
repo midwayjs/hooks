@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-request",
-  "version": "0.0.34",
+  "version": "0.0.35",
   "description": "Midway Hooks 前端请求 SDK",
   "keywords": [
     "midway",
@@ -21,7 +21,7 @@
     "url": "git@github.com:midwayjs/midway.git"
   },
   "dependencies": {
-    "@midwayjs/hooks-shared": "^0.0.34",
+    "@midwayjs/hooks-shared": "^0.0.35",
     "isomorphic-unfetch": "^3.0.0"
   },
   "publishConfig": {
