@@ -12,14 +12,18 @@ export const defaults: Defaults = {
   request: (params: LambdaParam) => {
     const { url, method, data } = params
     const body = method === 'POST' ? JSON.stringify(data) : null
+    const headers = {
+      Accept: 'application/json',
+    }
+
+    if (method === 'POST') {
+      headers['Content-Type'] = 'application/json'
+    }
 
     return fetch(`${defaults.baseURL}${url}`, {
       method,
       body,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
+      headers,
     }).then((resp) => {
       return resp
         .clone()
