@@ -1,6 +1,7 @@
 import chokidar from 'chokidar'
-import { getFuncList } from '@midwayjs/fcli-plugin-invoke'
+import { getFuncList as preCompileProject } from '@midwayjs/fcli-plugin-invoke'
 import { debug } from './util'
+import { compilerEmitter, Events } from './event'
 
 interface HooksWatcherFsEvent {
   type: 'add' | 'unlink' | 'change'
@@ -77,6 +78,7 @@ export class HooksWatcher {
       await this.signal.getPromise()
     }
 
+    compilerEmitter.emit(Events.PRE_COMPILE_START)
     /**
      * 过滤 Ready 事件，避免 Ready 带来的重复 Trigger
      */
@@ -85,15 +87,12 @@ export class HooksWatcher {
     this.signal = new PromiseSignal()
 
     if (eventQueue.length !== 0) {
-      await this.triggerCompile()
+      await preCompileProject({
+        functionDir: this.config.root,
+        sourceDir: this.config.apis,
+      })
+      compilerEmitter.emit(Events.PRE_COMPILE_FINISH)
     }
-  }
-
-  triggerCompile() {
-    return getFuncList({
-      functionDir: this.config.root,
-      sourceDir: this.config.apis,
-    })
   }
 
   private pushEvent(event: HooksWatcherEvent) {
