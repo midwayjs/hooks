@@ -47,5 +47,5 @@ export interface MidwayHooksFunctionStructure extends FunctionStructure {
   exportFunction?: string
   isFunctional?: boolean
   argsPath?: string
-  gatewayConfig: GatewayConfig
+  gatewayConfig: Partial<GatewayConfig>
 }
