@@ -3,7 +3,7 @@ import { codeFrameColumns } from '@babel/code-frame'
 import * as parser from '@babel/parser'
 import traverse, { NodePath } from '@babel/traverse'
 import * as t from '@babel/types'
-import { Identifier } from '@babel/types'
+import { Identifier, FunctionDeclaration } from '@babel/types'
 import { resolve } from 'path'
 import inside from 'path-is-inside'
 import { loader } from 'webpack'
@@ -62,7 +62,8 @@ export default async function loader(this: loader.LoaderContext, source: string,
   let err: Error
 
   /**
-   * 允许导出的情况
+   * Cases in which export is allowed
+   *
    * 1. export async function demo () {}
    * 2. export const demo = async function () {}
    * 3. export const demo = async () => {}
@@ -72,7 +73,7 @@ export default async function loader(this: loader.LoaderContext, source: string,
    */
   traverse(ast, {
     ExportNamedDeclaration(path) {
-      const requestParam: RenderParam = {}
+      const func: RenderParam = {}
       const declaration = path.node.declaration
 
       if (t.isTSTypeAliasDeclaration(declaration) || t.isTSInterfaceDeclaration(declaration)) {
@@ -82,18 +83,22 @@ export default async function loader(this: loader.LoaderContext, source: string,
       if (t.isFunctionDeclaration(declaration)) {
         const id = declaration.id
 
-        requestParam.url = helper.getHTTPPath(resourcePath, id.name, false)
-        requestParam.method = getHTTPMethod(declaration.params)
-        requestParam.meta = {
+        func.url = helper.getHTTPPath(resourcePath, id.name, false)
+
+        const { method, params } = parseFunctionParams(declaration.params)
+        func.method = method
+
+        func.meta = {
           functionName: getFunctionHandlerName({
             sourceFilePath: resourcePath,
             isExportDefault: false,
             functionName: id.name,
           }),
+          unstable_params: params,
         }
-        requestParam.functionId = id.name
+        func.functionId = id.name
 
-        funcs.push(requestParam)
+        funcs.push(func)
         return
       }
 
@@ -102,25 +107,27 @@ export default async function loader(this: loader.LoaderContext, source: string,
           const id = variableDeclarator.id as Identifier
           const init = variableDeclarator.init
 
-          requestParam.url = helper.getHTTPPath(resourcePath, id.name, false)
-          requestParam.meta = {
+          func.url = helper.getHTTPPath(resourcePath, id.name, false)
+          func.meta = {
             functionName: getFunctionHandlerName({
               sourceFilePath: resourcePath,
               isExportDefault: false,
               functionName: id.name,
             }),
           }
-          requestParam.functionId = id.name
+          func.functionId = id.name
 
           if (t.isArrowFunctionExpression(init) || t.isFunctionExpression(init)) {
-            requestParam.method = getHTTPMethod(init.params)
+            const { method, params } = parseFunctionParams(init.params)
+            func.method = method
+            func.meta.unstable_params = params
           } else {
             err = buildCodeFrameError(path, getErrorMessage())
             path.stop()
             return
           }
 
-          funcs.push(requestParam)
+          funcs.push(func)
         }
         return
       }
@@ -129,7 +136,7 @@ export default async function loader(this: loader.LoaderContext, source: string,
       path.stop()
     },
     ExportDefaultDeclaration(path) {
-      const requestParam: RenderParam = {}
+      const func: RenderParam = {}
 
       const declaration = path.node.declaration
 
@@ -139,15 +146,17 @@ export default async function loader(this: loader.LoaderContext, source: string,
           isExportDefault: true,
           functionName: getFunctionName(path),
         })
-        requestParam.functionId = getFunctionName(path)
-        requestParam.isExportDefault = true
-        requestParam.url = helper.getHTTPPath(resourcePath, functionName, true)
-        requestParam.method = getHTTPMethod(declaration.params)
-        requestParam.meta = {
+        const { method, params } = parseFunctionParams(declaration.params)
+        func.method = method
+        func.functionId = getFunctionName(path)
+        func.isExportDefault = true
+        func.url = helper.getHTTPPath(resourcePath, functionName, true)
+        func.meta = {
           functionName,
+          unstable_params: params,
         }
 
-        funcs.push(requestParam)
+        funcs.push(func)
       } else {
         err = buildCodeFrameError(path, getErrorMessage())
         path.stop()
@@ -176,7 +185,38 @@ function getFunctionName(path: NodePath<t.ExportDefaultDeclaration>) {
   return defaultExportName
 }
 
-function getHTTPMethod(params: any[]): LambdaHTTPMethod {
+function parseFunctionParams(params: FunctionDeclaration['params']) {
+  const keys = []
+
+  for (const param of params) {
+    // (a) => {}
+    if (t.isIdentifier(param)) {
+      keys.push(param.name)
+      continue
+    }
+
+    //  (a = 1) => {}
+    if (t.isAssignmentPattern(param) && t.isIdentifier(param.left)) {
+      keys.push(param.left.name)
+      continue
+    }
+
+    // (...a) => {}
+    if (t.isRestElement(param) && t.isIdentifier(param.argument)) {
+      keys.push(param.argument.name)
+      continue
+    }
+
+    console.log('Function parameter parsing error, node type: %s', param.type)
+  }
+
+  return {
+    method: params?.length > 0 ? 'POST' : ('GET' as LambdaHTTPMethod),
+    params: keys,
+  }
+}
+
+function getHTTPMethod(params: FunctionDeclaration['params']): LambdaHTTPMethod {
   const method = params?.length > 0 ? 'POST' : 'GET'
   return method
 }

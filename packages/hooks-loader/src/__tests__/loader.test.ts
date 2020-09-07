@@ -40,6 +40,12 @@ test('Compile type assert', async () => {
   expect(output).toMatchSnapshot()
 })
 
+test('Compile params', async () => {
+  const stats = await compiler(resolveEntry('param.ts'))
+  const output = getOutput(stats)
+  expect(output).toMatchSnapshot()
+})
+
 test('Compile error export', async () => {
   const fixture = resolveEntry('error.ts')
   try {

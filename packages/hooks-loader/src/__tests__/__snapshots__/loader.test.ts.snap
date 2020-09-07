@@ -13,6 +13,7 @@ export  default  function $default (...args) {
     },
     meta: {
   \\"functionName\\": \\"arrow\\",
+  \\"unstable_params\\": [],
   \\"functionGroup\\": \\"fusion-demo\\",
   \\"gateway\\": \\"http\\"
 }
@@ -35,6 +36,7 @@ export  function normal (...args) {
     },
     meta: {
   \\"functionName\\": \\"type-normal\\",
+  \\"unstable_params\\": [],
   \\"functionGroup\\": \\"fusion-demo\\",
   \\"gateway\\": \\"http\\"
 }
@@ -57,6 +59,7 @@ export  function nestFunc (...args) {
     },
     meta: {
   \\"functionName\\": \\"nest-index-nestfunc\\",
+  \\"unstable_params\\": [],
   \\"functionGroup\\": \\"fusion-demo\\",
   \\"gateway\\": \\"http\\"
 }
@@ -79,6 +82,7 @@ export  function variableFuncExpression (...args) {
     },
     meta: {
   \\"functionName\\": \\"index-variablefuncexpression\\",
+  \\"unstable_params\\": [],
   \\"functionGroup\\": \\"fusion-demo\\",
   \\"gateway\\": \\"http\\"
 }
@@ -94,6 +98,9 @@ export  function variableFuncExpressionWithArgs (...args) {
     },
     meta: {
   \\"functionName\\": \\"index-variablefuncexpressionwithargs\\",
+  \\"unstable_params\\": [
+    \\"a\\"
+  ],
   \\"functionGroup\\": \\"fusion-demo\\",
   \\"gateway\\": \\"http\\"
 }
@@ -109,6 +116,7 @@ export  function variableArrowFunction (...args) {
     },
     meta: {
   \\"functionName\\": \\"index-variablearrowfunction\\",
+  \\"unstable_params\\": [],
   \\"functionGroup\\": \\"fusion-demo\\",
   \\"gateway\\": \\"http\\"
 }
@@ -124,6 +132,9 @@ export  function variableArrowFunctionWithArgs (...args) {
     },
     meta: {
   \\"functionName\\": \\"index-variablearrowfunctionwithargs\\",
+  \\"unstable_params\\": [
+    \\"a\\"
+  ],
   \\"functionGroup\\": \\"fusion-demo\\",
   \\"gateway\\": \\"http\\"
 }
@@ -139,6 +150,7 @@ export  function functionDeclartion (...args) {
     },
     meta: {
   \\"functionName\\": \\"index-functiondeclartion\\",
+  \\"unstable_params\\": [],
   \\"functionGroup\\": \\"fusion-demo\\",
   \\"gateway\\": \\"http\\"
 }
@@ -154,6 +166,9 @@ export  function functionDeclartionWithArgs (...args) {
     },
     meta: {
   \\"functionName\\": \\"index-functiondeclartionwithargs\\",
+  \\"unstable_params\\": [
+    \\"a\\"
+  ],
   \\"functionGroup\\": \\"fusion-demo\\",
   \\"gateway\\": \\"http\\"
 }
@@ -169,6 +184,9 @@ export  default  function hasName (...args) {
     },
     meta: {
   \\"functionName\\": \\"index\\",
+  \\"unstable_params\\": [
+    \\"args\\"
+  ],
   \\"functionGroup\\": \\"fusion-demo\\",
   \\"gateway\\": \\"http\\"
 }
@@ -184,6 +202,93 @@ export  function dotdotdotArgs (...args) {
     },
     meta: {
   \\"functionName\\": \\"index-dotdotdotargs\\",
+  \\"unstable_params\\": [
+    \\"args\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+"
+`;
+
+exports[`Compile params 1`] = `
+"import { request } from '@midwayjs/hooks/request'
+
+
+export  function identifier (...args) {
+  return request({
+    url: '/api/param/_identifier',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"param-identifier\\",
+  \\"unstable_params\\": [
+    \\"a\\",
+    \\"b\\",
+    \\"c\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function assgin (...args) {
+  return request({
+    url: '/api/param/_assgin',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"param-assgin\\",
+  \\"unstable_params\\": [
+    \\"a\\",
+    \\"b\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function rest (...args) {
+  return request({
+    url: '/api/param/_rest',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"param-rest\\",
+  \\"unstable_params\\": [
+    \\"a\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function mix (...args) {
+  return request({
+    url: '/api/param/_mix',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"param-mix\\",
+  \\"unstable_params\\": [
+    \\"a\\",
+    \\"b\\",
+    \\"c\\"
+  ],
   \\"functionGroup\\": \\"fusion-demo\\",
   \\"gateway\\": \\"http\\"
 }
@@ -206,6 +311,7 @@ export  function typeAssert (...args) {
     },
     meta: {
   \\"functionName\\": \\"type-assert-typeassert\\",
+  \\"unstable_params\\": [],
   \\"functionGroup\\": \\"fusion-demo\\",
   \\"gateway\\": \\"http\\"
 }
