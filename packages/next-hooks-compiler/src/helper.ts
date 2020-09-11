@@ -121,7 +121,7 @@ export class RouteHelper {
      * 重复的路由
      */
     const originPath = this.routes.get(api)
-    if (originPath && originPath !== filePath) {
+    if (originPath && originPath !== toUnix(filePath)) {
       console.log(
         '[ %s ] Duplicate routes detected. %s and %s both resolve to %s. Reference: %s',
         chalk.yellow('warn'),
@@ -132,7 +132,7 @@ export class RouteHelper {
       )
     }
 
-    this.routes.set(api, filePath)
+    this.routes.set(api, toUnix(filePath))
     return api
   }
 }
