@@ -1,4 +1,4 @@
-import inside from 'path-is-inside'
+import inside from 'is-path-inside'
 import fse from 'fs'
 import { LambdaMethodPrefix, MidwayHookApiDirectory } from './const'
 import { resolve, dirname, join, relative, basename, extname, toUnix } from 'upath'
