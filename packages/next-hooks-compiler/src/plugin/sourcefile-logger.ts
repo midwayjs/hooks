@@ -3,7 +3,7 @@ import { TransformationContext } from '@midwayjs/mwcc'
 import { getSourceFilePath } from '../util'
 import { debug } from '../util'
 import { helper } from '../helper'
-import { relative } from 'path'
+import { relative } from 'upath'
 
 export default {
   transform(ctx: TransformationContext) {

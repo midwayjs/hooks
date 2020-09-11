@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'upath'
 import { hintConfig } from '../hintConfig'
 import { compileHooks } from '../index'
 import globby from 'globby'

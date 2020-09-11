@@ -22,7 +22,8 @@
     "@types/lodash": "^4.14.159",
     "chalk": "^4.0.0",
     "debug": "^4.1.1",
-    "path-is-inside": "^1.0.2"
+    "path-is-inside": "^1.0.2",
+    "upath": "^1.2.0"
   },
   "devDependencies": {
     "@midwayjs/serverless-spec-builder": "^1.1.16",

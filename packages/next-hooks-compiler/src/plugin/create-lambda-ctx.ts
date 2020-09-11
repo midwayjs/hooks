@@ -12,7 +12,7 @@ import {
 import { MidwayHookContext, FunctionHandler } from '../const'
 import { helper } from '../helper'
 import { addRoute, MidwayHooksFunctionStructure } from './routes'
-import { relative, extname } from 'path'
+import { relative, extname } from 'upath'
 import { TransformationContext } from '@midwayjs/mwcc'
 
 export default {

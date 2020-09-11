@@ -1,7 +1,7 @@
 import inside from 'path-is-inside'
 import fse from 'fs'
 import { LambdaMethodPrefix, MidwayHookApiDirectory } from './const'
-import { resolve, dirname, join, relative, basename, extname } from 'path'
+import { resolve, dirname, join, relative, basename, extname, toUnix } from 'upath'
 import chalk from 'chalk'
 
 export class RouteHelper {
@@ -49,7 +49,11 @@ export class RouteHelper {
     if (this.rules) {
       return !!this.findFileMatchRule(sourceFilePath)
     }
-    return inside(sourceFilePath, this.lambdaDirectory)
+    return this.inside(sourceFilePath, this.lambdaDirectory)
+  }
+
+  private inside(child: string, parent: string) {
+    return inside(toUnix(child), toUnix(parent))
   }
 
   getLambdaDirectoryByRule(rule) {
@@ -74,12 +78,12 @@ export class RouteHelper {
           return false
         }
       }
-      return inside(sourceFilePath, this.getLambdaDirectoryByRule(rule))
+      return this.inside(sourceFilePath, this.getLambdaDirectoryByRule(rule))
     })
   }
 
   isProjectFile(sourceFilePath: string) {
-    return inside(sourceFilePath, this.source)
+    return this.inside(sourceFilePath, this.source)
   }
 
   getHTTPPath(filePath: string, method: string, isExportDefault: boolean) {
