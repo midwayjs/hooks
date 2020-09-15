@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-shared",
-  "version": "0.0.45",
+  "version": "0.0.46",
   "description": "Midway Hooks 致力于通过函数式提供云端一体解决方案",
   "keywords": [
     "midway",
