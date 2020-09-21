@@ -21,8 +21,8 @@ export const useAsyncArrow = async (name: string) => {
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.useAsyncArrow = exports.useArrow = exports.useDemo = void 0;
 exports.useDemo = function useDemo(name) { const $lambda = this; };
-exports.useArrow = function useArrow(name) { const $lambda = this; useDemo.bind($lambda)(name + '666'); };
-exports.useAsyncArrow = async function useAsyncArrow(name) { const $lambda = this; await useDemo.bind($lambda)(name + '666'); };
+exports.useArrow = function useArrow(name) { const $lambda = this; exports.useDemo.bind($lambda)(name + '666'); };
+exports.useAsyncArrow = async function useAsyncArrow(name) { const $lambda = this; await exports.useDemo.bind($lambda)(name + '666'); };
 //# sourceMappingURL=arrow.js.map
       "
 `;
@@ -123,7 +123,7 @@ function useQuery(name) {
     const $lambda = this;
     $lambda.ctx.hooks.useContext();
     useDemo_1.useDemo.bind($lambda)(name);
-    console.log(useFakeHooks);
+    console.log(exports.useFakeHooks);
 }
 exports.useQuery = useQuery;
 class ThisNotHooks {
@@ -212,9 +212,9 @@ exports.useInner = exports.useQuery = void 0;
 exports.useQuery = function useQuery(id) { const $lambda = this; return ''; };
 exports.useInner = async function useInner() {
     const $lambda = this;
-    useQuery.bind($lambda)('123');
+    exports.useQuery.bind($lambda)('123');
     const inner = () => {
-        console.log(useQuery.bind($lambda)('123'));
+        console.log(exports.useQuery.bind($lambda)('123'));
     };
     inner();
 };
