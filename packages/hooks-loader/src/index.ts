@@ -216,11 +216,6 @@ function parseFunctionParams(params: FunctionDeclaration['params']) {
   }
 }
 
-function getHTTPMethod(params: FunctionDeclaration['params']): LambdaHTTPMethod {
-  const method = params?.length > 0 ? 'POST' : 'GET'
-  return method
-}
-
 function getErrorMessage() {
   return `
     When a function file is used as an API, only the following export methods are allowed
@@ -235,10 +230,15 @@ function getErrorMessage() {
 
 function buildCodeFrameError(path: NodePath<any>, message: string) {
   const root = path.findParent((p) => !p.parentPath)
-  const frame = codeFrameColumns(root.toString(), path.node.loc, {
-    highlightCode: true,
-    message: message,
-  })
+  const frame = codeFrameColumns(
+    root.toString(),
+    {
+      end: path.node.loc.end,
+    },
+    {
+      message: message,
+    }
+  )
 
   return new Error(frame)
 }

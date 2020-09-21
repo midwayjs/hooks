@@ -46,6 +46,14 @@ test('Compile params', async () => {
   expect(output).toMatchSnapshot()
 })
 
+test('Compile IoC', async () => {
+  try {
+    await compiler(resolveEntry('ioc.ts'))
+  } catch (error) {
+    expect(error).toBeTruthy()
+  }
+})
+
 test('Compile error export', async () => {
   const fixture = resolveEntry('error.ts')
   try {
