@@ -19,7 +19,8 @@ export default async function loader(this: loader.LoaderContext, source: string,
     return callback(null, source)
   }
 
-  const apis = resolve(this.rootContext, 'src/apis/lambda')
+  const root = this.rootContext || (this as any).options?.context
+  const apis = resolve(root, 'src/apis/lambda')
 
   if (!inside(resourcePath, apis)) {
     return callback(null, source)
@@ -55,7 +56,7 @@ export default async function loader(this: loader.LoaderContext, source: string,
     throw error
   }
 
-  helper.root = this.rootContext
+  helper.root = root
 
   const funcs: RenderParam[] = []
 
@@ -169,7 +170,7 @@ export default async function loader(this: loader.LoaderContext, source: string,
     return
   }
 
-  const code = buildRequest(funcs, this.rootContext, this.query)
+  const code = buildRequest(funcs, root, this.query)
   debug('compile %s', resourcePath)
   callback(null, code)
 }
