@@ -1,4 +1,5 @@
 export const MidwayDecoratorPackage = '@midwayjs/decorator'
+export const BuiltinEnhancer = ['withMiddleware']
 export const BuiltinHooks = ['useContext', 'useInject', 'useConfig', 'useLogger', 'usePlugin']
 export const FunctionHandler = 'handler'
 export const MidwayHookDecorator = 'MidwayHooks'

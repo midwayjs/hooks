@@ -484,6 +484,37 @@ function normal() { }
       "
 `;
 
+exports[`NeXT Hooks Compiler lambda/with.ts 1`] = `
+"
+// 源文件
+
+import { withMiddleware, useContext } from '@midwayjs/hooks'
+
+export const hello = withMiddleware([], (name: string) => {
+  const ctx = useContext()
+  console.log(name)
+})
+
+declare module '@midwayjs/hooks' {
+  export function withMiddleware(...args: any[]): any
+}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.hello = void 0;
+const hooks_1 = require(\\"@midwayjs/hooks\\");
+exports.hello = hooks_1.withMiddleware([], function hello(name) {
+    const $lambda = this;
+    const ctx = $lambda.ctx.hooks.useContext();
+    console.log(name);
+});
+//# sourceMappingURL=with.js.map
+      "
+`;
+
 exports[`NeXT Hooks Compiler 路由信息应该生成正确 1`] = `
 Object {
   "arrow-hook-ref-arrow-hook-useinner": Object {
@@ -710,6 +741,36 @@ Object {
     "handler": "normal-function-hello.handler",
     "isFunctional": true,
     "sourceFilePath": "lambda/normal-function.js",
+  },
+  "with-hello": Object {
+    "argsPath": "",
+    "exportFunction": "hello",
+    "gatewayConfig": Object {
+      "handler": "with-hello",
+      "meta": Object {
+        "functionName": "hello",
+      },
+      "method": "POST",
+      "url": "/api/with/_hello",
+    },
+    "handler": "with-hello.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/with.js",
+  },
+  "with-withmiddleware": Object {
+    "argsPath": "",
+    "exportFunction": "withMiddleware",
+    "gatewayConfig": Object {
+      "handler": "with-withmiddleware",
+      "meta": Object {
+        "functionName": "withMiddleware",
+      },
+      "method": "POST",
+      "url": "/api/with/_withMiddleware",
+    },
+    "handler": "with-withmiddleware.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/with.js",
   },
 }
 `;

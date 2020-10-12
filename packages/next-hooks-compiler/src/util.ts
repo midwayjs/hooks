@@ -1,6 +1,7 @@
 import ts, { FunctionDeclaration, ArrowFunction, FunctionExpression } from 'typescript'
 import { helper } from './helper'
 import createDebug from 'debug'
+import { BuiltinEnhancer } from './const'
 
 export const debug = createDebug('hooks: next-compiler')
 
@@ -43,6 +44,10 @@ export function isLambdaOrHook(node: ts.Node, container: ts.Node) {
     const funcName = getTopLevelNameNode(container)?.getText?.() ?? ''
     // 自定义 Hook
     return isHookName(funcName) || isLambda(node as FunctionDeclaration, container)
+  }
+
+  if (ts.isCallExpression(node) && BuiltinEnhancer.includes(node.expression.getText())) {
+    return true
   }
 
   return false
@@ -137,6 +142,7 @@ export function isAncestor(node: ts.Node, ancestor: ts.Node) {
   return false
 }
 
+// export const variableStatement = () => {}
 export function isLambdaOrHookVariableStatement(node: FunctionKind) {
   const variableStatement = closetAncestor<ts.VariableStatement>(node, ts.SyntaxKind.VariableStatement)
 
