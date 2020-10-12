@@ -1,6 +1,6 @@
 import ts from 'typescript'
 import { TransformationContext, template } from '@midwayjs/mwcc'
-import { MidwayHooksPackage, HooksMethodNamespace, BuiltinHooks, ContextBind } from '../const'
+import { MidwayHooksPackage, HooksMethodNamespace, BuiltinHooks, ContextBind, BuiltinEnhancer } from '../const'
 import { BuiltinHooksError } from '../errors/BuiltinHooks'
 import { isEmpty } from 'lodash'
 import {
@@ -97,7 +97,7 @@ function processImportNames(node: ts.Identifier, moduleId: string, ctx: Transfor
   }
 
   if (moduleId === MidwayHooksPackage) {
-    return compileBuiltinHooks(node)
+    return compileBuiltinMethod(node)
   } else {
     return compileRefToBind(node)
   }
@@ -135,10 +135,15 @@ function compileRefToBind(identifier: ts.Identifier) {
 /**
  * useContext => $lambda.ctx.hooks.useContext
  */
-function compileBuiltinHooks(identifier: ts.Identifier) {
-  const hook = identifier.getText()
+function compileBuiltinMethod(identifier: ts.Identifier) {
+  const method = identifier.getText()
 
-  if (!BuiltinHooks.includes(hook)) {
+  // with 方法不做转换
+  if (BuiltinEnhancer.includes(method)) {
+    return identifier
+  }
+
+  if (!BuiltinHooks.includes(method)) {
     throw new BuiltinHooksError(identifier)
   }
 
