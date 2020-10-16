@@ -15,6 +15,7 @@ import {
 import { helper } from '../helper'
 import { InvalidReferenceError } from '../errors/InvalidReference'
 import { debug } from '../util'
+import { dirname, resolve } from 'upath'
 
 export default {
   transform(ctx: TransformationContext) {
@@ -99,7 +100,7 @@ function processImportNames(node: ts.Identifier, moduleId: string, ctx: Transfor
   if (moduleId === MidwayHooksPackage) {
     return compileBuiltinMethod(node)
   } else {
-    return compileRefToBind(node)
+    return compileImportRefToBind(node)
   }
 }
 
@@ -121,7 +122,12 @@ function isLambdaOrHookImports(node: ts.Identifier, moduleId: string, ctx: Trans
   }
 
   const [definition] = declarations
-  return closetAncestor(definition, ts.SyntaxKind.ImportDeclaration) && isHookName(node.getText())
+  if (!closetAncestor(definition, ts.SyntaxKind.ImportDeclaration)) {
+    return false
+  }
+
+  const moduleFile = resolve(dirname(node.getSourceFile().fileName), moduleId)
+  return isHookName(node.getText()) || helper.isLambdaFile(moduleFile)
 }
 
 /**
@@ -129,6 +135,17 @@ function isLambdaOrHookImports(node: ts.Identifier, moduleId: string, ctx: Trans
  */
 function compileRefToBind(identifier: ts.Identifier) {
   const tpl = template(`HOOK.${ContextBind}`)({ HOOK: identifier })[0] as ts.ExpressionStatement
+  return tpl.expression
+}
+
+/**
+ * 应对 Import 进来不一定是函数的情况
+ * useQuery => typeof useQuery === 'function' ? useQuery.bind($lambda) : useQuery
+ */
+function compileImportRefToBind(identifier: ts.Identifier) {
+  const tpl = template(`typeof HOOK === 'function' ? HOOK.${ContextBind} : HOOK`)({
+    HOOK: identifier,
+  })[0] as ts.ExpressionStatement
   return tpl.expression
 }
 

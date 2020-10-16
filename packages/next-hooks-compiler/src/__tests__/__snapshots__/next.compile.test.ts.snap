@@ -122,7 +122,7 @@ const hooks_1 = require(\\"@midwayjs/hooks\\");
 function useQuery(name) {
     const $lambda = this;
     $lambda.ctx.hooks.useContext();
-    useDemo_1.useDemo.bind($lambda)(name);
+    (typeof useDemo_1.useDemo === \\"function\\" ? useDemo_1.useDemo.bind($lambda) : useDemo_1.useDemo)(name);
     console.log(exports.useFakeHooks);
 }
 exports.useQuery = useQuery;
@@ -374,7 +374,7 @@ export function hello() {
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.hello = void 0;
 const useDemo_1 = require(\\"../hooks/useDemo\\");
-function hello() { const $lambda = this; useDemo_1.useDemo.bind($lambda)('666'); }
+function hello() { const $lambda = this; (typeof useDemo_1.useDemo === \\"function\\" ? useDemo_1.useDemo.bind($lambda) : useDemo_1.useDemo)('666'); }
 exports.hello = hello;
 //# sourceMappingURL=import-hook.js.map
       "
@@ -481,6 +481,59 @@ function hello() { const $lambda = this; normal(); }
 exports.hello = hello;
 function normal() { }
 //# sourceMappingURL=normal-function.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/ref/bar.ts 1`] = `
+"
+// 源文件
+
+import { useContext } from '@midwayjs/hooks'
+import { refFoo } from './foo'
+
+export async function bar() {
+  const ctx = useContext()
+  refFoo()
+}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.bar = void 0;
+const hooks_1 = require(\\"@midwayjs/hooks\\");
+const foo_1 = require(\\"./foo\\");
+async function bar() {
+    const $lambda = this;
+    const ctx = $lambda.ctx.hooks.useContext();
+    (typeof foo_1.refFoo === \\"function\\" ? foo_1.refFoo.bind($lambda) : foo_1.refFoo)();
+}
+exports.bar = bar;
+//# sourceMappingURL=bar.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/ref/foo.ts 1`] = `
+"
+// 源文件
+
+import { useContext } from '@midwayjs/hooks'
+
+export async function refFoo() {
+  const ctx = useContext()
+}
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.refFoo = void 0;
+const hooks_1 = require(\\"@midwayjs/hooks\\");
+async function refFoo() { const $lambda = this; const ctx = $lambda.ctx.hooks.useContext(); }
+exports.refFoo = refFoo;
+//# sourceMappingURL=foo.js.map
       "
 `;
 
@@ -751,6 +804,36 @@ Object {
     "handler": "normal-function-hello.handler",
     "isFunctional": true,
     "sourceFilePath": "lambda/normal-function.js",
+  },
+  "ref-bar-bar": Object {
+    "argsPath": "",
+    "exportFunction": "bar",
+    "gatewayConfig": Object {
+      "handler": "ref-bar-bar",
+      "meta": Object {
+        "functionName": "bar",
+      },
+      "method": "GET",
+      "url": "/api/ref/bar/_bar",
+    },
+    "handler": "ref-bar-bar.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/ref/bar.js",
+  },
+  "ref-foo-reffoo": Object {
+    "argsPath": "",
+    "exportFunction": "refFoo",
+    "gatewayConfig": Object {
+      "handler": "ref-foo-reffoo",
+      "meta": Object {
+        "functionName": "refFoo",
+      },
+      "method": "GET",
+      "url": "/api/ref/foo/_refFoo",
+    },
+    "handler": "ref-foo-reffoo.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/ref/foo.js",
   },
   "with-get": Object {
     "argsPath": "",
