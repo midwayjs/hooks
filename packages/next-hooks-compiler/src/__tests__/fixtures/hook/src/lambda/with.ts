@@ -1,6 +1,11 @@
 import { withMiddleware, useContext } from '@midwayjs/hooks'
 
-export const hello = withMiddleware([], (name: string) => {
+export const post = withMiddleware([], (name: string) => {
+  const ctx = useContext()
+  console.log(name)
+})
+
+export const get = withMiddleware([], () => {
   const ctx = useContext()
   console.log(name)
 })

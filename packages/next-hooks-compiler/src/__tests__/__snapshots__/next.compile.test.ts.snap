@@ -490,7 +490,12 @@ exports[`NeXT Hooks Compiler lambda/with.ts 1`] = `
 
 import { withMiddleware, useContext } from '@midwayjs/hooks'
 
-export const hello = withMiddleware([], (name: string) => {
+export const post = withMiddleware([], (name: string) => {
+  const ctx = useContext()
+  console.log(name)
+})
+
+export const get = withMiddleware([], () => {
   const ctx = useContext()
   console.log(name)
 })
@@ -504,9 +509,14 @@ declare module '@midwayjs/hooks' {
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-exports.hello = void 0;
+exports.get = exports.post = void 0;
 const hooks_1 = require(\\"@midwayjs/hooks\\");
-exports.hello = hooks_1.withMiddleware([], function hello(name) {
+exports.post = hooks_1.withMiddleware([], function post(name) {
+    const $lambda = this;
+    const ctx = $lambda.ctx.hooks.useContext();
+    console.log(name);
+});
+exports.get = hooks_1.withMiddleware([], function get() {
     const $lambda = this;
     const ctx = $lambda.ctx.hooks.useContext();
     console.log(name);
@@ -742,18 +752,33 @@ Object {
     "isFunctional": true,
     "sourceFilePath": "lambda/normal-function.js",
   },
-  "with-hello": Object {
+  "with-get": Object {
     "argsPath": "",
-    "exportFunction": "hello",
+    "exportFunction": "get",
     "gatewayConfig": Object {
-      "handler": "with-hello",
+      "handler": "with-get",
       "meta": Object {
-        "functionName": "hello",
+        "functionName": "get",
+      },
+      "method": "GET",
+      "url": "/api/with/_get",
+    },
+    "handler": "with-get.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/with.js",
+  },
+  "with-post": Object {
+    "argsPath": "",
+    "exportFunction": "post",
+    "gatewayConfig": Object {
+      "handler": "with-post",
+      "meta": Object {
+        "functionName": "post",
       },
       "method": "POST",
-      "url": "/api/with/_hello",
+      "url": "/api/with/_post",
     },
-    "handler": "with-hello.handler",
+    "handler": "with-post.handler",
     "isFunctional": true,
     "sourceFilePath": "lambda/with.js",
   },
