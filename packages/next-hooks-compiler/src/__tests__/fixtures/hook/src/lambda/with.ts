@@ -1,15 +1,16 @@
 import { withMiddleware, useContext } from '@midwayjs/hooks'
 
-export const post = withMiddleware([], (name: string) => {
+export const post = withMiddleware([], async (name: string) => {
   const ctx = useContext()
   console.log(name)
 })
 
-export const get = withMiddleware([], () => {
+export const get = withMiddleware([], async () => {
   const ctx = useContext()
   console.log(name)
 })
 
-declare module '@midwayjs/hooks' {
-  export function withMiddleware(...args: any[]): any
-}
+export default withMiddleware(['staticFile'], async () => {
+  const ctx = useContext()
+  return 'xxx'
+})

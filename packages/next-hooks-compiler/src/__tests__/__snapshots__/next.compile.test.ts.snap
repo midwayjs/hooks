@@ -543,19 +543,20 @@ exports[`NeXT Hooks Compiler lambda/with.ts 1`] = `
 
 import { withMiddleware, useContext } from '@midwayjs/hooks'
 
-export const post = withMiddleware([], (name: string) => {
+export const post = withMiddleware([], async (name: string) => {
   const ctx = useContext()
   console.log(name)
 })
 
-export const get = withMiddleware([], () => {
+export const get = withMiddleware([], async () => {
   const ctx = useContext()
   console.log(name)
 })
 
-declare module '@midwayjs/hooks' {
-  export function withMiddleware(...args: any[]): any
-}
+export default withMiddleware(['staticFile'], async () => {
+  const ctx = useContext()
+  return 'xxx'
+})
 
 
 // 编译结果
@@ -564,17 +565,46 @@ declare module '@midwayjs/hooks' {
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.get = exports.post = void 0;
 const hooks_1 = require(\\"@midwayjs/hooks\\");
-exports.post = hooks_1.withMiddleware([], function post(name) {
+exports.post = hooks_1.withMiddleware([], async function post(name) {
     const $lambda = this;
     const ctx = $lambda.ctx.hooks.useContext();
     console.log(name);
 });
-exports.get = hooks_1.withMiddleware([], function get() {
+exports.get = hooks_1.withMiddleware([], async function get() {
     const $lambda = this;
     const ctx = $lambda.ctx.hooks.useContext();
     console.log(name);
+});
+exports.default = hooks_1.withMiddleware(['staticFile'], async function $default() {
+    const ctx = $lambda.ctx.hooks.useContext();
+    return 'xxx';
 });
 //# sourceMappingURL=with.js.map
+      "
+`;
+
+exports[`NeXT Hooks Compiler lambda/with-default-post.ts 1`] = `
+"
+// 源文件
+
+import { withMiddleware, useContext } from '@midwayjs/hooks'
+
+export default withMiddleware(['staticFile'], async (name: string) => {
+  const ctx = useContext()
+  return 'xxx'
+})
+
+
+// 编译结果
+
+\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const hooks_1 = require(\\"@midwayjs/hooks\\");
+exports.default = hooks_1.withMiddleware(['staticFile'], async function $default(name) {
+    const ctx = $lambda.ctx.hooks.useContext();
+    return 'xxx';
+});
+//# sourceMappingURL=with-default-post.js.map
       "
 `;
 
@@ -862,21 +892,6 @@ Object {
       "url": "/api/with/_post",
     },
     "handler": "with-post.handler",
-    "isFunctional": true,
-    "sourceFilePath": "lambda/with.js",
-  },
-  "with-withmiddleware": Object {
-    "argsPath": "",
-    "exportFunction": "withMiddleware",
-    "gatewayConfig": Object {
-      "handler": "with-withmiddleware",
-      "meta": Object {
-        "functionName": "withMiddleware",
-      },
-      "method": "POST",
-      "url": "/api/with/_withMiddleware",
-    },
-    "handler": "with-withmiddleware.handler",
     "isFunctional": true,
     "sourceFilePath": "lambda/with.js",
   },

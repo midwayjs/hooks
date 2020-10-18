@@ -153,6 +153,16 @@ export function isLambdaOrHookVariableStatement(node: FunctionKind) {
   return isLambdaOrHook(node, variableStatement)
 }
 
+export function isWithExportAssignment(node: ArrowFunction) {
+  const exportAssignment = closetAncestor<ts.ExportAssignment>(node, ts.SyntaxKind.ExportAssignment)
+  if (!exportAssignment) {
+    return false
+  }
+
+  const expr = exportAssignment.expression
+  return ts.isCallExpression(expr) && BuiltinEnhancer.includes(expr.expression.getText())
+}
+
 export function getVariableStatementIdentifier(node: ts.VariableStatement) {
   return node.declarationList.declarations[0].name
 }
