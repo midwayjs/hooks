@@ -27,6 +27,10 @@ hooks:
 functionsRule:
   source: /src
   rules:
+    - baseDir: render
+      events:
+        http:
+          basePath: /
     - baseDir: lambda
       events:
         http:

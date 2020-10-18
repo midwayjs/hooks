@@ -20,9 +20,9 @@ export default async function loader(this: loader.LoaderContext, source: string,
   }
 
   const root = this.rootContext || (this as any).options?.context
-  const apis = resolve(root, 'src/apis/lambda')
+  helper.root = root
 
-  if (!inside(resourcePath, apis)) {
+  if (!helper.isLambdaFile(resourcePath)) {
     return callback(null, source)
   }
 
@@ -55,8 +55,6 @@ export default async function loader(this: loader.LoaderContext, source: string,
     })
     throw error
   }
-
-  helper.root = root
 
   const funcs: RenderParam[] = []
 

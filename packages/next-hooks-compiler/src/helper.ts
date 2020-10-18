@@ -1,51 +1,57 @@
 import inside from 'is-path-inside'
-import fse from 'fs'
 import { LambdaMethodPrefix, MidwayHookApiDirectory } from './const'
 import { resolve, dirname, join, relative, basename, extname, toUnix } from 'upath'
 import chalk from 'chalk'
 import { transform } from '@midwayjs/serverless-spec-builder'
-import type { SpecStructureWithGateway } from '@midwayjs/hooks-shared'
+import type { SpecStructureWithGateway, FunctionsRule, FunctionRule } from '@midwayjs/hooks-shared'
+
+const defaultFunctionsRule: FunctionsRule = {
+  source: '/src/apis',
+  rules: [
+    {
+      baseDir: 'lambda',
+      events: {
+        http: {
+          basePath: '/api',
+        },
+      },
+    },
+  ],
+}
 
 export class RouteHelper {
-  rules: helperRuleItems
   root: string
-  prefix = '/api'
   routes = new Map<string, string>()
   private _spec: SpecStructureWithGateway = null
 
   get spec(): SpecStructureWithGateway {
-    this._spec = this._spec || transform(resolve(this.projectRoot, 'f.yml'))
+    this._spec = this._spec || transform(resolve(this.root, 'f.yml'))
     return this._spec
   }
 
-  get projectRoot() {
-    if (fse.existsSync(resolve(this.root, 'f.yml'))) {
-      return this.root
-    }
-
-    return resolve(this.root, '../../')
+  get functionsRule() {
+    return Array.isArray(this.spec?.functionsRule?.rules) ? this.spec.functionsRule : defaultFunctionsRule
   }
 
+  // src/apis
+  get source() {
+    return join(this.root, this.functionsRule.source)
+  }
+
+  // src/apis/lambda
   get lambdaDirectory() {
     return resolve(this.source, MidwayHookApiDirectory)
   }
 
-  get source() {
-    // if exits rule, source base is root
-    if (this.rules) {
-      return this.root
-    }
-    const source = resolve(this.root, 'src')
-    const apis = resolve(source, 'apis')
+  getLambdaDirectory(rule: FunctionRule) {
+    return join(this.root, this.functionsRule.source, rule.baseDir)
+  }
 
-    if (fse.existsSync(apis)) {
-      return apis
-    }
-
-    if (fse.existsSync(source)) {
-      return source
-    }
-    return this.root
+  getRuleBySourceFilePath(sourceFilePath: string) {
+    const { source, rules } = this.functionsRule
+    const dirs = rules.map((rule) => join(this.root, source, rule.baseDir))
+    const index = dirs.findIndex((dir) => this.inside(sourceFilePath, dir))
+    return rules[index]
   }
 
   getDistPath(sourceFilePath: string) {
@@ -53,66 +59,30 @@ export class RouteHelper {
     return relative(this.source, sourceFilePath).replace(regexp, '.js')
   }
 
+  isProjectFile(sourceFilePath: string) {
+    return this.inside(sourceFilePath, this.source)
+  }
+
   isLambdaFile(sourceFilePath: string) {
-    if (this.rules) {
-      return !!this.findFileMatchRule(sourceFilePath)
-    }
-    return this.inside(sourceFilePath, this.lambdaDirectory)
+    const rule = this.getRuleBySourceFilePath(sourceFilePath)
+    return !!rule
   }
 
   private inside(child: string, parent: string) {
     return inside(toUnix(child), toUnix(parent))
   }
 
-  getLambdaDirectoryByRule(rule) {
-    return resolve(this.source, rule?.baseDir || '')
-  }
-
-  getLambdaDirectory(sourceFilePath: string) {
-    if (this.rules) {
-      const rule = this.findFileMatchRule(sourceFilePath)
-      if (rule) {
-        return this.getLambdaDirectoryByRule(rule)
-      }
-    }
-    return this.lambdaDirectory
-  }
-
-  findFileMatchRule(sourceFilePath: string, matchEvent?: 'http') {
-    return this.rules.find((rule) => {
-      if (matchEvent) {
-        const findEvent = rule.events?.find((event) => !!event[matchEvent])
-        if (!findEvent) {
-          return false
-        }
-      }
-      return this.inside(sourceFilePath, this.getLambdaDirectoryByRule(rule))
-    })
-  }
-
-  isProjectFile(sourceFilePath: string) {
-    return this.inside(sourceFilePath, this.source)
-  }
-
   getHTTPPath(filePath: string, method: string, isExportDefault: boolean) {
     const filename = basename(filePath, extname(filePath))
     const file = filename === 'index' ? '' : filename
-    const func = isExportDefault
-      ? ''
-      : `${this.spec?.hooks?.routeUnderscore === false ? '' : LambdaMethodPrefix}${method}`
+    const methodPrefix = this.spec?.hooks?.routeUnderscore === false ? '' : LambdaMethodPrefix
+    const func = isExportDefault ? '' : `${methodPrefix}${method}`
 
-    let prefix = this.prefix
-    let lambdaDirectory = this.lambdaDirectory
-
-    if (this.rules) {
-      const rule = this.findFileMatchRule(filePath, 'http')
-      const event = rule.events?.find((event) => !!event.http)
-      prefix = event?.http?.basePath || this.prefix
-      lambdaDirectory = this.getLambdaDirectoryByRule(rule)
-    }
+    const rule = this.getRuleBySourceFilePath(filePath)
+    const lambdaDirectory = this.getLambdaDirectory(rule)
 
     const api = join(
-      prefix,
+      rule.events.http.basePath,
       /**
        * /apis/lambda/index.ts -> ''
        * /apis/lambda/todo/index.ts -> 'todo'
@@ -148,15 +118,3 @@ export class RouteHelper {
 }
 
 export const helper = new RouteHelper()
-
-export interface helperRuleItem {
-  baseDir: string
-  events?: {
-    http?: {
-      basePath: string
-    }
-    [otherEvent: string]: any
-  }
-}
-
-export type helperRuleItems = helperRuleItem[]

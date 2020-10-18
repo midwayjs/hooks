@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Compiler FunctionsRule Routes should be generated according to the configured rules 1`] = `
+Object {
+  "index": Object {
+    "argsPath": "",
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "handler": "index",
+      "meta": Object {
+        "functionName": "render",
+      },
+      "method": "GET",
+      "url": "/",
+    },
+    "handler": "index.handler",
+    "isFunctional": true,
+    "sourceFilePath": "render/index.js",
+  },
+  "lambda-export-arrow-hello": Object {
+    "argsPath": "",
+    "exportFunction": "hello",
+    "gatewayConfig": Object {
+      "handler": "lambda-export-arrow-hello",
+      "meta": Object {
+        "functionName": "hello",
+      },
+      "method": "POST",
+      "url": "/lambda/export-arrow/hello",
+    },
+    "handler": "lambda-export-arrow-hello.handler",
+    "isFunctional": true,
+    "sourceFilePath": "render/lambda/export-arrow.js",
+  },
+  "lambda-export-default-anonymous": Object {
+    "argsPath": "",
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "handler": "lambda-export-default-anonymous",
+      "meta": Object {
+        "functionName": "$default",
+      },
+      "method": "GET",
+      "url": "/lambda/export-default-anonymous",
+    },
+    "handler": "lambda-export-default-anonymous.handler",
+    "isFunctional": true,
+    "sourceFilePath": "render/lambda/export-default-anonymous.js",
+  },
+  "lambda-export-default-func": Object {
+    "argsPath": "",
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "handler": "lambda-export-default-func",
+      "meta": Object {
+        "functionName": "$default",
+      },
+      "method": "POST",
+      "url": "/lambda/export-default-func",
+    },
+    "handler": "lambda-export-default-func.handler",
+    "isFunctional": true,
+    "sourceFilePath": "render/lambda/export-default-func.js",
+  },
+  "lambda-export-default-named": Object {
+    "argsPath": "",
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "handler": "lambda-export-default-named",
+      "meta": Object {
+        "functionName": "named",
+      },
+      "method": "POST",
+      "url": "/lambda/export-default-named",
+    },
+    "handler": "lambda-export-default-named.handler",
+    "isFunctional": true,
+    "sourceFilePath": "render/lambda/export-default-named.js",
+  },
+}
+`;

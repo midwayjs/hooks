@@ -1,0 +1,5 @@
+{
+  "exclude": ["../functions-rule/dist", "../functions-rule/node_modules", "../functions-rule/test"],
+  "include": ["../functions-rule/src"],
+  "extends": "../../tsconfig.test.json"
+}

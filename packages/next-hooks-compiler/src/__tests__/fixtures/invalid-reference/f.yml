@@ -20,3 +20,11 @@ package:
   include:
     - build
   artifact: code.zip
+
+functionsRule:
+  source: /src
+  rules:
+    - baseDir: lambda
+      events:
+        http:
+          basePath: /api
