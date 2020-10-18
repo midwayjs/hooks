@@ -2,9 +2,7 @@ import memoryfs from 'memory-fs'
 import path from 'path'
 import webpack from 'webpack'
 
-const root = path.resolve(__dirname, './fixtures')
-
-export default (fixture: string): Promise<webpack.Stats> => {
+export default (fixture: string, root: string): Promise<webpack.Stats> => {
   const compiler = webpack({
     context: root,
     entry: fixture,
