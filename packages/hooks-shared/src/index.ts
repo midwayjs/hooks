@@ -25,14 +25,12 @@ export interface SpecStructureWithGateway extends SpecStructure {
   apiGateway?: {
     type?: string
   }
-  hooks?: {
-    routeUnderscore?: boolean
-  }
   functionsRule?: FunctionsRule
 }
 
 export interface FunctionsRule {
   source: string
+  underscore?: boolean
   rules: FunctionRule[]
 }
 

@@ -7,6 +7,7 @@ import type { SpecStructureWithGateway, FunctionsRule, FunctionRule } from '@mid
 
 const defaultFunctionsRule: FunctionsRule = {
   source: '/src/apis',
+  underscore: true,
   rules: [
     {
       baseDir: 'lambda',
@@ -75,7 +76,7 @@ export class RouteHelper {
   getHTTPPath(filePath: string, method: string, isExportDefault: boolean) {
     const filename = basename(filePath, extname(filePath))
     const file = filename === 'index' ? '' : filename
-    const methodPrefix = this.spec?.hooks?.routeUnderscore === false ? '' : LambdaMethodPrefix
+    const methodPrefix = this.functionsRule.underscore === false ? '' : LambdaMethodPrefix
     const func = isExportDefault ? '' : `${methodPrefix}${method}`
 
     const rule = this.getRuleBySourceFilePath(filePath)

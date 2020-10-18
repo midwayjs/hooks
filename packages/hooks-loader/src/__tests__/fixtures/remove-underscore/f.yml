@@ -18,5 +18,11 @@ layers:
   remote-debug:
     path: oss:remote-debug-layer@latest
 
-hooks:
-  routeUnderscore: false
+functionsRule:
+  source: /src/apis
+  underscore: false
+  rules:
+    - baseDir: lambda
+      events:
+        http:
+          basePath: /api
