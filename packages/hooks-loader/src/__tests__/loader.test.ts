@@ -64,3 +64,15 @@ test('Compile error export', async () => {
     expect(error).toBeTruthy()
   }
 })
+
+test('Compile withMiddleware', async () => {
+  const stats = await compiler(resolveEntry('with.ts'), root)
+  const output = getOutput(stats)
+  expect(output).toMatchSnapshot()
+})
+
+test('Compile withMiddleware Post', async () => {
+  const stats = await compiler(resolveEntry('with-default-post.ts'), root)
+  const output = getOutput(stats)
+  expect(output).toMatchSnapshot()
+})

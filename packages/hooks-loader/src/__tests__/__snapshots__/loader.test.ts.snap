@@ -320,3 +320,85 @@ export  function typeAssert (...args) {
 
 "
 `;
+
+exports[`Compile withMiddleware 1`] = `
+"import { request } from '@midwayjs/hooks/request'
+
+
+export  function post (...args) {
+  return request({
+    url: '/api/with/_post',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"with-post\\",
+  \\"unstable_params\\": [
+    \\"name\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function get (...args) {
+  return request({
+    url: '/api/with/_get',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"with-get\\",
+  \\"unstable_params\\": [],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  default  function $default (...args) {
+  return request({
+    url: '/api/with',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"with\\",
+  \\"unstable_params\\": [],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+"
+`;
+
+exports[`Compile withMiddleware Post 1`] = `
+"import { request } from '@midwayjs/hooks/request'
+
+
+export  default  function $default (...args) {
+  return request({
+    url: '/api/with-default-post',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"with-default-post\\",
+  \\"unstable_params\\": [
+    \\"name\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+"
+`;

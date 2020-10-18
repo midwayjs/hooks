@@ -4,14 +4,12 @@ import * as parser from '@babel/parser'
 import traverse, { NodePath } from '@babel/traverse'
 import * as t from '@babel/types'
 import { Identifier, FunctionDeclaration } from '@babel/types'
-import { resolve } from 'path'
-import inside from 'path-is-inside'
 import { loader } from 'webpack'
 import { buildRequest, RenderParam } from './render'
-import { helper, getFunctionHandlerName } from '@midwayjs/next-hooks-compiler'
+import { helper, getFunctionHandlerName, BuiltinEnhancer } from '@midwayjs/next-hooks-compiler'
 import { debug } from './util'
 
-export default async function loader(this: loader.LoaderContext, source: string, sourceMap: string) {
+export default async function loader(this: loader.LoaderContext, source: string) {
   const callback = this.async()
   const resourcePath = this.resourcePath
 
@@ -120,6 +118,11 @@ export default async function loader(this: loader.LoaderContext, source: string,
             const { method, params } = parseFunctionParams(init.params)
             func.method = method
             func.meta.unstable_params = params
+          } else if (t.isCallExpression(init) && BuiltinEnhancer.includes((init.callee as Identifier).name)) {
+            const callback = init.arguments[1] as t.FunctionExpression
+            const { method, params } = parseFunctionParams(callback.params)
+            func.method = method
+            func.meta.unstable_params = params
           } else {
             err = buildCodeFrameError(path, getErrorMessage())
             path.stop()
@@ -135,31 +138,40 @@ export default async function loader(this: loader.LoaderContext, source: string,
       path.stop()
     },
     ExportDefaultDeclaration(path) {
+      const declaration = path.node.declaration
       const func: RenderParam = {}
 
-      const declaration = path.node.declaration
+      let funcExpression: t.FunctionDeclaration | t.FunctionExpression | t.ArrowFunctionExpression = null
 
       if (t.isFunctionDeclaration(declaration) || t.isArrowFunctionExpression(declaration)) {
-        const functionName = getFunctionHandlerName({
-          sourceFilePath: resourcePath,
-          isExportDefault: true,
-          functionName: getFunctionName(path),
-        })
-        const { method, params } = parseFunctionParams(declaration.params)
-        func.method = method
-        func.functionId = getFunctionName(path)
-        func.isExportDefault = true
-        func.url = helper.getHTTPPath(resourcePath, functionName, true)
-        func.meta = {
-          functionName,
-          unstable_params: params,
-        }
+        funcExpression = declaration
+      } else if (t.isCallExpression(declaration) && BuiltinEnhancer.includes((declaration.callee as Identifier).name)) {
+        funcExpression = declaration.arguments[1] as t.FunctionExpression
+      }
 
-        funcs.push(func)
-      } else {
+      if (!funcExpression) {
         err = buildCodeFrameError(path, getErrorMessage())
         path.stop()
+        return
       }
+
+      const functionName = getFunctionHandlerName({
+        sourceFilePath: resourcePath,
+        isExportDefault: true,
+        functionName: getFunctionName(path),
+      })
+
+      const { method, params } = parseFunctionParams(funcExpression.params)
+      func.method = method
+      func.functionId = getFunctionName(path)
+      func.isExportDefault = true
+      func.url = helper.getHTTPPath(resourcePath, functionName, true)
+      func.meta = {
+        functionName,
+        unstable_params: params,
+      }
+
+      funcs.push(func)
     },
   })
 

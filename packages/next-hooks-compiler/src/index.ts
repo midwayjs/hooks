@@ -3,7 +3,7 @@ import { compileWithOptions, MwccConfig } from '@midwayjs/mwcc'
 
 export * from './hintConfig'
 export { helper } from './helper'
-export { setMidwayHooksPackage } from './const'
+export { setMidwayHooksPackage, BuiltinEnhancer } from './const'
 export { getFunctionsMeta, clearRoutes, MidwayHooksFunctionStructure } from './plugin/routes'
 export { getFunctionHandlerName } from './plugin/create-lambda-ctx'
 
