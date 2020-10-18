@@ -22,4 +22,4 @@ package:
   artifact: code.zip
 
 hooks:
-  removeUnderscore: true
+  routeUnderscore: false

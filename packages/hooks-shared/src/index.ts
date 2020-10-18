@@ -26,6 +26,6 @@ export interface SpecStructureWithGateway extends SpecStructure {
     type?: string
   }
   hooks?: {
-    removeUnderscore?: boolean
+    routeUnderscore?: boolean
   }
 }
