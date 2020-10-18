@@ -100,10 +100,11 @@ export function getFunctionHandlerName(config: {
   isExportDefault: boolean
 }) {
   const { sourceFilePath, functionName, isExportDefault } = config
-  const relativePath = relative(helper.getLambdaDirectory(sourceFilePath), sourceFilePath)
+  const rule = helper.getRuleBySourceFilePath(sourceFilePath)
+  const lambdaDirectory = helper.getLambdaDirectory(rule)
+  const relativePath = relative(lambdaDirectory, sourceFilePath)
   const id = relativePath.replace(extname(sourceFilePath), '').replace(/\//g, '-')
   const name = [id, isExportDefault ? '' : `-${functionName}`].join('')
-
   return name.toLowerCase()
 }
 

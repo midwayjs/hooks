@@ -28,4 +28,20 @@ export interface SpecStructureWithGateway extends SpecStructure {
   hooks?: {
     routeUnderscore?: boolean
   }
+  functionsRule?: FunctionsRule
+}
+
+export interface FunctionsRule {
+  source: string
+  rules: FunctionRule[]
+}
+
+export interface FunctionRule {
+  baseDir: string
+  events: {
+    http?: {
+      basePath: string
+    }
+    [event: string]: any
+  }
 }
