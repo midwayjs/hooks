@@ -97,7 +97,9 @@ export class RouteHelper {
   getHTTPPath(filePath: string, method: string, isExportDefault: boolean) {
     const filename = basename(filePath, extname(filePath))
     const file = filename === 'index' ? '' : filename
-    const func = isExportDefault ? '' : `${this.spec?.hooks?.removeUnderscore ? '' : LambdaMethodPrefix}${method}`
+    const func = isExportDefault
+      ? ''
+      : `${this.spec?.hooks?.routeUnderscore === false ? '' : LambdaMethodPrefix}${method}`
 
     let prefix = this.prefix
     let lambdaDirectory = this.lambdaDirectory
