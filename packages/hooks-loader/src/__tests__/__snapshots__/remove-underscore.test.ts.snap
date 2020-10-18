@@ -1,0 +1,230 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Compile normally exported functions 1`] = `
+"import { request } from '@midwayjs/hooks/request'
+
+
+export  function variableFuncExpression (...args) {
+  return request({
+    url: '/api/variableFuncExpression',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"index-variablefuncexpression\\",
+  \\"unstable_params\\": [],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function variableFuncExpressionWithArgs (...args) {
+  return request({
+    url: '/api/variableFuncExpressionWithArgs',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"index-variablefuncexpressionwithargs\\",
+  \\"unstable_params\\": [
+    \\"a\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function variableArrowFunction (...args) {
+  return request({
+    url: '/api/variableArrowFunction',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"index-variablearrowfunction\\",
+  \\"unstable_params\\": [],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function variableArrowFunctionWithArgs (...args) {
+  return request({
+    url: '/api/variableArrowFunctionWithArgs',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"index-variablearrowfunctionwithargs\\",
+  \\"unstable_params\\": [
+    \\"a\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function functionDeclartion (...args) {
+  return request({
+    url: '/api/functionDeclartion',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"index-functiondeclartion\\",
+  \\"unstable_params\\": [],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function functionDeclartionWithArgs (...args) {
+  return request({
+    url: '/api/functionDeclartionWithArgs',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"index-functiondeclartionwithargs\\",
+  \\"unstable_params\\": [
+    \\"a\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  default  function hasName (...args) {
+  return request({
+    url: '/api',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"index\\",
+  \\"unstable_params\\": [
+    \\"args\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function dotdotdotArgs (...args) {
+  return request({
+    url: '/api/dotdotdotArgs',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"index-dotdotdotargs\\",
+  \\"unstable_params\\": [
+    \\"args\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+"
+`;
+
+exports[`Compile normally exported functions 2`] = `
+"import { request } from '@midwayjs/hooks/request'
+
+
+export  function identifier (...args) {
+  return request({
+    url: '/api/param/identifier',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"param-identifier\\",
+  \\"unstable_params\\": [
+    \\"a\\",
+    \\"b\\",
+    \\"c\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function assgin (...args) {
+  return request({
+    url: '/api/param/assgin',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"param-assgin\\",
+  \\"unstable_params\\": [
+    \\"a\\",
+    \\"b\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function rest (...args) {
+  return request({
+    url: '/api/param/rest',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"param-rest\\",
+  \\"unstable_params\\": [
+    \\"a\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function mix (...args) {
+  return request({
+    url: '/api/param/mix',
+    method: 'POST',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"param-mix\\",
+  \\"unstable_params\\": [
+    \\"a\\",
+    \\"b\\",
+    \\"c\\"
+  ],
+  \\"functionGroup\\": \\"fusion-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+"
+`;

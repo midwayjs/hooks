@@ -2,8 +2,10 @@ import { resolve } from 'path'
 import compiler from './compiler'
 import webpack from 'webpack'
 
+const root = resolve(__dirname, './fixtures/normal')
+
 const resolveEntry = (path: string) => {
-  return resolve(__dirname, './fixtures/src/apis/lambda', path)
+  return resolve(__dirname, root, 'src/apis/lambda', path)
 }
 
 const getOutput = (stats: webpack.Stats) => {
@@ -11,44 +13,44 @@ const getOutput = (stats: webpack.Stats) => {
 }
 
 test('Compile normally exported functions', async () => {
-  const stats = await compiler(resolveEntry('index.ts'))
+  const stats = await compiler(resolveEntry('index.ts'), root)
   const output = getOutput(stats)
   expect(output).toMatchSnapshot()
 })
 
 test('Compile nest function', async () => {
-  const stats = await compiler(resolveEntry('nest/index.ts'))
+  const stats = await compiler(resolveEntry('nest/index.ts'), root)
   const output = getOutput(stats)
   expect(output).toMatchSnapshot()
 })
 
 test('Compile export default arrow', async () => {
-  const stats = await compiler(resolveEntry('arrow.ts'))
+  const stats = await compiler(resolveEntry('arrow.ts'), root)
   const output = getOutput(stats)
   expect(output).toMatchSnapshot()
 })
 
 test('Compile export types', async () => {
-  const stats = await compiler(resolveEntry('type.ts'))
+  const stats = await compiler(resolveEntry('type.ts'), root)
   const output = getOutput(stats)
   expect(output).toMatchSnapshot()
 })
 
 test('Compile type assert', async () => {
-  const stats = await compiler(resolveEntry('type-assert.ts'))
+  const stats = await compiler(resolveEntry('type-assert.ts'), root)
   const output = getOutput(stats)
   expect(output).toMatchSnapshot()
 })
 
 test('Compile params', async () => {
-  const stats = await compiler(resolveEntry('param.ts'))
+  const stats = await compiler(resolveEntry('param.ts'), root)
   const output = getOutput(stats)
   expect(output).toMatchSnapshot()
 })
 
 test('Compile IoC', async () => {
   try {
-    await compiler(resolveEntry('ioc.ts'))
+    await compiler(resolveEntry('ioc.ts'), root)
   } catch (error) {
     expect(error).toBeTruthy()
   }
@@ -57,7 +59,7 @@ test('Compile IoC', async () => {
 test('Compile error export', async () => {
   const fixture = resolveEntry('error.ts')
   try {
-    await compiler(fixture)
+    await compiler(fixture, root)
   } catch (error) {
     expect(error).toBeTruthy()
   }
