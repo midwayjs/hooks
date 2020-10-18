@@ -126,7 +126,7 @@ function isLambdaOrHookImports(node: ts.Identifier, moduleId: string, ctx: Trans
     return false
   }
 
-  const moduleFile = resolve(dirname(node.getSourceFile().fileName), moduleId)
+  const moduleFile = resolve(dirname(getSourceFilePath(node)), moduleId)
   return isHookName(node.getText()) || helper.isLambdaFile(moduleFile)
 }
 
