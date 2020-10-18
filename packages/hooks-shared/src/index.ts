@@ -25,4 +25,7 @@ export interface SpecStructureWithGateway extends SpecStructure {
   apiGateway?: {
     type?: string
   }
+  hooks?: {
+    removeUnderscore?: boolean
+  }
 }

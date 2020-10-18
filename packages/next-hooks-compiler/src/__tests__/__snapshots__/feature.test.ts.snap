@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Compiler Features The routing information should have the underscore removed 1`] = `
+Object {
+  "arrow-hook-ref-arrow-hook-useinner": Object {
+    "argsPath": "",
+    "exportFunction": "useInner",
+    "gatewayConfig": Object {
+      "handler": "arrow-hook-ref-arrow-hook-useinner",
+      "meta": Object {
+        "functionName": "useInner",
+      },
+      "method": "GET",
+      "url": "/api/arrow-hook-ref-arrow-hook/useInner",
+    },
+    "handler": "arrow-hook-ref-arrow-hook-useinner.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
+  },
+  "arrow-hook-ref-arrow-hook-usequery": Object {
+    "argsPath": "",
+    "exportFunction": "useQuery",
+    "gatewayConfig": Object {
+      "handler": "arrow-hook-ref-arrow-hook-usequery",
+      "meta": Object {
+        "functionName": "useQuery",
+      },
+      "method": "POST",
+      "url": "/api/arrow-hook-ref-arrow-hook/useQuery",
+    },
+    "handler": "arrow-hook-ref-arrow-hook-usequery.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
+  },
+  "export-arrow-hello": Object {
+    "argsPath": "",
+    "exportFunction": "hello",
+    "gatewayConfig": Object {
+      "handler": "export-arrow-hello",
+      "meta": Object {
+        "functionName": "hello",
+      },
+      "method": "POST",
+      "url": "/api/export-arrow/hello",
+    },
+    "handler": "export-arrow-hello.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/export-arrow.js",
+  },
+  "export-default-anonymous": Object {
+    "argsPath": "",
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "handler": "export-default-anonymous",
+      "meta": Object {
+        "functionName": "$default",
+      },
+      "method": "GET",
+      "url": "/api/export-default-anonymous",
+    },
+    "handler": "export-default-anonymous.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/export-default-anonymous.js",
+  },
+  "export-default-func": Object {
+    "argsPath": "",
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "handler": "export-default-func",
+      "meta": Object {
+        "functionName": "$default",
+      },
+      "method": "POST",
+      "url": "/api/export-default-func",
+    },
+    "handler": "export-default-func.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/export-default-func.js",
+  },
+  "export-default-named": Object {
+    "argsPath": "",
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "handler": "export-default-named",
+      "meta": Object {
+        "functionName": "named",
+      },
+      "method": "POST",
+      "url": "/api/export-default-named",
+    },
+    "handler": "export-default-named.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/export-default-named.js",
+  },
+}
+`;
