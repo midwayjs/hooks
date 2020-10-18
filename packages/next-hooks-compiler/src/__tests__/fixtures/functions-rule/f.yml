@@ -21,11 +21,9 @@ package:
     - build
   artifact: code.zip
 
-hooks:
-  routeUnderscore: false
-
 functionsRule:
   source: /src
+  underscore: false
   rules:
     - baseDir: render
       events:

@@ -22,9 +22,13 @@ package:
   artifact: code.zip
 
 functionsRule:
-  source: /src
+  source: /src/apis
   underscore: false
   rules:
+    - baseDir: render
+      events:
+        http:
+          basePath: /
     - baseDir: lambda
       events:
         http:
