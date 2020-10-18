@@ -3,12 +3,20 @@ import fse from 'fs'
 import { LambdaMethodPrefix, MidwayHookApiDirectory } from './const'
 import { resolve, dirname, join, relative, basename, extname, toUnix } from 'upath'
 import chalk from 'chalk'
+import { transform } from '@midwayjs/serverless-spec-builder'
+import type { SpecStructureWithGateway } from '@midwayjs/hooks-shared'
 
 export class RouteHelper {
   rules: helperRuleItems
   root: string
   prefix = '/api'
   routes = new Map<string, string>()
+  private _spec: SpecStructureWithGateway = null
+
+  get spec(): SpecStructureWithGateway {
+    this._spec = this._spec || transform(resolve(this.projectRoot, 'f.yml'))
+    return this._spec
+  }
 
   get projectRoot() {
     if (fse.existsSync(resolve(this.root, 'f.yml'))) {
@@ -89,7 +97,7 @@ export class RouteHelper {
   getHTTPPath(filePath: string, method: string, isExportDefault: boolean) {
     const filename = basename(filePath, extname(filePath))
     const file = filename === 'index' ? '' : filename
-    const func = isExportDefault ? '' : `${LambdaMethodPrefix}${method}`
+    const func = isExportDefault ? '' : `${this.spec?.hooks?.removeUnderscore ? '' : LambdaMethodPrefix}${method}`
 
     let prefix = this.prefix
     let lambdaDirectory = this.lambdaDirectory

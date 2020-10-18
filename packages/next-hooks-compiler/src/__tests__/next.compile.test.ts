@@ -3,7 +3,7 @@ import { hintConfig } from '../hintConfig'
 import { compileHooks } from '../index'
 import globby from 'globby'
 import fse from 'fs-extra'
-import { getFunctionsMeta } from '../plugin/routes'
+import { clearRoutes, getFunctionsMeta } from '../plugin/routes'
 
 describe('NeXT Hooks Compiler', () => {
   const fixture = path.resolve(__dirname, './fixtures/hook')
@@ -38,5 +38,9 @@ ${compiled}
 
   it('路由信息应该生成正确', () => {
     expect(getFunctionsMeta()).toMatchSnapshot()
+  })
+
+  afterAll(() => {
+    clearRoutes()
   })
 })
