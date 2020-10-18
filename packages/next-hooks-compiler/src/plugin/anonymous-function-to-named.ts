@@ -1,6 +1,12 @@
 import ts, { ArrowFunction } from 'typescript'
 import { helper } from '../helper'
-import { hasModifier, isLambdaOrHookVariableStatement, closetAncestor, getSourceFilePath } from '../util'
+import {
+  hasModifier,
+  isLambdaOrHookVariableStatement,
+  closetAncestor,
+  getSourceFilePath,
+  isWithExportAssignment,
+} from '../util'
 import { DefaultKeyword } from '../const'
 
 export default {
@@ -16,7 +22,7 @@ export default {
           return node
         }
 
-        const expression = node.expression as ArrowFunction
+        const expression = node.expression
 
         if (ts.isArrowFunction(expression)) {
           return ts.createFunctionDeclaration(
@@ -68,22 +74,28 @@ export default {
        * export const useDemo = function useDemo () {}
        */
       ArrowFunction(node: ts.ArrowFunction) {
-        if (!isLambdaOrHookVariableStatement(node)) {
-          return node
+        let name = ''
+
+        if (isLambdaOrHookVariableStatement(node)) {
+          name = closetAncestor<ts.VariableDeclaration>(node, ts.SyntaxKind.VariableDeclaration).name.getText()
+        } else if (isWithExportAssignment(node)) {
+          name = DefaultKeyword
         }
 
-        const name = closetAncestor<ts.VariableDeclaration>(node, ts.SyntaxKind.VariableDeclaration).name.getText()
-        const body = ts.isBlock(node.body) ? node.body : ts.createBlock([ts.createReturn(node.body)])
+        if (name) {
+          const body = ts.isBlock(node.body) ? node.body : ts.createBlock([ts.createReturn(node.body)])
+          return ts.createFunctionExpression(
+            node.modifiers,
+            node.asteriskToken,
+            ts.createIdentifier(name),
+            node.typeParameters,
+            node.parameters,
+            node.type,
+            body
+          )
+        }
 
-        return ts.createFunctionExpression(
-          node.modifiers,
-          node.asteriskToken,
-          ts.createIdentifier(name),
-          node.typeParameters,
-          node.parameters,
-          node.type,
-          body
-        )
+        return node
       },
     }
   },
