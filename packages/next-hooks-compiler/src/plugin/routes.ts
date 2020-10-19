@@ -22,10 +22,6 @@ export function addRoute(sourceFilePath: SourceFilePath, gateway: MidwayHooksFun
   routes.push(gateway)
 }
 
-export function getRoutes(sourceFilePath: SourceFilePath) {
-  return map.get(sourceFilePath) ?? []
-}
-
 export function clearRoutes() {
   map.clear()
 }
