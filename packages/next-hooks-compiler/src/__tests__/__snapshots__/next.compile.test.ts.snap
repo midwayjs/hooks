@@ -615,6 +615,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "useInner",
@@ -635,6 +636,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "useQuery",
@@ -655,6 +657,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "hello",
@@ -675,6 +678,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "",
@@ -695,6 +699,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "",
@@ -715,6 +720,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "",
@@ -735,6 +741,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "useInner",
@@ -755,6 +762,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "useQuery",
@@ -775,6 +783,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "hello",
@@ -795,6 +804,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "hello",
@@ -815,6 +825,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "hello",
@@ -835,6 +846,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "hello",
@@ -855,6 +867,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "hello",
@@ -875,6 +888,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "hello2",
@@ -895,6 +909,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "hello",
@@ -915,6 +930,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "bar",
@@ -935,6 +951,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "refFoo",
@@ -955,6 +972,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "get",
@@ -975,6 +993,7 @@ Object {
     "event": Object {
       "http": Object {
         "basePath": "/api",
+        "underscore": true,
       },
     },
     "exportFunction": "post",

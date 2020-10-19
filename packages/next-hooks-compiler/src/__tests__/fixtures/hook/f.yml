@@ -28,3 +28,4 @@ functionsRule:
       events:
         http:
           basePath: /api
+          underscore: true

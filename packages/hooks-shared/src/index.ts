@@ -30,7 +30,6 @@ export interface SpecStructureWithGateway extends SpecStructure {
 
 export interface FunctionsRule {
   source: string
-  underscore?: boolean
   rules: FunctionRule[]
 }
 
@@ -39,6 +38,7 @@ export interface FunctionRule {
   events: {
     http?: {
       basePath: string
+      underscore?: boolean
     }
     [event: string]: any
   }
