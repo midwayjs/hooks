@@ -16,8 +16,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn && yarn add codecov -W
-      - run: yarn build --if-present
+      - run: yarn
+      - run: yarn build
       - run: yarn cov
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
