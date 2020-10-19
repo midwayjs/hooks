@@ -3,7 +3,7 @@
 exports[`Compiler Features The routing information should have the underscore removed 1`] = `
 Object {
   "arrow-hook-ref-arrow-hook-useinner": Object {
-    "argsPath": "",
+    "deployName": "arrow-hook-ref-arrow-hook-useinner",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -11,9 +11,8 @@ Object {
     },
     "exportFunction": "useInner",
     "gatewayConfig": Object {
-      "handler": "arrow-hook-ref-arrow-hook-useinner",
       "meta": Object {
-        "functionName": "useInner",
+        "functionName": "arrow-hook-ref-arrow-hook-useinner",
       },
       "method": "GET",
       "url": "/api/arrow-hook-ref-arrow-hook/useInner",
@@ -23,7 +22,7 @@ Object {
     "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
   },
   "arrow-hook-ref-arrow-hook-usequery": Object {
-    "argsPath": "",
+    "deployName": "arrow-hook-ref-arrow-hook-usequery",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -31,9 +30,8 @@ Object {
     },
     "exportFunction": "useQuery",
     "gatewayConfig": Object {
-      "handler": "arrow-hook-ref-arrow-hook-usequery",
       "meta": Object {
-        "functionName": "useQuery",
+        "functionName": "arrow-hook-ref-arrow-hook-usequery",
       },
       "method": "POST",
       "url": "/api/arrow-hook-ref-arrow-hook/useQuery",
@@ -43,7 +41,7 @@ Object {
     "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
   },
   "export-arrow-hello": Object {
-    "argsPath": "",
+    "deployName": "export-arrow-hello",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -51,9 +49,8 @@ Object {
     },
     "exportFunction": "hello",
     "gatewayConfig": Object {
-      "handler": "export-arrow-hello",
       "meta": Object {
-        "functionName": "hello",
+        "functionName": "export-arrow-hello",
       },
       "method": "POST",
       "url": "/api/export-arrow/hello",
@@ -63,7 +60,7 @@ Object {
     "sourceFilePath": "lambda/export-arrow.js",
   },
   "export-default-anonymous": Object {
-    "argsPath": "",
+    "deployName": "export-default-anonymous",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -71,9 +68,8 @@ Object {
     },
     "exportFunction": "",
     "gatewayConfig": Object {
-      "handler": "export-default-anonymous",
       "meta": Object {
-        "functionName": "$default",
+        "functionName": "export-default-anonymous",
       },
       "method": "GET",
       "url": "/api/export-default-anonymous",
@@ -83,7 +79,7 @@ Object {
     "sourceFilePath": "lambda/export-default-anonymous.js",
   },
   "export-default-func": Object {
-    "argsPath": "",
+    "deployName": "export-default-func",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -91,9 +87,8 @@ Object {
     },
     "exportFunction": "",
     "gatewayConfig": Object {
-      "handler": "export-default-func",
       "meta": Object {
-        "functionName": "$default",
+        "functionName": "export-default-func",
       },
       "method": "POST",
       "url": "/api/export-default-func",
@@ -103,7 +98,7 @@ Object {
     "sourceFilePath": "lambda/export-default-func.js",
   },
   "export-default-named": Object {
-    "argsPath": "",
+    "deployName": "export-default-named",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -111,9 +106,8 @@ Object {
     },
     "exportFunction": "",
     "gatewayConfig": Object {
-      "handler": "export-default-named",
       "meta": Object {
-        "functionName": "named",
+        "functionName": "export-default-named",
       },
       "method": "POST",
       "url": "/api/export-default-named",

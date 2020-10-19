@@ -6,7 +6,7 @@ import * as t from '@babel/types'
 import { Identifier, FunctionDeclaration } from '@babel/types'
 import { loader } from 'webpack'
 import { buildRequest, RenderParam } from './render'
-import { helper, getFunctionHandlerName, BuiltinEnhancer } from '@midwayjs/next-hooks-compiler'
+import { helper, getDeployFunctionName, BuiltinEnhancer } from '@midwayjs/next-hooks-compiler'
 import { debug } from './util'
 
 export default async function loader(this: loader.LoaderContext, source: string) {
@@ -86,7 +86,7 @@ export default async function loader(this: loader.LoaderContext, source: string)
         func.method = method
 
         func.meta = {
-          functionName: getFunctionHandlerName({
+          functionName: getDeployFunctionName({
             sourceFilePath: resourcePath,
             isExportDefault: false,
             functionName: id.name,
@@ -94,7 +94,6 @@ export default async function loader(this: loader.LoaderContext, source: string)
           unstable_params: params,
         }
         func.functionId = id.name
-
         funcs.push(func)
         return
       }
@@ -106,7 +105,7 @@ export default async function loader(this: loader.LoaderContext, source: string)
 
           func.url = helper.getHTTPPath(resourcePath, id.name, false)
           func.meta = {
-            functionName: getFunctionHandlerName({
+            functionName: getDeployFunctionName({
               sourceFilePath: resourcePath,
               isExportDefault: false,
               functionName: id.name,
@@ -155,7 +154,7 @@ export default async function loader(this: loader.LoaderContext, source: string)
         return
       }
 
-      const functionName = getFunctionHandlerName({
+      const functionName = getDeployFunctionName({
         sourceFilePath: resourcePath,
         isExportDefault: true,
         functionName: getFunctionName(path),

@@ -5,7 +5,7 @@ export * from './hintConfig'
 export { helper } from './helper'
 export { setMidwayHooksPackage, BuiltinEnhancer } from './const'
 export { getFunctionsMeta, clearRoutes, MidwayHooksFunctionStructure } from './plugin/routes'
-export { getFunctionHandlerName } from './plugin/create-lambda-ctx'
+export { getDeployFunctionName } from './plugin/create-lambda-ctx'
 
 export async function compileHooks(root: string, hintConfig: MwccConfig) {
   helper.root = root

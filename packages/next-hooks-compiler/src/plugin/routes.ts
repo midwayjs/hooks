@@ -1,25 +1,25 @@
-import { GatewayConfig } from './gateway/interface'
 import type { FunctionStructure } from '@midwayjs/serverless-spec-builder'
 import type { Dictionary } from 'lodash'
 import { FunctionRule } from '@midwayjs/hooks-shared'
+import type { LambdaParam } from '@midwayjs/hooks-shared'
 
 type SourceFilePath = string
 
 const map = new Map<SourceFilePath, MidwayHooksFunctionStructure[]>()
 
-export function addRoute(sourceFilePath: SourceFilePath, gateway: MidwayHooksFunctionStructure) {
+export function addRoute(sourceFilePath: SourceFilePath, lambda: MidwayHooksFunctionStructure) {
   if (!map.has(sourceFilePath)) {
     map.set(sourceFilePath, [])
   }
 
   const routes = map.get(sourceFilePath)
 
-  const idx = routes.findIndex((config) => config.handler === gateway.handler)
+  const idx = routes.findIndex((route) => route.handler === lambda.handler)
   if (idx !== -1) {
     routes.splice(idx, 1)
   }
 
-  routes.push(gateway)
+  routes.push(lambda)
 }
 
 export function clearRoutes() {
@@ -31,7 +31,7 @@ export function getFunctionsMeta(): Dictionary<MidwayHooksFunctionStructure> {
 
   map.forEach((configs) => {
     for (const config of configs) {
-      functions[config.gatewayConfig.handler] = config
+      functions[config.deployName] = config
     }
   })
 
@@ -39,11 +39,12 @@ export function getFunctionsMeta(): Dictionary<MidwayHooksFunctionStructure> {
 }
 
 export interface MidwayHooksFunctionStructure extends FunctionStructure {
+  deployName: string
   handler: string
   sourceFilePath?: string
   exportFunction?: string
   isFunctional?: boolean
   argsPath?: string
-  gatewayConfig: Partial<GatewayConfig>
+  gatewayConfig: Partial<LambdaParam>
   event: FunctionRule['events']
 }

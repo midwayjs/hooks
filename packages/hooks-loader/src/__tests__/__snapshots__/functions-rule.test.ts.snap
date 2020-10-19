@@ -12,7 +12,7 @@ export  default  function $default (...args) {
       args: args,
     },
     meta: {
-  \\"functionName\\": \\"index\\",
+  \\"functionName\\": \\"lambda-index\\",
   \\"unstable_params\\": [],
   \\"functionGroup\\": \\"midway-faas-react-demo\\",
   \\"gateway\\": \\"http\\"
@@ -35,7 +35,7 @@ export  default  function render (...args) {
       args: args,
     },
     meta: {
-  \\"functionName\\": \\"index\\",
+  \\"functionName\\": \\"render-index\\",
   \\"unstable_params\\": [],
   \\"functionGroup\\": \\"midway-faas-react-demo\\",
   \\"gateway\\": \\"http\\"
