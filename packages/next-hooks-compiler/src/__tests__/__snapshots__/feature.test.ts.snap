@@ -4,6 +4,11 @@ exports[`Compiler Features The routing information should have the underscore re
 Object {
   "arrow-hook-ref-arrow-hook-useinner": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "useInner",
     "gatewayConfig": Object {
       "handler": "arrow-hook-ref-arrow-hook-useinner",
@@ -19,6 +24,11 @@ Object {
   },
   "arrow-hook-ref-arrow-hook-usequery": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "useQuery",
     "gatewayConfig": Object {
       "handler": "arrow-hook-ref-arrow-hook-usequery",
@@ -34,6 +44,11 @@ Object {
   },
   "export-arrow-hello": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "hello",
     "gatewayConfig": Object {
       "handler": "export-arrow-hello",
@@ -49,6 +64,11 @@ Object {
   },
   "export-default-anonymous": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "",
     "gatewayConfig": Object {
       "handler": "export-default-anonymous",
@@ -64,6 +84,11 @@ Object {
   },
   "export-default-func": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "",
     "gatewayConfig": Object {
       "handler": "export-default-func",
@@ -79,6 +104,11 @@ Object {
   },
   "export-default-named": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "",
     "gatewayConfig": Object {
       "handler": "export-default-named",

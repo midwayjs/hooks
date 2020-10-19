@@ -74,6 +74,7 @@ function parseFunctionConfig(
   const isExportDefault =
     hasModifier(node, ts.ModifierFlags.ExportDefault) || hasModifier(container, ts.ModifierFlags.ExportDefault)
 
+  const { events } = helper.getRuleBySourceFilePath(sourceFilePath)
   const url = helper.getHTTPPath(sourceFilePath, functionName, isExportDefault)
   const id = getFunctionHandlerName({ sourceFilePath, functionName, isExportDefault })
 
@@ -91,6 +92,7 @@ function parseFunctionConfig(
         functionName,
       },
     },
+    event: events,
   }
 }
 
