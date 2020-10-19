@@ -80,7 +80,7 @@ export default async function loader(this: loader.LoaderContext, source: string)
       if (t.isFunctionDeclaration(declaration)) {
         const id = declaration.id
 
-        func.url = helper.getHTTPPath(resourcePath, id.name, false)
+        func.url = helper.getHTTPPath(resourcePath, id.name, false, true)
 
         const { method, params } = parseFunctionParams(declaration.params)
         func.method = method
@@ -103,7 +103,7 @@ export default async function loader(this: loader.LoaderContext, source: string)
           const id = variableDeclarator.id as Identifier
           const init = variableDeclarator.init
 
-          func.url = helper.getHTTPPath(resourcePath, id.name, false)
+          func.url = helper.getHTTPPath(resourcePath, id.name, false, true)
           func.meta = {
             functionName: getDeployFunctionName({
               sourceFilePath: resourcePath,
@@ -164,7 +164,7 @@ export default async function loader(this: loader.LoaderContext, source: string)
       func.method = method
       func.functionId = getFunctionName(path)
       func.isExportDefault = true
-      func.url = helper.getHTTPPath(resourcePath, functionName, true)
+      func.url = helper.getHTTPPath(resourcePath, functionName, true, true)
       func.meta = {
         functionName,
         unstable_params: params,
