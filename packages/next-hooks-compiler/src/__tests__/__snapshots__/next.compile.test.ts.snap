@@ -612,6 +612,11 @@ exports[`NeXT Hooks Compiler 路由信息应该生成正确 1`] = `
 Object {
   "arrow-hook-ref-arrow-hook-useinner": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "useInner",
     "gatewayConfig": Object {
       "handler": "arrow-hook-ref-arrow-hook-useinner",
@@ -627,6 +632,11 @@ Object {
   },
   "arrow-hook-ref-arrow-hook-usequery": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "useQuery",
     "gatewayConfig": Object {
       "handler": "arrow-hook-ref-arrow-hook-usequery",
@@ -642,6 +652,11 @@ Object {
   },
   "export-arrow-hello": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "hello",
     "gatewayConfig": Object {
       "handler": "export-arrow-hello",
@@ -657,6 +672,11 @@ Object {
   },
   "export-default-anonymous": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "",
     "gatewayConfig": Object {
       "handler": "export-default-anonymous",
@@ -672,6 +692,11 @@ Object {
   },
   "export-default-func": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "",
     "gatewayConfig": Object {
       "handler": "export-default-func",
@@ -687,6 +712,11 @@ Object {
   },
   "export-default-named": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "",
     "gatewayConfig": Object {
       "handler": "export-default-named",
@@ -702,6 +732,11 @@ Object {
   },
   "hook-ref-hook-useinner": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "useInner",
     "gatewayConfig": Object {
       "handler": "hook-ref-hook-useinner",
@@ -717,6 +752,11 @@ Object {
   },
   "hook-ref-hook-usequery": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "useQuery",
     "gatewayConfig": Object {
       "handler": "hook-ref-hook-usequery",
@@ -732,6 +772,11 @@ Object {
   },
   "hook-ref-lambda-hello": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "hello",
     "gatewayConfig": Object {
       "handler": "hook-ref-lambda-hello",
@@ -747,6 +792,11 @@ Object {
   },
   "import-hook-hello": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "hello",
     "gatewayConfig": Object {
       "handler": "import-hook-hello",
@@ -762,6 +812,11 @@ Object {
   },
   "index-hello": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "hello",
     "gatewayConfig": Object {
       "handler": "index-hello",
@@ -777,6 +832,11 @@ Object {
   },
   "lambda-ref-hook-hello": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "hello",
     "gatewayConfig": Object {
       "handler": "lambda-ref-hook-hello",
@@ -792,6 +852,11 @@ Object {
   },
   "lambda-ref-lambda-hello": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "hello",
     "gatewayConfig": Object {
       "handler": "lambda-ref-lambda-hello",
@@ -807,6 +872,11 @@ Object {
   },
   "lambda-ref-lambda-hello2": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "hello2",
     "gatewayConfig": Object {
       "handler": "lambda-ref-lambda-hello2",
@@ -822,6 +892,11 @@ Object {
   },
   "normal-function-hello": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "hello",
     "gatewayConfig": Object {
       "handler": "normal-function-hello",
@@ -837,6 +912,11 @@ Object {
   },
   "ref-bar-bar": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "bar",
     "gatewayConfig": Object {
       "handler": "ref-bar-bar",
@@ -852,6 +932,11 @@ Object {
   },
   "ref-foo-reffoo": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "refFoo",
     "gatewayConfig": Object {
       "handler": "ref-foo-reffoo",
@@ -867,6 +952,11 @@ Object {
   },
   "with-get": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "get",
     "gatewayConfig": Object {
       "handler": "with-get",
@@ -882,6 +972,11 @@ Object {
   },
   "with-post": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
     "exportFunction": "post",
     "gatewayConfig": Object {
       "handler": "with-post",

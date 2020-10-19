@@ -1,6 +1,7 @@
 import { GatewayConfig } from './gateway/interface'
 import type { FunctionStructure } from '@midwayjs/serverless-spec-builder'
 import type { Dictionary } from 'lodash'
+import { FunctionRule } from '@midwayjs/hooks-shared'
 
 type SourceFilePath = string
 
@@ -48,4 +49,5 @@ export interface MidwayHooksFunctionStructure extends FunctionStructure {
   isFunctional?: boolean
   argsPath?: string
   gatewayConfig: Partial<GatewayConfig>
+  event: FunctionRule['events']
 }

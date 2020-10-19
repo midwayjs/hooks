@@ -82,7 +82,7 @@ export class MidwayHooksPlugin extends BasePlugin {
     for (const func of Object.values(functions)) {
       func.gatewayConfig.meta.gateway = this.gateway
       func.argsPath = this.argsPath
-      func.events = [this.createEventsByGateway(func)]
+      func.events = this.createEventsByGateway(func)
     }
 
     debug('faas decorator function: %O', this.core.service.functions)
@@ -103,17 +103,25 @@ export class MidwayHooksPlugin extends BasePlugin {
     return argsPath[this.gateway]
   }
 
-  protected createEventsByGateway(func: MidwayHooksFunctionStructure): EventStructureType {
+  protected createEventsByGateway(func: MidwayHooksFunctionStructure): EventStructureType[] {
+    const events = []
     const config = func.gatewayConfig
-    /**
-     * HTTP Case
-     */
-    return {
-      http: {
-        method: config.method,
-        path: config.url,
-      },
+
+    for (const key of Object.keys(func.event)) {
+      if (key === 'http') {
+        events.push({
+          http: {
+            method: config.method,
+            path: config.url,
+          },
+        })
+        continue
+      }
+
+      console.log('Unsupport gateway type: ', key, func.event[key])
     }
+
+    return events
   }
 }
 

@@ -4,6 +4,11 @@ exports[`Compiler FunctionsRule Routes should be generated according to the conf
 Object {
   "index": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/",
+      },
+    },
     "exportFunction": "",
     "gatewayConfig": Object {
       "handler": "index",
@@ -19,6 +24,11 @@ Object {
   },
   "lambda-export-arrow-hello": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/",
+      },
+    },
     "exportFunction": "hello",
     "gatewayConfig": Object {
       "handler": "lambda-export-arrow-hello",
@@ -34,6 +44,11 @@ Object {
   },
   "lambda-export-default-anonymous": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/",
+      },
+    },
     "exportFunction": "",
     "gatewayConfig": Object {
       "handler": "lambda-export-default-anonymous",
@@ -49,6 +64,11 @@ Object {
   },
   "lambda-export-default-func": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/",
+      },
+    },
     "exportFunction": "",
     "gatewayConfig": Object {
       "handler": "lambda-export-default-func",
@@ -64,6 +84,11 @@ Object {
   },
   "lambda-export-default-named": Object {
     "argsPath": "",
+    "event": Object {
+      "http": Object {
+        "basePath": "/",
+      },
+    },
     "exportFunction": "",
     "gatewayConfig": Object {
       "handler": "lambda-export-default-named",
