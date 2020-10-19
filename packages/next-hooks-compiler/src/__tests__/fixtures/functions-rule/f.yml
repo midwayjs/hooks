@@ -23,7 +23,6 @@ package:
 
 functionsRule:
   source: /src
-  underscore: false
   rules:
     - baseDir: render
       events:

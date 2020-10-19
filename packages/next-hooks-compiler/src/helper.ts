@@ -7,13 +7,13 @@ import type { SpecStructureWithGateway, FunctionsRule, FunctionRule } from '@mid
 
 const defaultFunctionsRule: FunctionsRule = {
   source: '/src/apis',
-  underscore: true,
   rules: [
     {
       baseDir: 'lambda',
       events: {
         http: {
           basePath: '/api',
+          underscore: true,
         },
       },
     },
@@ -74,13 +74,13 @@ export class RouteHelper {
   }
 
   getHTTPPath(filePath: string, method: string, isExportDefault: boolean) {
-    const filename = basename(filePath, extname(filePath))
-    const file = filename === 'index' ? '' : filename
-    const methodPrefix = this.functionsRule.underscore === false ? '' : LambdaMethodPrefix
-    const func = isExportDefault ? '' : `${methodPrefix}${method}`
-
     const rule = this.getRuleBySourceFilePath(filePath)
     const lambdaDirectory = this.getLambdaDirectory(rule)
+
+    const filename = basename(filePath, extname(filePath))
+    const file = filename === 'index' ? '' : filename
+    const methodPrefix = rule.events.http.underscore ? LambdaMethodPrefix : ''
+    const func = isExportDefault ? '' : `${methodPrefix}${method}`
 
     const api = join(
       rule.events.http.basePath,
