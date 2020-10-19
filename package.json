@@ -12,7 +12,6 @@
   },
   "private": true,
   "scripts": {
-    "bootstrap": "lerna bootstrap --hoist",
     "build": "lerna run build",
     "clean": "lerna clean && lerna run clean --parallel",
     "test": "jest --passWithNoTests",
