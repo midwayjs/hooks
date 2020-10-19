@@ -1,6 +1,6 @@
 import inside from 'is-path-inside'
 import { LambdaMethodPrefix, MidwayHookApiDirectory } from './const'
-import { resolve, dirname, join, relative, basename, extname, toUnix } from 'upath'
+import { resolve, dirname, join, relative, basename, extname, toUnix, parse } from 'upath'
 import chalk from 'chalk'
 import { transform } from '@midwayjs/serverless-spec-builder'
 import type { SpecStructureWithGateway, FunctionsRule, FunctionRule } from '@midwayjs/hooks-shared'
@@ -77,8 +77,8 @@ export class RouteHelper {
     const rule = this.getRuleBySourceFilePath(filePath)
     const lambdaDirectory = this.getLambdaDirectory(rule)
 
-    const filename = basename(filePath, extname(filePath))
-    const file = filename === 'index' ? '' : filename
+    const { isCatchAllRoutes, filename } = parseRoute(basename(filePath, extname(filePath)))
+    const fileRoute = filename === 'index' ? '' : filename
     const methodPrefix = rule.events.http.underscore ? LambdaMethodPrefix : ''
     const func = isExportDefault ? '' : `${methodPrefix}${method}`
 
@@ -93,9 +93,10 @@ export class RouteHelper {
        * index -> ''
        * demo -> '/demo'
        */
-      file,
+      fileRoute,
       // getTodoList -> _getTodoList
-      func
+      func,
+      isCatchAllRoutes ? '/*' : ''
     )
 
     /**
@@ -115,6 +116,15 @@ export class RouteHelper {
 
     this.routes.set(api, toUnix(filePath))
     return api
+  }
+}
+
+export function parseRoute(filename: string) {
+  const re = /\[\.{3}(.+)]/
+
+  return {
+    isCatchAllRoutes: re.test(filename),
+    filename: re.exec(filename)?.[1] || filename,
   }
 }
 
