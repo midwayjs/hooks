@@ -73,7 +73,7 @@ export class RouteHelper {
     return inside(toUnix(child), toUnix(parent))
   }
 
-  getHTTPPath(filePath: string, method: string, isExportDefault: boolean) {
+  getHTTPPath(filePath: string, method: string, isExportDefault: boolean, isHooksRequest = false) {
     const rule = this.getRuleBySourceFilePath(filePath)
     const lambdaDirectory = this.getLambdaDirectory(rule)
 
@@ -96,7 +96,7 @@ export class RouteHelper {
       fileRoute,
       // getTodoList -> _getTodoList
       func,
-      isCatchAllRoutes ? '/*' : ''
+      isCatchAllRoutes && !isHooksRequest ? '/*' : ''
     )
 
     /**

@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Compile lambda 1`] = `
+"import { request } from '@midwayjs/hooks/request'
+
+
+export  default  function $default (...args) {
+  return request({
+    url: '/api',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"lambda-index\\",
+  \\"unstable_params\\": [],
+  \\"functionGroup\\": \\"midway-faas-react-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+"
+`;
+
+exports[`Compile render 1`] = `
+"import { request } from '@midwayjs/hooks/request'
+
+
+export  default  function render (...args) {
+  return request({
+    url: '/',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"render-index\\",
+  \\"unstable_params\\": [],
+  \\"functionGroup\\": \\"midway-faas-react-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function foo (...args) {
+  return request({
+    url: '/foo',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"render-index-foo\\",
+  \\"unstable_params\\": [],
+  \\"functionGroup\\": \\"midway-faas-react-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+export  function bar (...args) {
+  return request({
+    url: '/bar',
+    method: 'GET',
+    data: {
+      args: args,
+    },
+    meta: {
+  \\"functionName\\": \\"render-index-bar\\",
+  \\"unstable_params\\": [],
+  \\"functionGroup\\": \\"midway-faas-react-demo\\",
+  \\"gateway\\": \\"http\\"
+}
+  })
+}
+
+"
+`;
