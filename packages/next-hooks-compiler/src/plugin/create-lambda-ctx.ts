@@ -8,12 +8,14 @@ import {
   getSourceFilePath,
   hasModifier,
   closetAncestor,
+  removeExtension,
 } from '../util'
 import { MidwayHookContext, FunctionHandler } from '../const'
 import { helper } from '../helper'
 import { addRoute, MidwayHooksFunctionStructure } from './routes'
 import { relative, extname } from 'upath'
 import { TransformationContext } from '@midwayjs/mwcc'
+import _ from 'lodash'
 
 export default {
   transform(ctx: TransformationContext) {
@@ -76,36 +78,39 @@ function parseFunctionConfig(
 
   const { events } = helper.getRuleBySourceFilePath(sourceFilePath)
   const url = helper.getHTTPPath(sourceFilePath, functionName, isExportDefault)
-  const id = getFunctionHandlerName({ sourceFilePath, functionName, isExportDefault })
+  const deployName = getDeployFunctionName({ sourceFilePath, functionName, isExportDefault })
 
   return {
+    deployName,
     isFunctional: true,
-    argsPath: '',
     exportFunction: isExportDefault ? '' : functionName,
     sourceFilePath: helper.getDistPath(sourceFilePath),
-    handler: `${id}.${FunctionHandler}`,
+    handler: `${deployName}.${FunctionHandler}`,
     gatewayConfig: {
-      handler: id,
       url,
       method: node.parameters.length > 0 ? 'POST' : 'GET',
       meta: {
-        functionName,
+        functionName: deployName,
       },
     },
     event: events,
   }
 }
 
-export function getFunctionHandlerName(config: {
+export function getDeployFunctionName(config: {
   sourceFilePath: string
   functionName: string
   isExportDefault: boolean
 }) {
   const { sourceFilePath, functionName, isExportDefault } = config
+
   const rule = helper.getRuleBySourceFilePath(sourceFilePath)
   const lambdaDirectory = helper.getLambdaDirectory(rule)
-  const relativePath = relative(lambdaDirectory, sourceFilePath)
-  const id = relativePath.replace(extname(sourceFilePath), '').replace(/\//g, '-')
+
+  const relativeDirectory = helper.functionsRule.rules.length > 1 ? helper.source : lambdaDirectory
+  const relativePath = relative(relativeDirectory, sourceFilePath)
+  // a/b/c -> a-b-c
+  const id = _.kebabCase(removeExtension(relativePath))
   const name = [id, isExportDefault ? '' : `-${functionName}`].join('')
   return name.toLowerCase()
 }

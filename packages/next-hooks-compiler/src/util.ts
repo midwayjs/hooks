@@ -2,6 +2,7 @@ import ts, { FunctionDeclaration, ArrowFunction, FunctionExpression } from 'type
 import { helper } from './helper'
 import createDebug from 'debug'
 import { BuiltinEnhancer } from './const'
+import { relative, extname } from 'upath'
 
 export const debug = createDebug('hooks: next-compiler')
 
@@ -169,4 +170,8 @@ export function getVariableStatementIdentifier(node: ts.VariableStatement) {
 
 export function getSourceFilePath(node: ts.Node) {
   return node.getSourceFile().fileName
+}
+
+export function removeExtension(file: string) {
+  return file.replace(extname(file), '')
 }

@@ -611,7 +611,7 @@ exports.default = hooks_1.withMiddleware(['staticFile'], async function $default
 exports[`NeXT Hooks Compiler 路由信息应该生成正确 1`] = `
 Object {
   "arrow-hook-ref-arrow-hook-useinner": Object {
-    "argsPath": "",
+    "deployName": "arrow-hook-ref-arrow-hook-useinner",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -620,9 +620,8 @@ Object {
     },
     "exportFunction": "useInner",
     "gatewayConfig": Object {
-      "handler": "arrow-hook-ref-arrow-hook-useinner",
       "meta": Object {
-        "functionName": "useInner",
+        "functionName": "arrow-hook-ref-arrow-hook-useinner",
       },
       "method": "GET",
       "url": "/api/arrow-hook-ref-arrow-hook/_useInner",
@@ -632,7 +631,7 @@ Object {
     "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
   },
   "arrow-hook-ref-arrow-hook-usequery": Object {
-    "argsPath": "",
+    "deployName": "arrow-hook-ref-arrow-hook-usequery",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -641,9 +640,8 @@ Object {
     },
     "exportFunction": "useQuery",
     "gatewayConfig": Object {
-      "handler": "arrow-hook-ref-arrow-hook-usequery",
       "meta": Object {
-        "functionName": "useQuery",
+        "functionName": "arrow-hook-ref-arrow-hook-usequery",
       },
       "method": "POST",
       "url": "/api/arrow-hook-ref-arrow-hook/_useQuery",
@@ -653,7 +651,7 @@ Object {
     "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
   },
   "export-arrow-hello": Object {
-    "argsPath": "",
+    "deployName": "export-arrow-hello",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -662,9 +660,8 @@ Object {
     },
     "exportFunction": "hello",
     "gatewayConfig": Object {
-      "handler": "export-arrow-hello",
       "meta": Object {
-        "functionName": "hello",
+        "functionName": "export-arrow-hello",
       },
       "method": "POST",
       "url": "/api/export-arrow/_hello",
@@ -674,7 +671,7 @@ Object {
     "sourceFilePath": "lambda/export-arrow.js",
   },
   "export-default-anonymous": Object {
-    "argsPath": "",
+    "deployName": "export-default-anonymous",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -683,9 +680,8 @@ Object {
     },
     "exportFunction": "",
     "gatewayConfig": Object {
-      "handler": "export-default-anonymous",
       "meta": Object {
-        "functionName": "$default",
+        "functionName": "export-default-anonymous",
       },
       "method": "GET",
       "url": "/api/export-default-anonymous",
@@ -695,7 +691,7 @@ Object {
     "sourceFilePath": "lambda/export-default-anonymous.js",
   },
   "export-default-func": Object {
-    "argsPath": "",
+    "deployName": "export-default-func",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -704,9 +700,8 @@ Object {
     },
     "exportFunction": "",
     "gatewayConfig": Object {
-      "handler": "export-default-func",
       "meta": Object {
-        "functionName": "$default",
+        "functionName": "export-default-func",
       },
       "method": "POST",
       "url": "/api/export-default-func",
@@ -716,7 +711,7 @@ Object {
     "sourceFilePath": "lambda/export-default-func.js",
   },
   "export-default-named": Object {
-    "argsPath": "",
+    "deployName": "export-default-named",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -725,9 +720,8 @@ Object {
     },
     "exportFunction": "",
     "gatewayConfig": Object {
-      "handler": "export-default-named",
       "meta": Object {
-        "functionName": "named",
+        "functionName": "export-default-named",
       },
       "method": "POST",
       "url": "/api/export-default-named",
@@ -737,7 +731,7 @@ Object {
     "sourceFilePath": "lambda/export-default-named.js",
   },
   "hook-ref-hook-useinner": Object {
-    "argsPath": "",
+    "deployName": "hook-ref-hook-useinner",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -746,9 +740,8 @@ Object {
     },
     "exportFunction": "useInner",
     "gatewayConfig": Object {
-      "handler": "hook-ref-hook-useinner",
       "meta": Object {
-        "functionName": "useInner",
+        "functionName": "hook-ref-hook-useinner",
       },
       "method": "GET",
       "url": "/api/hook-ref-hook/_useInner",
@@ -758,7 +751,7 @@ Object {
     "sourceFilePath": "lambda/hook-ref-hook.js",
   },
   "hook-ref-hook-usequery": Object {
-    "argsPath": "",
+    "deployName": "hook-ref-hook-usequery",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -767,9 +760,8 @@ Object {
     },
     "exportFunction": "useQuery",
     "gatewayConfig": Object {
-      "handler": "hook-ref-hook-usequery",
       "meta": Object {
-        "functionName": "useQuery",
+        "functionName": "hook-ref-hook-usequery",
       },
       "method": "POST",
       "url": "/api/hook-ref-hook/_useQuery",
@@ -779,7 +771,7 @@ Object {
     "sourceFilePath": "lambda/hook-ref-hook.js",
   },
   "hook-ref-lambda-hello": Object {
-    "argsPath": "",
+    "deployName": "hook-ref-lambda-hello",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -788,9 +780,8 @@ Object {
     },
     "exportFunction": "hello",
     "gatewayConfig": Object {
-      "handler": "hook-ref-lambda-hello",
       "meta": Object {
-        "functionName": "hello",
+        "functionName": "hook-ref-lambda-hello",
       },
       "method": "GET",
       "url": "/api/hook-ref-lambda/_hello",
@@ -800,7 +791,7 @@ Object {
     "sourceFilePath": "lambda/hook-ref-lambda.js",
   },
   "import-hook-hello": Object {
-    "argsPath": "",
+    "deployName": "import-hook-hello",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -809,9 +800,8 @@ Object {
     },
     "exportFunction": "hello",
     "gatewayConfig": Object {
-      "handler": "import-hook-hello",
       "meta": Object {
-        "functionName": "hello",
+        "functionName": "import-hook-hello",
       },
       "method": "GET",
       "url": "/api/import-hook/_hello",
@@ -821,7 +811,7 @@ Object {
     "sourceFilePath": "lambda/import-hook.js",
   },
   "index-hello": Object {
-    "argsPath": "",
+    "deployName": "index-hello",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -830,9 +820,8 @@ Object {
     },
     "exportFunction": "hello",
     "gatewayConfig": Object {
-      "handler": "index-hello",
       "meta": Object {
-        "functionName": "hello",
+        "functionName": "index-hello",
       },
       "method": "GET",
       "url": "/api/_hello",
@@ -842,7 +831,7 @@ Object {
     "sourceFilePath": "lambda/index.js",
   },
   "lambda-ref-hook-hello": Object {
-    "argsPath": "",
+    "deployName": "lambda-ref-hook-hello",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -851,9 +840,8 @@ Object {
     },
     "exportFunction": "hello",
     "gatewayConfig": Object {
-      "handler": "lambda-ref-hook-hello",
       "meta": Object {
-        "functionName": "hello",
+        "functionName": "lambda-ref-hook-hello",
       },
       "method": "GET",
       "url": "/api/lambda-ref-hook/_hello",
@@ -863,7 +851,7 @@ Object {
     "sourceFilePath": "lambda/lambda-ref-hook.js",
   },
   "lambda-ref-lambda-hello": Object {
-    "argsPath": "",
+    "deployName": "lambda-ref-lambda-hello",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -872,9 +860,8 @@ Object {
     },
     "exportFunction": "hello",
     "gatewayConfig": Object {
-      "handler": "lambda-ref-lambda-hello",
       "meta": Object {
-        "functionName": "hello",
+        "functionName": "lambda-ref-lambda-hello",
       },
       "method": "POST",
       "url": "/api/lambda-ref-lambda/_hello",
@@ -884,7 +871,7 @@ Object {
     "sourceFilePath": "lambda/lambda-ref-lambda.js",
   },
   "lambda-ref-lambda-hello2": Object {
-    "argsPath": "",
+    "deployName": "lambda-ref-lambda-hello2",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -893,9 +880,8 @@ Object {
     },
     "exportFunction": "hello2",
     "gatewayConfig": Object {
-      "handler": "lambda-ref-lambda-hello2",
       "meta": Object {
-        "functionName": "hello2",
+        "functionName": "lambda-ref-lambda-hello2",
       },
       "method": "POST",
       "url": "/api/lambda-ref-lambda/_hello2",
@@ -905,7 +891,7 @@ Object {
     "sourceFilePath": "lambda/lambda-ref-lambda.js",
   },
   "normal-function-hello": Object {
-    "argsPath": "",
+    "deployName": "normal-function-hello",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -914,9 +900,8 @@ Object {
     },
     "exportFunction": "hello",
     "gatewayConfig": Object {
-      "handler": "normal-function-hello",
       "meta": Object {
-        "functionName": "hello",
+        "functionName": "normal-function-hello",
       },
       "method": "GET",
       "url": "/api/normal-function/_hello",
@@ -926,7 +911,7 @@ Object {
     "sourceFilePath": "lambda/normal-function.js",
   },
   "ref-bar-bar": Object {
-    "argsPath": "",
+    "deployName": "ref-bar-bar",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -935,9 +920,8 @@ Object {
     },
     "exportFunction": "bar",
     "gatewayConfig": Object {
-      "handler": "ref-bar-bar",
       "meta": Object {
-        "functionName": "bar",
+        "functionName": "ref-bar-bar",
       },
       "method": "GET",
       "url": "/api/ref/bar/_bar",
@@ -947,7 +931,7 @@ Object {
     "sourceFilePath": "lambda/ref/bar.js",
   },
   "ref-foo-reffoo": Object {
-    "argsPath": "",
+    "deployName": "ref-foo-reffoo",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -956,9 +940,8 @@ Object {
     },
     "exportFunction": "refFoo",
     "gatewayConfig": Object {
-      "handler": "ref-foo-reffoo",
       "meta": Object {
-        "functionName": "refFoo",
+        "functionName": "ref-foo-reffoo",
       },
       "method": "GET",
       "url": "/api/ref/foo/_refFoo",
@@ -968,7 +951,7 @@ Object {
     "sourceFilePath": "lambda/ref/foo.js",
   },
   "with-get": Object {
-    "argsPath": "",
+    "deployName": "with-get",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -977,9 +960,8 @@ Object {
     },
     "exportFunction": "get",
     "gatewayConfig": Object {
-      "handler": "with-get",
       "meta": Object {
-        "functionName": "get",
+        "functionName": "with-get",
       },
       "method": "GET",
       "url": "/api/with/_get",
@@ -989,7 +971,7 @@ Object {
     "sourceFilePath": "lambda/with.js",
   },
   "with-post": Object {
-    "argsPath": "",
+    "deployName": "with-post",
     "event": Object {
       "http": Object {
         "basePath": "/api",
@@ -998,9 +980,8 @@ Object {
     },
     "exportFunction": "post",
     "gatewayConfig": Object {
-      "handler": "with-post",
       "meta": Object {
-        "functionName": "post",
+        "functionName": "with-post",
       },
       "method": "POST",
       "url": "/api/with/_post",

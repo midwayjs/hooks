@@ -2,8 +2,27 @@
 
 exports[`Compiler FunctionsRule Routes should be generated according to the configured rules 1`] = `
 Object {
-  "index": Object {
-    "argsPath": "",
+  "lambda-index": Object {
+    "deployName": "lambda-index",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "meta": Object {
+        "functionName": "lambda-index",
+      },
+      "method": "GET",
+      "url": "/api",
+    },
+    "handler": "lambda-index.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/index.js",
+  },
+  "render-index": Object {
+    "deployName": "render-index",
     "event": Object {
       "http": Object {
         "basePath": "/",
@@ -11,96 +30,15 @@ Object {
     },
     "exportFunction": "",
     "gatewayConfig": Object {
-      "handler": "index",
       "meta": Object {
-        "functionName": "render",
+        "functionName": "render-index",
       },
       "method": "GET",
       "url": "/",
     },
-    "handler": "index.handler",
+    "handler": "render-index.handler",
     "isFunctional": true,
     "sourceFilePath": "render/index.js",
-  },
-  "lambda-export-arrow-hello": Object {
-    "argsPath": "",
-    "event": Object {
-      "http": Object {
-        "basePath": "/",
-      },
-    },
-    "exportFunction": "hello",
-    "gatewayConfig": Object {
-      "handler": "lambda-export-arrow-hello",
-      "meta": Object {
-        "functionName": "hello",
-      },
-      "method": "POST",
-      "url": "/lambda/export-arrow/hello",
-    },
-    "handler": "lambda-export-arrow-hello.handler",
-    "isFunctional": true,
-    "sourceFilePath": "render/lambda/export-arrow.js",
-  },
-  "lambda-export-default-anonymous": Object {
-    "argsPath": "",
-    "event": Object {
-      "http": Object {
-        "basePath": "/",
-      },
-    },
-    "exportFunction": "",
-    "gatewayConfig": Object {
-      "handler": "lambda-export-default-anonymous",
-      "meta": Object {
-        "functionName": "$default",
-      },
-      "method": "GET",
-      "url": "/lambda/export-default-anonymous",
-    },
-    "handler": "lambda-export-default-anonymous.handler",
-    "isFunctional": true,
-    "sourceFilePath": "render/lambda/export-default-anonymous.js",
-  },
-  "lambda-export-default-func": Object {
-    "argsPath": "",
-    "event": Object {
-      "http": Object {
-        "basePath": "/",
-      },
-    },
-    "exportFunction": "",
-    "gatewayConfig": Object {
-      "handler": "lambda-export-default-func",
-      "meta": Object {
-        "functionName": "$default",
-      },
-      "method": "POST",
-      "url": "/lambda/export-default-func",
-    },
-    "handler": "lambda-export-default-func.handler",
-    "isFunctional": true,
-    "sourceFilePath": "render/lambda/export-default-func.js",
-  },
-  "lambda-export-default-named": Object {
-    "argsPath": "",
-    "event": Object {
-      "http": Object {
-        "basePath": "/",
-      },
-    },
-    "exportFunction": "",
-    "gatewayConfig": Object {
-      "handler": "lambda-export-default-named",
-      "meta": Object {
-        "functionName": "named",
-      },
-      "method": "POST",
-      "url": "/lambda/export-default-named",
-    },
-    "handler": "lambda-export-default-named.handler",
-    "isFunctional": true,
-    "sourceFilePath": "render/lambda/export-default-named.js",
   },
 }
 `;
