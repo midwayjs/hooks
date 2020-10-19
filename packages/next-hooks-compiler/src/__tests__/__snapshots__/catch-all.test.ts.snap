@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Catch All Routes Routes should be generated correctly 1`] = `
+Object {
+  "lambda-index": Object {
+    "deployName": "lambda-index",
+    "event": Object {
+      "http": Object {
+        "basePath": "/api",
+      },
+    },
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "meta": Object {
+        "functionName": "lambda-index",
+      },
+      "method": "GET",
+      "url": "/api",
+    },
+    "handler": "lambda-index.handler",
+    "isFunctional": true,
+    "sourceFilePath": "lambda/index.js",
+  },
+  "render-demo-index": Object {
+    "deployName": "render-demo-index",
+    "event": Object {
+      "http": Object {
+        "basePath": "/",
+      },
+    },
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "meta": Object {
+        "functionName": "render-demo-index",
+      },
+      "method": "GET",
+      "url": "/demo/*",
+    },
+    "handler": "render-demo-index.handler",
+    "isFunctional": true,
+    "sourceFilePath": "render/demo/[...index].js",
+  },
+  "render-demo-index-bar": Object {
+    "deployName": "render-demo-index-bar",
+    "event": Object {
+      "http": Object {
+        "basePath": "/",
+      },
+    },
+    "exportFunction": "bar",
+    "gatewayConfig": Object {
+      "meta": Object {
+        "functionName": "render-demo-index-bar",
+      },
+      "method": "GET",
+      "url": "/demo/bar/*",
+    },
+    "handler": "render-demo-index-bar.handler",
+    "isFunctional": true,
+    "sourceFilePath": "render/demo/[...index].js",
+  },
+  "render-demo-index-foo": Object {
+    "deployName": "render-demo-index-foo",
+    "event": Object {
+      "http": Object {
+        "basePath": "/",
+      },
+    },
+    "exportFunction": "foo",
+    "gatewayConfig": Object {
+      "meta": Object {
+        "functionName": "render-demo-index-foo",
+      },
+      "method": "GET",
+      "url": "/demo/foo/*",
+    },
+    "handler": "render-demo-index-foo.handler",
+    "isFunctional": true,
+    "sourceFilePath": "render/demo/[...index].js",
+  },
+  "render-index": Object {
+    "deployName": "render-index",
+    "event": Object {
+      "http": Object {
+        "basePath": "/",
+      },
+    },
+    "exportFunction": "",
+    "gatewayConfig": Object {
+      "meta": Object {
+        "functionName": "render-index",
+      },
+      "method": "GET",
+      "url": "/*",
+    },
+    "handler": "render-index.handler",
+    "isFunctional": true,
+    "sourceFilePath": "render/[...index].js",
+  },
+  "render-index-bar": Object {
+    "deployName": "render-index-bar",
+    "event": Object {
+      "http": Object {
+        "basePath": "/",
+      },
+    },
+    "exportFunction": "bar",
+    "gatewayConfig": Object {
+      "meta": Object {
+        "functionName": "render-index-bar",
+      },
+      "method": "GET",
+      "url": "/bar/*",
+    },
+    "handler": "render-index-bar.handler",
+    "isFunctional": true,
+    "sourceFilePath": "render/[...index].js",
+  },
+  "render-index-foo": Object {
+    "deployName": "render-index-foo",
+    "event": Object {
+      "http": Object {
+        "basePath": "/",
+      },
+    },
+    "exportFunction": "foo",
+    "gatewayConfig": Object {
+      "meta": Object {
+        "functionName": "render-index-foo",
+      },
+      "method": "GET",
+      "url": "/foo/*",
+    },
+    "handler": "render-index-foo.handler",
+    "isFunctional": true,
+    "sourceFilePath": "render/[...index].js",
+  },
+}
+`;
