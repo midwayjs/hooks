@@ -65,7 +65,7 @@ export function parse(resourcePath: string, source: string) {
       if (t.isFunctionDeclaration(declaration)) {
         const id = declaration.id
 
-        func.url = helper.getHTTPPath(resourcePath, id.name, false, true)
+        func.url = helper.getHTTPPath(resourcePath, id.name, false)
 
         const { method, params } = parseFunctionParams(declaration.params)
         func.method = method
@@ -88,7 +88,7 @@ export function parse(resourcePath: string, source: string) {
           const id = variableDeclarator.id as Identifier
           const init = variableDeclarator.init
 
-          func.url = helper.getHTTPPath(resourcePath, id.name, false, true)
+          func.url = helper.getHTTPPath(resourcePath, id.name, false)
           func.meta = {
             functionName: getDeployFunctionName({
               sourceFilePath: resourcePath,
@@ -149,7 +149,7 @@ export function parse(resourcePath: string, source: string) {
       func.method = method
       func.functionId = getFunctionName(path)
       func.isExportDefault = true
-      func.url = helper.getHTTPPath(resourcePath, functionName, true, true)
+      func.url = helper.getHTTPPath(resourcePath, functionName, true)
       func.meta = {
         functionName,
         unstable_params: params,
