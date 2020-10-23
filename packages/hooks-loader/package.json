@@ -16,6 +16,8 @@
     "@babel/parser": "^7.8.3",
     "@babel/traverse": "^7.8.3",
     "@babel/types": "^7.8.3",
+    "@midwayjs/faas-cli-plugin-midway-hooks": "^0.0.50",
+    "@midwayjs/fcli-plugin-invoke": "^1.2.20",
     "@midwayjs/next-hooks-compiler": "^0.0.50",
     "@midwayjs/serverless-spec-builder": "^1.1.21",
     "art-template": "^4.13.2",

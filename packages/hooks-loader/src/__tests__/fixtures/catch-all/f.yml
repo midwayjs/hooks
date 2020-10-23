@@ -16,11 +16,6 @@ aggregation:
     functionsPattern:
       - '*'
 
-package:
-  include:
-    - build
-  artifact: code.zip
-
 functionsRule:
   source: /src/apis
   rules:
@@ -32,3 +27,8 @@ functionsRule:
       events:
         http:
           basePath: /api
+
+package:
+  include:
+    - build
+  artifact: code.zip
