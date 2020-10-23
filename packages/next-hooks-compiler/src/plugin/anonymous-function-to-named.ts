@@ -5,7 +5,7 @@ import {
   isLambdaOrHookVariableStatement,
   closetAncestor,
   getSourceFilePath,
-  isWithExportAssignment,
+  isEnhancerExportAssignment,
 } from '../util'
 import { DefaultKeyword } from '../const'
 
@@ -78,7 +78,7 @@ export default {
 
         if (isLambdaOrHookVariableStatement(node)) {
           name = closetAncestor<ts.VariableDeclaration>(node, ts.SyntaxKind.VariableDeclaration).name.getText()
-        } else if (isWithExportAssignment(node)) {
+        } else if (isEnhancerExportAssignment(node)) {
           name = DefaultKeyword
         }
 
