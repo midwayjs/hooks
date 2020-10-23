@@ -16,7 +16,12 @@
     "allowSyntheticDefaultImports": true,
     "outDir": "dist",
     "esModuleInterop": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "baseUrl": "./packages",
+    "paths": {
+      "@midwayjs/*": ["./*/src"]
+    },
+    "composite": true
   },
   "exclude": ["dist", "node_modules", "**/__tests__"]
 }
