@@ -41,7 +41,10 @@ export function getFunctionsMeta(): Dictionary<MidwayHooksFunctionStructure> {
 export interface MidwayHooksFunctionStructure extends FunctionStructure {
   deployName: string
   handler: string
+  // dist path
   sourceFilePath?: string
+  // sourceFile
+  sourceFile?: string
   exportFunction?: string
   isFunctional?: boolean
   argsPath?: string

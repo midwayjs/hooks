@@ -19,6 +19,7 @@ Object {
     },
     "handler": "lambda-index.handler",
     "isFunctional": true,
+    "sourceFile": "/Users/lxxyx/Desktop/ali/midway-hooks/open-source/packages/next-hooks-compiler/src/__tests__/fixtures/functions-rule/src/lambda/index.ts",
     "sourceFilePath": "lambda/index.js",
   },
   "render-index": Object {
@@ -38,6 +39,7 @@ Object {
     },
     "handler": "render-index.handler",
     "isFunctional": true,
+    "sourceFile": "/Users/lxxyx/Desktop/ali/midway-hooks/open-source/packages/next-hooks-compiler/src/__tests__/fixtures/functions-rule/src/render/index.ts",
     "sourceFilePath": "render/index.js",
   },
 }

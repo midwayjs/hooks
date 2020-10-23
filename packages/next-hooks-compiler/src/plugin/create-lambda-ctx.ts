@@ -84,6 +84,7 @@ function parseFunctionConfig(
     deployName,
     isFunctional: true,
     exportFunction: isExportDefault ? '' : functionName,
+    sourceFile: sourceFilePath,
     sourceFilePath: helper.getDistPath(sourceFilePath),
     handler: `${deployName}.${FunctionHandler}`,
     gatewayConfig: {
