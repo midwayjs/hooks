@@ -19,7 +19,7 @@ Object {
     },
     "handler": "lambda-index.handler",
     "isFunctional": true,
-    "sourceFile": "/Users/lxxyx/Desktop/ali/midway-hooks/open-source/packages/next-hooks-compiler/src/__tests__/fixtures/catch-all/src/lambda/index.ts",
+    "sourceFile": "src/lambda/index.ts",
     "sourceFilePath": "lambda/index.js",
   },
   "render-demo-index": Object {
@@ -39,7 +39,7 @@ Object {
     },
     "handler": "render-demo-index.handler",
     "isFunctional": true,
-    "sourceFile": "/Users/lxxyx/Desktop/ali/midway-hooks/open-source/packages/next-hooks-compiler/src/__tests__/fixtures/catch-all/src/render/demo/[...index].ts",
+    "sourceFile": "src/render/demo/[...index].ts",
     "sourceFilePath": "render/demo/[...index].js",
   },
   "render-demo-index-bar": Object {
@@ -59,7 +59,7 @@ Object {
     },
     "handler": "render-demo-index-bar.handler",
     "isFunctional": true,
-    "sourceFile": "/Users/lxxyx/Desktop/ali/midway-hooks/open-source/packages/next-hooks-compiler/src/__tests__/fixtures/catch-all/src/render/demo/[...index].ts",
+    "sourceFile": "src/render/demo/[...index].ts",
     "sourceFilePath": "render/demo/[...index].js",
   },
   "render-demo-index-foo": Object {
@@ -79,7 +79,7 @@ Object {
     },
     "handler": "render-demo-index-foo.handler",
     "isFunctional": true,
-    "sourceFile": "/Users/lxxyx/Desktop/ali/midway-hooks/open-source/packages/next-hooks-compiler/src/__tests__/fixtures/catch-all/src/render/demo/[...index].ts",
+    "sourceFile": "src/render/demo/[...index].ts",
     "sourceFilePath": "render/demo/[...index].js",
   },
   "render-index": Object {
@@ -99,7 +99,7 @@ Object {
     },
     "handler": "render-index.handler",
     "isFunctional": true,
-    "sourceFile": "/Users/lxxyx/Desktop/ali/midway-hooks/open-source/packages/next-hooks-compiler/src/__tests__/fixtures/catch-all/src/render/[...index].ts",
+    "sourceFile": "src/render/[...index].ts",
     "sourceFilePath": "render/[...index].js",
   },
   "render-index-bar": Object {
@@ -119,7 +119,7 @@ Object {
     },
     "handler": "render-index-bar.handler",
     "isFunctional": true,
-    "sourceFile": "/Users/lxxyx/Desktop/ali/midway-hooks/open-source/packages/next-hooks-compiler/src/__tests__/fixtures/catch-all/src/render/[...index].ts",
+    "sourceFile": "src/render/[...index].ts",
     "sourceFilePath": "render/[...index].js",
   },
   "render-index-foo": Object {
@@ -139,7 +139,7 @@ Object {
     },
     "handler": "render-index-foo.handler",
     "isFunctional": true,
-    "sourceFile": "/Users/lxxyx/Desktop/ali/midway-hooks/open-source/packages/next-hooks-compiler/src/__tests__/fixtures/catch-all/src/render/[...index].ts",
+    "sourceFile": "src/render/[...index].ts",
     "sourceFilePath": "render/[...index].js",
   },
 }

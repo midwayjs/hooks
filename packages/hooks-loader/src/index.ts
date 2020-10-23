@@ -5,6 +5,7 @@ import { debug } from './util'
 import { compilerEmitter, Events } from '@midwayjs/faas-cli-plugin-midway-hooks'
 import { getFuncList as preCompileProject } from '@midwayjs/fcli-plugin-invoke'
 import _ from 'lodash'
+import { relative } from 'path'
 
 let compileTask: Promise<void> = null
 compilerEmitter.on(Events.PRE_COMPILE_START, () => {
@@ -31,7 +32,8 @@ export default async function loader(this: loader.LoaderContext, source: string)
     (func) => func.sourceFile
   )
 
-  const parsedFuncs = functions[resourcePath] ?? []
+  const relativePath = relative(root, resourcePath)
+  const parsedFuncs = functions[relativePath] ?? []
   const funcs: RenderParam[] = parsedFuncs.map((func) => {
     const isExportDefault = func.exportFunction === ''
 
