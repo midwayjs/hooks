@@ -12,21 +12,24 @@
   },
   "private": true,
   "scripts": {
-    "build": "lerna run build",
+    "build": "tsc -b packages",
+    "watch": "tsc --build --watch packages",
+    "update:tsconfig": "workspaces-to-typescript-project-references",
     "clean": "lerna clean && lerna run clean --parallel",
     "test": "jest --passWithNoTests",
     "ci": "npm run test -- --coverage --ci",
     "cov": "npm run test -- --coverage"
   },
   "devDependencies": {
+    "@monorepo-utils/workspaces-to-typescript-project-references": "^2.4.3",
+    "codecov": "^3.8.0",
     "execa": "^4.0.3",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "lerna": "latest",
     "prettier": "^2.0.2",
     "pretty-quick": "^2.0.1",
-    "ts-jest": "^25.2.1",
-    "codecov": "^3.8.0"
+    "ts-jest": "^25.2.1"
   },
   "husky": {
     "hooks": {
