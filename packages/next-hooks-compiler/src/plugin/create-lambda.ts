@@ -12,13 +12,12 @@ import {
 } from '../util'
 import { MidwayHookContext, FunctionHandler } from '../const'
 import { helper } from '../helper'
-import { addRoute, MidwayHooksFunctionStructure } from './routes'
-import { relative, extname } from 'upath'
-import { TransformationContext } from '@midwayjs/mwcc'
+import { addRoute, MidwayHooksFunctionStructure } from '../routes'
+import { relative } from 'upath'
 import _ from 'lodash'
 
 export default {
-  transform(ctx: TransformationContext) {
+  transform() {
     return {
       FunctionDeclaration(node: ts.FunctionDeclaration) {
         if (!isLambdaOrHook(getTopLevelNode(node), node)) {
@@ -108,6 +107,7 @@ export function getDeployFunctionName(config: {
   const rule = helper.getRuleBySourceFilePath(sourceFilePath)
   const lambdaDirectory = helper.getLambdaDirectory(rule)
 
+  // 多个 source 的情况下，根据各自的 lambdaDirectory 来增加前缀命名
   const relativeDirectory = helper.functionsRule.rules.length > 1 ? helper.source : lambdaDirectory
   const relativePath = relative(relativeDirectory, sourceFilePath)
   // a/b/c -> a-b-c
