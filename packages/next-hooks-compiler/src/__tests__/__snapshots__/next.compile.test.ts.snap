@@ -628,6 +628,7 @@ Object {
     },
     "handler": "arrow-hook-ref-arrow-hook-useinner.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/arrow-hook-ref-arrow-hook.ts",
     "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
   },
   "arrow-hook-ref-arrow-hook-usequery": Object {
@@ -648,6 +649,7 @@ Object {
     },
     "handler": "arrow-hook-ref-arrow-hook-usequery.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/arrow-hook-ref-arrow-hook.ts",
     "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
   },
   "export-arrow-hello": Object {
@@ -668,6 +670,7 @@ Object {
     },
     "handler": "export-arrow-hello.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/export-arrow.ts",
     "sourceFilePath": "lambda/export-arrow.js",
   },
   "export-default-anonymous": Object {
@@ -688,6 +691,7 @@ Object {
     },
     "handler": "export-default-anonymous.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/export-default-anonymous.ts",
     "sourceFilePath": "lambda/export-default-anonymous.js",
   },
   "export-default-func": Object {
@@ -708,6 +712,7 @@ Object {
     },
     "handler": "export-default-func.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/export-default-func.ts",
     "sourceFilePath": "lambda/export-default-func.js",
   },
   "export-default-named": Object {
@@ -728,6 +733,7 @@ Object {
     },
     "handler": "export-default-named.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/export-default-named.ts",
     "sourceFilePath": "lambda/export-default-named.js",
   },
   "hook-ref-hook-useinner": Object {
@@ -748,6 +754,7 @@ Object {
     },
     "handler": "hook-ref-hook-useinner.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/hook-ref-hook.ts",
     "sourceFilePath": "lambda/hook-ref-hook.js",
   },
   "hook-ref-hook-usequery": Object {
@@ -768,6 +775,7 @@ Object {
     },
     "handler": "hook-ref-hook-usequery.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/hook-ref-hook.ts",
     "sourceFilePath": "lambda/hook-ref-hook.js",
   },
   "hook-ref-lambda-hello": Object {
@@ -788,6 +796,7 @@ Object {
     },
     "handler": "hook-ref-lambda-hello.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/hook-ref-lambda.ts",
     "sourceFilePath": "lambda/hook-ref-lambda.js",
   },
   "import-hook-hello": Object {
@@ -808,6 +817,7 @@ Object {
     },
     "handler": "import-hook-hello.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/import-hook.ts",
     "sourceFilePath": "lambda/import-hook.js",
   },
   "index-hello": Object {
@@ -828,6 +838,7 @@ Object {
     },
     "handler": "index-hello.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/index.ts",
     "sourceFilePath": "lambda/index.js",
   },
   "lambda-ref-hook-hello": Object {
@@ -848,6 +859,7 @@ Object {
     },
     "handler": "lambda-ref-hook-hello.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/lambda-ref-hook.ts",
     "sourceFilePath": "lambda/lambda-ref-hook.js",
   },
   "lambda-ref-lambda-hello": Object {
@@ -868,6 +880,7 @@ Object {
     },
     "handler": "lambda-ref-lambda-hello.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/lambda-ref-lambda.ts",
     "sourceFilePath": "lambda/lambda-ref-lambda.js",
   },
   "lambda-ref-lambda-hello2": Object {
@@ -888,6 +901,7 @@ Object {
     },
     "handler": "lambda-ref-lambda-hello2.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/lambda-ref-lambda.ts",
     "sourceFilePath": "lambda/lambda-ref-lambda.js",
   },
   "normal-function-hello": Object {
@@ -908,6 +922,7 @@ Object {
     },
     "handler": "normal-function-hello.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/normal-function.ts",
     "sourceFilePath": "lambda/normal-function.js",
   },
   "ref-bar-bar": Object {
@@ -928,6 +943,7 @@ Object {
     },
     "handler": "ref-bar-bar.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/ref/bar.ts",
     "sourceFilePath": "lambda/ref/bar.js",
   },
   "ref-foo-reffoo": Object {
@@ -948,6 +964,7 @@ Object {
     },
     "handler": "ref-foo-reffoo.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/ref/foo.ts",
     "sourceFilePath": "lambda/ref/foo.js",
   },
   "with-get": Object {
@@ -968,6 +985,7 @@ Object {
     },
     "handler": "with-get.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/with.ts",
     "sourceFilePath": "lambda/with.js",
   },
   "with-post": Object {
@@ -988,6 +1006,7 @@ Object {
     },
     "handler": "with-post.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/with.ts",
     "sourceFilePath": "lambda/with.js",
   },
 }

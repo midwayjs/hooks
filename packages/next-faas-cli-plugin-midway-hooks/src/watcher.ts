@@ -38,7 +38,7 @@ export type WatcherConfig = {
   //  根目录
   root: string
   // Apis 根目录 -> src/apis
-  apis: string
+  source: string
 }
 
 export class HooksWatcher {
@@ -89,7 +89,7 @@ export class HooksWatcher {
     if (eventQueue.length !== 0) {
       await preCompileProject({
         functionDir: this.config.root,
-        sourceDir: this.config.apis,
+        sourceDir: this.config.source,
       })
       compilerEmitter.emit(Events.PRE_COMPILE_FINISH)
     }
@@ -112,7 +112,7 @@ export class HooksWatcher {
     this.started = true
     this.ready = false
 
-    this.watcher = chokidar.watch(this.config.apis, {
+    this.watcher = chokidar.watch(this.config.source, {
       ...this.watcherOptions,
       persistent: true,
     })

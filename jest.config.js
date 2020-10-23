@@ -7,5 +7,6 @@ module.exports = {
       isolatedModules: false,
     },
   },
-  testTimeout: 10000,
+  testTimeout: 20000,
+  forceExit: true,
 }

@@ -19,6 +19,7 @@ Object {
     },
     "handler": "arrow-hook-ref-arrow-hook-useinner.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/arrow-hook-ref-arrow-hook.ts",
     "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
   },
   "arrow-hook-ref-arrow-hook-usequery": Object {
@@ -38,6 +39,7 @@ Object {
     },
     "handler": "arrow-hook-ref-arrow-hook-usequery.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/arrow-hook-ref-arrow-hook.ts",
     "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
   },
   "export-arrow-hello": Object {
@@ -57,6 +59,7 @@ Object {
     },
     "handler": "export-arrow-hello.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/export-arrow.ts",
     "sourceFilePath": "lambda/export-arrow.js",
   },
   "export-default-anonymous": Object {
@@ -76,6 +79,7 @@ Object {
     },
     "handler": "export-default-anonymous.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/export-default-anonymous.ts",
     "sourceFilePath": "lambda/export-default-anonymous.js",
   },
   "export-default-func": Object {
@@ -95,6 +99,7 @@ Object {
     },
     "handler": "export-default-func.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/export-default-func.ts",
     "sourceFilePath": "lambda/export-default-func.js",
   },
   "export-default-named": Object {
@@ -114,6 +119,7 @@ Object {
     },
     "handler": "export-default-named.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/export-default-named.ts",
     "sourceFilePath": "lambda/export-default-named.js",
   },
 }

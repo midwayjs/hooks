@@ -1,16 +1,11 @@
 import { BasePlugin } from '@midwayjs/fcli-command-core'
 import { resolve } from 'path'
-import {
-  hintConfig,
-  helper,
-  getFunctionsMeta,
-  clearRoutes,
-  MidwayHooksFunctionStructure,
-} from '@midwayjs/next-hooks-compiler'
+import { hintConfig, helper, getFunctionsMeta, MidwayHooksFunctionStructure } from '@midwayjs/next-hooks-compiler'
 import { debug, argsPath } from './util'
 import { WatcherConfig, HooksWatcher } from './watcher'
 import { transform, EventStructureType } from '@midwayjs/serverless-spec-builder'
 import type { SpecStructureWithGateway } from '@midwayjs/hooks-shared'
+import { compilerEmitter, Events } from './event'
 
 export class MidwayHooksPlugin extends BasePlugin {
   spec: SpecStructureWithGateway
@@ -27,16 +22,11 @@ export class MidwayHooksPlugin extends BasePlugin {
     return this.core.config.servicePath
   }
 
-  get apis() {
-    return resolve(this.root, 'src/apis')
-  }
-
   get isSkipTsBuild() {
     return this.getStore('skipTsBuild', 'global')
   }
 
   private static init = false
-  private static isCompiled = false
 
   hooks = {
     'before:invoke:compile': async () => {
@@ -66,8 +56,6 @@ export class MidwayHooksPlugin extends BasePlugin {
     debug('beforeCompile')
 
     helper.root = this.root
-    clearRoutes()
-
     this.setStore('mwccHintConfig', hintConfig, true)
   }
 
@@ -88,14 +76,14 @@ export class MidwayHooksPlugin extends BasePlugin {
     debug('faas decorator function: %O', this.core.service.functions)
     debug('hooks function: %s', JSON.stringify(functions, null, 2))
 
-    this.core.service.functions = Object.assign(this.core.service.functions, functions)
+    this.core.service.functions = Object.assign(this.core.service.functions ?? {}, functions)
 
-    if (!MidwayHooksPlugin.isCompiled && process.env.NODE_ENV !== 'production') {
+    if (!compilerEmitter.isCompiled && process.env.NODE_ENV !== 'production') {
       startWatcher({
         root: this.root,
-        apis: this.apis,
+        source: helper.source,
       })
-      MidwayHooksPlugin.isCompiled = true
+      compilerEmitter.isCompiled = true
     }
   }
 

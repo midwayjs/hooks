@@ -11,14 +11,16 @@ const getOutput = (stats: webpack.Stats) => {
   return stats.toJson().modules[2].source
 }
 
-test('Compile render', async () => {
-  const stats = await compiler(resolveEntry('render/[...index].ts'), root)
-  const output = getOutput(stats)
-  expect(output).toMatchSnapshot()
-})
+describe('hooks-loader', () => {
+  test('Compile render', async () => {
+    const stats = await compiler(resolveEntry('render/[...index].ts'), root)
+    const output = getOutput(stats)
+    expect(output).toMatchSnapshot()
+  })
 
-test('Compile lambda', async () => {
-  const stats = await compiler(resolveEntry('lambda/index.ts'), root)
-  const output = getOutput(stats)
-  expect(output).toMatchSnapshot()
+  test.skip('Compile lambda', async () => {
+    const stats = await compiler(resolveEntry('lambda/index.ts'), root)
+    const output = getOutput(stats)
+    expect(output).toMatchSnapshot()
+  })
 })
