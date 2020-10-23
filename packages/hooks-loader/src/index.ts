@@ -1,19 +1,20 @@
 import { loader } from 'webpack'
-import { buildRequest } from './render'
-import { helper } from '@midwayjs/next-hooks-compiler'
+import { buildRequest, RenderParam } from './render'
+import { getFunctionsMeta, helper, MidwayHooksFunctionStructure } from '@midwayjs/next-hooks-compiler'
 import { debug } from './util'
-import { parse } from './parser'
+import { compilerEmitter, Events } from '@midwayjs/faas-cli-plugin-midway-hooks'
+import { getFuncList as preCompileProject } from '@midwayjs/fcli-plugin-invoke'
+import _ from 'lodash'
+import { relative } from 'path'
 
-export { parse } from './parser'
+let compileTask: Promise<void> = null
+compilerEmitter.on(Events.PRE_COMPILE_START, () => {
+  compileTask = new Promise((resolve) => compilerEmitter.once(Events.PRE_COMPILE_FINISH, resolve))
+})
 
 export default async function loader(this: loader.LoaderContext, source: string) {
   const callback = this.async()
   const resourcePath = this.resourcePath
-
-  if (resourcePath.includes('node_modules')) {
-    return callback(null, source)
-  }
-
   const root = this.rootContext || (this as any).options?.context
   helper.root = root
 
@@ -21,13 +22,33 @@ export default async function loader(this: loader.LoaderContext, source: string)
     return callback(null, source)
   }
 
-  debug('compile %s', resourcePath)
-  const { err, funcs } = parse(resourcePath, source)
+  await compileTask
+  compileTask = null
 
-  if (err) {
-    callback(err)
-    return
-  }
+  const functions: _.Dictionary<MidwayHooksFunctionStructure[]> = _.groupBy(
+    compilerEmitter.isCompiled
+      ? getFunctionsMeta()
+      : await preCompileProject({ functionDir: helper.root, sourceDir: helper.source }),
+    (func) => func.sourceFile
+  )
+
+  const relativePath = relative(root, resourcePath)
+  const parsedFuncs = functions[relativePath] ?? []
+  const funcs: RenderParam[] = parsedFuncs.map((func) => {
+    const isExportDefault = func.exportFunction === ''
+
+    if (func.gatewayConfig.url.endsWith('/*')) {
+      func.gatewayConfig.url = func.gatewayConfig.url.replace(/\/\*$/, '')
+    }
+
+    return {
+      isExportDefault,
+      functionId: isExportDefault ? '$default' : func.exportFunction,
+      ...func.gatewayConfig,
+    }
+  })
+
+  debug('compile %s', resourcePath)
 
   const code = buildRequest(funcs, root, this.query)
   callback(null, code)

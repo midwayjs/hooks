@@ -19,6 +19,7 @@ Object {
     },
     "handler": "lambda-index.handler",
     "isFunctional": true,
+    "sourceFile": "src/lambda/index.ts",
     "sourceFilePath": "lambda/index.js",
   },
   "render-index": Object {
@@ -38,6 +39,7 @@ Object {
     },
     "handler": "render-index.handler",
     "isFunctional": true,
+    "sourceFile": "src/render/index.ts",
     "sourceFilePath": "render/index.js",
   },
 }

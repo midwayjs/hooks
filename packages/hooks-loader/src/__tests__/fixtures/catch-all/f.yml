@@ -7,7 +7,7 @@ provider:
   runtime: nodejs10
 
 plugins:
-  - npm::@midwayjs/faas-cli-plugin-midway-hooks
+  - local::../../../../../next-faas-cli-plugin-midway-hooks/dist/
 
 ## aggregation deplpy
 aggregation:
@@ -15,11 +15,6 @@ aggregation:
     deployOrigin: false
     functionsPattern:
       - '*'
-
-package:
-  include:
-    - build
-  artifact: code.zip
 
 functionsRule:
   source: /src/apis
@@ -32,3 +27,8 @@ functionsRule:
       events:
         http:
           basePath: /api
+
+package:
+  include:
+    - build
+  artifact: code.zip

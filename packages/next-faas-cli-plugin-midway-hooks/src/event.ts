@@ -1,6 +1,10 @@
 import { EventEmitter } from 'events'
 
-export const compilerEmitter = new EventEmitter()
+class CompilerEmitter extends EventEmitter {
+  isCompiled = false
+}
+
+export const compilerEmitter = new CompilerEmitter()
 
 export enum Events {
   PRE_COMPILE_START = 'PRE_COMPILE_START',

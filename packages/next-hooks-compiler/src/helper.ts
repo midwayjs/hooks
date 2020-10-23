@@ -1,5 +1,5 @@
 import inside from 'is-path-inside'
-import { LambdaMethodPrefix, MidwayHookApiDirectory } from './const'
+import { LambdaMethodPrefix } from './const'
 import { resolve, dirname, join, relative, basename, extname, toUnix, parse } from 'upath'
 import chalk from 'chalk'
 import { transform } from '@midwayjs/serverless-spec-builder'
@@ -39,11 +39,6 @@ export class RouteHelper {
     return join(this.root, this.functionsRule.source)
   }
 
-  // src/apis/lambda
-  get lambdaDirectory() {
-    return resolve(this.source, MidwayHookApiDirectory)
-  }
-
   getLambdaDirectory(rule: FunctionRule) {
     return join(this.root, this.functionsRule.source, rule.baseDir)
   }
@@ -73,7 +68,7 @@ export class RouteHelper {
     return inside(toUnix(child), toUnix(parent))
   }
 
-  getHTTPPath(filePath: string, method: string, isExportDefault: boolean, isHooksRequest = false) {
+  getHTTPPath(filePath: string, method: string, isExportDefault: boolean) {
     const rule = this.getRuleBySourceFilePath(filePath)
     const lambdaDirectory = this.getLambdaDirectory(rule)
 
@@ -96,7 +91,7 @@ export class RouteHelper {
       fileRoute,
       // getTodoList -> _getTodoList
       func,
-      isCatchAllRoutes && !isHooksRequest ? '/*' : ''
+      isCatchAllRoutes ? '/*' : ''
     )
 
     /**
