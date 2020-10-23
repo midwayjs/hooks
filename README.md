@@ -15,7 +15,7 @@
 我们使用 yarn 来安装依赖
 
 ```bash
-$ npm install yarn -g
+curl -o- -L yarnpkg.com/install.sh | bash
 ```
 
 1. 初始化项目，安装依赖
@@ -27,7 +27,13 @@ yarn
 2. 构建产物
 
 ```bash
-npm run build
+yarn build
 ```
 
 3. 开始开发
+
+## 单元测试
+
+```bash
+yarn test
+```
