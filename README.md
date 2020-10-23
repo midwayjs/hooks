@@ -15,19 +15,19 @@
 我们使用 yarn 来安装依赖
 
 ```bash
-curl -o- -L yarnpkg.com/install.sh | bash
+$ curl -o- -L yarnpkg.com/install.sh | bash
 ```
 
 1. 初始化项目，安装依赖
 
 ```bash
-yarn
+$ yarn
 ```
 
 2. 构建产物
 
 ```bash
-yarn build
+$ yarn build
 ```
 
 3. 开始开发
@@ -35,5 +35,5 @@ yarn build
 ## 单元测试
 
 ```bash
-yarn test
+$ yarn test
 ```
