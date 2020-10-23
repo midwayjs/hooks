@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Compile lambda 1`] = `
+exports[`hooks-loader Compile lambda 1`] = `
 "import { request } from '@midwayjs/hooks/request'
 
 
@@ -22,7 +22,7 @@ export  default  function $default (...args) {
 "
 `;
 
-exports[`Compile render 1`] = `
+exports[`hooks-loader Compile render 1`] = `
 "import { request } from '@midwayjs/hooks/request'
 
 
