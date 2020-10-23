@@ -1,0 +1,12 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./build-plugin-hooks" },
+    { "path": "./hooks" },
+    { "path": "./hooks-loader" },
+    { "path": "./hooks-request" },
+    { "path": "./hooks-shared" },
+    { "path": "./next-faas-cli-plugin-midway-hooks" },
+    { "path": "./next-hooks-compiler" }
+  ]
+}
