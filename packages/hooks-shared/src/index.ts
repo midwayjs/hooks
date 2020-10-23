@@ -21,7 +21,7 @@ export type LambdaParam = {
   }
 }
 
-export interface SpecStructureWithGateway extends SpecStructure {
+export interface SpecStructureWithGateway extends Omit<SpecStructure, 'functionsRule'> {
   apiGateway?: {
     type?: string
   }

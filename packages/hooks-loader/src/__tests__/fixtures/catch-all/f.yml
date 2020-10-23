@@ -7,7 +7,7 @@ provider:
   runtime: nodejs10
 
 plugins:
-  - npm::@midwayjs/faas-cli-plugin-midway-hooks
+  - local::../../../../../next-faas-cli-plugin-midway-hooks/dist/
 
 ## aggregation deplpy
 aggregation:
