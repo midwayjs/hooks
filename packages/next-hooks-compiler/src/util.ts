@@ -154,7 +154,7 @@ export function isLambdaOrHookVariableStatement(node: FunctionKind) {
   return isLambdaOrHook(node, variableStatement)
 }
 
-export function isWithExportAssignment(node: ArrowFunction) {
+export function isEnhancerExportAssignment(node: ArrowFunction) {
   const exportAssignment = closetAncestor<ts.ExportAssignment>(node, ts.SyntaxKind.ExportAssignment)
   if (!exportAssignment) {
     return false

@@ -2,7 +2,6 @@
   "packages": ["packages/*"],
   "command": {
     "bootstrap": {
-      "hoist": true,
       "noCi": true,
       "npmClientArgs": ["--no-package-lock"]
     },

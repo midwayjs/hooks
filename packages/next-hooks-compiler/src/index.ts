@@ -4,8 +4,8 @@ import { compileWithOptions, MwccConfig } from '@midwayjs/mwcc'
 export * from './hintConfig'
 export { helper } from './helper'
 export { setMidwayHooksPackage, BuiltinEnhancer } from './const'
-export { getFunctionsMeta, clearRoutes, MidwayHooksFunctionStructure } from './plugin/routes'
-export { getDeployFunctionName } from './plugin/create-lambda-ctx'
+export { getFunctionsMeta, clearRoutes, MidwayHooksFunctionStructure } from './routes'
+export { getDeployFunctionName } from './plugin/create-lambda'
 
 export async function compileHooks(root: string, hintConfig: MwccConfig) {
   helper.root = root

@@ -3,7 +3,7 @@ import { hintConfig } from '../hintConfig'
 import { compileHooks } from '../index'
 import globby from 'globby'
 import fse from 'fs-extra'
-import { clearRoutes, getFunctionsMeta } from '../plugin/routes'
+import { clearRoutes, getFunctionsMeta } from '../routes'
 
 describe('NeXT Hooks Compiler', () => {
   const fixture = path.resolve(__dirname, './fixtures/hook')
