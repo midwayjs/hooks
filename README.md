@@ -1,6 +1,6 @@
-![](https://gw.alicdn.com/tfs/TB1OIvJAhn1gK0jSZKPXXXvUXXa-2880-1800.png)
+`Midway Hooks` 是 Midway 云端一体场景的开发框架，致力于通过其特有的开发方式，让开发者专注于核心业务逻辑，提升应用研发效率。
 
-`Midway Hooks` 是一套用于构建云端一体应用的开发框架，致力于通过其特有的开发方式，让开发者专注于核心业务逻辑，提升应用研发效率。
+官方文档：[Getting Started - 新云端一体解决方案](https://www.yuque.com/midwayjs/faas/quickstart_integration)
 
 ## ✨ 特性
 
@@ -12,7 +12,7 @@
 
 ## 本地开发
 
-我们使用 yarn 来安装依赖
+我们使用 yarn + lerna 来安装依赖
 
 ```bash
 $ curl -o- -L yarnpkg.com/install.sh | bash
