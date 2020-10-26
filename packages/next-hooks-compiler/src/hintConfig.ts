@@ -1,14 +1,20 @@
-import { sync } from 'globby'
-import { resolve } from 'path'
-
-const transformers = sync(resolve(__dirname, 'plugin')).map((plugin) => ({
-  name: require.resolve(plugin),
-}))
-
 export const hintConfig = {
   features: {
     tsc: {
-      transformers,
+      transformers: [
+        {
+          name: require.resolve('./plugin/ref-to-bind'),
+        },
+        {
+          name: require.resolve('./plugin/anonymous-function-to-named'),
+        },
+        {
+          name: require.resolve('./plugin/create-lambda'),
+        },
+        {
+          name: require.resolve('./plugin/sourcefile-logger'),
+        },
+      ],
     },
   },
 }
