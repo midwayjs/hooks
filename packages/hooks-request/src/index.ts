@@ -1,4 +1,6 @@
-import 'isomorphic-unfetch'
+if (typeof window !== 'undefined') {
+  require('isomorphic-unfetch')
+}
 import type { LambdaParam } from '@midwayjs/hooks-shared'
 export type { LambdaHTTPMethod, LambdaParam } from '@midwayjs/hooks-shared'
 
