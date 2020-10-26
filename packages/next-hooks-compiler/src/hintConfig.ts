@@ -9,7 +9,7 @@ export const hintConfig = {
           name: require.resolve('./plugin/anonymous-function-to-named'),
         },
         {
-          name: require.resolve('./plugin/create-lambda-ctx'),
+          name: require.resolve('./plugin/create-lambda'),
         },
         {
           name: require.resolve('./plugin/sourcefile-logger'),

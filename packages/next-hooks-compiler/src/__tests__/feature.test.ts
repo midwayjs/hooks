@@ -1,7 +1,7 @@
 import path from 'upath'
 import { hintConfig } from '../hintConfig'
 import { compileHooks } from '../index'
-import { clearRoutes, getFunctionsMeta } from '../plugin/routes'
+import { clearRoutes, getFunctionsMeta } from '../routes'
 
 describe('Compiler Features', () => {
   beforeAll(async () => {
