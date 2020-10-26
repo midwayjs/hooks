@@ -1,4 +1,9 @@
-![](https://img.shields.io/npm/v/@midwayjs/hooks/latest?style=for-the-badge) ![](https://img.shields.io/github/workflow/status/midwayjs/hooks/Node.js%20CI/master?style=for-the-badge) ![](https://img.shields.io/codecov/c/github/midwayjs/hooks?style=for-the-badge) ![](https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge)
+<p align="center">
+  <img src="https://img.shields.io/npm/v/@midwayjs/hooks/latest?style=for-the-badge">
+  <img src="https://img.shields.io/github/workflow/status/midwayjs/hooks/Node.js%20CI/master?style=for-the-badge">
+  <img src="https://img.shields.io/codecov/c/github/midwayjs/hooks?style=for-the-badge">
+  <img src="https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge">
+</p>
 
 `Midway Hooks` 是 Midway 云端一体场景的开发框架，致力于通过其特有的开发方式，让开发者专注于核心业务逻辑，提升应用研发效率。
 
