@@ -1,16 +1,31 @@
-import { useContext, withMiddleware } from '@midwayjs/hooks'
+import { useContext, withController } from '@midwayjs/hooks'
 
-export const post = withMiddleware([], async (name: string) => {
-  const ctx = useContext()
-  console.log(name)
-})
+export const post = withController(
+  {
+    middleware: [],
+  },
+  async (name: string) => {
+    const ctx = useContext()
+    console.log(name)
+  }
+)
 
-export const get = withMiddleware([], async () => {
-  const ctx = useContext()
-  console.log(name)
-})
+export const get = withController(
+  {
+    middleware: [],
+  },
+  async () => {
+    const ctx = useContext()
+    console.log(name)
+  }
+)
 
-export default withMiddleware(['staticFile'], async () => {
-  const ctx = useContext()
-  return 'xxx'
-})
+export default withController(
+  {
+    middleware: ['staticFile'],
+  },
+  async () => {
+    const ctx = useContext()
+    return 'xxx'
+  }
+)
