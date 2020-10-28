@@ -1,20 +1,20 @@
 import ts from 'typescript'
-import { TransformationContext, template } from '@midwayjs/mwcc'
-import { MidwayHooksPackage, HooksMethodNamespace, BuiltinHooks, ContextBind, BuiltinHOC } from '../const'
+import { template, TransformationContext } from '@midwayjs/mwcc'
+import { BuiltinHOC, BuiltinHooks, ContextBind, HooksMethodNamespace, MidwayHooksPackage } from '../const'
 import { BuiltinHooksError } from '../errors/BuiltinHooks'
 import { isEmpty } from 'lodash'
 import {
-  isHookName,
   closetAncestor,
+  debug,
   getSourceFilePath,
-  isLambdaOrHook,
-  isAncestor,
   getTopLevelNode,
+  isAncestor,
+  isHookName,
   isInsideLambdaOrHook,
+  isLambdaOrHook,
 } from '../util'
 import { helper } from '../helper'
 import { InvalidReferenceError } from '../errors/InvalidReference'
-import { debug } from '../util'
 import { dirname, resolve } from 'upath'
 
 export default {

@@ -1,11 +1,11 @@
-import ts, { ArrowFunction } from 'typescript'
+import ts from 'typescript'
 import { helper } from '../helper'
 import {
-  hasModifier,
-  isLambdaOrHookVariableStatement,
   closetAncestor,
   getSourceFilePath,
+  hasModifier,
   isHOCExportAssignment,
+  isLambdaOrHookVariableStatement,
 } from '../util'
 import { DefaultKeyword } from '../const'
 

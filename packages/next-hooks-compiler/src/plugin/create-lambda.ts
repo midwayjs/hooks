@@ -1,16 +1,16 @@
 import ts from 'typescript'
 import {
-  isLambdaOrHook,
-  getTopLevelNode,
-  isLambdaOrHookVariableStatement,
-  isLambda,
-  getTopLevelNameNode,
-  getSourceFilePath,
-  hasModifier,
   closetAncestor,
+  getSourceFilePath,
+  getTopLevelNameNode,
+  getTopLevelNode,
+  hasModifier,
+  isLambda,
+  isLambdaOrHook,
+  isLambdaOrHookVariableStatement,
   removeExtension,
 } from '../util'
-import { HooksRequestContext, FunctionHandler } from '../const'
+import { FunctionHandler, HooksRequestContext } from '../const'
 import { helper } from '../helper'
 import { addRoute, MidwayHooksFunctionStructure } from '../routes'
 import { relative } from 'upath'
