@@ -1,4 +1,4 @@
-export const BuiltinHOC = ['withMiddleware']
+export const BuiltinHOC = ['withController']
 export const BuiltinHooks = ['useContext', 'useInject', 'useConfig', 'useLogger', 'usePlugin']
 export const FunctionHandler = 'handler'
 export const HooksRequestContext = '_req_ctx_'
