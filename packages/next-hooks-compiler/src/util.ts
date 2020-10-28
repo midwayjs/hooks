@@ -1,7 +1,7 @@
 import ts, { FunctionDeclaration, ArrowFunction, FunctionExpression } from 'typescript'
 import { helper } from './helper'
 import createDebug from 'debug'
-import { BuiltinEnhancer } from './const'
+import { BuiltinHOC } from './const'
 import { relative, extname } from 'upath'
 
 export const debug = createDebug('hooks: next-compiler')
@@ -47,7 +47,7 @@ export function isLambdaOrHook(node: ts.Node, container: ts.Node) {
     return isHookName(funcName) || isLambda(node as FunctionDeclaration, container)
   }
 
-  if (ts.isCallExpression(node) && BuiltinEnhancer.includes(node.expression.getText())) {
+  if (ts.isCallExpression(node) && BuiltinHOC.includes(node.expression.getText())) {
     return true
   }
 
@@ -154,14 +154,14 @@ export function isLambdaOrHookVariableStatement(node: FunctionKind) {
   return isLambdaOrHook(node, variableStatement)
 }
 
-export function isEnhancerExportAssignment(node: ArrowFunction) {
+export function isHOCExportAssignment(node: ArrowFunction) {
   const exportAssignment = closetAncestor<ts.ExportAssignment>(node, ts.SyntaxKind.ExportAssignment)
   if (!exportAssignment) {
     return false
   }
 
   const expr = exportAssignment.expression
-  return ts.isCallExpression(expr) && BuiltinEnhancer.includes(expr.expression.getText())
+  return ts.isCallExpression(expr) && BuiltinHOC.includes(expr.expression.getText())
 }
 
 export function getVariableStatementIdentifier(node: ts.VariableStatement) {

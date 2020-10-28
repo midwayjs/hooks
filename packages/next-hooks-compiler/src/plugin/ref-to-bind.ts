@@ -1,6 +1,6 @@
 import ts from 'typescript'
 import { TransformationContext, template } from '@midwayjs/mwcc'
-import { MidwayHooksPackage, HooksMethodNamespace, BuiltinHooks, ContextBind, BuiltinEnhancer } from '../const'
+import { MidwayHooksPackage, HooksMethodNamespace, BuiltinHooks, ContextBind, BuiltinHOC } from '../const'
 import { BuiltinHooksError } from '../errors/BuiltinHooks'
 import { isEmpty } from 'lodash'
 import {
@@ -156,7 +156,7 @@ function compileBuiltinMethod(identifier: ts.Identifier) {
   const method = identifier.getText()
 
   // with 方法不做转换
-  if (BuiltinEnhancer.includes(method)) {
+  if (BuiltinHOC.includes(method)) {
     return identifier
   }
 
