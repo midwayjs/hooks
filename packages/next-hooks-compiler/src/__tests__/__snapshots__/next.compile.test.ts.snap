@@ -541,22 +541,37 @@ exports[`NeXT Hooks Compiler lambda/with.ts 1`] = `
 "
 // 源文件
 
-import { useContext, withMiddleware } from '@midwayjs/hooks'
+import { useContext, withController } from '@midwayjs/hooks'
 
-export const post = withMiddleware([], async (name: string) => {
-  const ctx = useContext()
-  console.log(name)
-})
+export const post = withController(
+  {
+    middleware: [],
+  },
+  async (name: string) => {
+    const ctx = useContext()
+    console.log(name)
+  }
+)
 
-export const get = withMiddleware([], async () => {
-  const ctx = useContext()
-  console.log(name)
-})
+export const get = withController(
+  {
+    middleware: [],
+  },
+  async () => {
+    const ctx = useContext()
+    console.log(name)
+  }
+)
 
-export default withMiddleware(['staticFile'], async () => {
-  const ctx = useContext()
-  return 'xxx'
-})
+export default withController(
+  {
+    middleware: ['staticFile'],
+  },
+  async () => {
+    const ctx = useContext()
+    return 'xxx'
+  }
+)
 
 
 // 编译结果
@@ -565,17 +580,23 @@ export default withMiddleware(['staticFile'], async () => {
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.get = exports.post = void 0;
 const hooks_1 = require(\\"@midwayjs/hooks\\");
-exports.post = hooks_1.withMiddleware([], async function post(name) {
+exports.post = hooks_1.withController({
+    middleware: [],
+}, async function post(name) {
     const _req_ctx_ = this;
     const ctx = _req_ctx_.ctx.hooks.useContext();
     console.log(name);
 });
-exports.get = hooks_1.withMiddleware([], async function get() {
+exports.get = hooks_1.withController({
+    middleware: [],
+}, async function get() {
     const _req_ctx_ = this;
     const ctx = _req_ctx_.ctx.hooks.useContext();
     console.log(name);
 });
-exports.default = hooks_1.withMiddleware(['staticFile'], async function $default() {
+exports.default = hooks_1.withController({
+    middleware: ['staticFile'],
+}, async function $default() {
     const ctx = _req_ctx_.ctx.hooks.useContext();
     return 'xxx';
 });
@@ -587,12 +608,17 @@ exports[`NeXT Hooks Compiler lambda/with-default-post.ts 1`] = `
 "
 // 源文件
 
-import { useContext, withMiddleware } from '@midwayjs/hooks'
+import { useContext, withController } from '@midwayjs/hooks'
 
-export default withMiddleware(['staticFile'], async (name: string) => {
-  const ctx = useContext()
-  return 'xxx'
-})
+export default withController(
+  {
+    middleware: ['staticFile'],
+  },
+  async (name: string) => {
+    const ctx = useContext()
+    return 'xxx'
+  }
+)
 
 
 // 编译结果
@@ -600,7 +626,9 @@ export default withMiddleware(['staticFile'], async (name: string) => {
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 const hooks_1 = require(\\"@midwayjs/hooks\\");
-exports.default = hooks_1.withMiddleware(['staticFile'], async function $default(name) {
+exports.default = hooks_1.withController({
+    middleware: ['staticFile'],
+}, async function $default(name) {
     const ctx = _req_ctx_.ctx.hooks.useContext();
     return 'xxx';
 });
