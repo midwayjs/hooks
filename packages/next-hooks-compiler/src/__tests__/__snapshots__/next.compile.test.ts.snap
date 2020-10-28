@@ -47,7 +47,7 @@ exports[`NeXT Hooks Compiler hooks/builtin-hooks.ts 1`] = `
 "
 // 源文件
 
-import { useContext, useInject, useConfig, useLogger, usePlugin } from '@midwayjs/hooks'
+import { useConfig, useContext, useInject, useLogger, usePlugin } from '@midwayjs/hooks'
 
 export function useBuiltinHooks() {
   useConfig()
@@ -541,7 +541,7 @@ exports[`NeXT Hooks Compiler lambda/with.ts 1`] = `
 "
 // 源文件
 
-import { withMiddleware, useContext } from '@midwayjs/hooks'
+import { useContext, withMiddleware } from '@midwayjs/hooks'
 
 export const post = withMiddleware([], async (name: string) => {
   const ctx = useContext()
@@ -587,7 +587,7 @@ exports[`NeXT Hooks Compiler lambda/with-default-post.ts 1`] = `
 "
 // 源文件
 
-import { withMiddleware, useContext } from '@midwayjs/hooks'
+import { useContext, withMiddleware } from '@midwayjs/hooks'
 
 export default withMiddleware(['staticFile'], async (name: string) => {
   const ctx = useContext()
