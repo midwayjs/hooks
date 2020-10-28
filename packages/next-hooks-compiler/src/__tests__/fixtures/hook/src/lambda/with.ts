@@ -1,4 +1,4 @@
-import { withMiddleware, useContext } from '@midwayjs/hooks'
+import { useContext, withMiddleware } from '@midwayjs/hooks'
 
 export const post = withMiddleware([], async (name: string) => {
   const ctx = useContext()

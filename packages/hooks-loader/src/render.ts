@@ -1,9 +1,9 @@
+import type { SpecStructureWithGateway } from '@midwayjs/hooks-shared'
 import { LambdaParam } from '@midwayjs/hooks-shared'
 import art from 'art-template'
 import { readFileSync } from 'fs'
 import { resolve } from 'path'
 import { transform } from '@midwayjs/serverless-spec-builder'
-import type { SpecStructureWithGateway } from '@midwayjs/hooks-shared'
 
 art.defaults.htmlMinifierOptions = {
   collapseWhitespace: false,

@@ -1,9 +1,9 @@
 import inside from 'is-path-inside'
 import { LambdaMethodPrefix } from './const'
-import { resolve, dirname, join, relative, basename, extname, toUnix, parse } from 'upath'
+import { basename, dirname, extname, join, relative, resolve, toUnix } from 'upath'
 import chalk from 'chalk'
 import { transform } from '@midwayjs/serverless-spec-builder'
-import type { SpecStructureWithGateway, FunctionsRule, FunctionRule } from '@midwayjs/hooks-shared'
+import type { FunctionRule, FunctionsRule, SpecStructureWithGateway } from '@midwayjs/hooks-shared'
 
 const defaultFunctionsRule: FunctionsRule = {
   source: '/src/apis',

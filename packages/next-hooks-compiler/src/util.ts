@@ -1,8 +1,8 @@
-import ts, { FunctionDeclaration, ArrowFunction, FunctionExpression } from 'typescript'
+import ts, { ArrowFunction, FunctionDeclaration, FunctionExpression } from 'typescript'
 import { helper } from './helper'
 import createDebug from 'debug'
 import { BuiltinHOC } from './const'
-import { relative, extname } from 'upath'
+import { extname } from 'upath'
 
 export const debug = createDebug('hooks: next-compiler')
 

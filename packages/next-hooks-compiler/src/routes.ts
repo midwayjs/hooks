@@ -1,7 +1,7 @@
 import type { FunctionStructure } from '@midwayjs/serverless-spec-builder'
 import type { Dictionary } from 'lodash'
-import { FunctionRule } from '@midwayjs/hooks-shared'
 import type { LambdaParam } from '@midwayjs/hooks-shared'
+import { FunctionRule } from '@midwayjs/hooks-shared'
 
 type SourceFilePath = string
 

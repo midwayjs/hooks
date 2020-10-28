@@ -1,7 +1,6 @@
 import ts from 'typescript'
 import { TransformationContext } from '@midwayjs/mwcc'
-import { getSourceFilePath } from '../util'
-import { debug } from '../util'
+import { debug, getSourceFilePath } from '../util'
 import { helper } from '../helper'
 import { relative } from 'upath'
 

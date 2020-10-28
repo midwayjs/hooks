@@ -1,11 +1,11 @@
 import { BasePlugin } from '@midwayjs/fcli-command-core'
 import { resolve } from 'path'
-import { hintConfig, helper, getFunctionsMeta, MidwayHooksFunctionStructure } from '@midwayjs/next-hooks-compiler'
-import { debug, argsPath } from './util'
-import { WatcherConfig, HooksWatcher } from './watcher'
-import { transform, EventStructureType } from '@midwayjs/serverless-spec-builder'
+import { getFunctionsMeta, helper, hintConfig, MidwayHooksFunctionStructure } from '@midwayjs/next-hooks-compiler'
+import { argsPath, debug } from './util'
+import { HooksWatcher, WatcherConfig } from './watcher'
+import { EventStructureType, transform } from '@midwayjs/serverless-spec-builder'
 import type { SpecStructureWithGateway } from '@midwayjs/hooks-shared'
-import { compilerEmitter, Events } from './event'
+import { compilerEmitter } from './event'
 
 export class MidwayHooksPlugin extends BasePlugin {
   spec: SpecStructureWithGateway
