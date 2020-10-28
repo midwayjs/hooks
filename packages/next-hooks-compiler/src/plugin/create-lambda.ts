@@ -10,7 +10,7 @@ import {
   closetAncestor,
   removeExtension,
 } from '../util'
-import { MidwayHookContext, FunctionHandler } from '../const'
+import { HooksRequestContext, FunctionHandler } from '../const'
 import { helper } from '../helper'
 import { addRoute, MidwayHooksFunctionStructure } from '../routes'
 import { relative } from 'upath'
@@ -125,7 +125,7 @@ function createLambdaContext(block: ts.Block) {
   const expr = ts.createVariableStatement(
     undefined,
     ts.createVariableDeclarationList(
-      [ts.createVariableDeclaration(ts.createIdentifier(MidwayHookContext), undefined, ts.createThis())],
+      [ts.createVariableDeclaration(ts.createIdentifier(HooksRequestContext), undefined, ts.createThis())],
       ts.NodeFlags.Const
     )
   )
