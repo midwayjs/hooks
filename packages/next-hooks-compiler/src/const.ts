@@ -1,9 +1,9 @@
 export const BuiltinHOC = ['withMiddleware']
 export const BuiltinHooks = ['useContext', 'useInject', 'useConfig', 'useLogger', 'usePlugin']
 export const FunctionHandler = 'handler'
-export const MidwayHookContext = '$lambda'
-export const HooksMethodNamespace = `${MidwayHookContext}.ctx.hooks`
-export const ContextBind = `bind(${MidwayHookContext})`
+export const HooksRequestContext = '_req_ctx_'
+export const HooksMethodNamespace = `${HooksRequestContext}.ctx.hooks`
+export const ContextBind = `bind(${HooksRequestContext})`
 export const DefaultKeyword = '$default'
 
 export const LambdaMethodPrefix = '_'

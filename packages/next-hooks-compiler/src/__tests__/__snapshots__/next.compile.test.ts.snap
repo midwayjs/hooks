@@ -20,9 +20,9 @@ export const useAsyncArrow = async (name: string) => {
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.useAsyncArrow = exports.useArrow = exports.useDemo = void 0;
-exports.useDemo = function useDemo(name) { const $lambda = this; };
-exports.useArrow = function useArrow(name) { const $lambda = this; exports.useDemo.bind($lambda)(name + '666'); };
-exports.useAsyncArrow = async function useAsyncArrow(name) { const $lambda = this; await exports.useDemo.bind($lambda)(name + '666'); };
+exports.useDemo = function useDemo(name) { const _req_ctx_ = this; };
+exports.useArrow = function useArrow(name) { const _req_ctx_ = this; exports.useDemo.bind(_req_ctx_)(name + '666'); };
+exports.useAsyncArrow = async function useAsyncArrow(name) { const _req_ctx_ = this; await exports.useDemo.bind(_req_ctx_)(name + '666'); };
 //# sourceMappingURL=arrow.js.map
       "
 `;
@@ -65,12 +65,12 @@ Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.useBuiltinHooks = void 0;
 const hooks_1 = require(\\"@midwayjs/hooks\\");
 function useBuiltinHooks() {
-    const $lambda = this;
-    $lambda.ctx.hooks.useConfig();
-    $lambda.ctx.hooks.useLogger();
-    $lambda.ctx.hooks.useContext();
-    $lambda.ctx.hooks.useInject('');
-    $lambda.ctx.hooks.usePlugin('');
+    const _req_ctx_ = this;
+    _req_ctx_.ctx.hooks.useConfig();
+    _req_ctx_.ctx.hooks.useLogger();
+    _req_ctx_.ctx.hooks.useContext();
+    _req_ctx_.ctx.hooks.useInject('');
+    _req_ctx_.ctx.hooks.usePlugin('');
 }
 exports.useBuiltinHooks = useBuiltinHooks;
 //# sourceMappingURL=builtin-hooks.js.map
@@ -120,9 +120,9 @@ exports.useFakeHooks = exports.ThisNotHooks = exports.useQuery = void 0;
 const useDemo_1 = require(\\"./useDemo\\");
 const hooks_1 = require(\\"@midwayjs/hooks\\");
 function useQuery(name) {
-    const $lambda = this;
-    $lambda.ctx.hooks.useContext();
-    (typeof useDemo_1.useDemo === \\"function\\" ? useDemo_1.useDemo.bind($lambda) : useDemo_1.useDemo)(name);
+    const _req_ctx_ = this;
+    _req_ctx_.ctx.hooks.useContext();
+    (typeof useDemo_1.useDemo === \\"function\\" ? useDemo_1.useDemo.bind(_req_ctx_) : useDemo_1.useDemo)(name);
     console.log(exports.useFakeHooks);
 }
 exports.useQuery = useQuery;
@@ -154,10 +154,10 @@ Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.useNamespace = void 0;
 const hooks = require(\\"./import-hook\\");
 function useNamespace() {
-    const $lambda = this;
+    const _req_ctx_ = this;
     const n = new hooks.ThisNotHooks();
     console.log(hooks.useFakeHooks);
-    return hooks.useQuery.bind($lambda)(n);
+    return hooks.useQuery.bind(_req_ctx_)(n);
 }
 exports.useNamespace = useNamespace;
 //# sourceMappingURL=import-namespace.js.map
@@ -181,7 +181,7 @@ export function useDemo(name: string) {
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.useDemo = void 0;
 const hooks_1 = require(\\"@midwayjs/hooks\\");
-function useDemo(name) { const $lambda = this; $lambda.ctx.hooks.useContext(); }
+function useDemo(name) { const _req_ctx_ = this; _req_ctx_.ctx.hooks.useContext(); }
 exports.useDemo = useDemo;
 //# sourceMappingURL=useDemo.js.map
       "
@@ -209,12 +209,12 @@ export const useInner = async () => {
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.useInner = exports.useQuery = void 0;
-exports.useQuery = function useQuery(id) { const $lambda = this; return ''; };
+exports.useQuery = function useQuery(id) { const _req_ctx_ = this; return ''; };
 exports.useInner = async function useInner() {
-    const $lambda = this;
-    exports.useQuery.bind($lambda)('123');
+    const _req_ctx_ = this;
+    exports.useQuery.bind(_req_ctx_)('123');
     const inner = () => {
-        console.log(exports.useQuery.bind($lambda)('123'));
+        console.log(exports.useQuery.bind(_req_ctx_)('123'));
     };
     inner();
 };
@@ -236,7 +236,7 @@ export const hello = (name: string) => {
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.hello = void 0;
-exports.hello = function hello(name) { const $lambda = this; console.log(name); };
+exports.hello = function hello(name) { const _req_ctx_ = this; console.log(name); };
 //# sourceMappingURL=export-arrow.js.map
       "
 `;
@@ -252,7 +252,7 @@ export default () => {}
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-function $default() { const $lambda = this; }
+function $default() { const _req_ctx_ = this; }
 exports.default = $default;
 //# sourceMappingURL=export-default-anonymous.js.map
       "
@@ -269,7 +269,7 @@ export default function (name: string) {}
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-function $default(name) { const $lambda = this; }
+function $default(name) { const _req_ctx_ = this; }
 exports.default = $default;
 //# sourceMappingURL=export-default-func.js.map
       "
@@ -286,7 +286,7 @@ export default function named(name: string) {}
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-function named(name) { const $lambda = this; }
+function named(name) { const _req_ctx_ = this; }
 exports.default = named;
 //# sourceMappingURL=export-default-named.js.map
       "
@@ -314,13 +314,13 @@ export async function useInner() {
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.useInner = exports.useQuery = void 0;
-function useQuery(id) { const $lambda = this; return ''; }
+function useQuery(id) { const _req_ctx_ = this; return ''; }
 exports.useQuery = useQuery;
 async function useInner() {
-    const $lambda = this;
-    useQuery.bind($lambda)('123');
+    const _req_ctx_ = this;
+    useQuery.bind(_req_ctx_)('123');
     const inner = () => {
-        console.log(useQuery.bind($lambda)('123'));
+        console.log(useQuery.bind(_req_ctx_)('123'));
     };
     inner();
 }
@@ -349,10 +349,10 @@ function useDemo(name: string) {
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.hello = void 0;
-function hello() { const $lambda = this; normal(); }
+function hello() { const _req_ctx_ = this; normal(); }
 exports.hello = hello;
 function normal() { }
-function useDemo(name) { const $lambda = this; return hello.bind($lambda)(); }
+function useDemo(name) { const _req_ctx_ = this; return hello.bind(_req_ctx_)(); }
 //# sourceMappingURL=hook-ref-lambda.js.map
       "
 `;
@@ -374,7 +374,7 @@ export function hello() {
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.hello = void 0;
 const useDemo_1 = require(\\"../hooks/useDemo\\");
-function hello() { const $lambda = this; (typeof useDemo_1.useDemo === \\"function\\" ? useDemo_1.useDemo.bind($lambda) : useDemo_1.useDemo)('666'); }
+function hello() { const _req_ctx_ = this; (typeof useDemo_1.useDemo === \\"function\\" ? useDemo_1.useDemo.bind(_req_ctx_) : useDemo_1.useDemo)('666'); }
 exports.hello = hello;
 //# sourceMappingURL=import-hook.js.map
       "
@@ -392,7 +392,7 @@ export function hello() {}
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.hello = void 0;
-function hello() { const $lambda = this; }
+function hello() { const _req_ctx_ = this; }
 exports.hello = hello;
 //# sourceMappingURL=index.js.map
       "
@@ -418,13 +418,13 @@ function useDemo(name: string) {}
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.hello = void 0;
 function hello() {
-    const $lambda = this;
-    useDemo.bind($lambda)('666');
+    const _req_ctx_ = this;
+    useDemo.bind(_req_ctx_)('666');
     normal();
 }
 exports.hello = hello;
 function normal() { }
-function useDemo(name) { const $lambda = this; }
+function useDemo(name) { const _req_ctx_ = this; }
 //# sourceMappingURL=lambda-ref-hook.js.map
       "
 `;
@@ -448,12 +448,12 @@ export function hello2(name: string) {
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.hello2 = exports.hello = void 0;
-function hello(name, value) { const $lambda = this; }
+function hello(name, value) { const _req_ctx_ = this; }
 exports.hello = hello;
 const hello3 = (name) => { };
 function hello2(name) {
-    const $lambda = this;
-    hello.bind($lambda)(name, '1');
+    const _req_ctx_ = this;
+    hello.bind(_req_ctx_)(name, '1');
     hello3(name);
 }
 exports.hello2 = hello2;
@@ -477,7 +477,7 @@ function normal() {}
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.hello = void 0;
-function hello() { const $lambda = this; normal(); }
+function hello() { const _req_ctx_ = this; normal(); }
 exports.hello = hello;
 function normal() { }
 //# sourceMappingURL=normal-function.js.map
@@ -505,9 +505,9 @@ exports.bar = void 0;
 const hooks_1 = require(\\"@midwayjs/hooks\\");
 const foo_1 = require(\\"./foo\\");
 async function bar() {
-    const $lambda = this;
-    const ctx = $lambda.ctx.hooks.useContext();
-    (typeof foo_1.refFoo === \\"function\\" ? foo_1.refFoo.bind($lambda) : foo_1.refFoo)();
+    const _req_ctx_ = this;
+    const ctx = _req_ctx_.ctx.hooks.useContext();
+    (typeof foo_1.refFoo === \\"function\\" ? foo_1.refFoo.bind(_req_ctx_) : foo_1.refFoo)();
 }
 exports.bar = bar;
 //# sourceMappingURL=bar.js.map
@@ -531,7 +531,7 @@ export async function refFoo() {
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.refFoo = void 0;
 const hooks_1 = require(\\"@midwayjs/hooks\\");
-async function refFoo() { const $lambda = this; const ctx = $lambda.ctx.hooks.useContext(); }
+async function refFoo() { const _req_ctx_ = this; const ctx = _req_ctx_.ctx.hooks.useContext(); }
 exports.refFoo = refFoo;
 //# sourceMappingURL=foo.js.map
       "
@@ -566,17 +566,17 @@ Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.get = exports.post = void 0;
 const hooks_1 = require(\\"@midwayjs/hooks\\");
 exports.post = hooks_1.withMiddleware([], async function post(name) {
-    const $lambda = this;
-    const ctx = $lambda.ctx.hooks.useContext();
+    const _req_ctx_ = this;
+    const ctx = _req_ctx_.ctx.hooks.useContext();
     console.log(name);
 });
 exports.get = hooks_1.withMiddleware([], async function get() {
-    const $lambda = this;
-    const ctx = $lambda.ctx.hooks.useContext();
+    const _req_ctx_ = this;
+    const ctx = _req_ctx_.ctx.hooks.useContext();
     console.log(name);
 });
 exports.default = hooks_1.withMiddleware(['staticFile'], async function $default() {
-    const ctx = $lambda.ctx.hooks.useContext();
+    const ctx = _req_ctx_.ctx.hooks.useContext();
     return 'xxx';
 });
 //# sourceMappingURL=with.js.map
@@ -601,7 +601,7 @@ export default withMiddleware(['staticFile'], async (name: string) => {
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 const hooks_1 = require(\\"@midwayjs/hooks\\");
 exports.default = hooks_1.withMiddleware(['staticFile'], async function $default(name) {
-    const ctx = $lambda.ctx.hooks.useContext();
+    const ctx = _req_ctx_.ctx.hooks.useContext();
     return 'xxx';
 });
 //# sourceMappingURL=with-default-post.js.map
