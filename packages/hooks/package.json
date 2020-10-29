@@ -20,7 +20,7 @@
     "url": "git@github.com:midwayjs/midway.git"
   },
   "devDependencies": {
-    "@midwayjs/faas": "^1.1.10",
+    "@midwayjs/faas": "2",
     "typescript": "^3.9.3"
   },
   "dependencies": {
