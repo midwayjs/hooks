@@ -5,11 +5,11 @@ type Controller = {
 }
 
 export async function withController<T extends EnhancedFunc>(controller: Controller, func: T) {
-  const proxy: EnhancedFunc = async function proxy(...args: any[]) {
-    return func.apply(this, ...args)
+  const withControllerProxy: EnhancedFunc = async function withControllerProxy(...args: any[]) {
+    return func.apply(this, args)
   }
 
-  proxy.middleware = controller.middleware
+  withControllerProxy.middleware = controller.middleware
 
-  return proxy as T
+  return withControllerProxy as T
 }
