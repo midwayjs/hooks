@@ -1,4 +1,4 @@
-import path from 'upath'
+import path, { toUnix } from 'upath'
 import { hintConfig } from '../hintConfig'
 import { compileHooks } from '../index'
 import globby from 'globby'
@@ -14,13 +14,13 @@ describe('NeXT Hooks Compiler', () => {
     await compileHooks(fixture, hintConfig)
   })
 
-  const files = globby.sync(source)
+  const files = globby.sync(toUnix(source))
 
   for (const file of files) {
     const relative = path.relative(source, file)
     const target = path.resolve(dist, relative).replace('.ts', '.js')
 
-    it(relative, async () => {
+    it(toUnix(relative), async () => {
       const content = await fse.readFile(file, 'utf-8')
       const compiled = await fse.readFile(target, 'utf-8')
 
