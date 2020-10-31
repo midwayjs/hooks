@@ -77,21 +77,23 @@ export class RouteHelper {
     const methodPrefix = rule.events.http.underscore ? LambdaMethodPrefix : ''
     const func = isExportDefault ? '' : `${methodPrefix}${method}`
 
-    const api = join(
-      rule.events.http.basePath,
-      /**
-       * /apis/lambda/index.ts -> ''
-       * /apis/lambda/todo/index.ts -> 'todo'
-       */
-      relative(lambdaDirectory, dirname(filePath)),
-      /**
-       * index -> ''
-       * demo -> '/demo'
-       */
-      fileRoute,
-      // getTodoList -> _getTodoList
-      func,
-      isCatchAllRoutes ? '/*' : ''
+    const api = toUnix(
+      join(
+        rule.events.http.basePath,
+        /**
+         * /apis/lambda/index.ts -> ''
+         * /apis/lambda/todo/index.ts -> 'todo'
+         */
+        relative(lambdaDirectory, dirname(filePath)),
+        /**
+         * index -> ''
+         * demo -> '/demo'
+         */
+        fileRoute,
+        // getTodoList -> _getTodoList
+        func,
+        isCatchAllRoutes ? '/*' : ''
+      )
     )
 
     /**
