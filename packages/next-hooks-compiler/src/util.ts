@@ -47,11 +47,11 @@ export function isLambdaOrHook(node: ts.Node, container: ts.Node) {
     return isHookName(funcName) || isLambda(node as FunctionDeclaration, container)
   }
 
-  if (ts.isCallExpression(node) && BuiltinHOC.includes(node.expression.getText())) {
-    return true
-  }
+  return isHOC(node)
+}
 
-  return false
+export function isHOC(node: ts.Node) {
+  return ts.isCallExpression(node) && BuiltinHOC.includes(node.expression.getText())
 }
 
 export function isLambda(node: ts.FunctionDeclaration | ts.FunctionExpression, container: ts.Node) {
@@ -154,14 +154,14 @@ export function isLambdaOrHookVariableStatement(node: FunctionKind) {
   return isLambdaOrHook(node, variableStatement)
 }
 
+// export default withController()
 export function isHOCExportAssignment(node: ArrowFunction) {
   const exportAssignment = closetAncestor<ts.ExportAssignment>(node, ts.SyntaxKind.ExportAssignment)
   if (!exportAssignment) {
     return false
   }
 
-  const expr = exportAssignment.expression
-  return ts.isCallExpression(expr) && BuiltinHOC.includes(expr.expression.getText())
+  return isHOC(exportAssignment.expression)
 }
 
 export function getVariableStatementIdentifier(node: ts.VariableStatement) {
