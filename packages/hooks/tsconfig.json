@@ -2,10 +2,10 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "lib",
-    "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo",
+    "tsBuildInfoFile": "./lib/tsconfig.tsbuildinfo",
     "rootDir": "src"
   },
-  "exclude": ["dist", "node_modules", "**/__tests__"],
+  "exclude": ["lib", "node_modules", "**/__tests__"],
   "references": [
     {
       "path": "../hooks-request"

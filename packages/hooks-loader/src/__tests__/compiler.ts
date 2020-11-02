@@ -15,7 +15,7 @@ export default (fixture: string, root: string): Promise<webpack.Stats> => {
         {
           test: /\.ts?$/,
           use: {
-            loader: path.resolve(__dirname, '../../dist/index.js'),
+            loader: path.resolve(__dirname, '../../lib/index.js'),
           },
         },
       ],
