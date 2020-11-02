@@ -2,7 +2,7 @@
   "name": "@midwayjs/next-hooks-compiler",
   "version": "0.0.50",
   "description": "将 Midway Hooks 编译为 Lambda & 普通函数",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf lib",
