@@ -14,7 +14,7 @@
     "pretty": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
-    "outDir": "dist",
+    "outDir": "lib",
     "esModuleInterop": true,
     "downlevelIteration": true,
     "baseUrl": "./packages",
@@ -23,5 +23,5 @@
     },
     "composite": true
   },
-  "exclude": ["dist", "node_modules", "**/__tests__"]
+  "exclude": ["dist", "lib", "node_modules", "**/__tests__"]
 }

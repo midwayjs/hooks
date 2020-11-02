@@ -23,4 +23,5 @@ AUTHORS
 .env_temp
 serverless.zip
 .faas_debug_tmp
-tsconfig.tsbuildinfo
+*.tsbuildinfo
+lib
