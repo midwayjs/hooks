@@ -33,7 +33,7 @@
     "@types/path-is-inside": "^1.0.0",
     "memory-fs": "^0.5.0",
     "typescript": "^3.9.3",
-    "webpack": "^4.42.1",
+    "webpack": "^5.3.2",
     "webpack-chain": "^6.5.0"
   },
   "publishConfig": {
