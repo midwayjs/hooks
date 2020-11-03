@@ -13,7 +13,7 @@
     "pretty": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
-    "outDir": "dist",
-    "esModuleInterop": true
+    "outDir": "lib",
+    "sourceMap": true
   }
 }

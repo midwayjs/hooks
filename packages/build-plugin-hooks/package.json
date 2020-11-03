@@ -2,10 +2,10 @@
   "name": "@midwayjs/build-plugin-hooks",
   "version": "0.0.50",
   "description": "Build integration plugin for Rax/Ice to convert references to backend Api in code to frontend SDK calls.",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf lib",
     "prepublishOnly": "npm run build"
   },
   "keywords": [

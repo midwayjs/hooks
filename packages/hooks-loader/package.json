@@ -2,10 +2,10 @@
   "name": "@midwayjs/hooks-loader",
   "version": "0.0.50",
   "description": "",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf lib",
     "prepublishOnly": "npm run build"
   },
   "keywords": [],
