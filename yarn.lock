@@ -1440,12 +1440,12 @@
     light-spinner "^1.0.0"
     minimist "^1.2.5"
 
-"@midwayjs/core@^2.3.20":
-  version "2.3.20"
-  resolved "https://registry.npmjs.org/@midwayjs/core/-/core-2.3.20.tgz#7d948f8538aefaa464fcf9b39276e2aa0b1d2ffe"
-  integrity sha512-00zLxMVOu0dr+VE0iZwgJYPGUv1DK2t+rmGplxv/N89gSXToUeTdoGfpykQ020vUylMHHGkHdsz2f6a+wKyuow==
+"@midwayjs/core@^2.3.23":
+  version "2.3.23"
+  resolved "https://registry.yarnpkg.com/@midwayjs/core/-/core-2.3.23.tgz#1440c791888a5ccc2dbf0e4440724415e434f3b5"
+  integrity sha512-PQgT3YaRFiXezqBfPdlR+vs6YFDc/h3eS/RMYOhpOC3GI0xEqhDrjIUw2LfP/hDDQ8qX/UDNuhcMhgx3YD9/3Q==
   dependencies:
-    "@midwayjs/decorator" "^2.3.20"
+    "@midwayjs/decorator" "^2.3.23"
     "@midwayjs/glob" "^1.0.2"
     class-transformer "^0.3.1"
     extend2 "^1.0.0"
@@ -1467,10 +1467,10 @@
     ts-node "^9.0.0"
     ws "^7.2.3"
 
-"@midwayjs/decorator@^2.3.20":
-  version "2.3.20"
-  resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-2.3.20.tgz#437271fb5ed14155f6ff6b9449988686bc488e8d"
-  integrity sha512-hojkVrEgPnGsbTE0iJN3y+cyhlUt4Vzlr5z2LUGKtQIk3W33/9EL03MhGzBAxXwseAkGV4RMJqADqvBcr3tXJw==
+"@midwayjs/decorator@^2.3.23":
+  version "2.3.23"
+  resolved "https://registry.yarnpkg.com/@midwayjs/decorator/-/decorator-2.3.23.tgz#5970e1c89ebae137dbe7a0ebb5dab0f269a193af"
+  integrity sha512-ubVGkmcs2dC+XSB3hiYCBlRRH50s1n1R5aT1hksiyFCxl4uOdWewfsq37OEAJpPn4R0SGp7w2NkVOCDeBg0I6A==
   dependencies:
     "@types/express" "^4.17.8"
     "@types/koa" "^2.11.4"
@@ -1494,12 +1494,12 @@
   integrity sha512-hWkpVYkCx3ufSD861qeSARs3rB42EtJ8Po24WYqkEPx8WAQtioaJ8WZcSxUXHfwgN/L+MNc7I24uoqXzvIH16A==
 
 "@midwayjs/faas@2":
-  version "2.3.20"
-  resolved "https://registry.npmjs.org/@midwayjs/faas/-/faas-2.3.20.tgz#a8f4384236d9fca7fb1dd4cb7336efba3ffe1150"
-  integrity sha512-uRIaz6jWUE5ulCqzASKgioXWARbujtuunattcGexjEJHfdMkMOQ1FteRfbbByaRu8jLJdrXomJyfGhMAEqhbzg==
+  version "2.3.23"
+  resolved "https://registry.yarnpkg.com/@midwayjs/faas/-/faas-2.3.23.tgz#c3fe3226cca5588b73540130d27dd2e4bdeed290"
+  integrity sha512-cXZ6NAEsJGocoAbSYCNpRHeLbZfqvKlgMnTMY16zaNq7HaJz1JoIIqILiZDHHMTaYJYTukmY1qlItHmaGAd9uA==
   dependencies:
-    "@midwayjs/core" "^2.3.20"
-    "@midwayjs/decorator" "^2.3.20"
+    "@midwayjs/core" "^2.3.23"
+    "@midwayjs/decorator" "^2.3.23"
     "@midwayjs/faas-typings" "^1.1.4"
     "@midwayjs/simple-lock" "^1.1.4"
     koa-compose "^4.1.0"
