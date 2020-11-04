@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Compiler Features The routing information should have the underscore removed 1`] = `
+exports[`features remove underscore 1`] = `
 Object {
   "arrow-hook-ref-arrow-hook-useinner": Object {
     "deployName": "arrow-hook-ref-arrow-hook-useinner",

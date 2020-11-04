@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Compiler FunctionsRule Routes should be generated according to the configured rules 1`] = `
+exports[`functions rule support routes 1`] = `
 Object {
   "lambda-index": Object {
     "deployName": "lambda-index",

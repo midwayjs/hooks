@@ -1,15 +1,15 @@
 import path from 'upath'
 import { hintConfig } from '../hintConfig'
-import { compileHooks } from '../index'
+import { compileHooks } from './util'
 import { clearRoutes, getFunctionsMeta } from '../routes'
 
-describe('Compiler Features', () => {
+describe('features', () => {
   beforeAll(async () => {
     const fixture = path.resolve(__dirname, './fixtures/remove-underscore')
     await compileHooks(fixture, hintConfig)
   })
 
-  it('The routing information should have the underscore removed', () => {
+  it('remove underscore', () => {
     expect(getFunctionsMeta()).toMatchSnapshot()
   })
 
