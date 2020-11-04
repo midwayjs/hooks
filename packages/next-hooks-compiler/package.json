@@ -23,7 +23,7 @@
     "chalk": "^4.0.0",
     "debug": "^4.1.1",
     "is-path-inside": "^3.0.2",
-    "upath": "^1.2.0"
+    "upath": "^2.0.0"
   },
   "devDependencies": {
     "@midwayjs/serverless-spec-builder": "^1.1.16",
