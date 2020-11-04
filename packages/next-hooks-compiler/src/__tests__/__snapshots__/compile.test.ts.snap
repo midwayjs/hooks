@@ -2,7 +2,7 @@
 
 exports[`NeXT Hooks Compiler hooks/arrow.ts 1`] = `
 "
-// 源文件
+// source
 
 export const useDemo = (name: string) => {}
 
@@ -15,7 +15,7 @@ export const useAsyncArrow = async (name: string) => {
 }
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -29,12 +29,12 @@ exports.useAsyncArrow = async function useAsyncArrow(name) { const _req_ctx_ = t
 
 exports[`NeXT Hooks Compiler hooks/arrow-default-export.ts 1`] = `
 "
-// 源文件
+// source
 
 export default async (name: string) => {}
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -45,7 +45,7 @@ exports.default = async (name) => { };
 
 exports[`NeXT Hooks Compiler hooks/builtin-hooks.ts 1`] = `
 "
-// 源文件
+// source
 
 import { useConfig, useContext, useInject, useLogger, usePlugin } from '@midwayjs/hooks'
 
@@ -58,7 +58,7 @@ export function useBuiltinHooks() {
 }
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -79,12 +79,12 @@ exports.useBuiltinHooks = useBuiltinHooks;
 
 exports[`NeXT Hooks Compiler hooks/func-default-export.ts 1`] = `
 "
-// 源文件
+// source
 
 export default function (name: string) {}
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -96,7 +96,7 @@ exports.default = default_1;
 
 exports[`NeXT Hooks Compiler hooks/import-hook.ts 1`] = `
 "
-// 源文件
+// source
 
 import { useDemo } from './useDemo'
 import { useContext } from '@midwayjs/hooks'
@@ -112,7 +112,7 @@ export class ThisNotHooks {}
 export const useFakeHooks = ''
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -136,7 +136,7 @@ exports.useFakeHooks = '';
 
 exports[`NeXT Hooks Compiler hooks/import-namespace.ts 1`] = `
 "
-// 源文件
+// source
 
 import * as hooks from './import-hook'
 
@@ -147,7 +147,7 @@ export function useNamespace() {
 }
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -166,7 +166,7 @@ exports.useNamespace = useNamespace;
 
 exports[`NeXT Hooks Compiler hooks/useDemo.ts 1`] = `
 "
-// 源文件
+// source
 
 import { useContext } from '@midwayjs/hooks'
 
@@ -175,7 +175,7 @@ export function useDemo(name: string) {
 }
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -189,7 +189,7 @@ exports.useDemo = useDemo;
 
 exports[`NeXT Hooks Compiler lambda/arrow-hook-ref-arrow-hook.ts 1`] = `
 "
-// 源文件
+// source
 
 export const useQuery = (id: string) => {
   return ''
@@ -204,7 +204,7 @@ export const useInner = async () => {
 }
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -224,14 +224,14 @@ exports.useInner = async function useInner() {
 
 exports[`NeXT Hooks Compiler lambda/export-arrow.ts 1`] = `
 "
-// 源文件
+// source
 
 export const hello = (name: string) => {
   console.log(name)
 }
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -243,12 +243,12 @@ exports.hello = function hello(name) { const _req_ctx_ = this; console.log(name)
 
 exports[`NeXT Hooks Compiler lambda/export-default-anonymous.ts 1`] = `
 "
-// 源文件
+// source
 
 export default () => {}
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -260,12 +260,12 @@ exports.default = $default;
 
 exports[`NeXT Hooks Compiler lambda/export-default-func.ts 1`] = `
 "
-// 源文件
+// source
 
 export default function (name: string) {}
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -277,12 +277,12 @@ exports.default = $default;
 
 exports[`NeXT Hooks Compiler lambda/export-default-named.ts 1`] = `
 "
-// 源文件
+// source
 
 export default function named(name: string) {}
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -294,7 +294,7 @@ exports.default = named;
 
 exports[`NeXT Hooks Compiler lambda/hook-ref-hook.ts 1`] = `
 "
-// 源文件
+// source
 
 export function useQuery(id: string) {
   return ''
@@ -309,7 +309,7 @@ export async function useInner() {
 }
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -331,7 +331,7 @@ exports.useInner = useInner;
 
 exports[`NeXT Hooks Compiler lambda/hook-ref-lambda.ts 1`] = `
 "
-// 源文件
+// source
 
 export function hello() {
   normal()
@@ -344,7 +344,7 @@ function useDemo(name: string) {
 }
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -359,7 +359,7 @@ function useDemo(name) { const _req_ctx_ = this; return hello.bind(_req_ctx_)();
 
 exports[`NeXT Hooks Compiler lambda/import-hook.ts 1`] = `
 "
-// 源文件
+// source
 
 import { useDemo } from '../hooks/useDemo'
 
@@ -368,7 +368,7 @@ export function hello() {
 }
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -382,12 +382,12 @@ exports.hello = hello;
 
 exports[`NeXT Hooks Compiler lambda/index.ts 1`] = `
 "
-// 源文件
+// source
 
 export function hello() {}
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -400,7 +400,7 @@ exports.hello = hello;
 
 exports[`NeXT Hooks Compiler lambda/lambda-ref-hook.ts 1`] = `
 "
-// 源文件
+// source
 
 export function hello() {
   useDemo('666')
@@ -412,7 +412,7 @@ function normal() {}
 function useDemo(name: string) {}
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -431,7 +431,7 @@ function useDemo(name) { const _req_ctx_ = this; }
 
 exports[`NeXT Hooks Compiler lambda/lambda-ref-lambda.ts 1`] = `
 "
-// 源文件
+// source
 
 export function hello(name: string, value: string) {}
 
@@ -443,7 +443,7 @@ export function hello2(name: string) {
 }
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -463,7 +463,7 @@ exports.hello2 = hello2;
 
 exports[`NeXT Hooks Compiler lambda/normal-function.ts 1`] = `
 "
-// 源文件
+// source
 
 export function hello() {
   normal()
@@ -472,7 +472,7 @@ export function hello() {
 function normal() {}
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -486,7 +486,7 @@ function normal() { }
 
 exports[`NeXT Hooks Compiler lambda/ref/bar.ts 1`] = `
 "
-// 源文件
+// source
 
 import { useContext } from '@midwayjs/hooks'
 import { refFoo } from './foo'
@@ -497,7 +497,7 @@ export async function bar() {
 }
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -516,7 +516,7 @@ exports.bar = bar;
 
 exports[`NeXT Hooks Compiler lambda/ref/foo.ts 1`] = `
 "
-// 源文件
+// source
 
 import { useContext } from '@midwayjs/hooks'
 
@@ -525,7 +525,7 @@ export async function refFoo() {
 }
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -539,7 +539,7 @@ exports.refFoo = refFoo;
 
 exports[`NeXT Hooks Compiler lambda/with.ts 1`] = `
 "
-// 源文件
+// source
 
 import { useContext, withController } from '@midwayjs/hooks'
 
@@ -574,7 +574,7 @@ export default withController(
 )
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
@@ -606,7 +606,7 @@ exports.default = hooks_1.withController({
 
 exports[`NeXT Hooks Compiler lambda/with-default-post.ts 1`] = `
 "
-// 源文件
+// source
 
 import { useContext, withController } from '@midwayjs/hooks'
 
@@ -621,7 +621,7 @@ export default withController(
 )
 
 
-// 编译结果
+// target
 
 \\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Catch All Routes Routes should be generated correctly 1`] = `
+exports[`catch all routes routes 1`] = `
 Object {
   "lambda-index": Object {
     "deployName": "lambda-index",

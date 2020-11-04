@@ -1,15 +1,15 @@
 import path from 'upath'
 import { hintConfig } from '../hintConfig'
-import { compileHooks } from '../index'
+import { compileHooks } from './util'
 import { clearRoutes, getFunctionsMeta } from '../routes'
 
-describe('Compiler FunctionsRule', () => {
+describe('functions rule support', () => {
   beforeAll(async () => {
     const fixture = path.resolve(__dirname, './fixtures/functions-rule')
     await compileHooks(fixture, hintConfig)
   })
 
-  it('Routes should be generated according to the configured rules', () => {
+  it('routes', () => {
     expect(getFunctionsMeta()).toMatchSnapshot()
   })
 
