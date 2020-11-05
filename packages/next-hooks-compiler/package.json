@@ -16,6 +16,7 @@
     "url": "git@github.com:midwayjs/midway.git"
   },
   "dependencies": {
+    "@babel/code-frame": "^7.10.4",
     "@midwayjs/hooks": "^0.0.50",
     "@midwayjs/hooks-shared": "^0.0.50",
     "@midwayjs/mwcc": "^0.3.5",
@@ -26,6 +27,7 @@
     "upath": "^2.0.0"
   },
   "devDependencies": {
+    "@types/babel__code-frame": "^7.0.2",
     "@midwayjs/serverless-spec-builder": "^1.1.16",
     "@types/debug": "^4.1.5",
     "@types/jest": "^26.0.15",
