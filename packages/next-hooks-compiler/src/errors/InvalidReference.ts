@@ -1,16 +1,18 @@
-import { CompileError } from './Compile'
 import ts from 'typescript'
 import { getSourceFilePath } from '../util'
+import { buildErrorCodeFrame } from './code-frame'
+import { relative } from 'upath'
+import { helper } from '../helper'
 
-export class InvalidReferenceError extends CompileError {
+export class InvalidReferenceError extends Error {
   constructor(ref: ts.Node) {
     const messages = [
-      `只在导出的接口与自定义 Hook 中调用 Hook`,
-      `引用变量：${ref.getText()}`,
-      `文件地址：${getSourceFilePath(ref)}`,
-      '文档: https://www.yuque.com/midwayjs/faas/qrsykh#pTyCv',
+      buildErrorCodeFrame(
+        ref,
+        'Only call hooks from lambda(api function) and custom hooks (https://www.yuque.com/midwayjs/faas/qrsykh#pTyCv)'
+      ),
+      `\n\nsourcefile: ${relative(helper.root, getSourceFilePath(ref))}`,
     ]
     super(messages.join('\n'))
-    this.name = 'InvalidReferenceError'
   }
 }
