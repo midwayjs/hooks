@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@midwayjs/faas": "2",
-    "typescript": "^3.9.3"
+    "typescript": "^4.0.5"
   },
   "dependencies": {
     "@midwayjs/hooks-request": "^0.0.50"
