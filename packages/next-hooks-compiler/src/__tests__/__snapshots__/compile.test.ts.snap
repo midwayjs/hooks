@@ -47,7 +47,7 @@ exports[`NeXT Hooks Compiler hooks/builtin-hooks.ts 1`] = `
 "
 // source
 
-import { useConfig, useContext, useInject, useLogger, usePlugin } from '@midwayjs/hooks'
+import { useConfig, useContext, useInject, useLogger, usePlugin, useApp } from '@midwayjs/hooks'
 
 export function useBuiltinHooks() {
   useConfig()
@@ -55,6 +55,7 @@ export function useBuiltinHooks() {
   useContext()
   useInject('')
   usePlugin('')
+  useApp()
 }
 
 
@@ -71,6 +72,7 @@ function useBuiltinHooks() {
     _req_ctx_.ctx.hooks.useContext();
     _req_ctx_.ctx.hooks.useInject('');
     _req_ctx_.ctx.hooks.usePlugin('');
+    _req_ctx_.ctx.hooks.useApp();
 }
 exports.useBuiltinHooks = useBuiltinHooks;
 //# sourceMappingURL=builtin-hooks.js.map

@@ -1,4 +1,4 @@
-import { useConfig, useContext, useInject, useLogger, usePlugin } from '@midwayjs/hooks'
+import { useConfig, useContext, useInject, useLogger, usePlugin, useApp } from '@midwayjs/hooks'
 
 export function useBuiltinHooks() {
   useConfig()
@@ -6,4 +6,5 @@ export function useBuiltinHooks() {
   useContext()
   useInject('')
   usePlugin('')
+  useApp()
 }
