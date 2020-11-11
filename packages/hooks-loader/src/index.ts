@@ -2,10 +2,10 @@ import { loader } from 'webpack'
 import { buildRequest, RenderParam } from './render'
 import { getFunctionsMeta, helper, MidwayHooksFunctionStructure } from '@midwayjs/next-hooks-compiler'
 import { debug } from './util'
-import { compilerEmitter, Events } from '@midwayjs/faas-cli-plugin-midway-hooks'
+import { compilerEmitter, Events } from '@midwayjs/faas-cli-plugin-midway-hooks/lib/event'
 import { getFuncList as preCompileProject } from '@midwayjs/fcli-plugin-invoke'
 import _ from 'lodash'
-import { relative } from 'path'
+import { relative, toUnix } from 'upath'
 
 let compileTask: Promise<void> = null
 compilerEmitter.on(Events.PRE_COMPILE_START, () => {
@@ -32,13 +32,17 @@ export default async function loader(this: loader.LoaderContext, source: string)
     (func) => func.sourceFile
   )
 
-  const relativePath = relative(root, resourcePath)
+  const relativePath = toUnix(relative(root, resourcePath))
   const parsedFuncs = functions[relativePath] ?? []
   const funcs: RenderParam[] = parsedFuncs.map((func) => {
     const isExportDefault = func.exportFunction === ''
 
-    if (func.gatewayConfig.url.endsWith('/*')) {
-      func.gatewayConfig.url = func.gatewayConfig.url.replace(/\/\*$/, '')
+    const url = func.gatewayConfig.url
+    // root path
+    if (url === '/*') {
+      func.gatewayConfig.url = '/'
+    } else if (url.endsWith('/*')) {
+      func.gatewayConfig.url = url.slice(0, -2)
     }
 
     return {

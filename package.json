@@ -17,8 +17,8 @@
     "update:tsconfig": "workspaces-to-typescript-project-references",
     "clean": "lerna clean && lerna run clean --parallel",
     "test": "jest --passWithNoTests",
-    "ci": "npm run test -- --coverage --ci",
-    "cov": "npm run test -- --coverage"
+    "cov": "npm run test -- --coverage",
+    "ci": "npm run cov -- --ci"
   },
   "devDependencies": {
     "@monorepo-utils/workspaces-to-typescript-project-references": "^2.4.3",
@@ -27,10 +27,12 @@
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "jest-serializer-path": "^0.1.15",
+    "jest-snapshot-serializer-raw": "^1.1.0",
     "lerna": "latest",
     "prettier": "^2.0.2",
     "pretty-quick": "^3.1.0",
-    "ts-jest": "^25.2.1"
+    "ts-jest": "^25.2.1",
+    "typescript": "3"
   },
   "husky": {
     "hooks": {

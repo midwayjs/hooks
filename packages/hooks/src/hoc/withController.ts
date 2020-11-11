@@ -4,7 +4,7 @@ type Controller = {
   middleware?: any[]
 }
 
-export async function withController<T extends EnhancedFunc>(controller: Controller, func: T) {
+export function withController<T extends EnhancedFunc>(controller: Controller, func: T) {
   const withControllerProxy: EnhancedFunc = async function withControllerProxy(...args: any[]) {
     return func.apply(this, args)
   }

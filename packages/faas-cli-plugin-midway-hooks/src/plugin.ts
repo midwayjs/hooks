@@ -78,13 +78,13 @@ export class MidwayHooksPlugin extends BasePlugin {
 
     this.core.service.functions = Object.assign(this.core.service.functions ?? {}, functions)
 
-    if (!compilerEmitter.isCompiled && process.env.NODE_ENV !== 'production') {
+    if (!compilerEmitter.isCompiled && !['production', 'test'].includes(process.env.NODE_ENV)) {
       startWatcher({
         root: this.root,
         source: helper.source,
       })
-      compilerEmitter.isCompiled = true
     }
+    compilerEmitter.isCompiled = true
   }
 
   protected get argsPath() {

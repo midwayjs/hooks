@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import chokidar from 'chokidar'
 import { getFuncList as preCompileProject } from '@midwayjs/fcli-plugin-invoke'
 import { debug } from './util'
