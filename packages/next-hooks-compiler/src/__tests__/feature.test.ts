@@ -2,6 +2,7 @@ import path from 'upath'
 import { hintConfig } from '../hintConfig'
 import { compileHooks } from './util'
 import { clearRoutes, getFunctionsMeta } from '../routes'
+import { wrap } from 'jest-snapshot-serializer-raw'
 
 describe('features', () => {
   beforeAll(async () => {
@@ -10,7 +11,7 @@ describe('features', () => {
   })
 
   it('remove underscore', () => {
-    expect(getFunctionsMeta()).toMatchSnapshot()
+    expect(wrap(JSON.stringify(getFunctionsMeta(), null, 2))).toMatchSnapshot()
   })
 
   afterAll(() => {

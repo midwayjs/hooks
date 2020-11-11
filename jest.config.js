@@ -15,7 +15,7 @@ module.exports = {
       isolatedModules: false,
     },
   },
-  testTimeout: 20000,
+  testTimeout: 30000,
   forceExit: true,
-  snapshotSerializers: ['jest-serializer-path'],
+  snapshotSerializers: ['jest-snapshot-serializer-raw'],
 }

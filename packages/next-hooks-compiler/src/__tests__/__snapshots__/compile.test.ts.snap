@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NeXT Hooks Compiler hooks/arrow.ts 1`] = `
-"
+
 // source
 
 export const useDemo = (name: string) => {}
@@ -17,18 +17,18 @@ export const useAsyncArrow = async (name: string) => {
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.useAsyncArrow = exports.useArrow = exports.useDemo = void 0;
 exports.useDemo = function useDemo(name) { const _req_ctx_ = this; };
 exports.useArrow = function useArrow(name) { const _req_ctx_ = this; exports.useDemo.bind(_req_ctx_)(name + '666'); };
 exports.useAsyncArrow = async function useAsyncArrow(name) { const _req_ctx_ = this; await exports.useDemo.bind(_req_ctx_)(name + '666'); };
 //# sourceMappingURL=arrow.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler hooks/arrow-default-export.ts 1`] = `
-"
+
 // source
 
 export default async (name: string) => {}
@@ -36,15 +36,15 @@ export default async (name: string) => {}
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = async (name) => { };
 //# sourceMappingURL=arrow-default-export.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler hooks/builtin-hooks.ts 1`] = `
-"
+
 // source
 
 import { useConfig, useContext, useInject, useLogger, usePlugin, useApp } from '@midwayjs/hooks'
@@ -61,10 +61,10 @@ export function useBuiltinHooks() {
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.useBuiltinHooks = void 0;
-const hooks_1 = require(\\"@midwayjs/hooks\\");
+const hooks_1 = require("@midwayjs/hooks");
 function useBuiltinHooks() {
     const _req_ctx_ = this;
     _req_ctx_.ctx.hooks.useConfig();
@@ -76,11 +76,11 @@ function useBuiltinHooks() {
 }
 exports.useBuiltinHooks = useBuiltinHooks;
 //# sourceMappingURL=builtin-hooks.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler hooks/func-default-export.ts 1`] = `
-"
+
 // source
 
 export default function (name: string) {}
@@ -88,16 +88,16 @@ export default function (name: string) {}
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function default_1(name) { }
 exports.default = default_1;
 //# sourceMappingURL=func-default-export.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler hooks/import-hook.ts 1`] = `
-"
+
 // source
 
 import { useDemo } from './useDemo'
@@ -116,15 +116,15 @@ export const useFakeHooks = ''
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.useFakeHooks = exports.ThisNotHooks = exports.useQuery = void 0;
-const useDemo_1 = require(\\"./useDemo\\");
-const hooks_1 = require(\\"@midwayjs/hooks\\");
+const useDemo_1 = require("./useDemo");
+const hooks_1 = require("@midwayjs/hooks");
 function useQuery(name) {
     const _req_ctx_ = this;
     _req_ctx_.ctx.hooks.useContext();
-    (typeof useDemo_1.useDemo === \\"function\\" ? useDemo_1.useDemo.bind(_req_ctx_) : useDemo_1.useDemo)(name);
+    (typeof useDemo_1.useDemo === "function" ? useDemo_1.useDemo.bind(_req_ctx_) : useDemo_1.useDemo)(name);
     console.log(exports.useFakeHooks);
 }
 exports.useQuery = useQuery;
@@ -133,11 +133,11 @@ class ThisNotHooks {
 exports.ThisNotHooks = ThisNotHooks;
 exports.useFakeHooks = '';
 //# sourceMappingURL=import-hook.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler hooks/import-namespace.ts 1`] = `
-"
+
 // source
 
 import * as hooks from './import-hook'
@@ -151,10 +151,10 @@ export function useNamespace() {
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.useNamespace = void 0;
-const hooks = require(\\"./import-hook\\");
+const hooks = require("./import-hook");
 function useNamespace() {
     const _req_ctx_ = this;
     const n = new hooks.ThisNotHooks();
@@ -163,11 +163,11 @@ function useNamespace() {
 }
 exports.useNamespace = useNamespace;
 //# sourceMappingURL=import-namespace.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler hooks/useDemo.ts 1`] = `
-"
+
 // source
 
 import { useContext } from '@midwayjs/hooks'
@@ -179,18 +179,18 @@ export function useDemo(name: string) {
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.useDemo = void 0;
-const hooks_1 = require(\\"@midwayjs/hooks\\");
+const hooks_1 = require("@midwayjs/hooks");
 function useDemo(name) { const _req_ctx_ = this; _req_ctx_.ctx.hooks.useContext(); }
 exports.useDemo = useDemo;
 //# sourceMappingURL=useDemo.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/arrow-hook-ref-arrow-hook.ts 1`] = `
-"
+
 // source
 
 export const useQuery = (id: string) => {
@@ -208,8 +208,8 @@ export const useInner = async () => {
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.useInner = exports.useQuery = void 0;
 exports.useQuery = function useQuery(id) { const _req_ctx_ = this; return ''; };
 exports.useInner = async function useInner() {
@@ -221,11 +221,11 @@ exports.useInner = async function useInner() {
     inner();
 };
 //# sourceMappingURL=arrow-hook-ref-arrow-hook.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/export-arrow.ts 1`] = `
-"
+
 // source
 
 export const hello = (name: string) => {
@@ -235,16 +235,16 @@ export const hello = (name: string) => {
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
 exports.hello = function hello(name) { const _req_ctx_ = this; console.log(name); };
 //# sourceMappingURL=export-arrow.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/export-default-anonymous.ts 1`] = `
-"
+
 // source
 
 export default () => {}
@@ -252,16 +252,16 @@ export default () => {}
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function $default() { const _req_ctx_ = this; }
 exports.default = $default;
 //# sourceMappingURL=export-default-anonymous.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/export-default-func.ts 1`] = `
-"
+
 // source
 
 export default function (name: string) {}
@@ -269,16 +269,16 @@ export default function (name: string) {}
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function $default(name) { const _req_ctx_ = this; }
 exports.default = $default;
 //# sourceMappingURL=export-default-func.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/export-default-named.ts 1`] = `
-"
+
 // source
 
 export default function named(name: string) {}
@@ -286,16 +286,16 @@ export default function named(name: string) {}
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function named(name) { const _req_ctx_ = this; }
 exports.default = named;
 //# sourceMappingURL=export-default-named.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/hook-ref-hook.ts 1`] = `
-"
+
 // source
 
 export function useQuery(id: string) {
@@ -313,8 +313,8 @@ export async function useInner() {
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.useInner = exports.useQuery = void 0;
 function useQuery(id) { const _req_ctx_ = this; return ''; }
 exports.useQuery = useQuery;
@@ -328,11 +328,11 @@ async function useInner() {
 }
 exports.useInner = useInner;
 //# sourceMappingURL=hook-ref-hook.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/hook-ref-lambda.ts 1`] = `
-"
+
 // source
 
 export function hello() {
@@ -348,19 +348,19 @@ function useDemo(name: string) {
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
 function hello() { const _req_ctx_ = this; normal(); }
 exports.hello = hello;
 function normal() { }
 function useDemo(name) { const _req_ctx_ = this; return hello.bind(_req_ctx_)(); }
 //# sourceMappingURL=hook-ref-lambda.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/import-hook.ts 1`] = `
-"
+
 // source
 
 import { useDemo } from '../hooks/useDemo'
@@ -372,18 +372,18 @@ export function hello() {
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
-const useDemo_1 = require(\\"../hooks/useDemo\\");
-function hello() { const _req_ctx_ = this; (typeof useDemo_1.useDemo === \\"function\\" ? useDemo_1.useDemo.bind(_req_ctx_) : useDemo_1.useDemo)('666'); }
+const useDemo_1 = require("../hooks/useDemo");
+function hello() { const _req_ctx_ = this; (typeof useDemo_1.useDemo === "function" ? useDemo_1.useDemo.bind(_req_ctx_) : useDemo_1.useDemo)('666'); }
 exports.hello = hello;
 //# sourceMappingURL=import-hook.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/index.ts 1`] = `
-"
+
 // source
 
 export function hello() {}
@@ -391,17 +391,17 @@ export function hello() {}
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
 function hello() { const _req_ctx_ = this; }
 exports.hello = hello;
 //# sourceMappingURL=index.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/lambda-ref-hook.ts 1`] = `
-"
+
 // source
 
 export function hello() {
@@ -416,8 +416,8 @@ function useDemo(name: string) {}
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
 function hello() {
     const _req_ctx_ = this;
@@ -428,11 +428,11 @@ exports.hello = hello;
 function normal() { }
 function useDemo(name) { const _req_ctx_ = this; }
 //# sourceMappingURL=lambda-ref-hook.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/lambda-ref-lambda.ts 1`] = `
-"
+
 // source
 
 export function hello(name: string, value: string) {}
@@ -447,8 +447,8 @@ export function hello2(name: string) {
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello2 = exports.hello = void 0;
 function hello(name, value) { const _req_ctx_ = this; }
 exports.hello = hello;
@@ -460,11 +460,11 @@ function hello2(name) {
 }
 exports.hello2 = hello2;
 //# sourceMappingURL=lambda-ref-lambda.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/normal-function.ts 1`] = `
-"
+
 // source
 
 export function hello() {
@@ -476,18 +476,18 @@ function normal() {}
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
 function hello() { const _req_ctx_ = this; normal(); }
 exports.hello = hello;
 function normal() { }
 //# sourceMappingURL=normal-function.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/ref/bar.ts 1`] = `
-"
+
 // source
 
 import { useContext } from '@midwayjs/hooks'
@@ -501,23 +501,23 @@ export async function bar() {
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.bar = void 0;
-const hooks_1 = require(\\"@midwayjs/hooks\\");
-const foo_1 = require(\\"./foo\\");
+const hooks_1 = require("@midwayjs/hooks");
+const foo_1 = require("./foo");
 async function bar() {
     const _req_ctx_ = this;
     const ctx = _req_ctx_.ctx.hooks.useContext();
-    (typeof foo_1.refFoo === \\"function\\" ? foo_1.refFoo.bind(_req_ctx_) : foo_1.refFoo)();
+    (typeof foo_1.refFoo === "function" ? foo_1.refFoo.bind(_req_ctx_) : foo_1.refFoo)();
 }
 exports.bar = bar;
 //# sourceMappingURL=bar.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/ref/foo.ts 1`] = `
-"
+
 // source
 
 import { useContext } from '@midwayjs/hooks'
@@ -529,18 +529,18 @@ export async function refFoo() {
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.refFoo = void 0;
-const hooks_1 = require(\\"@midwayjs/hooks\\");
+const hooks_1 = require("@midwayjs/hooks");
 async function refFoo() { const _req_ctx_ = this; const ctx = _req_ctx_.ctx.hooks.useContext(); }
 exports.refFoo = refFoo;
 //# sourceMappingURL=foo.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/with.ts 1`] = `
-"
+
 // source
 
 import { useContext, withController } from '@midwayjs/hooks'
@@ -578,10 +578,10 @@ export default withController(
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.get = exports.post = void 0;
-const hooks_1 = require(\\"@midwayjs/hooks\\");
+const hooks_1 = require("@midwayjs/hooks");
 exports.post = hooks_1.withController({
     middleware: [],
 }, async function post(name) {
@@ -603,11 +603,11 @@ exports.default = hooks_1.withController({
     return 'xxx';
 });
 //# sourceMappingURL=with.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler lambda/with-default-post.ts 1`] = `
-"
+
 // source
 
 import { useContext, withController } from '@midwayjs/hooks'
@@ -625,9 +625,9 @@ export default withController(
 
 // target
 
-\\"use strict\\";
-Object.defineProperty(exports, \\"__esModule\\", { value: true });
-const hooks_1 = require(\\"@midwayjs/hooks\\");
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const hooks_1 = require("@midwayjs/hooks");
 exports.default = hooks_1.withController({
     middleware: ['staticFile'],
 }, async function $default(name) {
@@ -635,409 +635,409 @@ exports.default = hooks_1.withController({
     return 'xxx';
 });
 //# sourceMappingURL=with-default-post.js.map
-      "
+      
 `;
 
 exports[`NeXT Hooks Compiler 路由信息应该生成正确 1`] = `
-Object {
-  "arrow-hook-ref-arrow-hook-useinner": Object {
-    "deployName": "arrow-hook-ref-arrow-hook-useinner",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "useInner",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "arrow-hook-ref-arrow-hook-useinner",
-      },
-      "method": "GET",
-      "url": "/api/arrow-hook-ref-arrow-hook/_useInner",
-    },
-    "handler": "arrow-hook-ref-arrow-hook-useinner.handler",
-    "isFunctional": true,
-    "sourceFile": "src/lambda/arrow-hook-ref-arrow-hook.ts",
-    "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
-  },
-  "arrow-hook-ref-arrow-hook-usequery": Object {
+{
+  "arrow-hook-ref-arrow-hook-usequery": {
     "deployName": "arrow-hook-ref-arrow-hook-usequery",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "useQuery",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "arrow-hook-ref-arrow-hook-usequery",
-      },
-      "method": "POST",
-      "url": "/api/arrow-hook-ref-arrow-hook/_useQuery",
-    },
-    "handler": "arrow-hook-ref-arrow-hook-usequery.handler",
     "isFunctional": true,
+    "exportFunction": "useQuery",
     "sourceFile": "src/lambda/arrow-hook-ref-arrow-hook.ts",
     "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
-  },
-  "export-arrow-hello": Object {
-    "deployName": "export-arrow-hello",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "hello",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "export-arrow-hello",
-      },
+    "handler": "arrow-hook-ref-arrow-hook-usequery.handler",
+    "gatewayConfig": {
+      "url": "/api/arrow-hook-ref-arrow-hook/_useQuery",
       "method": "POST",
-      "url": "/api/export-arrow/_hello",
+      "meta": {
+        "functionName": "arrow-hook-ref-arrow-hook-usequery"
+      }
     },
-    "handler": "export-arrow-hello.handler",
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "arrow-hook-ref-arrow-hook-useinner": {
+    "deployName": "arrow-hook-ref-arrow-hook-useinner",
     "isFunctional": true,
+    "exportFunction": "useInner",
+    "sourceFile": "src/lambda/arrow-hook-ref-arrow-hook.ts",
+    "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
+    "handler": "arrow-hook-ref-arrow-hook-useinner.handler",
+    "gatewayConfig": {
+      "url": "/api/arrow-hook-ref-arrow-hook/_useInner",
+      "method": "GET",
+      "meta": {
+        "functionName": "arrow-hook-ref-arrow-hook-useinner"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "export-arrow-hello": {
+    "deployName": "export-arrow-hello",
+    "isFunctional": true,
+    "exportFunction": "hello",
     "sourceFile": "src/lambda/export-arrow.ts",
     "sourceFilePath": "lambda/export-arrow.js",
-  },
-  "export-default-anonymous": Object {
-    "deployName": "export-default-anonymous",
-    "event": Object {
-      "http": Object {
+    "handler": "export-arrow-hello.handler",
+    "gatewayConfig": {
+      "url": "/api/export-arrow/_hello",
+      "method": "POST",
+      "meta": {
+        "functionName": "export-arrow-hello"
+      }
+    },
+    "event": {
+      "http": {
         "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "export-default-anonymous",
-      },
-      "method": "GET",
-      "url": "/api/export-default-anonymous",
-    },
-    "handler": "export-default-anonymous.handler",
+        "underscore": true
+      }
+    }
+  },
+  "export-default-anonymous": {
+    "deployName": "export-default-anonymous",
     "isFunctional": true,
+    "exportFunction": "",
     "sourceFile": "src/lambda/export-default-anonymous.ts",
     "sourceFilePath": "lambda/export-default-anonymous.js",
-  },
-  "export-default-func": Object {
-    "deployName": "export-default-func",
-    "event": Object {
-      "http": Object {
+    "handler": "export-default-anonymous.handler",
+    "gatewayConfig": {
+      "url": "/api/export-default-anonymous",
+      "method": "GET",
+      "meta": {
+        "functionName": "export-default-anonymous"
+      }
+    },
+    "event": {
+      "http": {
         "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "export-default-func",
-      },
-      "method": "POST",
-      "url": "/api/export-default-func",
-    },
-    "handler": "export-default-func.handler",
+        "underscore": true
+      }
+    }
+  },
+  "export-default-func": {
+    "deployName": "export-default-func",
     "isFunctional": true,
+    "exportFunction": "",
     "sourceFile": "src/lambda/export-default-func.ts",
     "sourceFilePath": "lambda/export-default-func.js",
-  },
-  "export-default-named": Object {
-    "deployName": "export-default-named",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "export-default-named",
-      },
+    "handler": "export-default-func.handler",
+    "gatewayConfig": {
+      "url": "/api/export-default-func",
       "method": "POST",
-      "url": "/api/export-default-named",
+      "meta": {
+        "functionName": "export-default-func"
+      }
     },
-    "handler": "export-default-named.handler",
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "export-default-named": {
+    "deployName": "export-default-named",
     "isFunctional": true,
+    "exportFunction": "",
     "sourceFile": "src/lambda/export-default-named.ts",
     "sourceFilePath": "lambda/export-default-named.js",
-  },
-  "hook-ref-hook-useinner": Object {
-    "deployName": "hook-ref-hook-useinner",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "useInner",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "hook-ref-hook-useinner",
-      },
-      "method": "GET",
-      "url": "/api/hook-ref-hook/_useInner",
-    },
-    "handler": "hook-ref-hook-useinner.handler",
-    "isFunctional": true,
-    "sourceFile": "src/lambda/hook-ref-hook.ts",
-    "sourceFilePath": "lambda/hook-ref-hook.js",
-  },
-  "hook-ref-hook-usequery": Object {
-    "deployName": "hook-ref-hook-usequery",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "useQuery",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "hook-ref-hook-usequery",
-      },
+    "handler": "export-default-named.handler",
+    "gatewayConfig": {
+      "url": "/api/export-default-named",
       "method": "POST",
-      "url": "/api/hook-ref-hook/_useQuery",
+      "meta": {
+        "functionName": "export-default-named"
+      }
     },
-    "handler": "hook-ref-hook-usequery.handler",
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "hook-ref-hook-usequery": {
+    "deployName": "hook-ref-hook-usequery",
     "isFunctional": true,
+    "exportFunction": "useQuery",
     "sourceFile": "src/lambda/hook-ref-hook.ts",
     "sourceFilePath": "lambda/hook-ref-hook.js",
-  },
-  "hook-ref-lambda-hello": Object {
-    "deployName": "hook-ref-lambda-hello",
-    "event": Object {
-      "http": Object {
+    "handler": "hook-ref-hook-usequery.handler",
+    "gatewayConfig": {
+      "url": "/api/hook-ref-hook/_useQuery",
+      "method": "POST",
+      "meta": {
+        "functionName": "hook-ref-hook-usequery"
+      }
+    },
+    "event": {
+      "http": {
         "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "hello",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "hook-ref-lambda-hello",
-      },
-      "method": "GET",
-      "url": "/api/hook-ref-lambda/_hello",
-    },
-    "handler": "hook-ref-lambda-hello.handler",
+        "underscore": true
+      }
+    }
+  },
+  "hook-ref-hook-useinner": {
+    "deployName": "hook-ref-hook-useinner",
     "isFunctional": true,
+    "exportFunction": "useInner",
+    "sourceFile": "src/lambda/hook-ref-hook.ts",
+    "sourceFilePath": "lambda/hook-ref-hook.js",
+    "handler": "hook-ref-hook-useinner.handler",
+    "gatewayConfig": {
+      "url": "/api/hook-ref-hook/_useInner",
+      "method": "GET",
+      "meta": {
+        "functionName": "hook-ref-hook-useinner"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "hook-ref-lambda-hello": {
+    "deployName": "hook-ref-lambda-hello",
+    "isFunctional": true,
+    "exportFunction": "hello",
     "sourceFile": "src/lambda/hook-ref-lambda.ts",
     "sourceFilePath": "lambda/hook-ref-lambda.js",
-  },
-  "import-hook-hello": Object {
-    "deployName": "import-hook-hello",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "hello",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "import-hook-hello",
-      },
+    "handler": "hook-ref-lambda-hello.handler",
+    "gatewayConfig": {
+      "url": "/api/hook-ref-lambda/_hello",
       "method": "GET",
-      "url": "/api/import-hook/_hello",
+      "meta": {
+        "functionName": "hook-ref-lambda-hello"
+      }
     },
-    "handler": "import-hook-hello.handler",
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "import-hook-hello": {
+    "deployName": "import-hook-hello",
     "isFunctional": true,
+    "exportFunction": "hello",
     "sourceFile": "src/lambda/import-hook.ts",
     "sourceFilePath": "lambda/import-hook.js",
-  },
-  "index-hello": Object {
-    "deployName": "index-hello",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "hello",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "index-hello",
-      },
+    "handler": "import-hook-hello.handler",
+    "gatewayConfig": {
+      "url": "/api/import-hook/_hello",
       "method": "GET",
-      "url": "/api/_hello",
+      "meta": {
+        "functionName": "import-hook-hello"
+      }
     },
-    "handler": "index-hello.handler",
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "index-hello": {
+    "deployName": "index-hello",
     "isFunctional": true,
+    "exportFunction": "hello",
     "sourceFile": "src/lambda/index.ts",
     "sourceFilePath": "lambda/index.js",
-  },
-  "lambda-ref-hook-hello": Object {
-    "deployName": "lambda-ref-hook-hello",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "hello",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "lambda-ref-hook-hello",
-      },
+    "handler": "index-hello.handler",
+    "gatewayConfig": {
+      "url": "/api/_hello",
       "method": "GET",
-      "url": "/api/lambda-ref-hook/_hello",
+      "meta": {
+        "functionName": "index-hello"
+      }
     },
-    "handler": "lambda-ref-hook-hello.handler",
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "lambda-ref-hook-hello": {
+    "deployName": "lambda-ref-hook-hello",
     "isFunctional": true,
+    "exportFunction": "hello",
     "sourceFile": "src/lambda/lambda-ref-hook.ts",
     "sourceFilePath": "lambda/lambda-ref-hook.js",
-  },
-  "lambda-ref-lambda-hello": Object {
-    "deployName": "lambda-ref-lambda-hello",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "hello",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "lambda-ref-lambda-hello",
-      },
-      "method": "POST",
-      "url": "/api/lambda-ref-lambda/_hello",
-    },
-    "handler": "lambda-ref-lambda-hello.handler",
-    "isFunctional": true,
-    "sourceFile": "src/lambda/lambda-ref-lambda.ts",
-    "sourceFilePath": "lambda/lambda-ref-lambda.js",
-  },
-  "lambda-ref-lambda-hello2": Object {
-    "deployName": "lambda-ref-lambda-hello2",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "hello2",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "lambda-ref-lambda-hello2",
-      },
-      "method": "POST",
-      "url": "/api/lambda-ref-lambda/_hello2",
-    },
-    "handler": "lambda-ref-lambda-hello2.handler",
-    "isFunctional": true,
-    "sourceFile": "src/lambda/lambda-ref-lambda.ts",
-    "sourceFilePath": "lambda/lambda-ref-lambda.js",
-  },
-  "normal-function-hello": Object {
-    "deployName": "normal-function-hello",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "hello",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "normal-function-hello",
-      },
+    "handler": "lambda-ref-hook-hello.handler",
+    "gatewayConfig": {
+      "url": "/api/lambda-ref-hook/_hello",
       "method": "GET",
-      "url": "/api/normal-function/_hello",
+      "meta": {
+        "functionName": "lambda-ref-hook-hello"
+      }
     },
-    "handler": "normal-function-hello.handler",
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "lambda-ref-lambda-hello": {
+    "deployName": "lambda-ref-lambda-hello",
     "isFunctional": true,
+    "exportFunction": "hello",
+    "sourceFile": "src/lambda/lambda-ref-lambda.ts",
+    "sourceFilePath": "lambda/lambda-ref-lambda.js",
+    "handler": "lambda-ref-lambda-hello.handler",
+    "gatewayConfig": {
+      "url": "/api/lambda-ref-lambda/_hello",
+      "method": "POST",
+      "meta": {
+        "functionName": "lambda-ref-lambda-hello"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "lambda-ref-lambda-hello2": {
+    "deployName": "lambda-ref-lambda-hello2",
+    "isFunctional": true,
+    "exportFunction": "hello2",
+    "sourceFile": "src/lambda/lambda-ref-lambda.ts",
+    "sourceFilePath": "lambda/lambda-ref-lambda.js",
+    "handler": "lambda-ref-lambda-hello2.handler",
+    "gatewayConfig": {
+      "url": "/api/lambda-ref-lambda/_hello2",
+      "method": "POST",
+      "meta": {
+        "functionName": "lambda-ref-lambda-hello2"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "normal-function-hello": {
+    "deployName": "normal-function-hello",
+    "isFunctional": true,
+    "exportFunction": "hello",
     "sourceFile": "src/lambda/normal-function.ts",
     "sourceFilePath": "lambda/normal-function.js",
-  },
-  "ref-bar-bar": Object {
-    "deployName": "ref-bar-bar",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "bar",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "ref-bar-bar",
-      },
+    "handler": "normal-function-hello.handler",
+    "gatewayConfig": {
+      "url": "/api/normal-function/_hello",
       "method": "GET",
-      "url": "/api/ref/bar/_bar",
+      "meta": {
+        "functionName": "normal-function-hello"
+      }
     },
-    "handler": "ref-bar-bar.handler",
-    "isFunctional": true,
-    "sourceFile": "src/lambda/ref/bar.ts",
-    "sourceFilePath": "lambda/ref/bar.js",
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
   },
-  "ref-foo-reffoo": Object {
+  "with-post": {
+    "deployName": "with-post",
+    "isFunctional": true,
+    "exportFunction": "post",
+    "sourceFile": "src/lambda/with.ts",
+    "sourceFilePath": "lambda/with.js",
+    "handler": "with-post.handler",
+    "gatewayConfig": {
+      "url": "/api/with/_post",
+      "method": "POST",
+      "meta": {
+        "functionName": "with-post"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "with-get": {
+    "deployName": "with-get",
+    "isFunctional": true,
+    "exportFunction": "get",
+    "sourceFile": "src/lambda/with.ts",
+    "sourceFilePath": "lambda/with.js",
+    "handler": "with-get.handler",
+    "gatewayConfig": {
+      "url": "/api/with/_get",
+      "method": "GET",
+      "meta": {
+        "functionName": "with-get"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "ref-foo-reffoo": {
     "deployName": "ref-foo-reffoo",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "refFoo",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "ref-foo-reffoo",
-      },
-      "method": "GET",
-      "url": "/api/ref/foo/_refFoo",
-    },
-    "handler": "ref-foo-reffoo.handler",
     "isFunctional": true,
+    "exportFunction": "refFoo",
     "sourceFile": "src/lambda/ref/foo.ts",
     "sourceFilePath": "lambda/ref/foo.js",
-  },
-  "with-get": Object {
-    "deployName": "with-get",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "get",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "with-get",
-      },
+    "handler": "ref-foo-reffoo.handler",
+    "gatewayConfig": {
+      "url": "/api/ref/foo/_refFoo",
       "method": "GET",
-      "url": "/api/with/_get",
+      "meta": {
+        "functionName": "ref-foo-reffoo"
+      }
     },
-    "handler": "with-get.handler",
-    "isFunctional": true,
-    "sourceFile": "src/lambda/with.ts",
-    "sourceFilePath": "lambda/with.js",
-  },
-  "with-post": Object {
-    "deployName": "with-post",
-    "event": Object {
-      "http": Object {
+    "event": {
+      "http": {
         "basePath": "/api",
-        "underscore": true,
-      },
-    },
-    "exportFunction": "post",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "with-post",
-      },
-      "method": "POST",
-      "url": "/api/with/_post",
-    },
-    "handler": "with-post.handler",
-    "isFunctional": true,
-    "sourceFile": "src/lambda/with.ts",
-    "sourceFilePath": "lambda/with.js",
+        "underscore": true
+      }
+    }
   },
+  "ref-bar-bar": {
+    "deployName": "ref-bar-bar",
+    "isFunctional": true,
+    "exportFunction": "bar",
+    "sourceFile": "src/lambda/ref/bar.ts",
+    "sourceFilePath": "lambda/ref/bar.js",
+    "handler": "ref-bar-bar.handler",
+    "gatewayConfig": {
+      "url": "/api/ref/bar/_bar",
+      "method": "GET",
+      "meta": {
+        "functionName": "ref-bar-bar"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  }
 }
 `;
