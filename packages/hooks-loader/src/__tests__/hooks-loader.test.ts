@@ -5,9 +5,13 @@ import { wrap } from 'jest-snapshot-serializer-raw'
 
 const root = resolve(__dirname, './fixtures/catch-all')
 
-const resolveEntry = (path: string) => {
-  return resolve(__dirname, root, 'src/apis/', path)
+const resolveEntry = (path: string | string[]) => {
+  if (!Array.isArray(path)) {
+    return resolve(__dirname, root, 'src/apis/', path)
+  }
+  return path.map((p) => resolve(__dirname, root, 'src/apis/', p))
 }
+
 const getOutput = (stats: webpack.Stats) => {
   return stats.toJson().modules[2].source
 }
@@ -23,6 +27,12 @@ describe('hooks-loader', () => {
     const stats = await compiler(resolveEntry('lambda/index.ts'), root)
     const output = getOutput(stats)
     expect(wrap(output)).toMatchSnapshot()
+  })
+
+  test('the second build should match the first.', async () => {
+    const first = await compiler(resolveEntry('lambda/index.ts'), root)
+    const second = await compiler(resolveEntry('lambda/index.ts'), root)
+    expect(getOutput(first)).toEqual(getOutput(second))
   })
 
   test('non-lambda files should not be compiled', async () => {
