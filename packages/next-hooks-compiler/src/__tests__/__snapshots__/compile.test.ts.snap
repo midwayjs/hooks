@@ -232,6 +232,8 @@ export const hello = (name: string) => {
   console.log(name)
 }
 
+const functionExpression = function () {}
+
 
 // target
 
@@ -239,6 +241,7 @@ export const hello = (name: string) => {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
 exports.hello = function hello(name) { const _req_ctx_ = this; console.log(name); };
+const functionExpression = function () { };
 //# sourceMappingURL=export-arrow.js.map
       
 `;
