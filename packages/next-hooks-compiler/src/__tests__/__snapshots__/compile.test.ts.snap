@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NeXT Hooks Compiler hooks/arrow.ts 1`] = `
-
+exports[`hooks/arrow.ts 1`] = `
 // source
-
 export const useDemo = (name: string) => {}
 
 export const useArrow = (name: string) => {
@@ -15,8 +13,7 @@ export const useAsyncArrow = async (name: string) => {
 }
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useAsyncArrow = exports.useArrow = exports.useDemo = void 0;
@@ -24,29 +21,22 @@ exports.useDemo = function useDemo(name) { const _req_ctx_ = this; };
 exports.useArrow = function useArrow(name) { const _req_ctx_ = this; exports.useDemo.bind(_req_ctx_)(name + '666'); };
 exports.useAsyncArrow = async function useAsyncArrow(name) { const _req_ctx_ = this; await exports.useDemo.bind(_req_ctx_)(name + '666'); };
 //# sourceMappingURL=arrow.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler hooks/arrow-default-export.ts 1`] = `
-
+exports[`hooks/arrow-default-export.ts 1`] = `
 // source
-
 export default async (name: string) => {}
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = async (name) => { };
 //# sourceMappingURL=arrow-default-export.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler hooks/builtin-hooks.ts 1`] = `
-
+exports[`hooks/builtin-hooks.ts 1`] = `
 // source
-
 import { useConfig, useContext, useInject, useLogger, usePlugin, useApp } from '@midwayjs/hooks'
 
 export function useBuiltinHooks() {
@@ -59,8 +49,7 @@ export function useBuiltinHooks() {
 }
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useBuiltinHooks = void 0;
@@ -76,30 +65,23 @@ function useBuiltinHooks() {
 }
 exports.useBuiltinHooks = useBuiltinHooks;
 //# sourceMappingURL=builtin-hooks.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler hooks/func-default-export.ts 1`] = `
-
+exports[`hooks/func-default-export.ts 1`] = `
 // source
-
 export default function (name: string) {}
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function default_1(name) { }
 exports.default = default_1;
 //# sourceMappingURL=func-default-export.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler hooks/import-hook.ts 1`] = `
-
+exports[`hooks/import-hook.ts 1`] = `
 // source
-
 import { useDemo } from './useDemo'
 import { useContext } from '@midwayjs/hooks'
 
@@ -114,8 +96,7 @@ export class ThisNotHooks {}
 export const useFakeHooks = ''
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useFakeHooks = exports.ThisNotHooks = exports.useQuery = void 0;
@@ -133,13 +114,10 @@ class ThisNotHooks {
 exports.ThisNotHooks = ThisNotHooks;
 exports.useFakeHooks = '';
 //# sourceMappingURL=import-hook.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler hooks/import-namespace.ts 1`] = `
-
+exports[`hooks/import-namespace.ts 1`] = `
 // source
-
 import * as hooks from './import-hook'
 
 export function useNamespace() {
@@ -149,8 +127,7 @@ export function useNamespace() {
 }
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useNamespace = void 0;
@@ -163,13 +140,10 @@ function useNamespace() {
 }
 exports.useNamespace = useNamespace;
 //# sourceMappingURL=import-namespace.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler hooks/recursion.ts 1`] = `
-
+exports[`hooks/recursion.ts 1`] = `
 // source
-
 import { useContext } from '@midwayjs/hooks'
 
 export function useRecursion(name: string) {
@@ -183,8 +157,7 @@ export function useRecursion(name: string) {
 }
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useRecursion = void 0;
@@ -199,13 +172,10 @@ function useRecursion(name) {
 }
 exports.useRecursion = useRecursion;
 //# sourceMappingURL=recursion.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler hooks/useDemo.ts 1`] = `
-
+exports[`hooks/useDemo.ts 1`] = `
 // source
-
 import { useContext } from '@midwayjs/hooks'
 
 export function useDemo(name: string) {
@@ -213,8 +183,7 @@ export function useDemo(name: string) {
 }
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useDemo = void 0;
@@ -222,13 +191,10 @@ const hooks_1 = require("@midwayjs/hooks");
 function useDemo(name) { const _req_ctx_ = this; _req_ctx_.ctx.hooks.useContext(); }
 exports.useDemo = useDemo;
 //# sourceMappingURL=useDemo.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/arrow-hook-ref-arrow-hook.ts 1`] = `
-
+exports[`lambda/arrow-hook-ref-arrow-hook.ts 1`] = `
 // source
-
 export const useQuery = (id: string) => {
   return ''
 }
@@ -242,8 +208,7 @@ export const useInner = async () => {
 }
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useInner = exports.useQuery = void 0;
@@ -257,13 +222,10 @@ exports.useInner = async function useInner() {
     inner();
 };
 //# sourceMappingURL=arrow-hook-ref-arrow-hook.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/export-arrow.ts 1`] = `
-
+exports[`lambda/export-arrow.ts 1`] = `
 // source
-
 export const hello = (name: string) => {
   console.log(name)
 }
@@ -271,72 +233,56 @@ export const hello = (name: string) => {
 const functionExpression = function () {}
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
 exports.hello = function hello(name) { const _req_ctx_ = this; console.log(name); };
 const functionExpression = function () { };
 //# sourceMappingURL=export-arrow.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/export-default-anonymous.ts 1`] = `
-
+exports[`lambda/export-default-anonymous.ts 1`] = `
 // source
-
 export default () => {}
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function $default() { const _req_ctx_ = this; }
 exports.default = $default;
 //# sourceMappingURL=export-default-anonymous.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/export-default-func.ts 1`] = `
-
+exports[`lambda/export-default-func.ts 1`] = `
 // source
-
 export default function (name: string) {}
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function $default(name) { const _req_ctx_ = this; }
 exports.default = $default;
 //# sourceMappingURL=export-default-func.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/export-default-named.ts 1`] = `
-
+exports[`lambda/export-default-named.ts 1`] = `
 // source
-
 export default function named(name: string) {}
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function named(name) { const _req_ctx_ = this; }
 exports.default = named;
 //# sourceMappingURL=export-default-named.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/hook-ref-hook.ts 1`] = `
-
+exports[`lambda/hook-ref-hook.ts 1`] = `
 // source
-
 export function useQuery(id: string) {
   return ''
 }
@@ -350,8 +296,7 @@ export async function useInner() {
 }
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useInner = exports.useQuery = void 0;
@@ -367,13 +312,10 @@ async function useInner() {
 }
 exports.useInner = useInner;
 //# sourceMappingURL=hook-ref-hook.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/hook-ref-lambda.ts 1`] = `
-
+exports[`lambda/hook-ref-lambda.ts 1`] = `
 // source
-
 export function hello() {
   normal()
 }
@@ -385,8 +327,7 @@ function useDemo(name: string) {
 }
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
@@ -395,13 +336,10 @@ exports.hello = hello;
 function normal() { }
 function useDemo(name) { const _req_ctx_ = this; return hello.bind(_req_ctx_)(); }
 //# sourceMappingURL=hook-ref-lambda.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/import-hook.ts 1`] = `
-
+exports[`lambda/import-hook.ts 1`] = `
 // source
-
 import { useDemo } from '../hooks/useDemo'
 
 export function hello() {
@@ -409,8 +347,7 @@ export function hello() {
 }
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
@@ -418,31 +355,24 @@ const useDemo_1 = require("../hooks/useDemo");
 function hello() { const _req_ctx_ = this; (typeof useDemo_1.useDemo === "function" ? useDemo_1.useDemo.bind(_req_ctx_) : useDemo_1.useDemo)('666'); }
 exports.hello = hello;
 //# sourceMappingURL=import-hook.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/index.ts 1`] = `
-
+exports[`lambda/index.ts 1`] = `
 // source
-
 export function hello() {}
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
 function hello() { const _req_ctx_ = this; }
 exports.hello = hello;
 //# sourceMappingURL=index.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/lambda-ref-hook.ts 1`] = `
-
+exports[`lambda/lambda-ref-hook.ts 1`] = `
 // source
-
 export function hello() {
   useDemo('666')
   normal()
@@ -453,8 +383,7 @@ function normal() {}
 function useDemo(name: string) {}
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
@@ -467,13 +396,10 @@ exports.hello = hello;
 function normal() { }
 function useDemo(name) { const _req_ctx_ = this; }
 //# sourceMappingURL=lambda-ref-hook.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/lambda-ref-lambda.ts 1`] = `
-
+exports[`lambda/lambda-ref-lambda.ts 1`] = `
 // source
-
 export function hello(name: string, value: string) {}
 
 const hello3 = (name: string) => {}
@@ -484,8 +410,7 @@ export function hello2(name: string) {
 }
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello2 = exports.hello = void 0;
@@ -499,13 +424,10 @@ function hello2(name) {
 }
 exports.hello2 = hello2;
 //# sourceMappingURL=lambda-ref-lambda.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/normal-function.ts 1`] = `
-
+exports[`lambda/normal-function.ts 1`] = `
 // source
-
 export function hello() {
   normal()
 }
@@ -513,8 +435,7 @@ export function hello() {
 function normal() {}
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
@@ -522,13 +443,10 @@ function hello() { const _req_ctx_ = this; normal(); }
 exports.hello = hello;
 function normal() { }
 //# sourceMappingURL=normal-function.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/recursion.ts 1`] = `
-
+exports[`lambda/recursion.ts 1`] = `
 // source
-
 import { useContext } from '@midwayjs/hooks'
 
 export function recursion(name: string) {
@@ -542,8 +460,7 @@ export function recursion(name: string) {
 }
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.recursion = void 0;
@@ -558,13 +475,10 @@ function recursion(name) {
 }
 exports.recursion = recursion;
 //# sourceMappingURL=recursion.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/ref/bar.ts 1`] = `
-
+exports[`lambda/ref/bar.ts 1`] = `
 // source
-
 import { useContext } from '@midwayjs/hooks'
 import { refFoo, Foo } from './foo'
 
@@ -575,8 +489,7 @@ export async function bar() {
 }
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.bar = void 0;
@@ -590,13 +503,10 @@ async function bar() {
 }
 exports.bar = bar;
 //# sourceMappingURL=bar.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/ref/foo.ts 1`] = `
-
+exports[`lambda/ref/foo.ts 1`] = `
 // source
-
 import { useContext } from '@midwayjs/hooks'
 
 export type Foo = any
@@ -606,8 +516,7 @@ export async function refFoo() {
 }
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.refFoo = void 0;
@@ -615,13 +524,10 @@ const hooks_1 = require("@midwayjs/hooks");
 async function refFoo() { const _req_ctx_ = this; const ctx = _req_ctx_.ctx.hooks.useContext(); }
 exports.refFoo = refFoo;
 //# sourceMappingURL=foo.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/with/export-default-arrow.ts 1`] = `
-
+exports[`lambda/with/export-default-arrow.ts 1`] = `
 // source
-
 import { useContext, withController } from '@midwayjs/hooks'
 
 export default withController(
@@ -635,8 +541,7 @@ export default withController(
 )
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const hooks_1 = require("@midwayjs/hooks");
@@ -648,13 +553,10 @@ exports.default = hooks_1.withController({
     return 'xxx';
 });
 //# sourceMappingURL=export-default-arrow.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/with/export-default-expression.ts 1`] = `
-
+exports[`lambda/with/export-default-expression.ts 1`] = `
 // source
-
 import { useContext, withController } from '@midwayjs/hooks'
 
 export default withController(
@@ -668,8 +570,7 @@ export default withController(
 )
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const hooks_1 = require("@midwayjs/hooks");
@@ -681,13 +582,10 @@ exports.default = hooks_1.withController({
     return 'xxx';
 });
 //# sourceMappingURL=export-default-expression.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/with/export-default-named.ts 1`] = `
-
+exports[`lambda/with/export-default-named.ts 1`] = `
 // source
-
 import { useContext, withController } from '@midwayjs/hooks'
 
 export default withController(
@@ -701,8 +599,7 @@ export default withController(
 )
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const hooks_1 = require("@midwayjs/hooks");
@@ -714,13 +611,10 @@ exports.default = hooks_1.withController({
     return 'xxx';
 });
 //# sourceMappingURL=export-default-named.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/with/export-variable.ts 1`] = `
-
+exports[`lambda/with/export-variable.ts 1`] = `
 // source
-
 import { useContext, withController } from '@midwayjs/hooks'
 
 export const post = withController(
@@ -754,8 +648,7 @@ export default withController(
 )
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.get = exports.post = void 0;
@@ -782,13 +675,10 @@ exports.default = hooks_1.withController({
     return ctx.query.from;
 });
 //# sourceMappingURL=export-variable.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler lambda/with-default-post.ts 1`] = `
-
+exports[`lambda/with-default-post.ts 1`] = `
 // source
-
 import { useContext, withController } from '@midwayjs/hooks'
 
 export default withController(
@@ -802,8 +692,7 @@ export default withController(
 )
 
 
-// target
-
+// expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const hooks_1 = require("@midwayjs/hooks");
@@ -815,10 +704,9 @@ exports.default = hooks_1.withController({
     return 'xxx';
 });
 //# sourceMappingURL=with-default-post.js.map
-      
 `;
 
-exports[`NeXT Hooks Compiler 路由信息应该生成正确 1`] = `
+exports[`routes should match snapshot 1`] = `
 {
   "arrow-hook-ref-arrow-hook-usequery": {
     "deployName": "arrow-hook-ref-arrow-hook-usequery",
