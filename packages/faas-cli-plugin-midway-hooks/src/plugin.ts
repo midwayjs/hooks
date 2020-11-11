@@ -83,8 +83,8 @@ export class MidwayHooksPlugin extends BasePlugin {
         root: this.root,
         source: helper.source,
       })
-      compilerEmitter.isCompiled = true
     }
+    compilerEmitter.isCompiled = true
   }
 
   protected get argsPath() {
