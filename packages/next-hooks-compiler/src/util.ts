@@ -99,7 +99,7 @@ export function getTopLevelNameNode(node: ts.Node): ts.Identifier {
     return node.name
   }
 
-  console.log('getTopLevelNameNode 不支持的类型 ' + ts.SyntaxKind[node.kind])
+  console.log('getTopLevelNameNode unsupported types ' + ts.SyntaxKind[node.kind])
   return ts.createIdentifier('')
 }
 
@@ -166,10 +166,6 @@ export function isHOCExportAssignment(node: FunctionKind) {
   }
 
   return isHOC(exportAssignment.expression)
-}
-
-export function getVariableStatementIdentifier(node: ts.VariableStatement) {
-  return node.declarationList.declarations[0].name
 }
 
 export function getSourceFilePath(node: ts.Node) {
