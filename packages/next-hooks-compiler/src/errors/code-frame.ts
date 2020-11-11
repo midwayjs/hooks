@@ -1,13 +1,15 @@
 import { codeFrameColumns } from '@babel/code-frame'
 import ts from 'typescript'
+
 export const buildErrorCodeFrame = (node: ts.Node, message: string) => {
   const sourceFile = node.getSourceFile()
-  const rawSource = sourceFile.getText()
+
+  const raw = sourceFile.getText()
   const start = sourceFile.getLineAndCharacterOfPosition(node.getStart())
   const end = sourceFile.getLineAndCharacterOfPosition(node.getEnd())
 
   const frame = codeFrameColumns(
-    rawSource,
+    raw,
     {
       start: {
         line: start.line + 1,
