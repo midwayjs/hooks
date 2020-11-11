@@ -30,6 +30,6 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
       - run: yarn build
-      - run: yarn cov
+      - run: yarn ci
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
