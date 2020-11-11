@@ -1,46 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`functions rule support routes 1`] = `
-Object {
-  "lambda-index": Object {
+{
+  "lambda-index": {
     "deployName": "lambda-index",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-      },
-    },
-    "exportFunction": "",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "lambda-index",
-      },
-      "method": "GET",
-      "url": "/api",
-    },
-    "handler": "lambda-index.handler",
     "isFunctional": true,
+    "exportFunction": "",
     "sourceFile": "src/lambda/index.ts",
     "sourceFilePath": "lambda/index.js",
-  },
-  "render-index": Object {
-    "deployName": "render-index",
-    "event": Object {
-      "http": Object {
-        "basePath": "/",
-      },
-    },
-    "exportFunction": "",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "render-index",
-      },
+    "handler": "lambda-index.handler",
+    "gatewayConfig": {
+      "url": "/api",
       "method": "GET",
-      "url": "/",
+      "meta": {
+        "functionName": "lambda-index"
+      }
     },
-    "handler": "render-index.handler",
+    "event": {
+      "http": {
+        "basePath": "/api"
+      }
+    }
+  },
+  "render-index": {
+    "deployName": "render-index",
     "isFunctional": true,
+    "exportFunction": "",
     "sourceFile": "src/render/index.ts",
     "sourceFilePath": "render/index.js",
-  },
+    "handler": "render-index.handler",
+    "gatewayConfig": {
+      "url": "/",
+      "method": "GET",
+      "meta": {
+        "functionName": "render-index"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/"
+      }
+    }
+  }
 }
 `;

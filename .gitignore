@@ -25,3 +25,5 @@ serverless.zip
 .faas_debug_tmp
 *.tsbuildinfo
 lib
+.serverless
+code.zip

@@ -4,37 +4,32 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [10.x, 12.x, 14.x, 15.x]
+        os: [ubuntu-latest]
+        include:
+          - node-version: 12.x
+            os: windows-latest
+          - node-version: 12.x
+            os: macos-latest
 
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
       - run: yarn build
-      - run: yarn cov
+      - run: yarn ci
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
-
-  build-windows:
-    runs-on: windows-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x]
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: yarn
-      - run: yarn build
-      - run: yarn cov

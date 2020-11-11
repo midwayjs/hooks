@@ -22,10 +22,10 @@ export const get = withController(
 
 export default withController(
   {
-    middleware: ['staticFile'],
+    middleware: [],
   },
   async () => {
     const ctx = useContext()
-    return 'xxx'
+    return ctx.query.from
   }
 )
