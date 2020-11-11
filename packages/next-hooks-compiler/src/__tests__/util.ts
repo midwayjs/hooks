@@ -33,7 +33,7 @@ export function createInvoker(cwd: string) {
           },
           path: '/test',
           body: {
-            args: ['lxxyx'],
+            args: ['Midway Hooks'],
           },
         },
       ],
