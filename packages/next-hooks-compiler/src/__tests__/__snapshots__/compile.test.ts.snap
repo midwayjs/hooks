@@ -166,6 +166,42 @@ exports.useNamespace = useNamespace;
       
 `;
 
+exports[`NeXT Hooks Compiler hooks/recursion.ts 1`] = `
+
+// source
+
+import { useContext } from '@midwayjs/hooks'
+
+export function useRecursion(name: string) {
+  const ctx = useContext()
+
+  if (Math.random() <= 0.5) {
+    return name
+  }
+
+  return useRecursion(name)
+}
+
+
+// target
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.useRecursion = void 0;
+const hooks_1 = require("@midwayjs/hooks");
+function useRecursion(name) {
+    const _req_ctx_ = this;
+    const ctx = _req_ctx_.ctx.hooks.useContext();
+    if (Math.random() <= 0.5) {
+        return name;
+    }
+    return useRecursion.bind(_req_ctx_)(name);
+}
+exports.useRecursion = useRecursion;
+//# sourceMappingURL=recursion.js.map
+      
+`;
+
 exports[`NeXT Hooks Compiler hooks/useDemo.ts 1`] = `
 
 // source
@@ -486,6 +522,42 @@ function hello() { const _req_ctx_ = this; normal(); }
 exports.hello = hello;
 function normal() { }
 //# sourceMappingURL=normal-function.js.map
+      
+`;
+
+exports[`NeXT Hooks Compiler lambda/recursion.ts 1`] = `
+
+// source
+
+import { useContext } from '@midwayjs/hooks'
+
+export function recursion(name: string) {
+  const ctx = useContext()
+
+  if (Math.random() <= 0.5) {
+    return name
+  }
+
+  return recursion(name)
+}
+
+
+// target
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.recursion = void 0;
+const hooks_1 = require("@midwayjs/hooks");
+function recursion(name) {
+    const _req_ctx_ = this;
+    const ctx = _req_ctx_.ctx.hooks.useContext();
+    if (Math.random() <= 0.5) {
+        return name;
+    }
+    return recursion.bind(_req_ctx_)(name);
+}
+exports.recursion = recursion;
+//# sourceMappingURL=recursion.js.map
       
 `;
 
@@ -1054,6 +1126,27 @@ exports[`NeXT Hooks Compiler 路由信息应该生成正确 1`] = `
       "method": "GET",
       "meta": {
         "functionName": "normal-function-hello"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "recursion-recursion": {
+    "deployName": "recursion-recursion",
+    "isFunctional": true,
+    "exportFunction": "recursion",
+    "sourceFile": "src/lambda/recursion.ts",
+    "sourceFilePath": "lambda/recursion.js",
+    "handler": "recursion-recursion.handler",
+    "gatewayConfig": {
+      "url": "/api/recursion/_recursion",
+      "method": "POST",
+      "meta": {
+        "functionName": "recursion-recursion"
       }
     },
     "event": {

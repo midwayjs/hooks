@@ -131,17 +131,19 @@ export function closetAncestorWhileKind(
   return undefined
 }
 
-export function isAncestor(node: ts.Node, ancestor: ts.Node) {
-  if (node === ancestor) {
+/**
+ * 处理循环递归情况，需要判断节点是不是在 ts.block 中
+ */
+export function isInBlock(node: ts.Node) {
+  if (ts.isBlock(node)) {
     return true
   }
 
-  while (node !== ancestor && node) {
-    node = node.parent
-
-    if (node === ancestor) {
+  while (node) {
+    if (ts.isBlock(node)) {
       return true
     }
+    node = node.parent
   }
 
   return false
