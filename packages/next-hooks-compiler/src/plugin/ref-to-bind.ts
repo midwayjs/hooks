@@ -8,7 +8,7 @@ import {
   debug,
   getSourceFilePath,
   getTopLevelNode,
-  isAncestor,
+  isInBlock,
   isHookName,
   isInsideLambdaOrHook,
   isLambdaOrHook,
@@ -72,7 +72,7 @@ function processReference(node: ts.Identifier, ctx: TransformationContext) {
 
   const [declaration] = declarations
 
-  if (isLambdaOrHook(getTopLevelNode(declaration), declaration) && !isAncestor(node, declaration)) {
+  if (isLambdaOrHook(getTopLevelNode(declaration), declaration) && isInBlock(node)) {
     if (!isInsideLambdaOrHook(node)) {
       throw new InvalidReferenceError(node)
     }
