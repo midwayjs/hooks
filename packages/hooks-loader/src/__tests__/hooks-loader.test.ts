@@ -24,4 +24,9 @@ describe('hooks-loader', () => {
     const output = getOutput(stats)
     expect(wrap(output)).toMatchSnapshot()
   })
+
+  test('non-lambda files should not be compiled', async () => {
+    const stats = await compiler(resolveEntry('util/util.ts'), root)
+    expect(wrap(stats.toJson().modules[0].source)).toMatchSnapshot()
+  })
 })
