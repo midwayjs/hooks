@@ -7020,7 +7020,7 @@ jest-runtime@^26.4.2:
 
 jest-serializer-path@^0.1.15:
   version "0.1.15"
-  resolved "https://registry.yarnpkg.com/jest-serializer-path/-/jest-serializer-path-0.1.15.tgz#68528c98e3f8be652484f1c3876228f6864bd662"
+  resolved "https://registry.npmjs.org/jest-serializer-path/-/jest-serializer-path-0.1.15.tgz#68528c98e3f8be652484f1c3876228f6864bd662"
   integrity sha512-sXb+Ckz9LK5bB5sRAXFeG/nwhGn1XBKayy9xhPpgOmAWaljJiS+VN/xJ3P4I19jZ+WejowvO/kES+A9HePTMvQ==
   dependencies:
     lodash.clonedeep "^4.5.0"

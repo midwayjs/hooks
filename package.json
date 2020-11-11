@@ -26,11 +26,11 @@
     "execa": "^4.0.3",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
+    "jest-snapshot-serializer-raw": "^1.1.0",
     "lerna": "latest",
     "prettier": "^2.0.2",
     "pretty-quick": "^3.1.0",
-    "ts-jest": "^25.2.1",
-    "jest-snapshot-serializer-raw": "^1.1.0"
+    "ts-jest": "^25.2.1"
   },
   "husky": {
     "hooks": {
@@ -39,5 +39,8 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "jest-serializer-path": "^0.1.15"
+  }
 }

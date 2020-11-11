@@ -37,8 +37,12 @@ export default async function loader(this: loader.LoaderContext, source: string)
   const funcs: RenderParam[] = parsedFuncs.map((func) => {
     const isExportDefault = func.exportFunction === ''
 
-    if (func.gatewayConfig.url.endsWith('/*')) {
-      func.gatewayConfig.url = func.gatewayConfig.url.replace(/\/\*$/, '')
+    const url = func.gatewayConfig.url
+    // root path
+    if (url === '/*') {
+      func.gatewayConfig.url = '/'
+    } else if (url.endsWith('/*')) {
+      func.gatewayConfig.url = url.slice(0, -2)
     }
 
     return {
