@@ -17,8 +17,8 @@
     "update:tsconfig": "workspaces-to-typescript-project-references",
     "clean": "lerna clean && lerna run clean --parallel",
     "test": "jest --passWithNoTests",
-    "ci": "npm run test -- --coverage --ci",
-    "cov": "npm run test -- --coverage"
+    "cov": "npm run test -- --coverage",
+    "ci": "npm run cov -- --ci"
   },
   "devDependencies": {
     "@monorepo-utils/workspaces-to-typescript-project-references": "^2.4.3",
