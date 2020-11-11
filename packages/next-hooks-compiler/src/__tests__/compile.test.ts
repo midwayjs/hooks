@@ -1,9 +1,8 @@
 import path, { toUnix } from 'upath'
-import { hintConfig } from '../hintConfig'
 import { compileHooks } from './util'
 import globby from 'globby'
 import fse from 'fs-extra'
-import { clearRoutes, getFunctionsMeta } from '../routes'
+import { getFunctionsMeta } from '../routes'
 import { wrap } from 'jest-snapshot-serializer-raw'
 
 describe('NeXT Hooks Compiler', () => {
@@ -12,7 +11,7 @@ describe('NeXT Hooks Compiler', () => {
   const dist = path.resolve(fixture, 'dist')
 
   beforeAll(async () => {
-    await compileHooks(fixture, hintConfig)
+    await compileHooks(fixture)
   })
 
   const files = globby.sync(toUnix(source))
@@ -41,9 +40,5 @@ ${compiled}
 
   it('路由信息应该生成正确', () => {
     expect(wrap(JSON.stringify(getFunctionsMeta(), null, 2))).toMatchSnapshot()
-  })
-
-  afterAll(() => {
-    clearRoutes()
   })
 })
