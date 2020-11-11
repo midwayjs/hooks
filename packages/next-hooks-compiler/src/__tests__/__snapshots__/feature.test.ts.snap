@@ -1,126 +1,126 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`features remove underscore 1`] = `
-Object {
-  "arrow-hook-ref-arrow-hook-useinner": Object {
-    "deployName": "arrow-hook-ref-arrow-hook-useinner",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-      },
-    },
-    "exportFunction": "useInner",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "arrow-hook-ref-arrow-hook-useinner",
-      },
-      "method": "GET",
-      "url": "/api/arrow-hook-ref-arrow-hook/useInner",
-    },
-    "handler": "arrow-hook-ref-arrow-hook-useinner.handler",
-    "isFunctional": true,
-    "sourceFile": "src/lambda/arrow-hook-ref-arrow-hook.ts",
-    "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
-  },
-  "arrow-hook-ref-arrow-hook-usequery": Object {
+{
+  "arrow-hook-ref-arrow-hook-usequery": {
     "deployName": "arrow-hook-ref-arrow-hook-usequery",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-      },
-    },
-    "exportFunction": "useQuery",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "arrow-hook-ref-arrow-hook-usequery",
-      },
-      "method": "POST",
-      "url": "/api/arrow-hook-ref-arrow-hook/useQuery",
-    },
-    "handler": "arrow-hook-ref-arrow-hook-usequery.handler",
     "isFunctional": true,
+    "exportFunction": "useQuery",
     "sourceFile": "src/lambda/arrow-hook-ref-arrow-hook.ts",
     "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
-  },
-  "export-arrow-hello": Object {
-    "deployName": "export-arrow-hello",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-      },
-    },
-    "exportFunction": "hello",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "export-arrow-hello",
-      },
+    "handler": "arrow-hook-ref-arrow-hook-usequery.handler",
+    "gatewayConfig": {
+      "url": "/api/arrow-hook-ref-arrow-hook/useQuery",
       "method": "POST",
-      "url": "/api/export-arrow/hello",
+      "meta": {
+        "functionName": "arrow-hook-ref-arrow-hook-usequery"
+      }
     },
-    "handler": "export-arrow-hello.handler",
+    "event": {
+      "http": {
+        "basePath": "/api"
+      }
+    }
+  },
+  "arrow-hook-ref-arrow-hook-useinner": {
+    "deployName": "arrow-hook-ref-arrow-hook-useinner",
     "isFunctional": true,
+    "exportFunction": "useInner",
+    "sourceFile": "src/lambda/arrow-hook-ref-arrow-hook.ts",
+    "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
+    "handler": "arrow-hook-ref-arrow-hook-useinner.handler",
+    "gatewayConfig": {
+      "url": "/api/arrow-hook-ref-arrow-hook/useInner",
+      "method": "GET",
+      "meta": {
+        "functionName": "arrow-hook-ref-arrow-hook-useinner"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api"
+      }
+    }
+  },
+  "export-arrow-hello": {
+    "deployName": "export-arrow-hello",
+    "isFunctional": true,
+    "exportFunction": "hello",
     "sourceFile": "src/lambda/export-arrow.ts",
     "sourceFilePath": "lambda/export-arrow.js",
+    "handler": "export-arrow-hello.handler",
+    "gatewayConfig": {
+      "url": "/api/export-arrow/hello",
+      "method": "POST",
+      "meta": {
+        "functionName": "export-arrow-hello"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api"
+      }
+    }
   },
-  "export-default-anonymous": Object {
+  "export-default-anonymous": {
     "deployName": "export-default-anonymous",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-      },
-    },
-    "exportFunction": "",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "export-default-anonymous",
-      },
-      "method": "GET",
-      "url": "/api/export-default-anonymous",
-    },
-    "handler": "export-default-anonymous.handler",
     "isFunctional": true,
+    "exportFunction": "",
     "sourceFile": "src/lambda/export-default-anonymous.ts",
     "sourceFilePath": "lambda/export-default-anonymous.js",
+    "handler": "export-default-anonymous.handler",
+    "gatewayConfig": {
+      "url": "/api/export-default-anonymous",
+      "method": "GET",
+      "meta": {
+        "functionName": "export-default-anonymous"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api"
+      }
+    }
   },
-  "export-default-func": Object {
+  "export-default-func": {
     "deployName": "export-default-func",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-      },
-    },
-    "exportFunction": "",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "export-default-func",
-      },
-      "method": "POST",
-      "url": "/api/export-default-func",
-    },
-    "handler": "export-default-func.handler",
     "isFunctional": true,
+    "exportFunction": "",
     "sourceFile": "src/lambda/export-default-func.ts",
     "sourceFilePath": "lambda/export-default-func.js",
-  },
-  "export-default-named": Object {
-    "deployName": "export-default-named",
-    "event": Object {
-      "http": Object {
-        "basePath": "/api",
-      },
-    },
-    "exportFunction": "",
-    "gatewayConfig": Object {
-      "meta": Object {
-        "functionName": "export-default-named",
-      },
+    "handler": "export-default-func.handler",
+    "gatewayConfig": {
+      "url": "/api/export-default-func",
       "method": "POST",
-      "url": "/api/export-default-named",
+      "meta": {
+        "functionName": "export-default-func"
+      }
     },
-    "handler": "export-default-named.handler",
+    "event": {
+      "http": {
+        "basePath": "/api"
+      }
+    }
+  },
+  "export-default-named": {
+    "deployName": "export-default-named",
     "isFunctional": true,
+    "exportFunction": "",
     "sourceFile": "src/lambda/export-default-named.ts",
     "sourceFilePath": "lambda/export-default-named.js",
-  },
+    "handler": "export-default-named.handler",
+    "gatewayConfig": {
+      "url": "/api/export-default-named",
+      "method": "POST",
+      "meta": {
+        "functionName": "export-default-named"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api"
+      }
+    }
+  }
 }
 `;

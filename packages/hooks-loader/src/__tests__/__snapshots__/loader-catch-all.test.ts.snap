@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`hooks-loader Compile lambda 1`] = `
-"import { request } from '@midwayjs/hooks/request'
+import { request } from '@midwayjs/hooks/request'
 
 
 export  default  function $default (...args) {
@@ -12,18 +12,18 @@ export  default  function $default (...args) {
       args: args,
     },
     meta: {
-  \\"functionName\\": \\"lambda-index\\",
-  \\"gateway\\": \\"http\\",
-  \\"functionGroup\\": \\"midway-faas-react-demo\\"
+  "functionName": "lambda-index",
+  "gateway": "http",
+  "functionGroup": "midway-faas-react-demo"
 }
   })
 }
 
-"
+
 `;
 
 exports[`hooks-loader Compile render 1`] = `
-"import { request } from '@midwayjs/hooks/request'
+import { request } from '@midwayjs/hooks/request'
 
 
 export  default  function $default (...args) {
@@ -34,9 +34,9 @@ export  default  function $default (...args) {
       args: args,
     },
     meta: {
-  \\"functionName\\": \\"render-index\\",
-  \\"gateway\\": \\"http\\",
-  \\"functionGroup\\": \\"midway-faas-react-demo\\"
+  "functionName": "render-index",
+  "gateway": "http",
+  "functionGroup": "midway-faas-react-demo"
 }
   })
 }
@@ -49,9 +49,9 @@ export  function foo (...args) {
       args: args,
     },
     meta: {
-  \\"functionName\\": \\"render-index-foo\\",
-  \\"gateway\\": \\"http\\",
-  \\"functionGroup\\": \\"midway-faas-react-demo\\"
+  "functionName": "render-index-foo",
+  "gateway": "http",
+  "functionGroup": "midway-faas-react-demo"
 }
   })
 }
@@ -64,12 +64,12 @@ export  function bar (...args) {
       args: args,
     },
     meta: {
-  \\"functionName\\": \\"render-index-bar\\",
-  \\"gateway\\": \\"http\\",
-  \\"functionGroup\\": \\"midway-faas-react-demo\\"
+  "functionName": "render-index-bar",
+  "gateway": "http",
+  "functionGroup": "midway-faas-react-demo"
 }
   })
 }
 
-"
+
 `;

@@ -1,6 +1,7 @@
 import { resolve } from 'path'
 import compiler from './compiler'
 import webpack from 'webpack'
+import { wrap } from 'jest-snapshot-serializer-raw'
 
 const root = resolve(__dirname, './fixtures/catch-all')
 
@@ -15,12 +16,12 @@ describe('hooks-loader', () => {
   test('Compile render', async () => {
     const stats = await compiler(resolveEntry('render/[...index].ts'), root)
     const output = getOutput(stats)
-    expect(output).toMatchSnapshot()
+    expect(wrap(output)).toMatchSnapshot()
   })
 
-  test.skip('Compile lambda', async () => {
+  test('Compile lambda', async () => {
     const stats = await compiler(resolveEntry('lambda/index.ts'), root)
     const output = getOutput(stats)
-    expect(output).toMatchSnapshot()
+    expect(wrap(output)).toMatchSnapshot()
   })
 })

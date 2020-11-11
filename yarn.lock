@@ -1443,10 +1443,23 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
+"@midwayjs/bootstrap@^2.3.23":
+  version "2.3.23"
+  resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-2.3.23.tgz#b7cbd8e2b035b795c6e4a7391634750564623b6a"
+  integrity sha512-V2pMniUijXPNR5Z65ciS3PfauDrcXHk+I18XVoTqXXwa9gn5O8YQY1cLEinAaS9C/8haCl2ZD2AWfptEstXwkg==
+
 "@midwayjs/command-core@^1.2.20":
   version "1.2.20"
   resolved "https://registry.npmjs.org/@midwayjs/command-core/-/command-core-1.2.20.tgz#d83782a06ff45bc213f02ead592abb004dc762ea"
   integrity sha512-dkwi7NfCaCquwWgxymTAbb2bRQbSqcLeeLOapAYxnQoEg+zoRXu123trbqGhuuEM/6SMiKiQFpd7DLA9nFJYag==
+  dependencies:
+    light-spinner "^1.0.0"
+    minimist "^1.2.5"
+
+"@midwayjs/command-core@^1.2.23-beta.3":
+  version "1.2.23-beta.3"
+  resolved "https://registry.npmjs.org/@midwayjs/command-core/-/command-core-1.2.23-beta.3.tgz#8c224cd63808c0d154e5e211e93cc3764588e46e"
+  integrity sha512-MWK8fzKNk6Tesz14g6mC+meXWJqUtdC2kD6NX30hrtctil1ZA0JmjNUuc0ZNdIb4mQv/HvKN5abDsFL446SJqQ==
   dependencies:
     light-spinner "^1.0.0"
     minimist "^1.2.5"
@@ -1499,6 +1512,15 @@
     fs-extra "^8.1.0"
     globby "^10.0.1"
 
+"@midwayjs/faas-code-analysis@^1.2.23-beta.3":
+  version "1.2.23-beta.3"
+  resolved "https://registry.npmjs.org/@midwayjs/faas-code-analysis/-/faas-code-analysis-1.2.23-beta.3.tgz#4e1d86599fa3c3b92bce256f5b8206119a49f6a4"
+  integrity sha512-iEuShz9Fqjdzi19dwSU5HEtPRp52O4FkOesVxi0Qf5dEtfljJ5g9Ur8PTrkoV7obG2CsLM/sDhpELx3aO4iklQ==
+  dependencies:
+    "@midwayjs/mwcc" "^0.3.x"
+    fs-extra "^8.1.0"
+    globby "^10.0.1"
+
 "@midwayjs/faas-typings@^1.1.4":
   version "1.1.4"
   resolved "https://registry.npmjs.org/@midwayjs/faas-typings/-/faas-typings-1.1.4.tgz#c91267ed0270159592825c39966171e3b6b191d1"
@@ -1523,7 +1545,27 @@
     "@midwayjs/command-core" "^1.2.20"
     "@midwayjs/serverless-spec-builder" "^1.2.20"
 
-"@midwayjs/fcli-plugin-invoke@^1.1.8", "@midwayjs/fcli-plugin-invoke@^1.2.20":
+"@midwayjs/fcli-plugin-invoke@1.2.23-beta.3":
+  version "1.2.23-beta.3"
+  resolved "https://registry.npmjs.org/@midwayjs/fcli-plugin-invoke/-/fcli-plugin-invoke-1.2.23-beta.3.tgz#d04e89b1543304c1f2d26c3454efbe93af1726c6"
+  integrity sha512-ds7NQbCksooS3FH1eN5M2BVysDR/p7I/Jlp2zgBmvkhsHeH94tT9u8ZTQjstWVVQDq92qH1gJGT1aUUqhXPYRg==
+  dependencies:
+    "@midwayjs/command-core" "^1.2.23-beta.3"
+    "@midwayjs/debugger" "^1.0.x"
+    "@midwayjs/faas-code-analysis" "^1.2.23-beta.3"
+    "@midwayjs/locate" "^1.0.3"
+    "@midwayjs/mwcc" "^0.3.x"
+    "@midwayjs/runtime-engine" "^1.2.9"
+    "@midwayjs/runtime-mock" "^1.2.9"
+    "@midwayjs/serverless-fc-starter" "^1.2.9"
+    "@midwayjs/serverless-fc-trigger" "^1.2.9"
+    "@midwayjs/serverless-scf-starter" "^1.2.9"
+    "@midwayjs/serverless-scf-trigger" "^1.2.9"
+    "@midwayjs/serverless-spec-builder" "^1.2.23-beta.3"
+    fs-extra "^8.1.0"
+    globby "^10.0.1"
+
+"@midwayjs/fcli-plugin-invoke@^1.1.8", "@midwayjs/fcli-plugin-invoke@^1.2.12", "@midwayjs/fcli-plugin-invoke@^1.2.20":
   version "1.2.20"
   resolved "https://registry.npmjs.org/@midwayjs/fcli-plugin-invoke/-/fcli-plugin-invoke-1.2.20.tgz#3b9a3c306bb702312e86a772571e0a0f827ca1ca"
   integrity sha512-na1wW4uTEjRgc3vHkmukxqNOn6NLQvhWzMX9dvhqbCsWtLXudSTR4hEWTft00PMBsdCt3Oy7Fzpwj2db0hGFyA==
@@ -1635,6 +1677,13 @@
     type-is "^1.6.18"
     vary "^1.1.2"
 
+"@midwayjs/serverless-invoke@^1.2.12":
+  version "1.2.12"
+  resolved "https://registry.npmjs.org/@midwayjs/serverless-invoke/-/serverless-invoke-1.2.12.tgz#a653e799f2946c85a492e58cb01ac0f1d49fd001"
+  integrity sha512-RfTtZA6xM46KowsJUoGFphV8FmQ+A6fMWUJtJEPf+MUd8X1MOr+/mCZltvHMA5gs7TvDS3XVlEAzP4+n37nknw==
+  dependencies:
+    "@midwayjs/fcli-plugin-invoke" "^1.2.12"
+
 "@midwayjs/serverless-scf-starter@^1.2.9":
   version "1.2.9"
   resolved "https://registry.npmjs.org/@midwayjs/serverless-scf-starter/-/serverless-scf-starter-1.2.9.tgz#8fbf2ab12f03943d1692293a757cae5cbc78e75a"
@@ -1659,6 +1708,16 @@
   version "1.2.21"
   resolved "https://registry.npmjs.org/@midwayjs/serverless-spec-builder/-/serverless-spec-builder-1.2.21.tgz#4390142653fd13c47d04f99c73cfcc9b421715ac"
   integrity sha512-l4WdqJrgHcxOjBHFrqmWrjSnGkQm4o4+YhNb24IpQgfO5gY247ivEd+vP7qc6KqVrnhMYTGz1A0Bls6jKsojPw==
+  dependencies:
+    ejs "^3.1.3"
+    js-yaml "^3.13.0"
+    json-cycle "^1.3.0"
+    mkdirp "^0.5.1"
+
+"@midwayjs/serverless-spec-builder@^1.2.23-beta.3":
+  version "1.2.23-beta.3"
+  resolved "https://registry.npmjs.org/@midwayjs/serverless-spec-builder/-/serverless-spec-builder-1.2.23-beta.3.tgz#4b0eb066608b28ff59711ced7d2e3757f184ad3c"
+  integrity sha512-MnipECiHkMSmyylwm9gu43nWdLJ6A+Ave7pYdlXsiLRu1W+6H8TbAlAsZut3NH0xS5go90y5fdHo2DyHB/8aVQ==
   dependencies:
     ejs "^3.1.3"
     js-yaml "^3.13.0"
@@ -6982,6 +7041,11 @@ jest-serializer@^26.3.0:
   dependencies:
     "@types/node" "*"
     graceful-fs "^4.2.4"
+
+jest-snapshot-serializer-raw@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/jest-snapshot-serializer-raw/-/jest-snapshot-serializer-raw-1.1.0.tgz#1d7f09c02f3dbbc3ae70b5b7598fb2f45e37d6c8"
+  integrity sha512-OL3bXRCnSn7Kur3YTGYj+A3Hwh2eyb5QL5VLQ9OSsPBOva7r3sCB0Jf1rOT/KN3ypzH42hrkDz96lpbiMo+AlQ==
 
 jest-snapshot@^25.5.1:
   version "25.5.1"
