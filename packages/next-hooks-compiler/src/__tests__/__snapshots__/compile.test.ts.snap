@@ -494,9 +494,10 @@ exports[`NeXT Hooks Compiler lambda/ref/bar.ts 1`] = `
 // source
 
 import { useContext } from '@midwayjs/hooks'
-import { refFoo } from './foo'
+import { refFoo, Foo } from './foo'
 
 export async function bar() {
+  const foo: Foo = ''
   const ctx = useContext()
   refFoo()
 }
@@ -511,6 +512,7 @@ const hooks_1 = require("@midwayjs/hooks");
 const foo_1 = require("./foo");
 async function bar() {
     const _req_ctx_ = this;
+    const foo = '';
     const ctx = _req_ctx_.ctx.hooks.useContext();
     (typeof foo_1.refFoo === "function" ? foo_1.refFoo.bind(_req_ctx_) : foo_1.refFoo)();
 }
@@ -524,6 +526,8 @@ exports[`NeXT Hooks Compiler lambda/ref/foo.ts 1`] = `
 // source
 
 import { useContext } from '@midwayjs/hooks'
+
+export type Foo = any
 
 export async function refFoo() {
   const ctx = useContext()
