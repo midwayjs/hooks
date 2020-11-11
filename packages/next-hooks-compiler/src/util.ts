@@ -95,6 +95,10 @@ export function getTopLevelNameNode(node: ts.Node): ts.Identifier {
     return node.name
   }
 
+  if (ts.isFunctionExpression(node)) {
+    return node.name
+  }
+
   console.log('getTopLevelNameNode 不支持的类型 ' + ts.SyntaxKind[node.kind])
   return ts.createIdentifier('')
 }
@@ -109,7 +113,7 @@ export function isFunctionKind(kind: ts.SyntaxKind) {
 
 export type FunctionKind = FunctionDeclaration | ArrowFunction | FunctionExpression
 
-export function closetAncestor<T extends ts.Node = ts.Node>(node: ts.Node, kind: ts.SyntaxKind): T {
+export function closetAncestor<T extends ts.Node = ts.Node>(node: ts.Node, kind: ts.SyntaxKind) {
   return closetAncestorWhileKind(node, (currentKind) => currentKind === kind) as T
 }
 
@@ -155,7 +159,7 @@ export function isLambdaOrHookVariableStatement(node: FunctionKind) {
 }
 
 // export default withController()
-export function isHOCExportAssignment(node: ArrowFunction) {
+export function isHOCExportAssignment(node: FunctionKind) {
   const exportAssignment = closetAncestor<ts.ExportAssignment>(node, ts.SyntaxKind.ExportAssignment)
   if (!exportAssignment) {
     return false

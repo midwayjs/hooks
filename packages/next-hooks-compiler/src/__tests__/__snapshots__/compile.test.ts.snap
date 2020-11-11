@@ -539,7 +539,106 @@ exports.refFoo = refFoo;
       
 `;
 
-exports[`NeXT Hooks Compiler lambda/with.ts 1`] = `
+exports[`NeXT Hooks Compiler lambda/with/export-default-arrow.ts 1`] = `
+
+// source
+
+import { useContext, withController } from '@midwayjs/hooks'
+
+export default withController(
+  {
+    middleware: ['staticFile'],
+  },
+  async () => {
+    const ctx = useContext()
+    return 'xxx'
+  }
+)
+
+
+// target
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const hooks_1 = require("@midwayjs/hooks");
+exports.default = hooks_1.withController({
+    middleware: ['staticFile'],
+}, async function $default() {
+    const _req_ctx_ = this;
+    const ctx = _req_ctx_.ctx.hooks.useContext();
+    return 'xxx';
+});
+//# sourceMappingURL=export-default-arrow.js.map
+      
+`;
+
+exports[`NeXT Hooks Compiler lambda/with/export-default-expression.ts 1`] = `
+
+// source
+
+import { useContext, withController } from '@midwayjs/hooks'
+
+export default withController(
+  {
+    middleware: ['staticFile'],
+  },
+  async function () {
+    const ctx = useContext()
+    return 'xxx'
+  }
+)
+
+
+// target
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const hooks_1 = require("@midwayjs/hooks");
+exports.default = hooks_1.withController({
+    middleware: ['staticFile'],
+}, async function () {
+    const _req_ctx_ = this;
+    const ctx = _req_ctx_.ctx.hooks.useContext();
+    return 'xxx';
+});
+//# sourceMappingURL=export-default-expression.js.map
+      
+`;
+
+exports[`NeXT Hooks Compiler lambda/with/export-default-named.ts 1`] = `
+
+// source
+
+import { useContext, withController } from '@midwayjs/hooks'
+
+export default withController(
+  {
+    middleware: ['staticFile'],
+  },
+  async function named() {
+    const ctx = useContext()
+    return 'xxx'
+  }
+)
+
+
+// target
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const hooks_1 = require("@midwayjs/hooks");
+exports.default = hooks_1.withController({
+    middleware: ['staticFile'],
+}, async function named() {
+    const _req_ctx_ = this;
+    const ctx = _req_ctx_.ctx.hooks.useContext();
+    return 'xxx';
+});
+//# sourceMappingURL=export-default-named.js.map
+      
+`;
+
+exports[`NeXT Hooks Compiler lambda/with/export-variable.ts 1`] = `
 
 // source
 
@@ -567,11 +666,11 @@ export const get = withController(
 
 export default withController(
   {
-    middleware: ['staticFile'],
+    middleware: [],
   },
   async () => {
     const ctx = useContext()
-    return 'xxx'
+    return ctx.query.from
   }
 )
 
@@ -597,12 +696,13 @@ exports.get = hooks_1.withController({
     console.log(name);
 });
 exports.default = hooks_1.withController({
-    middleware: ['staticFile'],
+    middleware: [],
 }, async function $default() {
+    const _req_ctx_ = this;
     const ctx = _req_ctx_.ctx.hooks.useContext();
-    return 'xxx';
+    return ctx.query.from;
 });
-//# sourceMappingURL=with.js.map
+//# sourceMappingURL=export-variable.js.map
       
 `;
 
@@ -631,6 +731,7 @@ const hooks_1 = require("@midwayjs/hooks");
 exports.default = hooks_1.withController({
     middleware: ['staticFile'],
 }, async function $default(name) {
+    const _req_ctx_ = this;
     const ctx = _req_ctx_.ctx.hooks.useContext();
     return 'xxx';
 });
@@ -955,39 +1056,18 @@ exports[`NeXT Hooks Compiler 路由信息应该生成正确 1`] = `
       }
     }
   },
-  "with-post": {
-    "deployName": "with-post",
+  "with-default-post": {
+    "deployName": "with-default-post",
     "isFunctional": true,
-    "exportFunction": "post",
-    "sourceFile": "src/lambda/with.ts",
-    "sourceFilePath": "lambda/with.js",
-    "handler": "with-post.handler",
+    "exportFunction": "",
+    "sourceFile": "src/lambda/with-default-post.ts",
+    "sourceFilePath": "lambda/with-default-post.js",
+    "handler": "with-default-post.handler",
     "gatewayConfig": {
-      "url": "/api/with/_post",
+      "url": "/api/with-default-post",
       "method": "POST",
       "meta": {
-        "functionName": "with-post"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "with-get": {
-    "deployName": "with-get",
-    "isFunctional": true,
-    "exportFunction": "get",
-    "sourceFile": "src/lambda/with.ts",
-    "sourceFilePath": "lambda/with.js",
-    "handler": "with-get.handler",
-    "gatewayConfig": {
-      "url": "/api/with/_get",
-      "method": "GET",
-      "meta": {
-        "functionName": "with-get"
+        "functionName": "with-default-post"
       }
     },
     "event": {
@@ -1030,6 +1110,132 @@ exports[`NeXT Hooks Compiler 路由信息应该生成正确 1`] = `
       "method": "GET",
       "meta": {
         "functionName": "ref-bar-bar"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "with-export-default-arrow": {
+    "deployName": "with-export-default-arrow",
+    "isFunctional": true,
+    "exportFunction": "",
+    "sourceFile": "src/lambda/with/export-default-arrow.ts",
+    "sourceFilePath": "lambda/with/export-default-arrow.js",
+    "handler": "with-export-default-arrow.handler",
+    "gatewayConfig": {
+      "url": "/api/with/export-default-arrow",
+      "method": "GET",
+      "meta": {
+        "functionName": "with-export-default-arrow"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "with-export-default-expression": {
+    "deployName": "with-export-default-expression",
+    "isFunctional": true,
+    "exportFunction": "",
+    "sourceFile": "src/lambda/with/export-default-expression.ts",
+    "sourceFilePath": "lambda/with/export-default-expression.js",
+    "handler": "with-export-default-expression.handler",
+    "gatewayConfig": {
+      "url": "/api/with/export-default-expression",
+      "method": "GET",
+      "meta": {
+        "functionName": "with-export-default-expression"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "with-export-default-named": {
+    "deployName": "with-export-default-named",
+    "isFunctional": true,
+    "exportFunction": "",
+    "sourceFile": "src/lambda/with/export-default-named.ts",
+    "sourceFilePath": "lambda/with/export-default-named.js",
+    "handler": "with-export-default-named.handler",
+    "gatewayConfig": {
+      "url": "/api/with/export-default-named",
+      "method": "GET",
+      "meta": {
+        "functionName": "with-export-default-named"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "with-export-variable-post": {
+    "deployName": "with-export-variable-post",
+    "isFunctional": true,
+    "exportFunction": "post",
+    "sourceFile": "src/lambda/with/export-variable.ts",
+    "sourceFilePath": "lambda/with/export-variable.js",
+    "handler": "with-export-variable-post.handler",
+    "gatewayConfig": {
+      "url": "/api/with/export-variable/_post",
+      "method": "POST",
+      "meta": {
+        "functionName": "with-export-variable-post"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "with-export-variable-get": {
+    "deployName": "with-export-variable-get",
+    "isFunctional": true,
+    "exportFunction": "get",
+    "sourceFile": "src/lambda/with/export-variable.ts",
+    "sourceFilePath": "lambda/with/export-variable.js",
+    "handler": "with-export-variable-get.handler",
+    "gatewayConfig": {
+      "url": "/api/with/export-variable/_get",
+      "method": "GET",
+      "meta": {
+        "functionName": "with-export-variable-get"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "with-export-variable": {
+    "deployName": "with-export-variable",
+    "isFunctional": true,
+    "exportFunction": "",
+    "sourceFile": "src/lambda/with/export-variable.ts",
+    "sourceFilePath": "lambda/with/export-variable.js",
+    "handler": "with-export-variable.handler",
+    "gatewayConfig": {
+      "url": "/api/with/export-variable",
+      "method": "GET",
+      "meta": {
+        "functionName": "with-export-variable"
       }
     },
     "event": {
