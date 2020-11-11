@@ -5,6 +5,7 @@ import {
   getTopLevelNameNode,
   getTopLevelNode,
   hasModifier,
+  isHOCExportAssignment,
   isLambda,
   isLambdaOrHook,
   isLambdaOrHookVariableStatement,
@@ -25,7 +26,10 @@ export default {
         }
 
         if (isLambda(node, node)) {
-          addRoute(getSourceFilePath(node), parseFunctionConfig(node, node))
+          const functionName = getTopLevelNameNode(node).text
+          const isExportDefault = hasModifier(node, ts.ModifierFlags.ExportDefault)
+
+          addRoute(getSourceFilePath(node), parseFunctionConfig(node, functionName, isExportDefault))
         }
 
         return ts.updateFunctionDeclaration(
@@ -41,13 +45,25 @@ export default {
         )
       },
       FunctionExpression(node: ts.FunctionExpression) {
-        if (!isLambdaOrHookVariableStatement(node)) {
+        const isHOC = isHOCExportAssignment(node)
+        const isVariableStatement = isLambdaOrHookVariableStatement(node)
+
+        if (!isHOC && !isVariableStatement) {
           return node
         }
 
-        const statement = closetAncestor<ts.VariableStatement>(node, ts.SyntaxKind.VariableStatement)
+        const statement = isHOC
+          ? closetAncestor<ts.ExportAssignment>(node, ts.SyntaxKind.ExportAssignment)
+          : closetAncestor<ts.VariableStatement>(node, ts.SyntaxKind.VariableStatement)
+
         if (isLambda(node, statement)) {
-          addRoute(getSourceFilePath(node), parseFunctionConfig(node, statement))
+          const functionName = isHOC ? '' : getTopLevelNameNode(statement).text
+          const isExportDefault = isHOC
+            ? true
+            : hasModifier(node, ts.ModifierFlags.ExportDefault) ||
+              hasModifier(statement, ts.ModifierFlags.ExportDefault)
+
+          addRoute(getSourceFilePath(node), parseFunctionConfig(node, functionName, isExportDefault))
         }
 
         return ts.updateFunctionExpression(
@@ -67,14 +83,10 @@ export default {
 
 function parseFunctionConfig(
   node: ts.FunctionDeclaration | ts.FunctionExpression,
-  container: ts.Node
+  functionName: string,
+  isExportDefault: boolean
 ): MidwayHooksFunctionStructure {
   const sourceFilePath = getSourceFilePath(node)
-  const functionIdentifier = getTopLevelNameNode(container)
-  const functionName: string = functionIdentifier.text
-  const isExportDefault =
-    hasModifier(node, ts.ModifierFlags.ExportDefault) || hasModifier(container, ts.ModifierFlags.ExportDefault)
-
   const { events } = helper.getRuleBySourceFilePath(sourceFilePath)
   const url = helper.getHTTPPath(sourceFilePath, functionName, isExportDefault)
   const deployName = getDeployFunctionName({ sourceFilePath, functionName, isExportDefault })
