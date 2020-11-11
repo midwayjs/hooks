@@ -28,7 +28,7 @@ import { request } from '@midwayjs/hooks/request'
 
 export  default  function $default (...args) {
   return request({
-    url: '',
+    url: '/',
     method: 'GET',
     data: {
       args: args,
