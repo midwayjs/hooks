@@ -13,7 +13,7 @@ import {
 import { FunctionHandler, HooksRequestContext } from '../const'
 import { helper } from '../helper'
 import { addRoute, MidwayHooksFunctionStructure } from '../routes'
-import { relative } from 'upath'
+import { relative, toUnix } from 'upath'
 import _ from 'lodash'
 
 export default {
@@ -83,8 +83,8 @@ function parseFunctionConfig(
     deployName,
     isFunctional: true,
     exportFunction: isExportDefault ? '' : functionName,
-    sourceFile: relative(helper.root, sourceFilePath),
-    sourceFilePath: helper.getDistPath(sourceFilePath),
+    sourceFile: toUnix(relative(helper.root, sourceFilePath)),
+    sourceFilePath: toUnix(helper.getDistPath(sourceFilePath)),
     handler: `${deployName}.${FunctionHandler}`,
     gatewayConfig: {
       url,
