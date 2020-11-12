@@ -1,9 +1,9 @@
 import inside from 'is-path-inside'
 import { LambdaMethodPrefix } from './const'
 import { basename, dirname, extname, join, relative, resolve, toUnix } from 'upath'
-import chalk from 'chalk'
 import { transform } from '@midwayjs/serverless-spec-builder'
 import type { FunctionRule, FunctionsRule, SpecStructureWithGateway } from '@midwayjs/hooks-shared'
+import { duplicateWarning } from './routes'
 
 const defaultFunctionsRule: FunctionsRule = {
   source: '/src/apis',
@@ -68,11 +68,11 @@ export class RouteHelper {
     return inside(toUnix(child), toUnix(parent))
   }
 
-  getHTTPPath(filePath: string, method: string, isExportDefault: boolean) {
-    const rule = this.getRuleBySourceFilePath(filePath)
+  getHTTPPath(currentPath: string, method: string, isExportDefault: boolean) {
+    const rule = this.getRuleBySourceFilePath(currentPath)
     const lambdaDirectory = this.getLambdaDirectory(rule)
 
-    const { isCatchAllRoutes, filename } = parseRoute(basename(filePath, extname(filePath)))
+    const { isCatchAllRoutes, filename } = parseRoute(basename(currentPath, extname(currentPath)))
     const fileRoute = filename === 'index' ? '' : filename
     const methodPrefix = rule.events.http.underscore ? LambdaMethodPrefix : ''
     const func = isExportDefault ? '' : `${methodPrefix}${method}`
@@ -84,7 +84,7 @@ export class RouteHelper {
          * /apis/lambda/index.ts -> ''
          * /apis/lambda/todo/index.ts -> 'todo'
          */
-        relative(lambdaDirectory, dirname(filePath)),
+        relative(lambdaDirectory, dirname(currentPath)),
         /**
          * index -> ''
          * demo -> '/demo'
@@ -97,26 +97,19 @@ export class RouteHelper {
     )
 
     /**
-     * 重复的路由
+     * duplicate routes
      */
-    const originPath = this.routes.get(api)
-    if (originPath && originPath !== toUnix(filePath)) {
-      console.log(
-        '[ %s ] Duplicate routes detected. %s and %s both resolve to %s. Reference: %s',
-        chalk.yellow('warn'),
-        chalk.cyan(relative(this.root, originPath)),
-        chalk.cyan(relative(this.root, filePath)),
-        chalk.cyan(api),
-        'https://www.yuque.com/midwayjs/faas/et7x4k'
-      )
+    const existPath = this.routes.get(api)
+    if (existPath && existPath !== toUnix(currentPath)) {
+      duplicateWarning(this.root, existPath, currentPath, api)
     }
+    this.routes.set(api, toUnix(currentPath))
 
-    this.routes.set(api, toUnix(filePath))
     return api
   }
 }
 
-export function parseRoute(filename: string) {
+function parseRoute(filename: string) {
   const re = /\[\.{3}(.+)]/
 
   return {
