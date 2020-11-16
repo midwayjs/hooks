@@ -21,7 +21,7 @@ export default {
 }
 
 function createRuntimeHelper() {
-  const expr = template(`import { bind as _bind } from '${MidwayHooksPackage}/lib/runtime'`)(
+  const expr = template(`import { bind as _bind, call as _call } from '${MidwayHooksPackage}/lib/runtime'`)(
     {}
   )[0] as ts.ExpressionStatement
   return expr

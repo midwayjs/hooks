@@ -172,6 +172,6 @@ function compileBuiltinMethod(identifier: ts.Identifier) {
     throw new BuiltinHooksError(identifier)
   }
 
-  const tpl = template(`${HooksMethodNamespace}.HOOK`)({ HOOK: identifier })[0] as ts.ExpressionStatement
+  const tpl = template(`_call('${method}', ${HooksRequestContext})`)({})[0] as ts.ExpressionStatement
   return tpl.expression
 }

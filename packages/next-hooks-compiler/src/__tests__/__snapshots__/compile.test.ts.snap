@@ -59,12 +59,12 @@ const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 function useBuiltinHooks() {
     const _req_ctx_ = this;
-    _req_ctx_.ctx.hooks.useConfig();
-    _req_ctx_.ctx.hooks.useLogger();
-    _req_ctx_.ctx.hooks.useContext();
-    _req_ctx_.ctx.hooks.useInject('');
-    _req_ctx_.ctx.hooks.usePlugin('');
-    _req_ctx_.ctx.hooks.useApp();
+    _call("useConfig", _req_ctx_)();
+    _call("useLogger", _req_ctx_)();
+    _call("useContext", _req_ctx_)();
+    _call("useInject", _req_ctx_)('');
+    _call("usePlugin", _req_ctx_)('');
+    _call("useApp", _req_ctx_)();
 }
 exports.useBuiltinHooks = useBuiltinHooks;
 //# sourceMappingURL=builtin-hooks.js.map
@@ -109,7 +109,7 @@ const useDemo_1 = require("./useDemo");
 const hooks_1 = require("@midwayjs/hooks");
 function useQuery(name) {
     const _req_ctx_ = this;
-    _req_ctx_.ctx.hooks.useContext();
+    _call("useContext", _req_ctx_)();
     _bind(useDemo_1.useDemo, _req_ctx_)(name);
     console.log(exports.useFakeHooks);
 }
@@ -171,7 +171,7 @@ const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 function useRecursion(name) {
     const _req_ctx_ = this;
-    const ctx = _req_ctx_.ctx.hooks.useContext();
+    const ctx = _call("useContext", _req_ctx_)();
     if (Math.random() <= 0.5) {
         return name;
     }
@@ -196,7 +196,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.useDemo = void 0;
 const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
-function useDemo(name) { const _req_ctx_ = this; _req_ctx_.ctx.hooks.useContext(); }
+function useDemo(name) { const _req_ctx_ = this; _call("useContext", _req_ctx_)(); }
 exports.useDemo = useDemo;
 //# sourceMappingURL=useDemo.js.map
 `;
@@ -488,7 +488,7 @@ const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 function recursion(name) {
     const _req_ctx_ = this;
-    const ctx = _req_ctx_.ctx.hooks.useContext();
+    const ctx = _call("useContext", _req_ctx_)();
     if (Math.random() <= 0.5) {
         return name;
     }
@@ -520,7 +520,7 @@ const foo_1 = require("./foo");
 async function bar() {
     const _req_ctx_ = this;
     const foo = '';
-    const ctx = _req_ctx_.ctx.hooks.useContext();
+    const ctx = _call("useContext", _req_ctx_)();
     _bind(foo_1.refFoo, _req_ctx_)();
 }
 exports.bar = bar;
@@ -544,7 +544,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.refFoo = void 0;
 const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
-async function refFoo() { const _req_ctx_ = this; const ctx = _req_ctx_.ctx.hooks.useContext(); }
+async function refFoo() { const _req_ctx_ = this; const ctx = _call("useContext", _req_ctx_)(); }
 exports.refFoo = refFoo;
 //# sourceMappingURL=foo.js.map
 `;
@@ -573,7 +573,7 @@ exports.default = hooks_1.withController({
     middleware: ['staticFile'],
 }, async function $default() {
     const _req_ctx_ = this;
-    const ctx = _req_ctx_.ctx.hooks.useContext();
+    const ctx = _call("useContext", _req_ctx_)();
     return 'xxx';
 });
 //# sourceMappingURL=export-default-arrow.js.map
@@ -603,7 +603,7 @@ exports.default = hooks_1.withController({
     middleware: ['staticFile'],
 }, async function () {
     const _req_ctx_ = this;
-    const ctx = _req_ctx_.ctx.hooks.useContext();
+    const ctx = _call("useContext", _req_ctx_)();
     return 'xxx';
 });
 //# sourceMappingURL=export-default-expression.js.map
@@ -633,7 +633,7 @@ exports.default = hooks_1.withController({
     middleware: ['staticFile'],
 }, async function named() {
     const _req_ctx_ = this;
-    const ctx = _req_ctx_.ctx.hooks.useContext();
+    const ctx = _call("useContext", _req_ctx_)();
     return 'xxx';
 });
 //# sourceMappingURL=export-default-named.js.map
@@ -684,21 +684,21 @@ exports.post = hooks_1.withController({
     middleware: [],
 }, async function post(name) {
     const _req_ctx_ = this;
-    const ctx = _req_ctx_.ctx.hooks.useContext();
+    const ctx = _call("useContext", _req_ctx_)();
     console.log(name);
 });
 exports.get = hooks_1.withController({
     middleware: [],
 }, async function get() {
     const _req_ctx_ = this;
-    const ctx = _req_ctx_.ctx.hooks.useContext();
+    const ctx = _call("useContext", _req_ctx_)();
     console.log(name);
 });
 exports.default = hooks_1.withController({
     middleware: [],
 }, async function $default() {
     const _req_ctx_ = this;
-    const ctx = _req_ctx_.ctx.hooks.useContext();
+    const ctx = _call("useContext", _req_ctx_)();
     return ctx.query.from;
 });
 //# sourceMappingURL=export-variable.js.map
@@ -728,7 +728,7 @@ exports.default = hooks_1.withController({
     middleware: ['staticFile'],
 }, async function $default(name) {
     const _req_ctx_ = this;
-    const ctx = _req_ctx_.ctx.hooks.useContext();
+    const ctx = _call("useContext", _req_ctx_)();
     return 'xxx';
 });
 //# sourceMappingURL=with-default-post.js.map

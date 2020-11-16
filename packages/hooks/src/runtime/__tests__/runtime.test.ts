@@ -1,7 +1,8 @@
-import { bind } from '..'
+import { bind, call } from '..'
 import { withController } from '../../'
+import { FaaSContext } from '@midwayjs/faas'
 
-describe('runtime api', () => {
+describe('bind', () => {
   it('bind should exist', () => {
     expect(bind).toBeTruthy()
   })
@@ -32,5 +33,21 @@ describe('runtime api', () => {
     const target = bind(handler, {})
     expect(target.middleware).toBeInstanceOf(Array)
     expect(target.middleware[0]).toEqual({ is: 'middleware' })
+  })
+})
+
+describe('call', () => {
+  it('call should exist', () => {
+    expect(call).toBeTruthy()
+  })
+
+  it('should call internal hooks', () => {
+    const mockContext = {
+      hooks: {
+        useConfig: jest.fn(),
+      } as any,
+    } as Partial<FaaSContext>
+    call('useConfig', { ctx: mockContext })()
+    expect(mockContext.hooks.useConfig).toBeCalled()
   })
 })
