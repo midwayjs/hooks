@@ -1,6 +1,13 @@
 import ts from 'typescript'
 import { template, TransformationContext } from '@midwayjs/mwcc'
-import { BuiltinHOC, BuiltinHooks, ContextBind, HooksMethodNamespace, MidwayHooksPackage } from '../const'
+import {
+  BuiltinHOC,
+  BuiltinHooks,
+  ContextBind,
+  HooksMethodNamespace,
+  HooksRequestContext,
+  MidwayHooksPackage,
+} from '../const'
 import { BuiltinHooksError } from '../errors/BuiltinHooks'
 import { isEmpty } from 'lodash'
 import {
@@ -132,9 +139,10 @@ function isLambdaOrHookImports(node: ts.Identifier, moduleId: string, ctx: Trans
 
 /**
  * useQuery => useQuery.bind($lambda)
+ * useQuery => _bind(useQuery, $lambda)
  */
 function compileRefToBind(identifier: ts.Identifier) {
-  const tpl = template(`HOOK.${ContextBind}`)({ HOOK: identifier })[0] as ts.ExpressionStatement
+  const tpl = template(`_bind(HOOK, ${HooksRequestContext})`)({ HOOK: identifier })[0] as ts.ExpressionStatement
   return tpl.expression
 }
 
@@ -143,7 +151,7 @@ function compileRefToBind(identifier: ts.Identifier) {
  * useQuery => typeof useQuery === 'function' ? useQuery.bind($lambda) : useQuery
  */
 function compileImportRefToBind(identifier: ts.Identifier) {
-  const tpl = template(`typeof HOOK === 'function' ? HOOK.${ContextBind} : HOOK`)({
+  const tpl = template(`_bind(HOOK, ${HooksRequestContext})`)({
     HOOK: identifier,
   })[0] as ts.ExpressionStatement
   return tpl.expression

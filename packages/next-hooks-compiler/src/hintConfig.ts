@@ -12,7 +12,7 @@ export const hintConfig = {
           name: require.resolve('./plugin/create-lambda'),
         },
         {
-          name: require.resolve('./plugin/sourcefile-logger'),
+          name: require.resolve('./plugin/runtime-helper'),
         },
       ],
     },

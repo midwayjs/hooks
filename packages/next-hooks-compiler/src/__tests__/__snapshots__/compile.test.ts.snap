@@ -17,9 +17,10 @@ export const useAsyncArrow = async (name: string) => {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useAsyncArrow = exports.useArrow = exports.useDemo = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 exports.useDemo = function useDemo(name) { const _req_ctx_ = this; };
-exports.useArrow = function useArrow(name) { const _req_ctx_ = this; exports.useDemo.bind(_req_ctx_)(name + '666'); };
-exports.useAsyncArrow = async function useAsyncArrow(name) { const _req_ctx_ = this; await exports.useDemo.bind(_req_ctx_)(name + '666'); };
+exports.useArrow = function useArrow(name) { const _req_ctx_ = this; _bind(exports.useDemo, _req_ctx_)(name + '666'); };
+exports.useAsyncArrow = async function useAsyncArrow(name) { const _req_ctx_ = this; await _bind(exports.useDemo, _req_ctx_)(name + '666'); };
 //# sourceMappingURL=arrow.js.map
 `;
 
@@ -31,6 +32,7 @@ export default async (name: string) => {}
 // expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 exports.default = async (name) => { };
 //# sourceMappingURL=arrow-default-export.js.map
 `;
@@ -53,6 +55,7 @@ export function useBuiltinHooks() {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useBuiltinHooks = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 function useBuiltinHooks() {
     const _req_ctx_ = this;
@@ -75,6 +78,7 @@ export default function (name: string) {}
 // expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 function default_1(name) { }
 exports.default = default_1;
 //# sourceMappingURL=func-default-export.js.map
@@ -100,12 +104,13 @@ export const useFakeHooks = ''
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useFakeHooks = exports.ThisNotHooks = exports.useQuery = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const useDemo_1 = require("./useDemo");
 const hooks_1 = require("@midwayjs/hooks");
 function useQuery(name) {
     const _req_ctx_ = this;
     _req_ctx_.ctx.hooks.useContext();
-    (typeof useDemo_1.useDemo === "function" ? useDemo_1.useDemo.bind(_req_ctx_) : useDemo_1.useDemo)(name);
+    _bind(useDemo_1.useDemo, _req_ctx_)(name);
     console.log(exports.useFakeHooks);
 }
 exports.useQuery = useQuery;
@@ -131,12 +136,13 @@ export function useNamespace() {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useNamespace = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks = require("./import-hook");
 function useNamespace() {
     const _req_ctx_ = this;
     const n = new hooks.ThisNotHooks();
     console.log(hooks.useFakeHooks);
-    return hooks.useQuery.bind(_req_ctx_)(n);
+    return hooks._bind(useQuery, _req_ctx_)(n);
 }
 exports.useNamespace = useNamespace;
 //# sourceMappingURL=import-namespace.js.map
@@ -161,6 +167,7 @@ export function useRecursion(name: string) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useRecursion = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 function useRecursion(name) {
     const _req_ctx_ = this;
@@ -168,7 +175,7 @@ function useRecursion(name) {
     if (Math.random() <= 0.5) {
         return name;
     }
-    return useRecursion.bind(_req_ctx_)(name);
+    return _bind(useRecursion, _req_ctx_)(name);
 }
 exports.useRecursion = useRecursion;
 //# sourceMappingURL=recursion.js.map
@@ -187,6 +194,7 @@ export function useDemo(name: string) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useDemo = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 function useDemo(name) { const _req_ctx_ = this; _req_ctx_.ctx.hooks.useContext(); }
 exports.useDemo = useDemo;
@@ -212,12 +220,13 @@ export const useInner = async () => {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useInner = exports.useQuery = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 exports.useQuery = function useQuery(id) { const _req_ctx_ = this; return ''; };
 exports.useInner = async function useInner() {
     const _req_ctx_ = this;
-    exports.useQuery.bind(_req_ctx_)('123');
+    _bind(exports.useQuery, _req_ctx_)('123');
     const inner = () => {
-        console.log(exports.useQuery.bind(_req_ctx_)('123'));
+        console.log(_bind(exports.useQuery, _req_ctx_)('123'));
     };
     inner();
 };
@@ -237,6 +246,7 @@ const functionExpression = function () {}
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 exports.hello = function hello(name) { const _req_ctx_ = this; console.log(name); };
 const functionExpression = function () { };
 //# sourceMappingURL=export-arrow.js.map
@@ -250,6 +260,7 @@ export default () => {}
 // expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 function $default() { const _req_ctx_ = this; }
 exports.default = $default;
 //# sourceMappingURL=export-default-anonymous.js.map
@@ -263,6 +274,7 @@ export default function (name: string) {}
 // expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 function $default(name) { const _req_ctx_ = this; }
 exports.default = $default;
 //# sourceMappingURL=export-default-func.js.map
@@ -276,6 +288,7 @@ export default function named(name: string) {}
 // expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 function named(name) { const _req_ctx_ = this; }
 exports.default = named;
 //# sourceMappingURL=export-default-named.js.map
@@ -300,13 +313,14 @@ export async function useInner() {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useInner = exports.useQuery = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 function useQuery(id) { const _req_ctx_ = this; return ''; }
 exports.useQuery = useQuery;
 async function useInner() {
     const _req_ctx_ = this;
-    useQuery.bind(_req_ctx_)('123');
+    _bind(useQuery, _req_ctx_)('123');
     const inner = () => {
-        console.log(useQuery.bind(_req_ctx_)('123'));
+        console.log(_bind(useQuery, _req_ctx_)('123'));
     };
     inner();
 }
@@ -331,10 +345,11 @@ function useDemo(name: string) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 function hello() { const _req_ctx_ = this; normal(); }
 exports.hello = hello;
 function normal() { }
-function useDemo(name) { const _req_ctx_ = this; return hello.bind(_req_ctx_)(); }
+function useDemo(name) { const _req_ctx_ = this; return _bind(hello, _req_ctx_)(); }
 //# sourceMappingURL=hook-ref-lambda.js.map
 `;
 
@@ -351,8 +366,9 @@ export function hello() {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const useDemo_1 = require("../hooks/useDemo");
-function hello() { const _req_ctx_ = this; (typeof useDemo_1.useDemo === "function" ? useDemo_1.useDemo.bind(_req_ctx_) : useDemo_1.useDemo)('666'); }
+function hello() { const _req_ctx_ = this; _bind(useDemo_1.useDemo, _req_ctx_)('666'); }
 exports.hello = hello;
 //# sourceMappingURL=import-hook.js.map
 `;
@@ -366,6 +382,7 @@ export function hello() {}
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 function hello() { const _req_ctx_ = this; }
 exports.hello = hello;
 //# sourceMappingURL=index.js.map
@@ -387,9 +404,10 @@ function useDemo(name: string) {}
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 function hello() {
     const _req_ctx_ = this;
-    useDemo.bind(_req_ctx_)('666');
+    _bind(useDemo, _req_ctx_)('666');
     normal();
 }
 exports.hello = hello;
@@ -414,12 +432,13 @@ export function hello2(name: string) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello2 = exports.hello = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 function hello(name, value) { const _req_ctx_ = this; }
 exports.hello = hello;
 const hello3 = (name) => { };
 function hello2(name) {
     const _req_ctx_ = this;
-    hello.bind(_req_ctx_)(name, '1');
+    _bind(hello, _req_ctx_)(name, '1');
     hello3(name);
 }
 exports.hello2 = hello2;
@@ -439,6 +458,7 @@ function normal() {}
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 function hello() { const _req_ctx_ = this; normal(); }
 exports.hello = hello;
 function normal() { }
@@ -464,6 +484,7 @@ export function recursion(name: string) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.recursion = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 function recursion(name) {
     const _req_ctx_ = this;
@@ -471,7 +492,7 @@ function recursion(name) {
     if (Math.random() <= 0.5) {
         return name;
     }
-    return recursion.bind(_req_ctx_)(name);
+    return _bind(recursion, _req_ctx_)(name);
 }
 exports.recursion = recursion;
 //# sourceMappingURL=recursion.js.map
@@ -493,13 +514,14 @@ export async function bar() {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.bar = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 const foo_1 = require("./foo");
 async function bar() {
     const _req_ctx_ = this;
     const foo = '';
     const ctx = _req_ctx_.ctx.hooks.useContext();
-    (typeof foo_1.refFoo === "function" ? foo_1.refFoo.bind(_req_ctx_) : foo_1.refFoo)();
+    _bind(foo_1.refFoo, _req_ctx_)();
 }
 exports.bar = bar;
 //# sourceMappingURL=bar.js.map
@@ -520,6 +542,7 @@ export async function refFoo() {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.refFoo = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 async function refFoo() { const _req_ctx_ = this; const ctx = _req_ctx_.ctx.hooks.useContext(); }
 exports.refFoo = refFoo;
@@ -544,6 +567,7 @@ export default withController(
 // expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 exports.default = hooks_1.withController({
     middleware: ['staticFile'],
@@ -573,6 +597,7 @@ export default withController(
 // expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 exports.default = hooks_1.withController({
     middleware: ['staticFile'],
@@ -602,6 +627,7 @@ export default withController(
 // expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 exports.default = hooks_1.withController({
     middleware: ['staticFile'],
@@ -652,6 +678,7 @@ export default withController(
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.get = exports.post = void 0;
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 exports.post = hooks_1.withController({
     middleware: [],
@@ -695,6 +722,7 @@ export default withController(
 // expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 exports.default = hooks_1.withController({
     middleware: ['staticFile'],

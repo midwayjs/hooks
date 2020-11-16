@@ -106,7 +106,7 @@ export class MidwayHooksPlugin extends BasePlugin {
         continue
       }
 
-      console.log('Unsupport gateway type: ', key, func.event[key])
+      console.log('Unsupported gateway type: ', key, func.event[key])
     }
 
     return events
