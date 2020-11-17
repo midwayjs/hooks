@@ -36,16 +36,19 @@ export class RouteHelper {
 
   // src/apis
   get source() {
-    return join(this.root, this.functionsRule.source || defaultFunctionsRule.source)
+    return join(this.root, this.functionsRule.source ?? defaultFunctionsRule.source)
   }
 
   getLambdaDirectory(rule: FunctionRule) {
+    if (process.platform === 'win32' && process.env.NODE_ENV === 'test') {
+      console.log(this.source, rule.baseDir)
+    }
     return join(this.source, rule.baseDir)
   }
 
   getRuleBySourceFilePath(sourceFilePath: string) {
     const { rules } = this.functionsRule
-    const dirs = rules.map((rule) => join(this.source, rule.baseDir))
+    const dirs = rules.map((rule) => this.getLambdaDirectory(rule))
     const index = dirs.findIndex((dir) => this.inside(sourceFilePath, dir))
     return rules[index]
   }
