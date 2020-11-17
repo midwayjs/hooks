@@ -1,10 +1,8 @@
 # @midwayjs/hooks
 
-> [中文文档](./README.zh-cn.md)
-
 Midway Hooks Api
 
-## Usage
+## 使用
 
 ```typescript
 import { useContext } from '@midwayjs/hooks'

@@ -1,14 +1,12 @@
 # @midwayjs/hooks-loader
 
-The Webpack Loader for integrated calls, which converts calls to backend Api from code into frontend SDK calls.
+一体化调用的 Webpack Loader，作用是将代码中对于后端 Api 的调用转为前端 SDK 调用。
 
-> [中文文档](./README.zh-cn.md)
-
-## Version Requirements
+## 版本要求
 
 - Webpack 4+
 
-## Usage
+## 集成方式
 
 ### Webpack Chain
 

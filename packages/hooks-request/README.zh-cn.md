@@ -1,10 +1,8 @@
 # @midwayjs/hooks-request
 
-> [中文文档](./README.zh-cn.md)
+Midway Hooks 前端请求 SDK
 
-Midway Hooks Front End Request SDK
-
-## Usage
+## 使用
 
 ```typescript
 import { request } from '@midwayjs/hooks/request'
