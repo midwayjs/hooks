@@ -29,7 +29,10 @@ export interface SpecStructureWithGateway extends Omit<SpecStructure, 'functions
 }
 
 export interface FunctionsRule {
-  source: string
+  /**
+   * @internal
+   */
+  source?: string
   rules: FunctionRule[]
 }
 

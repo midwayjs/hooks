@@ -17,7 +17,6 @@ aggregation:
       - '*'
 
 functionsRule:
-  source: /src/apis
   rules:
     - baseDir: render
       events:
