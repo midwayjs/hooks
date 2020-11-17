@@ -1,7 +1,7 @@
 {
   "name": "@midwayjs/hooks-request",
   "version": "0.0.50",
-  "description": "Midway Hooks 前端请求 SDK",
+  "description": "Midway Hooks Front End Request SDK",
   "keywords": [
     "midway",
     "hooks",
@@ -13,12 +13,12 @@
     "prepublishOnly": "npm run build"
   },
   "author": "Lxxyx <lxxyxzj@gmail.com>",
-  "homepage": "https://github.com/midwayjs/midway",
+  "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:midwayjs/midway.git"
+    "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
     "@midwayjs/hooks-shared": "^0.0.50",

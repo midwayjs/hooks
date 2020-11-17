@@ -1,7 +1,7 @@
 {
   "name": "@midwayjs/hooks-loader",
   "version": "0.0.50",
-  "description": "",
+  "description": "Midway Hooks Webpack Loader",
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc",

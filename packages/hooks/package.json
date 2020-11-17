@@ -1,7 +1,7 @@
 {
   "name": "@midwayjs/hooks",
   "version": "0.0.50",
-  "description": "Midway Hooks 致力于通过函数式提供云端一体解决方案",
+  "description": "The next generation of integrated front and back-end application development solutions",
   "keywords": [
     "midway",
     "hooks"
@@ -12,12 +12,12 @@
     "prepublishOnly": "npm run build"
   },
   "author": "Lxxyx <lxxyxzj@gmail.com>",
-  "homepage": "https://github.com/midwayjs/midway",
+  "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:midwayjs/midway.git"
+    "url": "git@github.com:midwayjs/hooks.git"
   },
   "devDependencies": {
     "@midwayjs/faas": "2",

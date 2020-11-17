@@ -1,7 +1,7 @@
 {
   "name": "@midwayjs/faas-cli-plugin-midway-hooks",
   "version": "0.0.50",
-  "description": "Midway Hooks FaaS Cli 集成插件，集成最新一体化编译器",
+  "description": "Midway Cli Plugin.",
   "keywords": [
     "midway",
     "hooks",
@@ -13,12 +13,12 @@
     "prepublishOnly": "npm run build"
   },
   "author": "Lxxyx <lxxyxzj@gmail.com>",
-  "homepage": "https://github.com/midwayjs/midway",
+  "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:midwayjs/midway.git"
+    "url": "git@github.com:midwayjs/hooks.git"
   },
   "publishConfig": {
     "access": "public"

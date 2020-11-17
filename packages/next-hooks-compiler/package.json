@@ -1,7 +1,7 @@
 {
   "name": "@midwayjs/next-hooks-compiler",
   "version": "0.0.50",
-  "description": "将 Midway Hooks 编译为 Lambda & 普通函数",
+  "description": "Midway Hooks compiler",
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
@@ -9,11 +9,11 @@
     "prepublishOnly": "npm run build"
   },
   "author": "Lxxyx <lxxyxzj@gmail.com>",
-  "homepage": "https://github.com/midwayjs/midway",
+  "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:midwayjs/midway.git"
+    "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
     "@babel/code-frame": "^7.10.4",
@@ -38,7 +38,6 @@
     "@types/jest": "^26.0.15",
     "@types/path-is-inside": "^1.0.0",
     "globby": "^11.0.0",
-    "jest-snapshot-serializer-raw": "^1.1.0",
     "typescript": "^3.9.3"
   },
   "publishConfig": {
