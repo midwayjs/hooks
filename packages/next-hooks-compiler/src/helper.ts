@@ -68,8 +68,13 @@ export class RouteHelper {
   }
 
   isLambdaFile(sourceFilePath: string) {
-    const rule = this.getRuleBySourceFilePath(sourceFilePath)
-    return !!rule
+    try {
+      const rule = this.getRuleBySourceFilePath(sourceFilePath)
+      return !!rule
+    } catch (e) {
+      console.log('sourceFilePath', sourceFilePath)
+      throw e
+    }
   }
 
   private inside(child: string, parent: string) {
