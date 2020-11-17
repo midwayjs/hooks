@@ -171,9 +171,16 @@ export function isHOCExportAssignment(node: FunctionKind) {
 }
 
 export function getSourceFilePath(node: ts.Node) {
+  if (isSynthesized(node)) {
+    return ''
+  }
   return node.getSourceFile().fileName
 }
 
 export function removeExtension(file: string) {
   return file.replace(extname(file), '')
+}
+
+function isSynthesized(node: ts.Node) {
+  return node.flags & ts.NodeFlags.Synthesized
 }

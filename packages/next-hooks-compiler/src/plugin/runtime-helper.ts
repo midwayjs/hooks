@@ -1,14 +1,21 @@
 import ts from 'typescript'
-import { template } from '@midwayjs/mwcc'
 import { MidwayHooksPackage } from '../const'
+import { getSourceFilePath } from '../util'
+
+export const runtimeMap = new Map<string, ts.ImportDeclaration>()
 
 export default {
   transform() {
     return {
       SourceFile(node: ts.SourceFile) {
+        const sourceFilePath = getSourceFilePath(node)
+        const helper = createHooksRuntime()
+
+        runtimeMap.set(sourceFilePath, helper)
+
         return ts.updateSourceFileNode(
           node,
-          [createRuntimeHelper(), ...node.statements],
+          [helper, ...node.statements],
           node.isDeclarationFile,
           node.referencedFiles,
           node.typeReferenceDirectives,
@@ -20,9 +27,15 @@ export default {
   },
 }
 
-function createRuntimeHelper() {
-  const expr = template(`import { bind as _bind, call as _call } from '${MidwayHooksPackage}/lib/runtime'`)(
-    {}
-  )[0] as ts.ExpressionStatement
-  return expr
+function createHooksRuntime() {
+  return ts.createImportDeclaration(
+    [],
+    [],
+    ts.createImportClause(ts.createTempVariable(undefined), undefined),
+    ts.createStringLiteral(`${MidwayHooksPackage}/lib/runtime`)
+  )
+}
+
+export function createRuntimeAccess(importDeclaration: ts.ImportDeclaration, name: string) {
+  return ts.createPropertyAccess(ts.getGeneratedNameForNode(importDeclaration), ts.createIdentifier(name))
 }

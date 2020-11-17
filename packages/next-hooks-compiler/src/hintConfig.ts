@@ -3,6 +3,9 @@ export const hintConfig = {
     tsc: {
       transformers: [
         {
+          name: require.resolve('./plugin/runtime-helper'),
+        },
+        {
           name: require.resolve('./plugin/ref-to-bind'),
         },
         {
@@ -10,9 +13,6 @@ export const hintConfig = {
         },
         {
           name: require.resolve('./plugin/create-lambda'),
-        },
-        {
-          name: require.resolve('./plugin/runtime-helper'),
         },
       ],
     },

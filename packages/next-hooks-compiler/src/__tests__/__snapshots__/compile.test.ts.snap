@@ -19,8 +19,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.useAsyncArrow = exports.useArrow = exports.useDemo = void 0;
 const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 exports.useDemo = function useDemo(name) { const _req_ctx_ = this; };
-exports.useArrow = function useArrow(name) { const _req_ctx_ = this; _bind(exports.useDemo, _req_ctx_)(name + '666'); };
-exports.useAsyncArrow = async function useAsyncArrow(name) { const _req_ctx_ = this; await _bind(exports.useDemo, _req_ctx_)(name + '666'); };
+exports.useArrow = function useArrow(name) { const _req_ctx_ = this; runtime_1.bind(exports.useDemo, _req_ctx_)(name + '666'); };
+exports.useAsyncArrow = async function useAsyncArrow(name) { const _req_ctx_ = this; await runtime_1.bind(exports.useDemo, _req_ctx_)(name + '666'); };
 //# sourceMappingURL=arrow.js.map
 `;
 
@@ -59,12 +59,12 @@ const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 function useBuiltinHooks() {
     const _req_ctx_ = this;
-    _call("useConfig", _req_ctx_)();
-    _call("useLogger", _req_ctx_)();
-    _call("useContext", _req_ctx_)();
-    _call("useInject", _req_ctx_)('');
-    _call("usePlugin", _req_ctx_)('');
-    _call("useApp", _req_ctx_)();
+    runtime_1.call("useConfig", _req_ctx_)();
+    runtime_1.call("useLogger", _req_ctx_)();
+    runtime_1.call("useContext", _req_ctx_)();
+    runtime_1.call("useInject", _req_ctx_)('');
+    runtime_1.call("usePlugin", _req_ctx_)('');
+    runtime_1.call("useApp", _req_ctx_)();
 }
 exports.useBuiltinHooks = useBuiltinHooks;
 //# sourceMappingURL=builtin-hooks.js.map
@@ -109,8 +109,8 @@ const useDemo_1 = require("./useDemo");
 const hooks_1 = require("@midwayjs/hooks");
 function useQuery(name) {
     const _req_ctx_ = this;
-    _call("useContext", _req_ctx_)();
-    _bind(useDemo_1.useDemo, _req_ctx_)(name);
+    runtime_1.call("useContext", _req_ctx_)();
+    runtime_1.bind(useDemo_1.useDemo, _req_ctx_)(name);
     console.log(exports.useFakeHooks);
 }
 exports.useQuery = useQuery;
@@ -142,7 +142,7 @@ function useNamespace() {
     const _req_ctx_ = this;
     const n = new hooks.ThisNotHooks();
     console.log(hooks.useFakeHooks);
-    return hooks._bind(useQuery, _req_ctx_)(n);
+    return hooks.runtime_1.bind(useQuery, _req_ctx_)(n);
 }
 exports.useNamespace = useNamespace;
 //# sourceMappingURL=import-namespace.js.map
@@ -171,11 +171,11 @@ const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 function useRecursion(name) {
     const _req_ctx_ = this;
-    const ctx = _call("useContext", _req_ctx_)();
+    const ctx = runtime_1.call("useContext", _req_ctx_)();
     if (Math.random() <= 0.5) {
         return name;
     }
-    return _bind(useRecursion, _req_ctx_)(name);
+    return runtime_1.bind(useRecursion, _req_ctx_)(name);
 }
 exports.useRecursion = useRecursion;
 //# sourceMappingURL=recursion.js.map
@@ -196,7 +196,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.useDemo = void 0;
 const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
-function useDemo(name) { const _req_ctx_ = this; _call("useContext", _req_ctx_)(); }
+function useDemo(name) { const _req_ctx_ = this; runtime_1.call("useContext", _req_ctx_)(); }
 exports.useDemo = useDemo;
 //# sourceMappingURL=useDemo.js.map
 `;
@@ -224,9 +224,9 @@ const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 exports.useQuery = function useQuery(id) { const _req_ctx_ = this; return ''; };
 exports.useInner = async function useInner() {
     const _req_ctx_ = this;
-    _bind(exports.useQuery, _req_ctx_)('123');
+    runtime_1.bind(exports.useQuery, _req_ctx_)('123');
     const inner = () => {
-        console.log(_bind(exports.useQuery, _req_ctx_)('123'));
+        console.log(runtime_1.bind(exports.useQuery, _req_ctx_)('123'));
     };
     inner();
 };
@@ -247,7 +247,9 @@ const functionExpression = function () {}
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
 const runtime_1 = require("@midwayjs/hooks/lib/runtime");
-exports.hello = function hello(name) { const _req_ctx_ = this; console.log(name); };
+exports.hello = function hello(name) {
+    console.log(name);
+};
 const functionExpression = function () { };
 //# sourceMappingURL=export-arrow.js.map
 `;
@@ -261,7 +263,7 @@ export default () => {}
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const runtime_1 = require("@midwayjs/hooks/lib/runtime");
-function $default() { const _req_ctx_ = this; }
+function $default() { }
 exports.default = $default;
 //# sourceMappingURL=export-default-anonymous.js.map
 `;
@@ -275,7 +277,7 @@ export default function (name: string) {}
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const runtime_1 = require("@midwayjs/hooks/lib/runtime");
-function $default(name) { const _req_ctx_ = this; }
+function $default(name) { }
 exports.default = $default;
 //# sourceMappingURL=export-default-func.js.map
 `;
@@ -318,9 +320,9 @@ function useQuery(id) { const _req_ctx_ = this; return ''; }
 exports.useQuery = useQuery;
 async function useInner() {
     const _req_ctx_ = this;
-    _bind(useQuery, _req_ctx_)('123');
+    runtime_1.bind(useQuery, _req_ctx_)('123');
     const inner = () => {
-        console.log(_bind(useQuery, _req_ctx_)('123'));
+        console.log(runtime_1.bind(useQuery, _req_ctx_)('123'));
     };
     inner();
 }
@@ -349,7 +351,7 @@ const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 function hello() { const _req_ctx_ = this; normal(); }
 exports.hello = hello;
 function normal() { }
-function useDemo(name) { const _req_ctx_ = this; return _bind(hello, _req_ctx_)(); }
+function useDemo(name) { const _req_ctx_ = this; return runtime_1.bind(hello, _req_ctx_)(); }
 //# sourceMappingURL=hook-ref-lambda.js.map
 `;
 
@@ -368,7 +370,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
 const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const useDemo_1 = require("../hooks/useDemo");
-function hello() { const _req_ctx_ = this; _bind(useDemo_1.useDemo, _req_ctx_)('666'); }
+function hello() {
+    runtime_1.bind(useDemo_1.useDemo, _req_ctx_)('666');
+}
 exports.hello = hello;
 //# sourceMappingURL=import-hook.js.map
 `;
@@ -406,8 +410,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
 const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 function hello() {
-    const _req_ctx_ = this;
-    _bind(useDemo, _req_ctx_)('666');
+    runtime_1.bind(useDemo, _req_ctx_)('666');
     normal();
 }
 exports.hello = hello;
@@ -437,8 +440,7 @@ function hello(name, value) { const _req_ctx_ = this; }
 exports.hello = hello;
 const hello3 = (name) => { };
 function hello2(name) {
-    const _req_ctx_ = this;
-    _bind(hello, _req_ctx_)(name, '1');
+    runtime_1.bind(hello, _req_ctx_)(name, '1');
     hello3(name);
 }
 exports.hello2 = hello2;
@@ -487,12 +489,11 @@ exports.recursion = void 0;
 const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 function recursion(name) {
-    const _req_ctx_ = this;
-    const ctx = _call("useContext", _req_ctx_)();
+    const ctx = runtime_1.call("useContext", _req_ctx_)();
     if (Math.random() <= 0.5) {
         return name;
     }
-    return _bind(recursion, _req_ctx_)(name);
+    return runtime_1.bind(recursion, _req_ctx_)(name);
 }
 exports.recursion = recursion;
 //# sourceMappingURL=recursion.js.map
@@ -518,10 +519,9 @@ const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 const foo_1 = require("./foo");
 async function bar() {
-    const _req_ctx_ = this;
     const foo = '';
-    const ctx = _call("useContext", _req_ctx_)();
-    _bind(foo_1.refFoo, _req_ctx_)();
+    const ctx = runtime_1.call("useContext", _req_ctx_)();
+    runtime_1.bind(foo_1.refFoo, _req_ctx_)();
 }
 exports.bar = bar;
 //# sourceMappingURL=bar.js.map
@@ -544,7 +544,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.refFoo = void 0;
 const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
-async function refFoo() { const _req_ctx_ = this; const ctx = _call("useContext", _req_ctx_)(); }
+async function refFoo() {
+    const ctx = runtime_1.call("useContext", _req_ctx_)();
+}
 exports.refFoo = refFoo;
 //# sourceMappingURL=foo.js.map
 `;
@@ -573,7 +575,7 @@ exports.default = hooks_1.withController({
     middleware: ['staticFile'],
 }, async function $default() {
     const _req_ctx_ = this;
-    const ctx = _call("useContext", _req_ctx_)();
+    const ctx = runtime_1.call("useContext", _req_ctx_)();
     return 'xxx';
 });
 //# sourceMappingURL=export-default-arrow.js.map
@@ -603,7 +605,7 @@ exports.default = hooks_1.withController({
     middleware: ['staticFile'],
 }, async function () {
     const _req_ctx_ = this;
-    const ctx = _call("useContext", _req_ctx_)();
+    const ctx = runtime_1.call("useContext", _req_ctx_)();
     return 'xxx';
 });
 //# sourceMappingURL=export-default-expression.js.map
@@ -633,7 +635,7 @@ exports.default = hooks_1.withController({
     middleware: ['staticFile'],
 }, async function named() {
     const _req_ctx_ = this;
-    const ctx = _call("useContext", _req_ctx_)();
+    const ctx = runtime_1.call("useContext", _req_ctx_)();
     return 'xxx';
 });
 //# sourceMappingURL=export-default-named.js.map
@@ -682,23 +684,21 @@ const runtime_1 = require("@midwayjs/hooks/lib/runtime");
 const hooks_1 = require("@midwayjs/hooks");
 exports.post = hooks_1.withController({
     middleware: [],
-}, async function post(name) {
-    const _req_ctx_ = this;
-    const ctx = _call("useContext", _req_ctx_)();
+}, async (name) => {
+    const ctx = runtime_1.call("useContext", _req_ctx_)();
     console.log(name);
 });
 exports.get = hooks_1.withController({
     middleware: [],
-}, async function get() {
-    const _req_ctx_ = this;
-    const ctx = _call("useContext", _req_ctx_)();
+}, async () => {
+    const ctx = runtime_1.call("useContext", _req_ctx_)();
     console.log(name);
 });
 exports.default = hooks_1.withController({
     middleware: [],
 }, async function $default() {
     const _req_ctx_ = this;
-    const ctx = _call("useContext", _req_ctx_)();
+    const ctx = runtime_1.call("useContext", _req_ctx_)();
     return ctx.query.from;
 });
 //# sourceMappingURL=export-variable.js.map
@@ -728,538 +728,10 @@ exports.default = hooks_1.withController({
     middleware: ['staticFile'],
 }, async function $default(name) {
     const _req_ctx_ = this;
-    const ctx = _call("useContext", _req_ctx_)();
+    const ctx = runtime_1.call("useContext", _req_ctx_)();
     return 'xxx';
 });
 //# sourceMappingURL=with-default-post.js.map
 `;
 
-exports[`routes should match snapshot 1`] = `
-{
-  "arrow-hook-ref-arrow-hook-usequery": {
-    "deployName": "arrow-hook-ref-arrow-hook-usequery",
-    "isFunctional": true,
-    "exportFunction": "useQuery",
-    "sourceFile": "src/lambda/arrow-hook-ref-arrow-hook.ts",
-    "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
-    "handler": "arrow-hook-ref-arrow-hook-usequery.handler",
-    "gatewayConfig": {
-      "url": "/api/arrow-hook-ref-arrow-hook/_useQuery",
-      "method": "POST",
-      "meta": {
-        "functionName": "arrow-hook-ref-arrow-hook-usequery"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "arrow-hook-ref-arrow-hook-useinner": {
-    "deployName": "arrow-hook-ref-arrow-hook-useinner",
-    "isFunctional": true,
-    "exportFunction": "useInner",
-    "sourceFile": "src/lambda/arrow-hook-ref-arrow-hook.ts",
-    "sourceFilePath": "lambda/arrow-hook-ref-arrow-hook.js",
-    "handler": "arrow-hook-ref-arrow-hook-useinner.handler",
-    "gatewayConfig": {
-      "url": "/api/arrow-hook-ref-arrow-hook/_useInner",
-      "method": "GET",
-      "meta": {
-        "functionName": "arrow-hook-ref-arrow-hook-useinner"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "export-arrow-hello": {
-    "deployName": "export-arrow-hello",
-    "isFunctional": true,
-    "exportFunction": "hello",
-    "sourceFile": "src/lambda/export-arrow.ts",
-    "sourceFilePath": "lambda/export-arrow.js",
-    "handler": "export-arrow-hello.handler",
-    "gatewayConfig": {
-      "url": "/api/export-arrow/_hello",
-      "method": "POST",
-      "meta": {
-        "functionName": "export-arrow-hello"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "export-default-anonymous": {
-    "deployName": "export-default-anonymous",
-    "isFunctional": true,
-    "exportFunction": "",
-    "sourceFile": "src/lambda/export-default-anonymous.ts",
-    "sourceFilePath": "lambda/export-default-anonymous.js",
-    "handler": "export-default-anonymous.handler",
-    "gatewayConfig": {
-      "url": "/api/export-default-anonymous",
-      "method": "GET",
-      "meta": {
-        "functionName": "export-default-anonymous"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "export-default-func": {
-    "deployName": "export-default-func",
-    "isFunctional": true,
-    "exportFunction": "",
-    "sourceFile": "src/lambda/export-default-func.ts",
-    "sourceFilePath": "lambda/export-default-func.js",
-    "handler": "export-default-func.handler",
-    "gatewayConfig": {
-      "url": "/api/export-default-func",
-      "method": "POST",
-      "meta": {
-        "functionName": "export-default-func"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "export-default-named": {
-    "deployName": "export-default-named",
-    "isFunctional": true,
-    "exportFunction": "",
-    "sourceFile": "src/lambda/export-default-named.ts",
-    "sourceFilePath": "lambda/export-default-named.js",
-    "handler": "export-default-named.handler",
-    "gatewayConfig": {
-      "url": "/api/export-default-named",
-      "method": "POST",
-      "meta": {
-        "functionName": "export-default-named"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "hook-ref-hook-usequery": {
-    "deployName": "hook-ref-hook-usequery",
-    "isFunctional": true,
-    "exportFunction": "useQuery",
-    "sourceFile": "src/lambda/hook-ref-hook.ts",
-    "sourceFilePath": "lambda/hook-ref-hook.js",
-    "handler": "hook-ref-hook-usequery.handler",
-    "gatewayConfig": {
-      "url": "/api/hook-ref-hook/_useQuery",
-      "method": "POST",
-      "meta": {
-        "functionName": "hook-ref-hook-usequery"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "hook-ref-hook-useinner": {
-    "deployName": "hook-ref-hook-useinner",
-    "isFunctional": true,
-    "exportFunction": "useInner",
-    "sourceFile": "src/lambda/hook-ref-hook.ts",
-    "sourceFilePath": "lambda/hook-ref-hook.js",
-    "handler": "hook-ref-hook-useinner.handler",
-    "gatewayConfig": {
-      "url": "/api/hook-ref-hook/_useInner",
-      "method": "GET",
-      "meta": {
-        "functionName": "hook-ref-hook-useinner"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "hook-ref-lambda-hello": {
-    "deployName": "hook-ref-lambda-hello",
-    "isFunctional": true,
-    "exportFunction": "hello",
-    "sourceFile": "src/lambda/hook-ref-lambda.ts",
-    "sourceFilePath": "lambda/hook-ref-lambda.js",
-    "handler": "hook-ref-lambda-hello.handler",
-    "gatewayConfig": {
-      "url": "/api/hook-ref-lambda/_hello",
-      "method": "GET",
-      "meta": {
-        "functionName": "hook-ref-lambda-hello"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "import-hook-hello": {
-    "deployName": "import-hook-hello",
-    "isFunctional": true,
-    "exportFunction": "hello",
-    "sourceFile": "src/lambda/import-hook.ts",
-    "sourceFilePath": "lambda/import-hook.js",
-    "handler": "import-hook-hello.handler",
-    "gatewayConfig": {
-      "url": "/api/import-hook/_hello",
-      "method": "GET",
-      "meta": {
-        "functionName": "import-hook-hello"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "index-hello": {
-    "deployName": "index-hello",
-    "isFunctional": true,
-    "exportFunction": "hello",
-    "sourceFile": "src/lambda/index.ts",
-    "sourceFilePath": "lambda/index.js",
-    "handler": "index-hello.handler",
-    "gatewayConfig": {
-      "url": "/api/_hello",
-      "method": "GET",
-      "meta": {
-        "functionName": "index-hello"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "lambda-ref-hook-hello": {
-    "deployName": "lambda-ref-hook-hello",
-    "isFunctional": true,
-    "exportFunction": "hello",
-    "sourceFile": "src/lambda/lambda-ref-hook.ts",
-    "sourceFilePath": "lambda/lambda-ref-hook.js",
-    "handler": "lambda-ref-hook-hello.handler",
-    "gatewayConfig": {
-      "url": "/api/lambda-ref-hook/_hello",
-      "method": "GET",
-      "meta": {
-        "functionName": "lambda-ref-hook-hello"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "lambda-ref-lambda-hello": {
-    "deployName": "lambda-ref-lambda-hello",
-    "isFunctional": true,
-    "exportFunction": "hello",
-    "sourceFile": "src/lambda/lambda-ref-lambda.ts",
-    "sourceFilePath": "lambda/lambda-ref-lambda.js",
-    "handler": "lambda-ref-lambda-hello.handler",
-    "gatewayConfig": {
-      "url": "/api/lambda-ref-lambda/_hello",
-      "method": "POST",
-      "meta": {
-        "functionName": "lambda-ref-lambda-hello"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "lambda-ref-lambda-hello2": {
-    "deployName": "lambda-ref-lambda-hello2",
-    "isFunctional": true,
-    "exportFunction": "hello2",
-    "sourceFile": "src/lambda/lambda-ref-lambda.ts",
-    "sourceFilePath": "lambda/lambda-ref-lambda.js",
-    "handler": "lambda-ref-lambda-hello2.handler",
-    "gatewayConfig": {
-      "url": "/api/lambda-ref-lambda/_hello2",
-      "method": "POST",
-      "meta": {
-        "functionName": "lambda-ref-lambda-hello2"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "normal-function-hello": {
-    "deployName": "normal-function-hello",
-    "isFunctional": true,
-    "exportFunction": "hello",
-    "sourceFile": "src/lambda/normal-function.ts",
-    "sourceFilePath": "lambda/normal-function.js",
-    "handler": "normal-function-hello.handler",
-    "gatewayConfig": {
-      "url": "/api/normal-function/_hello",
-      "method": "GET",
-      "meta": {
-        "functionName": "normal-function-hello"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "recursion-recursion": {
-    "deployName": "recursion-recursion",
-    "isFunctional": true,
-    "exportFunction": "recursion",
-    "sourceFile": "src/lambda/recursion.ts",
-    "sourceFilePath": "lambda/recursion.js",
-    "handler": "recursion-recursion.handler",
-    "gatewayConfig": {
-      "url": "/api/recursion/_recursion",
-      "method": "POST",
-      "meta": {
-        "functionName": "recursion-recursion"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "with-default-post": {
-    "deployName": "with-default-post",
-    "isFunctional": true,
-    "exportFunction": "",
-    "sourceFile": "src/lambda/with-default-post.ts",
-    "sourceFilePath": "lambda/with-default-post.js",
-    "handler": "with-default-post.handler",
-    "gatewayConfig": {
-      "url": "/api/with-default-post",
-      "method": "POST",
-      "meta": {
-        "functionName": "with-default-post"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "ref-foo-reffoo": {
-    "deployName": "ref-foo-reffoo",
-    "isFunctional": true,
-    "exportFunction": "refFoo",
-    "sourceFile": "src/lambda/ref/foo.ts",
-    "sourceFilePath": "lambda/ref/foo.js",
-    "handler": "ref-foo-reffoo.handler",
-    "gatewayConfig": {
-      "url": "/api/ref/foo/_refFoo",
-      "method": "GET",
-      "meta": {
-        "functionName": "ref-foo-reffoo"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "ref-bar-bar": {
-    "deployName": "ref-bar-bar",
-    "isFunctional": true,
-    "exportFunction": "bar",
-    "sourceFile": "src/lambda/ref/bar.ts",
-    "sourceFilePath": "lambda/ref/bar.js",
-    "handler": "ref-bar-bar.handler",
-    "gatewayConfig": {
-      "url": "/api/ref/bar/_bar",
-      "method": "GET",
-      "meta": {
-        "functionName": "ref-bar-bar"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "with-export-default-arrow": {
-    "deployName": "with-export-default-arrow",
-    "isFunctional": true,
-    "exportFunction": "",
-    "sourceFile": "src/lambda/with/export-default-arrow.ts",
-    "sourceFilePath": "lambda/with/export-default-arrow.js",
-    "handler": "with-export-default-arrow.handler",
-    "gatewayConfig": {
-      "url": "/api/with/export-default-arrow",
-      "method": "GET",
-      "meta": {
-        "functionName": "with-export-default-arrow"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "with-export-default-expression": {
-    "deployName": "with-export-default-expression",
-    "isFunctional": true,
-    "exportFunction": "",
-    "sourceFile": "src/lambda/with/export-default-expression.ts",
-    "sourceFilePath": "lambda/with/export-default-expression.js",
-    "handler": "with-export-default-expression.handler",
-    "gatewayConfig": {
-      "url": "/api/with/export-default-expression",
-      "method": "GET",
-      "meta": {
-        "functionName": "with-export-default-expression"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "with-export-default-named": {
-    "deployName": "with-export-default-named",
-    "isFunctional": true,
-    "exportFunction": "",
-    "sourceFile": "src/lambda/with/export-default-named.ts",
-    "sourceFilePath": "lambda/with/export-default-named.js",
-    "handler": "with-export-default-named.handler",
-    "gatewayConfig": {
-      "url": "/api/with/export-default-named",
-      "method": "GET",
-      "meta": {
-        "functionName": "with-export-default-named"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "with-export-variable-post": {
-    "deployName": "with-export-variable-post",
-    "isFunctional": true,
-    "exportFunction": "post",
-    "sourceFile": "src/lambda/with/export-variable.ts",
-    "sourceFilePath": "lambda/with/export-variable.js",
-    "handler": "with-export-variable-post.handler",
-    "gatewayConfig": {
-      "url": "/api/with/export-variable/_post",
-      "method": "POST",
-      "meta": {
-        "functionName": "with-export-variable-post"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "with-export-variable-get": {
-    "deployName": "with-export-variable-get",
-    "isFunctional": true,
-    "exportFunction": "get",
-    "sourceFile": "src/lambda/with/export-variable.ts",
-    "sourceFilePath": "lambda/with/export-variable.js",
-    "handler": "with-export-variable-get.handler",
-    "gatewayConfig": {
-      "url": "/api/with/export-variable/_get",
-      "method": "GET",
-      "meta": {
-        "functionName": "with-export-variable-get"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  },
-  "with-export-variable": {
-    "deployName": "with-export-variable",
-    "isFunctional": true,
-    "exportFunction": "",
-    "sourceFile": "src/lambda/with/export-variable.ts",
-    "sourceFilePath": "lambda/with/export-variable.js",
-    "handler": "with-export-variable.handler",
-    "gatewayConfig": {
-      "url": "/api/with/export-variable",
-      "method": "GET",
-      "meta": {
-        "functionName": "with-export-variable"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api",
-        "underscore": true
-      }
-    }
-  }
-}
-`;
+exports[`routes should match snapshot 1`] = `{}`;

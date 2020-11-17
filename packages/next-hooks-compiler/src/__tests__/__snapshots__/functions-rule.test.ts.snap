@@ -2,26 +2,6 @@
 
 exports[`functions rule support routes 1`] = `
 {
-  "lambda-index": {
-    "deployName": "lambda-index",
-    "isFunctional": true,
-    "exportFunction": "",
-    "sourceFile": "src/lambda/index.ts",
-    "sourceFilePath": "lambda/index.js",
-    "handler": "lambda-index.handler",
-    "gatewayConfig": {
-      "url": "/api",
-      "method": "GET",
-      "meta": {
-        "functionName": "lambda-index"
-      }
-    },
-    "event": {
-      "http": {
-        "basePath": "/api"
-      }
-    }
-  },
   "render-index": {
     "deployName": "render-index",
     "isFunctional": true,

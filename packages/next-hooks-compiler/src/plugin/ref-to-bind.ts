@@ -1,13 +1,6 @@
 import ts from 'typescript'
 import { template, TransformationContext } from '@midwayjs/mwcc'
-import {
-  BuiltinHOC,
-  BuiltinHooks,
-  ContextBind,
-  HooksMethodNamespace,
-  HooksRequestContext,
-  MidwayHooksPackage,
-} from '../const'
+import { BuiltinHOC, BuiltinHooks, HooksRequestContext, MidwayHooksPackage } from '../const'
 import { BuiltinHooksError } from '../errors/BuiltinHooks'
 import { isEmpty } from 'lodash'
 import {
@@ -23,6 +16,7 @@ import {
 import { helper } from '../helper'
 import { InvalidReferenceError } from '../errors/InvalidReference'
 import { dirname, resolve } from 'upath'
+import { createRuntimeAccess, runtimeMap } from './runtime-helper'
 
 export default {
   transform(ctx: TransformationContext) {
@@ -142,7 +136,12 @@ function isLambdaOrHookImports(node: ts.Identifier, moduleId: string, ctx: Trans
  * useQuery => _bind(useQuery, $lambda)
  */
 function compileRefToBind(identifier: ts.Identifier) {
-  const tpl = template(`_bind(HOOK, ${HooksRequestContext})`)({ HOOK: identifier })[0] as ts.ExpressionStatement
+  const sourceFilePath = getSourceFilePath(identifier)
+
+  const tpl = template(`BIND(HOOK, ${HooksRequestContext})`)({
+    HOOK: identifier,
+    BIND: createRuntimeAccess(runtimeMap.get(sourceFilePath), 'bind'),
+  })[0] as ts.ExpressionStatement
   return tpl.expression
 }
 
@@ -151,8 +150,11 @@ function compileRefToBind(identifier: ts.Identifier) {
  * useQuery => typeof useQuery === 'function' ? useQuery.bind($lambda) : useQuery
  */
 function compileImportRefToBind(identifier: ts.Identifier) {
-  const tpl = template(`_bind(HOOK, ${HooksRequestContext})`)({
+  const sourceFilePath = getSourceFilePath(identifier)
+
+  const tpl = template(`BIND(HOOK, ${HooksRequestContext})`)({
     HOOK: identifier,
+    BIND: createRuntimeAccess(runtimeMap.get(sourceFilePath), 'bind'),
   })[0] as ts.ExpressionStatement
   return tpl.expression
 }
@@ -172,6 +174,10 @@ function compileBuiltinMethod(identifier: ts.Identifier) {
     throw new BuiltinHooksError(identifier)
   }
 
-  const tpl = template(`_call('${method}', ${HooksRequestContext})`)({})[0] as ts.ExpressionStatement
+  const sourceFilePath = getSourceFilePath(identifier)
+
+  const tpl = template(`CALL('${method}', ${HooksRequestContext})`)({
+    CALL: createRuntimeAccess(runtimeMap.get(sourceFilePath), 'call'),
+  })[0] as ts.ExpressionStatement
   return tpl.expression
 }
