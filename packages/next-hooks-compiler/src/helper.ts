@@ -47,10 +47,15 @@ export class RouteHelper {
   }
 
   getRuleBySourceFilePath(sourceFilePath: string) {
-    const { rules } = this.functionsRule
-    const dirs = rules.map((rule) => this.getLambdaDirectory(rule))
-    const index = dirs.findIndex((dir) => this.inside(sourceFilePath, dir))
-    return rules[index]
+    try {
+      const { rules } = this.functionsRule
+      const dirs = rules.map((rule) => this.getLambdaDirectory(rule))
+      const index = dirs.findIndex((dir) => this.inside(sourceFilePath, dir))
+      return rules[index]
+    } catch (error) {
+      console.log(error)
+      console.log(sourceFilePath, this.source, JSON.stringify(this.functionsRule))
+    }
   }
 
   getDistPath(sourceFilePath: string) {
