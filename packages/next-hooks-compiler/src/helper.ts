@@ -40,22 +40,14 @@ export class RouteHelper {
   }
 
   getLambdaDirectory(rule: FunctionRule) {
-    if (process.platform === 'win32' && process.env.NODE_ENV === 'test') {
-      console.log(this.source, rule.baseDir)
-    }
     return join(this.source, rule.baseDir)
   }
 
   getRuleBySourceFilePath(sourceFilePath: string) {
-    try {
-      const { rules } = this.functionsRule
-      const dirs = rules.map((rule) => this.getLambdaDirectory(rule))
-      const index = dirs.findIndex((dir) => this.inside(sourceFilePath, dir))
-      return rules[index]
-    } catch (error) {
-      console.log(error)
-      console.log(sourceFilePath, this.source, JSON.stringify(this.functionsRule))
-    }
+    const { rules } = this.functionsRule
+    const dirs = rules.map((rule) => this.getLambdaDirectory(rule))
+    const index = dirs.findIndex((dir) => this.inside(sourceFilePath, dir))
+    return rules[index]
   }
 
   getDistPath(sourceFilePath: string) {
@@ -68,13 +60,8 @@ export class RouteHelper {
   }
 
   isLambdaFile(sourceFilePath: string) {
-    try {
-      const rule = this.getRuleBySourceFilePath(sourceFilePath)
-      return !!rule
-    } catch (e) {
-      console.log('sourceFilePath', sourceFilePath)
-      throw e
-    }
+    const rule = this.getRuleBySourceFilePath(sourceFilePath)
+    return !!rule
   }
 
   private inside(child: string, parent: string) {
