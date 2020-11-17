@@ -11,17 +11,17 @@
 
 # The Next Generation Full Stack Framework
 
-> [中文 README](./README.zh-cn.md)
-
 Docs：[Getting Started - New cloud-in-one solutions](https://www.yuque.com/midwayjs/faas/quickstart_integration?translate=en)
+
+> [中文 README](./README.zh-cn.md)
 
 ## ✨ Features
 
-- 🌈 "Zero Api", Don't have to build an API for client-side
-- 🌍 Using "React Hooks" to develop the backend
-- 📦 Front-end Framework agnostic. Current Support React / Vue3 / ICE.js
-- ⚙️ Built on [Midway](https://github.com/midwayjs/midway), providing full support for Web and Serverless scenarios
-- 🛡 TypeScript Ready
+- 🌈&nbsp;&nbsp;"Zero Api", Don't have to build an API for client-side
+- 🌍&nbsp;&nbsp;Using "React Hooks" to develop the backend
+- 📦&nbsp;&nbsp;Front-end Framework agnostic. Current Support React / Vue3 / ICE.js
+- ⚙️&nbsp;&nbsp;Built on [Midway](https://github.com/midwayjs/midway), providing full support for Web and Serverless scenarios
+- 🛡&nbsp;&nbsp;TypeScript Ready
 
 ## Contribute
 
