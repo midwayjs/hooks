@@ -17,11 +17,11 @@
     "@alib/build-scripts": "^0.1.24"
   },
   "author": "Lxxyx <lxxyxzj@gmail.com>",
-  "homepage": "https://github.com/midwayjs/midway",
+  "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:midwayjs/midway.git"
+    "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
     "@midwayjs/hooks-loader": "^0.0.50"
