@@ -9,23 +9,21 @@
   <img src="https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge">
 </p>
 
-# The Next Generation Full Stack Framework
+# 下一代全栈框架
 
-> [中文 README](./README.zh-cn.md)
+Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/midwayjs/faas/quickstart_integration)
 
-Docs：[Getting Started - New cloud-in-one solutions](https://www.yuque.com/midwayjs/faas/quickstart_integration?translate=en)
+## ✨ 特性
 
-## ✨ Features
-
-- 🌈 "Zero Api", Don't have to build an API for client-side
-- 🌍 Using "React Hooks" to develop the backend
-- 📦 Front-end Framework agnostic. Current Support React / Vue3 / ICE.js
-- ⚙️ Built on [Midway](https://github.com/midwayjs/midway), providing full support for Web and Serverless scenarios
-- 🛡 TypeScript Ready
+- 🌈 "零 Api", 从此忘记 Ajax 和 Api 调用
+- 🌍 使用 "React Hooks" 开发后端
+- 📦 前端框架无感知. 当前 React / Vue3 / ICE.js
+- ⚙️ 基于 [Midway](https://github.com/midwayjs/midway), 提供 Web 及 Serverless 场景下的完整支持.
+- 🛡 支持 TypeScript
 
 ## Contribute
 
-We use yarn + lerna to manage the project.
+我们使用 yarn + lerna 管理项目
 
 > install dependencies
 

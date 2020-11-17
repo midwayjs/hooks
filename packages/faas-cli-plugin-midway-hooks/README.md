@@ -1,3 +1,5 @@
 # @midwayjs/faas-cli-plugin-midway-hooks
 
-FaaS Cli 集成插件
+> [中文文档](./README.zh-cn.md)
+
+Midway Hooks FaaS Cli plug-in. Used to perform build & compile logic.

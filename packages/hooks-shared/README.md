@@ -1,3 +1,3 @@
 # @midwayjs/hooks
 
-Midway Hooks 基础库。
+Midway Hooks utils

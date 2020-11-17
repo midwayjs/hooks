@@ -1,16 +1,18 @@
 # @midwayjs/build-plugin-hooks
 
-为 Rax/Ice 提供的构建集成插件，作用是将代码中对于后端 Api 的引用转为前端 SDK 调用。
+> [中文文档](./README.zh-cn.md)
 
-## 集成方式
+Build integration plugin for [Rax](https://rax.js.org/) / [Ice](https://ice.work/) to convert references to backend Api in code to frontend SDK calls.
 
-安装依赖：
+## Integration Method
+
+Installation dependencies.
 
 ```bash
 $ tnpm i @midwayjs/build-plugin-hooks -D
 ```
 
-修改 build.json 中的 plugins，新增 `@midwayjs/build-plugin-hooks` 插件
+Modify plugins in build.json, add `@midwayjs/build-plugin-hooks` plug-in
 
 ```json
 {
