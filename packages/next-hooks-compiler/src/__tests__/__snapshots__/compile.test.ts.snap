@@ -250,9 +250,34 @@ export default () => {}
 // expect
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function $default() { const _req_ctx_ = this; }
+async function $default() { const _req_ctx_ = this; }
 exports.default = $default;
 //# sourceMappingURL=export-default-anonymous.js.map
+`;
+
+exports[`lambda/export-default-async-arrow.ts 1`] = `
+// source
+import { useContext, useInject } from '@midwayjs/hooks'
+
+export default async () => {
+  const ctx = useContext()
+  const baseDir = await useInject('baseDir')
+  return ctx.path + baseDir
+}
+
+
+// expect
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const hooks_1 = require("@midwayjs/hooks");
+async function $default() {
+    const _req_ctx_ = this;
+    const ctx = _req_ctx_.ctx.hooks.useContext();
+    const baseDir = await _req_ctx_.ctx.hooks.useInject('baseDir');
+    return ctx.path + baseDir;
+}
+exports.default = $default;
+//# sourceMappingURL=export-default-async-arrow.js.map
 `;
 
 exports[`lambda/export-default-func.ts 1`] = `
@@ -783,6 +808,27 @@ exports[`routes should match snapshot 1`] = `
       "method": "GET",
       "meta": {
         "functionName": "export-default-anonymous"
+      }
+    },
+    "event": {
+      "http": {
+        "basePath": "/api",
+        "underscore": true
+      }
+    }
+  },
+  "export-default-async-arrow": {
+    "deployName": "export-default-async-arrow",
+    "isFunctional": true,
+    "exportFunction": "",
+    "sourceFile": "src/lambda/export-default-async-arrow.ts",
+    "sourceFilePath": "lambda/export-default-async-arrow.js",
+    "handler": "export-default-async-arrow.handler",
+    "gatewayConfig": {
+      "url": "/api/export-default-async-arrow",
+      "method": "GET",
+      "meta": {
+        "functionName": "export-default-async-arrow"
       }
     },
     "event": {

@@ -40,9 +40,11 @@ export function isLambdaOrHook(node: ts.Node, container: ts.Node) {
   if (!node) {
     return false
   }
+
   // 函数
   if (isFunctionKind(node.kind)) {
-    const funcName = getTopLevelNameNode(container)?.getText?.() ?? ''
+    const nameNode = getTopLevelNameNode(container)
+    const funcName = nameNode?.getText?.() ?? ''
     // 自定义 Hook
     return isHookName(funcName) || isLambda(node as FunctionDeclaration, container)
   }
@@ -87,16 +89,8 @@ export function getTopLevelNameNode(node: ts.Node): ts.Identifier {
   }
 
   // const useDemo = () => {}
-  if (ts.isVariableDeclaration(node)) {
+  if (ts.isVariableDeclaration(node) || ts.isFunctionDeclaration(node) || ts.isFunctionExpression(node)) {
     return node.name as ts.Identifier
-  }
-
-  if (ts.isFunctionDeclaration(node)) {
-    return node.name
-  }
-
-  if (ts.isFunctionExpression(node)) {
-    return node.name
   }
 
   console.log('getTopLevelNameNode unsupported types ' + ts.SyntaxKind[node.kind])
