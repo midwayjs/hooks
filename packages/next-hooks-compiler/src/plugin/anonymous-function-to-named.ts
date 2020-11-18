@@ -15,7 +15,7 @@ export default {
       /**
        * export default () => {}
        * =>
-       * export default function $default () {}
+       * export default async function $default () {}
        */
       ExportAssignment(node: ts.ExportAssignment) {
         if (!helper.isLambdaFile(getSourceFilePath(node))) {
@@ -27,7 +27,11 @@ export default {
         if (ts.isArrowFunction(expression)) {
           return ts.createFunctionDeclaration(
             expression.decorators,
-            [ts.createModifier(ts.SyntaxKind.ExportKeyword), ts.createModifier(ts.SyntaxKind.DefaultKeyword)],
+            [
+              ts.createModifier(ts.SyntaxKind.ExportKeyword),
+              ts.createModifier(ts.SyntaxKind.DefaultKeyword),
+              ts.createModifier(ts.SyntaxKind.AsyncKeyword),
+            ],
             expression.asteriskToken,
             ts.createIdentifier(DefaultKeyword),
             expression.typeParameters,
