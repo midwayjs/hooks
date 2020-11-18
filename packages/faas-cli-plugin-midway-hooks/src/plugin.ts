@@ -73,13 +73,10 @@ export class MidwayHooksPlugin extends BasePlugin {
       func.events = this.createEventsByGateway(func)
     }
 
-    debug('faas decorator function: %O', this.core.service.functions)
-    debug('hooks function: %s', JSON.stringify(functions, null, 2))
-
     this.core.service.functions = Object.assign(this.core.service.functions ?? {}, functions)
 
     if (!compilerEmitter.isCompiled && !['production', 'test'].includes(process.env.NODE_ENV)) {
-      startWatcher({
+      await startWatcher({
         root: this.root,
         source: helper.source,
       })
@@ -115,8 +112,5 @@ export class MidwayHooksPlugin extends BasePlugin {
 
 async function startWatcher(config: WatcherConfig) {
   const watcher = new HooksWatcher(config)
-
-  while (true) {
-    await watcher.getNext()
-  }
+  await watcher.start()
 }
