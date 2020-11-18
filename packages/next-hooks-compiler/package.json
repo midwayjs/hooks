@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@babel/code-frame": "^7.10.4",
-    "@midwayjs/faas-cli-plugin-midway-hooks": "^0.0.50",
     "@midwayjs/fcli-plugin-invoke": "1.2.23-beta.3",
     "@midwayjs/hooks": "^0.0.50",
     "@midwayjs/hooks-shared": "^0.0.50",
