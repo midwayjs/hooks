@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="./assets/midway-logo.png">
+</p>
+
+<p align="center">
   <a href="https://www.npmjs.com/package/@midwayjs/hooks">
     <img src="https://img.shields.io/npm/v/@midwayjs/hooks/latest?style=for-the-badge">
   </a>
@@ -9,16 +13,17 @@
   <img src="https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge">
 </p>
 
-# A Better Full Stack Framework
-
-Docs：[Getting Started - New cloud-in-one solutions](https://www.yuque.com/midwayjs/faas/quickstart_integration?translate=en)
+# A Faster Full Stack Framework
 
 > [中文 README](./README.zh-cn.md)
 
+Docs：[Getting Started](https://www.yuque.com/midwayjs/faas/quickstart_integration?translate=en)
+
 ## ✨ Features
 
-- 🌈&nbsp;&nbsp;"Zero Api", Don't have to build an API for client-side
-- 🌍&nbsp;&nbsp;Using "React Hooks" to develop the backend
+- ☁️&nbsp;&nbsp;Fullstack, the src directory contains front-end and back-end code
+- 🌈&nbsp;&nbsp;The easiest way to develop and call back-end APIs
+- 🌍&nbsp;&nbsp;Using "React Hooks" to develop the back-end
 - 📦&nbsp;&nbsp;Front-end Framework agnostic. Current Support React / Vue3 / ICE.js
 - ⚙️&nbsp;&nbsp;Built on [Midway](https://github.com/midwayjs/midway), providing full support for Web and Serverless scenarios
 - 🛡&nbsp;&nbsp;TypeScript Ready

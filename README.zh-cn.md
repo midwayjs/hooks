@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="./assets/midway-logo.png">
+</p>
+
+<p align="center">
   <a href="https://www.npmjs.com/package/@midwayjs/hooks">
     <img src="https://img.shields.io/npm/v/@midwayjs/hooks/latest?style=for-the-badge">
   </a>
@@ -9,13 +13,14 @@
   <img src="https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge">
 </p>
 
-# 更好的全栈框架
+# 更快的全栈框架
 
 Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/midwayjs/faas/quickstart_integration)
 
 ## ✨ 特性
 
-- 🌈 "零 Api", 从此忘记 Ajax 和 Api 调用
+- ☁️&nbsp;&nbsp;全栈，在 src 一个目录中开发前后端代码
+- 🌈&nbsp;&nbsp;最简单的后端 Api 开发与调用方式
 - 🌍 使用 "React Hooks" 开发后端
 - 📦 前端框架无感知. 当前 React / Vue3 / ICE.js
 - ⚙️ 基于 [Midway](https://github.com/midwayjs/midway), 提供 Web 及 Serverless 场景下的完整支持.
