@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge">
 </p>
 
-# 下一代全栈框架
+# 更好的全栈框架
 
 Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/midwayjs/faas/quickstart_integration)
 
@@ -20,6 +20,75 @@ Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/mid
 - 📦 前端框架无感知. 当前 React / Vue3 / ICE.js
 - ⚙️ 基于 [Midway](https://github.com/midwayjs/midway), 提供 Web 及 Serverless 场景下的完整支持.
 - 🛡 支持 TypeScript
+
+## Demo
+
+### 从后端导入代码并调用
+
+> backend api
+
+```typescript
+export async function get() {
+  return 'Hello Midway Hooks'
+}
+
+export async function post(name: string) {
+  return 'Hello ' + name
+}
+```
+
+> frontend
+
+```typescript
+import { get, post } from './apis/lambda'
+
+/**
+ * @method GET
+ * @url /api/get
+ */
+get().then((message) => {
+  // Display: Hello Midway Hooks
+  console.log(message)
+})
+
+/**
+ * @method POST
+ * @url /api/post
+ * @body { args: ['github'] }
+ */
+post('github').then((message) => {
+  // Display: Hello github
+  console.log(message)
+})
+```
+
+### Hooks
+
+> backend api
+
+```typescript
+import { useContext } from '@midwayjs/hooks'
+
+export async function getPath() {
+  const ctx = useContext()
+  return ctx.path
+}
+```
+
+> frontend
+
+```typescript
+import { getPath } from './apis/lambda'
+
+/**
+ * @method GET
+ * @url /api/getPath
+ */
+getPath().then((path) => {
+  // Display: /api/getPath
+  console.log(path)
+})
+```
 
 ## Contribute
 
