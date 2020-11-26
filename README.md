@@ -6,6 +6,9 @@
   <a href="https://www.npmjs.com/package/@midwayjs/hooks">
     <img src="https://img.shields.io/npm/v/@midwayjs/hooks/latest?style=for-the-badge">
   </a>
+  <a href="https://www.npmjs.com/package/@midwayjs/hooks">
+    <img src="https://img.shields.io/npm/v/@midwayjs/hooks/canary?style=for-the-badge">
+  </a>
   <img src="https://img.shields.io/github/workflow/status/midwayjs/hooks/Node.js%20CI/master?style=for-the-badge">
   <a href="https://codecov.io/gh/midwayjs/hooks">
     <img src="https://img.shields.io/codecov/c/github/midwayjs/hooks?style=for-the-badge">
