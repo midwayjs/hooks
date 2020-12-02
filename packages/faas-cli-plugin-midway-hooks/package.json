@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/faas-cli-plugin-midway-hooks",
-  "version": "1.0.0-canary.2",
+  "version": "1.0.0-canary.3",
   "description": "Midway Cli Plugin.",
   "keywords": [
     "midway",
@@ -26,8 +26,8 @@
   "dependencies": {
     "@midwayjs/fcli-command-core": "^1.2.12",
     "@midwayjs/fcli-plugin-invoke": "^1.1.8",
-    "@midwayjs/hooks-shared": "^1.0.0-canary.2",
-    "@midwayjs/next-hooks-compiler": "^1.0.0-canary.2",
+    "@midwayjs/hooks-shared": "^1.0.0-canary.3",
+    "@midwayjs/next-hooks-compiler": "^1.0.0-canary.3",
     "@midwayjs/serverless-spec-builder": "^1.2.17",
     "chokidar": "^3.3.1",
     "debug": "^4.1.1",

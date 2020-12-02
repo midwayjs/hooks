@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-request",
-  "version": "1.0.0-canary.2",
+  "version": "1.0.0-canary.3",
   "description": "Midway Hooks Front End Request SDK",
   "keywords": [
     "midway",
@@ -21,7 +21,7 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
-    "@midwayjs/hooks-shared": "^1.0.0-canary.2",
+    "@midwayjs/hooks-shared": "^1.0.0-canary.3",
     "isomorphic-unfetch": "^3.0.0"
   },
   "publishConfig": {

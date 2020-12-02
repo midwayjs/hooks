@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/build-plugin-hooks",
-  "version": "1.0.0-canary.2",
+  "version": "1.0.0-canary.3",
   "description": "Build integration plugin for Rax/Ice to convert references to backend Api in code to frontend SDK calls.",
   "main": "lib/index.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
-    "@midwayjs/hooks-loader": "^1.0.0-canary.2"
+    "@midwayjs/hooks-loader": "^1.0.0-canary.3"
   },
   "publishConfig": {
     "access": "public"
