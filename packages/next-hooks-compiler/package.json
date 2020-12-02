@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/next-hooks-compiler",
-  "version": "1.0.0-canary.0",
+  "version": "1.0.0-canary.1",
   "description": "Midway Hooks compiler",
   "main": "lib/index.js",
   "scripts": {
@@ -18,8 +18,8 @@
   "dependencies": {
     "@babel/code-frame": "^7.10.4",
     "@midwayjs/fcli-plugin-invoke": "^1.2.29",
-    "@midwayjs/hooks": "^1.0.0-canary.0",
-    "@midwayjs/hooks-shared": "^1.0.0-canary.0",
+    "@midwayjs/hooks": "^1.0.0-canary.1",
+    "@midwayjs/hooks-shared": "^1.0.0-canary.1",
     "@midwayjs/mwcc": "^0.3.5",
     "@midwayjs/serverless-invoke": "^1.2.12",
     "@types/lodash": "^4.14.159",
