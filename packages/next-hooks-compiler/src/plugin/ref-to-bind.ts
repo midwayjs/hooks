@@ -2,7 +2,7 @@ import ts from 'typescript'
 import { template, TransformationContext } from '@midwayjs/mwcc'
 import { BuiltinHOC, BuiltinHooks, ContextBind, HooksMethodNamespace, MidwayHooksPackage } from '../const'
 import { BuiltinHooksError } from '../errors/BuiltinHooks'
-import { isEmpty } from 'lodash'
+import { isEmpty, last } from 'lodash'
 import {
   closetAncestor,
   debug,
@@ -12,6 +12,7 @@ import {
   isHookName,
   isInsideLambdaOrHook,
   isLambdaOrHook,
+  tryCatch,
 } from '../util'
 import { helper } from '../helper'
 import { InvalidReferenceError } from '../errors/InvalidReference'
@@ -28,18 +29,13 @@ export default {
           return node
         }
 
-        let declarations: ts.Node[]
-        try {
-          declarations = ctx.resolveDeclarations(node)
-        } catch (error) {
-          debug('ctx.resolveDeclarations. Error: %s, Identifier: %s', error.message, node.getText())
+        const { value: declarations, error } = resolveDeclarations(ctx, node)
+        if (error) {
           return node
         }
 
-        if (!isEmpty(declarations)) {
-          if (ts.isBindingElement(declarations[0])) {
-            return node
-          }
+        if (!isEmpty(declarations) && ts.isBindingElement(declarations[0])) {
+          return node
         }
 
         const importNames = ctx.resolveImportedNames(node)
@@ -53,6 +49,35 @@ export default {
       },
     }
   },
+}
+
+/**
+ * resolveDeclarations 会偶发错误
+ */
+function resolveDeclarations(ctx: TransformationContext, node: ts.Node) {
+  let count = 2
+  let lastError = null
+  while (count--) {
+    const { value, error } = tryCatch(() => ctx.resolveDeclarations(node))
+    if (value) {
+      return { value, error: false }
+    }
+
+    debug(
+      'ctx.resolveDeclarations. Error: %s, Identifier: %s, Path: %s',
+      error?.message,
+      node.getText(),
+      getSourceFilePath(node)
+    )
+    lastError = error
+  }
+  console.error(
+    'ctx.resolveDeclarations Error: %s, Identifier: %s, Path: %s.\nPlease submit issue to https://github.com/midwayjs/hooks/issues/new',
+    lastError?.message,
+    node.getText(),
+    getSourceFilePath(node)
+  )
+  return { value: null, error: true }
 }
 
 function processReference(node: ts.Identifier, ctx: TransformationContext) {
