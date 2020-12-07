@@ -56,7 +56,8 @@ export default {
 }
 
 /**
- * resolveDeclarations 会偶发错误
+ * resolveDeclarations will crash on export * from 'xxx' case
+ * issue: https://github.com/microsoft/TypeScript/issues/40513
  */
 function resolveDeclarations(ctx: TransformationContext, node: ts.Node) {
   let count = 2
@@ -77,7 +78,12 @@ function resolveDeclarations(ctx: TransformationContext, node: ts.Node) {
     lastError = error
   }
   console.error(
-    'ctx.resolveDeclarations Error: %s, Identifier: %s, Path: %s.\nPlease submit issue to https://github.com/midwayjs/hooks/issues/new',
+    [
+      '[Known Issue] ctx.resolveDeclarations Error: %s, Identifier: %s, Path: %s.',
+      `Quick fix: stop using like export * from 'mod' from your code`,
+      'Relative Issue: https://github.com/microsoft/TypeScript/issues/40513',
+      'You can submit issue to https://github.com/midwayjs/hooks/issues/new',
+    ].join('\n'),
     lastError?.message,
     node.getText(),
     getSourceFilePath(node)
