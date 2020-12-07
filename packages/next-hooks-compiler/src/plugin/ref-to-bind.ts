@@ -2,7 +2,7 @@ import ts from 'typescript'
 import { template, TransformationContext } from '@midwayjs/mwcc'
 import { BuiltinHOC, BuiltinHooks, ContextBind, HooksMethodNamespace, MidwayHooksPackage } from '../const'
 import { BuiltinHooksError } from '../errors/BuiltinHooks'
-import { isEmpty, last } from 'lodash'
+import { isEmpty } from 'lodash'
 import {
   closetAncestor,
   debug,
@@ -23,8 +23,12 @@ export default {
     return {
       Identifier(node: ts.Identifier) {
         if (
+          // import HOOKS from 'xxx'
           closetAncestor(node, ts.SyntaxKind.ImportDeclaration) ||
-          closetAncestor(node, ts.SyntaxKind.BindingElement)
+          // const { HOOKS: b } = obj
+          closetAncestor(node, ts.SyntaxKind.BindingElement) ||
+          // const a = call<HOOKS>()
+          closetAncestor(node, ts.SyntaxKind.TypeReference)
         ) {
           return node
         }
@@ -69,6 +73,7 @@ function resolveDeclarations(ctx: TransformationContext, node: ts.Node) {
       node.getText(),
       getSourceFilePath(node)
     )
+    console.log(error?.stack)
     lastError = error
   }
   console.error(
