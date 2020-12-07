@@ -28,7 +28,7 @@ Docs：[Getting Started](https://www.yuque.com/midwayjs/faas/quickstart_integrat
 - ⚙️&nbsp;&nbsp;Built on [Midway](https://github.com/midwayjs/midway), providing full support for Web and Serverless scenarios
 - 🛡&nbsp;&nbsp;TypeScript Ready
 
-## Demo
+## 🌰 Demo
 
 ### import server code into frontend code
 
@@ -95,6 +95,46 @@ getPath().then((path) => {
   // Display: /api/getPath
   console.log(path)
 })
+```
+
+## 🚀 Quick Start
+
+Please install faas-cli first.
+
+```bash
+npm i @midwayjs/faas-cli -g
+```
+
+### Create
+
+React
+
+```bash
+f create --template-package=@midwayjs-examples/midway-hooks-react
+```
+
+Vue:
+
+```bash
+$ f create --template-package=@midwayjs-examples/midway-hooks-vue3
+```
+
+ICE.js:
+
+```bash
+$ npm init ice ice-app --template @icedesign/scaffold-midway-faas
+```
+
+### Run
+
+```bash
+npm start
+```
+
+### Deploy
+
+```bash
+f deploy
 ```
 
 ## Contribute

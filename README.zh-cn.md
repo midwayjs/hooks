@@ -26,7 +26,7 @@ Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/mid
 - ⚙️ 基于 [Midway](https://github.com/midwayjs/midway), 提供 Web 及 Serverless 场景下的完整支持.
 - 🛡 完善的 TypeScript 支持
 
-## Demo
+## 🌰 Demo
 
 ### 从后端导入代码并调用
 
@@ -93,6 +93,46 @@ getPath().then((path) => {
   // Display: /api/getPath
   console.log(path)
 })
+```
+
+## 🚀 快速开始
+
+请先安装 faas-cli.
+
+```bash
+npm i @midwayjs/faas-cli -g
+```
+
+### 创建
+
+React
+
+```bash
+f create --template-package=@midwayjs-examples/midway-hooks-react
+```
+
+Vue:
+
+```bash
+$ f create --template-package=@midwayjs-examples/midway-hooks-vue3
+```
+
+ICE.js:
+
+```bash
+$ npm init ice ice-app --template @icedesign/scaffold-midway-faas
+```
+
+### 运行
+
+```bash
+npm start
+```
+
+### 部署
+
+```bash
+f deploy
 ```
 
 ## Contribute
