@@ -171,3 +171,15 @@ export function getSourceFilePath(node: ts.Node) {
 export function removeExtension(file: string) {
   return file.replace(extname(file), '')
 }
+
+export function tryCatch<T extends (...args: unknown[]) => unknown>(
+  fn: T,
+  ...args: Parameters<T>
+): { value?: ReturnType<T>; error?: Error } {
+  try {
+    const value = fn(...args) as ReturnType<T>
+    return { value }
+  } catch (error) {
+    return { error }
+  }
+}

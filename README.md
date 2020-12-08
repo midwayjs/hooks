@@ -6,9 +6,6 @@
   <a href="https://www.npmjs.com/package/@midwayjs/hooks">
     <img src="https://img.shields.io/npm/v/@midwayjs/hooks/latest?style=for-the-badge">
   </a>
-  <a href="https://www.npmjs.com/package/@midwayjs/hooks">
-    <img src="https://img.shields.io/npm/v/@midwayjs/hooks/canary?style=for-the-badge">
-  </a>
   <img src="https://img.shields.io/github/workflow/status/midwayjs/hooks/Node.js%20CI/master?style=for-the-badge">
   <a href="https://codecov.io/gh/midwayjs/hooks">
     <img src="https://img.shields.io/codecov/c/github/midwayjs/hooks?style=for-the-badge">
@@ -27,11 +24,11 @@ Docs：[Getting Started](https://www.yuque.com/midwayjs/faas/quickstart_integrat
 - ☁️&nbsp;&nbsp;Fullstack, the src directory contains front-end and back-end code
 - 🌈&nbsp;&nbsp;The easiest way to develop and call back-end APIs
 - 🌍&nbsp;&nbsp;Using "React Hooks" to develop the back-end
-- 📦&nbsp;&nbsp;Front-end Framework agnostic. Current Support React / Vue3 / ICE.js
+- 📦&nbsp;&nbsp;Front-end Framework agnostic. Current support React / Vue3 / ICE.js
 - ⚙️&nbsp;&nbsp;Built on [Midway](https://github.com/midwayjs/midway), providing full support for Web and Serverless scenarios
 - 🛡&nbsp;&nbsp;TypeScript Ready
 
-## Demo
+## 🌰 Demo
 
 ### import server code into frontend code
 
@@ -98,6 +95,46 @@ getPath().then((path) => {
   // Display: /api/getPath
   console.log(path)
 })
+```
+
+## 🚀 Quick Start
+
+Please install faas-cli first.
+
+```bash
+npm i @midwayjs/faas-cli -g
+```
+
+### Create
+
+React
+
+```bash
+f create --template-package=@midwayjs-examples/midway-hooks-react
+```
+
+Vue:
+
+```bash
+$ f create --template-package=@midwayjs-examples/midway-hooks-vue3
+```
+
+ICE.js:
+
+```bash
+$ npm init ice ice-app --template @icedesign/scaffold-midway-faas
+```
+
+### Run
+
+```bash
+npm start
+```
+
+### Deploy
+
+```bash
+f deploy
 ```
 
 ## Contribute

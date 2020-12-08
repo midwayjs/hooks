@@ -22,11 +22,11 @@ Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/mid
 - ☁️&nbsp;&nbsp;全栈，在 src 一个目录中开发前后端代码
 - 🌈&nbsp;&nbsp;最简单的后端 Api 开发与调用方式
 - 🌍 使用 "React Hooks" 开发后端
-- 📦 前端框架无感知. 当前 React / Vue3 / ICE.js
+- 📦 跨前端框架. 支持 React / Vue3 / ICE.js
 - ⚙️ 基于 [Midway](https://github.com/midwayjs/midway), 提供 Web 及 Serverless 场景下的完整支持.
-- 🛡 支持 TypeScript
+- 🛡 完善的 TypeScript 支持
 
-## Demo
+## 🌰 Demo
 
 ### 从后端导入代码并调用
 
@@ -93,6 +93,46 @@ getPath().then((path) => {
   // Display: /api/getPath
   console.log(path)
 })
+```
+
+## 🚀 快速开始
+
+请先安装 faas-cli.
+
+```bash
+npm i @midwayjs/faas-cli -g
+```
+
+### 创建
+
+React
+
+```bash
+f create --template-package=@midwayjs-examples/midway-hooks-react
+```
+
+Vue:
+
+```bash
+$ f create --template-package=@midwayjs-examples/midway-hooks-vue3
+```
+
+ICE.js:
+
+```bash
+$ npm init ice ice-app --template @icedesign/scaffold-midway-faas
+```
+
+### 运行
+
+```bash
+npm start
+```
+
+### 部署
+
+```bash
+f deploy
 ```
 
 ## Contribute
