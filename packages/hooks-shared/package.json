@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-shared",
-  "version": "0.0.50",
+  "version": "1.0.0",
   "description": "Midway Hooks utils",
   "keywords": [
     "midway",
