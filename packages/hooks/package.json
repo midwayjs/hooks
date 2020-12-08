@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks",
-  "version": "1.0.0-canary.6",
+  "version": "1.0.0-canary.7",
   "description": "The next generation of integrated front and back-end application development solutions",
   "keywords": [
     "midway",
@@ -24,7 +24,7 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "@midwayjs/hooks-request": "^1.0.0-canary.6"
+    "@midwayjs/hooks-request": "^1.0.0-canary.7"
   },
   "publishConfig": {
     "access": "public"
