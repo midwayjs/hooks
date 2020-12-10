@@ -22,17 +22,18 @@ Docs：[Getting Started](https://www.yuque.com/midwayjs/faas/quickstart_integrat
 ## ✨ Features
 
 - ☁️&nbsp;&nbsp;Fullstack, the src directory contains front-end and back-end code
-- 🌈&nbsp;&nbsp;The easiest way to develop and call back-end APIs
-- 🌍&nbsp;&nbsp;Using "React Hooks" to develop the back-end
+- 🌈&nbsp;&nbsp;"Zero" Api, import server functions directly into frontend and automatically create API requests.
+- 🌍&nbsp;&nbsp;Using "React Hooks | Vue composition" to develop the back-end
 - 📦&nbsp;&nbsp;Front-end Framework agnostic. Current support React / Vue3 / ICE.js
 - ⚙️&nbsp;&nbsp;Built on [Midway](https://github.com/midwayjs/midway), providing full support for Web and Serverless scenarios
 - 🛡&nbsp;&nbsp;TypeScript Ready
 
 ## 🌰 Demo
 
-### import server code into frontend code
+### backend api & frontend invoke
 
 > backend api
+> src/apis/lambda/index.ts
 
 ```typescript
 export async function get() {
@@ -45,54 +46,48 @@ export async function post(name: string) {
 ```
 
 > frontend
+> src/page/index.tsx
 
 ```typescript
 import { get, post } from './apis/lambda'
 
-/**
- * @method GET
- * @url /api/get
- */
 get().then((message) => {
-  // Display: Hello Midway Hooks
+  // send GET request to /api/get
+  // Result: Hello Midway Hooks
   console.log(message)
 })
 
-/**
- * @method POST
- * @url /api/post
- * @body { args: ['github'] }
- */
 post('github').then((message) => {
-  // Display: Hello github
+  // send Post request to /api/post, HTTP Body is { args: ['github'] }
+  // Result: Hello github
   console.log(message)
 })
 ```
 
-### Hooks
+### Using Hooks
 
 > backend api
+> src/apis/lambda/index.ts
 
 ```typescript
 import { useContext } from '@midwayjs/hooks'
 
 export async function getPath() {
+  // Get HTTP request context by Hooks
   const ctx = useContext()
   return ctx.path
 }
 ```
 
 > frontend
+> src/page/index.tsx
 
 ```typescript
 import { getPath } from './apis/lambda'
 
-/**
- * @method GET
- * @url /api/getPath
- */
 getPath().then((path) => {
-  // Display: /api/getPath
+  // send GET request to /api/getPath
+  // Result: /api/getPath
   console.log(path)
 })
 ```

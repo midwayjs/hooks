@@ -20,17 +20,18 @@ Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/mid
 ## ✨ 特性
 
 - ☁️&nbsp;&nbsp;全栈，在 src 一个目录中开发前后端代码
-- 🌈&nbsp;&nbsp;最简单的后端 Api 开发与调用方式
-- 🌍 使用 "React Hooks" 开发后端
+- 🌈&nbsp;&nbsp;"零" API，从后端 import 函数，调用时自动转换为 API 请求
+- 🌍 使用 "React Hooks | Vue composition" 开发后端
 - 📦 跨前端框架. 支持 React / Vue3 / ICE.js
 - ⚙️ 基于 [Midway](https://github.com/midwayjs/midway), 提供 Web 及 Serverless 场景下的完整支持.
 - 🛡 完善的 TypeScript 支持
 
 ## 🌰 Demo
 
-### 从后端导入代码并调用
+### 后端 API 与前端调用
 
 > backend api
+> src/apis/lambda/index.ts
 
 ```typescript
 export async function get() {
@@ -43,54 +44,48 @@ export async function post(name: string) {
 ```
 
 > frontend
+> src/page/index.tsx
 
 ```typescript
 import { get, post } from './apis/lambda'
 
-/**
- * @method GET
- * @url /api/get
- */
 get().then((message) => {
-  // Display: Hello Midway Hooks
+  // 发送 GET 请求到 /api/get
+  // 返回值： Hello Midway Hooks
   console.log(message)
 })
 
-/**
- * @method POST
- * @url /api/post
- * @body { args: ['github'] }
- */
 post('github').then((message) => {
-  // Display: Hello github
+  // 发送 Post 请求到 /api/post, HTTP Body is { args: ['github'] }
+  // 返回值： Hello github
   console.log(message)
 })
 ```
 
-### Hooks
+### 使用 Hooks
 
 > backend api
+> src/apis/lambda/index.ts
 
 ```typescript
 import { useContext } from '@midwayjs/hooks'
 
 export async function getPath() {
+  // 获取请求 HTTP Context
   const ctx = useContext()
   return ctx.path
 }
 ```
 
 > frontend
+> src/page/index.tsx
 
 ```typescript
 import { getPath } from './apis/lambda'
 
-/**
- * @method GET
- * @url /api/getPath
- */
 getPath().then((path) => {
-  // Display: /api/getPath
+  // 发送 GET 请求到 /api/getPath
+  // 返回值: /api/getPath
   console.log(path)
 })
 ```
