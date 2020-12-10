@@ -69,12 +69,12 @@ function resolveDeclarations(ctx: TransformationContext, node: ts.Node) {
     }
 
     debug(
-      'ctx.resolveDeclarations. Error: %s, Identifier: %s, Path: %s',
+      'ctx.resolveDeclarations. Error: %s, Identifier: %s, Path: %s, Error Stack: %s',
       error?.message,
       node.getText(),
-      getSourceFilePath(node)
+      getSourceFilePath(node),
+      error?.stack
     )
-    console.log(error?.stack)
     lastError = error
   }
   console.error(
@@ -83,10 +83,12 @@ function resolveDeclarations(ctx: TransformationContext, node: ts.Node) {
       `Quick fix: stop using like export * from 'mod' from your code`,
       'Relative Issue: https://github.com/microsoft/TypeScript/issues/40513',
       'You can submit issue to https://github.com/midwayjs/hooks/issues/new',
+      'Error Stack: %s',
     ].join('\n'),
     lastError?.message,
     node.getText(),
-    getSourceFilePath(node)
+    getSourceFilePath(node),
+    lastError?.stack
   )
   return { value: null, error: true }
 }
