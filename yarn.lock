@@ -1779,10 +1779,20 @@
     fs-extra "^8.1.0"
     globby "^10.0.1"
 
-"@midwayjs/mwcc@^0.3.5", "@midwayjs/mwcc@^0.3.x":
+"@midwayjs/mwcc@^0.3.x":
   version "0.3.6"
   resolved "https://registry.npmjs.org/@midwayjs/mwcc/-/mwcc-0.3.6.tgz#ebbb1086d2fea2d6b79d9b7cc0164d7f51faed34"
   integrity sha512-FiAv6QLNZXEwz7XjcNcqKHeVVvXDeYqfs1y2i1nBxyG3SjFGwxSGPb4q7nyoTw0p2NyKjUl7soV9MCsYkQudaA==
+  dependencies:
+    "@midwayjs/ncc" "^0.22.2-1"
+    source-map "^0.7.3"
+    source-map-support "^0.5.16"
+    typescript "~3.9.3"
+
+"@midwayjs/mwcc@^0.4.1":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@midwayjs/mwcc/-/mwcc-0.4.4.tgz#5568f68989ccf8a32bab41167c2e097003763b20"
+  integrity sha512-g2t7O6WiP6AAWh0AtL7DrFd5ctI1ah+7Jc7exUeW7Gs3NqJ8u688lPWp/ORhApwwpPTHrDj3NClYgZUvFGKCDg==
   dependencies:
     "@midwayjs/ncc" "^0.22.2-1"
     source-map "^0.7.3"
@@ -7124,9 +7134,9 @@ inherits@2.0.3:
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
 ini@^1.3.2, ini@^1.3.4, ini@^1.3.5, ini@~1.3.0:
-  version "1.3.5"
-  resolved "https://registry.npmjs.org/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
-  integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.8.tgz#a29da425b48806f34767a4efce397269af28432c"
+  integrity sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==
 
 init-package-json@^1.10.3:
   version "1.10.3"
