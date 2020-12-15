@@ -1,4 +1,4 @@
-import ts from 'typescript'
+import { ts } from '@midwayjs/mwcc'
 import { getSourceFilePath } from '../util'
 import { buildErrorCodeFrame } from './code-frame'
 import { relative } from 'upath'

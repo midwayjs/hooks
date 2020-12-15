@@ -1,8 +1,8 @@
-import ts, { ArrowFunction, FunctionDeclaration, FunctionExpression } from 'typescript'
 import { helper } from './helper'
 import createDebug from 'debug'
 import { BuiltinHOC } from './const'
 import { extname } from 'upath'
+import { ts } from '@midwayjs/mwcc'
 
 export const debug = createDebug('hooks: next-compiler')
 
@@ -46,7 +46,7 @@ export function isLambdaOrHook(node: ts.Node, container: ts.Node) {
     const nameNode = getTopLevelNameNode(container)
     const funcName = nameNode?.getText?.() ?? ''
     // 自定义 Hook
-    return isHookName(funcName) || isLambda(node as FunctionDeclaration, container)
+    return isHookName(funcName) || isLambda(node as ts.FunctionDeclaration, container)
   }
 
   return isHOC(node)
@@ -105,7 +105,7 @@ export function isFunctionKind(kind: ts.SyntaxKind) {
   )
 }
 
-export type FunctionKind = FunctionDeclaration | ArrowFunction | FunctionExpression
+export type FunctionKind = ts.FunctionDeclaration | ts.ArrowFunction | ts.FunctionExpression
 
 export function closetAncestor<T extends ts.Node = ts.Node>(node: ts.Node, kind: ts.SyntaxKind) {
   return closetAncestorWhileKind(node, (currentKind) => currentKind === kind) as T

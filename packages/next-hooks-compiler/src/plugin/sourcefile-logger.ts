@@ -1,4 +1,4 @@
-import ts from 'typescript'
+import { ts } from '@midwayjs/mwcc'
 import { debug, getSourceFilePath } from '../util'
 import { helper } from '../helper'
 import { relative } from 'upath'
