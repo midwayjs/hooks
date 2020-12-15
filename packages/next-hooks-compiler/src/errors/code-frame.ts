@@ -1,5 +1,5 @@
 import { codeFrameColumns } from '@babel/code-frame'
-import ts from 'typescript'
+import { ts } from '@midwayjs/mwcc'
 
 export const buildErrorCodeFrame = (node: ts.Node, message: string) => {
   const sourceFile = node.getSourceFile()

@@ -1,4 +1,4 @@
-import ts from 'typescript'
+import { ts } from '@midwayjs/mwcc'
 import { relative } from 'upath'
 import { helper } from '..'
 import { BuiltinHooks } from '../const'

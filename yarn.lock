@@ -1789,10 +1789,10 @@
     source-map-support "^0.5.16"
     typescript "~3.9.3"
 
-"@midwayjs/mwcc@^0.4.1":
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/@midwayjs/mwcc/-/mwcc-0.4.4.tgz#5568f68989ccf8a32bab41167c2e097003763b20"
-  integrity sha512-g2t7O6WiP6AAWh0AtL7DrFd5ctI1ah+7Jc7exUeW7Gs3NqJ8u688lPWp/ORhApwwpPTHrDj3NClYgZUvFGKCDg==
+"@midwayjs/mwcc@^0.4.5":
+  version "0.4.5"
+  resolved "https://registry.npmjs.org/@midwayjs/mwcc/-/mwcc-0.4.5.tgz#cbe7105fc9ff624dfa3fd05b406052b4625d7221"
+  integrity sha512-+3yHHAxWIwjSyHh0kCWbRtDp+XiBMPY2aioxKtm1KrQ0bn9YH19RJ0Q9q1PPUI4IXclVwn3pAeH3uVMF8uqo5Q==
   dependencies:
     "@midwayjs/ncc" "^0.22.2-1"
     source-map "^0.7.3"

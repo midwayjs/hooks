@@ -1,4 +1,4 @@
-import ts from 'typescript'
+import { ts } from '@midwayjs/mwcc'
 import { template, TransformationContext } from '@midwayjs/mwcc'
 import { BuiltinHOC, BuiltinHooks, ContextBind, HooksMethodNamespace, MidwayHooksPackage } from '../const'
 import { BuiltinHooksError } from '../errors/BuiltinHooks'
