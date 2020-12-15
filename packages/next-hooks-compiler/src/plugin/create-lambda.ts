@@ -1,4 +1,4 @@
-import ts from 'typescript'
+import { ts } from '@midwayjs/mwcc'
 import {
   closetAncestor,
   getSourceFilePath,
