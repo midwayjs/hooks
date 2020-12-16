@@ -10,11 +10,12 @@ const finished = []
 async function checkSyncStatus(pkg) {
   const npmVersion = await execa('npm', ['show', pkg, 'version'])
   const tnpmVersion = await execa('tnpm', ['show', pkg, 'version'])
+  const cnpmVersion = await execa('cnpm', ['show', pkg, 'version'])
 
   finished.push(pkg)
   console.log(`[${finished.length}/${data.length}] ---->`, pkg)
-  if (npmVersion.stdout !== tnpmVersion.stdout) {
-    console.log(`===> npm: ${npmVersion.stdout}, tnpm: ${tnpmVersion.stdout}`)
+  if (npmVersion.stdout !== tnpmVersion.stdout || npmVersion.stdout !== cnpmVersion.stdout) {
+    console.log(`===> npm: ${npmVersion.stdout}, tnpm: ${tnpmVersion.stdout}, cnpm: ${cnpmVersion.stdout}`)
     failed.push(pkg)
   }
 }

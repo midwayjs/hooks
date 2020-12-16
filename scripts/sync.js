@@ -7,7 +7,7 @@ const data = JSON.parse(originData)
 const finished = []
 
 async function syncPackage(pkg) {
-  await execa('tnpm', ['sync', pkg])
+  await Promise.all([execa('tnpm', ['sync', pkg]), execa('cnpm', ['sync', pkg])])
   finished.push(pkg)
   console.log(`[${finished.length}/${data.length}] ${pkg} sync finished`)
 }
