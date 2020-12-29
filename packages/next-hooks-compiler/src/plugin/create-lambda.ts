@@ -32,7 +32,7 @@ export default {
           addRoute(getSourceFilePath(node), parseFunctionConfig(node, functionName, isExportDefault))
         }
 
-        return ts.updateFunctionDeclaration(
+        return ts.factory.updateFunctionDeclaration(
           node,
           node.decorators,
           node.modifiers,
@@ -66,7 +66,7 @@ export default {
           addRoute(getSourceFilePath(node), parseFunctionConfig(node, functionName, isExportDefault))
         }
 
-        return ts.updateFunctionExpression(
+        return ts.factory.updateFunctionExpression(
           node,
           node.modifiers,
           node.asteriskToken,
@@ -134,14 +134,21 @@ function createLambdaContext(block: ts.Block) {
     return block
   }
 
-  const expr = ts.createVariableStatement(
+  const expr = ts.factory.createVariableStatement(
     undefined,
-    ts.createVariableDeclarationList(
-      [ts.createVariableDeclaration(ts.createIdentifier(HooksRequestContext), undefined, ts.createThis())],
+    ts.factory.createVariableDeclarationList(
+      [
+        ts.factory.createVariableDeclaration(
+          ts.factory.createIdentifier(HooksRequestContext),
+          undefined,
+          undefined,
+          ts.factory.createThis()
+        ),
+      ],
       ts.NodeFlags.Const
     )
   )
 
   const statements = [expr, ...block.statements]
-  return ts.createBlock(statements)
+  return ts.factory.createBlock(statements)
 }

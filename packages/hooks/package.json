@@ -20,8 +20,7 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "devDependencies": {
-    "@midwayjs/faas": "2",
-    "typescript": "^3.9.3"
+    "@midwayjs/faas": "2"
   },
   "dependencies": {
     "@midwayjs/hooks-request": "^1.0.2"

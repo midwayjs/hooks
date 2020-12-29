@@ -25,15 +25,15 @@ export default {
         const expression = node.expression
 
         if (ts.isArrowFunction(expression)) {
-          return ts.createFunctionDeclaration(
+          return ts.factory.createFunctionDeclaration(
             expression.decorators,
             [
-              ts.createModifier(ts.SyntaxKind.ExportKeyword),
-              ts.createModifier(ts.SyntaxKind.DefaultKeyword),
-              ts.createModifier(ts.SyntaxKind.AsyncKeyword),
+              ts.factory.createModifier(ts.SyntaxKind.ExportKeyword),
+              ts.factory.createModifier(ts.SyntaxKind.DefaultKeyword),
+              ts.factory.createModifier(ts.SyntaxKind.AsyncKeyword),
             ],
             expression.asteriskToken,
-            ts.createIdentifier(DefaultKeyword),
+            ts.factory.createIdentifier(DefaultKeyword),
             expression.typeParameters,
             expression.parameters,
             expression.type,
@@ -59,12 +59,12 @@ export default {
           return node
         }
 
-        return ts.updateFunctionDeclaration(
+        return ts.factory.updateFunctionDeclaration(
           node,
           node.decorators,
           node.modifiers,
           node.asteriskToken,
-          ts.createIdentifier(DefaultKeyword),
+          ts.factory.createIdentifier(DefaultKeyword),
           node.typeParameters,
           node.parameters,
           node.type,
@@ -87,11 +87,13 @@ export default {
         }
 
         if (name) {
-          const body = ts.isBlock(node.body) ? node.body : ts.createBlock([ts.createReturn(node.body)])
-          return ts.createFunctionExpression(
+          const body = ts.isBlock(node.body)
+            ? node.body
+            : ts.factory.createBlock([ts.factory.createReturnStatement(node.body)])
+          return ts.factory.createFunctionExpression(
             node.modifiers,
             node.asteriskToken,
-            ts.createIdentifier(name),
+            ts.factory.createIdentifier(name),
             node.typeParameters,
             node.parameters,
             node.type,
