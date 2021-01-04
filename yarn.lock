@@ -1600,7 +1600,17 @@
     fs-extra "^8.1.0"
     globby "^10.0.1"
 
-"@midwayjs/mwcc@^0.5.0-nightly.0", "@midwayjs/mwcc@latest":
+"@midwayjs/mwcc@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.npmjs.org/@midwayjs/mwcc/-/mwcc-0.5.0.tgz#668b0a7f9d82a46828787893746af75a94d0dd29"
+  integrity sha512-sf6Ica0yRz51CcdKEBfQOppnqeg5I42+PkjVycpQvnSkEtDVbcKp1owICGVYtyiyCEnvPK/DTAm87wzRB2Dhdg==
+  dependencies:
+    "@midwayjs/ncc" "^0.22.2-1"
+    source-map "^0.7.3"
+    source-map-support "^0.5.16"
+    typescript "~4.1.3"
+
+"@midwayjs/mwcc@latest":
   version "0.5.0-nightly.0"
   resolved "https://registry.npmjs.org/@midwayjs/mwcc/-/mwcc-0.5.0-nightly.0.tgz#711231d3fc483da4ff5bfb68faafca05fcf71e56"
   integrity sha512-cqAmMuHHr2JNiqbGFNzZw4SxgnGmw+JRSjz43EJ9KnF+bZ+Kf2J0iefYz5vP5NL7ElKcvYk8SLx4PnsY2MoHWA==

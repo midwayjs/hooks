@@ -20,7 +20,7 @@
     "@midwayjs/fcli-plugin-invoke": "^1.2.29",
     "@midwayjs/hooks": "^1.0.2",
     "@midwayjs/hooks-shared": "^1.0.2",
-    "@midwayjs/mwcc": "^0.5.0-nightly.0",
+    "@midwayjs/mwcc": "^0.5.0",
     "@midwayjs/serverless-invoke": "^1.2.12",
     "@types/lodash": "^4.14.159",
     "chalk": "^4.0.0",
