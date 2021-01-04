@@ -35,7 +35,6 @@
     "jest-snapshot-serializer-raw": "^1.1.0",
     "memory-fs": "^0.5.0",
     "ts-loader": "^8.0.11",
-    "typescript": "^3.9.3",
     "webpack": "^4.42.1",
     "webpack-chain": "^6.5.0"
   },

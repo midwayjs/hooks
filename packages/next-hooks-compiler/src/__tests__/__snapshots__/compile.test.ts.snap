@@ -17,9 +17,12 @@ export const useAsyncArrow = async (name: string) => {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useAsyncArrow = exports.useArrow = exports.useDemo = void 0;
-exports.useDemo = function useDemo(name) { const _req_ctx_ = this; };
-exports.useArrow = function useArrow(name) { const _req_ctx_ = this; exports.useDemo.bind(_req_ctx_)(name + '666'); };
-exports.useAsyncArrow = async function useAsyncArrow(name) { const _req_ctx_ = this; await exports.useDemo.bind(_req_ctx_)(name + '666'); };
+const useDemo = function useDemo(name) { const _req_ctx_ = this; };
+exports.useDemo = useDemo;
+const useArrow = function useArrow(name) { const _req_ctx_ = this; exports.useDemo.bind(_req_ctx_)(name + '666'); };
+exports.useArrow = useArrow;
+const useAsyncArrow = async function useAsyncArrow(name) { const _req_ctx_ = this; await exports.useDemo.bind(_req_ctx_)(name + '666'); };
+exports.useAsyncArrow = useAsyncArrow;
 //# sourceMappingURL=arrow.js.map
 `;
 
@@ -212,8 +215,9 @@ export const useInner = async () => {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useInner = exports.useQuery = void 0;
-exports.useQuery = function useQuery(id) { const _req_ctx_ = this; return ''; };
-exports.useInner = async function useInner() {
+const useQuery = function useQuery(id) { const _req_ctx_ = this; return ''; };
+exports.useQuery = useQuery;
+const useInner = async function useInner() {
     const _req_ctx_ = this;
     exports.useQuery.bind(_req_ctx_)('123');
     const inner = () => {
@@ -221,6 +225,7 @@ exports.useInner = async function useInner() {
     };
     inner();
 };
+exports.useInner = useInner;
 //# sourceMappingURL=arrow-hook-ref-arrow-hook.js.map
 `;
 
@@ -237,7 +242,8 @@ const functionExpression = function () {}
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
-exports.hello = function hello(name) { const _req_ctx_ = this; console.log(name); };
+const hello = function hello(name) { const _req_ctx_ = this; console.log(name); };
+exports.hello = hello;
 const functionExpression = function () { };
 //# sourceMappingURL=export-arrow.js.map
 `;

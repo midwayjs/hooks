@@ -27,10 +27,15 @@ export function isHookName(s: string) {
 }
 
 export function isInsideLambdaOrHook(node: ts.Node) {
-  const topLevelParent = closetAncestorWhileKind(
-    node,
-    (kind, currentNode) => currentNode.parent.kind === ts.SyntaxKind.SourceFile
-  )
+  const topLevelParent = closetAncestorWhileKind(node, (ancestorKind, ancestorNode) => {
+    return ancestorNode.parent.kind === ts.SyntaxKind.SourceFile
+    // try {
+
+    // } catch (e) {
+    //   console.log(node, ancestorNode)
+    //   debugger
+    // }
+  })
 
   const topLevelNode = getTopLevelNode(topLevelParent)
   return isLambdaOrHook(topLevelNode, topLevelParent)
@@ -94,7 +99,7 @@ export function getTopLevelNameNode(node: ts.Node): ts.Identifier {
   }
 
   console.log('getTopLevelNameNode unsupported types ' + ts.SyntaxKind[node.kind])
-  return ts.createIdentifier('')
+  return ts.factory.createIdentifier('')
 }
 
 export function isFunctionKind(kind: ts.SyntaxKind) {
@@ -108,15 +113,15 @@ export function isFunctionKind(kind: ts.SyntaxKind) {
 export type FunctionKind = ts.FunctionDeclaration | ts.ArrowFunction | ts.FunctionExpression
 
 export function closetAncestor<T extends ts.Node = ts.Node>(node: ts.Node, kind: ts.SyntaxKind) {
-  return closetAncestorWhileKind(node, (currentKind) => currentKind === kind) as T
+  return closetAncestorWhileKind(node, (ancestorKind) => ancestorKind === kind) as T
 }
 
 export function closetAncestorWhileKind(
   node: ts.Node,
-  condition: (kind: ts.SyntaxKind, currentNode?: ts.Node) => boolean
+  condition: (ancestorKind: ts.SyntaxKind, currentNode?: ts.Node) => boolean
 ) {
   let parent = node.parent
-  while (parent != null) {
+  while (parent) {
     if (condition(parent.kind, parent)) {
       return parent
     }
