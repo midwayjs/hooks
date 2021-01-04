@@ -21,7 +21,8 @@
     "paths": {
       "@midwayjs/*": ["./*/src"]
     },
-    "composite": true
+    "composite": true,
+    "skipLibCheck": true
   },
   "exclude": ["dist", "lib", "node_modules", "**/__tests__"]
 }

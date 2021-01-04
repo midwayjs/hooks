@@ -19,9 +19,6 @@
     "type": "git",
     "url": "git@github.com:midwayjs/hooks.git"
   },
-  "devDependencies": {
-    "typescript": "^3.9.3"
-  },
   "publishConfig": {
     "access": "public"
   },
