@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The next generation of integrated front and back-end application development solutions",
   "keywords": [
     "midway",
@@ -23,7 +23,7 @@
     "@midwayjs/faas": "2"
   },
   "dependencies": {
-    "@midwayjs/hooks-request": "^1.0.2"
+    "@midwayjs/hooks-request": "^1.0.3"
   },
   "publishConfig": {
     "access": "public"
