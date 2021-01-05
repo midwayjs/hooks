@@ -97,7 +97,7 @@ getPath().then((path) => {
 Please install faas-cli first.
 
 ```bash
-npm i @midwayjs/faas-cli -g
+$ npm i @midwayjs/faas-cli -g
 ```
 
 ### Create
@@ -105,7 +105,7 @@ npm i @midwayjs/faas-cli -g
 React
 
 ```bash
-f create --template-package=@midwayjs-examples/midway-hooks-react
+$ f create --template-package=@midwayjs-examples/midway-hooks-react
 ```
 
 Vue:
@@ -123,39 +123,54 @@ $ npm init ice ice-app --template @icedesign/scaffold-midway-faas
 ### Run
 
 ```bash
-npm start
+$ npm start
 ```
 
 ### Deploy
 
 ```bash
-f deploy
+$ f deploy
 ```
 
 ## Contribute
 
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
 We use yarn + lerna to manage the project.
 
-> install dependencies
+- install dependencies
 
 ```bash
 $ yarn
 ```
 
-> build
+- build
 
 ```bash
 $ yarn build
 ```
 
-> watch
+- watch
 
 ```bash
 $ yarn watch
 ```
 
-> test
+- test
 
 ```bash
 $ yarn test
 ```
+
+## license
+
+Midway Serverless based [MIT licensed](./LICENSE).
+
+## About
+
+[Alibaba Open Source](https://opensource.alibaba.com/)
