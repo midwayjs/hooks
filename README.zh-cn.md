@@ -95,7 +95,7 @@ getPath().then((path) => {
 请先安装 faas-cli.
 
 ```bash
-npm i @midwayjs/faas-cli -g
+$ npm i @midwayjs/faas-cli -g
 ```
 
 ### 创建
@@ -103,7 +103,7 @@ npm i @midwayjs/faas-cli -g
 React
 
 ```bash
-f create --template-package=@midwayjs-examples/midway-hooks-react
+$ f create --template-package=@midwayjs-examples/midway-hooks-react
 ```
 
 Vue:
@@ -127,33 +127,47 @@ npm start
 ### 部署
 
 ```bash
-f deploy
+$ f deploy
 ```
 
 ## Contribute
 
+1. Fork 仓库!
+2. 创建分支: `git checkout -b my-new-feature`
+3. 提交改动: `git commit -am 'Add some feature'`
+4. 推送到刚才创建的分支: `git push origin my-new-feature`
+5. 提交 Pull Request :D
+
 我们使用 yarn + lerna 管理项目
 
-> install dependencies
+- install dependencies
 
 ```bash
 $ yarn
 ```
 
-> build
+- build
 
 ```bash
 $ yarn build
 ```
 
-> watch
+- watch
 
 ```bash
 $ yarn watch
 ```
 
-> test
+- test
 
 ```bash
 $ yarn test
 ```
+
+## 开源协议
+
+Midway Serverless based [MIT licensed](./LICENSE).
+
+## 关于我们
+
+[Alibaba Open Source](https://opensource.alibaba.com/)
