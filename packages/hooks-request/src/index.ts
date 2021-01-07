@@ -1,9 +1,11 @@
-if (typeof window !== 'undefined') {
-  require('isomorphic-unfetch')
-}
+import { isWeb, isNode } from 'universal-env'
 import type { LambdaParam } from '@midwayjs/hooks-shared'
 
 export type { LambdaHTTPMethod, LambdaParam } from '@midwayjs/hooks-shared'
+
+if (isWeb || isNode) {
+  require('isomorphic-unfetch')
+}
 
 type Defaults = {
   baseURL: string
