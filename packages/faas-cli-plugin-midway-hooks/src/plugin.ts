@@ -1,14 +1,20 @@
 import { BasePlugin } from '@midwayjs/fcli-command-core'
 import { resolve } from 'path'
-import { getFunctionsMeta, helper, hintConfig, MidwayHooksFunctionStructure } from '@midwayjs/next-hooks-compiler'
+import {
+  getFunctionsMeta,
+  helper,
+  hintConfig,
+  hintConfigForAsyncHooks,
+  MidwayHooksFunctionStructure,
+} from '@midwayjs/next-hooks-compiler'
 import { argsPath, debug } from './util'
 import { HooksWatcher, WatcherConfig } from './watcher'
 import { EventStructureType, transform } from '@midwayjs/serverless-spec-builder'
-import type { SpecStructureWithGateway } from '@midwayjs/hooks-shared'
+import type { HooksSpecStructure } from '@midwayjs/hooks-shared'
 import { compilerEmitter } from './event'
 
 export class MidwayHooksPlugin extends BasePlugin {
-  spec: SpecStructureWithGateway
+  spec: HooksSpecStructure
 
   get gateway() {
     if (!this.spec) {
@@ -48,15 +54,17 @@ export class MidwayHooksPlugin extends BasePlugin {
       return
     }
 
+    helper.root = this.root
+
+    const mwccHintConfig = helper.isAsyncHooksRuntime ? hintConfigForAsyncHooks : hintConfig
+
     if (!MidwayHooksPlugin.init) {
-      debug('hintConfig: %O', hintConfig)
       MidwayHooksPlugin.init = true
+      debug('hintConfig: %O', mwccHintConfig)
     }
 
+    this.setStore('mwccHintConfig', mwccHintConfig, true)
     debug('beforeCompile')
-
-    helper.root = this.root
-    this.setStore('mwccHintConfig', hintConfig, true)
   }
 
   async afterCompile() {

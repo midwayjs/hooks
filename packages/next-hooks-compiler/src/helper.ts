@@ -2,7 +2,7 @@ import inside from 'is-path-inside'
 import { LambdaMethodPrefix } from './const'
 import { basename, dirname, extname, join, relative, resolve, toUnix } from 'upath'
 import { transform } from '@midwayjs/serverless-spec-builder'
-import type { FunctionRule, FunctionsRule, SpecStructureWithGateway } from '@midwayjs/hooks-shared'
+import type { FunctionRule, FunctionsRule, HooksSpecStructure } from '@midwayjs/hooks-shared'
 import { duplicateWarning } from './routes'
 
 const defaultFunctionsRule: FunctionsRule = {
@@ -23,15 +23,19 @@ const defaultFunctionsRule: FunctionsRule = {
 export class RouteHelper {
   root: string
   routes = new Map<string, string>()
-  private _spec: SpecStructureWithGateway = null
+  private _spec: HooksSpecStructure = null
 
-  get spec(): SpecStructureWithGateway {
+  get spec(): HooksSpecStructure {
     this._spec = this._spec || transform(resolve(this.root, 'f.yml'))
     return this._spec
   }
 
   get functionsRule() {
     return Array.isArray(this.spec?.functionsRule?.rules) ? this.spec.functionsRule : defaultFunctionsRule
+  }
+
+  get isAsyncHooksRuntime() {
+    return this.spec?.hooks?.runtime === 'async_hooks'
   }
 
   // src/apis

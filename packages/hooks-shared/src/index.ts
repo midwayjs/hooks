@@ -21,11 +21,14 @@ export type LambdaParam = {
   }
 }
 
-export interface SpecStructureWithGateway extends Omit<SpecStructure, 'functionsRule'> {
+export interface HooksSpecStructure extends Omit<SpecStructure, 'functionsRule'> {
   apiGateway?: {
     type?: string
   }
   functionsRule?: FunctionsRule
+  hooks?: {
+    runtime?: 'compiler' | 'async_hooks'
+  }
 }
 
 export interface FunctionsRule {
