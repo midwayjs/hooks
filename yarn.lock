@@ -12201,6 +12201,11 @@ universal-analytics@^0.4.20:
     request "^2.88.2"
     uuid "^3.0.0"
 
+universal-env@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.npmjs.org/universal-env/-/universal-env-3.2.2.tgz#8a773fa29cbc3ec0ad00733f3503cf5a6a740f28"
+  integrity sha512-Pc1TY0GyJRPbv2iP7A0CFfzuKMZDvR3uNy5vDrxSCcZI1Pv0AYISJXB5LDUb2Ajnv9D1ku1MxpqRIxbQuJrHiw==
+
 universal-user-agent@^4.0.0:
   version "4.0.1"
   resolved "https://registry.npmjs.org/universal-user-agent/-/universal-user-agent-4.0.1.tgz#fd8d6cb773a679a709e967ef8288a31fcc03e557"
