@@ -17,21 +17,20 @@
   },
   "dependencies": {
     "@babel/code-frame": "^7.10.4",
-    "@midwayjs/fcli-plugin-invoke": "^1.2.29",
     "@midwayjs/hooks": "^1.0.3",
     "@midwayjs/hooks-shared": "^1.0.3",
     "@midwayjs/mwcc": "^0.5.0",
-    "@midwayjs/serverless-invoke": "^1.2.12",
     "@types/lodash": "^4.14.159",
     "chalk": "^4.0.0",
     "debug": "^4.1.1",
     "is-path-inside": "^3.0.2",
-    "upath": "^2.0.0"
+    "upath": "^2.0.0",
+    "@midwayjs/fcli-plugin-invoke": "^1.2.39-beta.1"
   },
   "devDependencies": {
     "@midwayjs/bootstrap": "^2.3.23",
     "@midwayjs/serverless-fc-trigger": "^1.2.9",
-    "@midwayjs/serverless-spec-builder": "^1.1.16",
+    "@midwayjs/serverless-spec-builder": "^1.2.39-beta.1",
     "@types/babel__code-frame": "^7.0.2",
     "@types/debug": "^4.1.5",
     "@types/jest": "^26.0.15",

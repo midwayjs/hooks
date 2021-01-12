@@ -1,0 +1,26 @@
+# f.yml document https://www.yuque.com/midwayjs/faas/serverless_yml
+
+service: midway-faas-react-demo
+
+provider:
+  name: aliyun # tencent
+  runtime: nodejs10
+
+plugins:
+  - local::../../../../lib/
+
+package:
+  include:
+    - build
+  artifact: code.zip
+
+functionsRule:
+  source: /src
+  rules:
+    - baseDir: lambda
+      events:
+        http:
+          basePath: /api
+
+hooks:
+  runtime: async_hooks

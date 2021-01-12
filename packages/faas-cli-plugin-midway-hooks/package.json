@@ -24,17 +24,17 @@
     "access": "public"
   },
   "dependencies": {
-    "@midwayjs/fcli-command-core": "^1.2.12",
-    "@midwayjs/fcli-plugin-invoke": "^1.1.8",
+    "@midwayjs/fcli-command-core": "^1.2.39-beta.1",
+    "@midwayjs/fcli-plugin-invoke": "^1.2.39-beta.1",
     "@midwayjs/hooks-shared": "^1.0.3",
     "@midwayjs/next-hooks-compiler": "^1.0.3",
-    "@midwayjs/serverless-spec-builder": "^1.2.17",
+    "@midwayjs/serverless-spec-builder": "^1.2.39-beta.1",
     "chokidar": "^3.3.1",
     "debug": "^4.1.1",
     "fs-extra": "^9.0.1"
   },
   "devDependencies": {
-    "@midwayjs/command-core": "^1.2.20",
+    "@midwayjs/command-core": "^1.2.39-beta.1",
     "@midwayjs/fcli-plugin-fc": "^1.2.20",
     "@midwayjs/fcli-plugin-package": "^1.2.23",
     "@types/chokidar": "^2.1.3",

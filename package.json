@@ -41,5 +41,8 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "resolutions": {
+    "@midwayjs/serverless-spec-builder": "^1.2.39-beta.1"
+  }
 }
