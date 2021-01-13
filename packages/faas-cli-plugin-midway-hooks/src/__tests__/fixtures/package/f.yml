@@ -15,7 +15,6 @@ package:
   artifact: code.zip
 
 functionsRule:
-  source: /src
   rules:
     - baseDir: lambda
       events:
