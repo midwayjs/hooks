@@ -21,13 +21,11 @@
   },
   "devDependencies": {
     "@midwayjs/faas": "2",
-    "@types/debug": "^4.1.5",
-    "@types/semver": "^7.3.4"
+    "@types/debug": "^4.1.5"
   },
   "dependencies": {
     "@midwayjs/hooks-request": "^1.0.3",
-    "debug": "^4.3.1",
-    "semver": "^7.3.4"
+    "debug": "^4.3.1"
   },
   "publishConfig": {
     "access": "public"

@@ -26,12 +26,12 @@
     "is-path-inside": "^3.0.2",
     "upath": "^2.0.0",
     "semver": "^7.3.4",
-    "@midwayjs/fcli-plugin-invoke": "^1.2.39-beta.1"
+    "@midwayjs/fcli-plugin-invoke": "^1.2.38"
   },
   "devDependencies": {
     "@midwayjs/bootstrap": "^2.3.23",
     "@midwayjs/serverless-fc-trigger": "^1.2.9",
-    "@midwayjs/serverless-spec-builder": "^1.2.39-beta.1",
+    "@midwayjs/serverless-spec-builder": "^1.2.38",
     "@types/babel__code-frame": "^7.0.2",
     "@types/debug": "^4.1.5",
     "@types/jest": "^26.0.15",

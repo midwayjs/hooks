@@ -43,6 +43,9 @@
     "packages/*"
   ],
   "resolutions": {
-    "@midwayjs/serverless-spec-builder": "^1.2.39-beta.1"
+    "@midwayjs/serverless-spec-builder": "^1.2.39-beta.4",
+    "@midwayjs/fcli-command-core": "^1.2.39-beta.4",
+    "@midwayjs/fcli-plugin-invoke": "^1.2.39-beta.4",
+    "@midwayjs/command-core": "^1.2.39-beta.4"
   }
 }
