@@ -11,9 +11,6 @@
     "clean": "rm -rf lib",
     "prepublishOnly": "npm run build"
   },
-  "engines": {
-    "node": ">=12.17.0"
-  },
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
@@ -24,11 +21,13 @@
   },
   "devDependencies": {
     "@midwayjs/faas": "2",
-    "@types/debug": "^4.1.5"
+    "@types/debug": "^4.1.5",
+    "@types/semver": "^7.3.4"
   },
   "dependencies": {
     "@midwayjs/hooks-request": "^1.0.3",
-    "debug": "^4.3.1"
+    "debug": "^4.3.1",
+    "semver": "^7.3.4"
   },
   "publishConfig": {
     "access": "public"
