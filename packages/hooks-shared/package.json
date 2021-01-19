@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-shared",
-  "version": "1.0.3",
+  "version": "1.0.4-beta.0",
   "description": "Midway Hooks utils",
   "keywords": [
     "midway",
@@ -24,6 +24,5 @@
   },
   "dependencies": {
     "@midwayjs/serverless-spec-builder": "^1.1.21"
-  },
-  "devDependencies": {}
+  }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/next-hooks-compiler",
-  "version": "1.0.3",
+  "version": "1.0.4-beta.0",
   "description": "Midway Hooks compiler",
   "main": "lib/index.js",
   "scripts": {
@@ -17,16 +17,16 @@
   },
   "dependencies": {
     "@babel/code-frame": "^7.10.4",
-    "@midwayjs/hooks": "^1.0.3",
-    "@midwayjs/hooks-shared": "^1.0.3",
+    "@midwayjs/fcli-plugin-invoke": "^1.2.38",
+    "@midwayjs/hooks": "^1.0.4-beta.0",
+    "@midwayjs/hooks-shared": "^1.0.4-beta.0",
     "@midwayjs/mwcc": "^0.5.0",
     "@types/lodash": "^4.14.159",
     "chalk": "^4.0.0",
     "debug": "^4.1.1",
     "is-path-inside": "^3.0.2",
-    "upath": "^2.0.0",
     "semver": "^7.3.4",
-    "@midwayjs/fcli-plugin-invoke": "^1.2.38"
+    "upath": "^2.0.0"
   },
   "devDependencies": {
     "@midwayjs/bootstrap": "^2.3.23",

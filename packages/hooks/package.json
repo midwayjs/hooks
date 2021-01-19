@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks",
-  "version": "1.0.3",
+  "version": "1.0.4-beta.0",
   "description": "The next generation of integrated front and back-end application development solutions",
   "keywords": [
     "midway",
@@ -24,7 +24,7 @@
     "@types/debug": "^4.1.5"
   },
   "dependencies": {
-    "@midwayjs/hooks-request": "^1.0.3",
+    "@midwayjs/hooks-request": "^1.0.4-beta.0",
     "debug": "^4.3.1"
   },
   "publishConfig": {
