@@ -12,6 +12,7 @@ import { HooksWatcher, WatcherConfig } from './watcher'
 import { EventStructureType, transform } from '@midwayjs/serverless-spec-builder'
 import type { HooksSpecStructure } from '@midwayjs/hooks-shared'
 import { compilerEmitter } from './event'
+import semver from 'semver'
 
 export class MidwayHooksPlugin extends BasePlugin {
   spec: HooksSpecStructure
@@ -55,6 +56,12 @@ export class MidwayHooksPlugin extends BasePlugin {
     }
 
     helper.root = this.root
+
+    if (helper.isAsyncHooksRuntime && semver.lt(process.version, '12.17.0')) {
+      throw new Error(
+        `async_hooks runtime require node version >= 12.17.0, current version: ${process.version}, reference: https://nodejs.org/dist/latest-v15.x/docs/api/async_hooks.html#async_hooks_class_asynclocalstorage`
+      )
+    }
 
     const mwccHintConfig = helper.isAsyncHooksRuntime ? hintConfigForAsyncHooks : hintConfig
 
