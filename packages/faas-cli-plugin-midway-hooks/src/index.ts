@@ -1,2 +1,3 @@
 export { MidwayHooksPlugin } from './plugin'
-export { RoutesPlugin } from './routes'
+export { ViewRoutesPlugin } from './routes'
+// export { InstallPlugin } from './installer'

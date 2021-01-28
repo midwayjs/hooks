@@ -1,0 +1,25 @@
+{
+  "name": "@midwayjs/recipe-oss",
+  "version": "0.0.2",
+  "description": "Midway recipes installer",
+  "keywords": [
+    "midway",
+    "hooks",
+    "recipes",
+    "oss"
+  ],
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "main": "index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@midwayjs/installer": "*"
+  }
+}
