@@ -23,6 +23,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@midwayjs/serverless-spec-builder": "^1.1.21"
+    "@midwayjs/serverless-spec-builder": "^1.2.40"
   }
 }
