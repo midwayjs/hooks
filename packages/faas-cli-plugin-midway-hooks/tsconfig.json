@@ -11,9 +11,6 @@
       "path": "../hooks-shared"
     },
     {
-      "path": "../installer"
-    },
-    {
       "path": "../next-hooks-compiler"
     }
   ]

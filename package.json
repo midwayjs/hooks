@@ -40,7 +40,6 @@
     }
   },
   "workspaces": [
-    "packages/*",
-    "recipes/*"
+    "packages/*"
   ]
 }
