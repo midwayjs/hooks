@@ -2333,11 +2333,6 @@
   dependencies:
     chokidar "*"
 
-"@types/cli-table@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.npmjs.org/@types/cli-table/-/cli-table-0.3.0.tgz#f1857156bf5fd115c6a2db260ba0be1f8fc5671c"
-  integrity sha512-QnZUISJJXyhyD6L1e5QwXDV/A5i2W1/gl6D6YMc8u0ncPepbv/B4w3S+izVvtAg60m6h+JP09+Y/0zF2mojlFQ==
-
 "@types/connect@*":
   version "3.4.34"
   resolved "https://registry.npmjs.org/@types/connect/-/connect-3.4.34.tgz#170a40223a6d666006d93ca128af2beb1d9b1901"
