@@ -41,7 +41,7 @@ export default {
           node.typeParameters,
           node.parameters,
           node.type,
-          createLambdaContext(node.body)
+          helper.isAsyncHooksRuntime ? node.body : createLambdaContext(node.body)
         )
       },
       FunctionExpression(node: ts.FunctionExpression) {
@@ -74,7 +74,7 @@ export default {
           node.typeParameters,
           node.parameters,
           node.type,
-          createLambdaContext(node.body)
+          helper.isAsyncHooksRuntime ? node.body : createLambdaContext(node.body)
         )
       },
     }

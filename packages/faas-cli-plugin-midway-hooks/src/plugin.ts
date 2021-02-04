@@ -1,14 +1,21 @@
 import { BasePlugin } from '@midwayjs/fcli-command-core'
 import { resolve } from 'path'
-import { getFunctionsMeta, helper, hintConfig, MidwayHooksFunctionStructure } from '@midwayjs/next-hooks-compiler'
+import {
+  getFunctionsMeta,
+  helper,
+  hintConfig,
+  hintConfigForAsyncHooks,
+  MidwayHooksFunctionStructure,
+} from '@midwayjs/next-hooks-compiler'
 import { argsPath, debug } from './util'
 import { HooksWatcher, WatcherConfig } from './watcher'
 import { EventStructureType, transform } from '@midwayjs/serverless-spec-builder'
-import type { SpecStructureWithGateway } from '@midwayjs/hooks-shared'
+import type { HooksSpecStructure } from '@midwayjs/hooks-shared'
 import { compilerEmitter } from './event'
+import semver from 'semver'
 
 export class MidwayHooksPlugin extends BasePlugin {
-  spec: SpecStructureWithGateway
+  spec: HooksSpecStructure
 
   get gateway() {
     if (!this.spec) {
@@ -48,15 +55,23 @@ export class MidwayHooksPlugin extends BasePlugin {
       return
     }
 
-    if (!MidwayHooksPlugin.init) {
-      debug('hintConfig: %O', hintConfig)
-      MidwayHooksPlugin.init = true
+    helper.root = this.root
+
+    if (helper.isAsyncHooksRuntime && semver.lt(process.version, '12.17.0')) {
+      throw new Error(
+        `async_hooks runtime require node version >= 12.17.0, current version: ${process.version}, reference: https://nodejs.org/dist/latest-v15.x/docs/api/async_hooks.html#async_hooks_class_asynclocalstorage`
+      )
     }
 
-    debug('beforeCompile')
+    const mwccHintConfig = helper.isAsyncHooksRuntime ? hintConfigForAsyncHooks : hintConfig
 
-    helper.root = this.root
-    this.setStore('mwccHintConfig', hintConfig, true)
+    if (!MidwayHooksPlugin.init) {
+      MidwayHooksPlugin.init = true
+      debug('hintConfig: %O', mwccHintConfig)
+    }
+
+    this.setStore('mwccHintConfig', mwccHintConfig, true)
+    debug('beforeCompile')
   }
 
   async afterCompile() {
