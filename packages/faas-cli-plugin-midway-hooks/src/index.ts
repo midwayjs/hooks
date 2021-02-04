@@ -1,1 +1,2 @@
-export * from './plugin'
+export { MidwayHooksPlugin } from './plugin'
+export { RoutesPlugin } from './routes'
