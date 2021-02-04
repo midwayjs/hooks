@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-loader",
-  "version": "1.0.4-beta.0",
+  "version": "1.0.4-beta.1",
   "description": "Midway Hooks Webpack Loader",
   "main": "lib/index.js",
   "scripts": {
@@ -12,9 +12,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@midwayjs/faas-cli-plugin-midway-hooks": "^1.0.4-beta.0",
+    "@midwayjs/faas-cli-plugin-midway-hooks": "^1.0.4-beta.1",
     "@midwayjs/fcli-plugin-invoke": "^1.2.20",
-    "@midwayjs/next-hooks-compiler": "^1.0.4-beta.0",
+    "@midwayjs/next-hooks-compiler": "^1.0.4-beta.1",
     "@midwayjs/serverless-spec-builder": "^1.2.40",
     "art-template": "^4.13.2",
     "debug": "^4.1.1",
@@ -22,8 +22,8 @@
     "upath": "^2.0.1"
   },
   "devDependencies": {
-    "@midwayjs/hooks": "^1.0.4-beta.0",
-    "@midwayjs/hooks-shared": "^1.0.4-beta.0",
+    "@midwayjs/hooks": "^1.0.4-beta.1",
+    "@midwayjs/hooks-shared": "^1.0.4-beta.1",
     "@types/debug": "^4.1.5",
     "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.149",
