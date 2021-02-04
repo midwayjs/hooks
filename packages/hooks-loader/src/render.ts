@@ -1,4 +1,4 @@
-import type { SpecStructureWithGateway } from '@midwayjs/hooks-shared'
+import type { HooksSpecStructure } from '@midwayjs/hooks-shared'
 import { LambdaParam } from '@midwayjs/hooks-shared'
 import art from 'art-template'
 import { readFileSync } from 'fs'
@@ -39,7 +39,7 @@ export function buildRequest(funcs: RenderParam[], cwd: string, options?: BuildO
 }
 
 function getFunctionConfig(cwd: string) {
-  const spec: SpecStructureWithGateway = transform(resolve(cwd, 'f.yml'))
+  const spec: HooksSpecStructure = transform(resolve(cwd, 'f.yml'))
 
   return {
     gateway: spec?.apiGateway?.type ?? 'http',

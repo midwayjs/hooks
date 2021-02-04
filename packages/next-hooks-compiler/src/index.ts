@@ -1,4 +1,4 @@
-export { hintConfig } from './hintConfig'
+export { hintConfig, hintConfigForAsyncHooks } from './hintConfig'
 export { helper } from './helper'
 export { setMidwayHooksPackage, BuiltinHOC } from './const'
 export { getFunctionsMeta, clearRoutes, MidwayHooksFunctionStructure } from './routes'
