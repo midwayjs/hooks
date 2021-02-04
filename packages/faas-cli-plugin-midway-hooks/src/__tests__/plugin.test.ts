@@ -1,4 +1,4 @@
-import { CommandCore } from '@midwayjs/command-core'
+import { CommandCore } from '@midwayjs/fcli-command-core'
 import { loadSpec } from '@midwayjs/serverless-spec-builder'
 import { PackagePlugin } from '@midwayjs/fcli-plugin-package'
 import { AliyunFCPlugin } from '@midwayjs/fcli-plugin-fc'

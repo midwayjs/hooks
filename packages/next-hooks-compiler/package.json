@@ -16,6 +16,7 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
+    "@midwayjs/serverless-spec-builder": "^1.2.40",
     "@babel/code-frame": "^7.10.4",
     "@midwayjs/fcli-plugin-invoke": "^1.2.40",
     "@midwayjs/hooks": "^1.0.4-beta.0",
@@ -30,8 +31,6 @@
   },
   "devDependencies": {
     "@midwayjs/bootstrap": "^2.3.23",
-    "@midwayjs/serverless-fc-trigger": "^1.2.9",
-    "@midwayjs/serverless-spec-builder": "^1.2.40",
     "@types/babel__code-frame": "^7.0.2",
     "@types/debug": "^4.1.5",
     "@types/jest": "^26.0.15",
