@@ -11,6 +11,9 @@
       "path": "../hooks"
     },
     {
+      "path": "../hooks-router"
+    },
+    {
       "path": "../hooks-shared"
     }
   ]

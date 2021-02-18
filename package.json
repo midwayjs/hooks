@@ -18,7 +18,8 @@
     "clean": "lerna clean && lerna run clean --parallel",
     "test": "jest --passWithNoTests",
     "cov": "npm run test -- --coverage",
-    "ci": "npm run cov -- --ci"
+    "ci": "npm run cov -- --ci",
+    "format": "pretty-quick"
   },
   "devDependencies": {
     "@monorepo-utils/workspaces-to-typescript-project-references": "^2.4.3",
