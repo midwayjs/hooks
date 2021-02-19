@@ -1,7 +1,5 @@
-import type { FunctionStructure } from '@midwayjs/serverless-spec-builder'
 import type { Dictionary } from 'lodash'
-import type { LambdaParam } from '@midwayjs/hooks-shared'
-import { FunctionRule } from '@midwayjs/hooks-shared'
+import type { MidwayHooksFunctionStructure } from '@midwayjs/hooks-shared'
 
 type SourceFilePath = string
 
@@ -39,18 +37,4 @@ export function getFunctionsMeta(): Dictionary<MidwayHooksFunctionStructure> {
   })
 
   return functions
-}
-
-export interface MidwayHooksFunctionStructure extends FunctionStructure {
-  deployName: string
-  handler: string
-  // dist path
-  sourceFilePath?: string
-  // sourceFile
-  sourceFile?: string
-  exportFunction?: string
-  isFunctional?: boolean
-  argsPath?: string
-  gatewayConfig: Partial<LambdaParam>
-  event: FunctionRule['events']
 }

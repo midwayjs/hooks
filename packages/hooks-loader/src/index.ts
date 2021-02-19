@@ -1,9 +1,7 @@
 import { loader } from 'webpack'
 import { buildRequest, RenderParam } from './render'
-import {
-  getFunctionsMeta,
-  MidwayHooksFunctionStructure,
-} from '@midwayjs/next-hooks-compiler'
+import { getFunctionsMeta } from '@midwayjs/next-hooks-compiler'
+import { MidwayHooksFunctionStructure } from '@midwayjs/hooks-shared'
 import { debug } from './util'
 import {
   compilerEmitter,
@@ -28,9 +26,9 @@ export default async function loader(
   const callback = this.async()
   const resourcePath = this.resourcePath
   const root = this.rootContext || (this as any).options?.context
-  const helper = new HooksRouter(root)
+  const router = new HooksRouter(root)
 
-  if (!helper.isLambdaFile(resourcePath)) {
+  if (!router.isLambdaFile(resourcePath)) {
     return callback(null, source)
   }
 
@@ -41,8 +39,8 @@ export default async function loader(
     compilerEmitter.isCompiled
       ? getFunctionsMeta()
       : await preCompileProject({
-          functionDir: helper.root,
-          sourceDir: helper.source,
+          functionDir: router.root,
+          sourceDir: router.source,
         }),
     (func) => func.sourceFile
   )

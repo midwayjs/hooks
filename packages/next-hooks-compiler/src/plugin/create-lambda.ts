@@ -13,7 +13,8 @@ import {
 } from '../util'
 import { FunctionHandler, HooksRequestContext } from '../const'
 import { helper } from '../helper'
-import { addRoute, MidwayHooksFunctionStructure } from '../routes'
+import { addRoute } from '../routes'
+import { MidwayHooksFunctionStructure } from '@midwayjs/hooks-shared'
 import { relative, toUnix } from 'upath'
 import _ from 'lodash'
 
@@ -27,9 +28,15 @@ export default {
 
         if (isLambda(node, node)) {
           const functionName = getTopLevelNameNode(node).text
-          const isExportDefault = hasModifier(node, ts.ModifierFlags.ExportDefault)
+          const isExportDefault = hasModifier(
+            node,
+            ts.ModifierFlags.ExportDefault
+          )
 
-          addRoute(getSourceFilePath(node), parseFunctionConfig(node, functionName, isExportDefault))
+          addRoute(
+            getSourceFilePath(node),
+            parseFunctionConfig(node, functionName, isExportDefault)
+          )
         }
 
         return ts.factory.updateFunctionDeclaration(
@@ -41,7 +48,9 @@ export default {
           node.typeParameters,
           node.parameters,
           node.type,
-          helper.isAsyncHooksRuntime ? node.body : createLambdaContext(node.body)
+          helper.isAsyncHooksRuntime
+            ? node.body
+            : createLambdaContext(node.body)
         )
       },
       FunctionExpression(node: ts.FunctionExpression) {
@@ -53,8 +62,14 @@ export default {
         }
 
         const statement = isHOC
-          ? closetAncestor<ts.ExportAssignment>(node, ts.SyntaxKind.ExportAssignment)
-          : closetAncestor<ts.VariableStatement>(node, ts.SyntaxKind.VariableStatement)
+          ? closetAncestor<ts.ExportAssignment>(
+              node,
+              ts.SyntaxKind.ExportAssignment
+            )
+          : closetAncestor<ts.VariableStatement>(
+              node,
+              ts.SyntaxKind.VariableStatement
+            )
 
         if (isLambda(node, statement)) {
           const functionName = isHOC ? '' : getTopLevelNameNode(statement).text
@@ -63,7 +78,10 @@ export default {
             : hasModifier(node, ts.ModifierFlags.ExportDefault) ||
               hasModifier(statement, ts.ModifierFlags.ExportDefault)
 
-          addRoute(getSourceFilePath(node), parseFunctionConfig(node, functionName, isExportDefault))
+          addRoute(
+            getSourceFilePath(node),
+            parseFunctionConfig(node, functionName, isExportDefault)
+          )
         }
 
         return ts.factory.updateFunctionExpression(
@@ -74,7 +92,9 @@ export default {
           node.typeParameters,
           node.parameters,
           node.type,
-          helper.isAsyncHooksRuntime ? node.body : createLambdaContext(node.body)
+          helper.isAsyncHooksRuntime
+            ? node.body
+            : createLambdaContext(node.body)
         )
       },
     }
@@ -89,7 +109,11 @@ function parseFunctionConfig(
   const sourceFilePath = getSourceFilePath(node)
   const { events } = helper.getRuleBySourceFilePath(sourceFilePath)
   const url = helper.getHTTPPath(sourceFilePath, functionName, isExportDefault)
-  const deployName = getDeployFunctionName({ sourceFilePath, functionName, isExportDefault })
+  const deployName = getDeployFunctionName({
+    sourceFilePath,
+    functionName,
+    isExportDefault,
+  })
 
   return {
     deployName,
@@ -120,7 +144,8 @@ export function getDeployFunctionName(config: {
   const lambdaDirectory = helper.getLambdaDirectory(rule)
 
   // 多个 source 的情况下，根据各自的 lambdaDirectory 来增加前缀命名
-  const relativeDirectory = helper.functionsRule.rules.length > 1 ? helper.source : lambdaDirectory
+  const relativeDirectory =
+    helper.functionsRule.rules.length > 1 ? helper.source : lambdaDirectory
   const relativePath = relative(relativeDirectory, sourceFilePath)
   // a/b/c -> a-b-c
   const id = _.kebabCase(removeExtension(relativePath))
