@@ -1,5 +1,5 @@
 export { hintConfig, hintConfigForAsyncHooks } from './hintConfig'
-export { helper } from './helper'
+export { router as helper } from './helper'
 export { setMidwayHooksPackage, BuiltinHOC } from './const'
-export { getFunctionsMeta, clearRoutes, MidwayHooksFunctionStructure } from './routes'
+export { getFunctionsMeta, clearRoutes } from './routes'
 export { getDeployFunctionName } from './plugin/create-lambda'

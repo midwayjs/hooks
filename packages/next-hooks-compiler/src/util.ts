@@ -1,4 +1,4 @@
-import { helper } from './helper'
+import { router } from './helper'
 import createDebug from 'debug'
 import { BuiltinHOC } from './const'
 import { extname } from 'upath'
@@ -27,15 +27,18 @@ export function isHookName(s: string) {
 }
 
 export function isInsideLambdaOrHook(node: ts.Node) {
-  const topLevelParent = closetAncestorWhileKind(node, (ancestorKind, ancestorNode) => {
-    return ancestorNode.parent.kind === ts.SyntaxKind.SourceFile
-    // try {
+  const topLevelParent = closetAncestorWhileKind(
+    node,
+    (ancestorKind, ancestorNode) => {
+      return ancestorNode.parent.kind === ts.SyntaxKind.SourceFile
+      // try {
 
-    // } catch (e) {
-    //   console.log(node, ancestorNode)
-    //   debugger
-    // }
-  })
+      // } catch (e) {
+      //   console.log(node, ancestorNode)
+      //   debugger
+      // }
+    }
+  )
 
   const topLevelNode = getTopLevelNode(topLevelParent)
   return isLambdaOrHook(topLevelNode, topLevelParent)
@@ -51,21 +54,34 @@ export function isLambdaOrHook(node: ts.Node, container: ts.Node) {
     const nameNode = getTopLevelNameNode(container)
     const funcName = nameNode?.getText?.() ?? ''
     // 自定义 Hook
-    return isHookName(funcName) || isLambda(node as ts.FunctionDeclaration, container)
+    return (
+      isHookName(funcName) ||
+      isLambda(node as ts.FunctionDeclaration, container)
+    )
   }
 
   return isHOC(node)
 }
 
 export function isHOC(node: ts.Node) {
-  return ts.isCallExpression(node) && BuiltinHOC.includes(node.expression.getText())
+  return (
+    ts.isCallExpression(node) && BuiltinHOC.includes(node.expression.getText())
+  )
 }
 
-export function isLambda(node: ts.FunctionDeclaration | ts.FunctionExpression, container: ts.Node) {
-  return helper.isLambdaFile(getSourceFilePath(node)) && isExported(node, container)
+export function isLambda(
+  node: ts.FunctionDeclaration | ts.FunctionExpression,
+  container: ts.Node
+) {
+  return (
+    router.isLambdaFile(getSourceFilePath(node)) && isExported(node, container)
+  )
 }
 
-export function isExported(node: ts.FunctionDeclaration | ts.FunctionExpression, container: any) {
+export function isExported(
+  node: ts.FunctionDeclaration | ts.FunctionExpression,
+  container: any
+) {
   if (ts.isExportAssignment(node) || ts.isExportAssignment(container)) {
     return true
   }
@@ -74,7 +90,10 @@ export function isExported(node: ts.FunctionDeclaration | ts.FunctionExpression,
     node = container
   }
 
-  if (hasModifier(node, ts.ModifierFlags.ExportDefault) || hasModifier(node, ts.ModifierFlags.Export)) {
+  if (
+    hasModifier(node, ts.ModifierFlags.ExportDefault) ||
+    hasModifier(node, ts.ModifierFlags.Export)
+  ) {
     return true
   }
 
@@ -94,11 +113,17 @@ export function getTopLevelNameNode(node: ts.Node): ts.Identifier {
   }
 
   // const useDemo = () => {}
-  if (ts.isVariableDeclaration(node) || ts.isFunctionDeclaration(node) || ts.isFunctionExpression(node)) {
+  if (
+    ts.isVariableDeclaration(node) ||
+    ts.isFunctionDeclaration(node) ||
+    ts.isFunctionExpression(node)
+  ) {
     return node.name as ts.Identifier
   }
 
-  console.log('getTopLevelNameNode unsupported types ' + ts.SyntaxKind[node.kind])
+  console.log(
+    'getTopLevelNameNode unsupported types ' + ts.SyntaxKind[node.kind]
+  )
   return ts.factory.createIdentifier('')
 }
 
@@ -110,10 +135,19 @@ export function isFunctionKind(kind: ts.SyntaxKind) {
   )
 }
 
-export type FunctionKind = ts.FunctionDeclaration | ts.ArrowFunction | ts.FunctionExpression
+export type FunctionKind =
+  | ts.FunctionDeclaration
+  | ts.ArrowFunction
+  | ts.FunctionExpression
 
-export function closetAncestor<T extends ts.Node = ts.Node>(node: ts.Node, kind: ts.SyntaxKind) {
-  return closetAncestorWhileKind(node, (ancestorKind) => ancestorKind === kind) as T
+export function closetAncestor<T extends ts.Node = ts.Node>(
+  node: ts.Node,
+  kind: ts.SyntaxKind
+) {
+  return closetAncestorWhileKind(
+    node,
+    (ancestorKind) => ancestorKind === kind
+  ) as T
 }
 
 export function closetAncestorWhileKind(
@@ -150,7 +184,10 @@ export function isInBlock(node: ts.Node) {
 
 // export const variableStatement = () => {}
 export function isLambdaOrHookVariableStatement(node: FunctionKind) {
-  const variableStatement = closetAncestor<ts.VariableStatement>(node, ts.SyntaxKind.VariableStatement)
+  const variableStatement = closetAncestor<ts.VariableStatement>(
+    node,
+    ts.SyntaxKind.VariableStatement
+  )
 
   if (!variableStatement) {
     return false
@@ -161,7 +198,10 @@ export function isLambdaOrHookVariableStatement(node: FunctionKind) {
 
 // export default withController()
 export function isHOCExportAssignment(node: FunctionKind) {
-  const exportAssignment = closetAncestor<ts.ExportAssignment>(node, ts.SyntaxKind.ExportAssignment)
+  const exportAssignment = closetAncestor<ts.ExportAssignment>(
+    node,
+    ts.SyntaxKind.ExportAssignment
+  )
   if (!exportAssignment) {
     return false
   }

@@ -3,7 +3,7 @@ import { getFuncList } from '@midwayjs/fcli-plugin-invoke'
 import { resolve } from 'path'
 import ora from 'ora'
 import Table from 'cli-table3'
-import { MidwayHooksFunctionStructure } from '@midwayjs/next-hooks-compiler'
+import { MidwayHooksFunctionStructure } from '@midwayjs/hooks-shared'
 import chalk from 'chalk'
 import _ from 'lodash'
 import { HTTPEvent } from '@midwayjs/serverless-spec-builder'
@@ -41,7 +41,11 @@ export class RoutesPlugin extends BasePlugin {
       })
 
       const table = new Table({
-        head: [chalk.cyanBright('HTTP'), chalk.cyanBright('URI'), chalk.cyanBright('Source File')],
+        head: [
+          chalk.cyanBright('HTTP'),
+          chalk.cyanBright('URI'),
+          chalk.cyanBright('Source File'),
+        ],
         style: {
           head: [],
           border: [],
@@ -57,13 +61,20 @@ export class RoutesPlugin extends BasePlugin {
           continue
         }
 
-        table.push([func.gatewayConfig.method, func.gatewayConfig.url, func.sourceFilePath.replace(/\.js$/, '.ts')])
+        table.push([
+          func.gatewayConfig.method,
+          func.gatewayConfig.url,
+          func.sourceFilePath.replace(/\.js$/, '.ts'),
+        ])
       }
 
       console.log(table.toString())
       const end = ((Date.now() - start) / 1024).toFixed(2)
-      const fileCount = Object.keys(_.groupBy(funcs, (func) => func.sourceFile)).length
-      console.log(`🚀  Done in ${end}s. Found ${funcs.length} api in ${fileCount} lambda files`)
+      const fileCount = Object.keys(_.groupBy(funcs, (func) => func.sourceFile))
+        .length
+      console.log(
+        `🚀  Done in ${end}s. Found ${funcs.length} api in ${fileCount} lambda files`
+      )
     },
   }
 

@@ -1,6 +1,6 @@
 import { ts } from '@midwayjs/mwcc'
 import { relative } from 'upath'
-import { helper } from '..'
+import { router } from '../helper'
 import { BuiltinHooks } from '../const'
 import { getSourceFilePath } from '../util'
 import { buildErrorCodeFrame } from './code-frame'
@@ -8,8 +8,13 @@ import { buildErrorCodeFrame } from './code-frame'
 export class BuiltinHooksError extends Error {
   constructor(ref: ts.Identifier) {
     const messages = [
-      buildErrorCodeFrame(ref, `Only built-in Hooks are supported. built-in hooks: ${BuiltinHooks.join(', ')}`),
-      `\n\nsourcefile: ${relative(helper.root, getSourceFilePath(ref))}`,
+      buildErrorCodeFrame(
+        ref,
+        `Only built-in Hooks are supported. built-in hooks: ${BuiltinHooks.join(
+          ', '
+        )}`
+      ),
+      `\n\nsourcefile: ${relative(router.root, getSourceFilePath(ref))}`,
     ]
     super(messages.join('\n'))
   }

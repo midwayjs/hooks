@@ -5,12 +5,17 @@ import {
   helper,
   hintConfig,
   hintConfigForAsyncHooks,
-  MidwayHooksFunctionStructure,
 } from '@midwayjs/next-hooks-compiler'
 import { argsPath, debug } from './util'
 import { HooksWatcher, WatcherConfig } from './watcher'
-import { EventStructureType, transform } from '@midwayjs/serverless-spec-builder'
-import type { HooksSpecStructure } from '@midwayjs/hooks-shared'
+import {
+  EventStructureType,
+  transform,
+} from '@midwayjs/serverless-spec-builder'
+import type {
+  HooksSpecStructure,
+  MidwayHooksFunctionStructure,
+} from '@midwayjs/hooks-shared'
 import { compilerEmitter } from './event'
 import semver from 'semver'
 
@@ -63,7 +68,9 @@ export class MidwayHooksPlugin extends BasePlugin {
       )
     }
 
-    const mwccHintConfig = helper.isAsyncHooksRuntime ? hintConfigForAsyncHooks : hintConfig
+    const mwccHintConfig = helper.isAsyncHooksRuntime
+      ? hintConfigForAsyncHooks
+      : hintConfig
 
     if (!MidwayHooksPlugin.init) {
       MidwayHooksPlugin.init = true
@@ -88,9 +95,15 @@ export class MidwayHooksPlugin extends BasePlugin {
       func.events = this.createEventsByGateway(func)
     }
 
-    this.core.service.functions = Object.assign(this.core.service.functions ?? {}, functions)
+    this.core.service.functions = Object.assign(
+      this.core.service.functions ?? {},
+      functions
+    )
 
-    if (!compilerEmitter.isCompiled && !['production', 'test'].includes(process.env.NODE_ENV)) {
+    if (
+      !compilerEmitter.isCompiled &&
+      !['production', 'test'].includes(process.env.NODE_ENV)
+    ) {
       await startWatcher({
         root: this.root,
         source: helper.source,
@@ -103,7 +116,9 @@ export class MidwayHooksPlugin extends BasePlugin {
     return argsPath[this.gateway]
   }
 
-  protected createEventsByGateway(func: MidwayHooksFunctionStructure): EventStructureType[] {
+  protected createEventsByGateway(
+    func: MidwayHooksFunctionStructure
+  ): EventStructureType[] {
     const events = []
     const config = func.gatewayConfig
 
