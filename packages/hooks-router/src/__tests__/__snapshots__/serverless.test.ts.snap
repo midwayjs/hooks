@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ServerlessHooksRouter should parse f.yml 1`] = `
+exports[`ServerlessRouter should parse f.yml 1`] = `
 Object {
   "functionsRule": Object {
     "rules": Array [

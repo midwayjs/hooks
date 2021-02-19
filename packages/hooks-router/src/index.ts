@@ -1,1 +1,2 @@
-export { ServerlessHooksRouter } from './serverless'
+export * from './serverless'
+export * from './web'

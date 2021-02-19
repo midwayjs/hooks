@@ -11,14 +11,9 @@ import {
   ControllerOption,
 } from '@midwayjs/decorator'
 
-type Route = {
-  baseDir: string
-  basePath: string
-}
+import { WebRoute, WebRouterConfig } from '@midwayjs/hooks-router'
 
-type HooksConfig = {
-  routes: Route[]
-}
+interface HooksConfig extends Omit<WebRouterConfig, 'source'> {}
 
 export const createHooks = (config: HooksConfig) => {
   const configuration = createConfiguration({
@@ -37,11 +32,11 @@ export const createHooks = (config: HooksConfig) => {
   }
 }
 
-function createResolveFilter(routes: Route[]) {
+function createResolveFilter(routes: WebRoute[]) {
   return routes.map((route) => {
     return {
       pattern: route.baseDir,
-      filter: (mod, filePath, container: IMidwayContainer) => {
+      filter: (mod: Object, filePath: string, container: IMidwayContainer) => {
         for (const fnName of Object.keys(mod)) {
           const value = mod[fnName]
           if (typeof value === 'function') {

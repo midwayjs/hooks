@@ -5,7 +5,7 @@ import { HooksRouter } from './base'
 
 const defaultSource = '/src/apis'
 
-export class ServerlessHooksRouter extends HooksRouter {
+export class ServerlessRouter extends HooksRouter {
   private _spec: HooksSpecStructure = null
 
   get spec(): HooksSpecStructure {
