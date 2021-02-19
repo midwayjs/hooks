@@ -1,4 +1,4 @@
-import { ServerlessHooksRouter } from '../serverless'
+import { ServerlessRouter } from '../serverless'
 import path from 'path'
 import os from 'os'
 import fse from 'fs-extra'
@@ -14,16 +14,16 @@ function createRouter(fYml: string, duplicateLogger?: any) {
     path.join(tmp, 'f.yml')
   )
   return {
-    router: new ServerlessHooksRouter(tmp, duplicateLogger),
+    router: new ServerlessRouter(tmp, duplicateLogger),
     dir: tmp,
   }
 }
 
-describe('ServerlessHooksRouter', () => {
+describe('ServerlessRouter', () => {
   test('should exist', () => {
-    expect(ServerlessHooksRouter).toBeTruthy()
+    expect(ServerlessRouter).toBeTruthy()
     const { router } = createRouter('basic.yml')
-    expect(router).toBeInstanceOf(ServerlessHooksRouter)
+    expect(router).toBeInstanceOf(ServerlessRouter)
   })
 
   test('should parse f.yml', () => {

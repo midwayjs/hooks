@@ -12,6 +12,9 @@
     },
     {
       "path": "../hooks-shared"
+    },
+    {
+      "path": "../hooks-router"
     }
   ]
 }
