@@ -1,0 +1,18 @@
+# f.yml document https://www.yuque.com/midwayjs/faas/serverless_yml
+
+service: midway-hooks-fixture
+
+provider:
+  name: aliyun # tencent
+  runtime: nodejs10
+
+functionsRule:
+  source: /src
+  rules:
+    - baseDir: render
+      events:
+        http:
+          basePath: /
+
+hooks:
+  runtime: async_hooks

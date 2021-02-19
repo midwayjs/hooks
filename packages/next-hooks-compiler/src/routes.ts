@@ -1,15 +1,14 @@
-import type { FunctionStructure } from '@midwayjs/serverless-spec-builder'
 import type { Dictionary } from 'lodash'
-import type { LambdaParam } from '@midwayjs/hooks-shared'
-import { FunctionRule } from '@midwayjs/hooks-shared'
-import chalk from 'chalk'
-import { relative } from 'upath'
+import type { MidwayHooksFunctionStructure } from '@midwayjs/hooks-shared'
 
 type SourceFilePath = string
 
 const map = new Map<SourceFilePath, MidwayHooksFunctionStructure[]>()
 
-export function addRoute(sourceFilePath: SourceFilePath, lambda: MidwayHooksFunctionStructure) {
+export function addRoute(
+  sourceFilePath: SourceFilePath,
+  lambda: MidwayHooksFunctionStructure
+) {
   if (!map.has(sourceFilePath)) {
     map.set(sourceFilePath, [])
   }
@@ -38,29 +37,4 @@ export function getFunctionsMeta(): Dictionary<MidwayHooksFunctionStructure> {
   })
 
   return functions
-}
-
-export interface MidwayHooksFunctionStructure extends FunctionStructure {
-  deployName: string
-  handler: string
-  // dist path
-  sourceFilePath?: string
-  // sourceFile
-  sourceFile?: string
-  exportFunction?: string
-  isFunctional?: boolean
-  argsPath?: string
-  gatewayConfig: Partial<LambdaParam>
-  event: FunctionRule['events']
-}
-
-export function duplicateWarning(root: string, existPath: string, currentPath: string, api: string) {
-  console.log(
-    '[ %s ] Duplicate routes detected. %s and %s both resolve to %s. Reference: %s',
-    chalk.yellow('warn'),
-    chalk.cyan(relative(root, existPath)),
-    chalk.cyan(relative(root, currentPath)),
-    chalk.cyan(api),
-    'link: https://www.yuque.com/midwayjs/faas/et7x4k'
-  )
 }

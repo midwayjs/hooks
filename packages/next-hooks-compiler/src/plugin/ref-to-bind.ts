@@ -1,6 +1,12 @@
 import { ts } from '@midwayjs/mwcc'
 import { template, TransformationContext } from '@midwayjs/mwcc'
-import { BuiltinHOC, BuiltinHooks, ContextBind, HooksMethodNamespace, MidwayHooksPackage } from '../const'
+import {
+  BuiltinHOC,
+  BuiltinHooks,
+  ContextBind,
+  HooksMethodNamespace,
+  MidwayHooksPackage,
+} from '../const'
 import { BuiltinHooksError } from '../errors/BuiltinHooks'
 import { isEmpty } from 'lodash'
 import {
@@ -14,7 +20,7 @@ import {
   isLambdaOrHook,
   tryCatch,
 } from '../util'
-import { helper } from '../helper'
+import { router } from '../helper'
 import { InvalidReferenceError } from '../errors/InvalidReference'
 import { dirname, resolve } from 'upath'
 
@@ -94,7 +100,8 @@ function resolveDeclarations(ctx: TransformationContext, node: ts.Node) {
 }
 
 function processReference(node: ts.Identifier, ctx: TransformationContext) {
-  const isRef = isHookName(node.text) || helper.isLambdaFile(getSourceFilePath(node))
+  const isRef =
+    isHookName(node.text) || router.isLambdaFile(getSourceFilePath(node))
 
   if (!isRef) {
     return node
@@ -102,7 +109,9 @@ function processReference(node: ts.Identifier, ctx: TransformationContext) {
 
   const declarations = ctx
     .resolveDeclarations(node)
-    .filter((declaration) => helper.isProjectFile(getSourceFilePath(declaration)))
+    .filter((declaration) =>
+      router.isProjectFile(getSourceFilePath(declaration))
+    )
 
   if (isEmpty(declarations)) {
     return node
@@ -110,7 +119,10 @@ function processReference(node: ts.Identifier, ctx: TransformationContext) {
 
   const [declaration] = declarations
 
-  if (isLambdaOrHook(getTopLevelNode(declaration), declaration) && isInBlock(node)) {
+  if (
+    isLambdaOrHook(getTopLevelNode(declaration), declaration) &&
+    isInBlock(node)
+  ) {
     if (!isInsideLambdaOrHook(node)) {
       throw new InvalidReferenceError(node)
     }
@@ -121,7 +133,11 @@ function processReference(node: ts.Identifier, ctx: TransformationContext) {
   return node
 }
 
-function processImportNames(node: ts.Identifier, moduleId: string, ctx: TransformationContext) {
+function processImportNames(
+  node: ts.Identifier,
+  moduleId: string,
+  ctx: TransformationContext
+) {
   if (!isLambdaOrHookImports(node, moduleId, ctx)) {
     return node
   }
@@ -131,7 +147,10 @@ function processImportNames(node: ts.Identifier, moduleId: string, ctx: Transfor
   }
 
   // 不处理 Type 引用
-  if (closetAncestor(node, ts.SyntaxKind.TypeQuery) || closetAncestor(node, ts.SyntaxKind.TypeReference)) {
+  if (
+    closetAncestor(node, ts.SyntaxKind.TypeQuery) ||
+    closetAncestor(node, ts.SyntaxKind.TypeReference)
+  ) {
     return node
   }
 
@@ -142,7 +161,11 @@ function processImportNames(node: ts.Identifier, moduleId: string, ctx: Transfor
   }
 }
 
-function isLambdaOrHookImports(node: ts.Identifier, moduleId: string, ctx: TransformationContext) {
+function isLambdaOrHookImports(
+  node: ts.Identifier,
+  moduleId: string,
+  ctx: TransformationContext
+) {
   // lodash
   if (!moduleId.startsWith('.')) {
     // @midwayjs/hooks 内置 Hooks
@@ -165,14 +188,16 @@ function isLambdaOrHookImports(node: ts.Identifier, moduleId: string, ctx: Trans
   }
 
   const moduleFile = resolve(dirname(getSourceFilePath(node)), moduleId)
-  return isHookName(node.getText()) || helper.isLambdaFile(moduleFile)
+  return isHookName(node.getText()) || router.isLambdaFile(moduleFile)
 }
 
 /**
  * useQuery => useQuery.bind($lambda)
  */
 function compileRefToBind(identifier: ts.Identifier) {
-  const tpl = template(`HOOK.${ContextBind}`)({ HOOK: identifier })[0] as ts.ExpressionStatement
+  const tpl = template(`HOOK.${ContextBind}`)({
+    HOOK: identifier,
+  })[0] as ts.ExpressionStatement
   return tpl.expression
 }
 
@@ -181,7 +206,9 @@ function compileRefToBind(identifier: ts.Identifier) {
  * useQuery => typeof useQuery === 'function' ? useQuery.bind($lambda) : useQuery
  */
 function compileImportRefToBind(identifier: ts.Identifier) {
-  const tpl = template(`typeof HOOK === 'function' ? HOOK.${ContextBind} : HOOK`)({
+  const tpl = template(
+    `typeof HOOK === 'function' ? HOOK.${ContextBind} : HOOK`
+  )({
     HOOK: identifier,
   })[0] as ts.ExpressionStatement
   return tpl.expression
@@ -202,6 +229,8 @@ function compileBuiltinMethod(identifier: ts.Identifier) {
     throw new BuiltinHooksError(identifier)
   }
 
-  const tpl = template(`${HooksMethodNamespace}.HOOK`)({ HOOK: identifier })[0] as ts.ExpressionStatement
+  const tpl = template(`${HooksMethodNamespace}.HOOK`)({
+    HOOK: identifier,
+  })[0] as ts.ExpressionStatement
   return tpl.expression
 }

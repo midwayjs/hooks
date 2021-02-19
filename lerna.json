@@ -6,7 +6,7 @@
       "npmClientArgs": ["--no-package-lock"]
     },
     "publish": {
-      "message": "chore(release): publish"
+      "message": "chore(release): publish %s"
     }
   },
   "npmClient": "yarn",

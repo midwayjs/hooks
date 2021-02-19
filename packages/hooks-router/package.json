@@ -1,0 +1,32 @@
+{
+  "name": "@midwayjs/hooks-router",
+  "version": "1.0.4-beta.1",
+  "description": "Load/Parse/Generate routes for midway hooks",
+  "keywords": [
+    "midway",
+    "hooks"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf lib",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.5"
+  },
+  "dependencies": {
+    "@midwayjs/hooks-shared": "^1.0.4-beta.1",
+    "debug": "^4.3.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

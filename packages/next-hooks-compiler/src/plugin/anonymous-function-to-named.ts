@@ -1,5 +1,5 @@
 import { ts } from '@midwayjs/mwcc'
-import { helper } from '../helper'
+import { router } from '../helper'
 import {
   closetAncestor,
   getSourceFilePath,
@@ -18,7 +18,7 @@ export default {
        * export default async function $default () {}
        */
       ExportAssignment(node: ts.ExportAssignment) {
-        if (!helper.isLambdaFile(getSourceFilePath(node))) {
+        if (!router.isLambdaFile(getSourceFilePath(node))) {
           return node
         }
 
@@ -50,7 +50,7 @@ export default {
        */
       FunctionDeclaration(node: ts.FunctionDeclaration) {
         const isExportDefaultAnnoymous =
-          helper.isLambdaFile(getSourceFilePath(node)) &&
+          router.isLambdaFile(getSourceFilePath(node)) &&
           ts.isSourceFile(node.parent) &&
           !node.name &&
           hasModifier(node, ts.ModifierFlags.ExportDefault)
@@ -81,7 +81,10 @@ export default {
         let name = ''
 
         if (isLambdaOrHookVariableStatement(node)) {
-          name = closetAncestor<ts.VariableDeclaration>(node, ts.SyntaxKind.VariableDeclaration).name.getText()
+          name = closetAncestor<ts.VariableDeclaration>(
+            node,
+            ts.SyntaxKind.VariableDeclaration
+          ).name.getText()
         } else if (isHOCExportAssignment(node)) {
           name = DefaultKeyword
         }
@@ -89,7 +92,9 @@ export default {
         if (name) {
           const body = ts.isBlock(node.body)
             ? node.body
-            : ts.factory.createBlock([ts.factory.createReturnStatement(node.body)])
+            : ts.factory.createBlock([
+                ts.factory.createReturnStatement(node.body),
+              ])
           return ts.factory.createFunctionExpression(
             node.modifiers,
             node.asteriskToken,
