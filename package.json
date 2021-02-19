@@ -14,7 +14,7 @@
   "scripts": {
     "build": "tsc -b packages",
     "watch": "tsc --build --watch packages",
-    "update:tsconfig": "workspaces-to-typescript-project-references",
+    "update:tsconfig": "workspaces-to-typescript-project-references && npm run format",
     "clean": "lerna clean && lerna run clean --parallel",
     "test": "jest --passWithNoTests",
     "cov": "npm run test -- --coverage",

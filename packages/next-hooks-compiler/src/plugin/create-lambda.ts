@@ -140,8 +140,8 @@ export function getDeployFunctionName(config: {
 }) {
   const { sourceFilePath, functionName, isExportDefault } = config
 
-  const rule = router.getRuleBySourceFilePath(sourceFilePath)
-  const lambdaDirectory = router.getLambdaDirectory(rule)
+  const rule = router.getRouteConfigBySourceFilePath(sourceFilePath)
+  const lambdaDirectory = router.getLambdaDirectory(rule.baseDir)
 
   // 多个 source 的情况下，根据各自的 lambdaDirectory 来增加前缀命名
   const relativeDirectory =

@@ -1,10 +1,11 @@
 {
-  "name": "@midwayjs/hooks-router",
+  "name": "@midwayjs/hooks-component",
   "version": "1.0.4-beta.1",
-  "description": "Load/Parse/Generate routes for midway hooks",
+  "description": "Midway Hooks Component",
   "keywords": [
     "midway",
-    "hooks"
+    "hooks",
+    "component"
   ],
   "scripts": {
     "build": "tsc",
@@ -19,13 +20,16 @@
     "type": "git",
     "url": "git@github.com:midwayjs/hooks.git"
   },
+  "devDependencies": {
+    "@types/debug": "^4.1.5"
+  },
   "dependencies": {
+    "@midwayjs/core": "^2.7.5",
+    "@midwayjs/decorator": "^2.7.5",
+    "@midwayjs/hooks": "^1.0.4-beta.1",
     "@midwayjs/hooks-shared": "^1.0.4-beta.1",
-    "@midwayjs/serverless-spec-builder": "^1.2.41",
-    "chalk": "^4.1.0",
-    "fs-extra": "^9.1.0",
-    "is-path-inside": "^3.0.2",
-    "upath": "^2.0.1"
+    "@midwayjs/mock": "^2.7.5",
+    "debug": "^4.3.1"
   },
   "publishConfig": {
     "access": "public"

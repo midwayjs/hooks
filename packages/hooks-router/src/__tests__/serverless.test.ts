@@ -1,4 +1,4 @@
-import { HooksRouter } from '..'
+import { ServerlessHooksRouter } from '../serverless'
 import path from 'path'
 import os from 'os'
 import fse from 'fs-extra'
@@ -14,16 +14,16 @@ function createRouter(fYml: string, duplicateLogger?: any) {
     path.join(tmp, 'f.yml')
   )
   return {
-    router: new HooksRouter(tmp, duplicateLogger),
+    router: new ServerlessHooksRouter(tmp, duplicateLogger),
     dir: tmp,
   }
 }
 
-describe('hooks-router', () => {
+describe('ServerlessHooksRouter', () => {
   test('should exist', () => {
-    expect(HooksRouter).toBeTruthy()
+    expect(ServerlessHooksRouter).toBeTruthy()
     const { router } = createRouter('basic.yml')
-    expect(router).toBeInstanceOf(HooksRouter)
+    expect(router).toBeInstanceOf(ServerlessHooksRouter)
   })
 
   test('should parse f.yml', () => {
@@ -62,7 +62,9 @@ describe('hooks-router', () => {
         },
       }
     `)
-    expect(router.getLambdaDirectory(rule).endsWith('src/render')).toBeTruthy()
+    expect(
+      router.getLambdaDirectory(rule.baseDir).endsWith('src/render')
+    ).toBeTruthy()
   })
 
   test('getHTTPPath', () => {
