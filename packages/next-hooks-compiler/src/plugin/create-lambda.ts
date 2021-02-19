@@ -12,7 +12,7 @@ import {
   removeExtension,
 } from '../util'
 import { FunctionHandler, HooksRequestContext } from '../const'
-import { helper } from '../helper'
+import { router } from '../helper'
 import { addRoute } from '../routes'
 import { MidwayHooksFunctionStructure } from '@midwayjs/hooks-shared'
 import { relative, toUnix } from 'upath'
@@ -48,7 +48,7 @@ export default {
           node.typeParameters,
           node.parameters,
           node.type,
-          helper.isAsyncHooksRuntime
+          router.isAsyncHooksRuntime
             ? node.body
             : createLambdaContext(node.body)
         )
@@ -92,7 +92,7 @@ export default {
           node.typeParameters,
           node.parameters,
           node.type,
-          helper.isAsyncHooksRuntime
+          router.isAsyncHooksRuntime
             ? node.body
             : createLambdaContext(node.body)
         )
@@ -107,8 +107,8 @@ function parseFunctionConfig(
   isExportDefault: boolean
 ): MidwayHooksFunctionStructure {
   const sourceFilePath = getSourceFilePath(node)
-  const { events } = helper.getRuleBySourceFilePath(sourceFilePath)
-  const url = helper.getHTTPPath(sourceFilePath, functionName, isExportDefault)
+  const { events } = router.getRuleBySourceFilePath(sourceFilePath)
+  const url = router.getHTTPPath(sourceFilePath, functionName, isExportDefault)
   const deployName = getDeployFunctionName({
     sourceFilePath,
     functionName,
@@ -119,8 +119,8 @@ function parseFunctionConfig(
     deployName,
     isFunctional: true,
     exportFunction: isExportDefault ? '' : functionName,
-    sourceFile: toUnix(relative(helper.root, sourceFilePath)),
-    sourceFilePath: toUnix(helper.getDistPath(sourceFilePath)),
+    sourceFile: toUnix(relative(router.root, sourceFilePath)),
+    sourceFilePath: toUnix(router.getDistPath(sourceFilePath)),
     handler: `${deployName}.${FunctionHandler}`,
     gatewayConfig: {
       url,
@@ -140,12 +140,12 @@ export function getDeployFunctionName(config: {
 }) {
   const { sourceFilePath, functionName, isExportDefault } = config
 
-  const rule = helper.getRuleBySourceFilePath(sourceFilePath)
-  const lambdaDirectory = helper.getLambdaDirectory(rule)
+  const rule = router.getRuleBySourceFilePath(sourceFilePath)
+  const lambdaDirectory = router.getLambdaDirectory(rule)
 
   // 多个 source 的情况下，根据各自的 lambdaDirectory 来增加前缀命名
   const relativeDirectory =
-    helper.functionsRule.rules.length > 1 ? helper.source : lambdaDirectory
+    router.functionsRule.rules.length > 1 ? router.source : lambdaDirectory
   const relativePath = relative(relativeDirectory, sourceFilePath)
   // a/b/c -> a-b-c
   const id = _.kebabCase(removeExtension(relativePath))
