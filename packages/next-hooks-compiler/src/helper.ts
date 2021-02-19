@@ -1,3 +1,3 @@
-import { HooksRouter } from '@midwayjs/hooks-router'
+import { ServerlessHooksRouter } from '@midwayjs/hooks-router'
 
-export const router = new HooksRouter('')
+export const router = new ServerlessHooksRouter(null)

@@ -10,7 +10,7 @@ import {
 import { getFuncList as preCompileProject } from '@midwayjs/fcli-plugin-invoke'
 import _ from 'lodash'
 import { relative, toUnix } from 'upath'
-import { HooksRouter } from '@midwayjs/hooks-router'
+import { ServerlessHooksRouter } from '@midwayjs/hooks-router'
 
 let compileTask: Promise<void> = null
 compilerEmitter.on(Events.PRE_COMPILE_START, () => {
@@ -26,7 +26,7 @@ export default async function loader(
   const callback = this.async()
   const resourcePath = this.resourcePath
   const root = this.rootContext || (this as any).options?.context
-  const router = new HooksRouter(root)
+  const router = new ServerlessHooksRouter(root)
 
   if (!router.isLambdaFile(resourcePath)) {
     return callback(null, source)
