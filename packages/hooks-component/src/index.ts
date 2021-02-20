@@ -11,7 +11,8 @@ import {
   ControllerOption,
 } from '@midwayjs/decorator'
 
-import { WebRoute, WebRouterConfig } from '@midwayjs/hooks-router'
+import { als } from '@midwayjs/hooks/lib/api/async_hooks/als'
+import { WebRoute, WebRouterConfig, WebRouter } from '@midwayjs/hooks-router'
 
 interface HooksConfig extends Omit<WebRouterConfig, 'source'> {}
 
@@ -36,7 +37,11 @@ function createResolveFilter(routes: WebRoute[]) {
   return routes.map((route) => {
     return {
       pattern: route.baseDir,
-      filter: (mod: Object, filePath: string, container: IMidwayContainer) => {
+      filter: (
+        mod: Object,
+        sourceFilePath: string,
+        container: IMidwayContainer
+      ) => {
         for (const fnName of Object.keys(mod)) {
           const value = mod[fnName]
           if (typeof value === 'function') {
@@ -68,7 +73,12 @@ function createFunctionContainer(
         ctx: this.ctx,
       }
 
-      return fn(bindCtx)
+      let args = this.ctx?.request?.body?.args || []
+      if (typeof args === 'string') {
+        args = JSON.parse(args)
+      }
+
+      return await als.run(bindCtx, () => fn(...args))
     }
   }
 
@@ -78,6 +88,7 @@ function createFunctionContainer(
     targetKey: 'ctx',
     identifier: null,
   })
+
   // @Provide
   saveProviderId(id, FunctionContainer, true)
   container.bind(id, FunctionContainer)
