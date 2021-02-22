@@ -11,10 +11,10 @@
       "path": "../hooks"
     },
     {
-      "path": "../hooks-shared"
+      "path": "../hooks-router"
     },
     {
-      "path": "../hooks-router"
+      "path": "../hooks-shared"
     }
   ]
 }

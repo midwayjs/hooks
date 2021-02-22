@@ -1,7 +1,6 @@
 import { router } from './helper'
 import createDebug from 'debug'
 import { BuiltinHOC } from './const'
-import { extname } from 'upath'
 import { ts } from '@midwayjs/mwcc'
 
 export const debug = createDebug('hooks: next-compiler')
@@ -211,10 +210,6 @@ export function isHOCExportAssignment(node: FunctionKind) {
 
 export function getSourceFilePath(node: ts.Node) {
   return node.getSourceFile().fileName
-}
-
-export function removeExtension(file: string) {
-  return file.replace(extname(file), '')
 }
 
 export function tryCatch<T extends (...args: unknown[]) => unknown>(

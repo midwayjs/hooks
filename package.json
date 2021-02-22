@@ -42,5 +42,8 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "resolutions": {
+    "@midwayjs/mwcc": "0.5.x"
+  }
 }

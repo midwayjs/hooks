@@ -13,6 +13,7 @@ export async function compileHooks(root: string) {
 
 export function createInvoker(cwd: string) {
   process.env.MIDWAY_TS_MODE = 'false'
+  process.env.MIDWAY_SERVER_ENV = 'local'
   return (functionName: string) => {
     return invoke({
       functionDir: cwd,
