@@ -1,4 +1,4 @@
-import { createHooks, fnMap } from '..'
+import { createHooks } from '..'
 import {
   createApp as createMockApp,
   close,
@@ -7,6 +7,7 @@ import {
 import { Framework, IMidwayKoaApplication } from '@midwayjs/koa'
 import { join } from 'path'
 import { remove } from 'fs-extra'
+import semver from 'semver'
 
 async function createApp(name: string, options = {}) {
   const baseDir = join(__dirname, 'fixtures', name)
@@ -24,7 +25,9 @@ async function closeApp(app) {
   }
 }
 
-describe('hooks component', () => {
+const desc = semver.lt(process.version, '12.17.0') ? describe.skip : describe
+
+desc('hooks component', () => {
   it('should exist', () => {
     expect(createHooks).toBeInstanceOf(Function)
   })
@@ -52,16 +55,5 @@ describe('test new features', () => {
 
   it('test hooks func', async () => {
     await createHttpRequest(app).get('/api').expect(200, 'Hello World')
-  })
-
-  it('get fn from map', () => {
-    const lambda = require('./fixtures/web/base-app/src/lambda')
-    expect(fnMap.get(lambda.default)).toMatchInlineSnapshot(`
-      Object {
-        "containerId": "hooks_func::index",
-        "httpMethod": "GET",
-        "httpPath": "/api",
-      }
-    `)
   })
 })
