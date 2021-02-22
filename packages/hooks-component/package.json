@@ -31,8 +31,7 @@
     "@midwayjs/hooks-router": "^1.0.4-beta.1",
     "@midwayjs/hooks-shared": "^1.0.4-beta.1",
     "@midwayjs/mock": "^2.7.5",
-    "debug": "^4.3.1",
-    "semver": "^7.3.4"
+    "debug": "^4.3.1"
   },
   "publishConfig": {
     "access": "public"
