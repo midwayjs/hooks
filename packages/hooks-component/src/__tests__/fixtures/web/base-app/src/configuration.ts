@@ -1,5 +1,7 @@
-import { Configuration } from '@midwayjs/decorator'
+import { Configuration, App } from '@midwayjs/decorator'
 import { createHooks } from '../../../../../index'
+import { Application } from '@midwayjs/koa'
+import bodyParser from 'koa-bodyparser'
 
 @Configuration({
   imports: [
@@ -15,4 +17,11 @@ import { createHooks } from '../../../../../index'
   ],
   importConfigs: ['./config'],
 })
-export class ContainerConfiguration {}
+export class ContainerConfiguration {
+  @App()
+  app: Application
+
+  async onReady() {
+    this.app.use(bodyParser())
+  }
+}

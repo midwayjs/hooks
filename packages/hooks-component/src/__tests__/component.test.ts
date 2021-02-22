@@ -1,28 +1,6 @@
-import { createHooks, fnMap } from '..'
-import {
-  createApp as createMockApp,
-  close,
-  createHttpRequest,
-} from '@midwayjs/mock'
-import { Framework, IMidwayKoaApplication } from '@midwayjs/koa'
-import { join } from 'path'
-import { remove } from 'fs-extra'
-
-async function createApp(name: string, options = {}) {
-  const baseDir = join(__dirname, 'fixtures', name)
-  return createMockApp<Framework>(baseDir, options, Framework)
-}
-
-async function closeApp(app) {
-  await close(app)
-  if (process.env.EGG_HOME) {
-    await remove(join(process.env.EGG_HOME, 'logs'))
-  }
-  if (app?.getAppDir()) {
-    await remove(join(app?.getAppDir(), 'logs'))
-    await remove(join(app?.getAppDir(), 'run'))
-  }
-}
+import { createHooks } from '..'
+import { IMidwayKoaApplication } from '@midwayjs/koa'
+import { createApp, closeApp, supertest } from './util'
 
 describe('hooks component', () => {
   it('should exist', () => {
@@ -41,7 +19,7 @@ describe('test new features', () => {
   })
 
   it('test setHeader decorator', async () => {
-    const result = await createHttpRequest(app)
+    const result = await supertest(app)
       .get('/set_header')
       .query({ name: 'harry' })
     expect(result.status).toEqual(200)
@@ -51,17 +29,17 @@ describe('test new features', () => {
   })
 
   it('test hooks func', async () => {
-    await createHttpRequest(app).get('/api').expect(200, 'Hello World')
-  })
-
-  it('get fn from map', () => {
-    const lambda = require('./fixtures/web/base-app/src/lambda')
-    expect(fnMap.get(lambda.default)).toMatchInlineSnapshot(`
-      Object {
-        "containerId": "hooks_func::index",
-        "httpMethod": "GET",
-        "httpPath": "/api",
-      }
-    `)
+    await supertest(app).get('/api').expect(200, 'Hello World')
+    await supertest(app).get('/api/getPath').expect(200, '/api/getPath')
+    await supertest(app)
+      .post('/api/post')
+      .send({ args: ['hello'] })
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200, {
+        method: 'POST',
+        name: 'hello',
+      })
   })
 })

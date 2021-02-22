@@ -1,7 +1,5 @@
 import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
-
 import { Inject, Controller, Get, Post, Provide } from '@midwayjs/decorator'
-
 import { als } from '@midwayjs/hooks/lib/api/async_hooks/als'
 import { EnhancedFunc } from '@midwayjs/hooks/lib/hoc/type'
 import {
@@ -11,8 +9,6 @@ import {
 } from '@midwayjs/hooks-router'
 
 interface HooksConfig extends Omit<WebRouterConfig, 'source'> {}
-
-export const fnMap = new Map<EnhancedFunc, any>()
 
 export const createHooks = (config: HooksConfig) => {
   const configuration = createConfiguration({
@@ -99,12 +95,6 @@ function createFunctionContainer(config: {
   const httpPath = router.getHTTPPath(sourceFilePath, fnName, isExportDefault)
   const HttpMethod = fn.length === 0 ? Get : Post
 
-  fnMap.set(fn, {
-    containerId,
-    httpPath,
-    httpMethod: fn.length === 0 ? 'GET' : 'POST',
-  })
-
   @Provide(containerId)
   @Controller('/')
   class FunctionContainer {
@@ -117,6 +107,7 @@ function createFunctionContainer(config: {
         ctx: this.ctx,
       }
 
+      console.log(this.ctx.request.body)
       let args = this.ctx?.request?.body?.args || []
       if (typeof args === 'string') {
         args = JSON.parse(args)
