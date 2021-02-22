@@ -4,7 +4,7 @@ import execa from 'execa'
 const f = resolve(__dirname, '../../node_modules/.bin/f')
 const fixture = resolve(__dirname, './fixtures/package')
 
-test('routes', async () => {
+test('f routes command', async () => {
   const { stdout } = await execa(f, ['routes'], {
     cwd: fixture,
   })

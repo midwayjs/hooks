@@ -1,4 +1,4 @@
-import { FaaSContext } from '@midwayjs/faas'
+import type { FaaSContext } from '@midwayjs/faas'
 
 export let useContext: () => FaaSContext
 

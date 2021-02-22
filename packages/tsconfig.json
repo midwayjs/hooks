@@ -8,6 +8,7 @@
     { "path": "./hooks-shared" },
     { "path": "./faas-cli-plugin-midway-hooks" },
     { "path": "./next-hooks-compiler" },
-    { "path": "./hooks-router" }
+    { "path": "./hooks-router" },
+    { "path": "./hooks-component" }
   ]
 }

@@ -14,7 +14,7 @@ export type WebRouterConfig = {
 const defaultSource = '/src/apis'
 
 export class WebRouter extends HooksRouter {
-  private config: WebRouterConfig
+  config: WebRouterConfig
 
   constructor(root: string, config: WebRouterConfig) {
     super(root)
