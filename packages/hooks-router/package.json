@@ -29,5 +29,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.7"
   }
 }
