@@ -19,6 +19,8 @@ export const createHooks = (config: HooksConfig) => {
     namespace: 'hooks',
     directoryResolveFilter: createResolveFilter(config),
   })
+    .onReady(() => {})
+    .onStop(() => {})
 
   return {
     Configuration: configuration,
