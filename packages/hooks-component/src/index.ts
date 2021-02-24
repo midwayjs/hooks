@@ -10,9 +10,9 @@ import {
 
 interface HooksConfig extends Omit<WebRouterConfig, 'source'> {}
 
-export const createHooks = (config: HooksConfig) => {
+export const createHooksComponent = (config: HooksConfig) => {
   const configuration = createConfiguration({
-    namespace: 'hooks',
+    namespace: '@midwayjs/hooks',
     directoryResolveFilter: createResolveFilter(config),
   })
     .onReady(() => {})
@@ -95,6 +95,15 @@ function createFunctionContainer(config: {
   const httpPath = router.getHTTPPath(sourceFilePath, fnName, isExportDefault)
   const HttpMethod = fn.length === 0 ? Get : Post
 
+  // For unit test case
+  fn._param = {
+    url: httpPath,
+    method: fn.length === 0 ? 'GET' : 'POST',
+    meta: {
+      functionName: fnName,
+    },
+  }
+
   @Provide(containerId)
   @Controller('/')
   class FunctionContainer {
@@ -108,7 +117,7 @@ function createFunctionContainer(config: {
       }
 
       console.log(this.ctx.request.body)
-      let args = this.ctx?.request?.body?.args || []
+      let args = this.ctx.request?.body?.args || []
       if (typeof args === 'string') {
         args = JSON.parse(args)
       }
