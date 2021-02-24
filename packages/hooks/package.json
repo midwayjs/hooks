@@ -21,7 +21,11 @@
   },
   "devDependencies": {
     "@midwayjs/faas": "2",
-    "@types/debug": "^4.1.5"
+    "@types/debug": "^4.1.5",
+    "esbuild": "^0.8.51",
+    "esbuild-jest": "^0.5.0",
+    "jest-watch-typeahead": "^0.6.1",
+    "ts-jest": "^26.5.2"
   },
   "dependencies": {
     "@midwayjs/hooks-request": "^1.0.4-beta.1",

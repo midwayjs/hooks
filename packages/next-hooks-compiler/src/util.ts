@@ -28,15 +28,8 @@ export function isHookName(s: string) {
 export function isInsideLambdaOrHook(node: ts.Node) {
   const topLevelParent = closetAncestorWhileKind(
     node,
-    (ancestorKind, ancestorNode) => {
-      return ancestorNode.parent.kind === ts.SyntaxKind.SourceFile
-      // try {
-
-      // } catch (e) {
-      //   console.log(node, ancestorNode)
-      //   debugger
-      // }
-    }
+    (ancestorKind, ancestorNode) =>
+      ancestorNode.parent.kind === ts.SyntaxKind.SourceFile
   )
 
   const topLevelNode = getTopLevelNode(topLevelParent)

@@ -8,7 +8,9 @@ import {
   getFunctionId,
 } from '@midwayjs/hooks-router'
 
-interface HooksConfig extends Omit<WebRouterConfig, 'source'> {}
+interface HooksConfig extends Omit<WebRouterConfig, 'source'> {
+  [key: string]: any
+}
 
 export const createHooksComponent = (config: HooksConfig) => {
   const configuration = createConfiguration({
@@ -116,7 +118,6 @@ function createFunctionContainer(config: {
         ctx: this.ctx,
       }
 
-      console.log(this.ctx.request.body)
       let args = this.ctx.request?.body?.args || []
       if (typeof args === 'string') {
         args = JSON.parse(args)
