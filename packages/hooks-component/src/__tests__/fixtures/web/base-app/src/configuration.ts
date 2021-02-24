@@ -1,11 +1,11 @@
 import { Configuration, App } from '@midwayjs/decorator'
-import { createHooks } from '../../../../../index'
+import { createHooksComponent } from '../../../../../index'
 import { Application } from '@midwayjs/koa'
 import bodyParser from 'koa-bodyparser'
 
 @Configuration({
   imports: [
-    createHooks({
+    createHooksComponent({
       source: 'src',
       routes: [
         {

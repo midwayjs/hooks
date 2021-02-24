@@ -1,10 +1,10 @@
-import { createHooks } from '..'
+import { createHooksComponent } from '..'
 import { IMidwayKoaApplication } from '@midwayjs/koa'
 import { createApp, closeApp, supertest } from './util'
 
 describe('hooks component', () => {
   it('should exist', () => {
-    expect(createHooks).toBeInstanceOf(Function)
+    expect(createHooksComponent).toBeInstanceOf(Function)
   })
 })
 
@@ -18,7 +18,7 @@ describe('test new features', () => {
     await closeApp(app)
   })
 
-  it('test setHeader decorator', async () => {
+  it('decorator should work', async () => {
     const result = await supertest(app)
       .get('/set_header')
       .query({ name: 'harry' })
@@ -28,7 +28,7 @@ describe('test new features', () => {
     expect(result.headers['ccc']).toEqual('ddd')
   })
 
-  it('test hooks func', async () => {
+  it('hooks func should return expect result', async () => {
     await supertest(app).get('/api').expect(200, 'Hello World')
     await supertest(app).get('/api/getPath').expect(200, '/api/getPath')
     await supertest(app)
