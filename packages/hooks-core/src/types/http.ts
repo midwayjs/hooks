@@ -11,10 +11,6 @@ export type LambdaParam = {
     functionName?: string
     functionGroup?: string
     gateway?: string
-    /**
-     * @private Unstable and subject to change at any time and without additional notice
-     */
-    unstable_params?: string[]
     [key: string]: any
   }
 }

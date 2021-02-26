@@ -16,7 +16,7 @@ import { addRoute } from '../routes'
 import { MidwayHooksFunctionStructure } from '@midwayjs/hooks-core'
 import { relative, toUnix } from 'upath'
 import _ from 'lodash'
-import { getFunctionId } from '@midwayjs/hooks-core'
+import { getFunctionId, getHTTPMethod } from '@midwayjs/hooks-core'
 
 export default {
   transform() {
@@ -125,7 +125,7 @@ function parseFunctionConfig(
     handler: `${deployName}.${FunctionHandler}`,
     gatewayConfig: {
       url,
-      method: node.parameters.length > 0 ? 'POST' : 'GET',
+      method: getHTTPMethod(node.parameters.length),
       meta: {
         functionName: deployName,
       },

@@ -1,3 +1,3 @@
 export * from './serverless'
 export * from './web'
-export { getFunctionId } from './util'
+export { getFunctionId, getHTTPMethod } from './util'
