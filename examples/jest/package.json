@@ -10,9 +10,7 @@
     "@midwayjs/core": "^2.7.5",
     "@midwayjs/decorator": "^2.7.5",
     "@midwayjs/hooks": "^1.0.4-beta.1",
-    "@midwayjs/hooks-component": "^1.0.4-beta.1",
-    "@midwayjs/hooks-router": "^1.0.4-beta.1",
-    "@midwayjs/hooks-shared": "^1.0.4-beta.1",
+    "@midwayjs/hooks-core": "^1.0.4-beta.1",
     "@midwayjs/mock": "^2.7.5",
     "debug": "^4.3.1"
   },

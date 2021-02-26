@@ -1,6 +1,6 @@
 import { extname, join, relative, resolve } from 'upath'
 import { transform } from '@midwayjs/serverless-spec-builder'
-import type { HooksSpecStructure } from '@midwayjs/hooks-shared'
+import type { HooksSpecStructure } from '../types/serverless'
 import { HooksRouter } from './base'
 
 const defaultSource = '/src/apis'

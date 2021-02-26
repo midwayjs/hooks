@@ -8,6 +8,9 @@
   "exclude": ["lib", "web", "node_modules", "**/__tests__"],
   "references": [
     {
+      "path": "../hooks-core"
+    },
+    {
       "path": "../hooks-request"
     }
   ]

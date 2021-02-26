@@ -1,4 +1,4 @@
-import type { LambdaParam } from '@midwayjs/hooks-shared'
+import type { LambdaParam } from './http'
 
 export type EnhancedFunc = {
   (...args: any[]): Promise<any>

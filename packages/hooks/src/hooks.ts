@@ -1,8 +1,9 @@
-import { useContext as useContextImpl } from '../api/async_hooks/useContextImpl'
 import type { IMidwayContainer } from '@midwayjs/core'
+import { als } from '@midwayjs/hooks-core'
 
-export function useContext(): any {
-  return useContextImpl()
+export function useContext<T = any>(): T {
+  const { ctx } = als.getStore()
+  return ctx
 }
 
 export function useLogger() {
@@ -20,10 +21,12 @@ export function useApp() {
   return ctx.app
 }
 
-export async function useInject<T = any>(identifier: (new () => T) & string) {
+export function useInject<T = any>(identifier: new () => T): Promise<T>
+export function useInject<T = any>(string): Promise<any>
+export async function useInject(identifier) {
   const ctx = useContext()
   const requestContext: IMidwayContainer = ctx['requestContext']
-  return requestContext.getAsync<T>(identifier)
+  return requestContext.getAsync(identifier)
 }
 
 export function useConfig(key?: string) {

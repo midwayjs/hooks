@@ -1,5 +1,5 @@
-import type { HooksSpecStructure } from '@midwayjs/hooks-shared'
-import { LambdaParam } from '@midwayjs/hooks-shared'
+import type { HooksSpecStructure } from '@midwayjs/hooks-core'
+import { LambdaParam } from '@midwayjs/hooks-core'
 import art from 'art-template'
 import { readFileSync } from 'fs'
 import { resolve } from 'path'
@@ -24,7 +24,11 @@ export interface BuildOptions {
   beforeBuildRequest(params: RenderParam[]): void
 }
 
-export function buildRequest(funcs: RenderParam[], cwd: string, options?: BuildOptions) {
+export function buildRequest(
+  funcs: RenderParam[],
+  cwd: string,
+  options?: BuildOptions
+) {
   const { gateway, functionGroup } = getFunctionConfig(cwd)
 
   funcs.forEach((func) => {
@@ -34,7 +38,10 @@ export function buildRequest(funcs: RenderParam[], cwd: string, options?: BuildO
 
   options?.beforeBuildRequest?.(funcs)
 
-  const template = readFileSync(resolve(__dirname, `../templates/request.art`), { encoding: 'utf-8' })
+  const template = readFileSync(
+    resolve(__dirname, `../templates/request.art`),
+    { encoding: 'utf-8' }
+  )
   return art.render(template, { funcs })
 }
 

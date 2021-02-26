@@ -1,7 +1,7 @@
 import { isWeb, isNode } from 'universal-env'
-import type { LambdaParam } from '@midwayjs/hooks-shared'
+import { LambdaHTTPMethod, LambdaParam } from '@midwayjs/hooks-core'
 
-export type { LambdaHTTPMethod, LambdaParam } from '@midwayjs/hooks-shared'
+export { LambdaHTTPMethod, LambdaParam }
 
 if (isWeb || isNode) {
   require('isomorphic-unfetch')

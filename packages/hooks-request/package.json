@@ -21,7 +21,7 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
-    "@midwayjs/hooks-shared": "^1.0.4-beta.1",
+    "@midwayjs/hooks-core": "^1.0.4-beta.1",
     "isomorphic-unfetch": "^3.0.0",
     "universal-env": "^3.2.2"
   },

@@ -1,5 +1,5 @@
 import type { Dictionary } from 'lodash'
-import type { MidwayHooksFunctionStructure } from '@midwayjs/hooks-shared'
+import type { MidwayHooksFunctionStructure } from '@midwayjs/hooks-core'
 
 type SourceFilePath = string
 
