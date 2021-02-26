@@ -8,7 +8,10 @@ interface HooksConfig extends Omit<WebRouterConfig, 'source'> {
   [key: string]: any
 }
 
-export const createHooksComponent = (config: HooksConfig) => {
+/**
+ * Create hooks component
+ */
+export const hooks = (config: HooksConfig) => {
   const configuration = createConfiguration({
     namespace: '@midwayjs/hooks',
     directoryResolveFilter: createResolveFilter(config),
