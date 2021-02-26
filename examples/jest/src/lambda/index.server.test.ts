@@ -7,12 +7,15 @@ import { Framework, IMidwayKoaApplication } from '@midwayjs/koa'
 import { join } from 'path'
 import { remove } from 'fs-extra'
 
+const cwd = process.cwd()
+
 describe('test new features', () => {
   let app: IMidwayKoaApplication
   beforeAll(async () => {
     const rootDir = join(__dirname, '../..')
     process.chdir(rootDir)
     app = await createApp(rootDir)
+    process.chdir(cwd)
   })
 
   afterAll(async () => {
