@@ -1,6 +1,6 @@
 import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
 import { Inject, Controller, Get, Post, Provide } from '@midwayjs/decorator'
-import { als } from '../runtime/als'
+import { als } from '../runtime'
 import { EnhancedFunc } from '../types/common'
 import { WebRouterConfig, WebRouter, getFunctionId } from '../router'
 

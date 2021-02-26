@@ -1,1 +1,1 @@
-export * from '@midwayjs/hooks-request'
+export * from '@midwayjs/hooks-core/lib/request'
