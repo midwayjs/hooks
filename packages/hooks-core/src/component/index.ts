@@ -98,17 +98,17 @@ function createFunctionContainer(config: {
     url: httpPath,
     method: fn.length === 0 ? 'GET' : 'POST',
     meta: {
-      functionName: fnName,
+      functionName: id,
     },
   }
 
   @Provide(containerId)
-  @Controller('/')
+  @Controller(httpPath)
   class FunctionContainer {
     @Inject()
     ctx: any
 
-    @HttpMethod(httpPath, { middleware: fn.middleware || [] })
+    @HttpMethod('/', { middleware: fn.middleware || [] })
     async handler() {
       const bindCtx = {
         ctx: this.ctx,
