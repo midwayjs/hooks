@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/faas-cli-plugin-midway-hooks",
-  "version": "1.0.4-beta.1",
+  "version": "2.0.0-next.0",
   "description": "Midway Cli Plugin.",
   "keywords": [
     "midway",
@@ -26,8 +26,8 @@
   "dependencies": {
     "@midwayjs/fcli-command-core": "^1.2.40",
     "@midwayjs/fcli-plugin-invoke": "^1.2.40",
-    "@midwayjs/hooks-core": "^1.0.4-beta.1",
-    "@midwayjs/next-hooks-compiler": "^1.0.4-beta.1",
+    "@midwayjs/hooks-core": "^2.0.0-next.0",
+    "@midwayjs/next-hooks-compiler": "^2.0.0-next.0",
     "@midwayjs/serverless-spec-builder": "^1.2.40",
     "chalk": "^4.0.0",
     "chokidar": "^3.3.1",
