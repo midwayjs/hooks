@@ -2,16 +2,15 @@ import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
 import { Inject, Controller, Get, Post, Provide } from '@midwayjs/decorator'
 import { als } from '../runtime'
 import { EnhancedFunc } from '../types/common'
-import { WebRouterConfig, WebRouter, getFunctionId } from '../router'
-
-interface HooksConfig extends Omit<WebRouterConfig, 'source'> {
-  [key: string]: any
-}
+import { WebRouter, getFunctionId } from '../router'
+import { getConfig, getProjectRoot } from '../config'
+import { UserConfig } from '../types/config'
 
 /**
  * Create hooks component
  */
-export const hooks = (config: HooksConfig) => {
+export const hooks = () => {
+  const config = getConfig()
   const configuration = createConfiguration({
     namespace: '@midwayjs/hooks',
     directoryResolveFilter: createResolveFilter(config),
@@ -24,7 +23,7 @@ export const hooks = (config: HooksConfig) => {
   }
 }
 
-function createResolveFilter(config: HooksConfig) {
+function createResolveFilter(config: UserConfig) {
   return config.routes.map((route) => {
     return {
       pattern: route.baseDir,
@@ -36,10 +35,10 @@ function createResolveFilter(config: HooksConfig) {
         sourceFilePath: string,
         container: IMidwayContainer
       ) => {
-        const root: string = container.get('appDir')
+        const root = getProjectRoot()
         const router = new WebRouter(root, {
           routes: config.routes,
-          source: (config as any).source,
+          source: config.source,
         })
 
         // export default
