@@ -1,4 +1,4 @@
-import { LambdaParam } from '../types/http'
+import type { LambdaParam } from '../types/http'
 import axios from 'axios'
 
 export const defaults = axios.defaults
