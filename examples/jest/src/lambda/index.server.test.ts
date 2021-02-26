@@ -11,6 +11,7 @@ describe('test new features', () => {
   let app: IMidwayKoaApplication
   beforeAll(async () => {
     const rootDir = join(__dirname, '../..')
+    process.chdir(rootDir)
     app = await createApp(rootDir)
   })
 
