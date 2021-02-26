@@ -96,15 +96,6 @@ function createFunctionContainer(config: {
   const httpPath = router.getHTTPPath(sourceFilePath, fnName, isExportDefault)
   const HttpMethod = fn.length === 0 ? Get : Post
 
-  // For unit test case
-  fn._param = {
-    url: httpPath,
-    method: fn.length === 0 ? 'GET' : 'POST',
-    meta: {
-      functionName: id,
-    },
-  }
-
   @Provide(containerId)
   @Controller(httpPath)
   class FunctionContainer {

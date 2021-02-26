@@ -29,3 +29,7 @@ export function getFunctionId(config: {
 export function removeExtension(file: string) {
   return file.replace(extname(file), '')
 }
+
+export function getHTTPMethod(length: number) {
+  return length === 0 ? 'GET' : 'POST'
+}
