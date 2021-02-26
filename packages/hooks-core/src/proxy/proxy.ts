@@ -1,4 +1,4 @@
-import { EnhancedFunc } from '../types/common'
+import type { EnhancedFunc } from '../types/common'
 
 const DefaultKeyword = '$default'
 

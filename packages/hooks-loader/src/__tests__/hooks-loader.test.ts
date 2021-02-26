@@ -2,13 +2,14 @@ import { resolve } from 'path'
 import compiler from './compiler'
 import { wrap } from 'jest-snapshot-serializer-raw'
 
-const root = resolve(__dirname, './fixtures/catch-all')
+const root = resolve(__dirname, './fixtures/base-app')
+const cwd = process.cwd()
 
 const resolveEntry = (path: string | string[]) => {
   if (!Array.isArray(path)) {
-    return resolve(__dirname, root, 'src/apis/', path)
+    return resolve(__dirname, root, 'src/', path)
   }
-  return path.map((p) => resolve(__dirname, root, 'src/apis/', p))
+  return path.map((p) => resolve(__dirname, root, 'src/', p))
 }
 
 async function compile(entry: string) {
@@ -17,7 +18,15 @@ async function compile(entry: string) {
   return output.source
 }
 
-describe('hooks-loader', () => {
+describe('hooks loader with proxy', () => {
+  beforeEach(() => {
+    process.chdir(root)
+  })
+
+  afterEach(() => {
+    process.chdir(cwd)
+  })
+
   test('Compile render', async () => {
     const output = await compile('render/[...index].ts')
     expect(wrap(output)).toMatchSnapshot()
