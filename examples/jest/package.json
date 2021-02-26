@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0-next.0",
   "private": true,
   "name": "@midwayjs/hooks-examples-jest",
   "scripts": {
@@ -9,8 +9,8 @@
   "dependencies": {
     "@midwayjs/core": "^2.7.5",
     "@midwayjs/decorator": "^2.7.5",
-    "@midwayjs/hooks": "^1.0.4-beta.1",
-    "@midwayjs/hooks-core": "^1.0.4-beta.1",
+    "@midwayjs/hooks": "^2.0.0-next.0",
+    "@midwayjs/hooks-core": "^2.0.0-next.0",
     "@midwayjs/mock": "^2.7.5",
     "debug": "^4.3.1"
   },
