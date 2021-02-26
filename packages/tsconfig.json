@@ -6,7 +6,6 @@
     { "path": "./hooks" },
     { "path": "./hooks-core" },
     { "path": "./hooks-loader" },
-    { "path": "./hooks-request" },
     { "path": "./next-hooks-compiler" }
   ]
 }
