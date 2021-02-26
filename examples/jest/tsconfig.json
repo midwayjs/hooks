@@ -12,13 +12,7 @@
       "path": "../../packages/hooks"
     },
     {
-      "path": "../../packages/hooks-component"
-    },
-    {
-      "path": "../../packages/hooks-router"
-    },
-    {
-      "path": "../../packages/hooks-shared"
+      "path": "../../packages/hooks-core"
     }
   ]
 }

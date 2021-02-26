@@ -1,5 +1,3 @@
-const path = require('path')
-
 const common = {
   preset: 'ts-jest',
   clearMocks: true,
@@ -13,12 +11,6 @@ const common = {
   watchPlugins: [
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
-  ],
-  coverageDirectory: '.coverage',
-  collectCoverageFrom: [
-    '**/*.{js,jsx,ts,tsx}',
-    '!**/*.d.ts',
-    '!**/node_modules/**',
   ],
 }
 

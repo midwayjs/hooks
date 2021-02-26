@@ -28,6 +28,7 @@
     "ts-jest": "^26.5.2"
   },
   "dependencies": {
+    "@midwayjs/hooks-core": "^1.0.4-beta.1",
     "@midwayjs/hooks-request": "^1.0.4-beta.1",
     "debug": "^4.3.1"
   },

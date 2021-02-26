@@ -15,7 +15,7 @@ import {
 import type {
   HooksSpecStructure,
   MidwayHooksFunctionStructure,
-} from '@midwayjs/hooks-shared'
+} from '@midwayjs/hooks-core'
 import { compilerEmitter } from './event'
 import semver from 'semver'
 

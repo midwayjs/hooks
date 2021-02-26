@@ -13,10 +13,10 @@ import {
 import { FunctionHandler, HooksRequestContext } from '../const'
 import { router } from '../helper'
 import { addRoute } from '../routes'
-import { MidwayHooksFunctionStructure } from '@midwayjs/hooks-shared'
+import { MidwayHooksFunctionStructure } from '@midwayjs/hooks-core'
 import { relative, toUnix } from 'upath'
 import _ from 'lodash'
-import { getFunctionId } from '@midwayjs/hooks-router'
+import { getFunctionId } from '@midwayjs/hooks-core'
 
 export default {
   transform() {

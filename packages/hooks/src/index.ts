@@ -1,2 +1,2 @@
-export * from './platform/serverless'
-export * from './hoc/withController'
+export * from './hooks'
+export * from './hoc'

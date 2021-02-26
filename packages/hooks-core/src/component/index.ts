@@ -1,12 +1,8 @@
 import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
 import { Inject, Controller, Get, Post, Provide } from '@midwayjs/decorator'
-import { als } from '@midwayjs/hooks/lib/api/async_hooks/als'
-import { EnhancedFunc } from '@midwayjs/hooks/lib/hoc/type'
-import {
-  WebRouterConfig,
-  WebRouter,
-  getFunctionId,
-} from '@midwayjs/hooks-router'
+import { als } from '../runtime/als'
+import { EnhancedFunc } from '../types/common'
+import { WebRouterConfig, WebRouter, getFunctionId } from '../router'
 
 interface HooksConfig extends Omit<WebRouterConfig, 'source'> {
   [key: string]: any

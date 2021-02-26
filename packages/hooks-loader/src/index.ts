@@ -1,7 +1,7 @@
 import { loader } from 'webpack'
 import { buildRequest, RenderParam } from './render'
 import { getFunctionsMeta } from '@midwayjs/next-hooks-compiler'
-import { MidwayHooksFunctionStructure } from '@midwayjs/hooks-shared'
+import { MidwayHooksFunctionStructure } from '@midwayjs/hooks-core'
 import { debug } from './util'
 import {
   compilerEmitter,
@@ -10,7 +10,7 @@ import {
 import { getFuncList as preCompileProject } from '@midwayjs/fcli-plugin-invoke'
 import _ from 'lodash'
 import { relative, toUnix } from 'upath'
-import { ServerlessRouter } from '@midwayjs/hooks-router'
+import { ServerlessRouter } from '@midwayjs/hooks-core'
 
 let compileTask: Promise<void> = null
 compilerEmitter.on(Events.PRE_COMPILE_START, () => {

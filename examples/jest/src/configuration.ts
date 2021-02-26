@@ -1,5 +1,5 @@
 import { Configuration, App } from '@midwayjs/decorator'
-import { createHooksComponent } from '@midwayjs/hooks-component'
+import { createHooksComponent } from '@midwayjs/hooks-core'
 import { Application } from '@midwayjs/koa'
 import bodyParser from 'koa-bodyparser'
 

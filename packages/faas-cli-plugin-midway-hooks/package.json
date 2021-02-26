@@ -26,7 +26,7 @@
   "dependencies": {
     "@midwayjs/fcli-command-core": "^1.2.40",
     "@midwayjs/fcli-plugin-invoke": "^1.2.40",
-    "@midwayjs/hooks-shared": "^1.0.4-beta.1",
+    "@midwayjs/hooks-core": "^1.0.4-beta.1",
     "@midwayjs/next-hooks-compiler": "^1.0.4-beta.1",
     "@midwayjs/serverless-spec-builder": "^1.2.40",
     "chalk": "^4.0.0",

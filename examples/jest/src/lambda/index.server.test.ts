@@ -7,7 +7,6 @@ import { Framework, IMidwayKoaApplication } from '@midwayjs/koa'
 import { join } from 'path'
 import { remove } from 'fs-extra'
 
-process.env.MIDWAY_TS_MODE = 'true'
 describe('test new features', () => {
   let app: IMidwayKoaApplication
   beforeAll(async () => {

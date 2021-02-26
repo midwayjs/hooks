@@ -2,13 +2,11 @@
   "files": [],
   "references": [
     { "path": "./build-plugin-hooks" },
+    { "path": "./faas-cli-plugin-midway-hooks" },
     { "path": "./hooks" },
+    { "path": "./hooks-core" },
     { "path": "./hooks-loader" },
     { "path": "./hooks-request" },
-    { "path": "./hooks-shared" },
-    { "path": "./faas-cli-plugin-midway-hooks" },
-    { "path": "./next-hooks-compiler" },
-    { "path": "./hooks-router" },
-    { "path": "./hooks-component" }
+    { "path": "./next-hooks-compiler" }
   ]
 }
