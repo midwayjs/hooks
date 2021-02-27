@@ -6,17 +6,17 @@ export type WebRoute = {
   basePath: string
 }
 
-export type WebRouterConfig = {
+export type ServerRouterConfig = {
   source?: string
   routes: WebRoute[]
 }
 
 const defaultSource = '/src/apis'
 
-export class WebRouter extends HooksRouter {
-  config: WebRouterConfig
+export class ServerRouter extends HooksRouter {
+  config: ServerRouterConfig
 
-  constructor(root: string, config: WebRouterConfig) {
+  constructor(root: string, config: ServerRouterConfig) {
     super(root)
     this.config = config
   }

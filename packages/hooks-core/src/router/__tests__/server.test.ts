@@ -1,9 +1,9 @@
-import { WebRouter } from '../web'
+import { ServerRouter } from '../server'
 
-describe('WebRouter', () => {
+describe('ServerRouter', () => {
   test('should exist', () => {
-    expect(WebRouter).toBeTruthy()
-    const router = new WebRouter('/', {
+    expect(ServerRouter).toBeTruthy()
+    const router = new ServerRouter('/', {
       routes: [
         {
           baseDir: 'lambda',
@@ -11,11 +11,11 @@ describe('WebRouter', () => {
         },
       ],
     })
-    expect(router).toBeInstanceOf(WebRouter)
+    expect(router).toBeInstanceOf(ServerRouter)
   })
 
   test('test functions', () => {
-    const router = new WebRouter('/', {
+    const router = new ServerRouter('/', {
       source: 'src',
       routes: [
         {
@@ -44,7 +44,7 @@ describe('WebRouter', () => {
   })
 
   test('getHTTPPath', () => {
-    const router = new WebRouter('/', {
+    const router = new ServerRouter('/', {
       source: 'src',
       routes: [
         {

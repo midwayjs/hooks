@@ -2,7 +2,7 @@ import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
 import { Inject, Controller, Get, Post, Provide } from '@midwayjs/decorator'
 import { als } from '../runtime'
 import { EnhancedFunc } from '../types/common'
-import { WebRouter, getFunctionId } from '../router'
+import { ServerRouter, getFunctionId } from '../router'
 import { getConfig, getProjectRoot } from '../config'
 import { UserConfig } from '../types/config'
 
@@ -36,7 +36,7 @@ function createResolveFilter(config: UserConfig) {
         container: IMidwayContainer
       ) => {
         const root = getProjectRoot()
-        const router = new WebRouter(root, {
+        const router = new ServerRouter(root, {
           routes: config.routes,
           source: config.source,
         })
@@ -78,7 +78,7 @@ function createFunctionContainer(config: {
   container: IMidwayContainer
   fn: EnhancedFunc
   sourceFilePath: string
-  router: WebRouter
+  router: ServerRouter
   isExportDefault: boolean
 }) {
   const { container, fn, router, sourceFilePath, isExportDefault } = config
