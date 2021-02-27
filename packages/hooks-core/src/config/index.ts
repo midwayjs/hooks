@@ -8,7 +8,7 @@ export function getProjectRoot(cwd?: string) {
   return sync(cwd) || process.cwd()
 }
 
-export function getConfig(cwd?: string): UserConfig {
+export function getConfig(cwd?: string) {
   if (global.MidwayConfig) {
     return global.MidwayConfig
   }
@@ -20,15 +20,22 @@ export function getConfig(cwd?: string): UserConfig {
     js: path.join(root, 'midway.config.js'),
   }
 
-  const isTS = existsSync(configs.ts)
-  if (isTS) {
-    const jiti = createJITI(__filename)
-    return jiti(configs.ts)
-  }
-
-  return require(configs.js)
+  return (
+    tryRequire<UserConfig>(configs.ts) || tryRequire<UserConfig>(configs.js)
+  )
 }
 
 export function defineConfig(config: UserConfig): UserConfig {
   return config
+}
+
+const tryRequire = <T = unknown>(id: string) => {
+  try {
+    const jiti = createJITI(__filename)
+    const contents = jiti(id) as T | { default: T }
+    if ('default' in contents) return contents.default
+    return contents
+  } catch {
+    return undefined
+  }
 }
