@@ -1,9 +1,9 @@
-import { ServerlessRouter, WebRouter } from './'
+import { ServerlessRouter, ServerRouter } from './'
 import { extname, relative } from 'upath'
 import _ from 'lodash'
 
 export function getFunctionId(config: {
-  router: ServerlessRouter | WebRouter
+  router: ServerlessRouter | ServerRouter
   sourceFilePath: string
   functionName: string
   isExportDefault: boolean

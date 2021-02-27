@@ -1,4 +1,4 @@
-import { getConfig, getProjectRoot, WebRouter } from '@midwayjs/hooks-core'
+import { getConfig, getProjectRoot, ServerRouter } from '@midwayjs/hooks-core'
 import { loader } from 'webpack'
 
 export default async function loader(
@@ -10,7 +10,7 @@ export default async function loader(
 
   const root = getProjectRoot()
   const config = getConfig()
-  const router = new WebRouter(root, config)
+  const router = new ServerRouter(root, config)
 
   if (!router.isLambdaFile(resourcePath)) {
     return callback(null, source)

@@ -1,7 +1,6 @@
 import path from 'path'
 import { UserConfig } from '../types/config'
 import { sync } from 'pkg-dir'
-import { existsSync } from 'fs'
 import createJITI from 'jiti'
 
 export function getProjectRoot(cwd?: string) {
@@ -31,7 +30,7 @@ export function defineConfig(config: UserConfig): UserConfig {
 
 const tryRequire = <T = unknown>(id: string) => {
   try {
-    const jiti = createJITI(__filename)
+    const jiti = createJITI()
     const contents = jiti(id) as T | { default: T }
     if ('default' in contents) return contents.default
     return contents

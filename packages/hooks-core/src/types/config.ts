@@ -1,5 +1,5 @@
-import { WebRouterConfig } from '../router'
+import { ServerRouterConfig } from '../router'
 
-export interface UserConfig extends Omit<WebRouterConfig, 'source'> {
+export interface UserConfig extends Omit<ServerRouterConfig, 'source'> {
   [key: string]: any
 }
