@@ -2,6 +2,7 @@ import { getConfig } from '../'
 import { join } from 'path'
 
 const userConfig = {
+  framework: '@midwayjs/koa',
   source: '/src',
   routes: [
     {

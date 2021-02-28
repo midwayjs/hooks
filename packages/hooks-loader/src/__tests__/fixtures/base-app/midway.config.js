@@ -1,6 +1,7 @@
-const { defineConfig } = require('@midwayjs/hooks')
+const { defineConfig, MidwayFrameworkType } = require('@midwayjs/hooks')
 
 module.exports = defineConfig({
+  framework: MidwayFrameworkType,
   source: '/src',
   routes: [
     {
