@@ -1,7 +1,7 @@
 {
-  "name": "@midwayjs/hooks",
+  "name": "@midwayjs/hooks-testing-library",
   "version": "2.0.0-next.0",
-  "description": "The next generation of integrated front and back-end application development solutions",
+  "description": "The testing library for midway hooks",
   "keywords": [
     "midway",
     "hooks"
@@ -19,14 +19,17 @@
     "type": "git",
     "url": "git@github.com:midwayjs/hooks.git"
   },
+  "devDependencies": {
+    "esbuild": "^0.8.51",
+    "esbuild-jest": "^0.5.0",
+    "jest-watch-typeahead": "^0.6.1",
+    "ts-jest": "^26.5.2"
+  },
   "dependencies": {
     "@midwayjs/hooks-core": "^2.0.0-next.0",
-    "@midwayjs/hooks-testing-library": "^2.0.0-next.0"
+    "debug": "^4.3.1"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "@midwayjs/faas": "^2.8.2"
   }
 }

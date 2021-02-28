@@ -6,6 +6,7 @@
     { "path": "./hooks" },
     { "path": "./hooks-core" },
     { "path": "./hooks-loader" },
-    { "path": "./next-hooks-compiler" }
+    { "path": "./next-hooks-compiler" },
+    { "path": "hooks-testing-library" }
   ]
 }

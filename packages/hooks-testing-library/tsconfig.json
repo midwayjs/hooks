@@ -9,9 +9,6 @@
   "references": [
     {
       "path": "../hooks-core"
-    },
-    {
-      "path": "../hooks-testing-library"
     }
   ]
 }
