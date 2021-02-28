@@ -1683,10 +1683,15 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@midwayjs/bootstrap@^2.7.0", "@midwayjs/bootstrap@^2.7.5":
+"@midwayjs/bootstrap@^2.7.0":
   version "2.7.5"
   resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-2.7.5.tgz#9d13ecf75cf5047634c3340fcc9a2873978859f1"
   integrity sha512-29bOr9CUNtooVz2QHg6UiOMVgnJPUe4GBzRyn62DKZ1k7WcKMb3ziLFn6Ha5oeTRdQjX5qKZj5TKMmAsAUIoPA==
+
+"@midwayjs/bootstrap@^2.7.5":
+  version "2.8.2"
+  resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-2.8.2.tgz#be8c4fc50937520f77a26eaee0809c352aff80e8"
+  integrity sha512-MAl9goRoZHgOo66srliDhgSjy5IU0mXoq/4GcOA0tGHH1EDM57tlxVNZQ/dID1glzVNQvCKOS5BiPmP1wGIm4Q==
 
 "@midwayjs/cli-plugin-add@^1.2.41":
   version "1.2.41"
@@ -1884,10 +1889,10 @@
   resolved "https://registry.npmjs.org/@midwayjs/faas-typings/-/faas-typings-2.7.0.tgz#e9119b9f5b592630b45da74700469d41f0e98436"
   integrity sha512-Ekodd1zO4Yf5TUXLhXsQvP2CJAb75Q8ImtrVN32P2NqPZ5ofAzsuD9z01sGWJx/CZ367ou156yT5BFC/umRbIA==
 
-"@midwayjs/faas@2":
-  version "2.7.7"
-  resolved "https://registry.npmjs.org/@midwayjs/faas/-/faas-2.7.7.tgz#00a15cf376e598e477b6c5507bf322bdf6f02c00"
-  integrity sha512-ewXQqCzHyflrTYq+5K6s2bzH7Jbv1OX8uSc5fTxIyMl3SE8fgBI4R+VxqrLG2d/YHacFbWGaEhECtFHupmNZNA==
+"@midwayjs/faas@2.7.5", "@midwayjs/faas@^2.8.2":
+  version "2.7.5"
+  resolved "https://registry.npmjs.org/@midwayjs/faas/-/faas-2.7.5.tgz#e0ea4b9996badd1fc5a147a69d68cbf345d4ff23"
+  integrity sha512-gYAiQN9gR8bGr8OBLZQemSnKDM1wwx6bqCW2NriUMPOjGoFrUG+46oqDZbqNILa+vDGmZ1XEDatcKWRJMvaM7Q==
   dependencies:
     "@midwayjs/core" "^2.7.5"
     "@midwayjs/decorator" "^2.7.5"
@@ -2157,8 +2162,8 @@
 
 "@midwayjs/simple-lock@^1.1.4":
   version "1.1.4"
-  resolved "https://registry.npmjs.org/@midwayjs/simple-lock/-/simple-lock-1.1.4.tgz#f434902a38c9f3bd275f5ea719af6a56f82b7b99"
-  integrity sha512-+4PVJX2cycQdOal/Ge9Bm2STfDXqEFpzKK7MgXofbYy4Gz45UFEptLK21DRtylvqgZ+0LMfecTGX53nXZddkSg==
+  resolved "https://registry.npm.taobao.org/@midwayjs/simple-lock/download/@midwayjs/simple-lock-1.1.4.tgz#f434902a38c9f3bd275f5ea719af6a56f82b7b99"
+  integrity sha1-9DSQKjjJ870nX16nGa9qVvgre5k=
 
 "@monorepo-utils/package-utils@^2.4.4":
   version "2.4.4"
