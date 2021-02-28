@@ -1,6 +1,7 @@
-const { defineConfig } = require('../../../')
+const { defineConfig, MidwayFrameworkType } = require('../../../../')
 
 module.exports = defineConfig({
+  framework: MidwayFrameworkType.WEB_KOA,
   source: '/src',
   routes: [
     {
