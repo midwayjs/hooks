@@ -1,6 +1,11 @@
 import { createApp as createWebApp, close } from '@midwayjs/mock'
 import { IMidwayApplication } from '@midwayjs/core'
-import { getConfig, getProjectRoot } from '@midwayjs/hooks-core'
+import {
+  getConfig,
+  getProjectRoot,
+  als,
+  HooksContext,
+} from '@midwayjs/hooks-core'
 import { join } from 'path'
 import { remove } from 'fs-extra'
 
@@ -23,7 +28,22 @@ class HooksApplication {
   }
 
   // TODO Allow pass user define context
-  runFunction<T extends (...args: any) => any>() {}
+  // TODO Should invoke function call
+  async runFunction<T extends (...args: any) => any>(func: T) {
+    return await als.run(this.mockContext(), () => func())
+  }
+
+  async runHooks<T extends (...args: any) => any>(hooks: T) {
+    return await als.run(this.mockContext(), () => hooks())
+  }
+
+  request() {}
+
+  mockContext(): HooksContext {
+    return {
+      ctx: {},
+    }
+  }
 
   async close() {
     await close(this.app)
