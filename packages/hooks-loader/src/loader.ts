@@ -1,4 +1,9 @@
-import { getConfig, getProjectRoot, ServerRouter } from '@midwayjs/hooks-core'
+import {
+  getConfig,
+  getProjectRoot,
+  ServerRouter,
+  parseAndGenerateSDK,
+} from '@midwayjs/hooks-core'
 import { loader } from 'webpack'
 
 export default async function loader(
@@ -16,18 +21,7 @@ export default async function loader(
     return callback(null, source)
   }
 
-  let baseUrl = router.getHTTPPath(resourcePath, '', true)
-  if (baseUrl === '/*') {
-    baseUrl = '/'
-  } else if (baseUrl.endsWith('/*')) {
-    baseUrl = baseUrl.slice(0, -1)
-  }
-
-  const proxy = `
-const { createRequestProxy } = require('@midwayjs/hooks-core/lib/proxy/http');
-const baseUrl = '${baseUrl}';
-module.exports = createRequestProxy(baseUrl);
-  `.trim()
-
-  callback(null, proxy)
+  // TODO Set webpack loader as pre
+  const sdk = await parseAndGenerateSDK(router, resourcePath, source)
+  callback(null, sdk)
 }
