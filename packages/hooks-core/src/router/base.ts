@@ -45,6 +45,19 @@ export abstract class HooksRouter {
     return inside(toUnix(child), toUnix(parent))
   }
 
+  getBaseUrl(sourceFilePath: string) {
+    const url = this.getHTTPPath(sourceFilePath, '', true)
+    if (url === '/*') {
+      return '/'
+    }
+
+    if (url.endsWith('/*')) {
+      return url.slice(0, -2)
+    }
+
+    return url
+  }
+
   getHTTPPath(
     sourceFilePath: string,
     method: string,

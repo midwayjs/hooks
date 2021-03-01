@@ -7,6 +7,7 @@
     { "path": "./hooks-core" },
     { "path": "./hooks-loader" },
     { "path": "./next-hooks-compiler" },
-    { "path": "hooks-testing-library" }
+    { "path": "hooks-testing-library" },
+    { "path": "vite-plugin-hooks" }
   ]
 }

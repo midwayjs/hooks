@@ -1,0 +1,1 @@
+# @midwayjs/vite-plugin-hooks
