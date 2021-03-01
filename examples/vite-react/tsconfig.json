@@ -17,5 +17,10 @@
     "jsx": "react"
   },
   "include": ["./src"],
-  "references": []
+  "references": [],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  }
 }
