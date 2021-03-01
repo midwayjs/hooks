@@ -7,7 +7,9 @@
     "hooks"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc",
+    "build:esm": "tsc --module es2015 --outDir lib/esm",
     "clean": "rm -rf lib",
     "prepublishOnly": "npm run build"
   },

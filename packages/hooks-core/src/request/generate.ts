@@ -16,7 +16,7 @@ export async function parseAndGenerateSDK(
   const baseUrl = router.getBaseUrl(sourceFilePath)
 
   const sdk = `
-    import { createRequest } from '@midwayjs/hooks-core/lib/request/sdk';
+    import { createRequest } from '@midwayjs/hooks-core/lib/esm/request/sdk';
     ${exports
       .map((id) => {
         if (id === 'default') {
