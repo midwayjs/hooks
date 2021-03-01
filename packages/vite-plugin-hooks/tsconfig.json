@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "lib",
+    "tsBuildInfoFile": "./lib/tsconfig.tsbuildinfo",
+    "rootDir": "src"
+  },
+  "exclude": ["lib", "web", "node_modules", "**/__tests__"],
+  "references": [
+    {
+      "path": "../hooks-core"
+    }
+  ]
+}
