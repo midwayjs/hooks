@@ -3,6 +3,7 @@ export * from './component'
 export * from './runtime'
 export * from './request'
 export * from './config'
+export * from './proxy'
 
 export * from './types/common'
 export * from './types/http'
