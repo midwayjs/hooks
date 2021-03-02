@@ -13,6 +13,9 @@
     },
     {
       "path": "../../packages/hooks-core"
+    },
+    {
+      "path": "../../packages/hooks-testing-library"
     }
   ]
 }

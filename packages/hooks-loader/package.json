@@ -12,10 +12,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@midwayjs/faas-cli-plugin-midway-hooks": "^2.0.0-next.0",
     "@midwayjs/fcli-plugin-invoke": "^1.2.20",
     "@midwayjs/hooks-core": "^2.0.0-next.0",
-    "@midwayjs/next-hooks-compiler": "^2.0.0-next.0",
     "@midwayjs/serverless-spec-builder": "^1.2.40",
     "art-template": "^4.13.2",
     "debug": "^4.1.1",
@@ -24,7 +22,7 @@
   },
   "devDependencies": {
     "@midwayjs/hooks": "^2.0.0-next.0",
-    "@midwayjs/hooks-core": "^1.0.4-beta.1",
+    "@midwayjs/hooks-core": "^2.0.0-next.0",
     "@types/debug": "^4.1.5",
     "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.149",
