@@ -16,11 +16,6 @@ export function usePlugin(key: any): any {
   return ctx.app[key] || ctx[key]
 }
 
-export function useApp() {
-  const ctx = useContext()
-  return ctx.app
-}
-
 export function useInject<T = any>(identifier: new () => T): Promise<T>
 export function useInject<T = any>(identifier: string): Promise<any>
 export async function useInject(identifier) {
