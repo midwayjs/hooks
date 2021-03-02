@@ -1,7 +1,6 @@
-import { defineConfig, MidwayFrameworkType } from '../../../../'
+import { defineConfig } from '../../../../'
 
 module.exports = defineConfig({
-  framework: MidwayFrameworkType.WEB_KOA,
   source: '/src',
   routes: [
     {
