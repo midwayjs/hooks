@@ -32,10 +32,10 @@ export function defineConfig(config: UserConfig): UserConfig {
   return config
 }
 
-const tryRequire = <T = unknown>(id: string) => {
+const tryRequire = <T = unknown>(id: string): T => {
   try {
     const jiti = createJITI()
-    const contents = jiti(id) as T | { default: T }
+    const contents = jiti(id)
     if ('default' in contents) return contents.default
     return contents
   } catch {

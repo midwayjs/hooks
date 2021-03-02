@@ -21,7 +21,7 @@
     "ci": "npm run cov -- --ci",
     "format": "pretty-quick"
   },
-  "devDependencies": {
+  "dependencies": {
     "@monorepo-utils/workspaces-to-typescript-project-references": "^2.4.3",
     "codecov": "^3.8.0",
     "execa": "^4.0.3",
