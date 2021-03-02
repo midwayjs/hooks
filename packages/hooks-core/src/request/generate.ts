@@ -15,7 +15,7 @@ export async function parseAndGenerateSDK(
 
   const baseUrl = router.getBaseUrl(sourceFilePath)
 
-  const sdk = `
+  return `
     import { createRequest } from '@midwayjs/hooks-core/lib/esm/request/sdk';
     ${exports
       .map((id) => {
@@ -26,6 +26,4 @@ export async function parseAndGenerateSDK(
       })
       .join('\n')}
   `
-
-  return sdk
 }
