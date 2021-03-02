@@ -12,7 +12,6 @@ export async function createApp(baseDir?: string) {
   const root = getProjectRoot(baseDir)
   const config = getConfig(baseDir)
 
-  // TODO createFunctionApp
   const app: IMidwayApplication<any> = await createWebApp(
     root,
     { baseDir: join(root, config.source) },

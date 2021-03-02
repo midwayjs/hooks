@@ -15,6 +15,7 @@ module.exports = {
     '/node_modules/',
     '.faas_debug_tmp',
     '__tests__',
+    'examples',
   ],
   snapshotSerializers: ['jest-serializer-path', 'jest-snapshot-serializer-raw'],
 }

@@ -2,10 +2,13 @@ import { createApp, HooksApplication } from '@midwayjs/hooks-testing-library'
 import api, { get, getPath, post } from '.'
 import { join } from 'path'
 
-describe.skip('test new features', () => {
+describe('test new features', () => {
   let app: HooksApplication
   beforeAll(async () => {
-    app = await createApp(join(__dirname, '../../'))
+    const cwd = process.cwd()
+    process.chdir(join(__dirname, '../../'))
+    app = await createApp()
+    process.chdir(cwd)
   })
 
   afterAll(async () => {
