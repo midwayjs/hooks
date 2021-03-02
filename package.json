@@ -1,6 +1,6 @@
 {
   "name": "midway-hooks",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "Midway Hooks - 更快的一体化应用交付方案",
   "main": "index.js",
   "author": "Lxxyx <lxxyxzj@gmail.com>",
