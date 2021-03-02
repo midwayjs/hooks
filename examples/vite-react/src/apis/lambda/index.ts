@@ -1,5 +1,15 @@
+import { useContext } from '@midwayjs/hooks'
+import { Context } from '@midwayjs/koa'
+
+function useKoaContext(): Context {
+  return useContext()
+}
+
 export default async () => {
-  return 'hello world'
+  return {
+    message: 'Hello World',
+    method: useKoaContext().method,
+  }
 }
 
 export const get = () => {

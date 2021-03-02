@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import hello, { get, post, bar } from './apis/lambda'
-import matchAll from './apis/lambda/[...foo]'
-console.log('[TCL] - matchAll', matchAll())
+console.log('[TCL] - matchAll', hello())
 
 function App() {
   const [count, setCount] = useState(0)

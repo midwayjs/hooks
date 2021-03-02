@@ -1,48 +1,52 @@
-import { createApp as createWebApp, close } from '@midwayjs/mock'
-import { IMidwayApplication } from '@midwayjs/core'
 import {
-  getConfig,
-  getProjectRoot,
-  als,
-  HooksContext,
-} from '@midwayjs/hooks-core'
+  createApp as createWebApp,
+  close,
+  createHttpRequest,
+} from '@midwayjs/mock'
+import { IMidwayApplication } from '@midwayjs/core'
+import { getConfig, getProjectRoot, EnhancedFunc } from '@midwayjs/hooks-core'
 import { join } from 'path'
 import { remove } from 'fs-extra'
 
 export async function createApp(baseDir?: string) {
   const root = getProjectRoot(baseDir)
   const config = getConfig(baseDir)
+
   // TODO createFunctionApp
   const app: IMidwayApplication<any> = await createWebApp(
     root,
-    {},
+    { baseDir: join(root, config.source) },
     config.framework
   )
+
   return new HooksApplication(app)
 }
 
-class HooksApplication {
-  private app: IMidwayApplication<any>
+export class HooksApplication {
+  private readonly app: IMidwayApplication<any>
   constructor(app: IMidwayApplication<any>) {
     this.app = app
   }
 
   // TODO Allow pass user define context
-  // TODO Should invoke function call
-  async runFunction<T extends (...args: any) => any>(func: T) {
-    return await als.run(this.mockContext(), () => func())
-  }
-
-  async runHooks<T extends (...args: any) => any>(hooks: T) {
-    return await als.run(this.mockContext(), () => hooks())
-  }
-
-  request() {}
-
-  mockContext(): HooksContext {
-    return {
-      ctx: {},
+  async runFunction<T extends EnhancedFunc>(fn: T, ...args: Parameters<T>) {
+    const response = await this.request(fn, ...args)
+    if (response.type === 'application/json') {
+      return response.body
     }
+    return response.text
+  }
+
+  request<T extends EnhancedFunc>(fn: T, ...args: Parameters<T>) {
+    const supertest = createHttpRequest(this.app)
+    if (fn._param.method === 'GET') {
+      return supertest.get(fn._param.url)
+    }
+
+    return supertest
+      .post(fn._param.url)
+      .send({ args })
+      .set('Content-Type', 'application/json')
   }
 
   async close() {

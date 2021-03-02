@@ -1,5 +1,6 @@
-import { useContext } from '@midwayjs/hooks'
+import { useContext, useInject } from '@midwayjs/hooks'
 import { Context } from 'koa'
+import { Foo } from '../foo'
 
 export default async () => {
   return 'Hello World'
@@ -10,17 +11,17 @@ const useKoaContext = () => {
 }
 
 export async function getPath() {
-  const ctx: Context = useKoaContext()
+  const ctx = useKoaContext()
   return ctx.path
 }
 
 export async function get() {
-  const ctx: Context = useKoaContext()
+  const ctx = useKoaContext()
   return ctx.method
 }
 
 export async function post(name: string) {
-  const ctx: Context = useKoaContext()
+  const ctx = useKoaContext()
 
   return {
     method: ctx.method,

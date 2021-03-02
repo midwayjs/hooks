@@ -46,8 +46,9 @@
   ],
   "resolutions": {
     "@midwayjs/mwcc": "0.5.x",
-    "@midwayjs/faas": "2.7.5",
-    "@midwayjs/core": "2.7.5",
-    "@midwayjs/mock": "2.7.5"
+    "@midwayjs/faas": "2.8.x",
+    "@midwayjs/decorator": "2.8.x",
+    "@midwayjs/core": "2.8.x",
+    "@midwayjs/mock": "2.8.x"
   }
 }

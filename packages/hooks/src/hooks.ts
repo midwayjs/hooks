@@ -22,7 +22,7 @@ export function useApp() {
 }
 
 export function useInject<T = any>(identifier: new () => T): Promise<T>
-export function useInject<T = any>(string): Promise<any>
+export function useInject<T = any>(identifier: string): Promise<any>
 export async function useInject(identifier) {
   const ctx = useContext()
   const requestContext: IMidwayContainer = ctx['requestContext']

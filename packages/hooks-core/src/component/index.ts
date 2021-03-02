@@ -93,7 +93,34 @@ function createFunctionContainer(config: {
 
   const containerId = 'hooks_func::' + id
   const httpPath = router.getHTTPPath(sourceFilePath, fnName, isExportDefault)
-  const HttpMethod = fn.length === 0 ? Get : Post
+  const httpMethod = fn.length === 0 ? 'GET' : 'POST'
+
+  fn._param = {
+    url: httpPath,
+    method: httpMethod,
+    meta: {
+      functionName: id,
+    },
+  }
+
+  createContainer({
+    containerId,
+    container,
+    httpMethod,
+    httpPath,
+    fn,
+  })
+}
+
+function createContainer(config: {
+  containerId: string
+  httpMethod: any
+  httpPath: string
+  container: IMidwayContainer
+  fn: EnhancedFunc
+}) {
+  const { containerId, httpMethod, httpPath, container, fn } = config
+  const Method = httpMethod === 'GET' ? Get : Post
 
   @Provide(containerId)
   @Controller('/')
@@ -101,7 +128,7 @@ function createFunctionContainer(config: {
     @Inject()
     ctx: any
 
-    @HttpMethod(httpPath, { middleware: fn.middleware || [] })
+    @Method(httpPath, { middleware: fn.middleware || [] })
     async handler() {
       const bindCtx = {
         ctx: this.ctx,
