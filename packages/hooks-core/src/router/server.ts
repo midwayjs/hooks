@@ -1,14 +1,14 @@
 import { HooksRouter } from './base'
 import { join } from 'upath'
 
-export type WebRoute = {
+export type ServerRoute = {
   baseDir: string
   basePath: string
 }
 
 export type ServerRouterConfig = {
   source?: string
-  routes: WebRoute[]
+  routes: ServerRoute[]
 }
 
 const defaultSource = '/src/apis'

@@ -1,9 +1,9 @@
-import { ServerlessRouter, ServerRouter } from './'
+import { ServerRouter } from './'
 import { extname, relative } from 'upath'
 import _ from 'lodash'
 
 export function getFunctionId(config: {
-  router: ServerlessRouter | ServerRouter
+  router: ServerRouter
   sourceFilePath: string
   functionName: string
   isExportDefault: boolean
@@ -13,10 +13,7 @@ export function getFunctionId(config: {
   const rule = router.getRouteConfigBySourceFilePath(sourceFilePath)
   const lambdaDirectory = router.getLambdaDirectory(rule.baseDir)
 
-  const length =
-    router instanceof ServerlessRouter
-      ? router.functionsRule.rules.length
-      : router.config.routes.length
+  const length = router.config.routes.length
   // 多个 source 的情况下，根据各自的 lambdaDirectory 来增加前缀命名
   const relativeDirectory = length > 1 ? router.source : lambdaDirectory
   const relativePath = relative(relativeDirectory, sourceFilePath)

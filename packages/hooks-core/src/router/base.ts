@@ -8,9 +8,9 @@ export abstract class HooksRouter {
   root: string
   routes = new Map<string, string>()
 
-  private duplicateWarning: Function
+  private readonly duplicateWarning: Function
 
-  constructor(root: string, duplicateWarning = duplicateLogger) {
+  protected constructor(root: string, duplicateWarning = duplicateLogger) {
     this.root = root
     this.duplicateWarning = duplicateWarning
   }
@@ -19,7 +19,6 @@ export abstract class HooksRouter {
   abstract get source(): string
 
   // src/apis/lambda
-
   getLambdaDirectory(baseDir: string) {
     return join(this.source, baseDir)
   }
@@ -30,10 +29,6 @@ export abstract class HooksRouter {
     baseDir: string
     basePath: string
     underscore?: boolean
-  }
-
-  isProjectFile(sourceFilePath: string) {
-    return this.inside(sourceFilePath, this.source)
   }
 
   isLambdaFile(sourceFilePath: string) {

@@ -27,6 +27,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "@midwayjs/core": "^2.8.3",
     "@midwayjs/faas": "^2.8.2"
   }
 }
