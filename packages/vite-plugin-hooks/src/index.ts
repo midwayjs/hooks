@@ -7,6 +7,7 @@ import {
 import { Plugin } from 'vite'
 import { getExpressDevPack } from '@midwayjs/faas-dev-pack'
 import URL from 'url'
+import { join } from 'path'
 
 function ignorePattern(req) {
   const { pathname, query } = URL.parse(req.url)
@@ -38,11 +39,13 @@ function hooksPlugin(): Plugin {
     },
     config: () => ({
       optimizeDeps: {
-        include: ['@midwayjs/hooks-core/lib/request/sdk'],
+        include: ['@midwayjs/hooks-core/lib/esm/request/sdk'],
       },
     }),
     configureServer(server) {
-      const devPack = getExpressDevPack(root)
+      const devPack = getExpressDevPack(root, {
+        sourceDir: join(root, config.source),
+      })
       server.middlewares.use(
         devPack({
           functionDir: root,

@@ -609,6 +609,21 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.12.13"
 
+"@babel/runtime-corejs3@^7.10.2":
+  version "7.13.9"
+  resolved "https://registry.npmjs.org/@babel/runtime-corejs3/-/runtime-corejs3-7.13.9.tgz#b2fa9a6e5690ef8d4c4f2d30cac3ec1a8bb633ce"
+  integrity sha512-p6WSr71+5u/VBf1KDS/Y4dK3ZwbV+DD6wQO3X2EbUVluEOiyXUk09DzcwSaUH4WomYXrEPC+i2rqzuthhZhOJw==
+  dependencies:
+    core-js-pure "^3.0.0"
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.10.2", "@babel/runtime@^7.9.2":
+  version "7.13.9"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.13.9.tgz#97dbe2116e2630c489f22e0656decd60aaa1fcee"
+  integrity sha512-aY2kU+xgJ3dJ1eU6FMB9EH8dIe8dmusF1xEku52joLvw6eAFN0AI+WxCLDnpev2LEejWBAy2sBvBOBAjI3zmvA==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.12.13", "@babel/template@^7.3.3", "@babel/template@^7.4.0":
   version "7.12.13"
   resolved "https://registry.npmjs.org/@babel/template/-/template-7.12.13.tgz#530265be8a2589dbb37523844c5bcb55947fb327"
@@ -1739,10 +1754,15 @@
   resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-2.7.5.tgz#9d13ecf75cf5047634c3340fcc9a2873978859f1"
   integrity sha512-29bOr9CUNtooVz2QHg6UiOMVgnJPUe4GBzRyn62DKZ1k7WcKMb3ziLFn6Ha5oeTRdQjX5qKZj5TKMmAsAUIoPA==
 
-"@midwayjs/bootstrap@^2.7.5", "@midwayjs/bootstrap@^2.8.2":
+"@midwayjs/bootstrap@^2.8.2":
   version "2.8.2"
   resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-2.8.2.tgz#be8c4fc50937520f77a26eaee0809c352aff80e8"
   integrity sha512-MAl9goRoZHgOo66srliDhgSjy5IU0mXoq/4GcOA0tGHH1EDM57tlxVNZQ/dID1glzVNQvCKOS5BiPmP1wGIm4Q==
+
+"@midwayjs/bootstrap@^2.8.3":
+  version "2.8.3"
+  resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-2.8.3.tgz#9afc2bac509ce356176b09bcc35527d484125bd2"
+  integrity sha512-XH12PmaXRBZn8iIkXeX3ITYBl3Mibkil2eL7g3AY7mqkO3LWQyKCKEFPYS6Uy1RPlP8KyGKx6KwK5hGSoI/sDw==
 
 "@midwayjs/cli-plugin-add@^1.2.41":
   version "1.2.41"
@@ -1792,13 +1812,13 @@
     koa "^2.11.0"
     light-spinner "^1.0.1"
 
-"@midwayjs/cli-plugin-dev@^1.2.43-beta.6":
-  version "1.2.43-beta.6"
-  resolved "https://registry.npmjs.org/@midwayjs/cli-plugin-dev/-/cli-plugin-dev-1.2.43-beta.6.tgz#249af9074f7b363a0df112d074df3a90a75f0edc"
-  integrity sha512-GX+RMQtoBXKnKfizZSAiFMtw6sQEFEaBbuhKeaiXf5/AT/ofjqHZ7PxDEr4V9RAGsUfGXKneoz1KUrEGeQnpWg==
+"@midwayjs/cli-plugin-dev@^1.2.43-beta.9":
+  version "1.2.43-beta.9"
+  resolved "https://registry.npmjs.org/@midwayjs/cli-plugin-dev/-/cli-plugin-dev-1.2.43-beta.9.tgz#b0770a4971b87d1d89dc37f52ccd86e400358daa"
+  integrity sha512-UhEPHiiBwqOf4oES/rdyllgXj4KUSzpwRq04/Q/gzkafRT2NwdnUezGuWBjUgBPwIqZDe1s7xjLJqTRiRQPWXA==
   dependencies:
     "@koa/router" "^10.0.0"
-    "@midwayjs/command-core" "^1.2.43-beta.6"
+    "@midwayjs/command-core" "^1.2.43-beta.9"
     "@midwayjs/debugger" "^1.0.x"
     "@midwayjs/mock" "^2.8.0"
     "@midwayjs/serverless-app" "^2.8.2"
@@ -1862,22 +1882,22 @@
     light-spinner "^1.0.0"
     minimist "^1.2.5"
 
-"@midwayjs/command-core@^1.2.43-beta.6":
-  version "1.2.43-beta.6"
-  resolved "https://registry.npmjs.org/@midwayjs/command-core/-/command-core-1.2.43-beta.6.tgz#7287f62687ef2cbf1b44b284d55c9edbb8593912"
-  integrity sha512-mJjahj0gA/gyH14BIhaYqaxSuXK2Qbk9POLLigTwi2Q3L3uqI6W2MCY+Bhs2rUMtjwtIyILnWgIsjCL8C5V77w==
+"@midwayjs/command-core@^1.2.43-beta.9":
+  version "1.2.43-beta.9"
+  resolved "https://registry.npmjs.org/@midwayjs/command-core/-/command-core-1.2.43-beta.9.tgz#9d713a5e97768914083c2fda6744dee886d458cd"
+  integrity sha512-2jIHZX5HAIDlBAm2jN9ECTP3069vC0wQK7OksXDQSjkAkPGbQ5Lf230Agt3JucBZxMlruRlnpUy8FY+D6yG7bw==
   dependencies:
     light-spinner "^1.0.0"
     minimist "^1.2.5"
 
-"@midwayjs/core@2.7.5", "@midwayjs/core@^2.7.0", "@midwayjs/core@^2.7.5", "@midwayjs/core@^2.8.2":
-  version "2.7.5"
-  resolved "https://registry.npmjs.org/@midwayjs/core/-/core-2.7.5.tgz#f79d6c48c08b7f2fe5bc1f15c18f9fae7d635a65"
-  integrity sha512-+BWL0h4yBVABLDTVmR8V7RNRrDb1aSMEaZ4UeyxZ3MwvQ7SRRLGZr31XuhApKSxHOwJcJ5eLYUK6ygPzwrybrg==
+"@midwayjs/core@2.8.x", "@midwayjs/core@^2.7.0", "@midwayjs/core@^2.7.5", "@midwayjs/core@^2.8.2", "@midwayjs/core@^2.8.3":
+  version "2.8.3"
+  resolved "https://registry.npmjs.org/@midwayjs/core/-/core-2.8.3.tgz#c2ec75b103722b85631c4c84f28f7744aaf6e16d"
+  integrity sha512-3Tt6im371SY6ZYk1fbSAYNJj640kDrKDXb5Ioig4+i/QwKTEooeFy/IQ+nC2HJ+IJ2HxCrXSR4oJhooZwnWkog==
   dependencies:
-    "@midwayjs/decorator" "^2.7.5"
+    "@midwayjs/decorator" "^2.8.3"
     "@midwayjs/glob" "^1.0.2"
-    "@midwayjs/logger" "^2.7.5"
+    "@midwayjs/logger" "^2.8.2"
     class-transformer "^0.3.1"
     extend2 "^1.0.0"
     lodash.assign "^4.2.0"
@@ -1898,22 +1918,10 @@
     ts-node "^9.0.0"
     ws "^7.2.3"
 
-"@midwayjs/decorator@^2.7.5":
-  version "2.7.5"
-  resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-2.7.5.tgz#273ddaedd0b48864b678243f0bd549017c2cc587"
-  integrity sha512-2NBG3DExNuR9H8P4mQEBoCY/+CaVOZTGZriLs6N6QjYZWDYyAj98pIdgV9875Qqh/K1ArUIAmslTPHhpy6UWew==
-  dependencies:
-    "@types/express" "^4.17.8"
-    "@types/koa" "^2.11.4"
-    camelcase "^6.2.0"
-    class-transformer "^0.3.1"
-    joi "^17.2.1"
-    reflect-metadata "^0.1.13"
-
-"@midwayjs/decorator@^2.8.2":
-  version "2.8.2"
-  resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-2.8.2.tgz#357dcd334b6d623be874c7335fd7b387fa78bcff"
-  integrity sha512-7PtYqRTwNysn4z9c7ucwbCapThJ5iVaKm2OvB68h2jzUcW3bIve8YX83FVuX1SHHdwNLZGZA8Jh2u34IQxa6Og==
+"@midwayjs/decorator@2.8.x", "@midwayjs/decorator@^2.7.5", "@midwayjs/decorator@^2.8.3":
+  version "2.8.3"
+  resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-2.8.3.tgz#7b45a41a5c22d026cb284d05cd6dfd701ca350a9"
+  integrity sha512-aiq3hIK9qpYM6ZqW6mPsifCADxitpXapIy3qFBADf26dE7bDS4nSJ2Ss2ksnsaUY67Zn/1RTvgB/xAMVtnPA9g==
   dependencies:
     "@types/express" "^4.17.8"
     "@types/koa" "^2.11.4"
@@ -1939,10 +1947,10 @@
     fs-extra "^8.1.0"
     globby "^10.0.1"
 
-"@midwayjs/faas-code-analysis@^1.2.43-beta.6":
-  version "1.2.43-beta.6"
-  resolved "https://registry.npmjs.org/@midwayjs/faas-code-analysis/-/faas-code-analysis-1.2.43-beta.6.tgz#c45338487234a64211cfc6fb9a1856ac33d6a52f"
-  integrity sha512-zHtDeLA93LR0NNkeDRCmqtCi7sQ24v44lpaH+Hi1eqFEjfGUppJ5JpXY9g0fXHdOwvBuzCnl+1Q+WVyv51UqMQ==
+"@midwayjs/faas-code-analysis@^1.2.43-beta.9":
+  version "1.2.43-beta.9"
+  resolved "https://registry.npmjs.org/@midwayjs/faas-code-analysis/-/faas-code-analysis-1.2.43-beta.9.tgz#55eb19b1c1081424aa3f49d45203c5aced13610c"
+  integrity sha512-AjRZUrPYclhevODQbU00uI6VoaZJYsWPiauZfms4ILxYdrcdTft98blA/SN5SavpPI1w1wyrYdOAkZdYDpfw3g==
   dependencies:
     "@midwayjs/mwcc" "^0.5.x"
     fs-extra "^8.1.0"
@@ -1967,16 +1975,16 @@
     body-parser "^1.19.0"
     express "^4.17.1"
 
-"@midwayjs/faas-dev-pack@1.2.43-beta.6":
-  version "1.2.43-beta.6"
-  resolved "https://registry.npmjs.org/@midwayjs/faas-dev-pack/-/faas-dev-pack-1.2.43-beta.6.tgz#41480ca5451591918a5fb0c83c03d0b0b5bd5270"
-  integrity sha512-352fpz85rLRd+oOVIO3W5CU5PqiPeWqZ1tQxoMlRMhDv6TIAeHZqsqRbvmEDayAMEE4sz5KFuJfv3kRW8ORK8g==
+"@midwayjs/faas-dev-pack@1.2.43-beta.9":
+  version "1.2.43-beta.9"
+  resolved "https://registry.npmjs.org/@midwayjs/faas-dev-pack/-/faas-dev-pack-1.2.43-beta.9.tgz#82f68917ad1a7b4f01f9c4dd6ce56d06980aa9a3"
+  integrity sha512-12znPxqh7+0CQkwW7egD+X2W4a/D0RkwckinA2uIu1BbNaCxld+YQhP212ZWOs9BMK5GKj/BtuFaK4XTvh7Bhw==
   dependencies:
-    "@midwayjs/cli-plugin-dev" "^1.2.43-beta.6"
-    "@midwayjs/command-core" "^1.2.43-beta.6"
-    "@midwayjs/gateway-common-core" "^1.2.43-beta.6"
-    "@midwayjs/gateway-common-http" "^1.2.43-beta.6"
-    "@midwayjs/serverless-invoke" "^1.2.43-beta.6"
+    "@midwayjs/cli-plugin-dev" "^1.2.43-beta.9"
+    "@midwayjs/command-core" "^1.2.43-beta.9"
+    "@midwayjs/gateway-common-core" "^1.2.43-beta.9"
+    "@midwayjs/gateway-common-http" "^1.2.43-beta.9"
+    "@midwayjs/serverless-invoke" "^1.2.43-beta.9"
     body-parser "^1.19.0"
     compose-middleware "^5.0.1"
     fs-extra "^8.1.0"
@@ -2004,15 +2012,20 @@
   resolved "https://registry.npmjs.org/@midwayjs/faas-typings/-/faas-typings-2.7.0.tgz#e9119b9f5b592630b45da74700469d41f0e98436"
   integrity sha512-Ekodd1zO4Yf5TUXLhXsQvP2CJAb75Q8ImtrVN32P2NqPZ5ofAzsuD9z01sGWJx/CZ367ou156yT5BFC/umRbIA==
 
-"@midwayjs/faas@2.7.5", "@midwayjs/faas@^2.8.2":
-  version "2.7.5"
-  resolved "https://registry.npmjs.org/@midwayjs/faas/-/faas-2.7.5.tgz#e0ea4b9996badd1fc5a147a69d68cbf345d4ff23"
-  integrity sha512-gYAiQN9gR8bGr8OBLZQemSnKDM1wwx6bqCW2NriUMPOjGoFrUG+46oqDZbqNILa+vDGmZ1XEDatcKWRJMvaM7Q==
+"@midwayjs/faas-typings@^2.8.2":
+  version "2.8.2"
+  resolved "https://registry.npmjs.org/@midwayjs/faas-typings/-/faas-typings-2.8.2.tgz#ae351d279dfdaf4fc6ca732b1c2c07bc55c8a4f9"
+  integrity sha512-JJmqG0W6USN1y7NgH6eAlWTXZ3jX4SsopiBQYoyFkEpo5yLaQ2vfIHPdgk52Y2Inf4D2Ja7aOXks46Q3ZQKk8Q==
+
+"@midwayjs/faas@2.8.x", "@midwayjs/faas@^2.8.2":
+  version "2.8.3"
+  resolved "https://registry.npmjs.org/@midwayjs/faas/-/faas-2.8.3.tgz#0602092aab5b111bfeee1079341fd60fd53d9d89"
+  integrity sha512-v2SyYUT0OjIHcpMpjtMyM8cq0b92p9eoVd2auTVpI7Hfiudhzrkn/3kn2Ash4Sn0PTN6t68X9ziyhLAju8fzTA==
   dependencies:
-    "@midwayjs/core" "^2.7.5"
-    "@midwayjs/decorator" "^2.7.5"
-    "@midwayjs/faas-typings" "^2.7.0"
-    "@midwayjs/logger" "^2.7.5"
+    "@midwayjs/core" "^2.8.3"
+    "@midwayjs/decorator" "^2.8.3"
+    "@midwayjs/faas-typings" "^2.8.2"
+    "@midwayjs/logger" "^2.8.2"
     "@midwayjs/simple-lock" "^1.1.4"
     koa-compose "^4.1.0"
 
@@ -2080,21 +2093,21 @@
     fs-extra "^8.1.0"
     globby "^10.0.1"
 
-"@midwayjs/fcli-plugin-invoke@^1.2.43-beta.6":
-  version "1.2.43-beta.6"
-  resolved "https://registry.npmjs.org/@midwayjs/fcli-plugin-invoke/-/fcli-plugin-invoke-1.2.43-beta.6.tgz#14b6d1cf87b0b24afdc2f39e5204b383b1ee6b41"
-  integrity sha512-U+T3e1g/bbnGwBaax+8X1awuIeJlumBvQsOZImjqH0diplYk245zKmazO5nSVlNrPg5AGvTqICVMoJxBFe2DTQ==
+"@midwayjs/fcli-plugin-invoke@^1.2.43-beta.9":
+  version "1.2.43-beta.9"
+  resolved "https://registry.npmjs.org/@midwayjs/fcli-plugin-invoke/-/fcli-plugin-invoke-1.2.43-beta.9.tgz#70993247beb0781b9ee4a8f6aeb1dd253d3a6c88"
+  integrity sha512-IQyRcYmMjxKC1U+/2+JBve7Vv07TEiMzmZlcXPHqFc/JNp/8SdFi2xSh630htqSYbfNwHFFh66Xl8vNC1e49Bw==
   dependencies:
-    "@midwayjs/command-core" "^1.2.43-beta.6"
+    "@midwayjs/command-core" "^1.2.43-beta.9"
     "@midwayjs/debugger" "^1.0.x"
-    "@midwayjs/faas-code-analysis" "^1.2.43-beta.6"
+    "@midwayjs/faas-code-analysis" "^1.2.43-beta.9"
     "@midwayjs/locate" "^1.0.3"
     "@midwayjs/mwcc" "^0.5.x"
     "@midwayjs/serverless-fc-starter" "^2.7.0"
     "@midwayjs/serverless-fc-trigger" "^2.7.0"
     "@midwayjs/serverless-scf-starter" "^2.7.0"
     "@midwayjs/serverless-scf-trigger" "^2.7.0"
-    "@midwayjs/serverless-spec-builder" "^1.2.43-beta.6"
+    "@midwayjs/serverless-spec-builder" "^1.2.43-beta.9"
     fs-extra "^8.1.0"
     globby "^10.0.1"
 
@@ -2130,10 +2143,10 @@
   resolved "https://registry.npmjs.org/@midwayjs/gateway-common-core/-/gateway-common-core-1.2.41.tgz#9748c646e0af9f2355d6db78ef37156c53bcc32e"
   integrity sha512-kwS8w5wyuF/mbWfykql3NulI3WgroPTSz6ni2YRPArh6KSIGKyb/xBaOfP/2BePsXfGjHrTvE6AjfuhIY+WxYA==
 
-"@midwayjs/gateway-common-core@^1.2.43-beta.6":
-  version "1.2.43-beta.6"
-  resolved "https://registry.npmjs.org/@midwayjs/gateway-common-core/-/gateway-common-core-1.2.43-beta.6.tgz#e833adf4eebc3e7f7bcf89c7dcff755308700cc8"
-  integrity sha512-febASA9CnVumJuGSKVgC61WiRpTawL53HeVJj3pKaTImgT5NAh91agYUGkACZweZOiLMldpRg3OkMZ1YG8BbQQ==
+"@midwayjs/gateway-common-core@^1.2.43-beta.9":
+  version "1.2.43-beta.9"
+  resolved "https://registry.npmjs.org/@midwayjs/gateway-common-core/-/gateway-common-core-1.2.43-beta.9.tgz#e9233dbf0514df9ac8ee5a8fd8bd5e1278ef026f"
+  integrity sha512-hBGEJPc4/256clhg9wHWSL/B+E8Sa+cZ9N+u6BVX8RDJlh1KVBLUxPgm68MxPiZKOEN/JQZ2fVVQDHu1mFqDNg==
 
 "@midwayjs/gateway-common-http@^1.2.41":
   version "1.2.41"
@@ -2145,12 +2158,12 @@
     picomatch "^2.2.1"
     raw-body "^2.4.1"
 
-"@midwayjs/gateway-common-http@^1.2.43-beta.6":
-  version "1.2.43-beta.6"
-  resolved "https://registry.npmjs.org/@midwayjs/gateway-common-http/-/gateway-common-http-1.2.43-beta.6.tgz#7f0584ca7b2d135014d203e7de331c2e9bdcd777"
-  integrity sha512-2IXysrILhSvioANTHzlgUUQj3cdaqOKfzIkFf0CWYeNf+peCNC84hdJhxPVQmHWag9VHOM6+7X73mUKvLXyg1Q==
+"@midwayjs/gateway-common-http@^1.2.43-beta.9":
+  version "1.2.43-beta.9"
+  resolved "https://registry.npmjs.org/@midwayjs/gateway-common-http/-/gateway-common-http-1.2.43-beta.9.tgz#80c02bd232b83001ca11fe24d02ab2acaa2aa912"
+  integrity sha512-eqAG0xUdJ7l4Cbz46wB9WOy2t7LznZn6Sq916c5UQwH34zWpst9xXWvcntGnHwxWG73JR5D9quGq+x7WgrZe2Q==
   dependencies:
-    "@midwayjs/serverless-spec-builder" "^1.2.43-beta.6"
+    "@midwayjs/serverless-spec-builder" "^1.2.43-beta.9"
     "@types/express" "^4.17.0"
     picomatch "^2.2.1"
     raw-body "^2.4.1"
@@ -2172,17 +2185,6 @@
     "@midwayjs/logger" "^2.7.5"
     koa "^2.13.0"
     koa-router "^9.4.0"
-
-"@midwayjs/koa@^2.8.2":
-  version "2.8.2"
-  resolved "https://registry.npmjs.org/@midwayjs/koa/-/koa-2.8.2.tgz#b121b2bd531182557fd577cba186328e0413e391"
-  integrity sha512-iZpBUq+lMM3vPQ3KIbecekdEohYWjgXTDTKsJ0JHfUXn0R94SWBHkGor8OFu8KC6ctZ/S9Cfs3U9iawloHFAZg==
-  dependencies:
-    "@koa/router" "^10.0.0"
-    "@midwayjs/core" "^2.8.2"
-    "@midwayjs/decorator" "^2.8.2"
-    "@midwayjs/logger" "^2.8.2"
-    koa "^2.13.0"
 
 "@midwayjs/locate@^1.0.3", "@midwayjs/locate@^1.4.1":
   version "1.4.1"
@@ -2213,14 +2215,14 @@
     winston-daily-rotate-file "^4.5.0"
     winston-transport "^4.4.0"
 
-"@midwayjs/mock@2.7.5", "@midwayjs/mock@^2.3.0", "@midwayjs/mock@^2.7.5", "@midwayjs/mock@^2.8.0", "@midwayjs/mock@^2.8.2":
-  version "2.7.5"
-  resolved "https://registry.npmjs.org/@midwayjs/mock/-/mock-2.7.5.tgz#e2df8f09f954bbc12f429e4e0596635d3d154cca"
-  integrity sha512-XFVvXBGXLkR5Y1hfDKhyStt7KR3XSEtYc1dAwTVD18mHC2GLM3iiO1RqNfxcNAYnPggHaNIrdfp+iFeYKu0euw==
+"@midwayjs/mock@2.8.x", "@midwayjs/mock@^2.3.0", "@midwayjs/mock@^2.7.5", "@midwayjs/mock@^2.8.0", "@midwayjs/mock@^2.8.2":
+  version "2.8.3"
+  resolved "https://registry.npmjs.org/@midwayjs/mock/-/mock-2.8.3.tgz#0948797140a3d69d11b0935db0832ae86bc5b9ce"
+  integrity sha512-jxXve6S3yHqIv4A7oMx1b5WVzX8t23raQ2nB2fy8cFThR/OyF0StLY94TtTbuG/fsQfT7jZ4NIeMp4/A9wddxw==
   dependencies:
-    "@midwayjs/bootstrap" "^2.7.5"
-    "@midwayjs/decorator" "^2.7.5"
-    "@midwayjs/logger" "^2.7.5"
+    "@midwayjs/bootstrap" "^2.8.3"
+    "@midwayjs/decorator" "^2.8.3"
+    "@midwayjs/logger" "^2.8.2"
     egg-mock "^3.21.0"
     fs-extra "^8.0.1"
     power-assert "^1.6.1"
@@ -2312,12 +2314,12 @@
   dependencies:
     "@midwayjs/fcli-plugin-invoke" "^1.2.41"
 
-"@midwayjs/serverless-invoke@^1.2.43-beta.6":
-  version "1.2.43-beta.6"
-  resolved "https://registry.npmjs.org/@midwayjs/serverless-invoke/-/serverless-invoke-1.2.43-beta.6.tgz#ea4bc9b38f882c79bfbe4bd329ce3020043ff1ce"
-  integrity sha512-i8X88WbFBOnDkcleYBasb5DytkuYk6vCvvsYdjHGKSjGfMo10RFZyKCazf3Ky/9UN4/s4lXxmjfQgKzNlwWJDA==
+"@midwayjs/serverless-invoke@^1.2.43-beta.9":
+  version "1.2.43-beta.9"
+  resolved "https://registry.npmjs.org/@midwayjs/serverless-invoke/-/serverless-invoke-1.2.43-beta.9.tgz#7af97067a691a251f5e2ee1885ed1530b7a02244"
+  integrity sha512-jhFCU5djUrN+TkxCi6Vm9XzRR1koanjN/am6DsYDVn2YtnZQ9I8FCLztqnsNSEddwaQDCdezBeBLSSmemoVDTA==
   dependencies:
-    "@midwayjs/fcli-plugin-invoke" "^1.2.43-beta.6"
+    "@midwayjs/fcli-plugin-invoke" "^1.2.43-beta.9"
 
 "@midwayjs/serverless-scf-starter@^2.7.0", "@midwayjs/serverless-scf-starter@^2.7.7":
   version "2.7.7"
@@ -2349,10 +2351,10 @@
     json-cycle "^1.3.0"
     mkdirp "^0.5.1"
 
-"@midwayjs/serverless-spec-builder@^1.2.43-beta.6":
-  version "1.2.43-beta.6"
-  resolved "https://registry.npmjs.org/@midwayjs/serverless-spec-builder/-/serverless-spec-builder-1.2.43-beta.6.tgz#97e1ffbf9405644f5e107da777028b4d23b26d63"
-  integrity sha512-UfyyMqz0YlPPcPYBpGBHAFf4sjgAnxEC/zTR57d1g7sQ545/vjyC1RvcPnfuxI577vcWMKaJg0392MdcK3ia2w==
+"@midwayjs/serverless-spec-builder@^1.2.43-beta.9":
+  version "1.2.43-beta.9"
+  resolved "https://registry.npmjs.org/@midwayjs/serverless-spec-builder/-/serverless-spec-builder-1.2.43-beta.9.tgz#7fede9cc53e88b009c6b99ccea289c6d014bf1cf"
+  integrity sha512-F5JzUgKoa16ZHktfvbAvkf0qOtk38eibixxhYmykdaOEqSsTuNGkJCfeOQrDG9tGAueS9g2GinQYSPRpVSPpBA==
   dependencies:
     ejs "^3.1.3"
     js-yaml "^3.13.0"
@@ -2629,6 +2631,20 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
+"@testing-library/jest-dom@^5.11.9":
+  version "5.11.9"
+  resolved "https://registry.npmjs.org/@testing-library/jest-dom/-/jest-dom-5.11.9.tgz#e6b3cd687021f89f261bd53cbe367041fbd3e975"
+  integrity sha512-Mn2gnA9d1wStlAIT2NU8J15LNob0YFBVjs2aEQ3j8rsfRQo+lAs7/ui1i2TGaJjapLmuNPLTsrm+nPjmZDwpcQ==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    "@types/testing-library__jest-dom" "^5.9.1"
+    aria-query "^4.2.2"
+    chalk "^3.0.0"
+    css "^3.0.0"
+    css.escape "^1.5.1"
+    lodash "^4.17.15"
+    redent "^3.0.0"
+
 "@tootallnate/once@1":
   version "1.1.2"
   resolved "https://registry.npmjs.org/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
@@ -2831,7 +2847,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@26.x", "@types/jest@^26.0.15":
+"@types/jest@*", "@types/jest@26.x", "@types/jest@^26.0.15", "@types/jest@^26.0.20":
   version "26.0.20"
   resolved "https://registry.npmjs.org/@types/jest/-/jest-26.0.20.tgz#cd2f2702ecf69e86b586e1f5223a60e454056307"
   integrity sha512-9zi2Y+5USJRxd0FsahERhBwlcvFh6D2GLQnY2FH2BzK8J9s9omvNHIbvABwIluXa0fD8XVKMLTO0aOEuUfACAA==
@@ -2855,6 +2871,13 @@
   version "3.2.5"
   resolved "https://registry.npmjs.org/@types/koa-compose/-/koa-compose-3.2.5.tgz#85eb2e80ac50be95f37ccf8c407c09bbe3468e9d"
   integrity sha512-B8nG/OoE1ORZqCkBVsup/AKcvjdgoHnfi4pZMn5UwAPCbhk/96xyv284eBYW8JlQbQ7zDmnpFr68I/40mFoIBQ==
+  dependencies:
+    "@types/koa" "*"
+
+"@types/koa-router@^7.4.1":
+  version "7.4.1"
+  resolved "https://registry.npmjs.org/@types/koa-router/-/koa-router-7.4.1.tgz#3702a4cabe4558cc4eec70d5574acc04beecff7c"
+  integrity sha512-Hg78TXz78QYfEgdq3nTeRmQFEwJKZljsXb/DhtexmyrpRDRnl59oMglh9uPj3/WgKor0woANrYTnxA8gaWGK2A==
   dependencies:
     "@types/koa" "*"
 
@@ -3031,6 +3054,13 @@
   version "1.0.6"
   resolved "https://registry.npmjs.org/@types/tapable/-/tapable-1.0.6.tgz#a9ca4b70a18b270ccb2bc0aaafefd1d486b7ea74"
   integrity sha512-W+bw9ds02rAQaMvaLYxAbJ6cvguW/iJXNT6lTssS1ps6QdrMKttqEAMEG/b5CR8TZl3/L7/lH0ZV5nNR1LXikA==
+
+"@types/testing-library__jest-dom@^5.9.1":
+  version "5.9.5"
+  resolved "https://registry.npmjs.org/@types/testing-library__jest-dom/-/testing-library__jest-dom-5.9.5.tgz#5bf25c91ad2d7b38f264b12275e5c92a66d849b0"
+  integrity sha512-ggn3ws+yRbOHog9GxnXiEZ/35Mow6YtPZpd7Z5mKDeZS/o7zx3yAle0ov/wjhVB5QT4N2Dt+GNoGCdqkBGCajQ==
+  dependencies:
+    "@types/jest" "*"
 
 "@types/uglify-js@*":
   version "3.11.1"
@@ -3676,6 +3706,14 @@ argv@0.0.2:
   version "0.0.2"
   resolved "https://registry.npmjs.org/argv/-/argv-0.0.2.tgz#ecbd16f8949b157183711b1bda334f37840185ab"
   integrity sha1-7L0W+JSbFXGDcRsb2jNPN4QBhas=
+
+aria-query@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.npmjs.org/aria-query/-/aria-query-4.2.2.tgz#0d2ca6c9aceb56b8977e9fed6aed7e15bbd2f83b"
+  integrity sha512-o/HelwhuKpTj/frsOsbNLNgnNGVIFsVP/SW2BSF14gVl7kAfMOJ6/8wUAUvG1R1NHKrfG+2sHZTu0yauT1qBrA==
+  dependencies:
+    "@babel/runtime" "^7.10.2"
+    "@babel/runtime-corejs3" "^7.10.2"
 
 arr-diff@^4.0.0:
   version "4.0.0"
@@ -5415,6 +5453,11 @@ copyfiles@^2.2.0:
     untildify "^4.0.0"
     yargs "^16.1.0"
 
+core-js-pure@^3.0.0:
+  version "3.9.1"
+  resolved "https://registry.npmjs.org/core-js-pure/-/core-js-pure-3.9.1.tgz#677b322267172bd490e4464696f790cbc355bec5"
+  integrity sha512-laz3Zx0avrw9a4QEIdmIblnVuJz8W51leY9iLThatCsFawWxC3sE4guASC78JbCin+DkwMpCdp1AVAuzL/GN7A==
+
 core-js@^2.0.0, core-js@^2.4.0:
   version "2.6.12"
   resolved "https://registry.npmjs.org/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
@@ -5575,6 +5618,20 @@ css-what@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/css-what/-/css-what-4.0.0.tgz#35e73761cab2eeb3d3661126b23d7aa0e8432233"
   integrity sha512-teijzG7kwYfNVsUh2H/YN62xW3KK9YhXEgSlbxMlcyjPNvdKJqFx5lrwlJgoFP1ZHlB89iGDlo/JyshKeRhv5A==
+
+css.escape@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.npmjs.org/css.escape/-/css.escape-1.5.1.tgz#42e27d4fa04ae32f931a4b4d4191fa9cddee97cb"
+  integrity sha1-QuJ9T6BK4y+TGktNQZH6nN3ul8s=
+
+css@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/css/-/css-3.0.0.tgz#4447a4d58fdd03367c516ca9f64ae365cee4aa5d"
+  integrity sha512-DG9pFfwOrzc+hawpmqX/dHYHJG+Bsdb0klhyi1sDneOgGOXy9wQIC8hzyVp1e4NRYDBdxcylvywPkkXCHAzTyQ==
+  dependencies:
+    inherits "^2.0.4"
+    source-map "^0.6.1"
+    source-map-resolve "^0.6.0"
 
 cssesc@^3.0.0:
   version "3.0.0"
@@ -7793,6 +7850,11 @@ hard-rejection@^2.1.0:
   resolved "https://registry.npmjs.org/hard-rejection/-/hard-rejection-2.1.0.tgz#1c6eda5c1685c63942766d79bb40ae773cecd883"
   integrity sha512-VIZB+ibDhx7ObhAe7OVtoEbuP4h/MuOTHJ+J8h/eBXotJYl0fBgR72xDFCKgIh22OJZIOVNxBMWuhAr10r8HdA==
 
+harmony-reflect@^1.4.6:
+  version "1.6.1"
+  resolved "https://registry.npmjs.org/harmony-reflect/-/harmony-reflect-1.6.1.tgz#c108d4f2bb451efef7a37861fdbdae72c9bdefa9"
+  integrity sha512-WJTeyp0JzGtHcuMsi7rw2VwtkvLa+JyfEKJCFyfcS0+CDkjQ5lHPu7zEhFZP+PDSRrEgXa5Ah0l1MbgbE41XjA==
+
 has-ansi@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/has-ansi/-/has-ansi-2.0.0.tgz#34f5049ce1ecdf2b0649af3ef24e45ed35416d91"
@@ -8207,6 +8269,13 @@ icss-utils@^5.0.0:
   version "5.1.0"
   resolved "https://registry.npmjs.org/icss-utils/-/icss-utils-5.1.0.tgz#c6be6858abd013d768e98366ae47e25d5887b1ae"
   integrity sha512-soFhflCVWLfRNOPU3iv5Z9VUdT44xFRbzjLsEzSr5AQmgqPMTHdU3PMT1Cf1ssx8fLNJDA1juftYl+PUcv3MqA==
+
+identity-obj-proxy@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/identity-obj-proxy/-/identity-obj-proxy-3.0.0.tgz#94d2bda96084453ef36fbc5aaec37e0f79f1fc14"
+  integrity sha1-lNK9qWCERT7zb7xarsN+D3nx/BQ=
+  dependencies:
+    harmony-reflect "^1.4.6"
 
 ieee754@^1.1.13, ieee754@^1.1.4:
   version "1.2.1"
@@ -12826,6 +12895,11 @@ regenerator-runtime@^0.11.0:
   resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
+regenerator-runtime@^0.13.4:
+  version "0.13.7"
+  resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
+  integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
+
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/regex-not/-/regex-not-1.0.2.tgz#1f4ece27e00b0b65e0247a6810e6a85d83a5752c"
@@ -13558,6 +13632,14 @@ source-map-resolve@^0.5.0:
     resolve-url "^0.2.1"
     source-map-url "^0.4.0"
     urix "^0.1.0"
+
+source-map-resolve@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.npmjs.org/source-map-resolve/-/source-map-resolve-0.6.0.tgz#3d9df87e236b53f16d01e58150fc7711138e5ed2"
+  integrity sha512-KXBr9d/fO/bWo97NXsPIAW1bFSBOuCnjbNTBMO7N59hsv5i9yzRDfcYwwt0l04+VqnKC+EwzvJZIP/qkuMgR/w==
+  dependencies:
+    atob "^2.1.2"
+    decode-uri-component "^0.2.0"
 
 source-map-support@^0.5.16, source-map-support@^0.5.17, source-map-support@^0.5.19, source-map-support@^0.5.6, source-map-support@~0.5.12:
   version "0.5.19"

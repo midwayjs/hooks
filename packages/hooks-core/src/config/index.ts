@@ -19,9 +19,13 @@ export function getConfig(cwd?: string) {
     js: path.join(root, 'midway.config.js'),
   }
 
-  return (
+  const userConfig =
     tryRequire<UserConfig>(configs.ts) || tryRequire<UserConfig>(configs.js)
-  )
+
+  return {
+    source: '/src/apis',
+    ...userConfig,
+  }
 }
 
 export function defineConfig(config: UserConfig): UserConfig {

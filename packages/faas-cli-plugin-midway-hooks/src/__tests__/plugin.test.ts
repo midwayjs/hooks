@@ -27,7 +27,7 @@ async function createCli(fixture: string, dist: string) {
   return core
 }
 
-test('package', async () => {
+test.skip('package', async () => {
   const fixture = resolve(__dirname, './fixtures/package')
   const dist = resolve(fixture, './.serverless')
   const cli = await createCli(fixture, dist)
@@ -38,7 +38,7 @@ test('package', async () => {
   expect(existsSync(resolve(dist, 'index.js'))).toBeTruthy()
 })
 
-test('async hooks runtime', async () => {
+test.skip('async hooks runtime', async () => {
   const fixture = resolve(__dirname, './fixtures/async_hooks-runtime')
   const dist = resolve(fixture, './.serverless')
   const cli = await createCli(fixture, dist)
@@ -48,5 +48,7 @@ test('async hooks runtime', async () => {
   expect(existsSync(runtime)).toBeTruthy()
   const content = readFileSync(runtime, 'utf-8')
 
-  expect(content.includes(`process.env.HOOKS_RUNTIME = 'async_hooks'`)).toBeTruthy()
+  expect(
+    content.includes(`process.env.HOOKS_RUNTIME = 'async_hooks'`)
+  ).toBeTruthy()
 })

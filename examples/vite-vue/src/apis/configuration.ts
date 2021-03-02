@@ -9,7 +9,7 @@ import bodyParser from 'koa-bodyparser'
 })
 export class ContainerConfiguration {
   @App()
-  app!: Application
+  app: Application
 
   async onReady() {
     this.app.use(bodyParser())

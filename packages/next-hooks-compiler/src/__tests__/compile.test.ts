@@ -19,7 +19,7 @@ for (const file of files) {
   const relative = path.relative(source, file)
   const target = path.resolve(dist, relative).replace('.ts', '.js')
 
-  it(toUnix(relative), async () => {
+  it.skip(toUnix(relative), async () => {
     const content = await fse.readFile(file, 'utf-8')
     const compiled = await fse.readFile(target, 'utf-8')
 
@@ -33,6 +33,6 @@ ${compiled}`)
   })
 }
 
-it('routes should match snapshot', () => {
+it.skip('routes should match snapshot', () => {
   expect(wrap(JSON.stringify(getFunctionsMeta(), null, 2))).toMatchSnapshot()
 })
