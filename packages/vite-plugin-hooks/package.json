@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/vite-plugin-hooks",
-  "version": "2.0.0-next.0",
+  "version": "2.0.0-next.1",
   "description": "Vite plugin for midway hooks support",
   "keywords": [
     "midway",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@midwayjs/faas-dev-pack": "1.2.43-beta.12",
-    "@midwayjs/hooks-core": "^2.0.0-next.0",
+    "@midwayjs/hooks-core": "^2.0.0-next.1",
     "vite": "^2.0.4"
   },
   "publishConfig": {
