@@ -5,11 +5,10 @@ import bodyParser from 'koa-bodyparser'
 
 @Configuration({
   imports: [hooks()],
-  importConfigs: ['./config'],
 })
 export class ContainerConfiguration {
   @App()
-  app: Application
+  app!: Application
 
   async onReady() {
     this.app.use(bodyParser())
