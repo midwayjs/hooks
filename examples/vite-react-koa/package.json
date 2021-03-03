@@ -1,6 +1,6 @@
 {
   "name": "vite-react",
-  "version": "2.0.0-next.2",
+  "version": "2.0.0-next.3",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -21,7 +21,7 @@
   "devDependencies": {
     "@midwayjs/cli": "beta",
     "@midwayjs/cli-plugin-build": "beta",
-    "@midwayjs/vite-plugin-hooks": "^2.0.0-next.2",
+    "@midwayjs/vite-plugin-hooks": "^2.0.0-next.3",
     "@types/jest": "^26.0.20",
     "@types/koa-router": "^7.4.1",
     "@types/react": "^17.0.0",
