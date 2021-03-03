@@ -1,9 +1,9 @@
-import { UserConfig } from '../types/config'
+import { InternalConfig } from '../types/config'
 
 declare global {
   namespace NodeJS {
     interface Global {
-      MidwayConfig: UserConfig
+      MidwayConfig: InternalConfig
     }
   }
 }
