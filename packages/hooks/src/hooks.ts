@@ -2,7 +2,7 @@ import type { IMidwayContainer } from '@midwayjs/core'
 import { als } from '@midwayjs/hooks-core'
 
 export function useContext<T = any>(): T {
-  const { ctx } = als.getStore()
+  const ctx = als.getStore('ctx')
   return ctx
 }
 
