@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import hello, { get, post, bar } from './apis/lambda'
+import hello, { get, post } from './apis/lambda'
 console.log('[TCL] - matchAll', hello())
 
 function App() {
