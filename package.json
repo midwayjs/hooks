@@ -43,13 +43,5 @@
   "workspaces": [
     "packages/*",
     "examples/*"
-  ],
-  "resolutions": {
-    "@midwayjs/mwcc": "0.5.x",
-    "@midwayjs/faas": "2.8.4",
-    "@midwayjs/decorator": "2.8.4",
-    "@midwayjs/core": "2.8.4",
-    "@midwayjs/mock": "2.8.4",
-    "@midwayjs/koa": "2.8.4"
-  }
+  ]
 }

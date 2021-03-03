@@ -1,5 +1,7 @@
 import { ServerRouter } from '../server'
 
+process.env.MIDWAY_TS_MODE = 'true'
+
 describe('ServerRouter', () => {
   test('should exist', () => {
     expect(ServerRouter).toBeTruthy()

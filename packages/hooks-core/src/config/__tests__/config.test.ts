@@ -2,6 +2,9 @@ import { getConfig } from '../'
 import { join } from 'path'
 
 const userConfig = {
+  build: {
+    outDir: './dist/apis',
+  },
   source: '/src',
   routes: [
     {
