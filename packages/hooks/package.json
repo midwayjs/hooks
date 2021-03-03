@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks",
-  "version": "2.0.0-next.1",
+  "version": "2.0.0-next.2",
   "description": "The next generation of integrated front and back-end application development solutions",
   "keywords": [
     "midway",
@@ -20,8 +20,8 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
-    "@midwayjs/hooks-core": "^2.0.0-next.1",
-    "@midwayjs/hooks-testing-library": "^2.0.0-next.1"
+    "@midwayjs/hooks-core": "^2.0.0-next.2",
+    "@midwayjs/hooks-testing-library": "^2.0.0-next.2"
   },
   "publishConfig": {
     "access": "public"

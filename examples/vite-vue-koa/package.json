@@ -1,6 +1,6 @@
 {
   "name": "vite-vue",
-  "version": "2.0.0-next.1",
+  "version": "2.0.0-next.2",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -10,14 +10,14 @@
   },
   "dependencies": {
     "@midwayjs/decorator": "^2.8.4",
-    "@midwayjs/hooks": "^2.0.0-next.1",
-    "@midwayjs/hooks-core": "^2.0.0-next.1",
+    "@midwayjs/hooks": "^2.0.0-next.2",
+    "@midwayjs/hooks-core": "^2.0.0-next.2",
     "@midwayjs/koa": "^2.8.4",
     "koa-bodyparser": "^4.3.0",
     "vue": "^3.0.5"
   },
   "devDependencies": {
-    "@midwayjs/vite-plugin-hooks": "^2.0.0-next.1",
+    "@midwayjs/vite-plugin-hooks": "^2.0.0-next.2",
     "@vitejs/plugin-vue": "^1.1.4",
     "@vue/compiler-sfc": "^3.0.5",
     "jest": "^26.6.3",
