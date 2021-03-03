@@ -17,9 +17,9 @@
     "outDir": "lib",
     "esModuleInterop": true,
     "downlevelIteration": true,
-    "baseUrl": "./packages",
+    "baseUrl": "./",
     "paths": {
-      "@midwayjs/*": ["./*/src"]
+      "@midwayjs/*": ["packages/*/src"]
     },
     "composite": true,
     "skipLibCheck": true

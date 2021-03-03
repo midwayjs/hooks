@@ -7,5 +7,4 @@ export * from './config'
 
 export * from './types/common'
 export * from './types/http'
-export * from './types/serverless'
 export * from './types/config'
