@@ -13,9 +13,9 @@
     "stripInternal": false,
     "pretty": true,
     "declaration": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "lib",
-    "esModuleInterop": true,
     "downlevelIteration": true,
     "baseUrl": "./",
     "paths": {

@@ -5,6 +5,7 @@ import { EnhancedFunc } from '../types/common'
 import { ServerRouter, getFunctionId } from '../router'
 import { getConfig, getProjectRoot } from '../config'
 import { UserConfig } from '../types/config'
+import { extname } from 'path'
 
 /**
  * Create hooks component
@@ -27,19 +28,23 @@ function createResolveFilter(config: UserConfig) {
   return config.routes.map((route) => {
     return {
       pattern: route.baseDir,
+      ignoreRequire: true,
       filter: (
-        mod: {
-          default?: any
-          [key: string]: any
-        },
+        _: void,
         sourceFilePath: string,
         container: IMidwayContainer
       ) => {
+        if (!isValidFile(sourceFilePath)) {
+          return
+        }
+
         const root = getProjectRoot()
         const router = new ServerRouter(root, {
           routes: config.routes,
           source: config.source,
         })
+
+        const mod = require(sourceFilePath)
 
         // export default
         const defaultExports = mod.default || mod
@@ -144,4 +149,15 @@ function createContainer(config: {
   }
 
   container.bind(containerId, FunctionContainer)
+}
+
+function isValidFile(sourceFilePath: string) {
+  if (
+    sourceFilePath.endsWith('.test.ts') ||
+    sourceFilePath.endsWith('.test.js')
+  ) {
+    return false
+  }
+
+  return extname(sourceFilePath) === '.ts' || extname(sourceFilePath) === '.js'
 }

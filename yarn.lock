@@ -1493,10 +1493,10 @@
   resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-2.8.2.tgz#be8c4fc50937520f77a26eaee0809c352aff80e8"
   integrity sha512-MAl9goRoZHgOo66srliDhgSjy5IU0mXoq/4GcOA0tGHH1EDM57tlxVNZQ/dID1glzVNQvCKOS5BiPmP1wGIm4Q==
 
-"@midwayjs/bootstrap@^2.8.3":
-  version "2.8.3"
-  resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-2.8.3.tgz#9afc2bac509ce356176b09bcc35527d484125bd2"
-  integrity sha512-XH12PmaXRBZn8iIkXeX3ITYBl3Mibkil2eL7g3AY7mqkO3LWQyKCKEFPYS6Uy1RPlP8KyGKx6KwK5hGSoI/sDw==
+"@midwayjs/bootstrap@^2.8.4":
+  version "2.8.4"
+  resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-2.8.4.tgz#913ee15c69f41e0d3cc060ff77bec33a117afa1d"
+  integrity sha512-TMBjLe5R+CPb2goqa7/wBowYrgFhYmwGGei3MyZq1TW6+VUjN50xi519EHqyMiBAN+aIcRYmDNyJS8bRy4Jc6A==
 
 "@midwayjs/cli-plugin-dev@^1.2.43-beta.9":
   version "1.2.43-beta.9"
@@ -1532,12 +1532,12 @@
     light-spinner "^1.0.0"
     minimist "^1.2.5"
 
-"@midwayjs/core@2.8.x", "@midwayjs/core@^2.7.5", "@midwayjs/core@^2.8.2", "@midwayjs/core@^2.8.3":
-  version "2.8.3"
-  resolved "https://registry.npmjs.org/@midwayjs/core/-/core-2.8.3.tgz#c2ec75b103722b85631c4c84f28f7744aaf6e16d"
-  integrity sha512-3Tt6im371SY6ZYk1fbSAYNJj640kDrKDXb5Ioig4+i/QwKTEooeFy/IQ+nC2HJ+IJ2HxCrXSR4oJhooZwnWkog==
+"@midwayjs/core@2.8.4", "@midwayjs/core@^2.7.5", "@midwayjs/core@^2.8.2", "@midwayjs/core@^2.8.3", "@midwayjs/core@^2.8.4":
+  version "2.8.4"
+  resolved "https://registry.npmjs.org/@midwayjs/core/-/core-2.8.4.tgz#0c672e62a391ee947c9b6ae2c58cb0197c8a54c8"
+  integrity sha512-qrg1wnqk/HdoBurIJP31o15HWw5rRt6JHxHyidJOPX23qhd4iKcwzAcZJGrdI/opuTO7imLl8mjy+cRG5a1GeA==
   dependencies:
-    "@midwayjs/decorator" "^2.8.3"
+    "@midwayjs/decorator" "^2.8.4"
     "@midwayjs/glob" "^1.0.2"
     "@midwayjs/logger" "^2.8.2"
     class-transformer "^0.3.1"
@@ -1560,10 +1560,10 @@
     ts-node "^9.0.0"
     ws "^7.2.3"
 
-"@midwayjs/decorator@2.8.x", "@midwayjs/decorator@^2.7.5", "@midwayjs/decorator@^2.8.3":
-  version "2.8.3"
-  resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-2.8.3.tgz#7b45a41a5c22d026cb284d05cd6dfd701ca350a9"
-  integrity sha512-aiq3hIK9qpYM6ZqW6mPsifCADxitpXapIy3qFBADf26dE7bDS4nSJ2Ss2ksnsaUY67Zn/1RTvgB/xAMVtnPA9g==
+"@midwayjs/decorator@2.8.4", "@midwayjs/decorator@^2.7.5", "@midwayjs/decorator@^2.8.4":
+  version "2.8.4"
+  resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-2.8.4.tgz#8e9e492c77ea66ea3967224c436bdd23406b8a85"
+  integrity sha512-o3QRHwmq540SKd1tov/LCJcctebfA0Uml5tERYc7gVQndXjV6+VjZywb3A8g5yx7yYxcvre9UBhjlbMWLwb/JA==
   dependencies:
     "@types/express" "^4.17.8"
     "@types/koa" "^2.11.4"
@@ -1617,13 +1617,13 @@
   resolved "https://registry.npmjs.org/@midwayjs/faas-typings/-/faas-typings-2.8.2.tgz#ae351d279dfdaf4fc6ca732b1c2c07bc55c8a4f9"
   integrity sha512-JJmqG0W6USN1y7NgH6eAlWTXZ3jX4SsopiBQYoyFkEpo5yLaQ2vfIHPdgk52Y2Inf4D2Ja7aOXks46Q3ZQKk8Q==
 
-"@midwayjs/faas@2.8.x", "@midwayjs/faas@^2.8.2":
-  version "2.8.3"
-  resolved "https://registry.npmjs.org/@midwayjs/faas/-/faas-2.8.3.tgz#0602092aab5b111bfeee1079341fd60fd53d9d89"
-  integrity sha512-v2SyYUT0OjIHcpMpjtMyM8cq0b92p9eoVd2auTVpI7Hfiudhzrkn/3kn2Ash4Sn0PTN6t68X9ziyhLAju8fzTA==
+"@midwayjs/faas@2.8.4", "@midwayjs/faas@^2.8.2":
+  version "2.8.4"
+  resolved "https://registry.npmjs.org/@midwayjs/faas/-/faas-2.8.4.tgz#0866ab8e9614382bfc7ab08084765c20d53f1906"
+  integrity sha512-NZpc/Je6kOUKument74Q52p2xTqbHumv/RWvGKqWXeJXWMnxvEhCWSIddnR0YyQNv9sgc3CNjr0xaYfbUigoYQ==
   dependencies:
-    "@midwayjs/core" "^2.8.3"
-    "@midwayjs/decorator" "^2.8.3"
+    "@midwayjs/core" "^2.8.4"
+    "@midwayjs/decorator" "^2.8.4"
     "@midwayjs/faas-typings" "^2.8.2"
     "@midwayjs/logger" "^2.8.2"
     "@midwayjs/simple-lock" "^1.1.4"
@@ -1697,16 +1697,16 @@
   dependencies:
     picomatch "^2.2.2"
 
-"@midwayjs/koa@^2.7.7":
-  version "2.7.7"
-  resolved "https://registry.npmjs.org/@midwayjs/koa/-/koa-2.7.7.tgz#2b94e4d7aa017cd4ef05614f50bb6486ef3759a3"
-  integrity sha512-9hecxhnqC1trpXjj8tvPGgrzx3Tg0RqGv/CBwpy+vZ4nWiAesae/cRY5x8onuK8TLjKpxE3oCQ5yjrrUlgBVYA==
+"@midwayjs/koa@2.8.4", "@midwayjs/koa@^2.7.7":
+  version "2.8.4"
+  resolved "https://registry.npmjs.org/@midwayjs/koa/-/koa-2.8.4.tgz#5bbd01df07f91a319dd38e5806de72ca47d4c9ef"
+  integrity sha512-DBvWNLzun2yzs4Bzw7MZ5dEcLb9TGpCkxd9Jjr4f1/ha/0badYac4AFLL6tLajeFMsDKdlXmMuG4NGiHqm72Sg==
   dependencies:
-    "@midwayjs/core" "^2.7.5"
-    "@midwayjs/decorator" "^2.7.5"
-    "@midwayjs/logger" "^2.7.5"
+    "@koa/router" "^10.0.0"
+    "@midwayjs/core" "^2.8.4"
+    "@midwayjs/decorator" "^2.8.4"
+    "@midwayjs/logger" "^2.8.2"
     koa "^2.13.0"
-    koa-router "^9.4.0"
 
 "@midwayjs/locate@^1.0.3", "@midwayjs/locate@^1.4.1":
   version "1.4.1"
@@ -1716,16 +1716,6 @@
     detective-typescript "^5.7.0"
     fs-extra "^8.1.0"
     globby "^10.0.1"
-
-"@midwayjs/logger@^2.7.5":
-  version "2.7.5"
-  resolved "https://registry.npmjs.org/@midwayjs/logger/-/logger-2.7.5.tgz#d393312497bd9c8fb6f3763ac60276c08935ce02"
-  integrity sha512-AoNLQ4Px9Zylt4n8sVzObDt0i95g3AG5gzGsMHs11oFdBW79YEMu2kAWcAAUsAuk6LC0m+udszVSU5KWR02Y5Q==
-  dependencies:
-    triple-beam "^1.3.0"
-    winston "^3.3.3"
-    winston-daily-rotate-file "^4.5.0"
-    winston-transport "^4.4.0"
 
 "@midwayjs/logger@^2.8.2":
   version "2.8.2"
@@ -1737,13 +1727,13 @@
     winston-daily-rotate-file "^4.5.0"
     winston-transport "^4.4.0"
 
-"@midwayjs/mock@2.8.x", "@midwayjs/mock@^2.7.5", "@midwayjs/mock@^2.8.0", "@midwayjs/mock@^2.8.2":
-  version "2.8.3"
-  resolved "https://registry.npmjs.org/@midwayjs/mock/-/mock-2.8.3.tgz#0948797140a3d69d11b0935db0832ae86bc5b9ce"
-  integrity sha512-jxXve6S3yHqIv4A7oMx1b5WVzX8t23raQ2nB2fy8cFThR/OyF0StLY94TtTbuG/fsQfT7jZ4NIeMp4/A9wddxw==
+"@midwayjs/mock@2.8.4", "@midwayjs/mock@^2.7.5", "@midwayjs/mock@^2.8.0", "@midwayjs/mock@^2.8.2":
+  version "2.8.4"
+  resolved "https://registry.npmjs.org/@midwayjs/mock/-/mock-2.8.4.tgz#1d5a83f962c110189fa00ee37189317a84bb8e9d"
+  integrity sha512-DugXrAWZHKmWTbHdqV0toC65ouL5tUoq7gatP//+whNfBy1QH3SKrd/gyEvtx8wBpbXx85B7VpCp6aB+zVGqQA==
   dependencies:
-    "@midwayjs/bootstrap" "^2.8.3"
-    "@midwayjs/decorator" "^2.8.3"
+    "@midwayjs/bootstrap" "^2.8.4"
+    "@midwayjs/decorator" "^2.8.4"
     "@midwayjs/logger" "^2.8.2"
     egg-mock "^3.21.0"
     fs-extra "^8.0.1"
@@ -7835,17 +7825,6 @@ koa-convert@^1.2.0:
   dependencies:
     co "^4.6.0"
     koa-compose "^3.0.0"
-
-koa-router@^9.4.0:
-  version "9.4.0"
-  resolved "https://registry.npmjs.org/koa-router/-/koa-router-9.4.0.tgz#7bd3cd4f6247256e4b56fbb2203bde3851acc15a"
-  integrity sha512-RO/Y8XqSNM2J5vQeDaBI/7iRpL50C9QEudY4d3T4D1A2VMKLH0swmfjxDFPiIpVDLuNN6mVD9zBI1eFTHB6QaA==
-  dependencies:
-    debug "^4.1.1"
-    http-errors "^1.7.3"
-    koa-compose "^4.1.0"
-    methods "^1.1.2"
-    path-to-regexp "^6.1.0"
 
 koa@^2.11.0, koa@^2.13.0:
   version "2.13.1"
