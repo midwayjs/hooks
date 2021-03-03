@@ -1,23 +1,10 @@
 import { getConfig } from '../'
 import { join } from 'path'
 
-const userConfig = {
-  build: {
-    outDir: './dist',
-  },
-  source: '/src',
-  routes: [
-    {
-      baseDir: 'lambda',
-      basePath: '/api',
-    },
-  ],
-}
-
 test('load user config', () => {
   const fixtures = ['js', 'ts', 'ts-export-default']
   fixtures.forEach((fixture) => {
-    expect(loadConfig(fixture)).toEqual(userConfig)
+    expect(loadConfig(fixture)).toMatchSnapshot()
   })
 })
 

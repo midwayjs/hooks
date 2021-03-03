@@ -141,7 +141,7 @@ function createContainer(config: {
         args = JSON.parse(args)
       }
 
-      return await als.run(bindCtx, () => fn(...args))
+      return await als.run(bindCtx, async () => fn(...args))
     }
   }
 

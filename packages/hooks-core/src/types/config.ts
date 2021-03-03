@@ -2,6 +2,7 @@ export interface InternalConfig {
   source?: string
   routes: ServerRoute[]
   build?: {
+    viteOutDir: string
     outDir: string
   }
 }

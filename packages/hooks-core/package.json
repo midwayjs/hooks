@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-core",
-  "version": "2.0.0-next.1",
+  "version": "2.0.0-next.2",
   "description": "Midway Hooks Core",
   "keywords": [
     "midway",
@@ -29,6 +29,7 @@
     "@midwayjs/core": "^2.8.4",
     "@midwayjs/decorator": "^2.8.4",
     "@midwayjs/serverless-spec-builder": "^1.2.41",
+    "asynchronous-local-storage": "^1.0.2",
     "axios": "^0.21.1",
     "chalk": "^4.1.0",
     "es-module-lexer": "^0.4.0",
