@@ -15,6 +15,8 @@ function ignorePattern(req) {
   return reg.test(pathname) || reg.test(query)
 }
 
+process.env.MIDWAY_TS_MODE = 'true'
+
 function hooksPlugin(): Plugin {
   const root = getProjectRoot()
   const config = getConfig()
@@ -40,6 +42,9 @@ function hooksPlugin(): Plugin {
     config: () => ({
       optimizeDeps: {
         include: ['@midwayjs/hooks-core/lib/esm/request/sdk'],
+      },
+      build: {
+        outDir: config.build.viteOutDir,
       },
     }),
     configureServer(server) {

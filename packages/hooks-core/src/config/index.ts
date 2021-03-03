@@ -2,12 +2,17 @@ import path from 'path'
 import { InternalConfig, UserConfig } from '../types/config'
 import { sync } from 'pkg-dir'
 import createJITI from 'jiti'
+import _ from 'lodash'
 
 export function getProjectRoot(cwd?: string) {
   return sync(cwd) || process.cwd()
 }
 
 export function getConfig(cwd?: string): InternalConfig {
+  if (global.MidwayConfig) {
+    return global.MidwayConfig
+  }
+
   const root = getProjectRoot(cwd)
 
   const configs = {
@@ -18,13 +23,19 @@ export function getConfig(cwd?: string): InternalConfig {
   const userConfig =
     tryRequire<UserConfig>(configs.ts) || tryRequire<UserConfig>(configs.js)
 
-  return {
-    source: './src/apis',
-    build: {
-      outDir: './dist',
+  const internalConfig: InternalConfig = _.defaultsDeep(
+    {
+      source: './src/apis',
+      build: {
+        viteOutDir: './build',
+        outDir: './dist',
+      },
     },
-    ...userConfig,
-  }
+    userConfig
+  )
+
+  global.MidwayConfig = internalConfig
+  return internalConfig
 }
 
 export function defineConfig(config: UserConfig): UserConfig {
