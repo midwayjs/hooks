@@ -21,7 +21,7 @@ export function getConfig(cwd?: string): InternalConfig {
   return {
     source: './src/apis',
     build: {
-      outDir: './dist/apis',
+      outDir: './dist',
     },
     ...userConfig,
   }

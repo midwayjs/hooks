@@ -3,7 +3,7 @@ import { join } from 'path'
 
 const userConfig = {
   build: {
-    outDir: './dist/apis',
+    outDir: './dist',
   },
   source: '/src',
   routes: [

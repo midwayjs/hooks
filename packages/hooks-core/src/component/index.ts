@@ -4,7 +4,7 @@ import { als } from '../runtime'
 import { EnhancedFunc } from '../types/common'
 import { ServerRouter, getFunctionId } from '../router'
 import { getConfig, getProjectRoot } from '../config'
-import { UserConfig } from '../types/config'
+import { InternalConfig } from '../types/config'
 import { extname } from 'path'
 
 /**
@@ -24,7 +24,7 @@ export const hooks = () => {
   }
 }
 
-function createResolveFilter(config: UserConfig) {
+function createResolveFilter(config: InternalConfig) {
   return config.routes.map((route) => {
     return {
       pattern: route.baseDir,
@@ -39,10 +39,7 @@ function createResolveFilter(config: UserConfig) {
         }
 
         const root = getProjectRoot()
-        const router = new ServerRouter(root, {
-          routes: config.routes,
-          source: config.source,
-        })
+        const router = new ServerRouter(root, config)
 
         const mod = require(sourceFilePath)
 
