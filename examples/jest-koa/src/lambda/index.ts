@@ -1,6 +1,5 @@
-import { useContext, useInject } from '@midwayjs/hooks'
+import { useContext } from '@midwayjs/hooks'
 import { Context } from 'koa'
-import { Foo } from '../foo'
 
 export default async () => {
   return 'Hello World'

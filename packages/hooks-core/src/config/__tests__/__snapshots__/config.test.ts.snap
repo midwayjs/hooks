@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`load user config 1`] = `
+Object {
+  "build": Object {
+    "outDir": "./dist",
+    "viteOutDir": "./build",
+  },
+  "routes": Array [
+    Object {
+      "baseDir": "lambda",
+      "basePath": "/api",
+    },
+  ],
+  "source": "./src/apis",
+}
+`;
+
+exports[`load user config 2`] = `
+Object {
+  "build": Object {
+    "outDir": "./dist",
+    "viteOutDir": "./build",
+  },
+  "routes": Array [
+    Object {
+      "baseDir": "lambda",
+      "basePath": "/api",
+    },
+  ],
+  "source": "./src/apis",
+}
+`;
+
+exports[`load user config 3`] = `
+Object {
+  "build": Object {
+    "outDir": "./dist",
+    "viteOutDir": "./build",
+  },
+  "routes": Array [
+    Object {
+      "baseDir": "lambda",
+      "basePath": "/api",
+    },
+  ],
+  "source": "./src/apis",
+}
+`;
