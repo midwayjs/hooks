@@ -1,16 +1,28 @@
-import { Configuration, App } from '@midwayjs/decorator'
+import { Configuration, App, Inject } from '@midwayjs/decorator'
 import { hooks } from '@midwayjs/hooks'
-import { Application } from '@midwayjs/koa'
-import bodyParser from 'koa-bodyparser'
-
+import { IMidwayFaaSApplication } from '@midwayjs/faas'
+import staticCache from 'koa-static-cache'
+import { join } from 'path'
 @Configuration({
   imports: [hooks()],
 })
 export class ContainerConfiguration {
   @App()
-  private app!: Application
+  private app!: IMidwayFaaSApplication
+
+  @Inject()
+  baseDir!: string
 
   async onReady() {
-    this.app.use(bodyParser())
+    this.app.use(
+      (staticCache as any)({
+        dir: join(this.baseDir, '../build'),
+        dynamic: true,
+        alias: {
+          '/': 'index.html',
+        },
+        buffer: true,
+      })
+    )
   }
 }
