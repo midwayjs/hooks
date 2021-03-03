@@ -1,5 +1,16 @@
-import { ServerRouterConfig } from '../router'
+export interface InternalConfig {
+  source?: string
+  routes: ServerRoute[]
+  build?: {
+    outDir: string
+  }
+}
 
-export interface UserConfig extends Omit<ServerRouterConfig, 'source'> {
+export type ServerRoute = {
+  baseDir: string
+  basePath: string
+}
+
+export interface UserConfig extends Omit<InternalConfig, 'source' | 'build'> {
   [key: string]: any
 }

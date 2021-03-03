@@ -1,5 +1,5 @@
 import path from 'path'
-import { UserConfig } from '../types/config'
+import { InternalConfig, UserConfig } from '../types/config'
 import { sync } from 'pkg-dir'
 import createJITI from 'jiti'
 
@@ -7,11 +7,7 @@ export function getProjectRoot(cwd?: string) {
   return sync(cwd) || process.cwd()
 }
 
-export function getConfig(cwd?: string) {
-  if (global.MidwayConfig) {
-    return global.MidwayConfig
-  }
-
+export function getConfig(cwd?: string): InternalConfig {
   const root = getProjectRoot(cwd)
 
   const configs = {
@@ -23,7 +19,10 @@ export function getConfig(cwd?: string) {
     tryRequire<UserConfig>(configs.ts) || tryRequire<UserConfig>(configs.js)
 
   return {
-    source: '/src/apis',
+    source: './src/apis',
+    build: {
+      outDir: './dist/apis',
+    },
     ...userConfig,
   }
 }

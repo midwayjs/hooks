@@ -1,30 +1,22 @@
 import { HooksRouter } from './base'
 import { join } from 'upath'
-
-export type ServerRoute = {
-  baseDir: string
-  basePath: string
-}
-
-export type ServerRouterConfig = {
-  source?: string
-  routes: ServerRoute[]
-}
-
-const defaultSource = '/src/apis'
+import { InternalConfig } from '../types/config'
+import { isTypeScriptEnvironment } from '@midwayjs/bootstrap'
 
 export class ServerRouter extends HooksRouter {
-  config: ServerRouterConfig
+  config: InternalConfig
 
-  constructor(root: string, config: ServerRouterConfig) {
+  constructor(root: string, config: InternalConfig) {
     super(root)
     this.config = config
   }
 
   get source() {
-    return join(this.root, this.config.source ?? defaultSource)
+    if (isTypeScriptEnvironment()) {
+      return join(this.root, this.config.source)
+    }
+    return join(this.root, this.config.build.outDir)
   }
-
   getRouteConfigBySourceFilePath(sourceFilePath: string) {
     const { routes } = this.config
     const dirs = routes.map((route) => this.getLambdaDirectory(route.baseDir))
