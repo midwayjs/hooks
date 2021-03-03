@@ -12,12 +12,10 @@ export default async () => {
   }
 }
 
-export const get = () => {
+export const get = async () => {
   return 'get'
 }
 
-export const post = (name: string) => {
+export const post = async (name: string) => {
   return 'post' + name
 }
-
-export async function bar() {}

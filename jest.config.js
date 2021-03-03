@@ -3,8 +3,6 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  testTimeout: 120 * 1000,
-  forceExit: true,
   testPathIgnorePatterns: [
     '/node_modules/',
     '/fixtures/',
