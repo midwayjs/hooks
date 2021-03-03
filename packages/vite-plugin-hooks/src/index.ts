@@ -44,6 +44,7 @@ function hooksPlugin(): Plugin {
         include: ['@midwayjs/hooks-core/lib/esm/request/sdk'],
       },
       build: {
+        manifest: true,
         outDir: config.build.viteOutDir,
       },
     }),
