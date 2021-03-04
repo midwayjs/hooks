@@ -28,7 +28,7 @@
     "@midwayjs/bootstrap": "^2.8.6",
     "@midwayjs/core": "^2.8.6",
     "@midwayjs/decorator": "^2.8.4",
-    "@midwayjs/serverless-spec-builder": "^1.2.41",
+    "@midwayjs/serverless-spec-builder": "^1.2.45",
     "asynchronous-local-storage": "^1.0.2",
     "axios": "^0.21.1",
     "chalk": "^4.1.0",
