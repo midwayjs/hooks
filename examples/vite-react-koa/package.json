@@ -1,6 +1,6 @@
 {
   "name": "vite-react",
-  "version": "2.0.0-next.3",
+  "version": "2.0.0-next.4",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@midwayjs/decorator": "^2.8.4",
-    "@midwayjs/hooks": "^2.0.0-next.2",
-    "@midwayjs/hooks-core": "^2.0.0-next.2",
+    "@midwayjs/hooks": "^2.0.0-next.4",
+    "@midwayjs/hooks-core": "^2.0.0-next.4",
     "@midwayjs/koa": "^2.8.4",
     "koa-bodyparser": "^4.3.0",
     "koa-static-cache": "^5.1.4",
@@ -23,7 +23,7 @@
   "devDependencies": {
     "@midwayjs/cli": "^1.2.43-beta.13",
     "@midwayjs/cli-plugin-build": "^1.2.43-beta.12",
-    "@midwayjs/vite-plugin-hooks": "^2.0.0-next.3",
+    "@midwayjs/vite-plugin-hooks": "^2.0.0-next.4",
     "@types/jest": "^26.0.20",
     "@types/koa-router": "^7.4.1",
     "@types/react": "^17.0.0",

@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0-next.2",
+  "version": "2.0.0-next.4",
   "private": true,
   "name": "jest-koa",
   "scripts": {
@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "@midwayjs/decorator": "^2.8.4",
-    "@midwayjs/hooks": "^2.0.0-next.2",
-    "@midwayjs/hooks-core": "^2.0.0-next.2",
-    "@midwayjs/hooks-testing-library": "^2.0.0-next.2",
+    "@midwayjs/hooks": "^2.0.0-next.4",
+    "@midwayjs/hooks-core": "^2.0.0-next.4",
+    "@midwayjs/hooks-testing-library": "^2.0.0-next.4",
     "@midwayjs/koa": "^2.8.4",
     "@midwayjs/mock": "^2.8.4",
     "debug": "^4.3.1",
