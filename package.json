@@ -43,8 +43,5 @@
   "workspaces": [
     "packages/*",
     "examples/*"
-  ],
-  "resolutions": {
-    "@midwayjs/locate": "1.5.0"
-  }
+  ]
 }
