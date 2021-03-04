@@ -26,8 +26,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "@midwayjs/faas": "^2.8.6"
   }
 }
