@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks",
-  "version": "2.0.0-next.4",
+  "version": "2.0.0-next.5",
   "description": "The next generation of integrated front and back-end application development solutions",
   "keywords": [
     "midway",
@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "@midwayjs/core": "^2.8.6",
-    "@midwayjs/hooks-core": "^2.0.0-next.4",
-    "@midwayjs/hooks-testing-library": "^2.0.0-next.4"
+    "@midwayjs/hooks-core": "^2.0.0-next.5",
+    "@midwayjs/hooks-testing-library": "^2.0.0-next.5"
   },
   "publishConfig": {
     "access": "public"
