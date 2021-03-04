@@ -5,156 +5,169 @@ import { EnhancedFunc } from '../types/common'
 import { ServerRouter, getFunctionId } from '../router'
 import { getConfig, getProjectRoot } from '../config'
 import { InternalConfig } from '../types/config'
-import { extname } from 'path'
+import { isProduction } from '@midwayjs/hooks-core'
+import { noop } from 'lodash'
 
 /**
  * Create hooks component
  */
 export const hooks = () => {
-  const config = getConfig()
-  const configuration = createConfiguration({
-    namespace: '@midwayjs/hooks',
-    directoryResolveFilter: createResolveFilter(config),
-  })
-    .onReady(() => {})
-    .onStop(() => {})
-
-  return {
-    Configuration: configuration,
-  }
+  return new HooksComponent().createConfiguration()
 }
 
-function createResolveFilter(config: InternalConfig) {
-  return config.routes.map((route) => {
+class HooksComponent {
+  private readonly root: string
+  private readonly config: InternalConfig
+  private readonly router: ServerRouter
+  private container: IMidwayContainer
+
+  constructor() {
+    this.root = getProjectRoot()
+    this.config = getConfig()
+    this.router = new ServerRouter(this.root, this.config)
+  }
+
+  createConfiguration() {
+    const configuration = createConfiguration({
+      namespace: '@midwayjs/hooks',
+      directoryResolveFilter: this.config.routes.map((route, index) => {
+        return {
+          pattern: route.baseDir,
+          ignoreRequire: true,
+          filter: (
+            mod: void,
+            sourceFilePath: string,
+            container: IMidwayContainer
+          ) => {
+            if (!this.container) {
+              this.container = container
+            }
+            if (!this.router.isLambdaFile(sourceFilePath)) return
+            this.createLambdaFromSourceFile(sourceFilePath)
+
+            if (index === this.config.routes.length - 1) {
+              this.createRenderFunction()
+            }
+          },
+        }
+      }),
+    })
+
+    configuration.onReady(noop).onStop(noop)
+
     return {
-      pattern: route.baseDir,
-      ignoreRequire: true,
-      filter: (
-        _: void,
-        sourceFilePath: string,
-        container: IMidwayContainer
-      ) => {
-        if (!isValidFile(sourceFilePath)) {
-          return
-        }
+      Configuration: configuration,
+    }
+  }
 
-        const root = getProjectRoot()
-        const router = new ServerRouter(root, config)
+  createLambdaFromSourceFile(sourceFilePath: string) {
+    const mod = require(sourceFilePath)
 
-        const mod = require(sourceFilePath)
+    if (typeof mod === 'function') {
+      this.createFunction({
+        fn: mod,
+        sourceFilePath,
+        isExportDefault: true,
+      })
+    }
 
-        // export default
-        const defaultExports = mod.default || mod
-        if (typeof defaultExports === 'function') {
-          createFunctionContainer({
-            container,
-            router,
-            fn: defaultExports,
-            sourceFilePath,
-            isExportDefault: true,
-          })
-        }
+    Object.keys(mod)
+      .filter((key) => typeof mod[key] === 'function')
+      .forEach((key) => {
+        this.createFunction({
+          fn: mod[key],
+          sourceFilePath,
+          isExportDefault: key === 'default',
+        })
+      })
+  }
 
-        for (const key of Object.keys(mod)) {
-          if (key === 'default') {
-            continue
-          }
+  private createFunction(config: {
+    fn: EnhancedFunc
+    sourceFilePath: string
+    isExportDefault: boolean
+  }) {
+    const { fn, sourceFilePath, isExportDefault } = config
 
-          const value = mod[key]
-          if (typeof value === 'function') {
-            createFunctionContainer({
-              container,
-              router,
-              fn: value,
-              sourceFilePath,
-              isExportDefault: false,
-            })
-          }
-        }
+    const fnName = isExportDefault ? '$default' : fn.name
+    const id = getFunctionId({
+      router: this.router,
+      sourceFilePath,
+      functionName: fnName,
+      isExportDefault,
+    })
+
+    const containerId = 'hooks::' + id
+    const httpPath = this.router.getHTTPPath(
+      sourceFilePath,
+      fnName,
+      isExportDefault
+    )
+    const httpMethod = fn.length === 0 ? 'GET' : 'POST'
+
+    fn._param = {
+      url: httpPath,
+      method: httpMethod,
+      meta: {
+        functionName: id,
       },
     }
-  })
-}
 
-function createFunctionContainer(config: {
-  container: IMidwayContainer
-  fn: EnhancedFunc
-  sourceFilePath: string
-  router: ServerRouter
-  isExportDefault: boolean
-}) {
-  const { container, fn, router, sourceFilePath, isExportDefault } = config
-
-  const fnName = isExportDefault ? '$default' : fn.name
-  const id = getFunctionId({
-    router,
-    sourceFilePath,
-    functionName: fnName,
-    isExportDefault,
-  })
-
-  const containerId = 'hooks_func::' + id
-  const httpPath = router.getHTTPPath(sourceFilePath, fnName, isExportDefault)
-  const httpMethod = fn.length === 0 ? 'GET' : 'POST'
-
-  fn._param = {
-    url: httpPath,
-    method: httpMethod,
-    meta: {
-      functionName: id,
-    },
+    this.registerFunctionToContainer({
+      containerId,
+      httpMethod,
+      httpPath,
+      fn,
+    })
   }
 
-  createContainer({
-    containerId,
-    container,
-    httpMethod,
-    httpPath,
-    fn,
-  })
-}
+  private registerFunctionToContainer(config: {
+    containerId: string
+    httpMethod: any
+    httpPath: string
+    fn: EnhancedFunc
+  }) {
+    const { containerId, httpMethod, httpPath, fn } = config
+    const Method = httpMethod === 'GET' ? Get : Post
 
-function createContainer(config: {
-  containerId: string
-  httpMethod: any
-  httpPath: string
-  container: IMidwayContainer
-  fn: EnhancedFunc
-}) {
-  const { containerId, httpMethod, httpPath, container, fn } = config
-  const Method = httpMethod === 'GET' ? Get : Post
+    @Provide(containerId)
+    @Controller('/')
+    class FunctionContainer {
+      @Inject()
+      ctx: any
 
-  @Provide(containerId)
-  @Controller('/')
-  class FunctionContainer {
-    @Inject()
-    ctx: any
+      @Method(httpPath, { middleware: fn.middleware || [] })
+      async handler() {
+        const bindCtx = {
+          ctx: this.ctx,
+        }
 
-    @Method(httpPath, { middleware: fn.middleware || [] })
-    async handler() {
-      const bindCtx = {
-        ctx: this.ctx,
+        let args = this.ctx.request?.body?.args || []
+        if (typeof args === 'string') {
+          args = JSON.parse(args)
+        }
+
+        return await als.run(bindCtx, async () => fn(...args))
       }
-
-      let args = this.ctx.request?.body?.args || []
-      if (typeof args === 'string') {
-        args = JSON.parse(args)
-      }
-
-      return await als.run(bindCtx, async () => fn(...args))
     }
+
+    this.container.bind(containerId, FunctionContainer)
   }
 
-  container.bind(containerId, FunctionContainer)
-}
+  private hasRender = false
+  private createRenderFunction() {
+    if (!isProduction() || this.hasRender) {
+      return
+    }
 
-function isValidFile(sourceFilePath: string) {
-  if (
-    sourceFilePath.endsWith('.test.ts') ||
-    sourceFilePath.endsWith('.test.js')
-  ) {
-    return false
+    const fn = async () => {}
+    this.registerFunctionToContainer({
+      containerId: 'hooks:page-render',
+      httpMethod: 'GET',
+      httpPath: '/*',
+      fn,
+    })
+
+    this.hasRender = true
   }
-
-  return extname(sourceFilePath) === '.ts' || extname(sourceFilePath) === '.js'
 }

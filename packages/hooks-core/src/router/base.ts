@@ -32,6 +32,20 @@ export abstract class HooksRouter {
   }
 
   isLambdaFile(sourceFilePath: string) {
+    if (
+      sourceFilePath.endsWith('.test.ts') ||
+      sourceFilePath.endsWith('.test.js')
+    ) {
+      return false
+    }
+
+    if (
+      extname(sourceFilePath) !== '.ts' &&
+      extname(sourceFilePath) !== '.js'
+    ) {
+      return false
+    }
+
     const route = this.getRouteConfigBySourceFilePath(sourceFilePath)
     return !!route
   }

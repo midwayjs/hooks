@@ -1,7 +1,7 @@
 import { HooksRouter } from './base'
 import { join } from 'upath'
 import { InternalConfig } from '../types/config'
-import { isTypeScriptEnvironment } from '@midwayjs/bootstrap'
+import { isProduction } from '@midwayjs/hooks-core'
 
 export class ServerRouter extends HooksRouter {
   config: InternalConfig
@@ -12,11 +12,12 @@ export class ServerRouter extends HooksRouter {
   }
 
   get source() {
-    if (isTypeScriptEnvironment()) {
-      return join(this.root, this.config.source)
+    if (isProduction()) {
+      return join(this.root, this.config.build.outDir)
     }
-    return join(this.root, this.config.build.outDir)
+    return join(this.root, this.config.source)
   }
+
   getRouteConfigBySourceFilePath(sourceFilePath: string) {
     const { routes } = this.config
     const dirs = routes.map((route) => this.getLambdaDirectory(route.baseDir))

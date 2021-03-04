@@ -1,5 +1,5 @@
 {
-  "name": "vite-react",
+  "name": "vite-react-faas",
   "version": "2.0.0-next.3",
   "private": true,
   "scripts": {
@@ -7,22 +7,24 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "tsc && vite build",
     "build:server": "mw build",
+    "deploy": "npm run build && mw deploy",
     "serve": "vite preview",
     "test": "jest"
   },
   "dependencies": {
     "@midwayjs/decorator": "^2.8.4",
+    "@midwayjs/faas": "^2.8.4",
     "@midwayjs/hooks": "^2.0.0-next.2",
     "@midwayjs/hooks-core": "^2.0.0-next.2",
-    "@midwayjs/koa": "^2.8.4",
-    "koa-bodyparser": "^4.3.0",
     "koa-static-cache": "^5.1.4",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
   "devDependencies": {
     "@midwayjs/cli": "^1.2.43-beta.13",
-    "@midwayjs/cli-plugin-build": "^1.2.43-beta.12",
+    "@midwayjs/cli-plugin-faas": "^1.2.43-beta.12",
+    "@midwayjs/fcli-plugin-fc": "^1.2.43-beta.12",
+    "@midwayjs/serverless-app": "^2.8.5",
     "@midwayjs/vite-plugin-hooks": "^2.0.0-next.3",
     "@types/jest": "^26.0.20",
     "@types/koa-router": "^7.4.1",
@@ -32,5 +34,10 @@
     "jest": "^26.6.3",
     "typescript": "^4.1.2",
     "vite": "^2.0.1"
+  },
+  "resolutions": {
+    "@midwayjs/serverless-app": "2.8.6",
+    "@midwayjs/mock": "2.8.6",
+    "@midwayjs/locate": "1.5.0"
   }
 }

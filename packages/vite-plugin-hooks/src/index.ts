@@ -8,6 +8,7 @@ import { Plugin } from 'vite'
 import { getExpressDevPack } from '@midwayjs/faas-dev-pack'
 import URL from 'url'
 import { join } from 'path'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 function ignorePattern(req) {
   const { pathname, query } = URL.parse(req.url)
@@ -23,7 +24,7 @@ function hooksPlugin(): Plugin {
   const router = new ServerRouter(root, config)
 
   return {
-    name: 'vite:midway-hooks',
+    name: 'vite:@midwayjs/hooks',
     async transform(code: string, id: string) {
       if (!router.isLambdaFile(id)) {
         return null
@@ -40,6 +41,7 @@ function hooksPlugin(): Plugin {
       }
     },
     config: () => ({
+      plugin: [tsconfigPaths({ root })],
       optimizeDeps: {
         include: ['@midwayjs/hooks-core/lib/esm/request/sdk'],
       },
