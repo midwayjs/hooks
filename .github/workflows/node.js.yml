@@ -6,7 +6,7 @@ jobs:
   test:
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 15.x]
+        node-version: [10.x, 12.x, 14.x, 15.x]
         os: [ubuntu-latest]
         include:
           - node-version: 12.x
