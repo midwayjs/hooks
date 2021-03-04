@@ -5,4 +5,8 @@ const web = new Framework().configure({
   port: 7001,
 })
 
-Bootstrap.load(web).run()
+Bootstrap.load(web)
+  .run()
+  .then(() => {
+    console.log('Your application is running at http://localhost:7001')
+  })
