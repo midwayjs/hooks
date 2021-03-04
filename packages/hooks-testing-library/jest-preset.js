@@ -35,7 +35,6 @@ const common = {
 
 module.exports = {
   preset: 'ts-jest',
-  // maxWorkers: 1,
   projects: [
     {
       ...common,
@@ -44,10 +43,10 @@ module.exports = {
         name: 'SERVER',
         color: 'magenta',
       },
-      testEnvironment: 'node',
+      testEnvironment: path.resolve(__dirname, './jest-preset/environment.js'),
       testRegex: [
-        '\\.server\\.(spec|test)\\.(j|t)sx?$',
-        `(/${config.source}/.*|(\\.|/)(test|spec))\\.[jt]sx?$`,
+        '\\.server\\.(spec|test)\\.(t)sx?$',
+        `(/${config.source}/.*|(\\.|/)(test|spec))\\.[t]sx?$`,
       ],
       setupFilesAfterEnv: [
         path.resolve(__dirname, './jest-preset/setup-after-env.js'),

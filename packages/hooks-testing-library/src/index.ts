@@ -8,15 +8,34 @@ import { getConfig, getProjectRoot, EnhancedFunc } from '@midwayjs/hooks-core'
 import { join } from 'path'
 import { remove } from 'fs-extra'
 
-export async function createApp(baseDir?: string) {
-  const root = getProjectRoot(baseDir)
-  const config = getConfig(baseDir)
+export async function createAppImplementation(
+  baseDir: string,
+  isFunction: boolean
+) {
+  const root = getProjectRoot(baseDir || (global as any).testPath)
+  const config = getConfig(root)
 
-  const app: IMidwayApplication<any> = await createWebApp(root, {
-    baseDir: join(root, config.source),
-  })
+  const cwd = process.cwd()
+  process.chdir(root)
 
+  const app: IMidwayApplication<any> = await createWebApp(
+    root,
+    {
+      baseDir: join(root, config.source),
+    },
+    isFunction && '@midwayjs/serverless-app'
+  )
+
+  process.chdir(cwd)
   return new HooksApplication(app)
+}
+
+export async function createApp(baseDir?: string) {
+  return createAppImplementation(baseDir, false)
+}
+
+export async function createFunctionApp(baseDir?: string) {
+  return createAppImplementation(baseDir, true)
 }
 
 export class HooksApplication {

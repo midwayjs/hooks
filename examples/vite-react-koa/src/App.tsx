@@ -1,33 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import hello, { get, post } from './apis/lambda'
-console.log('[TCL] - matchAll', hello())
+import hello, { post } from './apis/lambda'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [message, setMessage] = useState('')
+
+  useEffect(() => {
+    hello().then((response) => setMessage(response.message))
+  }, [])
+
+  const handleClick = async () => {
+    const message = window.prompt('Type message!')
+    const response = await post(message)
+    alert(JSON.stringify(response, null, 2))
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Midway Hooks!</p>
+        <p>Message from ./apis/lambda: {message}</p>
         <p>
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
+          <button onClick={handleClick}>Send message to backend</button>
         </p>
         <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
+          <a
+            className="App-link"
+            href="https://www.yuque.com/midwayjs/faas/hooks"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn Midway Hooks
+          </a>
+          {' | '}
           <a
             className="App-link"
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            React Docs
           </a>
           {' | '}
           <a

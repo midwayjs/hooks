@@ -9,10 +9,6 @@ export function getProjectRoot(cwd?: string) {
 }
 
 export function getConfig(cwd?: string): InternalConfig {
-  if (global.MidwayConfig) {
-    return global.MidwayConfig
-  }
-
   const root = getProjectRoot(cwd)
 
   const configs = {
@@ -31,7 +27,6 @@ export function getConfig(cwd?: string): InternalConfig {
     },
   })
 
-  global.MidwayConfig = internalConfig
   return internalConfig
 }
 

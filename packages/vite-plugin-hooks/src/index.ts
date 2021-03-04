@@ -5,7 +5,7 @@ import {
   parseAndGenerateSDK,
 } from '@midwayjs/hooks-core'
 import { Plugin } from 'vite'
-import { getExpressDevPack } from '@midwayjs/faas-dev-pack'
+import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
 import URL from 'url'
 import { join } from 'path'
 import tsconfigPaths from 'vite-tsconfig-paths'
