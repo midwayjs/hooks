@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@midwayjs/hooks-core": "^2.0.0-next.5",
-    "@midwayjs/serverless-spec-builder": "^1.2.40",
+    "@midwayjs/serverless-spec-builder": "^1.2.45",
     "art-template": "^4.13.2",
     "debug": "^4.1.1",
     "lodash": "^4.17.15",
