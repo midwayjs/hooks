@@ -1845,7 +1845,14 @@
     egg-logger "^2.4.2"
     mz "^2.7.0"
 
-"@midwayjs/serverless-app@^2.8.2", "@midwayjs/serverless-app@^2.8.5":
+"@midwayjs/runtime-mock@^2.8.2":
+  version "2.8.2"
+  resolved "https://registry.npmjs.org/@midwayjs/runtime-mock/-/runtime-mock-2.8.2.tgz#06db56bf4defecc1acc2f52f63e493d3a1c3f8e4"
+  integrity sha512-ZPUc9XETuaHxHUPLWvKTLGqG8Oj+dV6MRUivDx4QbUSIocmIryQ84P022RH3nMbF35/8E720sOnpHmyBMsfhZg==
+  dependencies:
+    "@midwayjs/runtime-engine" "^2.8.2"
+
+"@midwayjs/serverless-app@^2.8.2", "@midwayjs/serverless-app@^2.8.7":
   version "2.8.7"
   resolved "https://registry.npmjs.org/@midwayjs/serverless-app/-/serverless-app-2.8.7.tgz#d28963ece9cb58b2578dc7bfd934dbb692622874"
   integrity sha512-KlfjR8d1j55LpJSA2APiEBw5XQFzJ4EAB1B92jWP7ptcjx1k4fMUI0Zi5T1wqAaW3n5bth4a1J7bF+q7ILL76Q==
@@ -1874,13 +1881,23 @@
     koa-compose "^4.1.0"
     node-fetch "^2.6.1"
 
-"@midwayjs/serverless-fc-starter@^2.7.0":
+"@midwayjs/serverless-fc-starter@^2.7.0", "@midwayjs/serverless-fc-starter@^2.8.7":
   version "2.8.7"
   resolved "https://registry.npmjs.org/@midwayjs/serverless-fc-starter/-/serverless-fc-starter-2.8.7.tgz#ab715636e7959ab427eb8be1912ac26b713a9e1b"
   integrity sha512-w8Ejy+0dT54viL3m6JSAbE7U4xG+bQX4yOxlg7T9lVrkoXMkCyx91qsYp/8Q/R53KP7/sm6yanKCDX+kXLZZbQ==
   dependencies:
     "@midwayjs/runtime-engine" "^2.8.2"
     "@midwayjs/serverless-http-parser" "^2.8.2"
+
+"@midwayjs/serverless-fc-trigger@^2.8.7":
+  version "2.8.7"
+  resolved "https://registry.npmjs.org/@midwayjs/serverless-fc-trigger/-/serverless-fc-trigger-2.8.7.tgz#41c09a45ebd2d3e4d3e77826ec39fe8e8a8c6698"
+  integrity sha512-xpQutIUX43yZ5DPqBhhagWOXtMQGuYS9DBZ2kNwqP5jRzfN43I2cvIZGIn+irvIygXj7ZoEeK7VLXmRNqgMySA==
+  dependencies:
+    "@midwayjs/runtime-mock" "^2.8.2"
+    "@midwayjs/serverless-fc-starter" "^2.8.7"
+    body-parser "^1.19.0"
+    express "^4.17.1"
 
 "@midwayjs/serverless-http-parser@^2.8.2":
   version "2.8.2"
