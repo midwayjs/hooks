@@ -45,8 +45,6 @@
     "examples/*"
   ],
   "resolutions": {
-    "@midwayjs/serverless-app": "2.8.6",
-    "@midwayjs/mock": "2.8.6",
     "@midwayjs/locate": "1.5.0"
   }
 }

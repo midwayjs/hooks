@@ -1,4 +1,9 @@
-import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
+import {
+  createConfiguration,
+  IMidwayApplication,
+  IMidwayContainer,
+  MidwayFrameworkType,
+} from '@midwayjs/core'
 import { Inject, Controller, Get, Post, Provide } from '@midwayjs/decorator'
 import { als } from '../runtime'
 import { EnhancedFunc } from '../types/common'
@@ -7,6 +12,8 @@ import { getConfig, getProjectRoot } from '../config'
 import { InternalConfig } from '../types/config'
 import { isProduction } from '@midwayjs/hooks-core'
 import { noop } from 'lodash'
+import { join } from 'path'
+import staticCache from 'koa-static-cache'
 
 /**
  * Create hooks component
@@ -53,7 +60,9 @@ class HooksComponent {
       }),
     })
 
-    configuration.onReady(noop).onStop(noop)
+    configuration
+      .onReady((container, app) => this.applyMiddleware(container, app))
+      .onStop(noop)
 
     return {
       Configuration: configuration,
@@ -169,5 +178,31 @@ class HooksComponent {
     })
 
     this.hasRender = true
+  }
+
+  private applyMiddleware(
+    container: IMidwayContainer,
+    app: IMidwayApplication
+  ) {
+    const type = app.getFrameworkType()
+
+    // Serve vite static html
+    if (
+      (type === MidwayFrameworkType.WEB_KOA ||
+        type === MidwayFrameworkType.FAAS) &&
+      isProduction()
+    ) {
+      const baseDir = app.getBaseDir()
+      ;(app as any).use(
+        staticCache({
+          dir: join(baseDir, '..', this.config.build.viteOutDir),
+          dynamic: true,
+          alias: {
+            '/': 'index.html',
+          },
+          buffer: true,
+        })
+      )
+    }
   }
 }

@@ -6,9 +6,5 @@ export default defineConfig({
       baseDir: 'lambda',
       basePath: '/api',
     },
-    {
-      baseDir: 'render',
-      basePath: '/',
-    },
   ],
 })

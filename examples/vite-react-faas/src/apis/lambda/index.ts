@@ -1,12 +1,12 @@
 import { useContext } from '@midwayjs/hooks'
-import { Context } from '@midwayjs/koa'
+import { Context } from '@midwayjs/faas'
 
-function useKoaContext() {
+function useFaaSContext() {
   return useContext<Context>()
 }
 
 export default async () => {
-  const ctx = useKoaContext()
+  const ctx = useFaaSContext()
   return {
     message: 'Hello World',
     method: ctx.method,
@@ -14,7 +14,7 @@ export default async () => {
 }
 
 export const post = async (message: string) => {
-  const ctx = useKoaContext()
+  const ctx = useFaaSContext()
 
   return {
     message: 'Your message: ' + message,
