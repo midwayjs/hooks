@@ -1,4 +1,14 @@
 export * from './hooks'
 export * from './hoc'
 export { hooks, defineConfig } from '@midwayjs/hooks-core'
-export { createConfiguration } from '@midwayjs/core'
+import { createConfiguration as createConfigurationFromCore } from '@midwayjs/core'
+
+const noop = () => {}
+
+export function createConfiguration(
+  options: Parameters<typeof createConfigurationFromCore>['0']
+) {
+  const configuration = createConfigurationFromCore(options)
+  configuration.onReady(noop).onStop(noop)
+  return configuration
+}
