@@ -18,7 +18,7 @@ export default (
         {
           test: /\.ts?$/,
           use: {
-            loader: path.resolve(__dirname, '../../lib/loader.js'),
+            loader: path.resolve(__dirname, '../../lib/index.js'),
           },
         },
         { test: /\.tsx?$/, loader: 'ts-loader' },
