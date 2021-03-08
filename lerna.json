@@ -6,7 +6,8 @@
       "npmClientArgs": ["--no-package-lock"]
     },
     "publish": {
-      "message": "chore(release): publish %s"
+      "message": "chore(release): publish %s",
+      "registry": "https://registry.npmjs.org/"
     }
   },
   "npmClient": "yarn",
