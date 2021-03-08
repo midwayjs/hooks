@@ -23,4 +23,5 @@ module.exports = {
     'examples',
   ],
   snapshotSerializers: ['jest-serializer-path', 'jest-snapshot-serializer-raw'],
+  testTimeout: 1000 * 30,
 }
