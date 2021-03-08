@@ -43,6 +43,7 @@ function HooksVitePlugin(): Plugin {
     config: () => ({
       plugin: [tsconfigPaths({ root })],
       optimizeDeps: {
+        exclude: ['@midwayjs/hooks'],
         include: ['@midwayjs/hooks-core/request'],
       },
       build: {
