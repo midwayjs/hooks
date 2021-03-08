@@ -6,6 +6,8 @@ import {
 } from '@midwayjs/hooks-core'
 import { loader } from 'webpack'
 
+process.env.MIDWAY_TS_MODE = 'true'
+
 export default async function loader(
   this: loader.LoaderContext,
   source: string
@@ -21,7 +23,6 @@ export default async function loader(
     return callback(null, source)
   }
 
-  // TODO Set webpack loader as pre
-  const sdk = await parseAndGenerateSDK(router, resourcePath, source)
+  const sdk = await parseAndGenerateSDK(router, resourcePath, source, 'cjs')
   callback(null, sdk)
 }

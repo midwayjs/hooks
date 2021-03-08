@@ -15,10 +15,15 @@ const resolveEntry = (path: string | string[]) => {
 async function compile(entry: string) {
   const stats = await compiler(resolveEntry(entry), root)
   const output = stats.toJson().modules.find((mod) => mod.name.includes(entry))
+
+  if (output?.modules?.length) {
+    return output.modules.find((mod) => mod.name.includes(entry)).source
+  }
+
   return output.source
 }
 
-describe.skip('hooks loader with proxy', () => {
+describe('hooks loader with proxy', () => {
   beforeEach(() => {
     process.chdir(root)
   })

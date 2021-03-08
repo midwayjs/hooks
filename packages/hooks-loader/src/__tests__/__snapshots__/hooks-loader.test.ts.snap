@@ -1,24 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`hooks loader with proxy Compile lambda 1`] = `
-const { createRequestProxy } = require('@midwayjs/hooks-core/lib/proxy/http');
-const baseUrl = '/api';
-module.exports = createRequestProxy(baseUrl);
+import { createRequest } from '@midwayjs/hooks-core/lib/request/sdk';
+
+export default createRequest('/api', 'default');
 `;
 
 exports[`hooks loader with proxy Compile render 1`] = `
-const { createRequestProxy } = require('@midwayjs/hooks-core/lib/proxy/http');
-const baseUrl = '/';
-module.exports = createRequestProxy(baseUrl);
+import { createRequest } from '@midwayjs/hooks-core/lib/request/sdk';
+
+export default createRequest('/', 'default');
+export const foo = createRequest('/', 'foo');
+export const bar = createRequest('/', 'bar');
 `;
 
 exports[`hooks loader with proxy non-lambda files should not be compiled 1`] = `
-"use strict";
-exports.__esModule = true;
-exports.isTrue = void 0;
-function isTrue(value) {
+export function isTrue(value) {
     return value === 'true' || value === true;
 }
-exports.isTrue = isTrue;
 
 `;

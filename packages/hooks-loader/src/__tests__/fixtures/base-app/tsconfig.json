@@ -2,6 +2,7 @@
   "exclude": ["lib", "node_modules", "**/__tests__"],
   "include": ["./src"],
   "compilerOptions": {
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "target": "ESNext"
   }
 }
