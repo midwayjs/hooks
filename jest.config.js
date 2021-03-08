@@ -24,4 +24,8 @@ module.exports = {
   ],
   snapshotSerializers: ['jest-serializer-path', 'jest-snapshot-serializer-raw'],
   testTimeout: 1000 * 30,
+  watchPlugins: [
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname',
+  ],
 }
