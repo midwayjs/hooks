@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`hooks loader with proxy Compile lambda 1`] = `
-import { createRequest } from '@midwayjs/hooks-core/lib/request/sdk';
+import { createRequest } from '@midwayjs/hooks-core/request';
 
 export default createRequest('/api', 'default');
 `;
 
 exports[`hooks loader with proxy Compile render 1`] = `
-import { createRequest } from '@midwayjs/hooks-core/lib/request/sdk';
+import { createRequest } from '@midwayjs/hooks-core/request';
 
 export default createRequest('/', 'default');
 export const foo = createRequest('/', 'foo');

@@ -13,6 +13,7 @@ module.exports = {
     '/fixtures/',
     'util.ts',
     'compiler.ts',
+    '/.serverless/',
   ],
   testRegex: ['(/__tests__/.*|(\\.|/)(test|spec))\\.[t]sx?$'],
   coveragePathIgnorePatterns: [

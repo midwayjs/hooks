@@ -4,8 +4,7 @@ import { init, parse } from 'es-module-lexer'
 export async function parseAndGenerateSDK(
   router: ServerRouter,
   sourceFilePath: string,
-  code: string,
-  module: 'cjs' | 'esm' = 'esm'
+  code: string
 ) {
   await init
   const [, exports] = parse(code)
@@ -17,9 +16,7 @@ export async function parseAndGenerateSDK(
   const baseUrl = router.getBaseUrl(sourceFilePath)
 
   return `
-import { createRequest } from '@midwayjs/hooks-core/lib/${
-    module === 'esm' ? 'esm/' : ''
-  }request/sdk';
+import { createRequest } from '@midwayjs/hooks-core/request';
 
 ${exports
   .map((id) => {
