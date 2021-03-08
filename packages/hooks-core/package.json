@@ -6,13 +6,6 @@
     "midway",
     "hooks"
   ],
-  "scripts": {
-    "build": "npm run build:cjs && npm run build:esm",
-    "build:cjs": "tsc",
-    "build:esm": "tsc --module es2015 --outDir lib/esm",
-    "clean": "rm -rf lib",
-    "prepublishOnly": "npm run build"
-  },
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
@@ -29,7 +22,6 @@
     "@midwayjs/bootstrap": "^2.8.6",
     "@midwayjs/core": "^2.8.6",
     "@midwayjs/decorator": "^2.8.4",
-    "@midwayjs/serverless-spec-builder": "^1.2.45",
     "asynchronous-local-storage": "^1.0.2",
     "axios": "^0.21.1",
     "chalk": "^4.1.0",
