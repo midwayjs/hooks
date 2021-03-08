@@ -34,12 +34,22 @@ describe('hooks loader with proxy', () => {
 
   test('Compile render', async () => {
     const output = await compile('render/[...index].ts')
-    expect(wrap(output)).toMatchSnapshot()
+    expect(wrap(output)).toMatchInlineSnapshot(`
+      import { createRequest } from '@midwayjs/hooks-core/request';
+
+      export default createRequest('/', 'default');
+      export const foo = createRequest('/', 'foo');
+      export const bar = createRequest('/', 'bar');
+    `)
   })
 
   test('Compile lambda', async () => {
     const output = await compile('lambda/index.ts')
-    expect(wrap(output)).toMatchSnapshot()
+    expect(wrap(output)).toMatchInlineSnapshot(`
+      import { createRequest } from '@midwayjs/hooks-core/request';
+
+      export default createRequest('/api', 'default');
+    `)
   })
 
   test('the second build should match the first.', async () => {
@@ -50,6 +60,11 @@ describe('hooks loader with proxy', () => {
 
   test('non-lambda files should not be compiled', async () => {
     const output = await compile('util/util.ts')
-    expect(wrap(output)).toMatchSnapshot()
+    expect(wrap(output)).toMatchInlineSnapshot(`
+      export function isTrue(value) {
+          return value === 'true' || value === true;
+      }
+
+    `)
   })
 })
