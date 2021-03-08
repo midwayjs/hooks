@@ -3,6 +3,7 @@
   "include": ["./src"],
   "compilerOptions": {
     "skipLibCheck": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "moduleResolution": "node"
   }
 }

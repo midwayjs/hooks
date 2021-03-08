@@ -16,12 +16,14 @@
     "watch": "preconstruct watch",
     "clean": "lerna clean && lerna run clean --parallel",
     "test": "jest --passWithNoTests",
-    "cov": "npm run test -- --coverage",
-    "ci": "npm run cov -- --ci",
+    "cov": "yarn test -- --coverage",
+    "ci": "yarn cov -- --ci",
     "format": "pretty-quick",
-    "postinstall": "preconstruct dev"
+    "postinstall": "preconstruct dev",
+    "publish": "yarn build && lerna publish"
   },
   "dependencies": {
+    "@babel/core": "^7.13.8",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.13.9",
     "@babel/preset-typescript": "^7.13.0",

@@ -7,11 +7,6 @@
     "hooks",
     "vite"
   ],
-  "scripts": {
-    "build": "tsc",
-    "clean": "rm -rf lib",
-    "prepublishOnly": "npm run build"
-  },
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
