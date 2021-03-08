@@ -36,40 +36,6 @@ Docs：[Getting Started](https://www.yuque.com/midwayjs/faas/quickstart_integrat
 > src/apis/lambda/index.ts
 
 ```typescript
-export async function get() {
-  return 'Hello Midway Hooks'
-}
-
-export async function post(name: string) {
-  return 'Hello ' + name
-}
-```
-
-> frontend
-> src/page/index.tsx
-
-```typescript
-import { get, post } from './apis/lambda'
-
-get().then((message) => {
-  // send GET request to /api/get
-  // Result: Hello Midway Hooks
-  console.log(message)
-})
-
-post('github').then((message) => {
-  // send Post request to /api/post, HTTP Body is { args: ['github'] }
-  // Result: Hello github
-  console.log(message)
-})
-```
-
-### Using Hooks
-
-> backend api
-> src/apis/lambda/index.ts
-
-```typescript
 import { useContext } from '@midwayjs/hooks'
 
 export async function getPath() {
@@ -102,38 +68,29 @@ $ npm i @midwayjs/faas-cli -g
 
 ### Create
 
-React
-
 ```bash
-$ f create --template-package=@midwayjs-examples/midway-hooks-react
-```
-
-Vue:
-
-```bash
-$ f create --template-package=@midwayjs-examples/midway-hooks-vue3
-```
-
-ICE.js:
-
-```bash
-$ npm init ice ice-app --template @icedesign/scaffold-midway-faas
+mw new my-app
 ```
 
 ### Run
 
 ```bash
-$ npm start
+$ npm run dev
 ```
 
-### Deploy
+### Deploy to custom server
 
 ```bash
-$ f deploy
+$ node boot.js
+```
+
+### Deploy to Serverless
+
+```bash
+$ npm run deploy
 ```
 
 ## Contribute
-
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`

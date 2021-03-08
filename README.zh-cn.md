@@ -34,40 +34,6 @@ Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/mid
 > src/apis/lambda/index.ts
 
 ```typescript
-export async function get() {
-  return 'Hello Midway Hooks'
-}
-
-export async function post(name: string) {
-  return 'Hello ' + name
-}
-```
-
-> frontend
-> src/page/index.tsx
-
-```typescript
-import { get, post } from './apis/lambda'
-
-get().then((message) => {
-  // 发送 GET 请求到 /api/get
-  // 返回值： Hello Midway Hooks
-  console.log(message)
-})
-
-post('github').then((message) => {
-  // 发送 Post 请求到 /api/post, HTTP Body is { args: ['github'] }
-  // 返回值： Hello github
-  console.log(message)
-})
-```
-
-### 使用 Hooks
-
-> backend api
-> src/apis/lambda/index.ts
-
-```typescript
 import { useContext } from '@midwayjs/hooks'
 
 export async function getPath() {
@@ -95,39 +61,31 @@ getPath().then((path) => {
 请先安装 faas-cli.
 
 ```bash
-$ npm i @midwayjs/faas-cli -g
+$ npm i @midwayjs/cli -g
 ```
 
 ### 创建
 
-React
-
 ```bash
-$ f create --template-package=@midwayjs-examples/midway-hooks-react
-```
-
-Vue:
-
-```bash
-$ f create --template-package=@midwayjs-examples/midway-hooks-vue3
-```
-
-ICE.js:
-
-```bash
-$ npm init ice ice-app --template @icedesign/scaffold-midway-faas
+mw new my-app
 ```
 
 ### 运行
 
 ```bash
-npm start
+$ npm run dev
 ```
 
-### 部署
+### 部署至服务器
 
 ```bash
-$ f deploy
+$ node boot.js
+```
+
+### 部署至 Serverless
+
+```bash
+$ npm run deploy
 ```
 
 ## Contribute
