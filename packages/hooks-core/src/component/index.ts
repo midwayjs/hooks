@@ -4,13 +4,14 @@ import {
   IMidwayContainer,
   MidwayFrameworkType,
 } from '@midwayjs/core'
+import { __decorate } from 'tslib'
 import { Inject, Controller, Get, Post, Provide } from '@midwayjs/decorator'
 import { als } from '../runtime'
 import { EnhancedFunc } from '../types/common'
 import { ServerRouter, getFunctionId } from '../router'
 import { getConfig, getProjectRoot } from '../config'
 import { InternalConfig } from '../types/config'
-import { isProduction } from '@midwayjs/hooks-core'
+import { isProduction } from '../util'
 import { noop } from 'lodash'
 import { join } from 'path'
 import staticCache from 'koa-static-cache'
@@ -139,27 +140,29 @@ class HooksComponent {
     const { containerId, httpMethod, httpPath, fn } = config
     const Method = httpMethod === 'GET' ? Get : Post
 
-    @Provide(containerId)
-    @Controller('/')
-    class FunctionContainer {
-      @Inject()
+    // Source: https://shorturl.at/pqI06
+    let FunctionContainer = class FunctionContainer {
       ctx: any
-
-      @Method(httpPath, { middleware: fn.middleware || [] })
       async handler() {
-        const bindCtx = {
-          ctx: this.ctx,
-        }
-
+        const bindCtx = { ctx: this.ctx }
         let args = this.ctx.request?.body?.args || []
         if (typeof args === 'string') {
           args = JSON.parse(args)
         }
-
         return await als.run(bindCtx, async () => fn(...args))
       }
     }
-
+    __decorate([Inject()], FunctionContainer.prototype, 'ctx', void 0)
+    __decorate(
+      [Method(httpPath, { middleware: fn.middleware || [] })],
+      FunctionContainer.prototype,
+      'handler',
+      null
+    )
+    FunctionContainer = __decorate(
+      [Provide(containerId), Controller('/')],
+      FunctionContainer
+    )
     this.container.bind(containerId, FunctionContainer)
   }
 

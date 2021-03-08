@@ -12,17 +12,20 @@
   },
   "private": true,
   "scripts": {
-    "build": "tsc -b packages",
-    "watch": "tsc --build --watch packages",
-    "update:tsconfig": "workspaces-to-typescript-project-references && npm run format",
+    "build": "preconstruct build",
+    "watch": "preconstruct watch",
     "clean": "lerna clean && lerna run clean --parallel",
     "test": "jest --passWithNoTests",
     "cov": "npm run test -- --coverage",
     "ci": "npm run cov -- --ci",
-    "format": "pretty-quick"
+    "format": "pretty-quick",
+    "postinstall": "preconstruct dev"
   },
   "dependencies": {
-    "@monorepo-utils/workspaces-to-typescript-project-references": "^2.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-typescript": "^7.13.0",
+    "@preconstruct/cli": "^2.0.6",
     "codecov": "^3.8.0",
     "execa": "^4.0.3",
     "husky": "^4.2.3",
@@ -43,5 +46,10 @@
   "workspaces": [
     "packages/*",
     "examples/*"
-  ]
+  ],
+  "preconstruct": {
+    "packages": [
+      "packages/*"
+    ]
+  }
 }

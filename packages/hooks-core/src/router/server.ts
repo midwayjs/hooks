@@ -1,7 +1,7 @@
 import { HooksRouter } from './base'
 import { join } from 'upath'
 import { InternalConfig } from '../types/config'
-import { isProduction } from '@midwayjs/hooks-core'
+import { isProduction } from '../util'
 
 export class ServerRouter extends HooksRouter {
   config: InternalConfig

@@ -1,9 +1,39 @@
-import type { LambdaParam } from '../types/http'
 import axios from 'axios'
+import { LambdaParam } from '../types/http'
 
-export const defaults = axios.defaults
+const defaults = axios.defaults
 
-export async function request(param: LambdaParam) {
+async function request(param: LambdaParam) {
   const response = await axios(param)
   return response.data
 }
+/**
+ * @internal private api
+ */
+
+function createRequest(baseUrl, name) {
+  return (...args) => {
+    return request({
+      url: getUrl(baseUrl, name),
+      method: args.length === 0 ? 'GET' : 'POST',
+      data: {
+        args,
+      },
+      meta: {},
+    })
+  }
+}
+
+function getUrl(baseUrl, name) {
+  if (name === 'default') {
+    return baseUrl
+  }
+
+  if (baseUrl.endsWith('/')) {
+    return `${baseUrl}${name}`
+  }
+
+  return `${baseUrl}/${name}`
+}
+
+export { createRequest, defaults, request }

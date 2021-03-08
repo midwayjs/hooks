@@ -18,7 +18,10 @@ export default (
         {
           test: /\.ts?$/,
           use: {
-            loader: path.resolve(__dirname, '../../lib/index.js'),
+            loader: path.resolve(
+              __dirname,
+              '../../dist/midwayjs-hooks-loader.cjs.js'
+            ),
           },
         },
         { test: /\.tsx?$/, loader: 'ts-loader' },

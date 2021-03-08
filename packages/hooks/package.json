@@ -14,7 +14,8 @@
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "dist/midwayjs-hooks.cjs.js",
+  "module": "dist/midwayjs-hooks.esm.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:midwayjs/hooks.git"
@@ -26,5 +27,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "request.ts"
+    ]
   }
 }

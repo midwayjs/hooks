@@ -18,17 +18,6 @@
     "types": ["vite/client", "jest"]
   },
   "include": ["./src"],
-  "references": [
-    {
-      "path": "../../packages/hooks"
-    },
-    {
-      "path": "../../packages/hooks-core"
-    },
-    {
-      "path": "../../packages/vite-plugin-hooks"
-    }
-  ],
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"

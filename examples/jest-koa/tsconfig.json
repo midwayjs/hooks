@@ -3,19 +3,7 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "outDir": "lib",
-    "tsBuildInfoFile": "./lib/tsconfig.tsbuildinfo"
+    "outDir": "lib"
   },
-  "exclude": ["lib", "node_modules", "**/__tests__"],
-  "references": [
-    {
-      "path": "../../packages/hooks"
-    },
-    {
-      "path": "../../packages/hooks-core"
-    },
-    {
-      "path": "../../packages/hooks-testing-library"
-    }
-  ]
+  "exclude": ["lib", "node_modules", "**/__tests__"]
 }

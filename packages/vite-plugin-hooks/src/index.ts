@@ -18,7 +18,7 @@ function ignorePattern(req) {
 
 process.env.MIDWAY_TS_MODE = 'true'
 
-function hooksPlugin(): Plugin {
+function HooksVitePlugin(): Plugin {
   const root = getProjectRoot()
   const config = getConfig()
   const router = new ServerRouter(root, config)
@@ -43,7 +43,7 @@ function hooksPlugin(): Plugin {
     config: () => ({
       plugin: [tsconfigPaths({ root })],
       optimizeDeps: {
-        include: ['@midwayjs/hooks-core/lib/esm/request/sdk'],
+        include: ['@midwayjs/hooks-core/request'],
       },
       build: {
         manifest: true,
@@ -64,6 +64,4 @@ function hooksPlugin(): Plugin {
   }
 }
 
-module.exports = hooksPlugin
-
-export default hooksPlugin
+export default HooksVitePlugin
