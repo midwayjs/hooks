@@ -2218,6 +2218,14 @@
     light-spinner "^1.0.0"
     minimist "^1.2.5"
 
+"@midwayjs/command-core@^1.2.49":
+  version "1.2.49"
+  resolved "https://registry.yarnpkg.com/@midwayjs/command-core/-/command-core-1.2.49.tgz#80a6034c4f73c6111ecc2bf1f126c1b2bddaf8c1"
+  integrity sha512-C62hnwyvsnNM4VB9ZvX3uC1aIRO+AepLqYDL8YDHTkGE+lRHTD4WittbNCVyJGsMuxxNA+LPVfdRzS9oM/odhQ==
+  dependencies:
+    light-spinner "^1.0.0"
+    minimist "^1.2.5"
+
 "@midwayjs/core@^2.8.6", "@midwayjs/core@^2.8.7":
   version "2.8.7"
   resolved "https://registry.npmjs.org/@midwayjs/core/-/core-2.8.7.tgz#6c7d29d444e373b7a54cf262ca1baf5bd7be67a9"
@@ -2291,16 +2299,16 @@
   dependencies:
     "@midwayjs/command-core" "^1.2.45"
 
-"@midwayjs/fcli-plugin-fc@^1.2.45":
-  version "1.2.45"
-  resolved "https://registry.npmjs.org/@midwayjs/fcli-plugin-fc/-/fcli-plugin-fc-1.2.45.tgz#32d4665a8e1f05ea57d48406a25663f07690ff54"
-  integrity sha512-YlG6WV38J5PytqJezpiaTWNFd+6Odq22vBSUFEHuaWHmCJVYxV7YWXRbgLUf9EE4rVspjuvrU+1iE69GAm4LJQ==
+"@midwayjs/fcli-plugin-fc@^1.2.49":
+  version "1.2.49"
+  resolved "https://registry.yarnpkg.com/@midwayjs/fcli-plugin-fc/-/fcli-plugin-fc-1.2.49.tgz#c95898a29f0cdfacd4ce5a3fe0d7d7239270498e"
+  integrity sha512-3XyhCqfwAnDuPRsBhpJXkY46pTRVn5IvEQJollcekrXSyd9lp0ViRzOIRideh0WROu+Yr9X+wUx25z7Ho9oe3A==
   dependencies:
     "@alicloud/fun" "^3.1.3"
-    "@midwayjs/command-core" "^1.2.45"
+    "@midwayjs/command-core" "^1.2.49"
     "@midwayjs/serverless-fc-starter" "^2.8.7"
     "@midwayjs/serverless-fc-trigger" "^2.8.7"
-    "@midwayjs/serverless-spec-builder" "^1.2.45"
+    "@midwayjs/serverless-spec-builder" "^1.2.49"
     request "^2.88.2"
 
 "@midwayjs/fcli-plugin-package@^1.2.45":
@@ -2502,6 +2510,16 @@
   version "1.2.45"
   resolved "https://registry.npmjs.org/@midwayjs/serverless-spec-builder/-/serverless-spec-builder-1.2.45.tgz#e2b9d260f0b357b363e984dca7e9dd7379973594"
   integrity sha512-9GjFv6y7Ml7B6spGh2l15KI98t2wpGpCe7Kg9r9kZa36vbUUgFjD7cqFGYMUZgqJUYLRfVYsi/yHfSzE8hm8zA==
+  dependencies:
+    ejs "^3.1.3"
+    js-yaml "^3.13.0"
+    json-cycle "^1.3.0"
+    mkdirp "^0.5.1"
+
+"@midwayjs/serverless-spec-builder@^1.2.49":
+  version "1.2.49"
+  resolved "https://registry.yarnpkg.com/@midwayjs/serverless-spec-builder/-/serverless-spec-builder-1.2.49.tgz#119eedbb735a4b65fbfb924e762a6c2f826c8c20"
+  integrity sha512-PG+U4DANdz6auFV1tqCLaeU9TGGKDnISxVKFaMEr/Opru3ZMGZy7+UQgh1iqV/FchU6EryV8mNDy9mzbAS06cw==
   dependencies:
     ejs "^3.1.3"
     js-yaml "^3.13.0"
