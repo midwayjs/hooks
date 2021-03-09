@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="./assets/midway-logo.png">
-</p>
+<img src="https://img.alicdn.com/imgextra/i1/O1CN01xQLU011T2R7PHksIv_!!6000000002324-2-tps-1200-616.png" width="1000" alt="Midway Logo" />
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@midwayjs/hooks">
@@ -21,9 +19,10 @@ Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/mid
 
 - ☁️&nbsp;&nbsp;全栈，在 src 一个目录中开发前后端代码
 - 🌈&nbsp;&nbsp;"零" API，从后端 import 函数，调用时自动转换为 API 请求
-- 🌍 使用 "React Hooks | Vue composition" 开发后端
-- 📦 跨前端框架. 支持 React / Vue3 / ICE.js
-- ⚙️ 基于 [Midway](https://github.com/midwayjs/midway), 提供 Web 及 Serverless 场景下的完整支持.
+- 🌍 使用 "React Hooks | Vue composition Api" 开发后端
+- ⚡️&nbsp;&nbsp;极快的启动速度（小于 3 秒）
+- ⚙️&nbsp;&nbsp;使用 Vite，支持 React/Vue 等框架
+- ✈️&nbsp;&nbsp;可部署至 Server 或者 Serverless
 - 🛡 完善的 TypeScript 支持
 
 ## 🌰 Demo
