@@ -14,10 +14,9 @@
   "scripts": {
     "build": "preconstruct build",
     "watch": "preconstruct watch",
-    "clean": "lerna clean && lerna run clean --parallel",
     "test": "jest --passWithNoTests",
-    "cov": "yarn test -- --coverage",
-    "ci": "yarn cov -- --ci",
+    "cov": "yarn test --coverage",
+    "ci": "yarn cov --ci",
     "format": "pretty-quick",
     "postinstall": "preconstruct dev",
     "publish": "yarn build && lerna publish"
