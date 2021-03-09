@@ -2,7 +2,10 @@ import memoryfs from 'memory-fs'
 import path from 'path'
 import webpack from 'webpack'
 
-export default (fixture: string | string[], root: string): Promise<webpack.Stats> => {
+export default (
+  fixture: string | string[],
+  root: string
+): Promise<webpack.Stats> => {
   const compiler = webpack({
     context: root,
     entry: fixture,
@@ -15,7 +18,10 @@ export default (fixture: string | string[], root: string): Promise<webpack.Stats
         {
           test: /\.ts?$/,
           use: {
-            loader: path.resolve(__dirname, '../../lib/index.js'),
+            loader: path.resolve(
+              __dirname,
+              '../../dist/midwayjs-hooks-loader.cjs.js'
+            ),
           },
         },
         { test: /\.tsx?$/, loader: 'ts-loader' },
@@ -27,7 +33,9 @@ export default (fixture: string | string[], root: string): Promise<webpack.Stats
 
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
-      if (err || stats.hasErrors()) reject(stats)
+      if (err || stats.hasErrors()) {
+        reject(stats.compilation.errors)
+      }
 
       resolve(stats)
     })

@@ -1,28 +1,23 @@
 {
-  "compileOnSave": true,
   "compilerOptions": {
     "target": "ES2018",
-    "incremental": true,
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "inlineSourceMap": true,
     "noImplicitThis": false,
     "noUnusedLocals": false,
     "stripInternal": false,
     "pretty": true,
     "declaration": true,
-    "allowSyntheticDefaultImports": true,
-    "outDir": "lib",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "downlevelIteration": true,
-    "baseUrl": "./packages",
+    "baseUrl": "./",
     "paths": {
-      "@midwayjs/*": ["./*/src"]
+      "@midwayjs/*": ["packages/*/src"]
     },
-    "composite": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noEmit": true
   },
-  "exclude": ["dist", "lib", "node_modules", "**/__tests__"]
+  "exclude": ["*.test.ts", "dist"]
 }

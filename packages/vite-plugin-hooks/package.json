@@ -1,0 +1,28 @@
+{
+  "name": "@midwayjs/vite-plugin-hooks",
+  "version": "2.0.0",
+  "description": "Vite plugin for midway hooks support",
+  "keywords": [
+    "midway",
+    "hooks",
+    "vite"
+  ],
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "main": "dist/midwayjs-vite-plugin-hooks.cjs.js",
+  "module": "dist/midwayjs-vite-plugin-hooks.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "dependencies": {
+    "@midwayjs/hooks-core": "^2.0.0",
+    "@midwayjs/serverless-dev-pack": "^1.2.49",
+    "vite": "^2.0.4",
+    "vite-tsconfig-paths": "^2.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

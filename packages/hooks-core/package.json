@@ -1,0 +1,47 @@
+{
+  "name": "@midwayjs/hooks-core",
+  "version": "2.0.0",
+  "description": "Midway Hooks Core",
+  "keywords": [
+    "midway",
+    "hooks"
+  ],
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "main": "dist/midwayjs-hooks-core.cjs.js",
+  "module": "dist/midwayjs-hooks-core.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@midwayjs/bootstrap": "^2.8.9",
+    "@midwayjs/core": "^2.8.9",
+    "@midwayjs/decorator": "^2.8.4",
+    "asynchronous-local-storage": "^1.0.2",
+    "axios": "^0.21.1",
+    "chalk": "^4.1.0",
+    "es-module-lexer": "^0.4.0",
+    "is-path-inside": "^3.0.2",
+    "jiti": "^1.6.3",
+    "koa-static-cache": "^5.1.4",
+    "lodash": "^4.17.21",
+    "pkg-dir": "^5.0.0",
+    "tslib": "^2.1.0",
+    "upath": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/es-module-lexer": "^0.3.0",
+    "@types/koa-static-cache": "^5.1.0"
+  },
+  "preconstruct": {
+    "entrypoints": [
+      "request/index.ts",
+      "index.ts"
+    ]
+  }
+}

@@ -1,33 +1,32 @@
 {
   "name": "@midwayjs/hooks",
-  "version": "1.0.4-beta.1",
+  "version": "2.0.0",
   "description": "The next generation of integrated front and back-end application development solutions",
   "keywords": [
     "midway",
     "hooks"
   ],
-  "scripts": {
-    "build": "tsc",
-    "clean": "rm -rf lib",
-    "prepublishOnly": "npm run build"
-  },
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "dist/midwayjs-hooks.cjs.js",
+  "module": "dist/midwayjs-hooks.esm.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:midwayjs/hooks.git"
   },
-  "devDependencies": {
-    "@midwayjs/faas": "2",
-    "@types/debug": "^4.1.5"
-  },
   "dependencies": {
-    "@midwayjs/hooks-request": "^1.0.4-beta.1",
-    "debug": "^4.3.1"
+    "@midwayjs/core": "^2.8.9",
+    "@midwayjs/hooks-core": "^2.0.0",
+    "@midwayjs/hooks-testing-library": "^2.0.0"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "request.ts"
+    ]
   }
 }
