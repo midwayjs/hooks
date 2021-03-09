@@ -1,6 +1,6 @@
 {
   "name": "midway-hooks",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "Midway Hooks - 更快的一体化应用交付方案",
   "main": "index.js",
   "author": "Lxxyx <lxxyxzj@gmail.com>",
@@ -12,28 +12,33 @@
   },
   "private": true,
   "scripts": {
-    "build": "tsc -b packages",
-    "watch": "tsc --build --watch packages",
-    "update:tsconfig": "workspaces-to-typescript-project-references",
-    "clean": "lerna clean && lerna run clean --parallel",
+    "build": "preconstruct build",
+    "watch": "preconstruct watch",
     "test": "jest --passWithNoTests",
-    "cov": "npm run test -- --coverage",
-    "ci": "npm run cov -- --ci",
-    "format": "pretty-quick"
+    "cov": "yarn test --coverage",
+    "ci": "yarn cov --ci",
+    "format": "pretty-quick",
+    "postinstall": "preconstruct dev",
+    "publish": "yarn build && lerna publish"
   },
-  "devDependencies": {
-    "@monorepo-utils/workspaces-to-typescript-project-references": "^2.4.3",
+  "dependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-typescript": "^7.13.0",
+    "@preconstruct/cli": "^2.0.6",
     "codecov": "^3.8.0",
     "execa": "^4.0.3",
     "husky": "^4.2.3",
     "jest": "^26.6.3",
     "jest-serializer-path": "^0.1.15",
     "jest-snapshot-serializer-raw": "^1.1.0",
+    "jest-watch-typeahead": "^0.6.1",
     "lerna": "latest",
     "prettier": "^2.0.2",
     "pretty-quick": "^3.1.0",
     "ts-jest": "^26.4.4",
-    "typescript": "^4.1.3"
+    "typescript": "^4.2.3"
   },
   "husky": {
     "hooks": {
@@ -41,6 +46,12 @@
     }
   },
   "workspaces": [
-    "packages/*"
-  ]
+    "packages/*",
+    "examples/*"
+  ],
+  "preconstruct": {
+    "packages": [
+      "packages/*"
+    ]
+  }
 }

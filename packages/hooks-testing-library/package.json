@@ -1,0 +1,37 @@
+{
+  "name": "@midwayjs/hooks-testing-library",
+  "version": "2.0.0",
+  "description": "The testing library for midway hooks",
+  "keywords": [
+    "midway",
+    "hooks"
+  ],
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "main": "dist/midwayjs-hooks-testing-library.cjs.js",
+  "module": "dist/midwayjs-hooks-testing-library.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.5"
+  },
+  "dependencies": {
+    "@midwayjs/hooks-core": "^2.0.0",
+    "@midwayjs/mock": "^2.8.9",
+    "@testing-library/jest-dom": "^5.11.9",
+    "debug": "^4.3.1",
+    "esbuild": "^0.8.56",
+    "esbuild-jest": "^0.5.0",
+    "fs-extra": "^9.1.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-environment-node": "^26.6.2",
+    "jest-watch-typeahead": "^0.6.1",
+    "ts-jest": "^26.5.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="./assets/midway-logo.png">
-</p>
+<img src="https://img.alicdn.com/imgextra/i1/O1CN01xQLU011T2R7PHksIv_!!6000000002324-2-tps-1200-616.png" width="1000" alt="Midway Logo" />
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@midwayjs/hooks">
@@ -13,56 +11,23 @@
   <img src="https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge">
 </p>
 
-# 更快的全栈框架
+# 全栈框架：更快 & 更具生产力
 
-Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/midwayjs/faas/quickstart_integration)
+Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/midwayjs/midway_v2/integration_introduction)
 
 ## ✨ 特性
 
 - ☁️&nbsp;&nbsp;全栈，在 src 一个目录中开发前后端代码
 - 🌈&nbsp;&nbsp;"零" API，从后端 import 函数，调用时自动转换为 API 请求
-- 🌍 使用 "React Hooks | Vue composition" 开发后端
-- 📦 跨前端框架. 支持 React / Vue3 / ICE.js
-- ⚙️ 基于 [Midway](https://github.com/midwayjs/midway), 提供 Web 及 Serverless 场景下的完整支持.
+- 🌍 使用 "React Hooks | Vue composition Api" 开发后端
+- ⚡️&nbsp;&nbsp;极快的启动速度（小于 3 秒）
+- ⚙️&nbsp;&nbsp;使用 Vite，支持 React/Vue 等框架
+- ✈️&nbsp;&nbsp;可部署至 Server 或者 Serverless
 - 🛡 完善的 TypeScript 支持
 
 ## 🌰 Demo
 
 ### 后端 API 与前端调用
-
-> backend api
-> src/apis/lambda/index.ts
-
-```typescript
-export async function get() {
-  return 'Hello Midway Hooks'
-}
-
-export async function post(name: string) {
-  return 'Hello ' + name
-}
-```
-
-> frontend
-> src/page/index.tsx
-
-```typescript
-import { get, post } from './apis/lambda'
-
-get().then((message) => {
-  // 发送 GET 请求到 /api/get
-  // 返回值： Hello Midway Hooks
-  console.log(message)
-})
-
-post('github').then((message) => {
-  // 发送 Post 请求到 /api/post, HTTP Body is { args: ['github'] }
-  // 返回值： Hello github
-  console.log(message)
-})
-```
-
-### 使用 Hooks
 
 > backend api
 > src/apis/lambda/index.ts
@@ -95,39 +60,31 @@ getPath().then((path) => {
 请先安装 faas-cli.
 
 ```bash
-$ npm i @midwayjs/faas-cli -g
+$ npm i @midwayjs/cli -g
 ```
 
 ### 创建
 
-React
-
 ```bash
-$ f create --template-package=@midwayjs-examples/midway-hooks-react
-```
-
-Vue:
-
-```bash
-$ f create --template-package=@midwayjs-examples/midway-hooks-vue3
-```
-
-ICE.js:
-
-```bash
-$ npm init ice ice-app --template @icedesign/scaffold-midway-faas
+mw new my-app
 ```
 
 ### 运行
 
 ```bash
-npm start
+$ npm run dev
 ```
 
-### 部署
+### 部署至服务器
 
 ```bash
-$ f deploy
+$ node boot.js
+```
+
+### 部署至 Serverless
+
+```bash
+$ npm run deploy
 ```
 
 ## Contribute

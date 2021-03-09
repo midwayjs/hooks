@@ -1,7 +1,14 @@
-export * from './api/useApp'
-export * from './api/useConfig'
-export * from './api/useContext'
-export * from './api/useInject'
-export * from './api/useLogger'
-export * from './api/usePlugin'
-export * from './hoc/withController'
+export * from './hooks'
+export * from './hoc'
+export { hooks, defineConfig } from '@midwayjs/hooks-core'
+import { createConfiguration as createConfigurationFromCore } from '@midwayjs/core'
+
+const noop = () => {}
+
+export function createConfiguration(
+  options: Parameters<typeof createConfigurationFromCore>['0']
+) {
+  const configuration = createConfigurationFromCore(options)
+  configuration.onReady(noop).onStop(noop)
+  return configuration
+}
