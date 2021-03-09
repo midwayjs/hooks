@@ -2147,7 +2147,7 @@
   resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-2.8.7.tgz#ce5d37762c84b65d4242607c77d05018c887c97b"
   integrity sha512-TUGrvZTl3He4Xdm95ZoiswUQpO7lIjJeZa8jfdLNLTsIHvqTUZcsqxXf6sILgC+QWZtQn3sV+fPDy5ptxn5LUg==
 
-"@midwayjs/bootstrap@^2.8.9":
+"@midwayjs/bootstrap@^2.8.8", "@midwayjs/bootstrap@^2.8.9":
   version "2.8.9"
   resolved "https://registry.yarnpkg.com/@midwayjs/bootstrap/-/bootstrap-2.8.9.tgz#3835ac06950cf45c3c78c5f5a577c02637ef5762"
   integrity sha512-wgtxhMVZy1QyeyofH8D/fjvobKqJaFKOzTglq9evbNSKhn1NxtjVk0R8zS0cC+2DkoWMwgtoxJu0IfDw+ct+9Q==
@@ -2393,12 +2393,25 @@
     winston-daily-rotate-file "^4.5.0"
     winston-transport "^4.4.0"
 
-"@midwayjs/mock@^2.8.0", "@midwayjs/mock@^2.8.6":
+"@midwayjs/mock@^2.8.0":
   version "2.8.7"
   resolved "https://registry.npmjs.org/@midwayjs/mock/-/mock-2.8.7.tgz#088a97032c1da4a6c2774af0ee8b79e5f8f9cd5d"
   integrity sha512-KKDLYyFDEP3kI+Of8vBLElyUq36bvsthqHnSxGkta+DU2sQkKsab37OPV1fEe62sT/TE/Quv49QsK37VZnMPOw==
   dependencies:
     "@midwayjs/bootstrap" "^2.8.7"
+    "@midwayjs/decorator" "^2.8.4"
+    "@midwayjs/logger" "^2.8.2"
+    egg-mock "^3.21.0"
+    fs-extra "^8.0.1"
+    power-assert "^1.6.1"
+    supertest "^4.0.2"
+
+"@midwayjs/mock@^2.8.8":
+  version "2.8.8"
+  resolved "https://registry.yarnpkg.com/@midwayjs/mock/-/mock-2.8.8.tgz#819c93220aba2b8e4c7b50cb8beb29c4cfe8bbd8"
+  integrity sha512-Iqs6l05Pq4lxu+2g6vzD/xMohlT3j/h6BnldpPSntBz91CiqmPxkGeSMgFlQFlf+QJ7mX0tZhNF3la6cKSBF0A==
+  dependencies:
+    "@midwayjs/bootstrap" "^2.8.8"
     "@midwayjs/decorator" "^2.8.4"
     "@midwayjs/logger" "^2.8.2"
     egg-mock "^3.21.0"
