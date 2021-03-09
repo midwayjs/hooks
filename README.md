@@ -11,11 +11,11 @@
   <img src="https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge">
 </p>
 
-# A Faster Full Stack Framework
+# Full Stack Framework: Faster & More Productive
 
 > [中文 README](./README.zh-cn.md)
 
-Docs：[Getting Started](https://www.yuque.com/midwayjs/faas/quickstart_integration?translate=en)
+Docs：[Getting Started](https://www.yuque.com/midwayjs/midway_v2/integration_introduction?translate=en)
 
 ## ✨ Features
 
