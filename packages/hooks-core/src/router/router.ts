@@ -1,34 +1,48 @@
 import inside from 'is-path-inside'
 import { basename, dirname, extname, join, relative, toUnix } from 'upath'
 import chalk from 'chalk'
+import { InternalConfig, isProduction } from '@midwayjs/hooks-core'
 
 const LambdaMethodPrefix = '_'
 
-export abstract class HooksRouter {
+export class ServerRouter {
   root: string
   routes = new Map<string, string>()
 
-  private readonly duplicateWarning: Function
+  config: InternalConfig
 
-  protected constructor(root: string, duplicateWarning = duplicateLogger) {
+  constructor(root: string, config: InternalConfig) {
     this.root = root
-    this.duplicateWarning = duplicateWarning
+    this.config = config
   }
 
   // src/apis
-  abstract get source(): string
+  get source() {
+    if (isProduction()) {
+      return join(this.root, this.config.build.outDir)
+    }
+    return join(this.root, this.config.source)
+  }
+
+  getRouteConfigBySourceFilePath(sourceFilePath: string) {
+    const { routes } = this.config
+    const dirs = routes.map((route) => this.getLambdaDirectory(route.baseDir))
+    const index = dirs.findIndex((dir) => this.inside(sourceFilePath, dir))
+    const route = routes[index]
+
+    if (!route) {
+      return null
+    }
+
+    return {
+      underscore: false,
+      ...route,
+    }
+  }
 
   // src/apis/lambda
   getLambdaDirectory(baseDir: string) {
     return join(this.source, baseDir)
-  }
-
-  abstract getRouteConfigBySourceFilePath(
-    sourceFilePath: string
-  ): {
-    baseDir: string
-    basePath: string
-    underscore?: boolean
   }
 
   isLambdaFile(sourceFilePath: string) {
@@ -110,7 +124,7 @@ export abstract class HooksRouter {
      */
     const existPath = this.routes.get(api)
     if (existPath && existPath !== toUnix(sourceFilePath)) {
-      this.duplicateWarning(this.root, existPath, sourceFilePath, api)
+      duplicateLogger(this.root, existPath, sourceFilePath, api)
     }
     this.routes.set(api, toUnix(sourceFilePath))
 
