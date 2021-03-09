@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@midwayjs/hooks": "^2.0.0",
-    "@midwayjs/koa": "^2.8.6",
+    "@midwayjs/koa": "^2.8.9",
     "koa-bodyparser": "^4.3.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
