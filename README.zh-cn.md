@@ -11,9 +11,9 @@
   <img src="https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge">
 </p>
 
-# 更快的全栈框架
+# 全栈框架：更快 & 更具生产力
 
-Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/midwayjs/faas/quickstart_integration)
+Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/midwayjs/midway_v2/integration_introduction)
 
 ## ✨ 特性
 
