@@ -23,7 +23,7 @@
     "@midwayjs/fcli-plugin-fc": "^1.2.49",
     "@midwayjs/hooks-testing-library": "^2.0.0",
     "@midwayjs/serverless-app": "^2.8.7",
-    "@midwayjs/serverless-fc-trigger": "^2.8.7",
+    "@midwayjs/serverless-fc-trigger": "^2.8.9",
     "@midwayjs/vite-plugin-hooks": "^2.0.0",
     "@types/jest": "^26.0.20",
     "@types/koa-router": "^7.4.1",
