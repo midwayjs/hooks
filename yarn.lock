@@ -2193,15 +2193,15 @@
     koa "^2.11.0"
     light-spinner "^1.0.1"
 
-"@midwayjs/cli-plugin-faas@^1.2.45":
-  version "1.2.45"
-  resolved "https://registry.npmjs.org/@midwayjs/cli-plugin-faas/-/cli-plugin-faas-1.2.45.tgz#ed8c7c5b4303fc332e8fe8a9f0f37798d7c85305"
-  integrity sha512-TbXmxp91PNfmRGhoHOvCZp6sanZzOhnAcZFGYyJ9dYSCHZbc2YIjXaRdrD3Dm0P+APuLO0oNJMNbeCiUa7Kxtw==
+"@midwayjs/cli-plugin-faas@^1.2.49":
+  version "1.2.49"
+  resolved "https://registry.yarnpkg.com/@midwayjs/cli-plugin-faas/-/cli-plugin-faas-1.2.49.tgz#9c2659540d3205428a3557e35e23f7e84d1f3481"
+  integrity sha512-79EpebEmzbhjYdBgSse3JYOPYH3lBv1w6zzcojDDhumDFaZR0ldRgYrGaMEBuIVbfPJ0QZzdn1ojcpcF9HRl9A==
   dependencies:
-    "@midwayjs/command-core" "^1.2.45"
-    "@midwayjs/fcli-plugin-deploy" "^1.2.45"
-    "@midwayjs/fcli-plugin-package" "^1.2.45"
-    "@midwayjs/serverless-spec-builder" "^1.2.45"
+    "@midwayjs/command-core" "^1.2.49"
+    "@midwayjs/fcli-plugin-deploy" "^1.2.49"
+    "@midwayjs/fcli-plugin-package" "^1.2.49"
+    "@midwayjs/serverless-spec-builder" "^1.2.49"
 
 "@midwayjs/cli@^1.2.45":
   version "1.2.45"
@@ -2306,12 +2306,12 @@
     "@midwayjs/simple-lock" "^1.1.4"
     koa-compose "^4.1.0"
 
-"@midwayjs/fcli-plugin-deploy@^1.2.45":
-  version "1.2.45"
-  resolved "https://registry.npmjs.org/@midwayjs/fcli-plugin-deploy/-/fcli-plugin-deploy-1.2.45.tgz#a31cc961a3166a2888e4df4d0440063cade32783"
-  integrity sha512-wSRXFRhb/FsmoO7jgLB5nVqu6BfxSOhFU2Y7nLKJFH09kK2+zJLtqgbusOpfn3V3WlOVqfUkm9VmZ8mlFb/IYw==
+"@midwayjs/fcli-plugin-deploy@^1.2.49":
+  version "1.2.49"
+  resolved "https://registry.yarnpkg.com/@midwayjs/fcli-plugin-deploy/-/fcli-plugin-deploy-1.2.49.tgz#c20976d971929b3d353ecb931eba0395fe749efb"
+  integrity sha512-1Ha0Kx5Yh/MWGp5uXq7w6gQy7jz5PXzt6hkSmNDWyoe0Hh4NM1IFPbzKAPqrjsOd0x7czZm9+FZ2iDRjs9ADwA==
   dependencies:
-    "@midwayjs/command-core" "^1.2.45"
+    "@midwayjs/command-core" "^1.2.49"
 
 "@midwayjs/fcli-plugin-fc@^1.2.49":
   version "1.2.49"
@@ -2325,16 +2325,16 @@
     "@midwayjs/serverless-spec-builder" "^1.2.49"
     request "^2.88.2"
 
-"@midwayjs/fcli-plugin-package@^1.2.45":
-  version "1.2.45"
-  resolved "https://registry.npmjs.org/@midwayjs/fcli-plugin-package/-/fcli-plugin-package-1.2.45.tgz#45200df176286a1bd614a1fe3a9c3737fd2c112b"
-  integrity sha512-qcPqUyc71zLziIsOScWekSNoEcbZbRysZxM1fOUWVN6uvh36I7fZA8Y5KMYPkcjYgMiLuQKFv0u+r2SjTzVN/w==
+"@midwayjs/fcli-plugin-package@^1.2.49":
+  version "1.2.49"
+  resolved "https://registry.yarnpkg.com/@midwayjs/fcli-plugin-package/-/fcli-plugin-package-1.2.49.tgz#0513b58c08fd49f0b6bd4c3485abae1ef12c8335"
+  integrity sha512-90AvWPlbX93G+PcmpDCmxbZy0ltXnT/dK/lQhR7QbAciQ5tcYQhjBjS4c1uiJYJv1hZkUlpsXFRlYedmkeHWkQ==
   dependencies:
-    "@midwayjs/command-core" "^1.2.45"
-    "@midwayjs/faas-code-analysis" "^1.2.45"
+    "@midwayjs/command-core" "^1.2.49"
+    "@midwayjs/faas-code-analysis" "^1.2.49"
     "@midwayjs/locate" "^1.0.3"
     "@midwayjs/mwcc" "^0.5.x"
-    "@midwayjs/serverless-spec-builder" "^1.2.45"
+    "@midwayjs/serverless-spec-builder" "^1.2.49"
     fs-extra "^8.1.0"
     globby "^10.0.1"
     jszip "^3.2.2"
