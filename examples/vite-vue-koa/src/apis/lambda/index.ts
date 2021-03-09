@@ -1,8 +1,8 @@
 import { useContext } from '@midwayjs/hooks'
 import { Context } from '@midwayjs/koa'
 
-function useKoaContext(): Context {
-  return useContext()
+function useKoaContext() {
+  return useContext<Context>()
 }
 
 export default async () => {
