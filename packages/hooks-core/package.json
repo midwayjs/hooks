@@ -19,7 +19,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@midwayjs/bootstrap": "^2.8.6",
+    "@midwayjs/bootstrap": "^2.8.9",
     "@midwayjs/core": "^2.8.6",
     "@midwayjs/decorator": "^2.8.4",
     "asynchronous-local-storage": "^1.0.2",
