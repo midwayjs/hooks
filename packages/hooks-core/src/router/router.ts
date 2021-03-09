@@ -1,7 +1,7 @@
 import inside from 'is-path-inside'
 import { basename, dirname, extname, join, relative, toUnix } from 'upath'
 import chalk from 'chalk'
-import { InternalConfig, isProduction } from '@midwayjs/hooks-core'
+import { InternalConfig, isProduction } from '..'
 
 const LambdaMethodPrefix = '_'
 
