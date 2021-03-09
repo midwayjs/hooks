@@ -2285,6 +2285,11 @@
   resolved "https://registry.npmjs.org/@midwayjs/faas-typings/-/faas-typings-2.8.2.tgz#ae351d279dfdaf4fc6ca732b1c2c07bc55c8a4f9"
   integrity sha512-JJmqG0W6USN1y7NgH6eAlWTXZ3jX4SsopiBQYoyFkEpo5yLaQ2vfIHPdgk52Y2Inf4D2Ja7aOXks46Q3ZQKk8Q==
 
+"@midwayjs/faas-typings@^2.8.9":
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/@midwayjs/faas-typings/-/faas-typings-2.8.9.tgz#bd372c6e0830c7e8fa507a2722fb4e951276277e"
+  integrity sha512-BLZOBHkLunWGSycL8ckSqlmaVmnQfSrXZXTdmMVoCthdv5XEXQ4cXEb/kkI8PJ0R8+B9/XNLA6m170Cy++0mXA==
+
 "@midwayjs/faas@^2.8.6":
   version "2.8.7"
   resolved "https://registry.npmjs.org/@midwayjs/faas/-/faas-2.8.7.tgz#4ebced3206b8439ff8e41cce90da67e92b6487df"
@@ -2473,6 +2478,14 @@
     "@midwayjs/runtime-engine" "^2.8.2"
     "@midwayjs/serverless-http-parser" "^2.8.2"
 
+"@midwayjs/serverless-fc-starter@^2.8.9":
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/@midwayjs/serverless-fc-starter/-/serverless-fc-starter-2.8.9.tgz#fd37de58d80975e42d95b70439abd44f447fb276"
+  integrity sha512-vrCUnnlwgn/XUG7xq8lPg9y+TAtmpRZNiGy1KI4jQeeUhj1Cze7fQQJUGMxmWMNC+riuYMgviyPi5ZwTgvc7ng==
+  dependencies:
+    "@midwayjs/runtime-engine" "^2.8.2"
+    "@midwayjs/serverless-http-parser" "^2.8.9"
+
 "@midwayjs/serverless-fc-trigger@^2.8.7":
   version "2.8.7"
   resolved "https://registry.npmjs.org/@midwayjs/serverless-fc-trigger/-/serverless-fc-trigger-2.8.7.tgz#41c09a45ebd2d3e4d3e77826ec39fe8e8a8c6698"
@@ -2483,12 +2496,40 @@
     body-parser "^1.19.0"
     express "^4.17.1"
 
+"@midwayjs/serverless-fc-trigger@^2.8.9":
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/@midwayjs/serverless-fc-trigger/-/serverless-fc-trigger-2.8.9.tgz#8f6f121f98c24627102735a9248f338645b5a25e"
+  integrity sha512-iYhcYPQy+e3Fh2XBuh45Uc5mzXVTiVx2dOK6BEMDpcM7zDe1iKnrQo8YMktYT/t4PGvPYRHTk8mH8JvMDLWy9A==
+  dependencies:
+    "@midwayjs/runtime-mock" "^2.8.2"
+    "@midwayjs/serverless-fc-starter" "^2.8.9"
+    body-parser "^1.19.0"
+    express "^4.17.1"
+
 "@midwayjs/serverless-http-parser@^2.8.2":
   version "2.8.2"
   resolved "https://registry.npmjs.org/@midwayjs/serverless-http-parser/-/serverless-http-parser-2.8.2.tgz#997cc2d6f3aab2470559954489b42a3d43a59753"
   integrity sha512-WVwzqt/tJf7mlkOOvNX3gYrwSoIAOO12ioOem/4nBlUm+2+0q3fCi20+eCeQIU+ImllvxvGzlEV79nllV4M8tA==
   dependencies:
     "@midwayjs/faas-typings" "^2.8.2"
+    accepts "^1.3.7"
+    cache-content-type "^1.0.1"
+    cookies "^0.8.0"
+    encodeurl "^1.0.2"
+    escape-html "^1.0.3"
+    only "^0.0.2"
+    parseurl "^1.3.3"
+    querystring "^0.2.0"
+    statuses "^1.5.0"
+    type-is "^1.6.18"
+    vary "^1.1.2"
+
+"@midwayjs/serverless-http-parser@^2.8.9":
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/@midwayjs/serverless-http-parser/-/serverless-http-parser-2.8.9.tgz#c8cc296c1a468a22bedd47a318652eaf6e7f351e"
+  integrity sha512-cawIsXdc9SkPXJFoHnh0AMoDP3KLhc8HntkesHQ0IDvXN9civNkhSznWOAU+ijs6kIjEARkWGhgEbZgZ+hcL9A==
+  dependencies:
+    "@midwayjs/faas-typings" "^2.8.9"
     accepts "^1.3.7"
     cache-content-type "^1.0.1"
     cookies "^0.8.0"
