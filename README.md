@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="./assets/midway-logo.png">
-</p>
+<img src="https://img.alicdn.com/imgextra/i1/O1CN01xQLU011T2R7PHksIv_!!6000000002324-2-tps-1200-616.png" width="1000" alt="Midway Logo" />
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@midwayjs/hooks">
@@ -23,9 +21,10 @@ Docs：[Getting Started](https://www.yuque.com/midwayjs/faas/quickstart_integrat
 
 - ☁️&nbsp;&nbsp;Fullstack, the src directory contains front-end and back-end code
 - 🌈&nbsp;&nbsp;"Zero" Api, import server functions directly into frontend and automatically create API requests.
-- 🌍&nbsp;&nbsp;Using "React Hooks | Vue composition" to develop the back-end
-- 📦&nbsp;&nbsp;Front-end Framework agnostic. Current support React / Vue3 / ICE.js
-- ⚙️&nbsp;&nbsp;Built on [Midway](https://github.com/midwayjs/midway), providing full support for Web and Serverless scenarios
+- 🌍&nbsp;&nbsp;Using "React Hooks | Vue composition Api" to develop the back-end
+- ⚡️&nbsp;&nbsp;Extremely fast start-up speed, less than 3S
+- ⚙️&nbsp;&nbsp;Using Vite, supports Vue/React (any other framework supported by Vite)
+- ✈️&nbsp;&nbsp;Deploy to Server or Serverless
 - 🛡&nbsp;&nbsp;TypeScript Ready
 
 ## 🌰 Demo
