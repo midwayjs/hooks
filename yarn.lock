@@ -2164,13 +2164,13 @@
     light-generator "^1.6.1"
     light-spinner "^1.0.1"
 
-"@midwayjs/cli-plugin-build@^1.2.45":
-  version "1.2.45"
-  resolved "https://registry.npmjs.org/@midwayjs/cli-plugin-build/-/cli-plugin-build-1.2.45.tgz#605fff89a4046b834887b2772f364b190bada40a"
-  integrity sha512-bzejAZuDvuid9XjpWDJZF6OMJZVGBygj9R4RRA3AGo2J64BFNWh4GlKlRSrWxVpDQ0z7DBVWMtCLsWcTVNobaQ==
+"@midwayjs/cli-plugin-build@^1.2.49":
+  version "1.2.49"
+  resolved "https://registry.yarnpkg.com/@midwayjs/cli-plugin-build/-/cli-plugin-build-1.2.49.tgz#3d28f3de65ab67a82f8c7a248abedab2dc2bca59"
+  integrity sha512-dRReIS7bKvBX0mPLUFO5QPP/Kl6zq5mU3w4YyHcM52drLZD3EPwRvj/hfHOq0nmFJDssmkj1dtCzfmXdDyXBGQ==
   dependencies:
-    "@midwayjs/command-core" "^1.2.45"
-    "@midwayjs/faas-code-analysis" "^1.2.45"
+    "@midwayjs/command-core" "^1.2.49"
+    "@midwayjs/faas-code-analysis" "^1.2.49"
     "@midwayjs/mwcc" "^0.5.x"
     fs-extra "^8.1.0"
     typescript "^4.1.0"
@@ -2275,6 +2275,15 @@
   version "1.2.45"
   resolved "https://registry.npmjs.org/@midwayjs/faas-code-analysis/-/faas-code-analysis-1.2.45.tgz#33af9b7fc29ef7aef83c6e7a4bcb88f5a3ac0284"
   integrity sha512-JGxJCh2qwFWt0q0NyoVc9EWRp2BfFPJNAZ3n1AYxZV64x7JWS72ga1aBIJTMDYIjHVajeteUml7CMMDl7uXq3A==
+  dependencies:
+    "@midwayjs/mwcc" "^0.5.x"
+    fs-extra "^8.1.0"
+    globby "^10.0.1"
+
+"@midwayjs/faas-code-analysis@^1.2.49":
+  version "1.2.49"
+  resolved "https://registry.yarnpkg.com/@midwayjs/faas-code-analysis/-/faas-code-analysis-1.2.49.tgz#99b512603c82bdf516ad3863c82de5ee496d6b9a"
+  integrity sha512-Ez25JuospXHqP4+toXR47ZrUtZOLAV9N2/1H/7HruZMPZoruM+arGGRXgIwQW1/4LF176iqR1Hzf63YxBDSZfw==
   dependencies:
     "@midwayjs/mwcc" "^0.5.x"
     fs-extra "^8.1.0"
