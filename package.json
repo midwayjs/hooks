@@ -19,7 +19,7 @@
     "ci": "yarn cov --ci",
     "format": "pretty-quick",
     "postinstall": "preconstruct dev",
-    "publish": "yarn build && lerna publish",
+    "publish-release": "yarn build && lerna publish",
     "publish-next": "yarn build && lerna publish --dist-tag=next"
   },
   "dependencies": {
