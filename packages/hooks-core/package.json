@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-core",
-  "version": "2.0.0",
+  "version": "2.0.1-next.0",
   "description": "Midway Hooks Core",
   "keywords": [
     "midway",
