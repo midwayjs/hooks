@@ -9,16 +9,17 @@ module.exports = {
     './packages/hooks-testing-library/jest-preset/environment.js'
   ),
   testPathIgnorePatterns: [
-    '/node_modules/',
-    '/fixtures/',
+    'node_modules',
+    'fixtures',
     'util.ts',
     'compiler.ts',
-    '/.serverless/',
+    '.serverless',
+    'dist',
   ],
-  testRegex: ['(/__tests__/.*|(\\.|/)(test|spec))\\.[t]sx?$'],
   coveragePathIgnorePatterns: [
-    '/node_modules/',
+    'node_modules',
     '.faas_debug_tmp',
+    '.serverless',
     '__tests__',
     'examples',
   ],
@@ -28,4 +29,5 @@ module.exports = {
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
   ],
+  setupFiles: ['./jest.setup.js'],
 }

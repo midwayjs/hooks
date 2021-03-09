@@ -1,6 +1,4 @@
-import { ServerRouter } from '../server'
-
-process.env.MIDWAY_TS_MODE = 'true'
+import { ServerRouter } from '../router'
 
 describe('ServerRouter', () => {
   test('should exist', () => {
