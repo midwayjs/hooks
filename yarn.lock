@@ -2250,6 +2250,25 @@
     picomatch "^2.2.2"
     reflect-metadata "^0.1.13"
 
+"@midwayjs/core@^2.8.9":
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/@midwayjs/core/-/core-2.8.9.tgz#8c10813c4a9f8406a2925d9915cbc814cd335577"
+  integrity sha512-OBUCAtLwyzpy/uSSxrzPPUzshjdkGDpQaOHReYoFIhkKu/1Uj2whQ8nWnCZKf3obDNAPp/xGQ349tkLSGZqTOA==
+  dependencies:
+    "@midwayjs/decorator" "^2.8.4"
+    "@midwayjs/glob" "^1.0.2"
+    "@midwayjs/logger" "^2.8.2"
+    class-transformer "^0.3.1"
+    extend2 "^1.0.0"
+    lodash.assign "^4.2.0"
+    lodash.clonedeep "^4.5.0"
+    lodash.defaultsdeep "^4.6.0"
+    lodash.get "^4.4.2"
+    lodash.set "^4.3.2"
+    lodash.template "^4.4.0"
+    picomatch "^2.2.2"
+    reflect-metadata "^0.1.13"
+
 "@midwayjs/debugger@^1.0.x":
   version "1.0.8"
   resolved "https://registry.npmjs.org/@midwayjs/debugger/-/debugger-1.0.8.tgz#0b1807d5ba36c8c02231813d798a42daf49fb6d6"
@@ -2368,13 +2387,13 @@
   dependencies:
     picomatch "^2.2.2"
 
-"@midwayjs/koa@^2.8.6":
-  version "2.8.7"
-  resolved "https://registry.npmjs.org/@midwayjs/koa/-/koa-2.8.7.tgz#ab8ba28c3f417c94dcf935289bcca0f3607eefa2"
-  integrity sha512-La8AmClMVGWjE70EXTb2Re69CDgnHbn9mYTwFbSlUKXCIB9FPNDaetgBuSw3j9WzrYceIExHEfTbQKvlyVzUgQ==
+"@midwayjs/koa@^2.8.9":
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/@midwayjs/koa/-/koa-2.8.9.tgz#36278cc0986e0fc21f2cf5ff6165a98f69f60f06"
+  integrity sha512-69q3BQXDr+WdC6VKo9iFmrTLR0/kxUtzZ5CYl/rrIC8YYaQqN7H8je2h/W55R8P3/HQZX2ZNVSBlyJBVMiECdg==
   dependencies:
     "@koa/router" "^10.0.0"
-    "@midwayjs/core" "^2.8.7"
+    "@midwayjs/core" "^2.8.9"
     "@midwayjs/decorator" "^2.8.4"
     "@midwayjs/logger" "^2.8.2"
     koa "^2.13.0"
