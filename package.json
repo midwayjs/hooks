@@ -19,7 +19,8 @@
     "ci": "yarn cov --ci",
     "format": "pretty-quick",
     "postinstall": "preconstruct dev",
-    "publish": "yarn build && lerna publish"
+    "publish": "yarn build && lerna publish",
+    "publish-next": "yarn build && lerna publish --dist-tag=next"
   },
   "dependencies": {
     "@babel/core": "^7.13.8",
