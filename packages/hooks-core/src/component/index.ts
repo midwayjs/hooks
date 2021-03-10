@@ -1,13 +1,12 @@
 import {
   createConfiguration,
-  IMidwayApplication,
   IMidwayContainer,
   MidwayFrameworkType,
 } from '@midwayjs/core'
 import { __decorate } from 'tslib'
 import { Inject, Controller, Get, Post, Provide } from '@midwayjs/decorator'
 import { als } from '../runtime'
-import { EnhancedFunc } from '../types/common'
+import { EnhancedFunc, LambdaModule } from '../types/common'
 import { ServerRouter, getFunctionId } from '../router'
 import { getConfig, getProjectRoot } from '../config'
 import { InternalConfig } from '../types/config'
@@ -62,7 +61,9 @@ class HooksComponent {
     })
 
     configuration
-      .onReady((container, app) => this.applyMiddleware(container, app))
+      .onReady((container, app) => {
+        this.applyMiddleware(app)
+      })
       .onStop(noop)
 
     return {
@@ -71,13 +72,15 @@ class HooksComponent {
   }
 
   createLambdaFromSourceFile(sourceFilePath: string) {
-    const mod = require(sourceFilePath)
+    const mod: LambdaModule = require(sourceFilePath)
+    const modMiddleware = mod?.config?.middleware ? mod.config.middleware : []
 
     if (typeof mod === 'function') {
       this.createFunction({
         fn: mod,
         sourceFilePath,
         isExportDefault: true,
+        modMiddleware,
       })
     }
 
@@ -88,6 +91,7 @@ class HooksComponent {
           fn: mod[key],
           sourceFilePath,
           isExportDefault: key === 'default',
+          modMiddleware,
         })
       })
   }
@@ -96,8 +100,9 @@ class HooksComponent {
     fn: EnhancedFunc
     sourceFilePath: string
     isExportDefault: boolean
+    modMiddleware: any[]
   }) {
-    const { fn, sourceFilePath, isExportDefault } = config
+    const { fn, sourceFilePath, isExportDefault, modMiddleware } = config
 
     const fnName = isExportDefault ? '$default' : fn.name
     const id = getFunctionId({
@@ -122,6 +127,9 @@ class HooksComponent {
         functionName: id,
       },
     }
+
+    // Apply module middleware
+    ;(fn.middleware || (fn.middleware = [])).push(...modMiddleware)
 
     this.registerFunctionToContainer({
       containerId,
@@ -183,20 +191,18 @@ class HooksComponent {
     this.hasRender = true
   }
 
-  private applyMiddleware(
-    container: IMidwayContainer,
-    app: IMidwayApplication
-  ) {
-    const type = app.getFrameworkType()
+  private applyMiddleware(app: any) {
+    // Apply global middleware from config
+    this.config.middleware.forEach((middleware) => app.use(middleware))
 
     // Serve vite static html
-    if (
-      (type === MidwayFrameworkType.WEB_KOA ||
-        type === MidwayFrameworkType.FAAS) &&
-      isProduction()
-    ) {
+    const type = app.getFrameworkType()
+    const requireStaticCache =
+      type === MidwayFrameworkType.WEB_KOA || type === MidwayFrameworkType.FAAS
+
+    if (isProduction() && requireStaticCache) {
       const baseDir = app.getBaseDir()
-      ;(app as any).use(
+      app.use(
         staticCache({
           dir: join(baseDir, '..', this.config.build.viteOutDir),
           dynamic: true,

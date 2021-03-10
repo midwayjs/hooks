@@ -1,9 +1,16 @@
 import { isTypeScriptEnvironment } from '@midwayjs/bootstrap'
 
 export function isProduction() {
-  return !isTypeScriptEnvironment()
-}
+  if (isTypeScriptEnvironment()) {
+    return false
+  }
 
-export function isTest() {
-  return process.env.NODE_ENV === 'test'
+  if (
+    process.env.NODE_ENV === 'test' ||
+    process.env.NODE_ENV === 'development'
+  ) {
+    return false
+  }
+
+  return true
 }

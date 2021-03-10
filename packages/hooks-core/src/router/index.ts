@@ -1,2 +1,2 @@
 export * from './router'
-export { getFunctionId, getHTTPMethod } from './util'
+export { getFunctionId } from './util'
