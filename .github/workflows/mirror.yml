@@ -1,4 +1,4 @@
-name: 🤖 Sync to Gitee Mirror
+name: Sync to Gitee Mirror
 
 on:
   schedule:
@@ -8,10 +8,10 @@ on:
       - '*'
 
 jobs:
-  build:
+  sync:
     runs-on: ubuntu-latest
     steps:
-      - name: 🔁 Sync to Gitee
+      - name: Sync to Gitee
         uses: wearerequired/git-mirror-action@master
         env:
           # 注意在 Settings->Secrets 配置 GITEE_RSA_PRIVATE_KEY
