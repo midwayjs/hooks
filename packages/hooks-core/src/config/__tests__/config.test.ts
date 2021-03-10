@@ -9,6 +9,5 @@ test('load user config', () => {
 })
 
 function loadConfig(fixture: string) {
-  const config = getConfig(join(__dirname, 'fixtures', fixture))
-  return config
+  return getConfig(join(__dirname, 'fixtures', fixture))
 }

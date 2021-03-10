@@ -16,9 +16,7 @@ function ignorePattern(req) {
   return reg.test(pathname) || reg.test(query)
 }
 
-process.env.MIDWAY_TS_MODE = 'true'
-
-function HooksVitePlugin(): Plugin {
+function plugin(): Plugin {
   const root = getProjectRoot()
   const config = getConfig()
   const router = new ServerRouter(root, config)
@@ -55,6 +53,7 @@ function HooksVitePlugin(): Plugin {
       const devPack = getExpressDevPack(root, {
         sourceDir: join(root, config.source),
       })
+
       server.middlewares.use(
         devPack({
           functionDir: root,
@@ -65,4 +64,4 @@ function HooksVitePlugin(): Plugin {
   }
 }
 
-export default HooksVitePlugin
+export default plugin

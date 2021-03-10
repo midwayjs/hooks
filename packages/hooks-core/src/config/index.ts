@@ -19,15 +19,14 @@ export function getConfig(cwd?: string): InternalConfig {
   const userConfig =
     tryRequire<UserConfig>(configs.ts) || tryRequire<UserConfig>(configs.js)
 
-  const internalConfig: InternalConfig = _.defaultsDeep({}, userConfig, {
+  return _.defaultsDeep({}, userConfig, {
     source: './src/apis',
     build: {
       viteOutDir: './build',
       outDir: './dist',
     },
+    middleware: [],
   })
-
-  return internalConfig
 }
 
 export function defineConfig(config: UserConfig): UserConfig {

@@ -67,9 +67,6 @@ export class HooksApplication {
 
   async close() {
     await close(this.app)
-    if (process.env.EGG_HOME) {
-      await remove(join(process.env.EGG_HOME, 'logs'))
-    }
     const appDir = this.app?.getAppDir()
     if (appDir) {
       await remove(join(appDir, 'logs'))

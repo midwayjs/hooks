@@ -6,8 +6,6 @@ import {
 } from '@midwayjs/hooks-core'
 import { loader } from 'webpack'
 
-process.env.MIDWAY_TS_MODE = 'true'
-
 export default async function MidwayHooksLoader(
   this: loader.LoaderContext,
   source: string
