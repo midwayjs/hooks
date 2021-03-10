@@ -8,3 +8,10 @@ export type EnhancedFunc = {
    */
   _param?: Partial<LambdaParam>
 }
+
+export type LambdaModule = {
+  config: {
+    middleware: any[]
+  }
+  [index: string]: EnhancedFunc | any
+}

@@ -1,6 +1,7 @@
 export interface InternalConfig {
   source?: string
   routes: ServerRoute[]
+  middleware?: any[]
   build?: {
     viteOutDir: string
     outDir: string
