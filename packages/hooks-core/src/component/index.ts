@@ -46,10 +46,9 @@ class HooksComponent {
             sourceFilePath: string,
             container: IMidwayContainer
           ) => {
-            if (!this.container) {
-              this.container = container
-            }
+            if (!this.container) this.container = container
             if (!this.router.isLambdaFile(sourceFilePath)) return
+
             this.createLambdaFromSourceFile(sourceFilePath)
 
             if (index === this.config.routes.length - 1) {
@@ -120,16 +119,15 @@ class HooksComponent {
     )
     const httpMethod = fn.length === 0 ? 'GET' : 'POST'
 
+    // Set param for unit testing
     fn._param = {
       url: httpPath,
       method: httpMethod,
-      meta: {
-        functionName: id,
-      },
+      meta: { functionName: id },
     }
 
     // Apply module middleware
-    ;(fn.middleware || (fn.middleware = [])).push(...modMiddleware)
+    ;(fn.middleware || (fn.middleware = [])).unshift(...modMiddleware)
 
     this.registerFunctionToContainer({
       containerId,
