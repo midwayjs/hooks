@@ -57,7 +57,7 @@ getPath().then((path) => {
 
 ## 🚀 快速开始
 
-请先安装 faas-cli.
+请先安装 @midwayjs/cli
 
 ```bash
 $ npm i @midwayjs/cli -g

@@ -59,7 +59,7 @@ getPath().then((path) => {
 
 ## 🚀 Quick Start
 
-Please install faas-cli first.
+Please install @midwayjs/faas-cli first.
 
 ```bash
 $ npm i @midwayjs/faas-cli -g
