@@ -1,6 +1,48 @@
-# Vue 3 + Typescript + Vite
+# Midway Hooks + Vue 3 + Typescript + Vite
 
-This template should help get you started developing with Vue 3 and Typescript in Vite.
+This template should help get you started developing with Midway Hooks + Vue 3 + Typescript in Vite.
+
+## Getting Started
+
+Docs：[Midway Hooks - Getting Started](https://www.yuque.com/midwayjs/midway_v2/integration_introduction?translate=en)
+
+### Directory Structure
+
+```
+.
+├── bootstrap.js //
+├── jest.config.js // Unit test file
+├── midway.config.ts // config file for setup directory and middleware
+├── src
+│   ├── apis // Backend directory
+│   │   ├── configuration.ts // Midway Hooks configuration
+│   │   └── lambda // Api directory(Can be modified in midway.config.ts)
+│   │       ├── index.test.ts // Api test file
+│   │       └── index.ts // Api file
+│   └── main.ts // Frontend framework file
+├── tsconfig.json
+└── vite.config.ts
+```
+
+### Commands
+
+#### Start Dev Server
+
+```bash
+$ npm run dev
+```
+
+#### Build
+
+```bash
+$ npm run build
+```
+
+### Running in production mode
+
+```bash
+$ node bootstrap.js
+```
 
 ## Recommended IDE Setup
 
