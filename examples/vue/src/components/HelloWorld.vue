@@ -19,6 +19,15 @@
   <p>See <code>README.md</code> for more information.</p>
 
   <p>
+    <a
+      className="App-link"
+      href="https://www.yuque.com/midwayjs/faas/hooks"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Midway Hooks Docs
+    </a>
+    |
     <a href="https://vitejs.dev/guide/features.html" target="_blank"
       >Vite Docs</a
     >
