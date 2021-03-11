@@ -13,7 +13,7 @@ Object {
       "basePath": "/api",
     },
   ],
-  "source": "/src",
+  "source": "src",
 }
 `;
 
@@ -30,7 +30,7 @@ Object {
       "basePath": "/api",
     },
   ],
-  "source": "/src",
+  "source": "src",
 }
 `;
 
@@ -47,6 +47,6 @@ Object {
       "basePath": "/api",
     },
   ],
-  "source": "/src",
+  "source": "src",
 }
 `;
