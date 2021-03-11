@@ -13,7 +13,7 @@
   "private": true,
   "scripts": {
     "build": "preconstruct build",
-    "watch": "preconstruct watch",
+    "dev": "preconstruct dev",
     "test": "jest --passWithNoTests",
     "cov": "yarn test --coverage",
     "ci": "yarn cov --ci",
