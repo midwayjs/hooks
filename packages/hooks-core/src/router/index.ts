@@ -7,9 +7,10 @@ const ApiMethodPrefix = '_'
 
 export class ServerRouter {
   root: string
-  routes = new Map<string, string>()
 
   config: InternalConfig
+
+  routes = new Map<string, string>()
 
   constructor(root: string, config: InternalConfig) {
     this.root = root
@@ -24,19 +25,20 @@ export class ServerRouter {
     return join(this.root, this.config.source)
   }
 
-  getRouteConfigBySourceFilePath(sourceFilePath: string) {
+  getRouteConfig(file: string) {
     const { routes } = this.config
-    const dirs = routes.map((route) => this.getApiDirectory(route.baseDir))
-    const index = dirs.findIndex((dir) => this.inside(sourceFilePath, dir))
-    const route = routes[index]
+    const index = routes.findIndex((route) => {
+      const dir = this.getApiDirectory(route.baseDir)
+      return this.inside(file, dir)
+    })
 
-    if (!route) {
+    if (!routes[index]) {
       return null
     }
 
     return {
       underscore: false,
-      ...route,
+      ...routes[index],
     }
   }
 
@@ -45,22 +47,16 @@ export class ServerRouter {
     return join(this.source, baseDir)
   }
 
-  isApiFile(sourceFilePath: string) {
-    if (
-      sourceFilePath.endsWith('.test.ts') ||
-      sourceFilePath.endsWith('.test.js')
-    ) {
+  isApiFile(file: string) {
+    if (file.endsWith('.test.ts') || file.endsWith('.test.js')) {
       return false
     }
 
-    if (
-      extname(sourceFilePath) !== '.ts' &&
-      extname(sourceFilePath) !== '.js'
-    ) {
+    if (extname(file) !== '.ts' && extname(file) !== '.js') {
       return false
     }
 
-    const route = this.getRouteConfigBySourceFilePath(sourceFilePath)
+    const route = this.getRouteConfig(file)
     return !!route
   }
 
@@ -68,8 +64,8 @@ export class ServerRouter {
     return inside(toUnix(child), toUnix(parent))
   }
 
-  getBaseUrl(sourceFilePath: string) {
-    const url = this.getHTTPPath(sourceFilePath, '', true)
+  getBaseUrl(file: string) {
+    const url = this.getHTTPPath(file, '', true)
     if (url === '/*') {
       return '/'
     }
@@ -81,20 +77,12 @@ export class ServerRouter {
     return url
   }
 
-  getHTTPPath(
-    sourceFilePath: string,
-    method: string,
-    isExportDefault: boolean
-  ) {
-    const {
-      basePath,
-      baseDir,
-      underscore,
-    } = this.getRouteConfigBySourceFilePath(sourceFilePath)
+  getHTTPPath(file: string, method: string, isExportDefault: boolean) {
+    const { basePath, baseDir, underscore } = this.getRouteConfig(file)
     const lambdaDirectory = this.getApiDirectory(baseDir)
 
     const { isCatchAllRoutes, filename } = parseFilename(
-      basename(sourceFilePath, extname(sourceFilePath))
+      basename(file, extname(file))
     )
     const fileRoute = filename === 'index' ? '' : filename
     const methodPrefix = underscore ? ApiMethodPrefix : ''
@@ -107,7 +95,7 @@ export class ServerRouter {
          * /apis/lambda/index.ts -> ''
          * /apis/lambda/todo/index.ts -> 'todo'
          */
-        relative(lambdaDirectory, dirname(sourceFilePath)),
+        relative(lambdaDirectory, dirname(file)),
         /**
          * index -> ''
          * demo -> '/demo'
@@ -123,10 +111,10 @@ export class ServerRouter {
      * duplicate routes
      */
     const existPath = this.routes.get(api)
-    if (existPath && existPath !== toUnix(sourceFilePath)) {
-      duplicateLogger(this.root, existPath, sourceFilePath, api)
+    if (existPath && existPath !== toUnix(file)) {
+      duplicateLogger(this.root, existPath, file, api)
     }
-    this.routes.set(api, toUnix(sourceFilePath))
+    this.routes.set(api, toUnix(file))
 
     return api
   }

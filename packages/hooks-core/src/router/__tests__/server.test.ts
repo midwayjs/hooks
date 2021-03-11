@@ -30,7 +30,7 @@ describe('ServerRouter', () => {
     expect(router.isApiFile(api)).toBeTruthy()
     expect(router.isApiFile(__dirname)).toBeFalsy()
 
-    const rule = router.getRouteConfigBySourceFilePath(api)
+    const rule = router.getRouteConfig(api)
     expect(rule).toMatchInlineSnapshot(`
       Object {
         "baseDir": "lambda",

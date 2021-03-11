@@ -15,6 +15,7 @@ import { kebabCase, noop } from 'lodash'
 import { join } from 'path'
 import staticCache from 'koa-static-cache'
 import { extname, relative } from 'upath'
+import { ApiHttpMethod } from '../types/http'
 
 /**
  * Create hooks component
@@ -42,15 +43,11 @@ class HooksComponent {
         return {
           pattern: route.baseDir,
           ignoreRequire: true,
-          filter: (
-            mod: void,
-            sourceFilePath: string,
-            container: IMidwayContainer
-          ) => {
+          filter: (_: void, file: string, container: IMidwayContainer) => {
             if (!this.container) this.container = container
-            if (!this.router.isApiFile(sourceFilePath)) return
+            if (!this.router.isApiFile(file)) return
 
-            this.createApiFromSourceFile(sourceFilePath)
+            this.createApi(file)
 
             if (index === this.config.routes.length - 1) {
               this.createRenderFunction()
@@ -71,25 +68,16 @@ class HooksComponent {
     }
   }
 
-  createApiFromSourceFile(sourceFilePath: string) {
-    const mod: ApiModule = require(sourceFilePath)
+  createApi(file: string) {
+    const mod: ApiModule = require(file)
     const modMiddleware = mod?.config?.middleware ? mod.config.middleware : []
-
-    if (typeof mod === 'function') {
-      this.createFunction({
-        fn: mod,
-        sourceFilePath,
-        isExportDefault: true,
-        modMiddleware,
-      })
-    }
 
     Object.keys(mod)
       .filter((key) => typeof mod[key] === 'function')
       .forEach((key) => {
         this.createFunction({
           fn: mod[key],
-          sourceFilePath,
+          file: file,
           isExportDefault: key === 'default',
           modMiddleware,
         })
@@ -98,26 +86,18 @@ class HooksComponent {
 
   private createFunction(config: {
     fn: ApiFunction
-    sourceFilePath: string
+    file: string
     isExportDefault: boolean
     modMiddleware: any[]
   }) {
-    const { fn, sourceFilePath, isExportDefault, modMiddleware } = config
+    const { fn, file, isExportDefault, modMiddleware } = config
 
     const fnName = isExportDefault ? '$default' : fn.name
-    const id = this.getFunctionId({
-      sourceFilePath,
-      functionName: fnName,
-      isExportDefault,
-    })
+    const id = this.getFunctionId(file, fnName, isExportDefault)
 
     const containerId = 'hooks::' + id
-    const httpPath = this.router.getHTTPPath(
-      sourceFilePath,
-      fnName,
-      isExportDefault
-    )
-    const httpMethod = fn.length === 0 ? 'GET' : 'POST'
+    const httpPath = this.router.getHTTPPath(file, fnName, isExportDefault)
+    const httpMethod: ApiHttpMethod = fn.length === 0 ? 'GET' : 'POST'
 
     // Set param for unit testing
     fn._param = {
@@ -139,7 +119,7 @@ class HooksComponent {
 
   private registerFunctionToContainer(config: {
     containerId: string
-    httpMethod: any
+    httpMethod: ApiHttpMethod
     httpPath: string
     fn: ApiFunction
   }) {
@@ -213,27 +193,21 @@ class HooksComponent {
     }
   }
 
-  private getFunctionId(config: {
-    sourceFilePath: string
-    functionName: string
+  private getFunctionId(
+    file: string,
+    functionName: string,
     isExportDefault: boolean
-  }) {
-    const { sourceFilePath, functionName, isExportDefault } = config
-
-    const rule = this.router.getRouteConfigBySourceFilePath(sourceFilePath)
+  ) {
+    const rule = this.router.getRouteConfig(file)
     const lambdaDirectory = this.router.getApiDirectory(rule.baseDir)
 
     const length = this.router.config.routes.length
     // 多个 source 的情况下，根据各自的 lambdaDirectory 来增加前缀命名
     const relativeDirectory = length > 1 ? this.router.source : lambdaDirectory
-    const relativePath = relative(relativeDirectory, sourceFilePath)
+    const relativePath = relative(relativeDirectory, file)
     // a/b/c -> a-b-c
-    const id = kebabCase(removeExtension(relativePath))
+    const id = kebabCase(file.slice(0, -extname(relativePath)).length)
     const name = [id, isExportDefault ? '' : `-${functionName}`].join('')
     return name.toLowerCase()
   }
-}
-
-export function removeExtension(file: string) {
-  return file.replace(extname(file), '')
 }
