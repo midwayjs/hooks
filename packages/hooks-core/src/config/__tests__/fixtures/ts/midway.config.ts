@@ -1,6 +1,6 @@
 import { defineConfig } from '../../../../'
 
-module.exports = defineConfig({
+export default defineConfig({
   source: '/src',
   routes: [
     {
