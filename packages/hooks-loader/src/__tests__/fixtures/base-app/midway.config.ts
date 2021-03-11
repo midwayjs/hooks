@@ -1,6 +1,6 @@
-const { defineConfig } = require('@midwayjs/hooks')
+import { defineConfig } from '@midwayjs/hooks'
 
-module.exports = defineConfig({
+export default defineConfig({
   source: '/src',
   routes: [
     {
