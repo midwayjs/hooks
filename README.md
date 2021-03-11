@@ -80,7 +80,7 @@ $ npm run dev
 ### Deploy to custom server
 
 ```bash
-$ node boot.js
+$ node bootstrap.js
 ```
 
 ### Deploy to Serverless

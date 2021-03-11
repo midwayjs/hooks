@@ -78,7 +78,7 @@ $ npm run dev
 ### 部署至服务器
 
 ```bash
-$ node boot.js
+$ node bootstrap.js
 ```
 
 ### 部署至 Serverless
