@@ -1,10 +1,6 @@
 import { init, parse } from 'es-module-lexer'
 
-export async function parseAndGenerateSDK(
-  baseUrl: string,
-  sourceFilePath: string,
-  code: string
-) {
+export async function parseAndGenerateSDK(baseUrl: string, code: string) {
   await init
   const [, exports] = parse(code)
 

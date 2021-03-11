@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should call axios 1`] = `
+Array [
+  Array [
+    Object {
+      "data": Object {
+        "args": Array [],
+      },
+      "meta": Object {},
+      "method": "GET",
+      "url": "/get",
+    },
+  ],
+  Array [
+    Object {
+      "data": Object {
+        "args": Array [
+          1,
+          2,
+          3,
+        ],
+      },
+      "meta": Object {},
+      "method": "POST",
+      "url": "/post",
+    },
+  ],
+  Array [
+    Object {
+      "data": Object {
+        "args": Array [],
+      },
+      "meta": Object {},
+      "method": "GET",
+      "url": "/",
+    },
+  ],
+  Array [
+    Object {
+      "data": Object {
+        "args": Array [],
+      },
+      "meta": Object {},
+      "method": "GET",
+      "url": "/api/books",
+    },
+  ],
+]
+`;
