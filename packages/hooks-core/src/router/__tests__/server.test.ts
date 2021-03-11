@@ -1,4 +1,4 @@
-import { ServerRouter } from '../router'
+import { ServerRouter } from '..'
 
 describe('ServerRouter', () => {
   test('should exist', () => {

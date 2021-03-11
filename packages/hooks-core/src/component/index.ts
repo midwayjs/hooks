@@ -7,13 +7,14 @@ import { __decorate } from 'tslib'
 import { Inject, Controller, Get, Post, Provide } from '@midwayjs/decorator'
 import { als } from '../runtime'
 import { ApiFunction, ApiModule } from '../types/common'
-import { ServerRouter, getFunctionId } from '../router'
+import { ServerRouter } from '../router'
 import { getConfig, getProjectRoot } from '../config'
 import { InternalConfig } from '../types/config'
 import { isProduction } from '../util'
-import { noop } from 'lodash'
+import { kebabCase, noop } from 'lodash'
 import { join } from 'path'
 import staticCache from 'koa-static-cache'
+import { extname, relative } from 'upath'
 
 /**
  * Create hooks component
@@ -104,8 +105,7 @@ class HooksComponent {
     const { fn, sourceFilePath, isExportDefault, modMiddleware } = config
 
     const fnName = isExportDefault ? '$default' : fn.name
-    const id = getFunctionId({
-      router: this.router,
+    const id = this.getFunctionId({
       sourceFilePath,
       functionName: fnName,
       isExportDefault,
@@ -212,4 +212,28 @@ class HooksComponent {
       )
     }
   }
+
+  private getFunctionId(config: {
+    sourceFilePath: string
+    functionName: string
+    isExportDefault: boolean
+  }) {
+    const { sourceFilePath, functionName, isExportDefault } = config
+
+    const rule = this.router.getRouteConfigBySourceFilePath(sourceFilePath)
+    const lambdaDirectory = this.router.getApiDirectory(rule.baseDir)
+
+    const length = this.router.config.routes.length
+    // 多个 source 的情况下，根据各自的 lambdaDirectory 来增加前缀命名
+    const relativeDirectory = length > 1 ? this.router.source : lambdaDirectory
+    const relativePath = relative(relativeDirectory, sourceFilePath)
+    // a/b/c -> a-b-c
+    const id = kebabCase(removeExtension(relativePath))
+    const name = [id, isExportDefault ? '' : `-${functionName}`].join('')
+    return name.toLowerCase()
+  }
+}
+
+export function removeExtension(file: string) {
+  return file.replace(extname(file), '')
 }

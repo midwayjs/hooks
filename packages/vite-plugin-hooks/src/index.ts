@@ -10,12 +10,6 @@ import URL from 'url'
 import { join } from 'path'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
-function ignorePattern(req) {
-  const { pathname, query } = URL.parse(req.url)
-  const reg = /\.(js|css|map|json|png|jpg|jpeg|gif|svg|eot|woff2|ttf)$/
-  return reg.test(pathname) || reg.test(query)
-}
-
 function plugin(): Plugin {
   const root = getProjectRoot()
   const config = getConfig()
@@ -24,14 +18,10 @@ function plugin(): Plugin {
   return {
     name: 'vite:@midwayjs/hooks',
     async transform(code: string, id: string) {
-      if (!router.isApiFile(id)) {
-        return null
-      }
+      if (!router.isApiFile(id)) return null
 
-      const sdk = await parseAndGenerateSDK(router, id, code)
-      if (!sdk) {
-        return null
-      }
+      const sdk = await parseAndGenerateSDK(router.getBaseUrl(id), id, code)
+      if (!sdk) return null
 
       return {
         code: sdk,
@@ -57,7 +47,11 @@ function plugin(): Plugin {
       server.middlewares.use(
         devPack({
           functionDir: root,
-          ignorePattern,
+          ignorePattern(req) {
+            const { pathname, query } = URL.parse(req.url)
+            const reg = /\.(js|css|map|json|png|jpg|jpeg|gif|svg|eot|woff2|ttf)$/
+            return reg.test(pathname) || reg.test(query)
+          },
         })
       )
     },
