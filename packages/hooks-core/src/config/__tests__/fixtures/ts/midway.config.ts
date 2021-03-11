@@ -1,7 +1,7 @@
 import { defineConfig } from '../../../../'
 
 export default defineConfig({
-  source: '/src',
+  source: 'src',
   routes: [
     {
       baseDir: 'lambda',
