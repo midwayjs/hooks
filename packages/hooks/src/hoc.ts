@@ -1,14 +1,14 @@
-import { EnhancedFunc } from '@midwayjs/hooks-core'
+import { ApiFunction } from '@midwayjs/hooks-core'
 
 type Controller = {
   middleware?: any[]
 }
 
-export function withController<T extends EnhancedFunc>(
+export function withController<T extends ApiFunction>(
   controller: Controller,
   func: T
 ) {
-  const withControllerProxy: EnhancedFunc = async function withControllerProxy(
+  const withControllerProxy: ApiFunction = async function withControllerProxy(
     ...args: any[]
   ) {
     return func.apply(this, args)

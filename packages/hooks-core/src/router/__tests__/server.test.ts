@@ -27,8 +27,8 @@ describe('ServerRouter', () => {
     expect(router.source.endsWith('/src')).toBeTruthy()
 
     const api = '/src/lambda/index.ts'
-    expect(router.isLambdaFile(api)).toBeTruthy()
-    expect(router.isLambdaFile(__dirname)).toBeFalsy()
+    expect(router.isApiFile(api)).toBeTruthy()
+    expect(router.isApiFile(__dirname)).toBeFalsy()
 
     const rule = router.getRouteConfigBySourceFilePath(api)
     expect(rule).toMatchInlineSnapshot(`
@@ -39,7 +39,7 @@ describe('ServerRouter', () => {
       }
     `)
     expect(
-      router.getLambdaDirectory(rule.baseDir).endsWith('src/lambda')
+      router.getApiDirectory(rule.baseDir).endsWith('src/lambda')
     ).toBeTruthy()
   })
 

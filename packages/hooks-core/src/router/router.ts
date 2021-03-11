@@ -3,7 +3,7 @@ import { basename, dirname, extname, join, relative, toUnix } from 'upath'
 import chalk from 'chalk'
 import { InternalConfig, isProduction } from '..'
 
-const LambdaMethodPrefix = '_'
+const ApiMethodPrefix = '_'
 
 export class ServerRouter {
   root: string
@@ -26,7 +26,7 @@ export class ServerRouter {
 
   getRouteConfigBySourceFilePath(sourceFilePath: string) {
     const { routes } = this.config
-    const dirs = routes.map((route) => this.getLambdaDirectory(route.baseDir))
+    const dirs = routes.map((route) => this.getApiDirectory(route.baseDir))
     const index = dirs.findIndex((dir) => this.inside(sourceFilePath, dir))
     const route = routes[index]
 
@@ -41,11 +41,11 @@ export class ServerRouter {
   }
 
   // src/apis/lambda
-  getLambdaDirectory(baseDir: string) {
+  getApiDirectory(baseDir: string) {
     return join(this.source, baseDir)
   }
 
-  isLambdaFile(sourceFilePath: string) {
+  isApiFile(sourceFilePath: string) {
     if (
       sourceFilePath.endsWith('.test.ts') ||
       sourceFilePath.endsWith('.test.js')
@@ -91,13 +91,13 @@ export class ServerRouter {
       baseDir,
       underscore,
     } = this.getRouteConfigBySourceFilePath(sourceFilePath)
-    const lambdaDirectory = this.getLambdaDirectory(baseDir)
+    const lambdaDirectory = this.getApiDirectory(baseDir)
 
     const { isCatchAllRoutes, filename } = parseFilename(
       basename(sourceFilePath, extname(sourceFilePath))
     )
     const fileRoute = filename === 'index' ? '' : filename
-    const methodPrefix = underscore ? LambdaMethodPrefix : ''
+    const methodPrefix = underscore ? ApiMethodPrefix : ''
     const func = isExportDefault ? '' : `${methodPrefix}${method}`
 
     const api = toUnix(

@@ -1,17 +1,17 @@
-import type { LambdaParam } from './http'
+import type { ApiParam } from './http'
 
-export type EnhancedFunc = {
+export type ApiFunction = {
   (...args: any[]): Promise<any>
   middleware?: any[]
   /**
    * @private
    */
-  _param?: Partial<LambdaParam>
+  _param?: Partial<ApiParam>
 }
 
-export type LambdaModule = {
+export type ApiModule = {
   config: {
     middleware: any[]
   }
-  [index: string]: EnhancedFunc | any
+  [index: string]: ApiFunction | any
 }

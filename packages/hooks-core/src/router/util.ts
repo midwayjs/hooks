@@ -11,7 +11,7 @@ export function getFunctionId(config: {
   const { router, sourceFilePath, functionName, isExportDefault } = config
 
   const rule = router.getRouteConfigBySourceFilePath(sourceFilePath)
-  const lambdaDirectory = router.getLambdaDirectory(rule.baseDir)
+  const lambdaDirectory = router.getApiDirectory(rule.baseDir)
 
   const length = router.config.routes.length
   // 多个 source 的情况下，根据各自的 lambdaDirectory 来增加前缀命名

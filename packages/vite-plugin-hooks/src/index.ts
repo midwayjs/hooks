@@ -24,7 +24,7 @@ function plugin(): Plugin {
   return {
     name: 'vite:@midwayjs/hooks',
     async transform(code: string, id: string) {
-      if (!router.isLambdaFile(id)) {
+      if (!router.isApiFile(id)) {
         return null
       }
 
