@@ -6,7 +6,7 @@ import {
 import { __decorate } from 'tslib'
 import { Inject, Controller, Get, Post, Provide } from '@midwayjs/decorator'
 import { als } from '../runtime'
-import { EnhancedFunc, LambdaModule } from '../types/common'
+import { ApiFunction, ApiModule } from '../types/common'
 import { ServerRouter, getFunctionId } from '../router'
 import { getConfig, getProjectRoot } from '../config'
 import { InternalConfig } from '../types/config'
@@ -47,9 +47,9 @@ class HooksComponent {
             container: IMidwayContainer
           ) => {
             if (!this.container) this.container = container
-            if (!this.router.isLambdaFile(sourceFilePath)) return
+            if (!this.router.isApiFile(sourceFilePath)) return
 
-            this.createLambdaFromSourceFile(sourceFilePath)
+            this.createApiFromSourceFile(sourceFilePath)
 
             if (index === this.config.routes.length - 1) {
               this.createRenderFunction()
@@ -70,8 +70,8 @@ class HooksComponent {
     }
   }
 
-  createLambdaFromSourceFile(sourceFilePath: string) {
-    const mod: LambdaModule = require(sourceFilePath)
+  createApiFromSourceFile(sourceFilePath: string) {
+    const mod: ApiModule = require(sourceFilePath)
     const modMiddleware = mod?.config?.middleware ? mod.config.middleware : []
 
     if (typeof mod === 'function') {
@@ -96,7 +96,7 @@ class HooksComponent {
   }
 
   private createFunction(config: {
-    fn: EnhancedFunc
+    fn: ApiFunction
     sourceFilePath: string
     isExportDefault: boolean
     modMiddleware: any[]
@@ -141,7 +141,7 @@ class HooksComponent {
     containerId: string
     httpMethod: any
     httpPath: string
-    fn: EnhancedFunc
+    fn: ApiFunction
   }) {
     const { containerId, httpMethod, httpPath, fn } = config
     const Method = httpMethod === 'GET' ? Get : Post

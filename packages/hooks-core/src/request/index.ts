@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { LambdaParam } from '../types/http'
+import { ApiParam } from '../types/http'
 
 const defaults = axios.defaults
 
-async function request(param: LambdaParam) {
+async function request(param: ApiParam) {
   const response = await axios(param)
   return response.data
 }
