@@ -9,9 +9,11 @@ export type ApiFunction = {
   _param?: Partial<ApiParam>
 }
 
+export type ApiConfig = {
+  middleware?: any[]
+}
+
 export type ApiModule = {
-  config: {
-    middleware: any[]
-  }
+  config?: ApiConfig
   [index: string]: ApiFunction | any
 }
