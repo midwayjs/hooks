@@ -1,7 +1,7 @@
 const { defineConfig } = require('../../../../')
 
 module.exports = defineConfig({
-  source: '/src',
+  source: 'src',
   routes: [
     {
       baseDir: 'lambda',
