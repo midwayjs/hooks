@@ -13,6 +13,4 @@ export type ServerRoute = {
   basePath: string
 }
 
-export interface UserConfig extends Omit<InternalConfig, 'source' | 'build'> {
-  [key: string]: any
-}
+export interface UserConfig extends Omit<InternalConfig, 'build'> {}

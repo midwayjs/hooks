@@ -2,8 +2,8 @@ import { defineConfig } from '@midwayjs/hooks'
 import bodyParser from 'koa-bodyparser'
 
 module.exports = defineConfig({
-  middleware: [bodyParser()],
-  source: 'src/apis',
+  middlewares: [bodyParser()],
+  source: 'src',
   routes: [
     {
       baseDir: 'lambda',
