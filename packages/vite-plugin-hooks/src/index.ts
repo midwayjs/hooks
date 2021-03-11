@@ -20,7 +20,7 @@ function plugin(): Plugin {
     async transform(code: string, id: string) {
       if (!router.isApiFile(id)) return null
 
-      const sdk = await parseAndGenerateSDK(router.getBaseUrl(id), id, code)
+      const sdk = await parseAndGenerateSDK(router.getBaseUrl(id), code)
       if (!sdk) return null
 
       return {

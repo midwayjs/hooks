@@ -21,10 +21,6 @@ export default async function MidwayHooksLoader(
     return callback(null, source)
   }
 
-  const sdk = await parseAndGenerateSDK(
-    router.getBaseUrl(resourcePath),
-    resourcePath,
-    source
-  )
+  const sdk = await parseAndGenerateSDK(router.getBaseUrl(resourcePath), source)
   callback(null, sdk)
 }
