@@ -19,7 +19,6 @@ describe('test new features', () => {
     expect(await app.runFunction(post, 'Jake')).toMatchInlineSnapshot(`
       Object {
         "method": "POST",
-        "name": "Jake",
       }
     `)
   })
@@ -32,7 +31,6 @@ describe('test new features', () => {
     expect(postResponse.body).toMatchInlineSnapshot(`
       Object {
         "method": "POST",
-        "name": "lxxyx",
       }
     `)
   })
