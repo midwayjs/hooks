@@ -17,10 +17,10 @@ function plugin(): Plugin {
 
   return {
     name: 'vite:@midwayjs/hooks',
-    async transform(code: string, id: string) {
-      if (!router.isApiFile(id)) return null
+    async transform(code: string, file: string) {
+      if (!router.isApiFile(file)) return null
 
-      const sdk = await parseAndGenerateSDK(router.getBaseUrl(id), code)
+      const sdk = await parseAndGenerateSDK(router.getBaseUrl(file), code)
       if (!sdk) return null
 
       return {
