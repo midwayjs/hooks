@@ -1,18 +1,19 @@
 import axios from 'axios'
 import { ApiParam } from '../types/http'
 
-const defaults = axios.defaults
+export const defaults = axios.defaults
 
-async function request(param: ApiParam) {
+export async function request(param: ApiParam) {
   const response = await axios(param)
-  return response.data
+  // For unit testing
+  return response && response.data
 }
+
 /**
  * @internal private api
  */
-
-function createRequest(baseUrl, name) {
-  return (...args) => {
+export function createRequest(baseUrl: string, name: string) {
+  return (...args: any[]) => {
     return request({
       url: getUrl(baseUrl, name),
       method: args.length === 0 ? 'GET' : 'POST',
@@ -24,7 +25,7 @@ function createRequest(baseUrl, name) {
   }
 }
 
-function getUrl(baseUrl, name) {
+function getUrl(baseUrl: string, name: string) {
   if (name === 'default') {
     return baseUrl
   }
@@ -35,5 +36,3 @@ function getUrl(baseUrl, name) {
 
   return `${baseUrl}/${name}`
 }
-
-export { createRequest, defaults, request }
