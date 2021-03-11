@@ -70,7 +70,7 @@ class HooksComponent {
 
   createApi(file: string) {
     const mod: ApiModule = require(file)
-    const modMiddleware = mod?.config?.middleware ? mod.config.middleware : []
+    const modMiddleware = mod?.config?.middleware || []
 
     Object.keys(mod)
       .filter((key) => typeof mod[key] === 'function')

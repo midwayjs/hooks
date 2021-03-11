@@ -9,8 +9,6 @@ export type ApiParam = {
   }
   meta: {
     functionName?: string
-    functionGroup?: string
-    gateway?: string
     [key: string]: any
   }
 }
