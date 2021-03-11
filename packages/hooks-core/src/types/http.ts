@@ -1,8 +1,8 @@
-export type LambdaHTTPMethod = 'GET' | 'POST'
+export type ApiHttpMethod = 'GET' | 'POST'
 
-export type LambdaParam = {
+export type ApiParam = {
   url: string
-  method: LambdaHTTPMethod
+  method: ApiHttpMethod
   data: {
     args: any[]
     [key: string]: any

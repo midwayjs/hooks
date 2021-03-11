@@ -4,7 +4,7 @@ import {
   createHttpRequest,
 } from '@midwayjs/mock'
 import { IMidwayApplication } from '@midwayjs/core'
-import { getConfig, getProjectRoot, EnhancedFunc } from '@midwayjs/hooks-core'
+import { getConfig, getProjectRoot, ApiFunction } from '@midwayjs/hooks-core'
 import { join } from 'path'
 import { remove } from 'fs-extra'
 
@@ -45,7 +45,7 @@ export class HooksApplication {
   }
 
   // TODO Allow pass user define context
-  async runFunction<T extends EnhancedFunc>(fn: T, ...args: Parameters<T>) {
+  async runFunction<T extends ApiFunction>(fn: T, ...args: Parameters<T>) {
     const response = await this.request(fn, ...args)
     if (response.type === 'application/json') {
       return response.body
@@ -53,7 +53,7 @@ export class HooksApplication {
     return response.text
   }
 
-  request<T extends EnhancedFunc>(fn: T, ...args: Parameters<T>) {
+  request<T extends ApiFunction>(fn: T, ...args: Parameters<T>) {
     const supertest = createHttpRequest(this.app)
     if (fn._param.method === 'GET') {
       return supertest.get(fn._param.url)
