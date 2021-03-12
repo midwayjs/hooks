@@ -14,7 +14,7 @@ export default async function MidwayHooksLoader(
 
   const root = getProjectRoot()
   const config = getConfig()
-  const router = new ServerRouter(root, config)
+  const router = new ServerRouter(root, config, true)
 
   if (!router.isApiFile(this.resourcePath)) {
     return callback(null, source)

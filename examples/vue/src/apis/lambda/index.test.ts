@@ -1,6 +1,5 @@
 import { createApp, HooksApplication } from '@midwayjs/hooks-testing-library'
 import api, { get, post } from '.'
-import { join } from 'path'
 
 describe('test new features', () => {
   let app: HooksApplication
