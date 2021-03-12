@@ -1,9 +1,7 @@
 import inside from 'is-path-inside'
 import { basename, dirname, extname, join, relative, toUnix } from 'upath'
 import chalk from 'chalk'
-import { InternalConfig, isProduction } from '..'
-
-const ApiMethodPrefix = '_'
+import { InternalConfig } from '..'
 
 export class ServerRouter {
   root: string
@@ -12,17 +10,20 @@ export class ServerRouter {
 
   routes = new Map<string, string>()
 
-  constructor(root: string, config: InternalConfig) {
+  useSource: boolean
+
+  constructor(root: string, config: InternalConfig, useSource = true) {
     this.root = root
     this.config = config
+    this.useSource = useSource
   }
 
   // src/apis
   get source() {
-    if (isProduction()) {
-      return join(this.root, this.config.build.outDir)
+    if (this.useSource) {
+      return join(this.root, this.config.source)
     }
-    return join(this.root, this.config.source)
+    return join(this.root, this.config.build.outDir)
   }
 
   getRouteConfig(file: string) {
@@ -85,6 +86,8 @@ export class ServerRouter {
       basename(file, extname(file))
     )
     const fileRoute = filename === 'index' ? '' : filename
+    // TODO remove underscore support in future
+    const ApiMethodPrefix = '_'
     const methodPrefix = underscore ? ApiMethodPrefix : ''
     const func = isExportDefault ? '' : `${methodPrefix}${method}`
 
