@@ -33,7 +33,7 @@ class HooksComponent {
   constructor() {
     this.root = getProjectRoot()
     this.config = getConfig()
-    this.router = new ServerRouter(this.root, this.config)
+    this.router = new ServerRouter(this.root, this.config, !isProduction())
   }
 
   createConfiguration() {
@@ -50,7 +50,7 @@ class HooksComponent {
             this.createApi(file)
 
             if (index === this.config.routes.length - 1) {
-              this.createRenderFunction()
+              this.createRender()
             }
           },
         }
@@ -152,21 +152,25 @@ class HooksComponent {
     this.container.bind(containerId, FunctionContainer)
   }
 
-  private hasRender = false
-  private createRenderFunction() {
-    if (!isProduction() || this.hasRender) {
+  private createRender() {
+    // Only available  in production and does not register /* routes
+    if (!isProduction()) {
       return
     }
 
-    const fn = async () => {}
+    if (this.router.routes.has('/') || this.router.routes.has('/*')) {
+      console.log(
+        'A route with path / already exists, skip generating page rendering functions'
+      )
+      return
+    }
+
     this.registerFunctionToContainer({
-      containerId: 'hooks:page-render',
+      containerId: 'hooks:render',
       httpMethod: 'GET',
       httpPath: '/*',
-      fn,
+      fn: async () => {},
     })
-
-    this.hasRender = true
   }
 
   private applyMiddleware(app: any) {
@@ -188,6 +192,7 @@ class HooksComponent {
             '/': 'index.html',
           },
           buffer: true,
+          gzip: true,
         })
       )
     }

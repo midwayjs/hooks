@@ -13,13 +13,12 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 function plugin(): Plugin {
   const root = getProjectRoot()
   const config = getConfig()
-  const router = new ServerRouter(root, config)
+  const router = new ServerRouter(root, config, true)
 
   return {
     name: 'vite:@midwayjs/hooks',
     async transform(code: string, file: string) {
       if (!router.isApiFile(file)) return null
-
       const sdk = await parseAndGenerateSDK(router.getBaseUrl(file), code)
       if (!sdk) return null
 
