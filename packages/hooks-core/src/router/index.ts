@@ -2,6 +2,7 @@ import inside from 'is-path-inside'
 import { basename, dirname, extname, join, relative, toUnix } from 'upath'
 import chalk from 'chalk'
 import { InternalConfig } from '..'
+import { consola } from '../util'
 
 export class ServerRouter {
   root: string
@@ -139,7 +140,7 @@ function duplicateLogger(
   currentPath: string,
   api: string
 ) {
-  console.log(
+  consola.info(
     '[ %s ] Duplicate routes detected. %s and %s both resolve to %s. Reference: %s',
     chalk.yellow('warn'),
     chalk.cyan(relative(root, existPath)),

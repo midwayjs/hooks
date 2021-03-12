@@ -1,3 +1,5 @@
+import consola from 'consola'
+
 export function isProduction() {
   if (
     process.env.MIDWAY_TS_MODE === 'true' ||
@@ -9,3 +11,5 @@ export function isProduction() {
 
   return true
 }
+
+export { consola }
