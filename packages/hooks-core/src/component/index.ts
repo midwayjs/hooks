@@ -1,7 +1,7 @@
 import {
   createConfiguration,
   IMidwayContainer,
-  MidwayFrameworkType,
+  MidwayFrameworkType as Framework,
 } from '@midwayjs/core'
 import { __decorate } from 'tslib'
 import { Inject, Controller, Get, Post, Provide } from '@midwayjs/decorator'
@@ -10,12 +10,13 @@ import { ApiFunction, ApiModule } from '../types/common'
 import { ServerRouter } from '../router'
 import { getConfig, getProjectRoot } from '../config'
 import { InternalConfig } from '../types/config'
-import { isProduction } from '../util'
+import { consola, isProduction } from '../util'
 import { kebabCase, noop } from 'lodash'
 import { join } from 'path'
 import staticCache from 'koa-static-cache'
-import { extname, relative } from 'upath'
+import { extname, relative, removeExt } from 'upath'
 import { ApiHttpMethod } from '../types/http'
+import fs from 'fs'
 
 /**
  * Create hooks component
@@ -37,6 +38,7 @@ class HooksComponent {
   }
 
   createConfiguration() {
+    let count = 0
     const configuration = createConfiguration({
       namespace: '@midwayjs/hooks',
       directoryResolveFilter: this.config.routes.map((route, index) => {
@@ -49,7 +51,8 @@ class HooksComponent {
 
             this.createApi(file)
 
-            if (index === this.config.routes.length - 1) {
+            count++
+            if (count === this.config.routes.length) {
               this.createRender()
             }
           },
@@ -58,7 +61,7 @@ class HooksComponent {
     })
 
     configuration
-      .onReady((container, app) => {
+      .onReady((_, app) => {
         this.applyMiddleware(app)
       })
       .onStop(noop)
@@ -154,13 +157,13 @@ class HooksComponent {
 
   private createRender() {
     // Only available  in production and does not register /* routes
-    if (!isProduction()) {
+    if (!isProduction() || !this.isFullStackProject()) {
       return
     }
 
-    if (this.router.routes.has('/') || this.router.routes.has('/*')) {
-      console.log(
-        'A route with path / already exists, skip generating page rendering functions'
+    if (this.existRootPath) {
+      consola.info(
+        'The route `/` or `/*` is registered, you need to host the front-end page manually'
       )
       return
     }
@@ -173,6 +176,10 @@ class HooksComponent {
     })
   }
 
+  get existRootPath() {
+    return this.router.routes.has('/') || this.router.routes.has('/*')
+  }
+
   private applyMiddleware(app: any) {
     // Apply global middleware from config
     this.config.middleware.forEach((middleware) => app.use(middleware))
@@ -180,9 +187,14 @@ class HooksComponent {
     // Serve vite static html
     const type = app.getFrameworkType()
     const requireStaticCache =
-      type === MidwayFrameworkType.WEB_KOA || type === MidwayFrameworkType.FAAS
+      type === Framework.WEB_KOA || type === Framework.FAAS
 
-    if (isProduction() && requireStaticCache) {
+    if (
+      isProduction() &&
+      requireStaticCache &&
+      this.isFullStackProject() &&
+      !this.existRootPath
+    ) {
       const baseDir = app.getBaseDir()
       app.use(
         staticCache({
@@ -211,8 +223,14 @@ class HooksComponent {
     const relativeDirectory = length > 1 ? this.router.source : lambdaDirectory
     const relativePath = relative(relativeDirectory, file)
     // a/b/c -> a-b-c
-    const id = kebabCase(file.slice(0, -extname(relativePath)).length)
+    const id = kebabCase(removeExt(relativePath, extname(relativePath)))
     const name = [id, isExportDefault ? '' : `-${functionName}`].join('')
     return name.toLowerCase()
+  }
+
+  // TODO Refactor to use config
+  private isFullStackProject() {
+    const configs = ['vite.config.ts', 'vite.config.js']
+    return configs.some((config) => fs.existsSync(join(this.root, config)))
   }
 }
