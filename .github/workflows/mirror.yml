@@ -1,4 +1,4 @@
-name: Sync to Gitee Mirror
+name: Sync
 
 on:
   schedule:
@@ -8,7 +8,7 @@ on:
       - '*'
 
 jobs:
-  sync:
+  gitee:
     runs-on: ubuntu-latest
     steps:
       - name: Sync to Gitee
