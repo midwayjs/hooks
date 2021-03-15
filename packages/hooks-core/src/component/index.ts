@@ -140,6 +140,7 @@ class HooksComponent {
         if (typeof args === 'string') {
           args = JSON.parse(args)
         }
+        // TODO make als run before middleware
         return await als.run(bindCtx, async () => fn(...args))
       }
     }
