@@ -25,7 +25,6 @@ export function getConfig(cwd?: string): InternalConfig {
       viteOutDir: './build',
       outDir: './dist',
     },
-    middleware: [],
   })
 }
 

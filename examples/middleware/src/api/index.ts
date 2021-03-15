@@ -1,15 +1,5 @@
 import { ApiConfig, withController } from '@midwayjs/hooks'
-import { Context, IMidwayKoaNext } from '@midwayjs/koa'
-
-function createLogger(level: string) {
-  return async (ctx: Context, next: IMidwayKoaNext) => {
-    console.log(`[${level}] <-- [${ctx.method}] ${ctx.url}`)
-    const start = Date.now()
-    await next()
-    const cost = Date.now() - start
-    console.log(`[${level}] --> [${ctx.method}] ${ctx.url} ${cost}ms`)
-  }
-}
+import { createLogger } from '../middleware'
 
 // File Level Middleware
 export const config: ApiConfig = {

@@ -1,11 +1,17 @@
 export interface InternalConfig {
   source?: string
   routes: ServerRoute[]
-  middleware?: any[]
   build?: {
     viteOutDir: string
     outDir: string
   }
+}
+
+export type ComponentConfig = {
+  /**
+   * Global middleware
+   */
+  middleware?: any[]
 }
 
 export type ServerRoute = {
