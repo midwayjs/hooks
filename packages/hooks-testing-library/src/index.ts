@@ -6,7 +6,7 @@ import {
 import { IMidwayApplication } from '@midwayjs/core'
 import { getConfig, getProjectRoot, ApiFunction } from '@midwayjs/hooks-core'
 import { join } from 'path'
-import { remove } from 'fs-extra'
+import { existsSync, remove } from 'fs-extra'
 
 export async function createAppImplementation(
   baseDir: string,
@@ -69,8 +69,13 @@ export class HooksApplication {
     await close(this.app)
     const appDir = this.app?.getAppDir()
     if (appDir) {
-      await remove(join(appDir, 'logs'))
-      await remove(join(appDir, 'run'))
+      const cleanup = [join(appDir, 'logs'), join(appDir, 'run')]
+
+      for (const dir of cleanup) {
+        if (existsSync(dir)) {
+          await remove(dir)
+        }
+      }
     }
   }
 }
