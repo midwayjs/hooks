@@ -16,7 +16,9 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "devDependencies": {
-    "@types/debug": "^4.1.5"
+    "@types/debug": "^4.1.5",
+    "@types/fs-extra": "^9.0.8",
+    "@types/testing-library__jest-dom": "^5.9.5"
   },
   "dependencies": {
     "@midwayjs/hooks-core": "^2.1.0-next.0",
