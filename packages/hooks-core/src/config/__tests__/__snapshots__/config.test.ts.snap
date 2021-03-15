@@ -6,7 +6,6 @@ Object {
     "outDir": "./dist",
     "viteOutDir": "./build",
   },
-  "middleware": Array [],
   "routes": Array [
     Object {
       "baseDir": "lambda",
@@ -23,7 +22,6 @@ Object {
     "outDir": "./dist",
     "viteOutDir": "./build",
   },
-  "middleware": Array [],
   "routes": Array [
     Object {
       "baseDir": "lambda",
@@ -40,7 +38,6 @@ Object {
     "outDir": "./dist",
     "viteOutDir": "./build",
   },
-  "middleware": Array [],
   "routes": Array [
     Object {
       "baseDir": "lambda",

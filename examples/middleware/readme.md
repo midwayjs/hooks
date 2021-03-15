@@ -5,7 +5,7 @@ You can refer to the example to define the middleware you need.
 
 ## Global Middleware
 
-Example: [midway.config.ts](midway.config.ts)
+Example: [configuration.ts](src/configuration.ts)
 
 ## File-level middleware
 

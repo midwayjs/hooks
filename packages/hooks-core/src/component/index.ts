@@ -9,7 +9,7 @@ import { als } from '../runtime'
 import { ApiFunction, ApiModule } from '../types/common'
 import { ServerRouter } from '../router'
 import { getConfig, getProjectRoot } from '../config'
-import { InternalConfig } from '../types/config'
+import { ComponentConfig, InternalConfig } from '../types/config'
 import { consola, isProduction } from '../util'
 import { kebabCase, noop } from 'lodash'
 import { join } from 'path'
@@ -21,17 +21,19 @@ import fs from 'fs'
 /**
  * Create hooks component
  */
-export const hooks = () => {
-  return new HooksComponent().createConfiguration()
+export const hooks = (config: ComponentConfig = {}) => {
+  return new HooksComponent(config).createConfiguration()
 }
 
 class HooksComponent {
   private readonly root: string
   private readonly config: InternalConfig
+  private readonly componentConfig: ComponentConfig
   private readonly router: ServerRouter
   private container: IMidwayContainer
 
-  constructor() {
+  constructor(componentConfig: ComponentConfig) {
+    this.componentConfig = componentConfig
     this.root = getProjectRoot()
     this.config = getConfig()
     this.router = new ServerRouter(this.root, this.config, !isProduction())
@@ -182,7 +184,11 @@ class HooksComponent {
 
   private applyMiddleware(app: any) {
     // Apply global middleware from config
-    this.config.middleware.forEach((middleware) => app.use(middleware))
+    if (Array.isArray(this.componentConfig.middleware)) {
+      this.componentConfig.middleware.forEach((middleware) =>
+        app.use(middleware)
+      )
+    }
 
     // Serve vite static html
     const type = app.getFrameworkType()
