@@ -3,13 +3,9 @@ import { deserialize, parse } from 'superjson'
 
 export function SuperJSONPlugin() {
   return (req: SuperAgentRequest) => {
-    req.on('response', (response) => {
-      if (response.body) {
-        response.body = deserialize(response.body)
-      }
-      if (response.text) {
-        response.text = parse(response.text)
-      }
+    req.on('response', (res) => {
+      if (res.body) res.body = deserialize(res.body)
+      if (res.text) res.text = parse(res.text)
     })
   }
 }
