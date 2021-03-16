@@ -7,6 +7,7 @@ import { IMidwayApplication } from '@midwayjs/core'
 import { getConfig, getProjectRoot, ApiFunction } from '@midwayjs/hooks-core'
 import { join } from 'path'
 import { existsSync, remove } from 'fs-extra'
+import { SuperJSONPlugin } from './plugin'
 
 export async function createAppImplementation(
   baseDir: string,
@@ -56,11 +57,12 @@ export class HooksApplication {
   request<T extends ApiFunction>(fn: T, ...args: Parameters<T>) {
     const supertest = createHttpRequest(this.app)
     if (fn._param.method === 'GET') {
-      return supertest.get(fn._param.url)
+      return supertest.get(fn._param.url).use(SuperJSONPlugin())
     }
 
     return supertest
       .post(fn._param.url)
+      .use(SuperJSONPlugin())
       .send({ args })
       .set('Content-Type', 'application/json')
   }

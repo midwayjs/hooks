@@ -17,6 +17,7 @@ import staticCache from 'koa-static-cache'
 import { extname, relative, removeExt } from 'upath'
 import { ApiHttpMethod } from '../types/http'
 import fs from 'fs'
+import { serialize } from 'superjson'
 
 /**
  * Create hooks component
@@ -141,7 +142,7 @@ class HooksComponent {
           args = JSON.parse(args)
         }
         // TODO make als run before middleware
-        return await als.run(bindCtx, async () => fn(...args))
+        return await als.run(bindCtx, async () => serialize(await fn(...args)))
       }
     }
     __decorate([Inject()], FunctionContainer.prototype, 'ctx', void 0)
