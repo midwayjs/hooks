@@ -31,6 +31,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest-environment-node": "^26.6.2",
     "jest-watch-typeahead": "^0.6.1",
+    "superjson": "^1.7.2",
     "ts-jest": "^26.5.2"
   },
   "publishConfig": {
