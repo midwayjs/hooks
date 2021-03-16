@@ -23,7 +23,7 @@ describe('test new features', () => {
 
   it('request', async () => {
     const response = await app.request(get).expect(200)
-    expect(response.text).toMatchInlineSnapshot()
+    expect(response.body).toMatchInlineSnapshot()
   })
 })
 ```

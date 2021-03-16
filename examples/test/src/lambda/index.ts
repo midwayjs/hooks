@@ -27,3 +27,22 @@ export async function post(name: string) {
     name,
   }
 }
+
+export async function mixedValue() {
+  return {
+    string: '',
+    number: 1,
+    boolean: true,
+    null: null,
+    array: [1],
+    object: {
+      a: 1,
+    },
+    undefined: undefined,
+    date: new Date('2021-02-21'),
+    regexp: /regexp/,
+    set: new Set([1, 2, 3, 1]),
+    map: new Map([['key', 'value']]),
+    error: new Error('from api'),
+  }
+}
