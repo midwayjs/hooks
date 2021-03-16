@@ -1,7 +1,10 @@
 import axios from 'axios'
 import { ApiParam } from '../types/http'
+import { parse } from 'superjson'
 
 export const defaults = axios.defaults
+
+axios.defaults.transformResponse = [parse]
 
 export async function request(param: ApiParam) {
   const response = await axios(param)
