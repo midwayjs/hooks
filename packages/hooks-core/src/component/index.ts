@@ -147,7 +147,7 @@ class HooksComponent {
     }
     __decorate([Inject()], FunctionContainer.prototype, 'ctx', void 0)
     __decorate(
-      [Method(httpPath, { middleware: fn.middleware || [] })],
+      [Method(httpPath, { middleware: fn.middleware })],
       FunctionContainer.prototype,
       'handler',
       null
