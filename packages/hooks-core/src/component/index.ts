@@ -114,6 +114,7 @@ class HooksComponent {
 
     // Apply module middleware
     ;(fn.middleware || (fn.middleware = [])).unshift(...modMiddleware)
+    fn.middleware = fn.middleware.map((middleware) => covert(middleware))
 
     this.registerFunctionToContainer({
       containerId,
@@ -136,13 +137,11 @@ class HooksComponent {
     let FunctionContainer = class FunctionContainer {
       ctx: any
       async handler() {
-        const bindCtx = { ctx: this.ctx }
         let args = this.ctx.request?.body?.args || []
         if (typeof args === 'string') {
           args = JSON.parse(args)
         }
-        // TODO make als run before middleware
-        return await als.run(bindCtx, async () => serialize(await fn(...args)))
+        return serialize(await fn(...args))
       }
     }
     __decorate([Inject()], FunctionContainer.prototype, 'ctx', void 0)
@@ -185,10 +184,14 @@ class HooksComponent {
   }
 
   private applyMiddleware(app: any) {
+    app.use(async (ctx: any, next: any) => {
+      await als.run({ ctx }, async () => await next())
+    })
+
     // Apply global middleware from config
     if (Array.isArray(this.componentConfig.middleware)) {
       this.componentConfig.middleware.forEach((middleware) =>
-        app.use(middleware)
+        app.use(covert(middleware))
       )
     }
 
@@ -240,5 +243,18 @@ class HooksComponent {
   private isFullStackProject() {
     const configs = ['vite.config.ts', 'vite.config.js']
     return configs.some((config) => fs.existsSync(join(this.root, config)))
+  }
+}
+
+function covert(fn: Function) {
+  return (...args: any[]) => {
+    /**
+     * Hooks middleware
+     * const middleware = (next) => { const ctx = useContext() }
+     */
+    if (fn.length === 1) {
+      return fn(args.pop())
+    }
+    return fn(...args)
   }
 }
