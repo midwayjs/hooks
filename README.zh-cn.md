@@ -27,33 +27,64 @@ Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/mid
 
 ## 🌰 Demo
 
-### 后端 API 与前端调用
+<table>
+<tr>
+<th style="text-align: center;"> 前端调用 </th>
+<th style="text-align: center;"> 后端 API </th>
+</tr>
+<tr>
+<td>
+<sub>
 
-> backend api
-> src/apis/lambda/index.ts
+<!-- prettier-ignore -->
+```ts
+import { getPath, post } from './apis/lambda';
 
-```typescript
+// send GET request to /api/getPath
+const path = await getPath();
+console.assert(path === '/api/getPath');
+
+const { message, method } = await post('Jake');
+
+console.assert(message === 'Hello Jake!');
+console.assert(method === 'POST');
+
+
+
+
+
+
+```
+
+</sub>
+</td>
+<td>
+
+<sub>
+
+```ts
 import { useContext } from '@midwayjs/hooks';
 
 export async function getPath() {
-  // 获取请求 HTTP Context
+  // Get HTTP request context by Hooks
   const ctx = useContext();
   return ctx.path;
 }
+
+export async function post(name: string) {
+  const ctx = useContext();
+
+  return {
+    message: `Hello ${name}!`,
+    method: ctx.method,
+  };
+}
 ```
 
-> frontend
-> src/page/index.tsx
-
-```typescript
-import { getPath } from './apis/lambda';
-
-getPath().then((path) => {
-  // 发送 GET 请求到 /api/getPath
-  // 返回值: /api/getPath
-  console.log(path);
-});
-```
+</sub>
+</td>
+</tr>
+</table>
 
 ## 🚀 快速开始
 
