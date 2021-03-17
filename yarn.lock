@@ -6810,7 +6810,7 @@ esbuild-register@^2.0.0:
   resolved "https://registry.npmjs.org/esbuild-register/-/esbuild-register-2.1.0.tgz#b1459c1970885e1226f31de1bea595a5c2922b11"
   integrity sha512-NS/ptwYqFfmRT50SwRuxlwuKDwraijsqhDjngX4QyYj5VxSlbujbglQbXTz1qrRQhZRhx4Ap9369W7t+aJtdmQ==
 
-esbuild@^0.8.47, esbuild@^0.8.52, esbuild@^0.8.57:
+esbuild@^0.8.47:
   version "0.8.57"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.8.57.tgz#a42d02bc2b57c70bcd0ef897fe244766bb6dd926"
   integrity sha512-j02SFrUwFTRUqiY0Kjplwjm1psuzO1d6AjaXKuOR9hrY0HuPsT6sV42B6myW34h1q4CRy+Y3g4RU/cGJeI/nNA==
@@ -14111,13 +14111,20 @@ superagent@^3.8.3:
     qs "^6.5.1"
     readable-stream "^2.3.5"
 
-superjson@1.4.1, superjson@^1.7.2:
+superjson@1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/superjson/-/superjson-1.4.1.tgz#c96501fc0cc32cc9cb25ecc3fb476db631eceba2"
   integrity sha512-+PjOQNj7mW4I0t3KphIgwwQvQObd5Tc1DtUoIMj3iN7RXQyoWr2R8LXLtQw/UNEItSd0Al+qn0I/8yCnTXiAIw==
   dependencies:
     lodash "^4.17.20"
     lodash-es "^4.17.15"
+
+superjson@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/superjson/-/superjson-1.7.2.tgz#81f531829fee8bdab5593f57c145be25d2ed54c4"
+  integrity sha512-KwMBfX2c5Mq4EcvGivXH3JBYqYFoZQbA3aMhwXIdpkyVInEkxIGaoSDk+E8y/gMe5RH3mjBU3xRpvKsjZktphw==
+  dependencies:
+    debug "^4.3.1"
 
 supertest@^4.0.2:
   version "4.0.2"
@@ -15201,19 +15208,7 @@ vite-tsconfig-paths@^2.3.0:
     debug "^4.1.1"
     tsconfig-paths "^3.9.0"
 
-vite@^2.0.1, vite@^2.0.4:
-  version "2.0.5"
-  resolved "https://registry.npmjs.org/vite/-/vite-2.0.5.tgz#ac46857a3fa8686d077921e61bd48a986931df1d"
-  integrity sha512-QTgEDbq1WsTtr6j+++ewjhBFEk6c8v0xz4fb/OWJQKNYU8ZZtphOshwOqAlnarSstPBtWCBR0tsugXx6ajfoUg==
-  dependencies:
-    esbuild "^0.8.52"
-    postcss "^8.2.1"
-    resolve "^1.19.0"
-    rollup "^2.38.5"
-  optionalDependencies:
-    fsevents "~2.3.1"
-
-vite@^2.1.0:
+vite@^2.0.1, vite@^2.0.4, vite@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/vite/-/vite-2.1.1.tgz#13c7a7a5665b435f28fe8549caab181e0ad9af7b"
   integrity sha512-nlTQrfYIkahcElD8O/oogbLbuKgAZRbvoFOth3GmRSglfPdY4RgfBjj0Fu7HeCU/2u3Jxc6jW4UuV22LGw1Yaw==
