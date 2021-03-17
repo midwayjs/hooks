@@ -1,5 +1,5 @@
 {
-  "name": "svelte",
+  "name": "vanilla",
   "version": "0.0.0",
   "scripts": {
     "start": "node bootstrap",
@@ -16,10 +16,6 @@
     "koa-bodyparser": "^4.3.0"
   },
   "devDependencies": {
-    "@svitejs/vite-plugin-svelte": "^0.11.1",
-    "svelte": "^3.35.0",
-    "svelte-preprocess": "^4.6.9",
-    "typescript": "^4.2.3",
     "vite": "^2.1.0",
     "@midwayjs/cli": "^1.2.50",
     "@midwayjs/cli-plugin-build": "^1.2.50",
