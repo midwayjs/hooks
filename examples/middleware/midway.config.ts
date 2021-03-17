@@ -1,4 +1,4 @@
-import { defineConfig } from '@midwayjs/hooks'
+import { defineConfig } from '@midwayjs/hooks';
 
 export default defineConfig({
   // Global Level Middleware
@@ -9,4 +9,4 @@ export default defineConfig({
       basePath: '/',
     },
   ],
-})
+});
