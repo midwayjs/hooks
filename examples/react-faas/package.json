@@ -18,9 +18,9 @@
     "react-dom": "^17.0.0"
   },
   "devDependencies": {
-    "@midwayjs/cli": "^1.2.51",
-    "@midwayjs/cli-plugin-faas": "^1.2.51",
-    "@midwayjs/fcli-plugin-fc": "^1.2.51",
+    "@midwayjs/cli": "^1.2.52",
+    "@midwayjs/cli-plugin-faas": "^1.2.52",
+    "@midwayjs/fcli-plugin-fc": "^1.2.52",
     "@midwayjs/hooks-testing-library": "^2.1.0-next.3",
     "@midwayjs/serverless-app": "^2.8.12",
     "@midwayjs/serverless-fc-trigger": "^2.8.11",
