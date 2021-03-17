@@ -35,12 +35,12 @@ Docs：[Getting Started](https://www.yuque.com/midwayjs/midway_v2/integration_in
 > src/apis/lambda/index.ts
 
 ```typescript
-import { useContext } from '@midwayjs/hooks'
+import { useContext } from '@midwayjs/hooks';
 
 export async function getPath() {
   // Get HTTP request context by Hooks
-  const ctx = useContext()
-  return ctx.path
+  const ctx = useContext();
+  return ctx.path;
 }
 ```
 
@@ -48,13 +48,13 @@ export async function getPath() {
 > src/page/index.tsx
 
 ```typescript
-import { getPath } from './apis/lambda'
+import { getPath } from './apis/lambda';
 
 getPath().then((path) => {
   // send GET request to /api/getPath
   // Result: /api/getPath
-  console.log(path)
-})
+  console.log(path);
+});
 ```
 
 ## 🚀 Quick Start

@@ -9,4 +9,18 @@ module.exports = {
   jsxBracketSameLine: false,
   arrowParens: 'always',
   printWidth: 80,
+  overrides: [
+    {
+      files: '*.md',
+      options: {
+        semi: true,
+      },
+    },
+    {
+      files: 'examples/**/*',
+      options: {
+        semi: true,
+      },
+    },
+  ],
 }

@@ -33,12 +33,12 @@ Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/mid
 > src/apis/lambda/index.ts
 
 ```typescript
-import { useContext } from '@midwayjs/hooks'
+import { useContext } from '@midwayjs/hooks';
 
 export async function getPath() {
   // 获取请求 HTTP Context
-  const ctx = useContext()
-  return ctx.path
+  const ctx = useContext();
+  return ctx.path;
 }
 ```
 
@@ -46,13 +46,13 @@ export async function getPath() {
 > src/page/index.tsx
 
 ```typescript
-import { getPath } from './apis/lambda'
+import { getPath } from './apis/lambda';
 
 getPath().then((path) => {
   // 发送 GET 请求到 /api/getPath
   // 返回值: /api/getPath
-  console.log(path)
-})
+  console.log(path);
+});
 ```
 
 ## 🚀 快速开始
