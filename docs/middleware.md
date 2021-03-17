@@ -67,7 +67,11 @@ export default withController({ middleware: [bodyParser()] }, async () => {
 
 ## 开发中间件
 
-在 Midway Hooks 中，中间件的开发模式与 Web 框架一致，以 Koa 为例。
+在 Midway Hooks 中，中间件的开发模式也遵循 Hooks 的语法。
+
+中间件仅有 `next` 一个参数，`ctx` 需要通过 `useContext` 获得。你也可以在中间件中使用任意的 Hooks。
+
+> 参考示例
 
 ```ts
 import { Context, IMidwayKoaNext } from '@midwayjs/koa';
