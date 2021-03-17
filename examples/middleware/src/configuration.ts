@@ -1,6 +1,6 @@
-import { hooks, createConfiguration } from '@midwayjs/hooks'
-import bodyParser from 'koa-bodyparser'
-import { createLogger } from './middleware'
+import { hooks, createConfiguration } from '@midwayjs/hooks';
+import bodyParser from 'koa-bodyparser';
+import { createLogger } from './middleware';
 
 export default createConfiguration({
   imports: [
@@ -9,4 +9,4 @@ export default createConfiguration({
       middleware: [bodyParser(), createLogger('Global')],
     }),
   ],
-})
+});
