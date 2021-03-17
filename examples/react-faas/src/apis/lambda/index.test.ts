@@ -1,18 +1,18 @@
 import {
   createFunctionApp,
   HooksApplication,
-} from '@midwayjs/hooks-testing-library'
-import api, { post } from '.'
+} from '@midwayjs/hooks-testing-library';
+import api, { post } from '.';
 
 describe('test new features', () => {
-  let app: HooksApplication
+  let app: HooksApplication;
   beforeAll(async () => {
-    app = await createFunctionApp()
-  })
+    app = await createFunctionApp();
+  });
 
   afterAll(async () => {
-    await app.close()
-  })
+    await app.close();
+  });
 
   it('runFunction', async () => {
     expect(await app.runFunction(api)).toMatchInlineSnapshot(`
@@ -20,22 +20,22 @@ describe('test new features', () => {
         "message": "Hello World",
         "method": "GET",
       }
-    `)
+    `);
     expect(await app.runFunction(post, 'Jake')).toMatchInlineSnapshot(`
       Object {
         "message": "Your message: Jake",
         "method": "POST",
       }
-    `)
-  })
+    `);
+  });
 
   it('request', async () => {
-    const response = await app.request(post, 'Jake').expect(200)
+    const response = await app.request(post, 'Jake').expect(200);
     expect(response.body).toMatchInlineSnapshot(`
       Object {
         "message": "Your message: Jake",
         "method": "POST",
       }
-    `)
-  })
-})
+    `);
+  });
+});

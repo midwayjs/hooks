@@ -1,14 +1,14 @@
-import './style.css'
-import api from './function/api'
+import './style.css';
+import api from './function/api';
 
 async function bootstrap() {
-  const response = await api()
+  const response = await api();
 
   document.querySelector('#app').innerHTML = `
     <h1>Hello Vite!</h1>
     <h2>Backend message: ${response.message}!</h2>
     <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-  `
+  `;
 }
 
-bootstrap()
+bootstrap();

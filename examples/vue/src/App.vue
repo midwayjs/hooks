@@ -6,9 +6,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
-import api, { post } from './apis/lambda'
+import { defineComponent, onMounted, ref } from 'vue';
+import HelloWorld from './components/HelloWorld.vue';
+import api, { post } from './apis/lambda';
 
 export default defineComponent({
   name: 'App',
@@ -17,22 +17,22 @@ export default defineComponent({
   },
   methods: {
     async send() {
-      const message = window.prompt('Please input your message')
-      const response = await post(message)
-      window.alert(JSON.stringify(response))
+      const message = window.prompt('Please input your message');
+      const response = await post(message);
+      window.alert(JSON.stringify(response));
     },
   },
   setup() {
-    const message = ref('')
+    const message = ref('');
     onMounted(async () => {
-      const response = await api()
-      message.value = JSON.stringify(response)
-    })
+      const response = await api();
+      message.value = JSON.stringify(response);
+    });
     return {
       message,
-    }
+    };
   },
-})
+});
 </script>
 
 <style>
