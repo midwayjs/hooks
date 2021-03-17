@@ -1,4 +1,4 @@
-import { defineConfig } from '@midwayjs/hooks'
+import { defineConfig } from '@midwayjs/hooks';
 
 export default defineConfig({
   routes: [
@@ -7,4 +7,4 @@ export default defineConfig({
       basePath: '/api',
     },
   ],
-})
+});

@@ -1,31 +1,31 @@
-import { useContext } from '@midwayjs/hooks'
-import { Context } from 'koa'
+import { useContext } from '@midwayjs/hooks';
+import { Context } from 'koa';
 
 export default async () => {
-  return 'Hello World'
-}
+  return 'Hello World';
+};
 
 const useKoaContext = () => {
-  return useContext<Context>()
-}
+  return useContext<Context>();
+};
 
 export async function getPath() {
-  const ctx = useKoaContext()
-  return ctx.path
+  const ctx = useKoaContext();
+  return ctx.path;
 }
 
 export async function get() {
-  const ctx = useKoaContext()
-  return ctx.method
+  const ctx = useKoaContext();
+  return ctx.method;
 }
 
 export async function post(name: string) {
-  const ctx = useKoaContext()
+  const ctx = useKoaContext();
 
   return {
     method: ctx.method,
     name,
-  }
+  };
 }
 
 export async function mixedValue() {
@@ -44,5 +44,5 @@ export async function mixedValue() {
     set: new Set([1, 2, 3, 1]),
     map: new Map([['key', 'value']]),
     error: new Error('from api'),
-  }
+  };
 }
