@@ -53,7 +53,18 @@ console.assert(method === 'POST');
 
 
 
+<<<<<<< HEAD
 
+=======
+```typescript
+import { useContext } from '@midwayjs/hooks';
+
+export async function getPath() {
+  // 获取请求 HTTP Context
+  const ctx = useContext();
+  return ctx.path;
+}
+>>>>>>> 0e0c30c... style: use overrides and format markdown
 ```
 
 </sub>
@@ -71,6 +82,7 @@ export async function getPath() {
   return ctx.path;
 }
 
+<<<<<<< HEAD
 export async function post(name: string) {
   const ctx = useContext();
 
@@ -79,6 +91,16 @@ export async function post(name: string) {
     method: ctx.method,
   };
 }
+=======
+```typescript
+import { getPath } from './apis/lambda';
+
+getPath().then((path) => {
+  // 发送 GET 请求到 /api/getPath
+  // 返回值: /api/getPath
+  console.log(path);
+});
+>>>>>>> 0e0c30c... style: use overrides and format markdown
 ```
 
 </sub>

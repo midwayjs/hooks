@@ -11,13 +11,13 @@ $ npm install @midwayjs/vite-plugin-hooks -D
 2. Modify vite.config.ts or vite.config.js
 
 ```ts
-import { defineConfig } from 'vite'
-import hooks from '@midwayjs/vite-plugin-hooks'
+import { defineConfig } from 'vite';
+import hooks from '@midwayjs/vite-plugin-hooks';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [hooks()],
-})
+});
 ```
 
 3. Referring to examples, add the following file
