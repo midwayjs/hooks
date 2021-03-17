@@ -3,6 +3,7 @@
   "version": "2.1.0-next.1",
   "private": true,
   "scripts": {
+    "start": "node bootstrap",
     "dev": "vite",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
