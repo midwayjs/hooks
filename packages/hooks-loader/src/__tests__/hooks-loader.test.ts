@@ -23,8 +23,10 @@ async function compile(entry: string) {
   return output.source
 }
 
+const desc = process.env.GITHUB_ACTION ? describe : describe.skip
+
 // Skip due to slow compilation speed
-describe.skip('hooks loader with proxy', () => {
+desc('hooks loader with proxy', () => {
   beforeEach(() => {
     process.chdir(root)
   })

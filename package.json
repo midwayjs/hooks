@@ -56,8 +56,5 @@
     "packages": [
       "packages/*"
     ]
-  },
-  "resolutions": {
-    "superjson": "1.4.1"
   }
 }
