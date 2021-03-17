@@ -40,7 +40,7 @@
     "pretty-quick": "^3.1.0",
     "ts-jest": "^26.4.4",
     "typescript": "^4.2.3",
-    "esbuild": "^0.8.57",
+    "esbuild": "^0.9.2",
     "esbuild-jest": "^0.5.0"
   },
   "husky": {
