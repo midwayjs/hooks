@@ -23,7 +23,8 @@ async function compile(entry: string) {
   return output.source
 }
 
-describe('hooks loader with proxy', () => {
+// Skip due to slow compilation speed
+describe.skip('hooks loader with proxy', () => {
   beforeEach(() => {
     process.chdir(root)
   })
