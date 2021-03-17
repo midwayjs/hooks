@@ -1,6 +1,7 @@
 {
   "name": "svelte",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "start": "node bootstrap",
     "dev": "vite",
