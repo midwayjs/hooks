@@ -29,40 +29,71 @@ Docs：[Getting Started](https://www.yuque.com/midwayjs/midway_v2/integration_in
 
 ## 🌰 Demo
 
-### backend api & frontend invoke
+<table>
+<tr>
+<th style="text-align: center;"> front-end invoke </th>
+<th style="text-align: center;"> back-end api </th>
+</tr>
+<tr>
+<td>
+<sub>
 
-> backend api
-> src/apis/lambda/index.ts
+<!-- prettier-ignore -->
+```ts
+import { getPath, post } from './apis/lambda';
 
-```typescript
-import { useContext } from '@midwayjs/hooks'
+// send GET request to /api/getPath
+const path = await getPath();
+console.assert(path === '/api/getPath');
+
+const { message, method } = await post('Jake');
+
+console.assert(message === 'Hello Jake!');
+console.assert(method === 'POST');
+
+
+
+
+
+
+```
+
+</sub>
+</td>
+<td>
+
+<sub>
+
+```ts
+import { useContext } from '@midwayjs/hooks';
 
 export async function getPath() {
   // Get HTTP request context by Hooks
-  const ctx = useContext()
-  return ctx.path
+  const ctx = useContext();
+  return ctx.path;
+}
+
+export async function post(name: string) {
+  const ctx = useContext();
+
+  return {
+    message: `Hello ${name}!`,
+    method: ctx.method,
+  };
 }
 ```
 
-> frontend
-> src/page/index.tsx
-
-```typescript
-import { getPath } from './apis/lambda'
-
-getPath().then((path) => {
-  // send GET request to /api/getPath
-  // Result: /api/getPath
-  console.log(path)
-})
-```
+</sub>
+</td>
+</tr>
+</table>
 
 ## 🚀 Quick Start
 
-Please install faas-cli first.
+Please install `@midwayjs/cli` first.
 
 ```bash
-$ npm i @midwayjs/faas-cli -g
+$ npm i @midwayjs/cli -g
 ```
 
 ### Create
@@ -80,7 +111,7 @@ $ npm run dev
 ### Deploy to custom server
 
 ```bash
-$ node boot.js
+$ node bootstrap.js
 ```
 
 ### Deploy to Serverless
