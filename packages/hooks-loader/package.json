@@ -15,7 +15,7 @@
     "@midwayjs/hooks": "^2.1.0-next.4",
     "@midwayjs/hooks-core": "^2.0.0-next.0",
     "@types/debug": "^4.1.5",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.21",
     "@types/memory-fs": "^0.3.2",
     "@types/webpack": "^4.41.26",
     "memory-fs": "^0.5.0",
