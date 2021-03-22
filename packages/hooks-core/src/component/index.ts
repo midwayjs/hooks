@@ -16,7 +16,7 @@ import { join } from 'path'
 import staticCache from 'koa-static-cache'
 import { extname, relative, removeExt } from 'upath'
 import { ApiHttpMethod } from '../types/http'
-import fs from 'fs'
+import { existsSync } from 'fs'
 import { serialize } from 'superjson'
 
 /**
@@ -28,7 +28,7 @@ export const hooks = (config: ComponentConfig = {}) => {
 
 class HooksComponent {
   private readonly root: string
-  private readonly config: InternalConfig
+  private readonly globalConfig: InternalConfig
   private readonly componentConfig: ComponentConfig
   private readonly router: ServerRouter
   private container: IMidwayContainer
@@ -36,27 +36,36 @@ class HooksComponent {
   constructor(componentConfig: ComponentConfig) {
     this.componentConfig = componentConfig
     this.root = getProjectRoot()
-    this.config = getConfig()
-    this.router = new ServerRouter(this.root, this.config, !isProduction())
+    this.globalConfig = getConfig()
+    this.router = new ServerRouter(
+      this.root,
+      this.globalConfig,
+      !isProduction()
+    )
   }
 
   createConfiguration() {
     let count = 0
+
+    const { routes } = this.globalConfig
+
     const configuration = createConfiguration({
       namespace: '@midwayjs/hooks',
-      directoryResolveFilter: this.config.routes.map((route, index) => {
+      directoryResolveFilter: routes.map((route) => {
         return {
           pattern: route.baseDir,
           ignoreRequire: true,
           filter: (_: void, file: string, container: IMidwayContainer) => {
-            if (!this.container) this.container = container
-            if (!this.router.isApiFile(file)) return
+            this.container = container
+            if (!this.router.isApiFile(file)) {
+              return
+            }
 
             this.createApi(file)
 
             count++
-            if (count === this.config.routes.length) {
-              this.createRender()
+            if (count === routes.length) {
+              this.createPageRender()
             }
           },
         }
@@ -65,7 +74,7 @@ class HooksComponent {
 
     configuration
       .onReady((_, app) => {
-        this.applyMiddleware(app)
+        this.useGlobalMiddleware(app)
       })
       .onStop(noop)
 
@@ -81,7 +90,7 @@ class HooksComponent {
     Object.keys(mod)
       .filter((key) => typeof mod[key] === 'function')
       .forEach((key) => {
-        this.createFunction({
+        this.createApiFunction({
           fn: mod[key],
           file: file,
           isExportDefault: key === 'default',
@@ -90,7 +99,7 @@ class HooksComponent {
       })
   }
 
-  private createFunction(config: {
+  private createApiFunction(config: {
     fn: ApiFunction
     file: string
     isExportDefault: boolean
@@ -112,11 +121,12 @@ class HooksComponent {
       meta: { functionName: id },
     }
 
-    // Apply module middleware
-    ;(fn.middleware || (fn.middleware = [])).unshift(...modMiddleware)
-    fn.middleware = fn.middleware.map((middleware) => covert(middleware))
+    // Apply mod middleware
+    fn.middleware = (fn.middleware || (fn.middleware = []))
+      .concat(modMiddleware)
+      .map(useHooksMiddleware)
 
-    this.registerFunctionToContainer({
+    this.registerApiFunction({
       containerId,
       httpMethod,
       httpPath,
@@ -124,7 +134,7 @@ class HooksComponent {
     })
   }
 
-  private registerFunctionToContainer(config: {
+  private registerApiFunction(config: {
     containerId: string
     httpMethod: ApiHttpMethod
     httpPath: string
@@ -158,9 +168,8 @@ class HooksComponent {
     this.container.bind(containerId, FunctionContainer)
   }
 
-  private createRender() {
-    // Only available  in production and does not register /* routes
-    if (!isProduction() || !this.isFullStackProject()) {
+  private createPageRender() {
+    if (!(this.isFullStackProject() && isProduction())) {
       return
     }
 
@@ -171,7 +180,7 @@ class HooksComponent {
       return
     }
 
-    this.registerFunctionToContainer({
+    this.registerApiFunction({
       containerId: 'hooks:render',
       httpMethod: 'GET',
       httpPath: '/*',
@@ -183,15 +192,13 @@ class HooksComponent {
     return this.router.routes.has('/') || this.router.routes.has('/*')
   }
 
-  private applyMiddleware(app: any) {
-    app.use(async (ctx: any, next: any) => {
-      await als.run({ ctx }, async () => await next())
-    })
+  private useGlobalMiddleware(app: any) {
+    app.use(this.useAsyncLocalStorage)
 
     // Apply global middleware from config
     if (Array.isArray(this.componentConfig.middleware)) {
       this.componentConfig.middleware.forEach((middleware) =>
-        app.use(covert(middleware))
+        app.use(useHooksMiddleware(middleware))
       )
     }
 
@@ -209,7 +216,7 @@ class HooksComponent {
       const baseDir = app.getBaseDir()
       app.use(
         staticCache({
-          dir: join(baseDir, '..', this.config.build.viteOutDir),
+          dir: join(baseDir, '..', this.globalConfig.build.viteOutDir),
           dynamic: true,
           alias: {
             '/': 'index.html',
@@ -221,19 +228,24 @@ class HooksComponent {
     }
   }
 
+  private async useAsyncLocalStorage(ctx: any, next: any) {
+    await als.run({ ctx }, async () => {
+      try {
+        await next()
+      } catch (error) {
+        ctx.status = 500
+        ctx.body = serialize(error)
+      }
+    })
+  }
+
   private getFunctionId(
     file: string,
     functionName: string,
     isExportDefault: boolean
   ) {
-    const rule = this.router.getRouteConfig(file)
-    const lambdaDirectory = this.router.getApiDirectory(rule.baseDir)
-
-    const length = this.router.config.routes.length
-    // 多个 source 的情况下，根据各自的 lambdaDirectory 来增加前缀命名
-    const relativeDirectory = length > 1 ? this.router.source : lambdaDirectory
-    const relativePath = relative(relativeDirectory, file)
-    // a/b/c -> a-b-c
+    const relativePath = relative(this.router.source, file)
+    // src/apis/lambda/index.ts -> apis-lambda-index
     const id = kebabCase(removeExt(relativePath, extname(relativePath)))
     const name = [id, isExportDefault ? '' : `-${functionName}`].join('')
     return name.toLowerCase()
@@ -241,12 +253,18 @@ class HooksComponent {
 
   // TODO Refactor to use config
   private isFullStackProject() {
-    const configs = ['vite.config.ts', 'vite.config.js']
-    return configs.some((config) => fs.existsSync(join(this.root, config)))
+    return [
+      // Vite
+      'vite.config.ts',
+      'vite.config.js',
+      // build-scritps
+      'build.json',
+      'build.js',
+    ].some((config) => existsSync(join(this.root, config)))
   }
 }
 
-function covert(fn: Function) {
+function useHooksMiddleware(fn: Function) {
   return (...args: any[]) => {
     /**
      * Hooks middleware

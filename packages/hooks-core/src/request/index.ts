@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { ApiParam } from '../types/http'
 import { parse } from 'superjson'
 
@@ -6,10 +6,14 @@ export const defaults = axios.defaults
 
 axios.defaults.transformResponse = [parse]
 
-export async function request(param: ApiParam) {
-  const response = await axios(param)
-  // For unit testing
-  return response && response.data
+async function request(param: ApiParam) {
+  try {
+    const response = await axios(param)
+    return response?.data
+  } catch (error) {
+    const e: AxiosError = error
+    throw e.response.data
+  }
 }
 
 /**
