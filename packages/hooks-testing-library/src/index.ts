@@ -46,8 +46,16 @@ export class HooksApplication {
   }
 
   // TODO Allow pass user define context
-  async runFunction<T extends ApiFunction>(fn: T, ...args: Parameters<T>) {
+  async runFunction<T extends ApiFunction>(
+    fn: T,
+    ...args: Parameters<T>
+  ): Promise<ReturnType<T>> {
     const response = await this.request(fn, ...args)
+
+    if (!response.ok) {
+      throw response.body
+    }
+
     return response.body
   }
 
