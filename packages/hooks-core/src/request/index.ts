@@ -9,7 +9,7 @@ axios.defaults.transformResponse = [parse]
 async function request(param: ApiParam) {
   try {
     const response = await axios(param)
-    return response?.data
+    return response && response.data
   } catch (error) {
     const e: AxiosError = error
     throw e.response.data
