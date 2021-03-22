@@ -1,6 +1,6 @@
 export * from './hooks'
 export * from './hoc'
-export { hooks, defineConfig, ApiConfig } from '@midwayjs/hooks-core'
+export { hooks, defineConfig, ApiConfig, superjson } from '@midwayjs/hooks-core'
 import { createConfiguration as createConfigurationFromCore } from '@midwayjs/core'
 
 const noop = () => {}

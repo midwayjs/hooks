@@ -1,3 +1,5 @@
+import superjson from 'superjson'
+
 export * from './router'
 export * from './component'
 export * from './runtime'
@@ -9,4 +11,4 @@ export * from './util'
 export * from './types/common'
 export * from './types/http'
 export * from './types/config'
-export * as superjson from 'superjson'
+export { superjson }
