@@ -17,7 +17,7 @@
     "koa-bodyparser": "^4.3.0"
   },
   "devDependencies": {
-    "@midwayjs/cli": "^1.2.52",
+    "@midwayjs/cli": "^1.2.54",
     "@midwayjs/cli-plugin-build": "^1.2.50",
     "@midwayjs/vite-plugin-hooks": "^2.1.0-next.4",
     "@types/jest": "^26.0.21",

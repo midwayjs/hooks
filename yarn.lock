@@ -2177,13 +2177,13 @@
   resolved "https://registry.yarnpkg.com/@midwayjs/bootstrap/-/bootstrap-2.8.13.tgz#892c6fb9d2c3af67f667d3550b8ff4f2f6720292"
   integrity sha512-T3SZNCE4nn0UBCD0NM6Imc6MwVA5fLLCiX8VbeUc6iR5cKkhmeqj4+2WpCgsyJ5PQYzsnciPacWhTTDu7PxU3A==
 
-"@midwayjs/cli-plugin-add@^1.2.51":
-  version "1.2.51"
-  resolved "https://registry.yarnpkg.com/@midwayjs/cli-plugin-add/-/cli-plugin-add-1.2.51.tgz#649f6afee54698992c3536414a7b56bae357270f"
-  integrity sha512-cqi1OOBrgslamncArUkIKpeAp68qE4vzLQpIFbXKQLq2nc6nZNJRfu2ocUw8+C8s/fqH4ih+nzjkHZJmGqQ44w==
+"@midwayjs/cli-plugin-add@^1.2.54":
+  version "1.2.54"
+  resolved "https://registry.yarnpkg.com/@midwayjs/cli-plugin-add/-/cli-plugin-add-1.2.54.tgz#85531b69910453e48d05930db2a5c00e88e527e4"
+  integrity sha512-p4kJqtukjmAfKxGk49l26PxWbH71MkEed/9/9T8Y6AvAkSfWmRbBFbcX1SPR1fwTJxSrnMc++/j8XCElP8E3Wg==
   dependencies:
     "@midwayjs/boilerplate-list" "^1.0.0"
-    "@midwayjs/command-core" "^1.2.51"
+    "@midwayjs/command-core" "^1.2.54"
     chalk "^4.1.0"
     enquirer "^2.3.6"
     fs-extra "^9.0.1"
@@ -2201,30 +2201,39 @@
     fs-extra "^8.1.0"
     typescript "^4.1.0"
 
-"@midwayjs/cli-plugin-clean@^1.2.52":
-  version "1.2.52"
-  resolved "https://registry.npmjs.org/@midwayjs/cli-plugin-clean/-/cli-plugin-clean-1.2.52.tgz#755021be3a53a6434775a478f7a3975e2965bea8"
-  integrity sha512-/kS4FkQ91rid1GirFrMfF+MpVzlkVXiHW4LSKtt5uctPftMwNpUar+ZLV/FLChk+PCjYif318/zut/7etSu/DA==
+"@midwayjs/cli-plugin-build@^1.2.54":
+  version "1.2.54"
+  resolved "https://registry.yarnpkg.com/@midwayjs/cli-plugin-build/-/cli-plugin-build-1.2.54.tgz#4f2f263b387a930a503d345ecf22e1cde0917587"
+  integrity sha512-Z+pXHYocx4XSC8w7AcdWZSiR1Eq+kzA2pGupZm4IJCO4R3oj9vaoMKfFqmftp4Kshs14tV06weU8+I+EuVQRDQ==
   dependencies:
-    "@midwayjs/command-core" "^1.2.51"
-    "@midwayjs/serverless-spec-builder" "^1.2.52"
+    "@midwayjs/command-core" "^1.2.54"
+    "@midwayjs/faas-code-analysis" "^1.2.54"
+    "@midwayjs/mwcc" "^0.5.x"
+    fs-extra "^8.1.0"
+    typescript "^4.1.0"
+
+"@midwayjs/cli-plugin-clean@^1.2.54":
+  version "1.2.54"
+  resolved "https://registry.yarnpkg.com/@midwayjs/cli-plugin-clean/-/cli-plugin-clean-1.2.54.tgz#c9e46f46a512cbaa15b61cc8d7fd41017cbf2596"
+  integrity sha512-Uf7q+ucmRDvgIcs5niZYH+sSKjssxn1tpHPZ4KyKZvL+UkcbBtIY/ndotYSYPVtu5Z8/eW7GBWiWCi0n9waY7A==
+  dependencies:
+    "@midwayjs/command-core" "^1.2.54"
+    "@midwayjs/serverless-spec-builder" "^1.2.54"
     fs-extra "^8.1.0"
 
-"@midwayjs/cli-plugin-dev@^1.2.51":
-  version "1.2.51"
-  resolved "https://registry.yarnpkg.com/@midwayjs/cli-plugin-dev/-/cli-plugin-dev-1.2.51.tgz#9df3d7014c810944e887c68e51f59a816dde4f48"
-  integrity sha512-/IkkwcwScfBgbo+sdYbIDHopslwmxFhTdUAVoE4fr02r9KirhbHumKeBUQfVar5LkVskH017keOrdoogRXNSng==
+"@midwayjs/cli-plugin-dev@^1.2.54":
+  version "1.2.54"
+  resolved "https://registry.yarnpkg.com/@midwayjs/cli-plugin-dev/-/cli-plugin-dev-1.2.54.tgz#48603d5a6da807eb044bda66ca505179d5e22e28"
+  integrity sha512-yCU8TF++F25udO3/9ZI/5kALWpzLLgY8O92TCUv6Kr0V8EqEHwTSaoMSC+N82VLMaxjoWglgR5D+k3DzBylJ6g==
   dependencies:
     "@koa/router" "^10.0.0"
-    "@midwayjs/command-core" "^1.2.51"
+    "@midwayjs/command-core" "^1.2.54"
     "@midwayjs/debugger" "^1.0.x"
     "@midwayjs/mock" "^2.8.0"
     "@midwayjs/serverless-app" "^2.8.2"
     chalk "^4.1.0"
     chokidar "^3.4.2"
     detect-port "^1.3.0"
-    esbuild "^0.8.47"
-    esbuild-register "^2.0.0"
     koa "^2.11.0"
     light-spinner "^1.0.1"
 
@@ -2239,28 +2248,28 @@
     "@midwayjs/serverless-app" "^2.8.9"
     "@midwayjs/serverless-spec-builder" "^1.2.52"
 
-"@midwayjs/cli-plugin-test@^1.2.51":
-  version "1.2.51"
-  resolved "https://registry.yarnpkg.com/@midwayjs/cli-plugin-test/-/cli-plugin-test-1.2.51.tgz#1147010fdf4420b77b482deed65d09ba33c36151"
-  integrity sha512-UcdreK6uTUCyljNMWl0pJl/NiAyJ4HZ/Z83LGCrVThdU0UtDPh9IACGECtTVnriol6HFoip6kEQ/2Yz/Ppwf/w==
+"@midwayjs/cli-plugin-test@^1.2.54":
+  version "1.2.54"
+  resolved "https://registry.yarnpkg.com/@midwayjs/cli-plugin-test/-/cli-plugin-test-1.2.54.tgz#bfe3a09f356567b72867601fc83f478ce0e0b9d7"
+  integrity sha512-KLq6J3yGDya5bJLNaKbZbrBxkCP5DupnrQZ3WaVzHZPdQBfQIfc/Nr1mYfDqFKsc/QwtqpqwqPjFoMqZU9gKKQ==
   dependencies:
-    "@midwayjs/command-core" "^1.2.51"
+    "@midwayjs/command-core" "^1.2.54"
     globby "^10.0.1"
     jest "^26.4.2"
     ts-jest "^26.0.0"
     ts-node "^9.0.0"
 
-"@midwayjs/cli@^1.2.52":
-  version "1.2.52"
-  resolved "https://registry.npmjs.org/@midwayjs/cli/-/cli-1.2.52.tgz#9578ad16e6ba83bbb2c82869a520582d4b1f22b7"
-  integrity sha512-+My9ke4393XUqKUV2cCOlNYNULhuNYwnrbHINKxvDod+VpZ89piwYxKJQSPgTiJ3Dj9Tfmpv8gonWYPQCKL3qw==
+"@midwayjs/cli@^1.2.54":
+  version "1.2.54"
+  resolved "https://registry.yarnpkg.com/@midwayjs/cli/-/cli-1.2.54.tgz#703c9ffdf0838616551a4ace6fa4d6282b37d7d3"
+  integrity sha512-NBc6y8wj/q0GFlWweQTEKs+v0vrRTNKjAtEvHpp0tHuOdaF5YxoG3iJbvLVT9vNAyfbgF/CRdBTrxxEPEdWC+A==
   dependencies:
-    "@midwayjs/cli-plugin-add" "^1.2.51"
-    "@midwayjs/cli-plugin-build" "^1.2.51"
-    "@midwayjs/cli-plugin-clean" "^1.2.52"
-    "@midwayjs/cli-plugin-dev" "^1.2.51"
-    "@midwayjs/cli-plugin-test" "^1.2.51"
-    "@midwayjs/command-core" "^1.2.51"
+    "@midwayjs/cli-plugin-add" "^1.2.54"
+    "@midwayjs/cli-plugin-build" "^1.2.54"
+    "@midwayjs/cli-plugin-clean" "^1.2.54"
+    "@midwayjs/cli-plugin-dev" "^1.2.54"
+    "@midwayjs/cli-plugin-test" "^1.2.54"
+    "@midwayjs/command-core" "^1.2.54"
     "@midwayjs/debugger" "^1.0.x"
     enquirer "^2.3.4"
     jest-environment-node "^24.9.0"
@@ -2272,6 +2281,14 @@
   version "1.2.51"
   resolved "https://registry.yarnpkg.com/@midwayjs/command-core/-/command-core-1.2.51.tgz#ddc346c00ece12a4a37be773361ab6bbf44aeb82"
   integrity sha512-4FsfYUjP7XKjXT5LGnSjMq1qy6CaW9h5/E4B5CQcXVUs61LI7gS2wZF7hnDDx3Nm779bKyeaqW5P6QdMctipFQ==
+  dependencies:
+    light-spinner "^1.0.0"
+    minimist "^1.2.5"
+
+"@midwayjs/command-core@^1.2.54":
+  version "1.2.54"
+  resolved "https://registry.yarnpkg.com/@midwayjs/command-core/-/command-core-1.2.54.tgz#a97268011d3b44ae7b1c2aa975cfc44c37418258"
+  integrity sha512-tq8BF5KfBxXjRbmPTJaMcs1hGe8261aDc9BpRRhyG2ywFrER4JXeqsQlMfR6RkXxKVHnJQM1xYMJWli9RGm29Q==
   dependencies:
     light-spinner "^1.0.0"
     minimist "^1.2.5"
@@ -2320,6 +2337,15 @@
   version "1.2.51"
   resolved "https://registry.yarnpkg.com/@midwayjs/faas-code-analysis/-/faas-code-analysis-1.2.51.tgz#d16888f2da20c03bda5f1ec063694def7b87e0fd"
   integrity sha512-X3litigloLSMtjh9b0K401Gyyuzy9PCIe/LFqfXmZeZfxNRBwYQjlHWXXHZN3lLs/MATeMNeyMu9QXBo8kKA9g==
+  dependencies:
+    "@midwayjs/mwcc" "^0.5.x"
+    fs-extra "^8.1.0"
+    globby "^10.0.1"
+
+"@midwayjs/faas-code-analysis@^1.2.54":
+  version "1.2.54"
+  resolved "https://registry.yarnpkg.com/@midwayjs/faas-code-analysis/-/faas-code-analysis-1.2.54.tgz#38a6a8989a739d1fab97f5150301a9d0d3ac10af"
+  integrity sha512-1oZ0xSZyDcaHlaPv8HHbEVWHg8B9OeG0DGoTF+iw3OXhH7aWbjH9QAsaaQ9siV4fvZQVtFE4YCPdQToAWQVMrg==
   dependencies:
     "@midwayjs/mwcc" "^0.5.x"
     fs-extra "^8.1.0"
@@ -2376,17 +2402,27 @@
     jszip "^3.2.2"
     micromatch "^4.0.2"
 
-"@midwayjs/gateway-common-core@^1.2.51":
-  version "1.2.51"
-  resolved "https://registry.yarnpkg.com/@midwayjs/gateway-common-core/-/gateway-common-core-1.2.51.tgz#d424c87a225929326d9f16f75f1efde5a90ab040"
-  integrity sha512-psuWhr1cV5mVCGxrpfyvwgUXaSN/Qg8+XJbFV2tmsXpb/KdguJEs2yyQCSyXzLyPxnqM7XgPfNPwo90REcpX8A==
+"@midwayjs/gateway-common-core@^1.2.54":
+  version "1.2.54"
+  resolved "https://registry.yarnpkg.com/@midwayjs/gateway-common-core/-/gateway-common-core-1.2.54.tgz#067ccf07ff17d82c9177461cdadb0cd4f8d81654"
+  integrity sha512-mBq38LgTS70r0cd6QWzPbljh/0Kv0EESmlHv4WkGL3aVgeI0xPMlfbNAuJFLGJOFaWrwWb5v3dOmis83Eful/A==
 
-"@midwayjs/gateway-common-http@^1.2.41", "@midwayjs/gateway-common-http@^1.2.52":
+"@midwayjs/gateway-common-http@^1.2.41":
   version "1.2.52"
   resolved "https://registry.npmjs.org/@midwayjs/gateway-common-http/-/gateway-common-http-1.2.52.tgz#5d7ca6784a953a01f261e7e2581a03ec778637d4"
   integrity sha512-Gy6+RIEtMA8aTE6Cu5Fbww4r8N8dE89DHPqdeiVJHiDFn6+VWp7YZGfVkU67vAOqAr0bImiZH9XpVtDcSLKcWw==
   dependencies:
     "@midwayjs/serverless-spec-builder" "^1.2.52"
+    "@types/express" "^4.17.0"
+    path-to-regexp "^6.2.0"
+    raw-body "^2.4.1"
+
+"@midwayjs/gateway-common-http@^1.2.54":
+  version "1.2.54"
+  resolved "https://registry.yarnpkg.com/@midwayjs/gateway-common-http/-/gateway-common-http-1.2.54.tgz#1768cefd09f62f66a881066880c848d0f6180f86"
+  integrity sha512-b6I06wXIW72vpQEhSb87x/n+74UzQlEn5gEQx6QKt8hSRvL9aynXQwXZKSZD3t+lq0bpgRTJsX90kL0Iv0/OPw==
+  dependencies:
+    "@midwayjs/serverless-spec-builder" "^1.2.54"
     "@types/express" "^4.17.0"
     path-to-regexp "^6.2.0"
     raw-body "^2.4.1"
@@ -2483,15 +2519,15 @@
     body-parser "^1.19.0"
     express "^4.17.1"
 
-"@midwayjs/serverless-dev-pack@^1.2.52":
-  version "1.2.52"
-  resolved "https://registry.npmjs.org/@midwayjs/serverless-dev-pack/-/serverless-dev-pack-1.2.52.tgz#1a894a31e0d166597140959c221c664e31c82018"
-  integrity sha512-c6HYYSZrLRsqDSg1F0KLF75SVaC6pwZgGGTtNLHqJXFQc3yEB7hvctB78DKjoWK2WjDMIYfgZ+0WyvLo75PoCg==
+"@midwayjs/serverless-dev-pack@^1.2.54":
+  version "1.2.54"
+  resolved "https://registry.yarnpkg.com/@midwayjs/serverless-dev-pack/-/serverless-dev-pack-1.2.54.tgz#a8606770010e455790c08db31526c8d242356e1f"
+  integrity sha512-vvTOOL9H6Ik1f608Kk5ZXDwu7opMMpPbHFiZ0ndp9jthO0M9afuac+22I8p+07G6syCk7YF66T3SsuuR4CAxcw==
   dependencies:
-    "@midwayjs/cli-plugin-dev" "^1.2.51"
-    "@midwayjs/command-core" "^1.2.51"
-    "@midwayjs/gateway-common-core" "^1.2.51"
-    "@midwayjs/gateway-common-http" "^1.2.52"
+    "@midwayjs/cli-plugin-dev" "^1.2.54"
+    "@midwayjs/command-core" "^1.2.54"
+    "@midwayjs/gateway-common-core" "^1.2.54"
+    "@midwayjs/gateway-common-http" "^1.2.54"
     body-parser "^1.19.0"
     compose-middleware "^5.0.1"
     fs-extra "^8.1.0"
@@ -2539,6 +2575,16 @@
   version "1.2.52"
   resolved "https://registry.npmjs.org/@midwayjs/serverless-spec-builder/-/serverless-spec-builder-1.2.52.tgz#e337a3e9de10938ad399789b9b13b64eb8cb5dbc"
   integrity sha512-46xfnUqLdrvHgtLy9fjm/k2ov9XQnfT/dKja4JAwF4xLjPrT4E0FhVeTtdPSJcqy1+t0hhiqdAeA6TlxtrtaeQ==
+  dependencies:
+    ejs "^3.1.3"
+    js-yaml "^3.13.0"
+    json-cycle "^1.3.0"
+    mkdirp "^0.5.1"
+
+"@midwayjs/serverless-spec-builder@^1.2.54":
+  version "1.2.54"
+  resolved "https://registry.yarnpkg.com/@midwayjs/serverless-spec-builder/-/serverless-spec-builder-1.2.54.tgz#2a9cf02a53675de258be932803e625f3f56f4869"
+  integrity sha512-BGaPwe6qqhNCitSPUwRpE6y/Gp1HlpzkHhUleMYckKom0s/DxI2Qzh+k3sB67K2gwakj12mtFiEDu7ovXsg25g==
   dependencies:
     ejs "^3.1.3"
     js-yaml "^3.13.0"
@@ -6805,16 +6851,6 @@ esbuild-jest@^0.5.0:
     "@babel/core" "^7.12.17"
     "@babel/plugin-transform-modules-commonjs" "^7.12.13"
     babel-jest "^26.6.3"
-
-esbuild-register@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/esbuild-register/-/esbuild-register-2.1.0.tgz#b1459c1970885e1226f31de1bea595a5c2922b11"
-  integrity sha512-NS/ptwYqFfmRT50SwRuxlwuKDwraijsqhDjngX4QyYj5VxSlbujbglQbXTz1qrRQhZRhx4Ap9369W7t+aJtdmQ==
-
-esbuild@^0.8.47:
-  version "0.8.57"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.8.57.tgz#a42d02bc2b57c70bcd0ef897fe244766bb6dd926"
-  integrity sha512-j02SFrUwFTRUqiY0Kjplwjm1psuzO1d6AjaXKuOR9hrY0HuPsT6sV42B6myW34h1q4CRy+Y3g4RU/cGJeI/nNA==
 
 esbuild@^0.9.3, esbuild@^0.9.6:
   version "0.9.6"
