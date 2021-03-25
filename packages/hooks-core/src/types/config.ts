@@ -1,3 +1,5 @@
+import { HooksMiddleware } from './common'
+
 export interface InternalConfig {
   source?: string
   routes: ServerRoute[]
@@ -11,7 +13,7 @@ export type ComponentConfig = {
   /**
    * Global middleware
    */
-  middleware?: any[]
+  middleware?: HooksMiddleware
 }
 
 export type ServerRoute = {

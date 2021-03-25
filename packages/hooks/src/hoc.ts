@@ -1,7 +1,7 @@
-import { ApiFunction } from '@midwayjs/hooks-core'
+import { ApiFunction, HooksMiddleware } from '@midwayjs/hooks-core'
 
 type Controller = {
-  middleware?: any[]
+  middleware?: HooksMiddleware
 }
 
 export function withController<T extends ApiFunction>(
