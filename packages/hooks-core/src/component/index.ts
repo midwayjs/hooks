@@ -17,7 +17,7 @@ import staticCache from 'koa-static-cache'
 import { extname, relative, removeExt } from 'upath'
 import { ApiHttpMethod } from '../types/http'
 import { existsSync } from 'fs'
-import { serialize } from 'superjson'
+import { superjson } from '../lib'
 
 /**
  * Create hooks component
@@ -151,7 +151,7 @@ class HooksComponent {
         if (typeof args === 'string') {
           args = JSON.parse(args)
         }
-        return serialize(await fn(...args))
+        return superjson.serialize(await fn(...args))
       }
     }
     __decorate([Inject()], FunctionContainer.prototype, 'ctx', void 0)
@@ -234,7 +234,7 @@ class HooksComponent {
         await next()
       } catch (error) {
         ctx.status = 500
-        ctx.body = serialize(error)
+        ctx.body = superjson.serialize(error)
       }
     })
   }
