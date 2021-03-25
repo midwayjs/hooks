@@ -2236,16 +2236,15 @@
     light-generator "^1.6.1"
     light-spinner "^1.0.1"
 
-"@midwayjs/cli-plugin-build@^1.2.50", "@midwayjs/cli-plugin-build@^1.2.51", "@midwayjs/cli-plugin-build@^1.2.54":
-  version "1.2.54"
-  resolved "https://registry.npmjs.org/@midwayjs/cli-plugin-build/-/cli-plugin-build-1.2.54.tgz#4f2f263b387a930a503d345ecf22e1cde0917587"
-  integrity sha512-Z+pXHYocx4XSC8w7AcdWZSiR1Eq+kzA2pGupZm4IJCO4R3oj9vaoMKfFqmftp4Kshs14tV06weU8+I+EuVQRDQ==
+"@midwayjs/cli-plugin-build@^1.2.55":
+  version "1.2.55"
+  resolved "https://registry.yarnpkg.com/@midwayjs/cli-plugin-build/-/cli-plugin-build-1.2.55.tgz#6b63710069040bde9323d262b2ff5e8f8cfd6efb"
+  integrity sha512-vK+Tgt6z8nruS7U53AyKTSZabwYSMt6NWp5nMQ8U4n14VQmvxci+pLtDO06llMXGqesXj0/NIuY2CVu3iUZMmA==
   dependencies:
     "@midwayjs/command-core" "^1.2.54"
     "@midwayjs/faas-code-analysis" "^1.2.54"
     "@midwayjs/mwcc" "^0.5.x"
     fs-extra "^8.1.0"
-    typescript "^4.1.0"
 
 "@midwayjs/cli-plugin-clean@^1.2.54":
   version "1.2.54"
@@ -2294,13 +2293,13 @@
     ts-jest "^26.0.0"
     ts-node "^9.0.0"
 
-"@midwayjs/cli@^1.2.52":
-  version "1.2.54"
-  resolved "https://registry.npmjs.org/@midwayjs/cli/-/cli-1.2.54.tgz#703c9ffdf0838616551a4ace6fa4d6282b37d7d3"
-  integrity sha512-NBc6y8wj/q0GFlWweQTEKs+v0vrRTNKjAtEvHpp0tHuOdaF5YxoG3iJbvLVT9vNAyfbgF/CRdBTrxxEPEdWC+A==
+"@midwayjs/cli@^1.2.55":
+  version "1.2.55"
+  resolved "https://registry.yarnpkg.com/@midwayjs/cli/-/cli-1.2.55.tgz#0b7940afa23e5b9568c6d47bb01a91a5ef1ad6f0"
+  integrity sha512-gN5SRtOk+P8ET0EdqmhQEsklqwLrr+mpgqq6ayu/Rb8QSLSfbwoeMvXH9ZZ4rGqIMsHvtmA8y2AznQZTK+7BUQ==
   dependencies:
     "@midwayjs/cli-plugin-add" "^1.2.54"
-    "@midwayjs/cli-plugin-build" "^1.2.54"
+    "@midwayjs/cli-plugin-build" "^1.2.55"
     "@midwayjs/cli-plugin-clean" "^1.2.54"
     "@midwayjs/cli-plugin-dev" "^1.2.54"
     "@midwayjs/cli-plugin-test" "^1.2.54"
@@ -14619,7 +14618,7 @@ typescript@^3.8.3:
   resolved "https://registry.npmjs.org/typescript/-/typescript-3.9.9.tgz#e69905c54bc0681d0518bd4d587cc6f2d0b1a674"
   integrity sha512-kdMjTiekY+z/ubJCATUPlRDl39vXYiMV9iyeMuEuXZh2we6zz80uovNN2WlAxmmdE/Z/YQe+EbOEXB5RHEED3w==
 
-typescript@^4.1.0, typescript@^4.2.3:
+typescript@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.3.tgz#39062d8019912d43726298f09493d598048c1ce3"
   integrity sha512-qOcYwxaByStAWrBf4x0fibwZvMRG+r4cQoTjbPtUlrWjBHbmCAww1i448U0GJ+3cNNEtebDteo/cHOR3xJ4wEw==
