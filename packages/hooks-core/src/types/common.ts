@@ -2,7 +2,7 @@ import type { ApiParam } from './http'
 
 export type ApiFunction = {
   (...args: any[]): Promise<any>
-  middleware?: any[]
+  middleware?: HooksMiddleware
   /**
    * @private
    */
@@ -10,10 +10,12 @@ export type ApiFunction = {
 }
 
 export type ApiConfig = {
-  middleware?: any[]
+  middleware?: HooksMiddleware
 }
 
 export type ApiModule = {
   config?: ApiConfig
   [index: string]: ApiFunction | any
 }
+
+export type HooksMiddleware = Array<(next: any) => Promise<void> | string>
