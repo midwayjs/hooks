@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios'
-import { ApiParam } from '../types/http'
-import { superjson } from '../lib'
+import type { ApiParam } from '../types/http'
+import superjson from 'superjson'
 
 export const defaults = axios.defaults
 
