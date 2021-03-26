@@ -2,7 +2,14 @@ import axios, { AxiosError } from 'axios'
 import type { ApiParam } from '../types/http'
 import superjson from 'superjson'
 
-export const defaults = axios.defaults
+export const defaults = {
+  get request() {
+    throw new Error('request is deprecated in 2.0')
+  },
+  get baseUrl() {
+    throw new Error('baseUrl is deprecated in 2.0')
+  },
+}
 
 axios.defaults.transformResponse = [superjson.parse]
 
