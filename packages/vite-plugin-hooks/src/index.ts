@@ -30,8 +30,15 @@ function plugin(): Plugin {
     config: () => ({
       plugin: [tsconfigPaths({ root })],
       optimizeDeps: {
-        exclude: ['@midwayjs/hooks'],
         include: ['@midwayjs/hooks-core/request'],
+      },
+      resolve: {
+        alias: [
+          {
+            find: '@midwayjs/hooks',
+            replacement: '@midwayjs/hooks/universal',
+          },
+        ],
       },
       build: {
         manifest: true,

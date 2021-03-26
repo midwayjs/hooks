@@ -1,4 +1,4 @@
-import superjson from 'superjson';
+import { superjson } from '@midwayjs/hooks';
 
 export class UserExistError extends Error {}
 
