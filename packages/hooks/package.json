@@ -16,7 +16,7 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
-    "@midwayjs/core": "^2.8.13",
+    "@midwayjs/core": "^2.9.2",
     "@midwayjs/hooks-core": "^2.1.0-next.4",
     "@midwayjs/hooks-testing-library": "^2.1.0-next.4",
     "superjson": "^1.7.3"
