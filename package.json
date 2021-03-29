@@ -23,13 +23,13 @@
     "publish-next": "yarn build && lerna publish --dist-tag=next"
   },
   "dependencies": {
-    "@babel/core": "^7.13.10",
+    "@babel/core": "^7.13.13",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.13.10",
     "@babel/preset-typescript": "^7.13.0",
     "@preconstruct/cli": "^2.0.6",
     "codecov": "^3.8.0",
-    "esbuild": "^0.9.6",
+    "esbuild": "^0.9.7",
     "esbuild-jest": "^0.5.0",
     "execa": "^4.0.3",
     "husky": "^4.2.3",
