@@ -1,9 +1,7 @@
 import { createApp, HooksApplication } from '@midwayjs/hooks-testing-library';
 import api, { get, getPath, mixedValue, post } from '.';
 
-const d = process.platform === 'win32' ? describe.skip : describe;
-
-d('test new features', () => {
+describe('test new features', () => {
   let app: HooksApplication;
   beforeAll(async () => {
     app = await createApp();
