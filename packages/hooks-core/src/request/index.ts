@@ -4,7 +4,7 @@ import superjson from 'superjson'
 
 export const defaults = {
   async request(param: ApiParam) {
-    const enableSuperjson = param.meta?.superjson
+    const enableSuperjson = param.meta && param.meta.superjson
     try {
       const response = await axios({
         ...param,
