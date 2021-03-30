@@ -38,20 +38,60 @@ desc('hooks loader with proxy', () => {
   test('Compile render', async () => {
     const output = await compile('render/[...index].ts')
     expect(wrap(output)).toMatchInlineSnapshot(`
-      import { createRequest } from '@midwayjs/hooks-core/request';
+      import { request } from '@midwayjs/hooks-core/request';
 
-      export default createRequest('/', 'default');
-      export const foo = createRequest('/', 'foo');
-      export const bar = createRequest('/', 'bar');
+      export default function $default(...args) {
+        return request({
+          url: '/',
+          method: args.length === 0 ? 'GET' : 'POST',
+          data: { args },
+          meta: {
+            superjson: true,
+          },
+        });
+      }
+
+      export function foo(...args) {
+        return request({
+          url: '/foo',
+          method: args.length === 0 ? 'GET' : 'POST',
+          data: { args },
+          meta: {
+            superjson: true,
+          },
+        });
+      }
+
+      export function bar(...args) {
+        return request({
+          url: '/bar',
+          method: args.length === 0 ? 'GET' : 'POST',
+          data: { args },
+          meta: {
+            superjson: true,
+          },
+        });
+      }
+
     `)
   })
 
   test('Compile lambda', async () => {
     const output = await compile('lambda/index.ts')
     expect(wrap(output)).toMatchInlineSnapshot(`
-      import { createRequest } from '@midwayjs/hooks-core/request';
+      import { request } from '@midwayjs/hooks-core/request';
 
-      export default createRequest('/api', 'default');
+      export default function $default(...args) {
+        return request({
+          url: '/api',
+          method: args.length === 0 ? 'GET' : 'POST',
+          data: { args },
+          meta: {
+            superjson: true,
+          },
+        });
+      }
+
     `)
   })
 
