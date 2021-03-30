@@ -6,6 +6,9 @@ Object {
     "outDir": "./dist",
     "viteOutDir": "./build",
   },
+  "request": Object {
+    "client": "@midwayjs/hooks-core/request",
+  },
   "routes": Array [
     Object {
       "baseDir": "lambda",
@@ -13,6 +16,7 @@ Object {
     },
   ],
   "source": "src",
+  "superjson": true,
 }
 `;
 
@@ -22,6 +26,9 @@ Object {
     "outDir": "./dist",
     "viteOutDir": "./build",
   },
+  "request": Object {
+    "client": "@midwayjs/hooks-core/request",
+  },
   "routes": Array [
     Object {
       "baseDir": "lambda",
@@ -29,6 +36,7 @@ Object {
     },
   ],
   "source": "src",
+  "superjson": true,
 }
 `;
 
@@ -38,6 +46,9 @@ Object {
     "outDir": "./dist",
     "viteOutDir": "./build",
   },
+  "request": Object {
+    "client": "@midwayjs/hooks-core/request",
+  },
   "routes": Array [
     Object {
       "baseDir": "lambda",
@@ -45,5 +56,6 @@ Object {
     },
   ],
   "source": "src",
+  "superjson": true,
 }
 `;

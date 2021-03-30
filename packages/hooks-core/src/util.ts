@@ -1,15 +1,11 @@
-import consola from 'consola'
-
-export function isProduction() {
+export function isDevelopment() {
   if (
     process.env.MIDWAY_TS_MODE === 'true' ||
     process.env.NODE_ENV === 'test' ||
     process.env.NODE_ENV === 'development'
   ) {
-    return false
+    return true
   }
 
-  return true
+  return false
 }
-
-export { consola }

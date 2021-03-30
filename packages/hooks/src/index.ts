@@ -8,7 +8,5 @@ const noop = () => {}
 export function createConfiguration(
   options: Parameters<typeof createConfigurationFromCore>['0']
 ) {
-  const configuration = createConfigurationFromCore(options)
-  configuration.onReady(noop).onStop(noop)
-  return configuration
+  return createConfigurationFromCore(options).onReady(noop).onStop(noop)
 }

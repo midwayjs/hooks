@@ -4,9 +4,13 @@ import {
   createHttpRequest,
 } from '@midwayjs/mock'
 import { IMidwayApplication } from '@midwayjs/core'
-import { getConfig, getProjectRoot, ApiFunction } from '@midwayjs/hooks-core'
+import {
+  getConfig,
+  getProjectRoot,
+  ApiFunction,
+  InternalConfig,
+} from '@midwayjs/hooks-core'
 import { join } from 'path'
-import { existsSync, remove } from 'fs-extra'
 import { SuperJSONPlugin } from './plugin'
 
 export async function createAppImplementation(
@@ -28,7 +32,7 @@ export async function createAppImplementation(
   )
 
   process.chdir(cwd)
-  return new HooksApplication(app)
+  return new HooksApplication(app, config)
 }
 
 export async function createApp(baseDir?: string) {
@@ -41,8 +45,10 @@ export async function createFunctionApp(baseDir?: string) {
 
 export class HooksApplication {
   private readonly app: IMidwayApplication<any>
-  constructor(app: IMidwayApplication<any>) {
+  private config: InternalConfig
+  constructor(app: IMidwayApplication<any>, config: InternalConfig) {
     this.app = app
+    this.config = config
   }
 
   // TODO Allow pass user define context
@@ -62,27 +68,19 @@ export class HooksApplication {
   request<T extends ApiFunction>(fn: T, ...args: Parameters<T>) {
     const supertest = createHttpRequest(this.app)
     if (fn._param.method === 'GET') {
-      return supertest.get(fn._param.url).use(SuperJSONPlugin())
+      return supertest
+        .get(fn._param.url)
+        .use(SuperJSONPlugin(this.config.superjson))
     }
 
     return supertest
       .post(fn._param.url)
-      .use(SuperJSONPlugin())
+      .use(SuperJSONPlugin(this.config.superjson))
       .send({ args })
       .set('Content-Type', 'application/json')
   }
 
   async close() {
     await close(this.app)
-    const appDir = this.app?.getAppDir()
-    if (appDir) {
-      const cleanup = [join(appDir, 'logs'), join(appDir, 'run')]
-
-      for (const dir of cleanup) {
-        if (existsSync(dir)) {
-          await remove(dir)
-        }
-      }
-    }
   }
 }

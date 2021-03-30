@@ -1,0 +1,12 @@
+import { request } from '{{SDK}}'
+
+{{each funcs}}
+export {{if $value.isExportDefault}} default {{/if}} function {{$value.name}} (...args) {
+  return request({
+    url: '{{$value.url}}',
+    method: args.length === 0 ? 'GET' : 'POST',
+    data: { args },
+    meta: {{$imports.stringify($value.meta)}}
+  })
+}
+{{/each}}
