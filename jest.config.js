@@ -12,6 +12,7 @@ module.exports = {
       },
     ],
   },
+  maxWorkers: 1,
   testEnvironment: path.resolve(
     __dirname,
     './packages/hooks-testing-library/jest-preset/environment.js'

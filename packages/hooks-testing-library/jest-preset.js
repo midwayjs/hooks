@@ -38,6 +38,7 @@ module.exports = {
   projects: [
     {
       ...common,
+      maxWorkers: 1,
       name: 'server',
       displayName: {
         name: 'SERVER',
