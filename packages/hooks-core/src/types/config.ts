@@ -1,15 +1,23 @@
 import { HooksMiddleware } from './common'
 
 export interface InternalConfig {
+  /**
+   * @default true
+   * Enable superjson to serialize Set/Map/Error/BigInt
+   */
+  superjson?: boolean
   source?: string
   routes: ServerRoute[]
+  request?: {
+    client?: string
+  }
   build?: {
     viteOutDir: string
     outDir: string
   }
 }
 
-export type ComponentConfig = {
+export type RuntimeConfig = {
   /**
    * Global middleware
    */
@@ -21,4 +29,4 @@ export type ServerRoute = {
   basePath: string
 }
 
-export interface UserConfig extends Omit<InternalConfig, 'build'> {}
+export interface UserConfig extends Omit<InternalConfig, 'build' | 'request'> {}

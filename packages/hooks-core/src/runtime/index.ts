@@ -8,6 +8,7 @@ export type HooksContext = {
 /**
  * @private
  * private api, may change without notice.
+ * Use asynchronous-local-storage due to serverless environment does not support node.js 12.17.0
  */
 export const als = {
   getStore(key: string) {
@@ -21,9 +22,3 @@ export const als = {
     })
   },
 }
-
-// /**
-//  * @private
-//  * private api, may change without notice.
-//  */
-// export const als = new AsyncLocalStorage<HooksContext>()

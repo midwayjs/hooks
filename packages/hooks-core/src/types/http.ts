@@ -9,6 +9,7 @@ export type ApiParam = {
   }
   meta: {
     functionName?: string
+    superjson?: boolean
     [key: string]: any
   }
 }
