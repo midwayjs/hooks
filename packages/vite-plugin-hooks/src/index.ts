@@ -2,7 +2,7 @@ import {
   getProjectRoot,
   ServerRouter,
   getConfig,
-  parseAndGenerateSDK,
+  generate,
 } from '@midwayjs/hooks-core'
 import { Plugin } from 'vite'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
@@ -18,9 +18,16 @@ function plugin(): Plugin {
   return {
     name: 'vite:@midwayjs/hooks',
     async transform(code: string, file: string) {
-      if (!router.isApiFile(file)) return null
-      const sdk = await parseAndGenerateSDK(router.getBaseUrl(file), code)
-      if (!sdk) return null
+      if (!router.isApiFile(file)) {
+        return null
+      }
+
+      const sdk = await generate(
+        router.getBaseUrl(file),
+        code,
+        config.superjson,
+        config.request.client
+      )
 
       return {
         code: sdk,
@@ -54,6 +61,7 @@ function plugin(): Plugin {
         devPack({
           functionDir: root,
           ignorePattern(req) {
+            // TODO Refactor ignorePattern
             const { pathname, query } = URL.parse(req.url)
             const reg = /\.(js|css|map|json|png|jpg|jpeg|gif|svg|eot|woff2|ttf)$/
             return reg.test(pathname) || reg.test(query)

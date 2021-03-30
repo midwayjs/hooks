@@ -20,10 +20,14 @@ export function getConfig(cwd?: string): InternalConfig {
     tryRequire<UserConfig>(configs.ts) || tryRequire<UserConfig>(configs.js)
 
   return _.defaultsDeep({}, userConfig, {
+    superjson: true,
     source: './src/apis',
     build: {
       viteOutDir: './build',
       outDir: './dist',
+    },
+    request: {
+      client: '@midwayjs/hooks-core/request',
     },
   })
 }

@@ -2,7 +2,7 @@ import inside from 'is-path-inside'
 import { basename, dirname, extname, join, relative, toUnix } from 'upath'
 import chalk from 'chalk'
 import { InternalConfig } from '..'
-import { consola } from '../util'
+import { consola } from '../lib'
 
 export class ServerRouter {
   root: string

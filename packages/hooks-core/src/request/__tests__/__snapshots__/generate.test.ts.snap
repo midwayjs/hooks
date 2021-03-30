@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should transform exports to api function 1`] = `
+import { request } from '@midwayjs/hooks-core/request';
+
+export default function $default(...args) {
+  return request({
+    url: '/',
+    method: args.length === 0 ? 'GET' : 'POST',
+    data: { args },
+    meta: {
+      superjson: false,
+    },
+  });
+}
+
+`;
+
+exports[`should transform exports to api function 2`] = `
+import { request } from '@midwayjs/hooks-core/request';
+
+export function foo(...args) {
+  return request({
+    url: '/api/foo',
+    method: args.length === 0 ? 'GET' : 'POST',
+    data: { args },
+    meta: {
+      superjson: false,
+    },
+  });
+}
+
+`;
+
+exports[`should transform exports to api function 3`] = `
+import { request } from '@midwayjs/hooks-core/request';
+
+export function bar(...args) {
+  return request({
+    url: '/api/bar',
+    method: args.length === 0 ? 'GET' : 'POST',
+    data: { args },
+    meta: {
+      superjson: false,
+    },
+  });
+}
+
+`;
+
+exports[`should transform exports to api function 4`] = `
+import { request } from '@midwayjs/hooks-core/request';
+
+export default function $default(...args) {
+  return request({
+    url: '/superjson',
+    method: args.length === 0 ? 'GET' : 'POST',
+    data: { args },
+    meta: {
+      superjson: true,
+    },
+  });
+}
+
+export function foo(...args) {
+  return request({
+    url: '/superjson/foo',
+    method: args.length === 0 ? 'GET' : 'POST',
+    data: { args },
+    meta: {
+      superjson: true,
+    },
+  });
+}
+
+`;
+
+exports[`should transform exports to api function 5`] = `
+import { request } from '@midwayjs/hooks-superjson-request';
+
+export default function $default(...args) {
+  return request({
+    url: '/superjson',
+    method: args.length === 0 ? 'GET' : 'POST',
+    data: { args },
+    meta: {
+      superjson: true,
+    },
+  });
+}
+
+export function bar(...args) {
+  return request({
+    url: '/superjson/bar',
+    method: args.length === 0 ? 'GET' : 'POST',
+    data: { args },
+    meta: {
+      superjson: true,
+    },
+  });
+}
+
+`;

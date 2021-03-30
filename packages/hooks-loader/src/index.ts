@@ -2,7 +2,7 @@ import {
   getConfig,
   getProjectRoot,
   ServerRouter,
-  parseAndGenerateSDK,
+  generate,
 } from '@midwayjs/hooks-core'
 import { loader } from 'webpack'
 
@@ -20,9 +20,11 @@ export default async function MidwayHooksLoader(
     return callback(null, source)
   }
 
-  const sdk = await parseAndGenerateSDK(
+  const sdk = await generate(
     router.getBaseUrl(this.resourcePath),
-    source
+    source,
+    config.superjson,
+    config.request.client
   )
   callback(null, sdk)
 }
