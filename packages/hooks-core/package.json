@@ -19,7 +19,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@midwayjs/bootstrap": "^2.9.2",
+    "@midwayjs/bootstrap": "^2.9.3",
     "@midwayjs/core": "^2.9.2",
     "@midwayjs/decorator": "^2.9.2",
     "art-template": "^4.13.2",
