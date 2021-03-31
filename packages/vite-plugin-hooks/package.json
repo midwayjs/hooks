@@ -20,7 +20,7 @@
     "@midwayjs/hooks-core": "^2.1.0-next.4",
     "@midwayjs/serverless-dev-pack": "^1.2.56",
     "vite": "^2.1.3",
-    "vite-tsconfig-paths": "^2.3.0"
+    "vite-tsconfig-paths": "^2.5.0"
   },
   "publishConfig": {
     "access": "public"
