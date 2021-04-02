@@ -2583,7 +2583,7 @@
     winston-daily-rotate-file "^4.5.0"
     winston-transport "^4.4.0"
 
-"@midwayjs/mock@2.10.0-beta.2", "@midwayjs/mock@^2.8.0":
+"@midwayjs/mock@2.10.0-beta.2", "@midwayjs/mock@^2.8.0", "@midwayjs/mock@^2.9.3":
   version "2.10.0-beta.2"
   resolved "https://registry.npmjs.org/@midwayjs/mock/-/mock-2.10.0-beta.2.tgz#17f8bde37e1015221bce71d7e63ab3716bda3404"
   integrity sha512-xChOTNrNGQYpeUprNV3LYfkNk8cFGEUWyQYHpuGk/CGya2iyHcHGsI0pbQUgMtzjtXQT6DOLdpu7KRt0wkKfsw==
@@ -2591,19 +2591,6 @@
     "@midwayjs/bootstrap" "^2.10.0-beta.2"
     "@midwayjs/decorator" "^2.10.0-beta.2"
     "@midwayjs/logger" "^2.10.0-beta.2"
-    egg-mock "^3.21.0"
-    fs-extra "^8.0.1"
-    power-assert "^1.6.1"
-    supertest "^4.0.2"
-
-"@midwayjs/mock@^2.9.3":
-  version "2.9.3"
-  resolved "https://registry.yarnpkg.com/@midwayjs/mock/-/mock-2.9.3.tgz#866a6bb99e6ccb2625c2cdc29fd0a12ee9141543"
-  integrity sha512-mkxyCqHFlvv9BgLXryviVlCHNwdHhLAV4QUc8ChoiLyoh0q7AmOQTiWzwPPTXipNHYnhPIDq2UwkJGRpKN9o8A==
-  dependencies:
-    "@midwayjs/bootstrap" "^2.9.3"
-    "@midwayjs/decorator" "^2.9.2"
-    "@midwayjs/logger" "^2.8.13"
     egg-mock "^3.21.0"
     fs-extra "^8.0.1"
     power-assert "^1.6.1"
