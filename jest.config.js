@@ -27,7 +27,6 @@ module.exports = {
   ],
   coveragePathIgnorePatterns: [
     'node_modules',
-    '.faas_debug_tmp',
     '.serverless',
     '__tests__',
     'examples',
