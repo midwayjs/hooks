@@ -3,7 +3,7 @@ import { HooksMiddleware } from './common'
 export interface InternalConfig {
   /**
    * @default true
-   * Enable superjson to serialize Set/Map/Error/BigInt
+   * Enable superjson to serialize Set/Map/Error/BigInt, default is true
    */
   superjson?: boolean
   source?: string
