@@ -52,6 +52,11 @@
     "packages/*",
     "examples/*"
   ],
+  "resolutions": {
+    "@midwayjs/core": "2.10.0-beta.2",
+    "@midwayjs/decorator": "2.10.0-beta.2",
+    "@midwayjs/mock": "2.10.0-beta.2"
+  },
   "preconstruct": {
     "packages": [
       "packages/*"
