@@ -28,6 +28,7 @@
     "chalk": "^4.1.0",
     "consola": "^2.15.3",
     "es-module-lexer": "^0.4.0",
+    "globby": "^11.0.3",
     "is-path-inside": "^3.0.3",
     "jiti": "^1.6.4",
     "koa-static-cache": "^5.1.4",
@@ -39,10 +40,11 @@
     "upath": "^2.0.1"
   },
   "devDependencies": {
-    "jest-snapshot-serializer-raw": "^1.1.0",
     "@types/es-module-lexer": "^0.3.0",
     "@types/koa-static-cache": "^5.1.0",
-    "@types/lodash": "^4.14.168"
+    "@types/lodash": "^4.14.168",
+    "@types/prettier": "^2.2.3",
+    "jest-snapshot-serializer-raw": "^1.1.0"
   },
   "preconstruct": {
     "entrypoints": [

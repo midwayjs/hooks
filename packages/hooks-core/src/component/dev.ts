@@ -11,6 +11,7 @@ import { ApiHttpMethod } from '../types/http'
 import { superjson } from '../lib'
 import { join } from 'path'
 import { existsSync } from 'fs'
+import { sync } from 'globby'
 
 export type ComponentConfig = {
   runtime: RuntimeConfig
@@ -34,24 +35,34 @@ export class HooksDevComponent {
   }
 
   init() {
-    let count = 0
     const { routes } = this.internal
+
+    let count = 0
+    const totalCount = routes.reduce((totalCount, route) => {
+      const dir = join(this.router.source, route.baseDir)
+      const files = sync([dir]).filter((file) => this.router.isApiFile(file))
+      return totalCount + files.length
+    }, 0)
+
     const configuration = createConfiguration({
       namespace: '@midwayjs/hooks',
       directoryResolveFilter: routes.map((route) => {
         return {
-          pattern: route.baseDir,
+          pattern: join(this.router.source, route.baseDir),
           ignoreRequire: true,
           filter: (_: void, file: string, container: IMidwayContainer) => {
             if (!this.router.isApiFile(file)) {
               return
             }
             this.container = container
-            this.createApi(file)
+
+            const mod: ApiModule = require(file)
+            this.createApi(mod, file)
+            this.container.bindClass(mod, '', file)
 
             count++
-            if (count === routes.length) {
-              this.afterCreate?.()
+            if (count === totalCount) {
+              this.afterCreate()
             }
           },
         }
@@ -71,8 +82,7 @@ export class HooksDevComponent {
 
   afterCreate() {}
 
-  createApi(file: string) {
-    const mod: ApiModule = require(file)
+  createApi(mod: ApiModule, file: string) {
     const modMiddleware = mod?.config?.middleware || []
 
     Object.keys(mod)
