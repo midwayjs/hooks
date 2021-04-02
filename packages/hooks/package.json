@@ -29,5 +29,6 @@
       "index.ts",
       "universal.ts"
     ]
-  }
+  },
+  "devDependencies": {}
 }

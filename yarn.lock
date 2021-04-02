@@ -2300,6 +2300,11 @@
   resolved "https://registry.npmjs.org/@midwayjs/boilerplate-list/-/boilerplate-list-1.0.1.tgz#2c5c8e9306f18104ed84894e70de0f7a57e1d7ae"
   integrity sha512-6zaFuHxztutzqBqrlffmBK2j4D49po1UVFVTmmzL8dOUj40f1OrL5QCfiG0GN0vjrOyL5NOl53vh5mKLpahyFw==
 
+"@midwayjs/bootstrap@^2.10.0-beta.2":
+  version "2.10.0-beta.2"
+  resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-2.10.0-beta.2.tgz#3cba8f1f1faf528a5b34dbfda4e5e44639e9a90e"
+  integrity sha512-FL/Gc3p62hfMIkQWbMMH2kor0U36FQKesM1WD+B/AWn4TAkutx5MAD15Zf8QCeOKUAvMKnQrD7FmaLDcSiBgZw==
+
 "@midwayjs/bootstrap@^2.9.0":
   version "2.9.0"
   resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-2.9.0.tgz#f2b7951823c6f961f337d6c7561b6fa187716dd3"
@@ -2406,33 +2411,14 @@
     light-spinner "^1.0.0"
     minimist "^1.2.5"
 
-"@midwayjs/core@^2.9.0":
-  version "2.9.0"
-  resolved "https://registry.npmjs.org/@midwayjs/core/-/core-2.9.0.tgz#437f88249c47fad7e438d72cf2ad77910ee80b3e"
-  integrity sha512-AxyiLs37f3HD2gaTxIU2tnfVxlupSckCZ8FnGlljNwfr24l+7HygRYvxuXmnhkc3t6NpSXQuQcK1u5yzH4V3mQ==
+"@midwayjs/core@2.10.0-beta.2", "@midwayjs/core@^2.9.0", "@midwayjs/core@^2.9.2":
+  version "2.10.0-beta.2"
+  resolved "https://registry.npmjs.org/@midwayjs/core/-/core-2.10.0-beta.2.tgz#1dea6a49fa48ef09afad6dde770c0a27ccfa774b"
+  integrity sha512-pED69zaYClCDhTCGZ51wjN4B6nqvEygxYygwSQlJgNuuN/1gWBjzTfhAcnu3qmjWLVX8cZ9lYqHz6q1QMlcwhA==
   dependencies:
-    "@midwayjs/decorator" "^2.9.0"
+    "@midwayjs/decorator" "^2.10.0-beta.2"
     "@midwayjs/glob" "^1.0.2"
-    "@midwayjs/logger" "^2.8.13"
-    class-transformer "^0.3.1"
-    extend2 "^1.0.0"
-    lodash.assign "^4.2.0"
-    lodash.clonedeep "^4.5.0"
-    lodash.defaultsdeep "^4.6.0"
-    lodash.get "^4.4.2"
-    lodash.set "^4.3.2"
-    lodash.template "^4.4.0"
-    picomatch "^2.2.2"
-    reflect-metadata "^0.1.13"
-
-"@midwayjs/core@^2.9.2":
-  version "2.9.2"
-  resolved "https://registry.yarnpkg.com/@midwayjs/core/-/core-2.9.2.tgz#80557c45e1bb9c868b823d4b7b7900474717f463"
-  integrity sha512-DT/T6Y0wAGxOO7aGtfkzpCsNkejP3Q+uP8pClWIoGBBzodn3J/fzOPdgOkub1Rbq3Aa+LqpHKwAb7yD5MNDPJA==
-  dependencies:
-    "@midwayjs/decorator" "^2.9.2"
-    "@midwayjs/glob" "^1.0.2"
-    "@midwayjs/logger" "^2.8.13"
+    "@midwayjs/logger" "^2.10.0-beta.2"
     class-transformer "^0.3.1"
     extend2 "^1.0.0"
     lodash.assign "^4.2.0"
@@ -2453,22 +2439,10 @@
     ts-node "^9.0.0"
     ws "^7.2.3"
 
-"@midwayjs/decorator@^2.9.0":
-  version "2.9.0"
-  resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-2.9.0.tgz#8c77c1a99f67c8df31b6424295d7f30c74390db9"
-  integrity sha512-iLNGd/y/dk5FRye2XxiIOG6zejJPQOP8KsHRsogwvFrB820XJeRBJWiY08b1rPakjTgQJRflyaT4vjOelZvq3g==
-  dependencies:
-    "@types/express" "^4.17.8"
-    "@types/koa" "^2.11.4"
-    camelcase "^6.2.0"
-    class-transformer "^0.3.1"
-    joi "^17.2.1"
-    reflect-metadata "^0.1.13"
-
-"@midwayjs/decorator@^2.9.2":
-  version "2.9.2"
-  resolved "https://registry.yarnpkg.com/@midwayjs/decorator/-/decorator-2.9.2.tgz#bf1626dc0fc80384cd134094190dadb7f4565d34"
-  integrity sha512-l8tgC7uA4r/V9Qzi7YGc20Z/kKr4vJdQv5VMRUeii7p1yMenDDDp38QJfioV0e9kuVcVvGPoQxeAfwr6UbtWdA==
+"@midwayjs/decorator@2.10.0-beta.2", "@midwayjs/decorator@^2.10.0-beta.2", "@midwayjs/decorator@^2.9.2":
+  version "2.10.0-beta.2"
+  resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-2.10.0-beta.2.tgz#5d5220dec4107adffe96e90e4c8184e3d53a9dd6"
+  integrity sha512-30kfFKm3rAek6BKZl6PnJFVMhVPw8DJNij4UZYqNjjz943uudWB9Baq2IHvniuwe2o7kcjOsxphViVxnXS3ilw==
   dependencies:
     "@types/express" "^4.17.8"
     "@types/koa" "^2.11.4"
@@ -2589,6 +2563,16 @@
     fs-extra "^8.1.0"
     globby "^10.0.1"
 
+"@midwayjs/logger@^2.10.0-beta.2":
+  version "2.10.0-beta.2"
+  resolved "https://registry.npmjs.org/@midwayjs/logger/-/logger-2.10.0-beta.2.tgz#1764adcc4e41f067ee3d31e394f28839f4378785"
+  integrity sha512-dn3LPisAN8FZ/2qLrMDTHxlE5nLO8IeoCZty+dNGUYUj7tQffuKsrAYqs5b0vh2Dn3DoZEJEMizUl35UZlgj+w==
+  dependencies:
+    triple-beam "^1.3.0"
+    winston "^3.3.3"
+    winston-daily-rotate-file "^4.5.0"
+    winston-transport "^4.4.0"
+
 "@midwayjs/logger@^2.8.13":
   version "2.8.13"
   resolved "https://registry.npmjs.org/@midwayjs/logger/-/logger-2.8.13.tgz#13294aeaad3e4b13413e5d91d3d2122f508e9f2b"
@@ -2599,27 +2583,14 @@
     winston-daily-rotate-file "^4.5.0"
     winston-transport "^4.4.0"
 
-"@midwayjs/mock@^2.8.0":
-  version "2.9.0"
-  resolved "https://registry.npmjs.org/@midwayjs/mock/-/mock-2.9.0.tgz#f929818bea797f420d6bc392a3b926520fb15275"
-  integrity sha512-HIlzdhcO/CXsMw3YTbeVH+Kb+4V6A3B09TAyjhkRrRY1jqljkl0qA+7WvkCN1weIItGU4oreJLXO0C/ZJGzumg==
+"@midwayjs/mock@2.10.0-beta.2", "@midwayjs/mock@^2.8.0", "@midwayjs/mock@^2.9.3":
+  version "2.10.0-beta.2"
+  resolved "https://registry.npmjs.org/@midwayjs/mock/-/mock-2.10.0-beta.2.tgz#17f8bde37e1015221bce71d7e63ab3716bda3404"
+  integrity sha512-xChOTNrNGQYpeUprNV3LYfkNk8cFGEUWyQYHpuGk/CGya2iyHcHGsI0pbQUgMtzjtXQT6DOLdpu7KRt0wkKfsw==
   dependencies:
-    "@midwayjs/bootstrap" "^2.9.0"
-    "@midwayjs/decorator" "^2.9.0"
-    "@midwayjs/logger" "^2.8.13"
-    egg-mock "^3.21.0"
-    fs-extra "^8.0.1"
-    power-assert "^1.6.1"
-    supertest "^4.0.2"
-
-"@midwayjs/mock@^2.9.3":
-  version "2.9.3"
-  resolved "https://registry.yarnpkg.com/@midwayjs/mock/-/mock-2.9.3.tgz#866a6bb99e6ccb2625c2cdc29fd0a12ee9141543"
-  integrity sha512-mkxyCqHFlvv9BgLXryviVlCHNwdHhLAV4QUc8ChoiLyoh0q7AmOQTiWzwPPTXipNHYnhPIDq2UwkJGRpKN9o8A==
-  dependencies:
-    "@midwayjs/bootstrap" "^2.9.3"
-    "@midwayjs/decorator" "^2.9.2"
-    "@midwayjs/logger" "^2.8.13"
+    "@midwayjs/bootstrap" "^2.10.0-beta.2"
+    "@midwayjs/decorator" "^2.10.0-beta.2"
+    "@midwayjs/logger" "^2.10.0-beta.2"
     egg-mock "^3.21.0"
     fs-extra "^8.0.1"
     power-assert "^1.6.1"
@@ -3505,7 +3476,7 @@
     "@types/empower" "*"
     "@types/power-assert-formatter" "*"
 
-"@types/prettier@^2.0.0":
+"@types/prettier@^2.0.0", "@types/prettier@^2.2.3":
   version "2.2.3"
   resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.2.3.tgz#ef65165aea2924c9359205bf748865b8881753c0"
   integrity sha512-PijRCG/K3s3w1We6ynUKdxEc5AcuuH3NBmMDP8uvKVp6X43UY7NQlTzczakXP3DJR0F4dfNQIGjU2cUeRYs2AA==
@@ -7435,7 +7406,7 @@ fast-glob@^2.0.2, fast-glob@^2.2.6:
     merge2 "^1.2.3"
     micromatch "^3.1.10"
 
-fast-glob@^3.0.3, fast-glob@^3.2.4, fast-glob@^3.2.5:
+fast-glob@^3.0.3, fast-glob@^3.1.1, fast-glob@^3.2.4, fast-glob@^3.2.5:
   version "3.2.5"
   resolved "https://registry.npmjs.org/fast-glob/-/fast-glob-3.2.5.tgz#7939af2a656de79a4f1901903ee8adcaa7cb9661"
   integrity sha512-2DtFcgT68wiTTiwZ2hNdJfcHNke9XOfnwmBRWXhmeKM8rF0TGwmC/Qto3S7RoZKp5cilZbxzO5iTNTQsJ+EeDg==
@@ -8126,6 +8097,18 @@ globby@^10.0.1:
     glob "^7.1.3"
     ignore "^5.1.1"
     merge2 "^1.2.3"
+    slash "^3.0.0"
+
+globby@^11.0.3:
+  version "11.0.3"
+  resolved "https://registry.npmjs.org/globby/-/globby-11.0.3.tgz#9b1f0cb523e171dd1ad8c7b2a9fb4b644b9593cb"
+  integrity sha512-ffdmosjA807y7+lA1NM0jELARVmYul/715xiILEjo3hBLPTcirgQNnXECn5g3mtR8TOLCVbkfua1Hpen25/Xcg==
+  dependencies:
+    array-union "^2.1.0"
+    dir-glob "^3.0.1"
+    fast-glob "^3.1.1"
+    ignore "^5.1.4"
+    merge2 "^1.3.0"
     slash "^3.0.0"
 
 globby@^6.1.0:
