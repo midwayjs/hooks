@@ -46,7 +46,7 @@ desc('hooks loader with proxy', () => {
           method: args.length === 0 ? 'GET' : 'POST',
           data: { args },
           meta: {
-            superjson: true,
+            superjson: false,
           },
         });
       }
@@ -57,7 +57,7 @@ desc('hooks loader with proxy', () => {
           method: args.length === 0 ? 'GET' : 'POST',
           data: { args },
           meta: {
-            superjson: true,
+            superjson: false,
           },
         });
       }
@@ -68,7 +68,7 @@ desc('hooks loader with proxy', () => {
           method: args.length === 0 ? 'GET' : 'POST',
           data: { args },
           meta: {
-            superjson: true,
+            superjson: false,
           },
         });
       }
@@ -87,7 +87,7 @@ desc('hooks loader with proxy', () => {
           method: args.length === 0 ? 'GET' : 'POST',
           data: { args },
           meta: {
-            superjson: true,
+            superjson: false,
           },
         });
       }
