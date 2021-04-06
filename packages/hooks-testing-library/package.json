@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@types/debug": "^4.1.5",
-    "@types/fs-extra": "^9.0.9",
+    "@types/fs-extra": "^9.0.10",
     "@types/testing-library__jest-dom": "^5.9.5"
   },
   "dependencies": {
@@ -30,7 +30,7 @@
     "fs-extra": "^9.1.0",
     "identity-obj-proxy": "^3.0.0",
     "jest-environment-node": "^26.6.2",
-    "jest-watch-typeahead": "^0.6.1",
+    "jest-watch-typeahead": "^0.6.2",
     "ts-jest": "^26.5.4"
   },
   "publishConfig": {
