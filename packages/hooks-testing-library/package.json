@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@midwayjs/hooks-core": "^2.1.0-next.4",
-    "@midwayjs/mock": "^2.9.3",
+    "@midwayjs/mock": "^2.10.2",
     "@testing-library/jest-dom": "^5.11.10",
     "debug": "^4.3.1",
     "esbuild": "^0.9.7",
