@@ -18,13 +18,16 @@ describe('test new features', () => {
         "method": "GET",
       }
     `);
-    expect(await app.runFunction(post, 'Jake')).toMatchInlineSnapshot(
-      `"postJake"`
-    );
+    expect(await app.runFunction(post, 'Jake')).toMatchInlineSnapshot(`
+      Object {
+        "method": "POST",
+        "name": "Jake",
+      }
+    `);
   });
 
   it('request', async () => {
     const response = await app.request(get).expect(200);
-    expect(response.body).toMatchInlineSnapshot(`"get"`);
+    expect(response.body).toMatchInlineSnapshot(`Object {}`);
   });
 });

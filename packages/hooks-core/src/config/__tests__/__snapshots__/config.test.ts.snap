@@ -16,7 +16,7 @@ Object {
     },
   ],
   "source": "src",
-  "superjson": true,
+  "superjson": false,
 }
 `;
 
@@ -36,7 +36,7 @@ Object {
     },
   ],
   "source": "src",
-  "superjson": true,
+  "superjson": false,
 }
 `;
 
@@ -56,6 +56,6 @@ Object {
     },
   ],
   "source": "src",
-  "superjson": true,
+  "superjson": false,
 }
 `;
