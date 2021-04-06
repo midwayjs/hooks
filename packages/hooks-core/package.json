@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@midwayjs/bootstrap": "^2.9.3",
-    "@midwayjs/core": "^2.9.2",
-    "@midwayjs/decorator": "^2.9.2",
+    "@midwayjs/core": "^2.10.2",
+    "@midwayjs/decorator": "^2.10.2",
     "art-template": "^4.13.2",
     "asynchronous-local-storage": "^1.0.2",
     "axios": "^0.21.1",
