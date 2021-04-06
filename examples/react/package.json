@@ -13,13 +13,13 @@
   },
   "dependencies": {
     "@midwayjs/hooks": "^2.1.0-next.5",
-    "@midwayjs/koa": "^2.9.3",
+    "@midwayjs/koa": "^2.10.0",
     "koa-bodyparser": "^4.3.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
   "devDependencies": {
-    "@midwayjs/cli": "^1.2.56",
+    "@midwayjs/cli": "^1.2.57",
     "@midwayjs/cli-plugin-build": "^1.2.55",
     "@midwayjs/vite-plugin-hooks": "^2.1.0-next.5",
     "@types/jest": "^26.0.22",
