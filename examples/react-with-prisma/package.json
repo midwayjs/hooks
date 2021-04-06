@@ -1,6 +1,6 @@
 {
   "name": "hooks-react-prisma",
-  "version": "2.1.0-next.4",
+  "version": "2.1.0-next.5",
   "private": true,
   "scripts": {
     "start": "node bootstrap",
@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@midwayjs/hooks": "^2.1.0-next.4",
+    "@midwayjs/hooks": "^2.1.0-next.5",
     "@midwayjs/koa": "^2.9.3",
     "koa-bodyparser": "^4.3.0",
     "react": "^17.0.0",
@@ -21,7 +21,7 @@
   "devDependencies": {
     "@midwayjs/cli": "^1.2.56",
     "@midwayjs/cli-plugin-build": "^1.2.55",
-    "@midwayjs/vite-plugin-hooks": "^2.1.0-next.4",
+    "@midwayjs/vite-plugin-hooks": "^2.1.0-next.5",
     "@prisma/client": "^2.20.1",
     "@types/jest": "^26.0.22",
     "@types/koa-bodyparser": "^4.3.0",
