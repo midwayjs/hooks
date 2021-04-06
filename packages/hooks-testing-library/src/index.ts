@@ -62,7 +62,11 @@ export class HooksApplication {
       throw response.body
     }
 
-    return response.body
+    if (response.type === 'application/json') {
+      return response.body
+    }
+
+    return response.text
   }
 
   request<T extends ApiFunction>(fn: T, ...args: Parameters<T>) {
