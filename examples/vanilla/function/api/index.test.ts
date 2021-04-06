@@ -18,9 +18,12 @@ describe('test new features', () => {
         "method": "GET",
       }
     `);
-    expect(await app.runFunction(post, 'Jake')).toMatchInlineSnapshot(
-      `"postJake"`
-    );
+    expect(await app.runFunction(post, 'Jake')).toMatchInlineSnapshot(`
+      Object {
+        "method": "POST",
+        "name": "Jake",
+      }
+    `);
   });
 
   it('request', async () => {

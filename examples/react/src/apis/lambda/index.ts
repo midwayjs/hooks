@@ -17,5 +17,5 @@ export const get = async () => {
 };
 
 export const post = async (name: string) => {
-  return 'post' + name;
+  return { method: 'POST', name };
 };

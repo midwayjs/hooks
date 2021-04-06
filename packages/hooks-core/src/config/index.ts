@@ -20,7 +20,7 @@ export function getConfig(cwd?: string): InternalConfig {
     tryRequire<UserConfig>(configs.ts) || tryRequire<UserConfig>(configs.js)
 
   return _.defaultsDeep({}, userConfig, {
-    superjson: true,
+    superjson: false,
     source: './src/apis',
     build: {
       viteOutDir: './build',
