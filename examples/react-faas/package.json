@@ -23,7 +23,7 @@
     "@midwayjs/fcli-plugin-fc": "^1.2.56",
     "@midwayjs/hooks-testing-library": "^2.1.0-next.4",
     "@midwayjs/serverless-app": "^2.9.3",
-    "@midwayjs/serverless-fc-trigger": "^2.9.2",
+    "@midwayjs/serverless-fc-trigger": "^2.10.2",
     "@midwayjs/vite-plugin-hooks": "^2.1.0-next.4",
     "@types/jest": "^26.0.22",
     "@types/react": "^17.0.3",
