@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/vite-plugin-hooks",
-  "version": "2.1.0-next.4",
+  "version": "2.1.0-next.5",
   "description": "Vite plugin for midway hooks support",
   "keywords": [
     "midway",
@@ -17,13 +17,12 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
-    "@midwayjs/hooks-core": "^2.1.0-next.4",
+    "@midwayjs/hooks-core": "^2.1.0-next.5",
     "@midwayjs/serverless-dev-pack": "^1.2.56",
     "vite": "^2.1.5",
     "vite-tsconfig-paths": "^2.5.0"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {}
+  }
 }
