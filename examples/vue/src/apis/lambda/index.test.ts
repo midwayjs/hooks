@@ -28,6 +28,6 @@ describe('test new features', () => {
 
   it('request', async () => {
     const response = await app.request(get).expect(200);
-    expect(response.body).toMatchInlineSnapshot(`Object {}`);
+    expect(response.text).toMatchInlineSnapshot(`"get"`);
   });
 });
