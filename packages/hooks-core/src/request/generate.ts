@@ -2,7 +2,7 @@ import { init, parse } from 'es-module-lexer'
 import { ApiParam } from '..'
 import _ from 'lodash'
 import art from 'art-template'
-import { readFileSync } from 'fs'
+import { readFileSync, existsSync } from 'fs'
 import { resolve } from 'path'
 import prettier from 'prettier'
 
@@ -36,10 +36,15 @@ export async function generate(
     }
   })
 
-  const template = readFileSync(
-    resolve(__dirname, '../../template/request.art'),
-    { encoding: 'utf-8' }
-  )
+  const templates = {
+    dev: resolve(__dirname, '../../template/request.art'),
+    prod: resolve(__dirname, '../template/request.art'),
+  }
+
+  const templatePath = existsSync(templates.dev)
+    ? templates.dev
+    : templates.prod
+  const template = readFileSync(templatePath, { encoding: 'utf-8' })
   return prettier.format(art.render(template, { funcs, SDK: sdk }), {
     semi: true,
     singleQuote: true,
