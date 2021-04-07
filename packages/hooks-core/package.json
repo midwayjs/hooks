@@ -19,7 +19,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@midwayjs/bootstrap": "^2.10.0",
+    "@midwayjs/bootstrap": "^2.10.2",
     "@midwayjs/core": "^2.10.2",
     "@midwayjs/decorator": "^2.10.2",
     "art-template": "^4.13.2",
@@ -36,7 +36,7 @@
     "pkg-dir": "^5.0.0",
     "prettier": "^2.2.1",
     "superjson": "^1.7.3",
-    "tslib": "^2.1.0",
+    "tslib": "^2.2.0",
     "upath": "^2.0.1"
   },
   "devDependencies": {
