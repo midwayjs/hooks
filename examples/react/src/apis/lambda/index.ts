@@ -12,10 +12,6 @@ export default async () => {
   };
 };
 
-export const get = async () => {
-  return 'get';
-};
-
 export const post = async (name: string) => {
   return { method: 'POST', name };
 };

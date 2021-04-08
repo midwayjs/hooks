@@ -1,5 +1,5 @@
 import { createApp, HooksApplication } from '@midwayjs/hooks-testing-library';
-import api, { get, post } from '.';
+import api, { post } from '.';
 
 describe('test new features', () => {
   let app: HooksApplication;
@@ -27,7 +27,12 @@ describe('test new features', () => {
   });
 
   it('request', async () => {
-    const response = await app.request(get).expect(200);
-    expect(response.body).toMatchInlineSnapshot(`Object {}`);
+    const response = await app.request(api).expect(200);
+    expect(response.body).toMatchInlineSnapshot(`
+      Object {
+        "message": "Hello World",
+        "method": "GET",
+      }
+    `);
   });
 });
