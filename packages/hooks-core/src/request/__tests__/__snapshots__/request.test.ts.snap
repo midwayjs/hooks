@@ -30,7 +30,9 @@ Array [
       "data": Object {
         "args": Array [],
       },
-      "meta": Object {},
+      "meta": Object {
+        "superjson": true,
+      },
       "method": "GET",
       "url": "/api/books",
     },

@@ -23,7 +23,9 @@ test('should call axios', () => {
     url: '/api/books',
     method: 'GET',
     data: { args: [] },
-    meta: {},
+    meta: {
+      superjson: true,
+    },
   })
 
   expect(mockedAxios.mock.calls).toHaveLength(3)
