@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@midwayjs/hooks": "^2.1.0",
-    "@midwayjs/hooks-core": "^2.0.0-next.0",
+    "@midwayjs/hooks-core": "^2.1.0",
     "@types/debug": "^4.1.5",
     "@types/jest": "^26.0.22",
     "@types/memory-fs": "^0.3.3",

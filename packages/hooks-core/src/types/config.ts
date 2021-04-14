@@ -1,3 +1,5 @@
+import { HooksGatewayAdapter } from '../component/gateway/adapter'
+import { Class } from '../component/gateway/interface'
 import { HooksMiddleware } from './common'
 
 export interface InternalConfig {
@@ -22,11 +24,15 @@ export type RuntimeConfig = {
    * Global middleware
    */
   middleware?: HooksMiddleware
+
+  adapter?: Class<HooksGatewayAdapter>
 }
 
-export type ServerRoute = {
+export type HTTPRoute = {
   baseDir: string
   basePath: string
 }
+
+export type ServerRoute = HTTPRoute
 
 export interface UserConfig extends Omit<InternalConfig, 'build' | 'request'> {}
