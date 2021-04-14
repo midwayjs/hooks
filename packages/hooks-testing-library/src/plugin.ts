@@ -10,6 +10,7 @@ export function SuperJSONPlugin(enableSuperjson: boolean) {
       if (res.body) {
         res.body = superjson.deserialize(res.body)
       }
+
       if (res.text) {
         res.text = superjson.parse(res.text)
       }
