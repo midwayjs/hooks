@@ -27,6 +27,7 @@
   "preconstruct": {
     "entrypoints": [
       "index.ts",
+      "request.ts",
       "universal.ts"
     ]
   }
