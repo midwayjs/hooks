@@ -1,8 +1,17 @@
 import inside from 'is-path-inside'
-import { basename, dirname, extname, join, relative, toUnix } from 'upath'
+import {
+  basename,
+  dirname,
+  extname,
+  join,
+  relative,
+  toUnix,
+  removeExt,
+} from 'upath'
 import chalk from 'chalk'
 import { InternalConfig } from '..'
 import { consola } from '../lib'
+import { kebabCase } from 'lodash'
 
 export class ServerRouter {
   root: string
@@ -121,6 +130,14 @@ export class ServerRouter {
     this.routes.set(api, toUnix(file))
 
     return api
+  }
+
+  getFunctionId(file: string, functionName: string, isExportDefault: boolean) {
+    const relativePath = relative(this.source, file)
+    // src/apis/lambda/index.ts -> apis-lambda-index
+    const id = kebabCase(removeExt(relativePath, extname(relativePath)))
+    const name = [id, isExportDefault ? '' : `-${functionName}`].join('')
+    return name.toLowerCase()
   }
 }
 

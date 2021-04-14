@@ -1,46 +1,40 @@
-import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
+import {
+  createConfiguration,
+  IMidwayApplication,
+  IMidwayContainer,
+  IMidwayContext,
+} from '@midwayjs/core'
 import { __decorate } from 'tslib'
-import { Inject, Controller, Get, Post, Provide } from '@midwayjs/decorator'
 import { als } from '../runtime'
 import { ApiFunction, ApiModule } from '../types/common'
-import { ServerRouter } from '../router'
-import { RuntimeConfig, InternalConfig } from '../types/config'
-import { kebabCase, noop } from 'lodash'
-import { extname, relative, removeExt } from 'upath'
-import { ApiHttpMethod } from '../types/http'
-import { superjson } from '../lib'
 import { join } from 'path'
-import { existsSync } from 'fs'
 import { sync } from 'globby'
+import { ComponentConfig } from './gateway/interface'
+import _ from 'lodash'
+import { HooksGatewayAdapter } from './gateway/adapter'
 
-export type ComponentConfig = {
-  runtime: RuntimeConfig
-  internal: InternalConfig
-  router: ServerRouter
-  root: string
-}
+export class HooksComponent {
+  config: ComponentConfig
 
-export class HooksDevComponent {
-  internal: InternalConfig
-  runtime: RuntimeConfig
-  router: ServerRouter
-  root: string
-  container: IMidwayContainer
+  app: IMidwayApplication<IMidwayContext>
+
+  adapter: HooksGatewayAdapter
 
   constructor(config: ComponentConfig) {
-    this.runtime = config.runtime
-    this.internal = config.internal
-    this.router = config.router
-    this.root = config.root
+    this.config = config
+    this.adapter = new config.runtime.adapter(this.config)
   }
 
   init() {
-    const { routes } = this.internal
+    const {
+      router,
+      internal: { routes },
+    } = this.config
 
     let count = 0
     const totalCount = routes.reduce((totalCount, route) => {
-      const dir = join(this.router.source, route.baseDir)
-      const files = sync([dir]).filter((file) => this.router.isApiFile(file))
+      const dir = join(router.source, route.baseDir)
+      const files = sync([dir]).filter((file) => router.isApiFile(file))
       return totalCount + files.length
     }, 0)
 
@@ -48,21 +42,27 @@ export class HooksDevComponent {
       namespace: '@midwayjs/hooks',
       directoryResolveFilter: routes.map((route) => {
         return {
-          pattern: join(this.router.source, route.baseDir),
+          pattern: join(router.source, route.baseDir),
           ignoreRequire: true,
           filter: (_: void, file: string, container: IMidwayContainer) => {
-            if (!this.router.isApiFile(file)) {
+            if (!router.isApiFile(file)) {
               return
             }
-            this.container = container
 
+            // Initalize container
+            if (!this.adapter.container) {
+              this.adapter.container = container
+            }
+
+            // Create api function
             const mod: ApiModule = require(file)
             this.createApi(mod, file)
-            this.container.bindClass(mod, '', file)
+            container.bindClass(mod, '', file)
 
+            // Call afterCreate hooks
             count++
             if (count === totalCount) {
-              this.afterCreate()
+              this.adapter.afterCreate?.()
             }
           },
         }
@@ -71,137 +71,49 @@ export class HooksDevComponent {
 
     configuration
       .onReady((_, app) => {
-        this.useGlobalMiddleware(app)
+        this.adapter.app = app
+
+        // Setup global middleware
+        for (const mw of this.getGlobalMiddleware()) {
+          ;(app as any).use(mw)
+        }
+
+        // TODO getGlobalMiddleware from adapter
       })
-      .onStop(noop)
+      .onStop(_.noop)
 
     return {
       Configuration: configuration,
     }
   }
 
-  afterCreate() {}
-
   createApi(mod: ApiModule, file: string) {
     const modMiddleware = mod?.config?.middleware || []
+    const funcs = _.pickBy<ApiFunction>(mod, _.isFunction)
 
-    Object.keys(mod)
-      .filter((key) => typeof mod[key] === 'function')
-      .forEach((key) => {
-        this.createApiFunction({
-          fn: mod[key],
-          file: file,
-          isExportDefault: key === 'default',
-          modMiddleware,
-        })
-      })
-  }
+    for (const [key, fn] of Object.entries(funcs)) {
+      fn.middleware = (fn.middleware || (fn.middleware = []))
+        .concat(modMiddleware)
+        .map(this.useHooksMiddleware)
 
-  createApiFunction(config: {
-    fn: ApiFunction
-    file: string
-    isExportDefault: boolean
-    modMiddleware: any[]
-  }) {
-    const { fn, file, isExportDefault, modMiddleware } = config
-
-    const fnName = isExportDefault ? '$default' : fn.name
-    const id = this.getFunctionId(file, fnName, isExportDefault)
-
-    const containerId = 'hooks::' + id
-    const httpPath = this.router.getHTTPPath(file, fnName, isExportDefault)
-    const httpMethod: ApiHttpMethod = fn.length === 0 ? 'GET' : 'POST'
-
-    // Set param for unit testing
-    fn._param = {
-      url: httpPath,
-      method: httpMethod,
-      meta: { functionName: id },
+      this.adapter.createApi({ fn, file, isExportDefault: key === 'default' })
     }
-
-    // Apply mod middleware
-    fn.middleware = (fn.middleware || (fn.middleware = []))
-      .concat(modMiddleware)
-      .map(this.useHooksMiddleware)
-
-    this.registerApiFunction({
-      containerId,
-      httpMethod,
-      httpPath,
-      fn,
-    })
   }
 
-  getFunctionId(file: string, functionName: string, isExportDefault: boolean) {
-    const relativePath = relative(this.router.source, file)
-    // src/apis/lambda/index.ts -> apis-lambda-index
-    const id = kebabCase(removeExt(relativePath, extname(relativePath)))
-    const name = [id, isExportDefault ? '' : `-${functionName}`].join('')
-    return name.toLowerCase()
-  }
-
-  registerApiFunction(config: {
-    containerId: string
-    httpMethod: ApiHttpMethod
-    httpPath: string
-    fn: ApiFunction
-  }) {
-    const { containerId, httpMethod, httpPath, fn } = config
-    const Method = httpMethod === 'GET' ? Get : Post
-    const enableSuperjson = this.internal.superjson
-
-    let FunctionContainer = class FunctionContainer {
-      ctx: any
-      async handler() {
-        let args = this.ctx.request?.body?.args || []
-        if (typeof args === 'string') {
-          args = JSON.parse(args)
-        }
-
-        const response = await fn(...args)
-        if (enableSuperjson) {
-          return superjson.serialize(response)
-        }
-        return response
-      }
-    }
-    __decorate([Inject()], FunctionContainer.prototype, 'ctx', void 0)
-    __decorate(
-      [Method(httpPath, { middleware: fn.middleware })],
-      FunctionContainer.prototype,
-      'handler',
-      null
+  getGlobalMiddleware() {
+    const mws = [this.useAsyncLocalStorage]
+    this.config.runtime.middleware?.forEach?.((mw) =>
+      mws.push(this.useHooksMiddleware(mw))
     )
-    FunctionContainer = __decorate(
-      [Provide(containerId), Controller('/')],
-      FunctionContainer
-    )
-    this.container.bind(containerId, FunctionContainer)
-  }
-
-  useGlobalMiddleware(app: any) {
-    app.use(this.useAsyncLocalStorage)
-
-    // Apply global middleware from config
-    if (Array.isArray(this.runtime.middleware)) {
-      this.runtime.middleware.forEach((middleware) =>
-        app.use(this.useHooksMiddleware(middleware))
-      )
-    }
+    return mws
   }
 
   useAsyncLocalStorage = async (ctx: any, next: any) => {
-    const enableSuperjson = this.internal.superjson
     await als.run({ ctx }, async () => {
       try {
         await next()
       } catch (error) {
-        if (enableSuperjson) {
-          ctx.status = 500
-          ctx.body = superjson.serialize(error)
-        } else {
-          throw error
-        }
+        this.adapter.onError(ctx, error)
       }
     })
   }
@@ -213,21 +125,10 @@ export class HooksDevComponent {
        * const middleware = (next) => { const ctx = useContext() }
        */
       if (fn.length === 1) {
-        const next = args[args.length - 1]
+        const next = _.last(args)
         return fn(next)
       }
       return fn(...args)
     }
-  }
-
-  isFullStackProject() {
-    return [
-      // Vite
-      'vite.config.ts',
-      'vite.config.js',
-      // build-scritps
-      'build.json',
-      'build.js',
-    ].some((config) => existsSync(join(this.root, config)))
   }
 }

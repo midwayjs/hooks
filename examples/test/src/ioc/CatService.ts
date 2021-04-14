@@ -1,7 +1,5 @@
 import { Provide, Inject } from '@midwayjs/decorator';
 
-debugger;
-
 @Provide()
 export class CatService {
   @Inject()
