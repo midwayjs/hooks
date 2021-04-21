@@ -13,6 +13,10 @@ export interface InternalConfig {
   request?: {
     client?: string
   }
+
+  dev?: {
+    ignorePattern?: (req: { url: string; [key: string]: any }) => boolean
+  }
   build?: {
     viteOutDir: string
     outDir: string
@@ -35,4 +39,5 @@ export type HTTPRoute = {
 
 export type ServerRoute = HTTPRoute
 
-export interface UserConfig extends Omit<InternalConfig, 'build' | 'request'> {}
+export interface UserConfig
+  extends Omit<InternalConfig, 'build' | 'request' | 'dev'> {}

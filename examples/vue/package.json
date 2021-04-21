@@ -18,7 +18,7 @@
     "vue": "^3.0.11"
   },
   "devDependencies": {
-    "@midwayjs/cli": "^1.2.57",
+    "@midwayjs/cli": "^1.2.63",
     "@midwayjs/cli-plugin-build": "^1.2.55",
     "@midwayjs/hooks-testing-library": "^2.1.0",
     "@midwayjs/vite-plugin-hooks": "^2.1.0",
