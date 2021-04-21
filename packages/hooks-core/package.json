@@ -30,11 +30,11 @@
     "es-module-lexer": "^0.4.0",
     "globby": "^11.0.3",
     "is-path-inside": "^3.0.3",
-    "jiti": "^1.6.4",
+    "jiti": "^1.9.1",
     "koa-static-cache": "^5.1.4",
     "lodash": "^4.17.21",
     "pkg-dir": "^5.0.0",
-    "superjson": "^1.7.3",
+    "superjson": "^1.7.4",
     "tslib": "^2.2.0",
     "upath": "^2.0.1"
   },

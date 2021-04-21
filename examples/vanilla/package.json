@@ -24,6 +24,6 @@
     "@types/jest": "^26.0.22",
     "@types/koa-bodyparser": "^4.3.0",
     "jest": "^26.6.3",
-    "vite": "^2.1.5"
+    "vite": "^2.2.1"
   }
 }
