@@ -16,10 +16,12 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
-    "@midwayjs/core": "^2.10.2",
+    "@midwayjs/core": "^2.10.7",
     "@midwayjs/hooks-core": "^2.1.0",
-    "@midwayjs/hooks-testing-library": "^2.1.0",
     "superjson": "^1.7.3"
+  },
+  "devDependencies": {
+    "@midwayjs/hooks-testing-library": "^2.1.0"
   },
   "publishConfig": {
     "access": "public"
