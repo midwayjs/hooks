@@ -4,7 +4,6 @@ import _ from 'lodash'
 import art from 'art-template'
 import { readFileSync, existsSync } from 'fs'
 import { resolve } from 'path'
-import prettier from 'prettier'
 
 interface RenderParam extends Partial<ApiParam> {
   isExportDefault?: boolean
@@ -45,11 +44,18 @@ export async function generate(
     ? templates.dev
     : templates.prod
   const template = readFileSync(templatePath, { encoding: 'utf-8' })
-  return prettier.format(art.render(template, { funcs, SDK: sdk }), {
-    semi: true,
-    singleQuote: true,
-    parser: 'babel',
-  })
+  const result = art.render(template, { funcs, SDK: sdk })
+
+  try {
+    const prettier = require('prettier')
+    return prettier.format(result, {
+      semi: true,
+      singleQuote: true,
+      parser: 'babel',
+    })
+  } catch {
+    return result
+  }
 }
 
 function getUrl(baseUrl: string, name: string) {
