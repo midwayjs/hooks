@@ -6,7 +6,6 @@ import {
 } from '@midwayjs/hooks-core'
 import { Plugin } from 'vite'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
-import URL from 'url'
 import { join } from 'path'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
@@ -60,12 +59,7 @@ function plugin(): Plugin {
       server.middlewares.use(
         devPack({
           functionDir: root,
-          ignorePattern(req) {
-            // TODO Refactor ignorePattern
-            const { pathname, query } = URL.parse(req.url)
-            const reg = /\.(js|css|map|json|png|jpg|jpeg|gif|svg|eot|woff2|ttf)$/
-            return reg.test(pathname) || reg.test(query)
-          },
+          ignorePattern: config.dev.ignorePattern,
         })
       )
     },

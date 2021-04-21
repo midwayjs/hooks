@@ -6,6 +6,9 @@ Object {
     "outDir": "./dist",
     "viteOutDir": "./build",
   },
+  "dev": Object {
+    "ignorePattern": [Function],
+  },
   "request": Object {
     "client": "@midwayjs/hooks-core/request",
   },
@@ -26,6 +29,9 @@ Object {
     "outDir": "./dist",
     "viteOutDir": "./build",
   },
+  "dev": Object {
+    "ignorePattern": [Function],
+  },
   "request": Object {
     "client": "@midwayjs/hooks-core/request",
   },
@@ -45,6 +51,9 @@ Object {
   "build": Object {
     "outDir": "./dist",
     "viteOutDir": "./build",
+  },
+  "dev": Object {
+    "ignorePattern": [Function],
   },
   "request": Object {
     "client": "@midwayjs/hooks-core/request",
