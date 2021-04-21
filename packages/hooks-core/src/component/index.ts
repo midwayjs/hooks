@@ -2,14 +2,16 @@ import { ServerRouter } from '../router'
 import { getConfig, getProjectRoot } from '../config'
 import { RuntimeConfig } from '../types/config'
 import { isDevelopment } from '../util'
-import { HooksComponent } from './dev'
+import { HooksComponent } from './component'
 import { HTTPGateway } from './gateway/http'
+
+export { HTTPGateway } from './gateway/http'
 
 /**
  * Create hooks component
  */
 export const hooks = (runtime: RuntimeConfig = {}) => {
-  runtime.adapter ??= HTTPGateway
+  runtime.adapter = runtime.adapter || HTTPGateway
 
   const root = getProjectRoot()
   const internal = getConfig()
