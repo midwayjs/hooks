@@ -13,10 +13,7 @@ import {
 import { join } from 'path'
 import { SuperJSONPlugin } from './plugin'
 
-export async function createAppImplementation(
-  baseDir: string,
-  isFunction: boolean
-) {
+async function createAppImplementation(baseDir: string, isFunction: boolean) {
   const root = getProjectRoot(baseDir || (global as any).testPath)
   const config = getConfig(root)
 

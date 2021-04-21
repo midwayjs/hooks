@@ -2,7 +2,7 @@ import {
   createFunctionApp,
   HooksApplication,
 } from '@midwayjs/hooks-testing-library';
-import api, { post } from '.';
+import api, { post } from './index';
 
 describe('test new features', () => {
   let app: HooksApplication;
