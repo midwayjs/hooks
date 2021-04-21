@@ -1,6 +1,6 @@
 import { ApiFunction } from '@midwayjs/hooks-core'
 import { ServerRouter } from '../../router'
-import { InternalConfig, RuntimeConfig, ServerRoute } from '../../types/config'
+import { InternalConfig, RuntimeConfig } from '../../types/config'
 
 export interface CreateApiParam {
   fn: ApiFunction

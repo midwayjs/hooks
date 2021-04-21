@@ -13,7 +13,7 @@
     "koa-bodyparser": "^4.3.0"
   },
   "devDependencies": {
-    "@midwayjs/cli": "^1.2.57",
+    "@midwayjs/cli": "^1.2.63",
     "@midwayjs/hooks-testing-library": "^2.1.0",
     "@types/debug": "^4.1.5",
     "@types/koa-bodyparser": "^4.3.0"
