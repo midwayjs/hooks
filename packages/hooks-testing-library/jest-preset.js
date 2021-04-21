@@ -1,4 +1,3 @@
-// Inspired from blitzjs
 const path = require('path')
 const { getConfig } = require('@midwayjs/hooks-core')
 
