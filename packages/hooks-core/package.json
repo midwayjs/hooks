@@ -51,5 +51,10 @@
       "request/index.ts",
       "index.ts"
     ]
-  }
+  },
+  "files": [
+    "dist",
+    "request",
+    "template"
+  ]
 }
