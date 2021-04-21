@@ -35,5 +35,9 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "files": [
+    "dist",
+    "jest-preset.js"
+  ]
 }

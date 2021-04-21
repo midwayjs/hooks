@@ -32,5 +32,11 @@
       "request.ts",
       "universal.ts"
     ]
-  }
+  },
+  "files": [
+    "dist",
+    "request",
+    "universal",
+    "jest-preset.js"
+  ]
 }
