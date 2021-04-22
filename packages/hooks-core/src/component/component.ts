@@ -77,8 +77,6 @@ export class HooksComponent {
         for (const mw of this.getGlobalMiddleware()) {
           ;(app as any).use(mw)
         }
-
-        // TODO getGlobalMiddleware from adapter
       })
       .onStop(_.noop)
 
