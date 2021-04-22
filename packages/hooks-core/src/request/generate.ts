@@ -10,7 +10,6 @@ interface RenderParam extends Partial<ApiParam> {
   name?: string
 }
 
-// TODO Refactor SDK generator to support custom request sdk
 export async function generate(
   baseUrl: string,
   code: string,
