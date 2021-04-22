@@ -15,7 +15,6 @@ export function usePlugin(key: any): any {
   return ctx.app[key] || ctx[key]
 }
 
-// TODO add useInject unit test
 export function useInject<T = any>(identifier: new () => T): Promise<T>
 export function useInject<T = any>(identifier: string): Promise<any>
 export async function useInject(identifier) {
@@ -24,7 +23,6 @@ export async function useInject(identifier) {
   return requestContext.getAsync(identifier)
 }
 
-// TODO add useConfig unit test
 export function useConfig(key?: string) {
   const ctx = useContext()
   const requestContext: IMidwayContainer = ctx['requestContext']
