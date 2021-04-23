@@ -1,6 +1,6 @@
 {
   "name": "hooks-react-faas",
-  "version": "2.2.0-next.0",
+  "version": "2.2.0-next.1",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@midwayjs/faas": "^2.10.7",
-    "@midwayjs/hooks": "^2.2.0-next.0",
+    "@midwayjs/hooks": "^2.2.0-next.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
@@ -21,10 +21,10 @@
     "@midwayjs/cli": "^1.2.63",
     "@midwayjs/cli-plugin-faas": "^1.2.63",
     "@midwayjs/fcli-plugin-fc": "^1.2.63",
-    "@midwayjs/hooks-testing-library": "^2.2.0-next.0",
+    "@midwayjs/hooks-testing-library": "^2.2.0-next.1",
     "@midwayjs/serverless-app": "^2.10.7",
     "@midwayjs/serverless-fc-trigger": "^2.10.7",
-    "@midwayjs/vite-plugin-hooks": "^2.2.0-next.0",
+    "@midwayjs/vite-plugin-hooks": "^2.2.0-next.1",
     "@types/jest": "^26.0.22",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
