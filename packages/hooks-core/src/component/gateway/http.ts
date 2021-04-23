@@ -15,6 +15,7 @@ import { join } from 'upath'
 import { existsSync } from 'fs'
 import staticCache from 'koa-static-cache'
 import { isDevelopment } from '../../util'
+import parseArgs from 'fn-args'
 
 export class HTTPGateway implements HooksGatewayAdapter {
   config: ComponentConfig
@@ -46,7 +47,8 @@ export class HTTPGateway implements HooksGatewayAdapter {
       functionName,
       isExportDefault
     )
-    const httpMethod: ApiHttpMethod = fn.length === 0 ? 'GET' : 'POST'
+    const httpMethod: ApiHttpMethod =
+      parseArgs(fn).length === 0 ? 'GET' : 'POST'
 
     // Set param for unit testing
     fn._param = {
