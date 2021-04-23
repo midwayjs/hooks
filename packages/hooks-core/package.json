@@ -28,6 +28,7 @@
     "chalk": "^4.1.0",
     "consola": "^2.15.3",
     "es-module-lexer": "^0.4.0",
+    "fn-args": "^5.0.0",
     "globby": "^11.0.3",
     "is-path-inside": "^3.0.3",
     "jiti": "^1.9.1",
