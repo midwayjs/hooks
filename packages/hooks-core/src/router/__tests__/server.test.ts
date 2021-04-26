@@ -35,7 +35,6 @@ describe('ServerRouter', () => {
       Object {
         "baseDir": "lambda",
         "basePath": "/api",
-        "underscore": false,
       }
     `)
     expect(
