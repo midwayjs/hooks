@@ -35,6 +35,10 @@ export type RuntimeConfig = {
 export type HTTPRoute = {
   baseDir: string
   basePath: string
+  /**
+   * @deprecated
+   */
+  underscore?: boolean
 }
 
 export type ServerRoute = HTTPRoute

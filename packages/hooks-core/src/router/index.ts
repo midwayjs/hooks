@@ -43,14 +43,7 @@ export class ServerRouter {
       return this.inside(file, dir)
     })
 
-    if (!routes[index]) {
-      return null
-    }
-
-    return {
-      underscore: false,
-      ...routes[index],
-    }
+    return routes[index]
   }
 
   // src/apis/lambda
