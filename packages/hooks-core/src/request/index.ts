@@ -21,7 +21,8 @@ export const defaults = {
     } catch (error) {
       if (enableSuperjson) {
         const e: AxiosError = error
-        throw e.response.data
+        const superjson = await import('superjson')
+        throw superjson.deserialize(e.response.data)
       }
       throw error
     }

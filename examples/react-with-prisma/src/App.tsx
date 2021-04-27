@@ -6,7 +6,7 @@ import {
 } from './apis/error/user';
 import { login, register } from './apis/lambda/user';
 
-function App() {
+export function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -111,5 +111,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
