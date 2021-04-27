@@ -1,6 +1,6 @@
 {
   "name": "hooks-test",
-  "version": "2.2.0-next.1",
+  "version": "2.2.0-next.2",
   "private": true,
   "scripts": {
     "start": "node bootstrap",
@@ -8,14 +8,14 @@
   },
   "dependencies": {
     "@midwayjs/decorator": "^2.10.7",
-    "@midwayjs/hooks": "^2.2.0-next.1",
+    "@midwayjs/hooks": "^2.2.0-next.2",
     "@midwayjs/koa": "^2.10.7",
     "koa-bodyparser": "^4.3.0"
   },
   "devDependencies": {
     "@midwayjs/cli": "^1.2.63",
     "@midwayjs/cli-plugin-build": "^1.2.55",
-    "@midwayjs/hooks-testing-library": "^2.2.0-next.1",
+    "@midwayjs/hooks-testing-library": "^2.2.0-next.2",
     "@types/debug": "^4.1.5",
     "@types/koa-bodyparser": "^4.3.0"
   }
