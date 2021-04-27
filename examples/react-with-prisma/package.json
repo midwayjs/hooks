@@ -9,7 +9,8 @@
     "build:client": "tsc && vite build",
     "build:server": "mw build",
     "serve": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@midwayjs/hooks": "^2.2.0-next.1",

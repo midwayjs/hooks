@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "allowJs": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -15,9 +19,14 @@
     "jsx": "react",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": ["vite/client", "jest"]
+    "types": [
+      "vite/client",
+      "jest"
+    ]
   },
-  "include": ["./src"],
+  "include": [
+    "./src"
+  ],
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"
