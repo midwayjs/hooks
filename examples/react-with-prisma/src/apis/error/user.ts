@@ -17,8 +17,9 @@ export class ValidationError extends Error {
   }
 }
 
-superjson.registerClass(UserExistError);
-superjson.registerClass(UserNotFoundError);
+superjson.registerClass(UserExistError, 'UserExistError');
+superjson.registerClass(UserNotFoundError, 'UserNotFoundError');
 superjson.registerClass(ValidationError, {
+  identifier: 'ValidationError',
   allowProps: ['key', 'expect', 'received'],
 });
