@@ -12,6 +12,7 @@ import { sync } from 'globby'
 import { ComponentConfig } from './gateway/interface'
 import _ from 'lodash'
 import { HooksGatewayAdapter } from './gateway/adapter'
+import parseArgs from 'fn-args'
 
 export class HooksComponent {
   config: ComponentConfig
@@ -116,13 +117,13 @@ export class HooksComponent {
     })
   }
 
-  useHooksMiddleware(fn: Function) {
+  useHooksMiddleware(fn: (...args: any[]) => any) {
     return (...args: any[]) => {
       /**
        * Hooks middleware
        * const middleware = (next) => { const ctx = useContext() }
        */
-      if (fn.length === 1) {
+      if (parseArgs(fn).length === 1) {
         const next = _.last(args)
         return fn(next)
       }
