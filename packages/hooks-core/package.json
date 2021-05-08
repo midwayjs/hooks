@@ -19,9 +19,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@midwayjs/bootstrap": "^2.10.10",
-    "@midwayjs/core": "^2.10.10",
-    "@midwayjs/decorator": "^2.10.8",
+    "@midwayjs/bootstrap": "^2.10.12",
+    "@midwayjs/core": "^2.10.12",
+    "@midwayjs/decorator": "^2.10.12",
     "art-template": "^4.13.2",
     "asynchronous-local-storage": "^1.0.2",
     "axios": "^0.21.1",
