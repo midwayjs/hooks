@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios'
 import type { ApiParam } from '../types/http'
 
-export { ApiParam, ApiHttpMethod } from '../types/http'
+export type { ApiParam, ApiHttpMethod } from '../types/http'
 
 export const defaults = {
   async request(param: ApiParam) {
