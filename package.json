@@ -24,12 +24,12 @@
     "publish-next": "yarn build && lerna publish --dist-tag=next"
   },
   "dependencies": {
-    "@babel/core": "^7.13.16",
+    "@babel/core": "^7.14.0",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-env": "^7.14.1",
     "@babel/preset-typescript": "^7.13.0",
-    "@preconstruct/cli": "^2.0.7",
-    "codecov": "^3.8.0",
+    "@preconstruct/cli": "^2.1.0",
+    "codecov": "^3.8.2",
     "esbuild": "^0.9.7",
     "esbuild-jest": "^0.5.0",
     "execa": "^4.0.3",
@@ -41,7 +41,7 @@
     "lerna": "latest",
     "prettier": "^2.0.2",
     "pretty-quick": "^3.1.0",
-    "ts-jest": "^26.5.5",
+    "ts-jest": "^26.5.6",
     "typescript": "^4.2.4",
     "yalc": "^1.0.0-pre.50"
   },
