@@ -1,6 +1,8 @@
 import axios, { AxiosError } from 'axios'
 import type { ApiParam } from '../types/http'
 
+export { ApiParam, ApiHttpMethod } from '../types/http'
+
 export const defaults = {
   async request(param: ApiParam) {
     const enableSuperjson = param.meta && param.meta.superjson

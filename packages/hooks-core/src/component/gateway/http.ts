@@ -1,6 +1,13 @@
 import { ApiFunction } from '../../types/common'
 import { ApiHttpMethod } from '../../types/http'
-import { Inject, Controller, Get, Post, Provide } from '@midwayjs/decorator'
+import {
+  Inject,
+  Controller,
+  // Get,
+  // Post,
+  Provide,
+  All,
+} from '@midwayjs/decorator'
 import { __decorate } from 'tslib'
 import { superjson } from '../../lib'
 import { ServerRoute } from '../../types/config'
@@ -74,7 +81,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
     fn: ApiFunction
   }) {
     const { containerId, httpMethod, httpPath, fn } = config
-    const Method = httpMethod === 'GET' ? Get : Post
+    // const Method = httpMethod === 'GET' ? Get : Post
     const enableSuperjson = this.config.internal.superjson
 
     // Source: https://www.typescriptlang.org/play?noImplicitAny=false&strictNullChecks=false&strictFunctionTypes=false&strictPropertyInitialization=false&strictBindCallApply=false&noImplicitThis=false&noImplicitReturns=false&alwaysStrict=false&importHelpers=true&emitDecoratorMetadata=false&ts=4.1.5&ssl=22&ssc=1&pln=4&pc=1#code/JYWwDg9gTgLgBAbzgSQHYCsCmBjGAaOAYQlRiggBsLMoCBxTfOABQgGcnnyA3YAE0xwAvnABm5EHADkAARD8A7gEMAnujYB6AdmhKY0KQChDO1BzgBZRgAsIfOAF5pdAKIAVKY4dOprj3AB+OAZ4AC4WdhgTEnNRVEc4AAoAOlSlKABzNnClVBUAbQBdAEpHAD5EIWMZLgheAUTiwxliUnIqGkSpDSkm7AolNjY4ADEAV1RcYBJWmCVgVBpEQzhVuBk0LFxGlbXcAA8cvOM19asYWz4uqQIkeT4+amUoTHCi4SbTwZVJuGtcx5LRrLU6rajwdJZBIXYBsZIHZIvACOY0wHGSACM7CpkpDhgAffFwIq7UFwYCiJIwFRgTAQSl4rw+DhQBYZXogsmgxlOABSAGUAPIAOWSYHSbEwiTxny5VS5cFM5hebEgZkETiUymA8DiKTSmTYsrJLxgYyg8RVaslpOEhiqQA
@@ -95,7 +102,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
     }
     __decorate([Inject()], FunctionContainer.prototype, 'ctx', void 0)
     __decorate(
-      [Method(httpPath, { middleware: fn.middleware })],
+      [All(httpPath, { middleware: fn.middleware })],
       FunctionContainer.prototype,
       'handler',
       null
