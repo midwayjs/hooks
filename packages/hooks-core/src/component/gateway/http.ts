@@ -137,7 +137,14 @@ export class HTTPGateway implements HooksGatewayAdapter {
     const mw = staticCache({
       dir: join(baseDir, '..', this.config.internal.build.viteOutDir),
       dynamic: true,
-      alias: { '/': 'index.html' },
+      alias: {
+        '/': 'index.html',
+        /**
+         * Add alias for windows, '/' -> '\\'
+         * https://github.com/koajs/static-cache/blob/master/index.js#L45
+         */
+        '\\': 'index.html',
+      },
       buffer: true,
       gzip: true,
     })
