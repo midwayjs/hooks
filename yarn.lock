@@ -2143,7 +2143,7 @@
   resolved "https://registry.npmjs.org/@midwayjs/boilerplate-list/-/boilerplate-list-1.0.1.tgz#2c5c8e9306f18104ed84894e70de0f7a57e1d7ae"
   integrity sha512-6zaFuHxztutzqBqrlffmBK2j4D49po1UVFVTmmzL8dOUj40f1OrL5QCfiG0GN0vjrOyL5NOl53vh5mKLpahyFw==
 
-"@midwayjs/bootstrap@^2.10.13", "@midwayjs/bootstrap@^2.10.14":
+"@midwayjs/bootstrap@^2.10.14":
   version "2.10.14"
   resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-2.10.14.tgz#32b53d877e18eeabb09207f2496bfa5f31c0b91a"
   integrity sha512-Ox0i8uD8kH4pjdv/lchhc/AKIkbi/ivtfL4RrvMScw6y9ii/hxtqNwsXuGh9w+XnNJjKE9+1wHoTrUnw717Zsw==
@@ -2243,7 +2243,7 @@
     light-spinner "^1.0.0"
     minimist "^1.2.5"
 
-"@midwayjs/core@^2.10.13", "@midwayjs/core@^2.10.14":
+"@midwayjs/core@^2.10.14":
   version "2.10.14"
   resolved "https://registry.npmjs.org/@midwayjs/core/-/core-2.10.14.tgz#cf5e6b1cb4d38f2695ad0c87585c62d5b5df11d7"
   integrity sha512-vKAglGjarv05fEqjUYYvAvUhlStYESoG2YiGhrGR3l3nE0tXxaXGDjYGg/cq08DLFVoVO4GkLR6mogO9RWzoew==
@@ -2384,7 +2384,7 @@
     fs-extra "^8.1.0"
     globby "^10.0.1"
 
-"@midwayjs/logger@^2.10.13", "@midwayjs/logger@^2.10.14":
+"@midwayjs/logger@^2.10.14":
   version "2.10.14"
   resolved "https://registry.yarnpkg.com/@midwayjs/logger/-/logger-2.10.14.tgz#e7bc09454df33abf3f608f87bb890c658a992deb"
   integrity sha512-TmCJuOUh/COpmn6qIjYr0cYHZK3efv21uSU+cQSNLeHh2ntfHII0Q+v6jBVS21UE7SReC5Kqdo1WcKd555iXcA==
@@ -2414,7 +2414,7 @@
     source-map-support "^0.5.16"
     typescript "~4.1.3"
 
-"@midwayjs/runtime-engine@^2.10.12", "@midwayjs/runtime-engine@^2.10.14":
+"@midwayjs/runtime-engine@^2.10.14":
   version "2.10.14"
   resolved "https://registry.yarnpkg.com/@midwayjs/runtime-engine/-/runtime-engine-2.10.14.tgz#564f1eddaf5bf862d035797d48031a438a8c614c"
   integrity sha512-wCU+BdShij9Y8+M1TuJWY79Vs8Nc4SE33T35v54pCPbrdnGyiW86kt3ulDR+w1UZ0Hd5TQuKv8dIb6az3h+Rbw==
@@ -2422,7 +2422,7 @@
     egg-logger "^2.4.2"
     mz "^2.7.0"
 
-"@midwayjs/runtime-mock@^2.10.12", "@midwayjs/runtime-mock@^2.10.14":
+"@midwayjs/runtime-mock@^2.10.14":
   version "2.10.14"
   resolved "https://registry.npmjs.org/@midwayjs/runtime-mock/-/runtime-mock-2.10.14.tgz#458bd4bcf00760f6cab8eb8b13bd1c98aded54fb"
   integrity sha512-mIVpfqp/Kqa8aHfn4AFyAY9jiBhAaEaTkEEYb+qGsuXXQOZ8BOEDvo4HunMkO8z96cWUNM4V+EEtJHH0fycbLA==
@@ -2458,7 +2458,7 @@
     koa-compose "^4.1.0"
     node-fetch "^2.6.1"
 
-"@midwayjs/serverless-fc-starter@^2.10.13", "@midwayjs/serverless-fc-starter@^2.10.14", "@midwayjs/serverless-fc-starter@^2.8.7":
+"@midwayjs/serverless-fc-starter@^2.10.14", "@midwayjs/serverless-fc-starter@^2.8.7":
   version "2.10.14"
   resolved "https://registry.yarnpkg.com/@midwayjs/serverless-fc-starter/-/serverless-fc-starter-2.10.14.tgz#2a76291e60ad10df9ae4d95d3ae48d82ffeffd93"
   integrity sha512-6LbokKv9KnkluJGldptw+JMcqg7Me4aGaNldF9/QPgmL/HeraqRwnpeIng+G0sbMGMwnZXZY0Y6CLq2DQAdLbw==
