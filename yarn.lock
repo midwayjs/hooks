@@ -2264,10 +2264,10 @@
   resolved "https://registry.npmjs.org/@midwayjs/boilerplate-list/-/boilerplate-list-1.0.1.tgz#2c5c8e9306f18104ed84894e70de0f7a57e1d7ae"
   integrity sha512-6zaFuHxztutzqBqrlffmBK2j4D49po1UVFVTmmzL8dOUj40f1OrL5QCfiG0GN0vjrOyL5NOl53vh5mKLpahyFw==
 
-"@midwayjs/bootstrap@^2.10.12":
-  version "2.10.12"
-  resolved "https://registry.yarnpkg.com/@midwayjs/bootstrap/-/bootstrap-2.10.12.tgz#1387908827c19abc71d906f3e0033d29aaa87be9"
-  integrity sha512-4KWj73WWdn9B25abhETuj3h0fvv+38vC7V1AhYGo9XlAD0oV8eRpGh011cXTRCkSJ8ZhmlkA8cmo8mzy6XBP1g==
+"@midwayjs/bootstrap@^2.10.13":
+  version "2.10.13"
+  resolved "https://registry.yarnpkg.com/@midwayjs/bootstrap/-/bootstrap-2.10.13.tgz#1c0b485e0604748af45ad9776ecfd37d0e4ede1a"
+  integrity sha512-tNRCyqoHmOUHHBZSh2UV5fGHngdGmsk7PHKgUEkDKo8l2rujwBsvmFPsLIRp5hyCGeFfBknywivXeyAuZl7snw==
 
 "@midwayjs/bootstrap@^2.10.7":
   version "2.10.7"
@@ -2369,14 +2369,13 @@
     light-spinner "^1.0.0"
     minimist "^1.2.5"
 
-"@midwayjs/core@^2.10.12":
-  version "2.10.12"
-  resolved "https://registry.yarnpkg.com/@midwayjs/core/-/core-2.10.12.tgz#5ac983d1626f910e7fc8f527f16f38c27404dbc9"
-  integrity sha512-ZqaFxqWb+V/KKycV+V2Sh6TH7dGyr2oJfhlWx0+wXE3mLJbDtTcm1ts9H7f4uhF9O7wTdYYJ2BuYNCYjOoDMkQ==
+"@midwayjs/core@^2.10.13":
+  version "2.10.13"
+  resolved "https://registry.yarnpkg.com/@midwayjs/core/-/core-2.10.13.tgz#988bb4aee8b8c45f04a49f448732b340a4c8e336"
+  integrity sha512-gsJC8LQnoOmz12/7r1D97MMCUnYB5TS/Mj1amXmOLno06xrdX574oN8bl3z89ewr/fLGhvN9ttaA0GuvXMU67w==
   dependencies:
-    "@midwayjs/decorator" "^2.10.12"
     "@midwayjs/glob" "^1.0.2"
-    "@midwayjs/logger" "^2.10.12"
+    "@midwayjs/logger" "^2.10.13"
     class-transformer "^0.3.1"
     extend2 "^1.0.0"
     lodash.assign "^4.2.0"
@@ -2454,15 +2453,15 @@
   resolved "https://registry.npmjs.org/@midwayjs/faas-typings/-/faas-typings-2.10.7.tgz#a04a08450e692524d21c7dbcb51d4bcf0bd1f7ea"
   integrity sha512-CgeyxYoRMkeu9ocX+a1ZrCsah+dg6ehApSytsY2h1Mt0emzY+97tgGAlrUzRKaS9bJUwWLVXZcEzWpKeOwpE7w==
 
-"@midwayjs/faas@^2.10.12":
-  version "2.10.12"
-  resolved "https://registry.yarnpkg.com/@midwayjs/faas/-/faas-2.10.12.tgz#77e5187aeaafcb73064c5d701b4b2bf3c4678543"
-  integrity sha512-bAgAb0SkimoJosiHzU5oFmhoEyMXoEdD/1kuZRV4qhemrrrklBLBNrAUbVyh1gzmjpxhuFiq/J2gKuPDS5t29Q==
+"@midwayjs/faas@^2.10.13":
+  version "2.10.13"
+  resolved "https://registry.yarnpkg.com/@midwayjs/faas/-/faas-2.10.13.tgz#b3ba92d008dc33430bc84df34db9b426f6909ca6"
+  integrity sha512-ETH8dY67YRv5HZWSBlCJPaxUDE2cOTeyQxA2RMPqi2M2jlFTGmqMEFmq/8hs3dAJ3n+fdJwVIkTpVlAhnx4UKQ==
   dependencies:
-    "@midwayjs/core" "^2.10.12"
+    "@midwayjs/core" "^2.10.13"
     "@midwayjs/decorator" "^2.10.12"
     "@midwayjs/faas-typings" "^2.10.7"
-    "@midwayjs/logger" "^2.10.12"
+    "@midwayjs/logger" "^2.10.13"
     "@midwayjs/simple-lock" "^1.1.4"
     koa-compose "^4.1.0"
 
@@ -2533,15 +2532,14 @@
   dependencies:
     picomatch "^2.2.2"
 
-"@midwayjs/koa@^2.10.12":
-  version "2.10.12"
-  resolved "https://registry.yarnpkg.com/@midwayjs/koa/-/koa-2.10.12.tgz#65243c121f3222487329ed523f1d1c015ec19115"
-  integrity sha512-gA5sdz7SQc/2KoSxMBENew+j+Yp526chA74tl/yXZ4K1VSFtFty+NXvhH2qAY9ZVfGECxDb5hNnjRuZzzBHh1Q==
+"@midwayjs/koa@^2.10.13":
+  version "2.10.13"
+  resolved "https://registry.yarnpkg.com/@midwayjs/koa/-/koa-2.10.13.tgz#22a41acaea3ed6c59ad922671881ec0f31df4b58"
+  integrity sha512-LsFC6hnq6A9MaFq/mtMO4zdPTG0Zyp8fwFTG22Fyx+QibOg4LnWkmPxi4BFU8pHVQvJm/oTRHGW0ZnfISVj8pw==
   dependencies:
     "@koa/router" "^10.0.0"
-    "@midwayjs/core" "^2.10.12"
-    "@midwayjs/decorator" "^2.10.12"
-    "@midwayjs/logger" "^2.10.12"
+    "@midwayjs/core" "^2.10.13"
+    "@midwayjs/logger" "^2.10.13"
     koa "^2.13.0"
 
 "@midwayjs/locate@^1.0.3":
@@ -2553,17 +2551,16 @@
     fs-extra "^8.1.0"
     globby "^10.0.1"
 
-"@midwayjs/logger@^2.10.12":
-  version "2.10.12"
-  resolved "https://registry.yarnpkg.com/@midwayjs/logger/-/logger-2.10.12.tgz#b4785abd40c0b9a1bd3a098f06c38e467ec765a5"
-  integrity sha512-AqVTczMRKVQC89BMkmFHaVP9T6DfZ5qJgIJub5e5ACfn/uNjS6mu5+LnllBibgToUqFP/y8WzSikjAGhuBYebQ==
+"@midwayjs/logger@^2.10.13":
+  version "2.10.14"
+  resolved "https://registry.yarnpkg.com/@midwayjs/logger/-/logger-2.10.14.tgz#e7bc09454df33abf3f608f87bb890c658a992deb"
+  integrity sha512-TmCJuOUh/COpmn6qIjYr0cYHZK3efv21uSU+cQSNLeHh2ntfHII0Q+v6jBVS21UE7SReC5Kqdo1WcKd555iXcA==
   dependencies:
     file-stream-rotator "^0.5.7"
     object-hash "^2.0.1"
     triple-beam "^1.3.0"
     winston "^3.3.3"
     winston-transport "^4.4.0"
-    zlib "^1.0.5"
 
 "@midwayjs/logger@^2.10.7":
   version "2.10.7"
@@ -2575,12 +2572,12 @@
     winston-daily-rotate-file "^4.5.0"
     winston-transport "^4.4.0"
 
-"@midwayjs/mock@^2.10.12":
-  version "2.10.12"
-  resolved "https://registry.yarnpkg.com/@midwayjs/mock/-/mock-2.10.12.tgz#054fd0120fcd0b04309a06c52b15177ad3c565aa"
-  integrity sha512-bAf+CykAhk9NyphFpp75tn5lhHnieXLXIn3rt0m8hYY/RUbtPFO9CJcyaOlrGMfFIs7eBBH4oKOrLvjAZ98ywg==
+"@midwayjs/mock@^2.10.13":
+  version "2.10.13"
+  resolved "https://registry.yarnpkg.com/@midwayjs/mock/-/mock-2.10.13.tgz#01193809f0b012213f4160b745c64bf4ab8e2350"
+  integrity sha512-FUuvQHLnS3QzzrYArWM73GU34iBlDrT//NJeVW918TKiH/+nBn5tFrqXFIOCi/5Y2o7ktOvndBBI/J9ZxAnVFA==
   dependencies:
-    "@midwayjs/bootstrap" "^2.10.12"
+    "@midwayjs/bootstrap" "^2.10.13"
     egg-mock "^3.21.0"
     fs-extra "^8.0.1"
     supertest "^6.0.0"
@@ -2612,6 +2609,14 @@
     egg-logger "^2.4.2"
     mz "^2.7.0"
 
+"@midwayjs/runtime-engine@^2.10.14":
+  version "2.10.14"
+  resolved "https://registry.yarnpkg.com/@midwayjs/runtime-engine/-/runtime-engine-2.10.14.tgz#564f1eddaf5bf862d035797d48031a438a8c614c"
+  integrity sha512-wCU+BdShij9Y8+M1TuJWY79Vs8Nc4SE33T35v54pCPbrdnGyiW86kt3ulDR+w1UZ0Hd5TQuKv8dIb6az3h+Rbw==
+  dependencies:
+    egg-logger "^2.4.2"
+    mz "^2.7.0"
+
 "@midwayjs/runtime-engine@^2.10.7":
   version "2.10.7"
   resolved "https://registry.npmjs.org/@midwayjs/runtime-engine/-/runtime-engine-2.10.7.tgz#8dfb5af93cc5c0ea1f842c5d6b1c775884516563"
@@ -2634,13 +2639,13 @@
   dependencies:
     "@midwayjs/runtime-engine" "^2.10.7"
 
-"@midwayjs/serverless-app@^2.10.12":
-  version "2.10.12"
-  resolved "https://registry.yarnpkg.com/@midwayjs/serverless-app/-/serverless-app-2.10.12.tgz#be11ad55117fc08571d38a91bdcd66c3a09a96b5"
-  integrity sha512-NMGcAUGb5JZfiSl5OQPtou0G7sUqUVOtvKScwcTw206VLhKcG4jEze1hBCNCik5C3jGC9vofuZu/9ViGvGapbQ==
+"@midwayjs/serverless-app@^2.10.13":
+  version "2.10.13"
+  resolved "https://registry.yarnpkg.com/@midwayjs/serverless-app/-/serverless-app-2.10.13.tgz#12d69d8467f48263414637e4e4079a7a5d8f5c24"
+  integrity sha512-eU+WFjeftJTps9hdI5dkNa9TCvym57WIDF5ebQFw+gP7F5SVo4QNI9waziKi922MEXwvPu/Kq8rxqw+PrrJtlA==
   dependencies:
-    "@midwayjs/bootstrap" "^2.10.12"
-    "@midwayjs/core" "^2.10.12"
+    "@midwayjs/bootstrap" "^2.10.13"
+    "@midwayjs/core" "^2.10.13"
     "@midwayjs/faas-typings" "^2.10.7"
     "@midwayjs/gateway-common-http" "^1.2.41"
     "@midwayjs/serverless-spec-builder" "^1.2.41"
@@ -2676,12 +2681,12 @@
     koa-compose "^4.1.0"
     node-fetch "^2.6.1"
 
-"@midwayjs/serverless-fc-starter@^2.10.12":
-  version "2.10.12"
-  resolved "https://registry.yarnpkg.com/@midwayjs/serverless-fc-starter/-/serverless-fc-starter-2.10.12.tgz#a3bf83abcb15cc2c14dcab9d387d5d0e95cd8d54"
-  integrity sha512-ZEPOynzORB+MeRIEiknYahkpZPRplzu1JnXoawdso6FSiNVDHl7ve3PzbsUfB+59uwKQLpTg85tpeqEoEuDLPQ==
+"@midwayjs/serverless-fc-starter@^2.10.13":
+  version "2.10.14"
+  resolved "https://registry.yarnpkg.com/@midwayjs/serverless-fc-starter/-/serverless-fc-starter-2.10.14.tgz#2a76291e60ad10df9ae4d95d3ae48d82ffeffd93"
+  integrity sha512-6LbokKv9KnkluJGldptw+JMcqg7Me4aGaNldF9/QPgmL/HeraqRwnpeIng+G0sbMGMwnZXZY0Y6CLq2DQAdLbw==
   dependencies:
-    "@midwayjs/runtime-engine" "^2.10.12"
+    "@midwayjs/runtime-engine" "^2.10.14"
     "@midwayjs/serverless-http-parser" "^2.10.7"
 
 "@midwayjs/serverless-fc-starter@^2.10.7", "@midwayjs/serverless-fc-starter@^2.8.7":
@@ -2692,14 +2697,14 @@
     "@midwayjs/runtime-engine" "^2.10.7"
     "@midwayjs/serverless-http-parser" "^2.10.7"
 
-"@midwayjs/serverless-fc-trigger@^2.10.12":
-  version "2.10.12"
-  resolved "https://registry.yarnpkg.com/@midwayjs/serverless-fc-trigger/-/serverless-fc-trigger-2.10.12.tgz#6bfb5e5ff5069191158c6c157e85632ff9828429"
-  integrity sha512-2Owwi7wyb4qHbqD3uiBLlrCZ6eH7lxIv8QpHbkaASS+yKY2sKIxh2AtmtF8c+hOfIK7XYchIr+Bw4IWrZyv4rg==
+"@midwayjs/serverless-fc-trigger@^2.10.13":
+  version "2.10.13"
+  resolved "https://registry.yarnpkg.com/@midwayjs/serverless-fc-trigger/-/serverless-fc-trigger-2.10.13.tgz#a488ed155dbfacd5f0c08cf09b126d55b8b5c44c"
+  integrity sha512-8V45Ji9ZUY8ynoJauWV3DlMqHTLf5o5xhtTKXk210jxzRyi+MPb4C/FTQ7NZAGbe7/iGOfqR9j9M3tQOUnfhdA==
   dependencies:
     "@midwayjs/faas-typings" "^2.10.7"
     "@midwayjs/runtime-mock" "^2.10.12"
-    "@midwayjs/serverless-fc-starter" "^2.10.12"
+    "@midwayjs/serverless-fc-starter" "^2.10.13"
     body-parser "^1.19.0"
     express "^4.17.1"
     extend2 "^1.0.0"
@@ -2961,10 +2966,10 @@
     pirates "^4.0.1"
     source-map-support "^0.5.16"
 
-"@prisma/client@^2.22.0":
-  version "2.22.0"
-  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-2.22.0.tgz#ca028025b648fdca0dda415809ea309cc7c3bcc7"
-  integrity sha512-0KL433vaxlQWyxJEwwvLr277Z0KdGehwon3SrdmeTKrJV1sYI6ogrCFxPXAb30JWFVwwAIS+QhkdklBpwQMLGQ==
+"@prisma/client@^2.22.1":
+  version "2.22.1"
+  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-2.22.1.tgz#10fdcd1532a6baf46dd1c464cad9a54af0532bc8"
+  integrity sha512-JQjbsY6QSfFiovXHEp5WeJHa5p2CuR1ZFPAeYXmUsOAQOaMCrhgQmKAL6w2Q3SRA7ALqPjrKywN9/QfBc4Kp1A==
   dependencies:
     "@prisma/engines-version" "2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c"
 
@@ -12814,10 +12819,10 @@ prepend-http@^2.0.0:
   resolved "https://registry.npmjs.org/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-prettier@^2.0.2, prettier@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.npmjs.org/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
-  integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
+prettier@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.0.tgz#b6a5bf1284026ae640f17f7ff5658a7567fc0d18"
+  integrity sha512-kXtO4s0Lz/DW/IJ9QdWhAf7/NmPWQXkFr/r/WkR3vyI+0v8amTDxiaQSLzs8NBlytfLWX/7uQUMIW677yLKl4w==
 
 pretty-format@^26.0.0, pretty-format@^26.6.2:
   version "26.6.2"
@@ -12846,10 +12851,10 @@ printj@~1.1.0:
   resolved "https://registry.npmjs.org/printj/-/printj-1.1.2.tgz#d90deb2975a8b9f600fb3a1c94e3f4c53c78a222"
   integrity sha512-zA2SmoLaxZyArQTOPj5LXecR+RagfPSU5Kw1qP+jkWeNlrq+eJZyY2oS68SU1Z/7/myXM4lo9716laOFAVStCQ==
 
-prisma@^2.22.0:
-  version "2.22.0"
-  resolved "https://registry.yarnpkg.com/prisma/-/prisma-2.22.0.tgz#69063fa95cdcaaf660b61017d79c6a6dda054517"
-  integrity sha512-rJgjZCl0mxrdCjR6N5Z5Ivm6fy+iPznOQDA4TSiKvzs7tzo4smsBbFZmliylmEeRkuq2f93+/I/jmw64rrFpHQ==
+prisma@^2.22.1:
+  version "2.22.1"
+  resolved "https://registry.yarnpkg.com/prisma/-/prisma-2.22.1.tgz#884687a90c7b797b34c6110ea413049078c8da6e"
+  integrity sha512-hwvCM3zyxgSda/+/p+GW7nz93jRebtMU01wAG7YVVnl0OKU+dpw1wPvPFmQRldkZHk8fTCleYmjc24WaSdVPZQ==
   dependencies:
     "@prisma/engines" "2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c"
 
@@ -16631,8 +16636,3 @@ zip-stream@^4.1.0:
     archiver-utils "^2.1.0"
     compress-commons "^4.1.0"
     readable-stream "^3.6.0"
-
-zlib@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/zlib/-/zlib-1.0.5.tgz#6e7c972fc371c645a6afb03ab14769def114fcc0"
-  integrity sha1-bnyXL8NxxkWmr7A6sUdp3vEU/MA=
