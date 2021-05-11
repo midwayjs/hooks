@@ -5,7 +5,7 @@ export default defineConfig({
   routes: [
     {
       baseDir: 'lambda',
-      basePath: '/api',
+      basePath: 'apis',
     },
   ],
 });
