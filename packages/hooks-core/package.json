@@ -21,7 +21,7 @@
   "dependencies": {
     "@midwayjs/bootstrap": "^2.10.14",
     "@midwayjs/core": "^2.10.14",
-    "@midwayjs/decorator": "^2.10.12",
+    "@midwayjs/decorator": "^2.10.14",
     "art-template": "^4.13.2",
     "asynchronous-local-storage": "^1.0.2",
     "axios": "^0.21.1",
