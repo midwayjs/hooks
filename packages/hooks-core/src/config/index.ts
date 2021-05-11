@@ -1,5 +1,5 @@
 import path from 'path'
-import { InternalConfig, UserConfig } from '../types/config'
+import { HTTPRoute, InternalConfig, UserConfig } from '../types/config'
 import { sync } from 'pkg-dir'
 import createJITI from 'jiti'
 import _ from 'lodash'
@@ -40,7 +40,9 @@ export function getConfig(cwd?: string): InternalConfig {
   })
 }
 
-export function defineConfig(config: UserConfig): UserConfig {
+export function defineConfig<T = HTTPRoute>(
+  config: UserConfig<T>
+): UserConfig<T> {
   return config
 }
 
