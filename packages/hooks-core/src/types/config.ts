@@ -2,14 +2,14 @@ import { HooksGatewayAdapter } from '../component/gateway/adapter'
 import { Class } from '../component/gateway/interface'
 import { HooksMiddleware } from './common'
 
-export interface InternalConfig {
+export interface InternalConfig<T = HTTPRoute> {
   /**
    * @default false
    * Enable superjson to serialize Set/Map/Error/BigInt, default is false
    */
   superjson?: boolean
   source?: string
-  routes: ServerRoute[]
+  routes: ServerRoute<T>[]
   request?: {
     client?: string
   }
@@ -32,8 +32,11 @@ export type RuntimeConfig = {
   adapter?: Class<HooksGatewayAdapter>
 }
 
-export type HTTPRoute = {
+export type BaseRoute = {
   baseDir: string
+}
+
+export type HTTPRoute = {
   basePath: string
   /**
    * @deprecated
@@ -41,6 +44,7 @@ export type HTTPRoute = {
   underscore?: boolean
 }
 
-export type ServerRoute = HTTPRoute
+export type ServerRoute<T = HTTPRoute> = BaseRoute & T
 
-export interface UserConfig extends Omit<InternalConfig, 'build' | 'dev'> {}
+export interface UserConfig<T = HTTPRoute>
+  extends Omit<InternalConfig<T>, 'build' | 'dev'> {}
