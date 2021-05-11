@@ -3,7 +3,7 @@ import {
   close,
   createHttpRequest,
 } from '@midwayjs/mock'
-import { IMidwayApplication } from '@midwayjs/core'
+import { IMidwayApplication, IMidwayFramework } from '@midwayjs/core'
 import {
   getConfig,
   getProjectRoot,
@@ -13,8 +13,11 @@ import {
 import { join } from 'path'
 import { SuperJSONPlugin } from './plugin'
 
-async function createAppImplementation(baseDir: string, isFunction: boolean) {
-  const root = getProjectRoot(baseDir || (global as any).testPath)
+async function createAppImplementation<
+  T extends IMidwayFramework<any, U>,
+  U = T['configurationOptions']
+>(options: U, isFunction: boolean) {
+  const root = getProjectRoot((global as any).testPath)
   const config = getConfig(root)
 
   const cwd = process.cwd()
@@ -22,9 +25,12 @@ async function createAppImplementation(baseDir: string, isFunction: boolean) {
 
   const app: IMidwayApplication<any> = await createWebApp(
     root,
-    {
-      baseDir: join(root, config.source),
-    },
+    Object.assign(
+      {
+        baseDir: join(root, config.source),
+      },
+      options
+    ),
     isFunction && '@midwayjs/serverless-app'
   )
 
@@ -32,12 +38,18 @@ async function createAppImplementation(baseDir: string, isFunction: boolean) {
   return new HooksApplication(app, config)
 }
 
-export async function createApp(baseDir?: string) {
-  return createAppImplementation(baseDir, false)
+export async function createApp<
+  T extends IMidwayFramework<any, U>,
+  U = T['configurationOptions']
+>(options?: U) {
+  return createAppImplementation<T, U>(options, false)
 }
 
-export async function createFunctionApp(baseDir?: string) {
-  return createAppImplementation(baseDir, true)
+export async function createFunctionApp<
+  T extends IMidwayFramework<any, U>,
+  U = T['configurationOptions']
+>(options?: U) {
+  return createAppImplementation(options, true)
 }
 
 export class HooksApplication {
@@ -48,7 +60,6 @@ export class HooksApplication {
     this.config = config
   }
 
-  // TODO Allow pass user define context
   async runFunction<T extends ApiFunction>(
     fn: T,
     ...args: Parameters<T>
