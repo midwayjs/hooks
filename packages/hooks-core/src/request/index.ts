@@ -12,7 +12,10 @@ export const defaults = {
         ...param,
       })
 
-      if (response) {
+      if (
+        response &&
+        response.headers['content-type']?.indexOf?.('application/json') !== -1
+      ) {
         const superjson = await import('superjson')
         return enableSuperjson
           ? superjson.deserialize(response.data)
