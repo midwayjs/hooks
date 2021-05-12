@@ -1,7 +1,24 @@
 const path = require('path')
-const { getConfig } = require('@midwayjs/hooks-core')
+const { getConfig, getProjectRoot } = require('@midwayjs/hooks-core')
+const { pathsToModuleNameMapper } = require('ts-jest/utils')
 
 const config = getConfig()
+const root = getProjectRoot()
+
+const { compilerOptions } = require(path.join(root, 'tsconfig.json'))
+
+const moduleNameMapper = {
+  '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+  '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+    path.resolve(__dirname, './jest-preset/file-mock.js'),
+}
+
+if (compilerOptions.paths) {
+  Object.assign(
+    moduleNameMapper,
+    pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' })
+  )
+}
 
 const common = {
   preset: 'ts-jest',
@@ -18,14 +35,7 @@ const common = {
   },
   moduleDirectories: ['node_modules', '<rootDir>'],
   modulePathIgnorePatterns: ['<rootDir>/.faas_debug_tmp', '<rootDir>/run'],
-  moduleNameMapper: {
-    // This ensures any path aliases in tsconfig also work in jest
-    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': path.resolve(
-      __dirname,
-      './jest-preset/file-mock.js'
-    ),
-  },
+  moduleNameMapper,
   watchPlugins: [
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
