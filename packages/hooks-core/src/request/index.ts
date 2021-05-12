@@ -14,7 +14,8 @@ export const defaults = {
 
       if (
         response &&
-        response.headers['content-type']?.indexOf?.('application/json') !== -1
+        response.headers['content-type'] &&
+        response.headers['content-type'].indexOf('application/json') !== -1
       ) {
         const superjson = await import('superjson')
         return enableSuperjson
