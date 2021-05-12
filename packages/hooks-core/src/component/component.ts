@@ -104,6 +104,9 @@ export class HooksComponent {
     this.config.runtime.middleware?.forEach?.((mw) =>
       mws.push(this.useHooksMiddleware(mw))
     )
+    this.adapter?.getGlobalMiddleware?.()?.forEach((mw) => {
+      mws.push(this.useHooksMiddleware(mw))
+    })
     return mws
   }
 

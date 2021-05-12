@@ -23,6 +23,7 @@ import { existsSync } from 'fs'
 import staticCache from 'koa-static-cache'
 import { isDevelopment } from '../../util'
 import parseArgs from 'fn-args'
+import { useContext } from '../../runtime'
 
 export class HTTPGateway implements HooksGatewayAdapter {
   config: ComponentConfig
@@ -93,11 +94,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
           args = JSON.parse(args)
         }
 
-        const response = await fn(...args)
-        if (enableSuperjson) {
-          return superjson.serialize(response)
-        }
-        return response
+        return await fn(...args)
       }
     }
     __decorate([Inject()], FunctionContainer.prototype, 'ctx', void 0)
@@ -122,6 +119,25 @@ export class HTTPGateway implements HooksGatewayAdapter {
     } else {
       throw error
     }
+  }
+
+  getGlobalMiddleware() {
+    const mws = []
+    const enableSuperjson = this.config.internal.superjson
+
+    const deserialize = async (next: any) => {
+      await next()
+      const ctx = useContext()
+      if (ctx.type.includes('application/json')) {
+        ctx.body = superjson.serialize(ctx.body)
+      }
+    }
+
+    if (enableSuperjson) {
+      mws.push(deserialize)
+    }
+
+    return mws
   }
 
   afterCreate() {
