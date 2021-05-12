@@ -26,7 +26,7 @@ describe('test new features', () => {
 
   it('request', async () => {
     const response = await app.request(get).expect(200);
-    expect(response.body).toMatchInlineSnapshot(`"GET"`);
+    expect(response.text).toMatchInlineSnapshot(`"GET"`);
 
     const postResponse = await app.request(post, 'lxxyx').expect(200);
     expect(postResponse.body).toMatchInlineSnapshot(`

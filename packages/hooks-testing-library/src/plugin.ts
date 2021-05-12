@@ -7,12 +7,8 @@ export function SuperJSONPlugin(enableSuperjson: boolean) {
   }
   return (req: SuperAgentRequest) => {
     req.on('response', (res) => {
-      if (res.body) {
+      if (res.body && res.type.includes('application/json')) {
         res.body = superjson.deserialize(res.body)
-      }
-
-      if (res.text) {
-        res.text = superjson.parse(res.text)
       }
     })
   }
