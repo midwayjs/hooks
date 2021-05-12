@@ -1,6 +1,6 @@
 {
   "name": "hooks-react",
-  "version": "2.2.0-next.4",
+  "version": "2.2.0-next.5",
   "private": true,
   "scripts": {
     "start": "node bootstrap",
@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@midwayjs/hooks": "^2.2.0-next.4",
+    "@midwayjs/hooks": "^2.2.0-next.5",
     "@midwayjs/koa": "^2.10.14",
     "koa-bodyparser": "^4.3.0",
     "react": "^17.0.0",
@@ -21,8 +21,8 @@
   "devDependencies": {
     "@midwayjs/cli": "^1.2.67",
     "@midwayjs/cli-plugin-build": "^1.2.65",
-    "@midwayjs/hooks-testing-library": "^2.2.0-next.4",
-    "@midwayjs/vite-plugin-hooks": "^2.2.0-next.4",
+    "@midwayjs/hooks-testing-library": "^2.2.0-next.5",
+    "@midwayjs/vite-plugin-hooks": "^2.2.0-next.5",
     "@types/jest": "^26.0.23",
     "@types/koa-bodyparser": "^4.3.0",
     "@types/react": "^17.0.5",
