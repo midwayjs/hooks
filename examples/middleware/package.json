@@ -1,6 +1,6 @@
 {
   "name": "hooks-middleware",
-  "version": "2.2.0-next.6",
+  "version": "2.2.0-next.7",
   "private": true,
   "scripts": {
     "start": "node bootstrap",
@@ -8,13 +8,13 @@
     "build": "mw build"
   },
   "dependencies": {
-    "@midwayjs/hooks": "^2.2.0-next.6",
+    "@midwayjs/hooks": "^2.2.0-next.7",
     "@midwayjs/koa": "^2.10.14",
     "koa-bodyparser": "^4.3.0"
   },
   "devDependencies": {
     "@midwayjs/cli": "^1.2.67",
-    "@midwayjs/hooks-testing-library": "^2.2.0-next.6",
+    "@midwayjs/hooks-testing-library": "^2.2.0-next.7",
     "@types/debug": "^4.1.5",
     "@types/koa-bodyparser": "^4.3.0"
   }
