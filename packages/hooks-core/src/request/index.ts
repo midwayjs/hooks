@@ -13,19 +13,19 @@ export const defaults = {
       })
 
       if (
-        response &&
-        response.headers['content-type'] &&
-        response.headers['content-type'].indexOf('application/json') !== -1 &&
-        enableSuperjson
+        response?.headers?.['content-type']?.indexOf('application/json') !==
+          -1 &&
+        enableSuperjson &&
+        response?.data
       ) {
         const superjson = await import('superjson')
         return superjson.deserialize(response.data)
       }
 
-      return response.data
+      return response?.data
     } catch (error) {
       const e: AxiosError = error
-      if (enableSuperjson) {
+      if (enableSuperjson && e?.response?.data) {
         const superjson = await import('superjson')
         throw superjson.deserialize(e.response.data)
       }
