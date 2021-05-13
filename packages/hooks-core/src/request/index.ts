@@ -15,22 +15,21 @@ export const defaults = {
       if (
         response &&
         response.headers['content-type'] &&
-        response.headers['content-type'].indexOf('application/json') !== -1
+        response.headers['content-type'].indexOf('application/json') !== -1 &&
+        enableSuperjson
       ) {
         const superjson = await import('superjson')
-        return enableSuperjson
-          ? superjson.deserialize(response.data)
-          : response.data
+        return superjson.deserialize(response.data)
       }
 
-      return response
+      return response.data
     } catch (error) {
+      const e: AxiosError = error
       if (enableSuperjson) {
-        const e: AxiosError = error
         const superjson = await import('superjson')
         throw superjson.deserialize(e.response.data)
       }
-      throw error
+      throw e
     }
   },
   baseURL: '',
