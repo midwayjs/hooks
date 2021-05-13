@@ -95,7 +95,7 @@ export class HooksComponent {
         .concat(modMiddleware)
         .map(this.useHooksMiddleware)
 
-      this.adapter.createApi({ fn, file, isExportDefault: key === 'default' })
+      this.adapter.createApi({ fn, file, fnName: key })
     }
   }
 
