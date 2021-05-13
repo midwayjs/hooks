@@ -9,7 +9,8 @@ import { ComponentConfig } from './interface'
 export interface CreateApiParam {
   fn: ApiFunction
   file: string
-  isExportDefault: boolean
+
+  fnName: string
 }
 
 export interface HooksGatewayAdapter {
