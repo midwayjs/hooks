@@ -40,9 +40,10 @@ export class HTTPGateway implements HooksGatewayAdapter {
   }
 
   createApi(param: CreateApiParam) {
-    const { fn, file, isExportDefault } = param
+    const { fn, fnName, file } = param
 
-    const functionName = isExportDefault ? '$default' : fn.name
+    const isExportDefault = fnName === 'default'
+    const functionName = isExportDefault ? '$default' : fnName
     const id = this.config.router.getFunctionId(
       file,
       functionName,
