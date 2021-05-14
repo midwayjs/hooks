@@ -1,4 +1,9 @@
 import { ServerRouter } from '..'
+import { duplicateLogger } from '../logger'
+
+jest.mock('../logger', () => ({
+  duplicateLogger: jest.fn(),
+}))
 
 describe('ServerRouter', () => {
   let router: ServerRouter
@@ -73,5 +78,15 @@ describe('ServerRouter', () => {
     for (const [file, expected] of cases) {
       expect(router.getBaseUrl(file)).toEqual(expected)
     }
+  })
+
+  test('duplicate warning', () => {
+    const api = '/src/lambda/index.ts'
+    const api2 = '/src/render/api.ts'
+
+    router.getHTTPPath(api, '', true)
+    router.getHTTPPath(api2, '', true)
+
+    expect(duplicateLogger).toBeCalled()
   })
 })
