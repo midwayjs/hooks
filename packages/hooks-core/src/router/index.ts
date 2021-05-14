@@ -98,7 +98,7 @@ export class ServerRouter {
         basePath,
         /**
          * /apis/lambda/index.ts -> ''
-         * /apis/lambda/todo/index.ts -> 'todo'
+         * /apis/lambda/note/index.ts -> 'note'
          */
         relative(lambdaDirectory, dirname(file)),
         /**
@@ -106,7 +106,7 @@ export class ServerRouter {
          * demo -> '/demo'
          */
         fileRoute,
-        // getTodoList -> _getTodoList
+        // underscore: getNoteList -> _getNoteList
         func,
         isCatchAllRoutes ? '/*' : ''
       )
