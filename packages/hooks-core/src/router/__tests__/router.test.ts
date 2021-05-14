@@ -1,29 +1,30 @@
 import { ServerRouter } from '..'
 
 describe('ServerRouter', () => {
-  test('should exist', () => {
-    expect(ServerRouter).toBeTruthy()
-    const router = new ServerRouter('/', {
+  let router: ServerRouter
+
+  beforeEach(() => {
+    router = new ServerRouter('/', {
+      source: 'src',
       routes: [
+        {
+          baseDir: 'render',
+          basePath: '/',
+        },
         {
           baseDir: 'lambda',
           basePath: '/api',
         },
       ],
     })
+  })
+
+  test('should exist', () => {
+    expect(ServerRouter).toBeTruthy()
     expect(router).toBeInstanceOf(ServerRouter)
   })
 
   test('test functions', () => {
-    const router = new ServerRouter('/', {
-      source: 'src',
-      routes: [
-        {
-          baseDir: 'lambda',
-          basePath: '/api',
-        },
-      ],
-    })
     expect(router.source.endsWith('/src')).toBeTruthy()
 
     const api = '/src/lambda/index.ts'
@@ -43,19 +44,6 @@ describe('ServerRouter', () => {
   })
 
   test('getHTTPPath', () => {
-    const router = new ServerRouter('/', {
-      source: 'src',
-      routes: [
-        {
-          baseDir: 'lambda',
-          basePath: '/api',
-        },
-        {
-          baseDir: 'render',
-          basePath: '/',
-        },
-      ],
-    })
     const api = '/src/lambda/index.ts'
 
     expect(router.getHTTPPath(api, '', true)).toMatchInlineSnapshot(`"/api"`)
@@ -72,5 +60,18 @@ describe('ServerRouter', () => {
     expect(router.getHTTPPath(catchAll, 'bar', false)).toMatchInlineSnapshot(
       `"/bar/*"`
     )
+  })
+
+  test('getBaseUrl', () => {
+    const cases = [
+      ['/src/render/index.ts', '/'],
+      ['/src/lambda/index.ts', '/api'],
+      ['/src/render/[...index].ts', '/'],
+      ['/src/lambda/[...index].ts', '/api'],
+    ]
+
+    for (const [file, expected] of cases) {
+      expect(router.getBaseUrl(file)).toEqual(expected)
+    }
   })
 })
