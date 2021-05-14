@@ -3,7 +3,7 @@ import {
   IMidwayContainer,
   IMidwayContext,
 } from '@midwayjs/core'
-import { ApiFunction, ServerRoute } from '../..'
+import { ApiFunction } from '../..'
 import { ComponentConfig } from './interface'
 
 export interface CreateApiParam {
@@ -19,7 +19,6 @@ export interface HooksGatewayAdapter {
   app: IMidwayApplication<IMidwayContext>
 
   createApi(config: CreateApiParam): void
-  is(route: ServerRoute): boolean
   afterCreate?(): void
 
   onError(ctx: any, error: any): void

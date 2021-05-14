@@ -34,11 +34,6 @@ export class HTTPGateway implements HooksGatewayAdapter {
     this.config = config
   }
 
-  is(route: ServerRoute): boolean {
-    // HTTP
-    return !!(route.baseDir && route.basePath)
-  }
-
   createApi(param: CreateApiParam) {
     const { fn, fnName, file } = param
 
@@ -68,7 +63,6 @@ export class HTTPGateway implements HooksGatewayAdapter {
 
     const apiFn = this.createApiFunction({
       containerId,
-      httpMethod,
       httpPath,
       fn,
     })
@@ -78,23 +72,17 @@ export class HTTPGateway implements HooksGatewayAdapter {
 
   createApiFunction(config: {
     containerId: string
-    httpMethod: ApiHttpMethod
     httpPath: string
     fn: ApiFunction
   }) {
-    const { containerId, httpMethod, httpPath, fn } = config
+    const { containerId, httpPath, fn } = config
     // const Method = httpMethod === 'GET' ? Get : Post
-    const enableSuperjson = this.config.internal.superjson
 
     // Source: https://www.typescriptlang.org/play?noImplicitAny=false&strictNullChecks=false&strictFunctionTypes=false&strictPropertyInitialization=false&strictBindCallApply=false&noImplicitThis=false&noImplicitReturns=false&alwaysStrict=false&importHelpers=true&emitDecoratorMetadata=false&ts=4.1.5&ssl=22&ssc=1&pln=4&pc=1#code/JYWwDg9gTgLgBAbzgSQHYCsCmBjGAaOAYQlRiggBsLMoCBxTfOABQgGcnnyA3YAE0xwAvnABm5EHADkAARD8A7gEMAnujYB6AdmhKY0KQChDO1BzgBZRgAsIfOAF5pdAKIAVKY4dOprj3AB+OAZ4AC4WdhgTEnNRVEc4AAoAOlSlKABzNnClVBUAbQBdAEpHAD5EIWMZLgheAUTiwxliUnIqGkSpDSkm7AolNjY4ADEAV1RcYBJWmCVgVBpEQzhVuBk0LFxGlbXcAA8cvOM19asYWz4uqQIkeT4+amUoTHCi4SbTwZVJuGtcx5LRrLU6rajwdJZBIXYBsZIHZIvACOY0wHGSACM7CpkpDhgAffFwIq7UFwYCiJIwFRgTAQSl4rw+DhQBYZXogsmgxlOABSAGUAPIAOWSYHSbEwiTxny5VS5cFM5hebEgZkETiUymA8DiKTSmTYsrJLxgYyg8RVaslpOEhiqQA
     let FunctionContainer = class FunctionContainer {
       ctx: any
       async handler() {
         let args = this.ctx.request?.body?.args || []
-        if (typeof args === 'string') {
-          args = JSON.parse(args)
-        }
-
         return await fn(...args)
       }
     }
@@ -178,7 +166,6 @@ export class HTTPGateway implements HooksGatewayAdapter {
 
     const apiFn = this.createApiFunction({
       containerId: 'hooks:host',
-      httpMethod: 'GET',
       httpPath: '/*',
       fn,
     })
