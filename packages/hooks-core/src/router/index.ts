@@ -8,10 +8,9 @@ import {
   toUnix,
   removeExt,
 } from 'upath'
-import chalk from 'chalk'
 import { InternalConfig } from '..'
-import { consola } from '../lib'
 import { kebabCase } from 'lodash'
+import { duplicateLogger } from './logger'
 
 export class ServerRouter {
   root: string
@@ -142,20 +141,4 @@ function parseFilename(filename: string) {
     isCatchAllRoutes,
     filename: isCatchAllRoutes ? re.exec(filename)?.[1] : filename,
   }
-}
-
-function duplicateLogger(
-  root: string,
-  existPath: string,
-  currentPath: string,
-  api: string
-) {
-  consola.info(
-    '[ %s ] Duplicate routes detected. %s and %s both resolve to %s. Reference: %s',
-    chalk.yellow('warn'),
-    chalk.cyan(relative(root, existPath)),
-    chalk.cyan(relative(root, currentPath)),
-    chalk.cyan(api),
-    'https://www.yuque.com/midwayjs/faas/et7x4k'
-  )
 }
