@@ -20,10 +20,14 @@ if (compilerOptions.paths) {
   )
 }
 
+/** @type {import('@jest/types').Config.InitialOptions} */
 const common = {
   preset: 'ts-jest',
   clearMocks: true,
-  testPathIgnorePatterns: ['/node_modules/', '/.faas_debug_tmp/'],
+  /**
+   * ignore /src/apis/config/config.test.ts
+   */
+  testPathIgnorePatterns: ['/node_modules/', '/config/config.test.ts'],
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
   transform: {
     '^.+\\.(ts|tsx)$': [
@@ -34,7 +38,7 @@ const common = {
     ],
   },
   moduleDirectories: ['node_modules', '<rootDir>'],
-  modulePathIgnorePatterns: ['<rootDir>/.faas_debug_tmp', '<rootDir>/run'],
+  modulePathIgnorePatterns: ['<rootDir>/run'],
   moduleNameMapper,
   watchPlugins: [
     'jest-watch-typeahead/filename',
@@ -54,9 +58,9 @@ module.exports = {
         color: 'magenta',
       },
       testEnvironment: path.resolve(__dirname, './jest-preset/environment.js'),
-      testRegex: [
-        '\\.server\\.(spec|test)\\.(t)sx?$',
-        `(/${config.source}/.*|(\\.|/)(test|spec))\\.[t]sx?$`,
+      testMatch: [
+        path.join('**', config.source, '**/__tests__/**/*.[jt]s?(x)'),
+        path.join('**', config.source, '**/?(*.)+(spec|test).[jt]s?(x)'),
       ],
       setupFilesAfterEnv: [
         path.resolve(__dirname, './jest-preset/setup-after-env.js'),
