@@ -79,7 +79,7 @@ export class HooksApplication {
 
   request<T extends ApiFunction>(fn: T, ...args: Parameters<T>) {
     const supertest = createHttpRequest(this.app)
-    if (fn._param.method === 'GET') {
+    if (args.length === 0) {
       return supertest
         .get(fn._param.url)
         .use(SuperJSONPlugin(this.config.superjson))
