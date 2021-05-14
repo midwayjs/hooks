@@ -15,7 +15,7 @@
     "build": "preconstruct build",
     "dev": "preconstruct dev",
     "test": "jest --passWithNoTests",
-    "cov": "yarn test --coverage",
+    "cov": "yarn dev && yarn test --coverage",
     "ci": "yarn cov --ci",
     "format": "pretty-quick",
     "postinstall": "preconstruct dev",
