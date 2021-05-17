@@ -1,21 +1,21 @@
-import { ApiFunction } from '../../types/common'
-import { ApiHttpMethod } from '../../types/http'
-import { Inject, Controller, Provide, All } from '@midwayjs/decorator'
+import { existsSync } from 'fs'
+import staticCache from 'koa-static-cache'
 import { __decorate } from 'tslib'
-import { superjson } from '../../lib'
-import { CreateApiParam, HooksGatewayAdapter } from './adapter'
+import { join } from 'upath'
+
 import {
   IMidwayContainer,
   IMidwayApplication,
   IMidwayContext,
 } from '@midwayjs/core'
-import { ComponentConfig } from './interface'
-import { join } from 'upath'
-import { existsSync } from 'fs'
-import staticCache from 'koa-static-cache'
-import { isDevelopment } from '../../util'
-import parseArgs from 'fn-args'
+import { Inject, Controller, Provide, All } from '@midwayjs/decorator'
+
+import { superjson } from '../../lib'
 import { useContext } from '../../runtime'
+import { ApiFunction } from '../../types/common'
+import { isDevelopment } from '../../util'
+import { CreateApiParam, HooksGatewayAdapter } from './adapter'
+import { ComponentConfig } from './interface'
 
 export class HTTPGateway implements HooksGatewayAdapter {
   config: ComponentConfig

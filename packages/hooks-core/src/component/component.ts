@@ -1,19 +1,21 @@
+import parseArgs from 'fn-args'
+import { sync } from 'globby'
+import _ from 'lodash'
+import { join } from 'path'
+import { __decorate } from 'tslib'
+
 import {
   createConfiguration,
   IMidwayApplication,
   IMidwayContainer,
   IMidwayContext,
 } from '@midwayjs/core'
-import { __decorate } from 'tslib'
+
 import { als } from '../runtime'
 import { ApiFunction, ApiModule } from '../types/common'
-import { join } from 'path'
-import { sync } from 'globby'
-import { ComponentConfig } from './gateway/interface'
-import _ from 'lodash'
-import { HooksGatewayAdapter } from './gateway/adapter'
-import parseArgs from 'fn-args'
 import { ApiHttpMethod } from '../types/http'
+import { HooksGatewayAdapter } from './gateway/adapter'
+import { ComponentConfig } from './gateway/interface'
 
 export class HooksComponent {
   config: ComponentConfig

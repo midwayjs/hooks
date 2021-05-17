@@ -1,13 +1,14 @@
+import { join } from 'path'
+import { Plugin } from 'vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
+
 import {
   getProjectRoot,
   ServerRouter,
   getConfig,
   generate,
 } from '@midwayjs/hooks-core'
-import { Plugin } from 'vite'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
-import { join } from 'path'
-import tsconfigPaths from 'vite-tsconfig-paths'
 
 function plugin(): Plugin {
   const root = getProjectRoot()

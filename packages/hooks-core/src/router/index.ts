@@ -1,4 +1,5 @@
 import inside from 'is-path-inside'
+import { kebabCase } from 'lodash'
 import {
   basename,
   dirname,
@@ -8,8 +9,8 @@ import {
   toUnix,
   removeExt,
 } from 'upath'
+
 import { InternalConfig } from '..'
-import { kebabCase } from 'lodash'
 import { duplicateLogger } from './logger'
 
 export class ServerRouter {
