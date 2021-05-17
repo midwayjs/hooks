@@ -4,18 +4,21 @@ import { __decorate } from 'tslib'
 import { join } from 'upath'
 
 import {
-  IMidwayContainer,
   IMidwayApplication,
+  IMidwayContainer,
   IMidwayContext,
 } from '@midwayjs/core'
-import { Inject, Controller, Provide, All } from '@midwayjs/decorator'
+import { All, Controller, Inject, Provide } from '@midwayjs/decorator'
 
 import { superjson } from '../../lib'
 import { useContext } from '../../runtime'
 import { ApiFunction } from '../../types/common'
+import {
+  ComponentConfig,
+  CreateApiParam,
+  HooksGatewayAdapter,
+} from '../../types/gateway'
 import { isDevelopment } from '../../util'
-import { CreateApiParam, HooksGatewayAdapter } from './adapter'
-import { ComponentConfig } from './interface'
 
 export class HTTPGateway implements HooksGatewayAdapter {
   config: ComponentConfig
