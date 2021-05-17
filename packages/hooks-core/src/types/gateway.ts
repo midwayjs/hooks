@@ -4,8 +4,20 @@ import {
   IMidwayContext,
 } from '@midwayjs/core'
 
-import { ApiFunction } from '../..'
-import { ComponentConfig } from './interface'
+import { ApiFunction } from '..'
+import { ServerRouter } from '../router'
+import { InternalConfig, RuntimeConfig } from './config'
+
+export type ComponentConfig = {
+  runtime: RuntimeConfig
+  internal: InternalConfig
+  router: ServerRouter
+  root: string
+}
+
+export type Class<T = unknown, Arguments extends any[] = any[]> = new (
+  ...arguments_: Arguments
+) => T
 
 export interface CreateApiParam {
   fn: ApiFunction

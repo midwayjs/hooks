@@ -2,25 +2,16 @@ import parseArgs from 'fn-args'
 import { sync } from 'globby'
 import _ from 'lodash'
 import { join } from 'path'
-import { __decorate } from 'tslib'
 
-import {
-  createConfiguration,
-  IMidwayApplication,
-  IMidwayContainer,
-  IMidwayContext,
-} from '@midwayjs/core'
+import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
 
 import { als } from '../runtime'
 import { ApiFunction, ApiModule } from '../types/common'
+import { ComponentConfig, HooksGatewayAdapter } from '../types/gateway'
 import { ApiHttpMethod } from '../types/http'
-import { HooksGatewayAdapter } from './gateway/adapter'
-import { ComponentConfig } from './gateway/interface'
 
 export class HooksComponent {
   config: ComponentConfig
-
-  app: IMidwayApplication<IMidwayContext>
 
   adapter: HooksGatewayAdapter
 
