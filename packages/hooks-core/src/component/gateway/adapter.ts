@@ -3,6 +3,7 @@ import {
   IMidwayContainer,
   IMidwayContext,
 } from '@midwayjs/core'
+
 import { ApiFunction } from '../..'
 import { ComponentConfig } from './interface'
 

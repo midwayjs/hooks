@@ -1,9 +1,10 @@
-import path from 'path'
-import { HTTPRoute, InternalConfig, UserConfig } from '../types/config'
-import { sync } from 'pkg-dir'
 import createJITI from 'jiti'
 import _ from 'lodash'
+import path from 'path'
+import { sync } from 'pkg-dir'
 import URL from 'url'
+
+import { HTTPRoute, InternalConfig, UserConfig } from '../types/config'
 
 export function getProjectRoot(cwd?: string) {
   return sync(cwd) || process.cwd()

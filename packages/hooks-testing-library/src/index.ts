@@ -1,8 +1,5 @@
-import {
-  createApp as createWebApp,
-  close,
-  createHttpRequest,
-} from '@midwayjs/mock'
+import { join } from 'path'
+
 import { IMidwayApplication, IMidwayFramework } from '@midwayjs/core'
 import {
   getConfig,
@@ -10,7 +7,12 @@ import {
   ApiFunction,
   InternalConfig,
 } from '@midwayjs/hooks-core'
-import { join } from 'path'
+import {
+  createApp as createWebApp,
+  close,
+  createHttpRequest,
+} from '@midwayjs/mock'
+
 import { SuperJSONPlugin } from './plugin'
 
 async function createAppImplementation<
