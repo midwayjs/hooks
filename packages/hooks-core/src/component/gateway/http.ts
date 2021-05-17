@@ -1,16 +1,8 @@
 import { ApiFunction } from '../../types/common'
 import { ApiHttpMethod } from '../../types/http'
-import {
-  Inject,
-  Controller,
-  // Get,
-  // Post,
-  Provide,
-  All,
-} from '@midwayjs/decorator'
+import { Inject, Controller, Provide, All } from '@midwayjs/decorator'
 import { __decorate } from 'tslib'
 import { superjson } from '../../lib'
-import { ServerRoute } from '../../types/config'
 import { CreateApiParam, HooksGatewayAdapter } from './adapter'
 import {
   IMidwayContainer,
@@ -35,50 +27,9 @@ export class HTTPGateway implements HooksGatewayAdapter {
   }
 
   createApi(param: CreateApiParam) {
-    const { fn, fnName, file } = param
+    const { id, fn, httpPath } = param
 
-    const isExportDefault = fnName === 'default'
-    const functionName = isExportDefault ? '$default' : fnName
-    const id = this.config.router.getFunctionId(
-      file,
-      functionName,
-      isExportDefault
-    )
-
-    const containerId = 'hooks::' + id
-    const httpPath = this.config.router.getHTTPPath(
-      file,
-      functionName,
-      isExportDefault
-    )
-    const httpMethod: ApiHttpMethod =
-      parseArgs(fn).length === 0 ? 'GET' : 'POST'
-
-    // Set param for unit testing
-    fn._param = {
-      url: httpPath,
-      method: httpMethod,
-      meta: { functionName: id },
-    }
-
-    const apiFn = this.createApiFunction({
-      containerId,
-      httpPath,
-      fn,
-    })
-
-    this.container.bind(containerId, apiFn)
-  }
-
-  createApiFunction(config: {
-    containerId: string
-    httpPath: string
-    fn: ApiFunction
-  }) {
-    const { containerId, httpPath, fn } = config
-    // const Method = httpMethod === 'GET' ? Get : Post
-
-    // Source: https://www.typescriptlang.org/play?noImplicitAny=false&strictNullChecks=false&strictFunctionTypes=false&strictPropertyInitialization=false&strictBindCallApply=false&noImplicitThis=false&noImplicitReturns=false&alwaysStrict=false&importHelpers=true&emitDecoratorMetadata=false&ts=4.1.5&ssl=22&ssc=1&pln=4&pc=1#code/JYWwDg9gTgLgBAbzgSQHYCsCmBjGAaOAYQlRiggBsLMoCBxTfOABQgGcnnyA3YAE0xwAvnABm5EHADkAARD8A7gEMAnujYB6AdmhKY0KQChDO1BzgBZRgAsIfOAF5pdAKIAVKY4dOprj3AB+OAZ4AC4WdhgTEnNRVEc4AAoAOlSlKABzNnClVBUAbQBdAEpHAD5EIWMZLgheAUTiwxliUnIqGkSpDSkm7AolNjY4ADEAV1RcYBJWmCVgVBpEQzhVuBk0LFxGlbXcAA8cvOM19asYWz4uqQIkeT4+amUoTHCi4SbTwZVJuGtcx5LRrLU6rajwdJZBIXYBsZIHZIvACOY0wHGSACM7CpkpDhgAffFwIq7UFwYCiJIwFRgTAQSl4rw+DhQBYZXogsmgxlOABSAGUAPIAOWSYHSbEwiTxny5VS5cFM5hebEgZkETiUymA8DiKTSmTYsrJLxgYyg8RVaslpOEhiqQA
+    // Source: https://www.typescriptlang.org/play?noImplicitAny=false&strictNullChecks=false&strictFunctionTypes=false&strictPropertyInitialization=false&strictBindCallApply=false&noImplicitThis=false&noImplicitReturns=false&alwaysStrict=false&importHelpers=true&emitDecoratorMetadata=false&ts=4.1.5#code/JYWwDg9gTgLgBAbzgSQHYCsCmBjGAaOAYQlRiggBsLMoCBBKggBXIDdgATTOAXzgDNyIOAHIAAiE4B3AIYBPdAGcA9F2zQZMaCIBQO9akXx+qOAF44ACgB0tmVADmigFxwZqOQG0AugEpzAHyIPHpiLBDsXJa+OmLEpORUNJYiyiIx2BQyiopwAGIArqi4wCTxMDLAqDSIOnD1cGJoWLjRdQ24AB6u7nJ6DY0MFCkiBEiSHBzUslCYrj68MQPZcsVwABbuUzXRtQP11PD2TuZwMOvAitZd1rMAjgWYRtYARhAcctbHuQA+P3A+dr7OCzGAFKCmGSyYDGVA2OyORRLBohEJAA
     let FunctionContainer = class FunctionContainer {
       ctx: any
       async handler() {
@@ -94,11 +45,11 @@ export class HTTPGateway implements HooksGatewayAdapter {
       null
     )
     FunctionContainer = __decorate(
-      [Provide(containerId), Controller('/')],
+      [Provide(id), Controller('/')],
       FunctionContainer
     )
 
-    return FunctionContainer
+    this.container.bind(id, FunctionContainer)
   }
 
   onError(ctx: any, error: any) {
@@ -164,8 +115,8 @@ export class HTTPGateway implements HooksGatewayAdapter {
     const fn: ApiFunction = async () => {}
     fn.middleware = [mw]
 
-    const apiFn = this.createApiFunction({
-      containerId: 'hooks:host',
+    const apiFn = this.createApi({
+      id: 'hooks:host',
       httpPath: '/*',
       fn,
     })
