@@ -8,9 +8,10 @@ import { ComponentConfig } from './interface'
 
 export interface CreateApiParam {
   fn: ApiFunction
-  file: string
 
-  fnName: string
+  id: string
+
+  httpPath: string
 }
 
 export interface HooksGatewayAdapter {

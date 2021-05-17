@@ -13,6 +13,7 @@ import { ComponentConfig } from './gateway/interface'
 import _ from 'lodash'
 import { HooksGatewayAdapter } from './gateway/adapter'
 import parseArgs from 'fn-args'
+import { ApiHttpMethod } from '../types/http'
 
 export class HooksComponent {
   config: ComponentConfig
@@ -90,12 +91,37 @@ export class HooksComponent {
     const modMiddleware = mod?.config?.middleware || []
     const funcs = _.pickBy<ApiFunction>(mod, _.isFunction)
 
-    for (const [key, fn] of Object.entries(funcs)) {
+    for (const [name, fn] of Object.entries(funcs)) {
       fn.middleware = (fn.middleware || (fn.middleware = []))
         .concat(modMiddleware)
         .map(this.useHooksMiddleware)
 
-      this.adapter.createApi({ fn, file, fnName: key })
+      const isExportDefault = name === 'default'
+      const functionName = isExportDefault ? '$default' : name
+      const id = this.config.router.getFunctionId(
+        file,
+        functionName,
+        isExportDefault
+      )
+      const containerId = 'hooks::' + id
+
+      const httpPath = this.config.router.getHTTPPath(
+        file,
+        functionName,
+        isExportDefault
+      )
+
+      const httpMethod: ApiHttpMethod =
+        parseArgs(fn).length === 0 ? 'GET' : 'POST'
+
+      // Set param for unit testing
+      fn._param = {
+        url: httpPath,
+        method: httpMethod,
+        meta: { functionName: id },
+      }
+
+      this.adapter.createApi({ fn, id: containerId, httpPath })
     }
   }
 
