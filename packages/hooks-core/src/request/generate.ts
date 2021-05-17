@@ -1,7 +1,6 @@
 import art from 'art-template'
 import { init, parse } from 'es-module-lexer'
-import { readFileSync, existsSync } from 'fs'
-import _ from 'lodash'
+import { existsSync, readFileSync } from 'fs'
 import { resolve } from 'path'
 
 import { ApiParam } from '..'

@@ -1,6 +1,5 @@
-import { HooksGatewayAdapter } from '../component/gateway/adapter'
-import { Class } from '../component/gateway/interface'
 import { HooksMiddleware } from './common'
+import { Class, HooksGatewayAdapter } from './gateway'
 
 export interface InternalConfig<T = HTTPRoute> {
   /**
