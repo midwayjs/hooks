@@ -1,4 +1,5 @@
 import { SuperAgentRequest } from 'superagent'
+
 import { superjson } from '@midwayjs/hooks-core'
 
 export function SuperJSONPlugin(enableSuperjson: boolean) {

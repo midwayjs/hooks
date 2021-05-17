@@ -1,5 +1,5 @@
-import { ServerRouter } from '../router'
 import { getConfig, getProjectRoot } from '../config'
+import { ServerRouter } from '../router'
 import { RuntimeConfig } from '../types/config'
 import { isDevelopment } from '../util'
 import { HooksComponent } from './component'

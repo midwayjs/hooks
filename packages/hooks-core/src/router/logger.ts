@@ -1,7 +1,6 @@
 /* istanbul ignore file */
-
-import { relative } from 'upath'
 import chalk from 'chalk'
+import { relative } from 'upath'
 
 export function duplicateLogger(
   root: string,
