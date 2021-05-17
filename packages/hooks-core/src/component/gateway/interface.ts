@@ -1,4 +1,5 @@
 import { ApiFunction } from '@midwayjs/hooks-core'
+
 import { ServerRouter } from '../../router'
 import { InternalConfig, RuntimeConfig } from '../../types/config'
 
