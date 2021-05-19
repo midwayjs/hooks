@@ -46,4 +46,4 @@ export type HTTPRoute = {
 export type ServerRoute<T = HTTPRoute> = BaseRoute & T
 
 export interface UserConfig<T = HTTPRoute>
-  extends Omit<InternalConfig<T>, 'build' | 'dev'> {}
+  extends Omit<InternalConfig<T>, 'build'> {}
