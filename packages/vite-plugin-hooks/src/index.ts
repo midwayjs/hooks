@@ -11,7 +11,7 @@ import {
 } from '@midwayjs/hooks-core'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
 
-export class VitePlugin extends Plugin {
+export class VitePlugin implements Plugin {
   root: string
   router: ServerRouter
 
@@ -19,14 +19,13 @@ export class VitePlugin extends Plugin {
   midwayPlugins: any[]
 
   constructor() {
-    super()
     this.midwayConfig = getConfig()
     this.root = getProjectRoot()
     this.router = new ServerRouter(this.root, this.midwayConfig, true)
   }
 
   name = 'vite:@midwayjs/hooks'
-  async transform(code: string, file: string) {
+  transform = async (code: string, file: string) => {
     if (!this.router.isApiFile(file)) {
       return null
     }
@@ -44,7 +43,7 @@ export class VitePlugin extends Plugin {
     }
   }
 
-  configureServer(server) {
+  configureServer = async (server) => {
     const devPack = getExpressDevPack(this.root, {
       sourceDir: join(this.root, this.midwayConfig.source),
       plugins: this.midwayPlugins,
