@@ -7,35 +7,60 @@ import {
   ServerRouter,
   getConfig,
   generate,
+  InternalConfig,
 } from '@midwayjs/hooks-core'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
 
-function plugin(): Plugin {
-  const root = getProjectRoot()
-  const config = getConfig()
-  const router = new ServerRouter(root, config, true)
+export class VitePlugin extends Plugin {
+  root: string
+  router: ServerRouter
 
-  return {
-    name: 'vite:@midwayjs/hooks',
-    async transform(code: string, file: string) {
-      if (!router.isApiFile(file)) {
-        return null
-      }
+  midwayConfig: InternalConfig
+  midwayPlugins: any[]
 
-      const sdk = await generate(
-        router.getBaseUrl(file),
-        code,
-        config.superjson,
-        config.request.client
-      )
+  constructor() {
+    super()
+    this.midwayConfig = getConfig()
+    this.root = getProjectRoot()
+    this.router = new ServerRouter(this.root, this.midwayConfig, true)
+  }
 
-      return {
-        code: sdk,
-        map: null,
-      }
-    },
-    config: () => ({
-      plugin: [tsconfigPaths({ root })],
+  name = 'vite:@midwayjs/hooks'
+  async transform(code: string, file: string) {
+    if (!this.router.isApiFile(file)) {
+      return null
+    }
+
+    const sdk = await generate(
+      this.router.getBaseUrl(file),
+      code,
+      this.midwayConfig.superjson,
+      this.midwayConfig.request.client
+    )
+
+    return {
+      code: sdk,
+      map: null,
+    }
+  }
+
+  configureServer(server) {
+    const devPack = getExpressDevPack(this.root, {
+      sourceDir: join(this.root, this.midwayConfig.source),
+      plugins: this.midwayPlugins,
+    })
+
+    server.middlewares.use(
+      devPack({
+        functionDir: this.root,
+        ignorePattern: this.midwayConfig.dev.ignorePattern,
+      })
+    )
+  }
+
+  config = () => {
+    return {
+      plugin: [tsconfigPaths({ root: this.root })],
       optimizeDeps: {
         include: ['@midwayjs/hooks-core/request'],
       },
@@ -49,22 +74,12 @@ function plugin(): Plugin {
       },
       build: {
         manifest: true,
-        outDir: config.build.viteOutDir,
+        outDir: this.midwayConfig.build.viteOutDir,
       },
-    }),
-    configureServer(server) {
-      const devPack = getExpressDevPack(root, {
-        sourceDir: join(root, config.source),
-      })
-
-      server.middlewares.use(
-        devPack({
-          functionDir: root,
-          ignorePattern: config.dev.ignorePattern,
-        })
-      )
-    },
+    }
   }
 }
 
-export default plugin
+export default (): Plugin => {
+  return new VitePlugin()
+}
