@@ -154,6 +154,10 @@ $ yarn watch
 $ yarn test
 ```
 
+## Contributor over time
+
+[![Contributor over time](https://contributor-graph-api.apiseven.com/contributors-svg?chart=contributorOverTime&repo=midwayjs/hooks)](https://www.apiseven.com/en/contributor-graph?chart=contributorOverTime&repo=midwayjs/hooks)
+
 ## license
 
 Midway Serverless based [MIT licensed](./LICENSE).
