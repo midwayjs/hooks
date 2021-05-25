@@ -79,6 +79,10 @@ export class VitePlugin implements Plugin {
   }
 }
 
-export default (): Plugin => {
+function createPlugin() {
   return new VitePlugin()
 }
+
+export default createPlugin
+
+module.exports = createPlugin
