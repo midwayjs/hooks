@@ -1,6 +1,6 @@
 <script lang="ts">
   import logo from './assets/svelte.png'
-  import Counter from './lib/Counter.svelte'
+  import Counter from './components/Counter.svelte'
   import api from './apis/lambda'
   import { onMount } from 'svelte'
   
