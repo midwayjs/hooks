@@ -9,6 +9,7 @@ import {
 } from '@midwayjs/hooks-core'
 import {
   createApp as createWebApp,
+  createFunctionApp as createFaaSApp,
   close,
   createHttpRequest,
 } from '@midwayjs/mock'
@@ -25,15 +26,16 @@ async function createAppImplementation<
   const cwd = process.cwd()
   process.chdir(root)
 
-  const app: IMidwayApplication<any> = await createWebApp(
+  const creator = isFunction ? createFaaSApp : createWebApp
+
+  const app: IMidwayApplication<any> = await creator(
     root,
     Object.assign(
       {
         baseDir: join(root, config.source),
       },
       options
-    ),
-    isFunction && '@midwayjs/serverless-app'
+    )
   )
 
   process.chdir(cwd)
