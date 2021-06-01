@@ -25,6 +25,7 @@ export class VitePlugin implements Plugin {
   }
 
   name = 'vite:@midwayjs/hooks'
+
   transform = async (code: string, file: string) => {
     if (!this.router.isApiFile(file)) {
       return null
