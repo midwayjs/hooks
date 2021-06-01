@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "@midwayjs/hooks-core": "^2.2.0-next.9",
-    "@midwayjs/serverless-dev-pack": "^1.2.67",
-    "vite": "^2.3.3",
+    "@midwayjs/serverless-dev-pack": "^1.2.68",
+    "vite": "^2.3.4",
     "vite-tsconfig-paths": "^2.5.1"
   },
   "publishConfig": {
