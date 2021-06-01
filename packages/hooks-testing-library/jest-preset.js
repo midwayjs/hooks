@@ -46,12 +46,13 @@ module.exports = {
         color: 'magenta',
       },
       // ignore /src/apis/config/config.test.ts
-      testPathIgnorePatterns: ['/node_modules/', '/config/config.test.ts'],
-      testEnvironment: path.resolve(__dirname, './jest-preset/environment.js'),
-      testMatch: [
-        path.join('**', config.source, '**/__tests__/**/*.[jt]s?(x)'),
-        path.join('**', config.source, '**/?(*.)+(spec|test).[jt]s?(x)'),
+      testPathIgnorePatterns: [
+        '/node_modules/',
+        '/config/config.test.ts',
+        '<rootDir>/build',
+        '<rootDir>/.serverless',
       ],
+      testEnvironment: path.resolve(__dirname, './jest-preset/environment.js'),
       setupFilesAfterEnv: [
         path.resolve(__dirname, './jest-preset/setup-after-env.js'),
       ],
