@@ -24,19 +24,7 @@ if (compilerOptions.paths) {
 const common = {
   preset: 'ts-jest',
   clearMocks: true,
-  /**
-   * ignore /src/apis/config/config.test.ts
-   */
-  testPathIgnorePatterns: ['/node_modules/', '/config/config.test.ts'],
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
-  transform: {
-    '^.+\\.(ts|tsx)$': [
-      'esbuild-jest',
-      {
-        sourcemap: true,
-      },
-    ],
-  },
   moduleDirectories: ['node_modules', '<rootDir>'],
   modulePathIgnorePatterns: ['<rootDir>/run'],
   moduleNameMapper,
@@ -57,6 +45,8 @@ module.exports = {
         name: 'SERVER',
         color: 'magenta',
       },
+      // ignore /src/apis/config/config.test.ts
+      testPathIgnorePatterns: ['/node_modules/', '/config/config.test.ts'],
       testEnvironment: path.resolve(__dirname, './jest-preset/environment.js'),
       testMatch: [
         path.join('**', config.source, '**/__tests__/**/*.[jt]s?(x)'),

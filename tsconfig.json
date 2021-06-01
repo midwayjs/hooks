@@ -17,7 +17,8 @@
       "@midwayjs/*": ["packages/*/src"]
     },
     "skipLibCheck": true,
-    "noEmit": true
+    "noEmit": true,
+    "noImplicitOverride": true
   },
   "exclude": ["*.test.ts", "dist"]
 }
