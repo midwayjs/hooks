@@ -118,13 +118,11 @@ export class HTTPGateway implements HooksGatewayAdapter {
     const fn: ApiFunction = async () => {}
     fn.middleware = [mw]
 
-    const apiFn = this.createApi({
+    this.createApi({
       id: 'hooks:host',
       httpPath: '/*',
       fn,
     })
-
-    this.container.bind('hooks:host', apiFn)
   }
 
   get isViteProject() {
