@@ -19,18 +19,18 @@
   },
   "devDependencies": {
     "@midwayjs/cli": "^1.2.69",
-    "@midwayjs/cli-plugin-faas": "^1.2.70",
-    "@midwayjs/fcli-plugin-fc": "^1.2.70",
+    "@midwayjs/cli-plugin-faas": "^1.2.69",
+    "@midwayjs/fcli-plugin-fc": "^1.2.69",
     "@midwayjs/hooks-testing-library": "^2.2.1",
-    "@midwayjs/serverless-app": "^2.10.14",
+    "@midwayjs/serverless-app": "^2.10.17",
     "@midwayjs/serverless-fc-trigger": "^2.10.14",
     "@midwayjs/vite-plugin-hooks": "^2.2.1",
     "@types/jest": "^26.0.23",
-    "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.4",
+    "@types/react": "^17.0.8",
+    "@types/react-dom": "^17.0.5",
     "@vitejs/plugin-react-refresh": "^1.3.3",
     "jest": "^26.6.3",
     "typescript": "^4.2.4",
-    "vite": "^2.3.3"
+    "vite": "^2.3.4"
   }
 }

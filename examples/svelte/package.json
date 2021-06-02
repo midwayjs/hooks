@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@midwayjs/cli": "^1.2.69",
-    "@midwayjs/cli-plugin-build": "^1.2.65",
+    "@midwayjs/cli-plugin-build": "^1.2.69",
     "@midwayjs/hooks-testing-library": "^2.2.1",
     "@midwayjs/vite-plugin-hooks": "^2.2.1",
     "@svitejs/vite-plugin-svelte": "^0.11.1",
@@ -28,6 +28,6 @@
     "svelte": "^3.38.2",
     "svelte-preprocess": "^4.7.3",
     "typescript": "^4.2.4",
-    "vite": "^2.3.3"
+    "vite": "^2.3.4"
   }
 }
