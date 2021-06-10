@@ -1,6 +1,6 @@
 {
   "name": "hooks-react-faas",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -24,7 +24,7 @@
     "@midwayjs/hooks-testing-library": "^2.2.2",
     "@midwayjs/serverless-app": "^2.10.17",
     "@midwayjs/serverless-fc-trigger": "^2.10.14",
-    "@midwayjs/vite-plugin-hooks": "^2.2.2",
+    "@midwayjs/vite-plugin-hooks": "^2.2.3",
     "@types/jest": "^26.0.23",
     "@types/react": "^17.0.9",
     "@types/react-dom": "^17.0.7",
