@@ -1,6 +1,6 @@
 {
   "name": "svelte",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "private": true,
   "scripts": {
     "start": "node bootstrap",
@@ -20,7 +20,7 @@
     "@midwayjs/cli": "^1.2.71",
     "@midwayjs/cli-plugin-build": "^1.2.70",
     "@midwayjs/hooks-testing-library": "^2.2.2",
-    "@midwayjs/vite-plugin-hooks": "^2.2.2",
+    "@midwayjs/vite-plugin-hooks": "^2.2.3",
     "@svitejs/vite-plugin-svelte": "^0.11.1",
     "@types/jest": "^26.0.23",
     "@types/koa-bodyparser": "^4.3.1",
