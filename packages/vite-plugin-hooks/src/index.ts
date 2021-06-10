@@ -4,6 +4,6 @@ function createPlugin() {
   return new VitePlugin()
 }
 
-module.exports = createPlugin
+exports = module.exports = createPlugin
 export default createPlugin
 export { VitePlugin }
