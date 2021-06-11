@@ -44,7 +44,7 @@ export class HooksComponent {
               return
             }
 
-            // Initalize container
+            // Initialize container
             if (!this.adapter.container) {
               this.adapter.container = container
             }
