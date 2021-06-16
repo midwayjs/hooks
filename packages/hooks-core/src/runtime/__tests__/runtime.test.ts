@@ -1,11 +1,11 @@
-import { als } from '@midwayjs/hooks-core'
+import { als } from '../'
 import {
   useConfig,
   useContext,
   useInject,
   useLogger,
   usePlugin,
-} from '@midwayjs/hooks'
+} from '../hooks'
 
 test('', () => {
   const mockContext = {

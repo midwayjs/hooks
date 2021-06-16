@@ -1,6 +1,7 @@
 export * from './router'
 export * from './component'
 export * from './runtime'
+export * from './runtime/hooks'
 export * from './request'
 export * from './request/generate'
 export * from './config'
