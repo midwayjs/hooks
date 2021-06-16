@@ -6,7 +6,7 @@ import {
   getProjectRoot,
   ServerRouter,
   getConfig,
-  generate,
+  createApiClient,
   InternalConfig,
 } from '@midwayjs/hooks-core'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
@@ -31,7 +31,7 @@ export class VitePlugin implements Plugin {
       return null
     }
 
-    const sdk = await generate(
+    const client = await createApiClient(
       this.router.getBaseUrl(file),
       code,
       this.midwayConfig.superjson,
@@ -39,7 +39,7 @@ export class VitePlugin implements Plugin {
     )
 
     return {
-      code: sdk,
+      code: client,
       map: null,
     }
   }

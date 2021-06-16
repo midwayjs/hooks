@@ -10,7 +10,7 @@ interface RenderParam extends Partial<ApiParam> {
   name?: string
 }
 
-export async function generate(
+export async function createApiClient(
   baseUrl: string,
   code: string,
   superjson: boolean,
