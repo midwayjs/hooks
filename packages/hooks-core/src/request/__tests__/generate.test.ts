@@ -1,8 +1,9 @@
-import { generate } from '../generate'
 import { wrap } from 'jest-snapshot-serializer-raw'
 
+import { createApiClient } from '../generate'
+
 test('should transform exports to api function', async () => {
-  const fixtures: Parameters<typeof generate>[] = [
+  const fixtures: Parameters<typeof createApiClient>[] = [
     [
       '/',
       'export default async () => {}',
@@ -36,6 +37,6 @@ test('should transform exports to api function', async () => {
   ]
 
   for (const fixture of fixtures) {
-    expect(wrap(await generate(...fixture))).toMatchSnapshot()
+    expect(wrap(await createApiClient(...fixture))).toMatchSnapshot()
   }
 })
