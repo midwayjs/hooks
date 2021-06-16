@@ -22,7 +22,3 @@ export const als = {
     })
   },
 }
-
-export function useContext<T = any>(): T {
-  return als.getStore('ctx')
-}

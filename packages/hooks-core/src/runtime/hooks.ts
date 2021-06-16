@@ -1,7 +1,10 @@
 import type { IMidwayContainer } from '@midwayjs/core'
-import { useContext } from '@midwayjs/hooks-core'
 
-export { useContext } from '@midwayjs/hooks-core'
+import { als } from './index'
+
+export function useContext<T = any>(): T {
+  return als.getStore('ctx')
+}
 
 export function useLogger() {
   const ctx = useContext()

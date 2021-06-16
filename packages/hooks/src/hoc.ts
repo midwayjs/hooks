@@ -18,3 +18,12 @@ export function withController<T extends ApiFunction>(
 
   return withControllerProxy as T
 }
+
+export function withMiddleware<T extends ApiFunction>(
+  middleware: HooksMiddleware,
+  func: T
+) {
+  const proxy: ApiFunction = async (...args: any[]) => func.apply(this, args)
+  proxy.middleware = middleware
+  return proxy as T
+}
