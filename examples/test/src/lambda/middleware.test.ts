@@ -1,5 +1,5 @@
 import { createApp } from '@midwayjs/hooks-testing-library';
-import api from './index';
+import api from './middleware';
 
 test('middleware', async () => {
   const app = await createApp();

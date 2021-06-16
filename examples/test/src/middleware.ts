@@ -1,5 +1,5 @@
-import { Context, IMidwayKoaNext } from '@midwayjs/koa';
 import { useContext } from '@midwayjs/hooks';
+import { Context, IMidwayKoaNext } from '@midwayjs/koa';
 
 export function createLogger(level: string) {
   return async (next: IMidwayKoaNext) => {
