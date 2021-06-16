@@ -1,5 +1,5 @@
+import api from './server/api';
 import './style.css';
-import api from './function/api';
 
 async function bootstrap() {
   const response = await api();
