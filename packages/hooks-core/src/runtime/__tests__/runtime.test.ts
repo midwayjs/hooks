@@ -1,11 +1,5 @@
-import { als } from '../'
-import {
-  useConfig,
-  useContext,
-  useInject,
-  useLogger,
-  usePlugin,
-} from '../hooks'
+import { als, useContext } from '../'
+import { useConfig, useInject, useLogger, usePlugin } from '../hooks'
 
 test('', () => {
   const mockContext = {
