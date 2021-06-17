@@ -19,9 +19,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@midwayjs/bootstrap": "^2.10.14",
-    "@midwayjs/core": "^2.10.14",
-    "@midwayjs/decorator": "^2.10.14",
+    "@midwayjs/bootstrap": "^2.11.0",
+    "@midwayjs/core": "^2.11.0",
+    "@midwayjs/decorator": "^2.11.0",
     "art-template": "^4.13.2",
     "asynchronous-local-storage": "^1.0.2",
     "axios": "^0.21.1",
@@ -36,14 +36,14 @@
     "lodash": "^4.17.21",
     "pkg-dir": "^5.0.0",
     "superjson": "^1.7.4",
-    "tslib": "^2.2.0",
+    "tslib": "^2.3.0",
     "upath": "^2.0.1"
   },
   "devDependencies": {
     "@types/es-module-lexer": "^0.3.0",
     "@types/koa-static-cache": "^5.1.0",
     "@types/lodash": "^4.14.170",
-    "@types/prettier": "^2.2.3",
+    "@types/prettier": "^2.3.0",
     "jest-snapshot-serializer-raw": "^1.2.0",
     "prettier": "^2.3.1"
   },
