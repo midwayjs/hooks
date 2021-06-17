@@ -1,5 +1,6 @@
+import { join } from 'upath'
+
 import { getConfig } from '../'
-import { join } from 'path'
 
 test('load user config', () => {
   const fixtures = ['js', 'ts', 'ts-export-default']
