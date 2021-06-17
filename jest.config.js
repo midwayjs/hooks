@@ -19,8 +19,9 @@ module.exports = {
   coveragePathIgnorePatterns: [
     'node_modules',
     '.serverless',
-    '__tests__',
     'examples',
+    'fixtures',
+    '__tests__',
   ],
   snapshotSerializers: ['jest-serializer-path', 'jest-snapshot-serializer-raw'],
   testTimeout: 1000 * 30,
@@ -29,4 +30,9 @@ module.exports = {
     'jest-watch-typeahead/testname',
   ],
   forceExit: true,
+  globals: {
+    'ts-jest': {
+      isolatedModules: true,
+    },
+  },
 }
