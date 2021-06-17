@@ -1,7 +1,6 @@
-import { defineConfig } from '@midwayjs/hooks';
+import { defineConfig } from '@midwayjs/hooks'
 
 export default defineConfig({
-  superjson: true,
   source: 'src',
   routes: [
     {
@@ -14,4 +13,4 @@ export default defineConfig({
       underscore: true,
     },
   ],
-});
+})
