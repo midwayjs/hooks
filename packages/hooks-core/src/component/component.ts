@@ -1,7 +1,8 @@
 import parseArgs from 'fn-args'
 import { sync } from 'globby'
 import _ from 'lodash'
-import { join } from 'path'
+import path from 'path'
+import upath from 'upath'
 
 import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
 
@@ -28,7 +29,8 @@ export class HooksComponent {
 
     let count = 0
     const totalCount = routes.reduce((totalCount, route) => {
-      const dir = join(router.source, route.baseDir)
+      // Windows
+      const dir = upath.join(router.source, route.baseDir)
       const files = sync([dir]).filter((file) => router.isApiFile(file))
       return totalCount + files.length
     }, 0)
@@ -37,7 +39,8 @@ export class HooksComponent {
       namespace: '@midwayjs/hooks',
       directoryResolveFilter: routes.map((route) => {
         return {
-          pattern: join(router.source, route.baseDir),
+          // Windows
+          pattern: path.join(router.source, route.baseDir),
           ignoreRequire: true,
           filter: (_: void, file: string, container: IMidwayContainer) => {
             if (!router.isApiFile(file)) {

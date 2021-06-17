@@ -1,7 +1,7 @@
 import createJITI from 'jiti'
 import _ from 'lodash'
-import path from 'path'
 import { sync } from 'pkg-dir'
+import path from 'upath'
 import URL from 'url'
 
 import { HTTPRoute, InternalConfig, UserConfig } from '../types/config'
