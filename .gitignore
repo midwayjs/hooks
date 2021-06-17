@@ -30,3 +30,5 @@ code.zip
 build
 eagleeye
 sandbox
+!**/tests/**/dist
+!**/tests/**/build
