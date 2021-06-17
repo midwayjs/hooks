@@ -34,7 +34,6 @@
     "@trivago/prettier-plugin-sort-imports": "^2.0.2",
     "codecov": "^3.8.2",
     "esbuild": "^0.9.7",
-    "esbuild-jest": "^0.5.0",
     "execa": "^4.0.3",
     "husky": "^4.2.3",
     "jest": "^26.6.3",

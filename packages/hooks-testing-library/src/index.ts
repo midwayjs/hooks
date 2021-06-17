@@ -16,12 +16,20 @@ import {
 
 import { SuperJSONPlugin } from './plugin'
 
-async function createAppImplementation<
-  T extends IMidwayFramework<any, U>,
-  U = T['configurationOptions']
->(options: U, isFunction: boolean) {
-  const root = getProjectRoot((global as any).testPath)
+export type CreateAppOption = {
+  root?: string
+}
+
+async function createAppImplementation(
+  options: CreateAppOption,
+  isFunction: boolean
+) {
+  const root = getProjectRoot(options?.root ?? (global as any).testPath)
   const config = getConfig(root)
+
+  if (options?.root) {
+    delete options?.root
+  }
 
   const cwd = process.cwd()
   process.chdir(root)
@@ -44,14 +52,14 @@ async function createAppImplementation<
 
 export async function createApp<
   T extends IMidwayFramework<any, U>,
-  U = T['configurationOptions']
+  U = T['configurationOptions'] & CreateAppOption
 >(options?: U) {
-  return createAppImplementation<T, U>(options, false)
+  return createAppImplementation(options, false)
 }
 
 export async function createFunctionApp<
   T extends IMidwayFramework<any, U>,
-  U = T['configurationOptions']
+  U = T['configurationOptions'] & CreateAppOption
 >(options?: U) {
   return createAppImplementation(options, true)
 }

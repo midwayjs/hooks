@@ -4,15 +4,6 @@ const path = require('path')
 /** @type {import('@jest/types').Config.InitialOptions} */
 module.exports = {
   preset: 'ts-jest',
-  transform: {
-    '^.+\\.(ts|tsx)$': [
-      'esbuild-jest',
-      {
-        sourcemap: true,
-      },
-    ],
-  },
-  maxWorkers: 1,
   testEnvironment: path.resolve(
     __dirname,
     './packages/hooks-testing-library/jest-preset/environment.js'
