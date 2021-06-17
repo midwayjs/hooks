@@ -1,7 +1,7 @@
 import art from 'art-template'
 import { init, parse } from 'es-module-lexer'
 import { existsSync, readFileSync } from 'fs'
-import { resolve } from 'path'
+import { resolve } from 'upath'
 
 import { ApiParam } from '..'
 
