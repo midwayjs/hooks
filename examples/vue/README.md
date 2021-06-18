@@ -4,7 +4,7 @@ This template should help get you started developing with Midway Hooks + Vue 3 +
 
 ## Getting Started
 
-Docs：[Midway Hooks - Getting Started](https://www.yuque.com/midwayjs/midway_v2/integration_introduction?translate=en)
+Docs：[Midway Hooks - Getting Started](https://www.yuque.com/midwayjs/midway_v2/hooks_intro?translate=en)
 
 ### Directory Structure
 

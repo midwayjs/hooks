@@ -4,7 +4,7 @@ React + Prisma + Midway + Koa
 
 Docs：
 
-- [Midway Hooks - Getting Started](https://www.yuque.com/midwayjs/midway_v2/integration_introduction?translate=en)
+- [Midway Hooks - Getting Started](https://www.yuque.com/midwayjs/midway_v2/hooks_intro?translate=en)
 - [Prisma](https://www.prisma.io/)
 
 ### Directory Structure
