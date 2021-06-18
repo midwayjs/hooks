@@ -1,6 +1,6 @@
 ## Getting Started
 
-Docs：[Midway Hooks - Getting Started](https://www.yuque.com/midwayjs/midway_v2/integration_introduction?translate=en)
+Docs：[Midway Hooks - Getting Started](https://www.yuque.com/midwayjs/midway_v2/hooks_intro?translate=en)
 
 ### Directory Structure
 
