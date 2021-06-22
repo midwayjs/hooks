@@ -99,7 +99,6 @@ export class HooksComponent {
         functionName,
         isExportDefault
       )
-      const containerId = 'hooks::' + id
 
       const httpPath = this.config.router.getHTTPPath(
         file,
@@ -117,7 +116,7 @@ export class HooksComponent {
         meta: { functionName: id },
       }
 
-      this.adapter.createApi({ fn, id: containerId, httpPath })
+      this.adapter.createApi({ fn, id, httpPath })
     }
   }
 
