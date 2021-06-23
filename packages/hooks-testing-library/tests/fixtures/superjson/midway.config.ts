@@ -1,11 +1,12 @@
-import { defineConfig } from '@midwayjs/hooks';
+import { defineConfig } from '@midwayjs/hooks'
 
 export default defineConfig({
-  source: 'src/apis',
+  superjson: true,
+  source: 'src',
   routes: [
     {
       baseDir: 'lambda',
       basePath: '/api',
     },
   ],
-});
+})
