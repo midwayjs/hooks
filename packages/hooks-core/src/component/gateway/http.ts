@@ -18,7 +18,7 @@ import {
   CreateApiParam,
   HooksGatewayAdapter,
 } from '../../types/gateway'
-import { isDevelopment } from '../../util'
+import { isDevelopment, useHooksMiddleware } from '../../util'
 
 export class HTTPGateway implements HooksGatewayAdapter {
   config: ComponentConfig
@@ -31,6 +31,9 @@ export class HTTPGateway implements HooksGatewayAdapter {
 
   createApi(param: CreateApiParam) {
     const { id, fn, httpPath } = param
+
+    // 设置中间件
+    fn.middleware.unshift(...this.getMiddleware())
 
     // Source: https://www.typescriptlang.org/play?noImplicitAny=false&strictNullChecks=false&strictFunctionTypes=false&strictPropertyInitialization=false&strictBindCallApply=false&noImplicitThis=false&noImplicitReturns=false&alwaysStrict=false&importHelpers=true&emitDecoratorMetadata=false&ts=4.1.5#code/JYWwDg9gTgLgBAbzgSQHYCsCmBjGAaOAYQlRiggBsLMoCBBKggBXIDdgATTOAXzgDNyIOAHIAAiE4B3AIYBPdAGcA9F2zQZMaCIBQO9akXx+qOAF44ACgB0tmVADmigFxwZqOQG0AugEpzAHyIPHpiLBDsXJa+OmLEpORUNJYiyiIx2BQyiopwAGIArqi4wCTxMDLAqDSIOnD1cGJoWLjRdQ24AB6u7nJ6DY0MFCkiBEiSHBzUslCYrj68MQPZcsVwABbuUzXRtQP11PD2TuZwMOvAitZd1rMAjgWYRtYARhAcctbHuQA+P3A+dr7OCzGAFKCmGSyYDGVA2OyORRLBohEJAA
     let FunctionContainer = class FunctionContainer {
@@ -55,32 +58,38 @@ export class HTTPGateway implements HooksGatewayAdapter {
     this.container.bind(id, FunctionContainer)
   }
 
-  onError(ctx: any, error: any) {
-    if (this.config.internal.superjson) {
-      ctx.status = 500
-      ctx.body = superjson.serialize(error)
-    } else {
-      throw error
+  getMiddleware() {
+    const mws = [this.handleError]
+
+    const enableSuperjson = this.config.internal.superjson
+    if (enableSuperjson) {
+      mws.push(this.deserializeSuperjson)
+    }
+
+    return mws.map(useHooksMiddleware)
+  }
+
+  async deserializeSuperjson(next: any) {
+    await next()
+    const ctx = useContext()
+    if (ctx.type.includes('application/json')) {
+      ctx.body = superjson.serialize(ctx.body)
     }
   }
 
-  getGlobalMiddleware() {
-    const mws = []
-    const enableSuperjson = this.config.internal.superjson
-
-    const deserialize = async (next: any) => {
+  async handleError(next: any) {
+    try {
       await next()
+    } catch (error) {
       const ctx = useContext()
-      if (ctx.type.includes('application/json')) {
-        ctx.body = superjson.serialize(ctx.body)
+
+      if (this.config.internal.superjson) {
+        ctx.status = 500
+        ctx.body = superjson.serialize(error)
+      } else {
+        throw error
       }
     }
-
-    if (enableSuperjson) {
-      mws.push(deserialize)
-    }
-
-    return mws
   }
 
   afterCreate() {

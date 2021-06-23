@@ -10,6 +10,7 @@ import { als } from '../runtime'
 import { ApiFunction, ApiModule } from '../types/common'
 import { ComponentConfig, HooksGatewayAdapter } from '../types/gateway'
 import { ApiHttpMethod } from '../types/http'
+import { useHooksMiddleware } from '../util'
 
 export class HooksComponent {
   config: ComponentConfig
@@ -90,7 +91,7 @@ export class HooksComponent {
     for (const [name, fn] of Object.entries(funcs)) {
       fn.middleware = (fn.middleware || (fn.middleware = []))
         .concat(modMiddleware)
-        .map(this.useHooksMiddleware)
+        .map(useHooksMiddleware)
 
       const isExportDefault = name === 'default'
       const functionName = isExportDefault ? '$default' : name
@@ -123,35 +124,14 @@ export class HooksComponent {
   getGlobalMiddleware() {
     const mws = [this.useAsyncLocalStorage]
     this.config.runtime.middleware?.forEach?.((mw) =>
-      mws.push(this.useHooksMiddleware(mw))
+      mws.push(useHooksMiddleware(mw))
     )
-    this.adapter?.getGlobalMiddleware?.()?.forEach((mw) => {
-      mws.push(this.useHooksMiddleware(mw))
-    })
     return mws
   }
 
   useAsyncLocalStorage = async (ctx: any, next: any) => {
     await als.run({ ctx }, async () => {
-      try {
-        await next()
-      } catch (error) {
-        this.adapter.onError(ctx, error)
-      }
+      await next()
     })
-  }
-
-  useHooksMiddleware(fn: (...args: any[]) => any) {
-    return (...args: any[]) => {
-      /**
-       * Hooks middleware
-       * const middleware = (next) => { const ctx = useContext() }
-       */
-      if (parseArgs(fn).length === 1) {
-        const next = _.last(args)
-        return fn(next)
-      }
-      return fn(...args)
-    }
   }
 }

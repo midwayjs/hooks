@@ -34,8 +34,4 @@ export interface HooksGatewayAdapter {
 
   createApi(config: CreateApiParam): void
   afterCreate?(): void
-
-  onError(ctx: any, error: any): void
-
-  getGlobalMiddleware?(): any[]
 }
