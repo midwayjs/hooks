@@ -128,7 +128,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
     fn.middleware = [mw]
 
     this.createApi({
-      id: 'hooks:host',
+      id: 'hooks-host',
       httpPath: '/*',
       fn,
     })
