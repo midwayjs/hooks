@@ -6,19 +6,24 @@ import upath from 'upath'
 
 import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
 
+import { ServerRoute } from '..'
 import { als } from '../runtime'
 import { ApiFunction, ApiModule } from '../types/common'
 import { ComponentConfig, HooksGatewayAdapter } from '../types/gateway'
 import { ApiHttpMethod } from '../types/http'
+import { useHooksMiddleware } from '../util'
+import { HTTPGateway } from './gateway/http'
 
 export class HooksComponent {
   config: ComponentConfig
 
-  adapter: HooksGatewayAdapter
+  adapters: HooksGatewayAdapter[]
 
   constructor(config: ComponentConfig) {
     this.config = config
-    this.adapter = new config.runtime.adapter(this.config)
+    this.adapters = config.runtime.gatewayAdapter.map(
+      (adapter) => new adapter(this.config)
+    )
   }
 
   init() {
@@ -48,19 +53,18 @@ export class HooksComponent {
             }
 
             // Initialize container
-            if (!this.adapter.container) {
-              this.adapter.container = container
-            }
+            this.adapters.forEach((adapter) => (adapter.container = container))
 
             // Create api function
+            const adapter = this.getAdapterByRoute(route)
             const mod: ApiModule = require(file)
-            this.createApi(mod, file)
+            this.createApi(mod, file, adapter)
             container.bindClass(mod, '', file)
 
             // Call afterCreate hooks
             count++
             if (count === totalCount) {
-              this.adapter.afterCreate?.()
+              this.adapters.forEach((adapter) => adapter.afterCreate?.())
             }
           },
         }
@@ -69,7 +73,7 @@ export class HooksComponent {
 
     configuration
       .onReady((_, app) => {
-        this.adapter.app = app
+        this.adapters.forEach((adapter) => (adapter.app = app))
 
         // Setup global middleware
         for (const mw of this.getGlobalMiddleware()) {
@@ -83,14 +87,26 @@ export class HooksComponent {
     }
   }
 
-  createApi(mod: ApiModule, file: string) {
+  getAdapterByRoute(route: ServerRoute<any>) {
+    const adapter = this.adapters.find((adapter) => adapter.is(route))
+
+    if (!adapter) {
+      throw new Error(
+        `Can't find the correct gateway adapter, please check if midway.config.ts is correct`
+      )
+    }
+
+    return adapter
+  }
+
+  createApi(mod: ApiModule, file: string, adapter: HooksGatewayAdapter) {
     const modMiddleware = mod?.config?.middleware || []
     const funcs = _.pickBy<ApiFunction>(mod, _.isFunction)
 
     for (const [name, fn] of Object.entries(funcs)) {
       fn.middleware = (fn.middleware || (fn.middleware = []))
         .concat(modMiddleware)
-        .map(this.useHooksMiddleware)
+        .map(useHooksMiddleware)
 
       const isExportDefault = name === 'default'
       const functionName = isExportDefault ? '$default' : name
@@ -100,11 +116,15 @@ export class HooksComponent {
         isExportDefault
       )
 
-      const httpPath = this.config.router.getHTTPPath(
-        file,
-        functionName,
-        isExportDefault
-      )
+      let httpPath = ''
+
+      if (adapter instanceof HTTPGateway) {
+        httpPath = this.config.router.getHTTPPath(
+          file,
+          functionName,
+          isExportDefault
+        )
+      }
 
       const httpMethod: ApiHttpMethod =
         parseArgs(fn).length === 0 ? 'GET' : 'POST'
@@ -116,42 +136,21 @@ export class HooksComponent {
         meta: { functionName: id },
       }
 
-      this.adapter.createApi({ fn, id, httpPath })
+      adapter.createApi({ fn, id, httpPath })
     }
   }
 
   getGlobalMiddleware() {
     const mws = [this.useAsyncLocalStorage]
     this.config.runtime.middleware?.forEach?.((mw) =>
-      mws.push(this.useHooksMiddleware(mw))
+      mws.push(useHooksMiddleware(mw))
     )
-    this.adapter?.getGlobalMiddleware?.()?.forEach((mw) => {
-      mws.push(this.useHooksMiddleware(mw))
-    })
     return mws
   }
 
   useAsyncLocalStorage = async (ctx: any, next: any) => {
     await als.run({ ctx }, async () => {
-      try {
-        await next()
-      } catch (error) {
-        this.adapter.onError(ctx, error)
-      }
+      await next()
     })
-  }
-
-  useHooksMiddleware(fn: (...args: any[]) => any) {
-    return (...args: any[]) => {
-      /**
-       * Hooks middleware
-       * const middleware = (next) => { const ctx = useContext() }
-       */
-      if (parseArgs(fn).length === 1) {
-        const next = _.last(args)
-        return fn(next)
-      }
-      return fn(...args)
-    }
   }
 }

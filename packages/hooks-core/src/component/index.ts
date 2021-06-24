@@ -5,13 +5,11 @@ import { isDevelopment } from '../util'
 import { HooksComponent } from './component'
 import { HTTPGateway } from './gateway/http'
 
-export { HTTPGateway } from './gateway/http'
-
 /**
  * Create hooks component
  */
 export const hooks = (runtime: RuntimeConfig = {}) => {
-  runtime.adapter = runtime.adapter || HTTPGateway
+  ;(runtime.gatewayAdapter || (runtime.gatewayAdapter = [])).push(HTTPGateway)
 
   const root = getProjectRoot()
   const internal = getConfig()
