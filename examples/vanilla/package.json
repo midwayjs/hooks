@@ -13,17 +13,17 @@
   },
   "dependencies": {
     "@midwayjs/hooks": "^2.2.4",
-    "@midwayjs/koa": "^2.11.0",
+    "@midwayjs/koa": "^2.11.1",
     "koa-bodyparser": "^4.3.0"
   },
   "devDependencies": {
-    "@midwayjs/cli": "^1.2.71",
-    "@midwayjs/cli-plugin-build": "^1.2.70",
+    "@midwayjs/cli": "^1.2.72",
+    "@midwayjs/cli-plugin-build": "^1.2.72",
     "@midwayjs/hooks-testing-library": "^2.2.4",
     "@midwayjs/vite-plugin-hooks": "^2.2.4",
     "@types/jest": "^26.0.23",
     "@types/koa-bodyparser": "^4.3.1",
     "jest": "^26.6.3",
-    "vite": "^2.3.7"
+    "vite": "^2.3.8"
   }
 }
