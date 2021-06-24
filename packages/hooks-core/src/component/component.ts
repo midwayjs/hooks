@@ -21,7 +21,7 @@ export class HooksComponent {
 
   constructor(config: ComponentConfig) {
     this.config = config
-    this.adapters = config.runtime.gatewayAdapters.map(
+    this.adapters = config.runtime.gatewayAdapter.map(
       (adapter) => new adapter(this.config)
     )
   }

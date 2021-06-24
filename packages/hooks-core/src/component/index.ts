@@ -9,7 +9,7 @@ import { HTTPGateway } from './gateway/http'
  * Create hooks component
  */
 export const hooks = (runtime: RuntimeConfig = {}) => {
-  ;(runtime.gatewayAdapters || (runtime.gatewayAdapters = [])).push(HTTPGateway)
+  ;(runtime.gatewayAdapter || (runtime.gatewayAdapter = [])).push(HTTPGateway)
 
   const root = getProjectRoot()
   const internal = getConfig()

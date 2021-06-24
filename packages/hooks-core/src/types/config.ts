@@ -28,7 +28,7 @@ export type RuntimeConfig = {
    */
   middleware?: HooksMiddleware
 
-  gatewayAdapters?: Class<HooksGatewayAdapter>[]
+  gatewayAdapter?: Class<HooksGatewayAdapter>[]
 }
 
 export type BaseRoute = {

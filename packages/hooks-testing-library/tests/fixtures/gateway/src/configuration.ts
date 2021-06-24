@@ -7,7 +7,7 @@ import { CustomGateway } from './custom'
 export default createConfiguration({
   imports: [
     hooks({
-      gatewayAdapters: [CustomGateway],
+      gatewayAdapter: [CustomGateway],
       middleware: [bodyParser()],
     }),
   ],
