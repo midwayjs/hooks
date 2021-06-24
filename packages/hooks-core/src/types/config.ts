@@ -28,7 +28,7 @@ export type RuntimeConfig = {
    */
   middleware?: HooksMiddleware
 
-  adapter?: Class<HooksGatewayAdapter>
+  gatewayAdapters?: Class<HooksGatewayAdapter>[]
 }
 
 export type BaseRoute = {
@@ -38,7 +38,7 @@ export type BaseRoute = {
 export type HTTPRoute = {
   basePath: string
   /**
-   * @deprecated
+   * @deprecated Will remove in next
    */
   underscore?: boolean
 }

@@ -1,5 +1,9 @@
 import { existsSync } from 'fs'
 import staticCache from 'koa-static-cache'
+import {
+  HTTPRoute,
+  ServerRoute,
+} from 'packages/hooks-core/dist/midwayjs-hooks-core.cjs'
 import { __decorate } from 'tslib'
 import { join } from 'upath'
 
@@ -27,6 +31,10 @@ export class HTTPGateway implements HooksGatewayAdapter {
 
   constructor(config: ComponentConfig) {
     this.config = config
+  }
+
+  is(route: ServerRoute<HTTPRoute>) {
+    return !!route?.basePath
   }
 
   createApi(param: CreateApiParam) {
@@ -91,7 +99,6 @@ export class HTTPGateway implements HooksGatewayAdapter {
       }
     }
   }
-
   afterCreate() {
     if (isDevelopment()) {
       return

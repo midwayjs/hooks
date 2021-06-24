@@ -6,7 +6,7 @@ import {
 
 import { ApiFunction } from '..'
 import { ServerRouter } from '../router'
-import { InternalConfig, RuntimeConfig } from './config'
+import { InternalConfig, RuntimeConfig, ServerRoute } from './config'
 
 export type ComponentConfig = {
   runtime: RuntimeConfig
@@ -34,4 +34,6 @@ export interface HooksGatewayAdapter {
 
   createApi(config: CreateApiParam): void
   afterCreate?(): void
+
+  is(route: ServerRoute<any>): boolean
 }
