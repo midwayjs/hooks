@@ -4,6 +4,7 @@ import { Class, HooksGatewayAdapter } from './gateway'
 export interface InternalConfig<T = HTTPRoute> {
   /**
    * @default false
+   * @deprecated will be removed in next version.
    * Enable superjson to serialize Set/Map/Error/BigInt, default is false
    */
   superjson?: boolean
