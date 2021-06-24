@@ -1,6 +1,4 @@
-import { withController } from '@midwayjs/hooks'
-
-import { withMiddleware } from '../hoc'
+import { withController, withMiddleware } from '../hoc'
 
 test('expect wrapped fn to be called', () => {
   const fn = jest.fn()
