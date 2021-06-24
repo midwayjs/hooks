@@ -3,6 +3,7 @@ import path from 'path'
 import { IMidwayApplication } from '@midwayjs/core'
 
 import { createApp, HooksApplication } from '../src'
+import { get } from './fixtures/gateway/src/lambda/index'
 
 let app: HooksApplication
 beforeAll(async () => {
@@ -20,4 +21,8 @@ test('custom gateway', async () => {
   expect(iapp.getApplicationContext().get('custom')).toEqual(
     'custom gateway response'
   )
+})
+
+test('http gateway', async () => {
+  expect(await app.runFunction(get)).toMatchInlineSnapshot(`"GET"`)
 })
