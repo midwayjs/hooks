@@ -85,7 +85,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
     }
   }
 
-  async handleError(next: any) {
+  handleError = async (next: any) => {
     try {
       await next()
     } catch (error) {
@@ -99,6 +99,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
       }
     }
   }
+
   afterCreate() {
     if (isDevelopment()) {
       return
