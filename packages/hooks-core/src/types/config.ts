@@ -39,7 +39,7 @@ export type BaseRoute = {
 export type HTTPRoute = {
   basePath: string
   /**
-   * @deprecated Will remove in next
+   * @deprecated will be removed in next major version.
    */
   underscore?: boolean
 }
