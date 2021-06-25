@@ -62,7 +62,7 @@ export class VitePlugin implements Plugin {
     return {
       plugin: [tsconfigPaths({ root: this.root })],
       optimizeDeps: {
-        include: ['@midwayjs/hooks-core/request'],
+        include: [this.midwayConfig.request.client],
       },
       resolve: {
         alias: [
