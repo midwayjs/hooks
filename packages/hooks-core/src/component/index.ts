@@ -12,12 +12,12 @@ export const hooks = (runtime: RuntimeConfig = {}) => {
   ;(runtime.gatewayAdapter || (runtime.gatewayAdapter = [])).push(HTTPGateway)
 
   const root = getProjectRoot()
-  const internal = getConfig()
-  const router = new ServerRouter(root, internal, isDevelopment())
+  const midwayConfig = getConfig()
+  const router = new ServerRouter(root, midwayConfig, isDevelopment())
 
   const cmp = new HooksComponent({
-    runtime,
-    internal,
+    runtimeConfig: runtime,
+    midwayConfig: midwayConfig,
     router,
     root,
   })

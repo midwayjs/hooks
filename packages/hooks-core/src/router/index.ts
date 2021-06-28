@@ -90,9 +90,7 @@ export class ServerRouter {
     )
     const fileRoute = filename === 'index' ? '' : filename
     // TODO remove underscore support in future
-    const ApiMethodPrefix = '_'
-    const methodPrefix = underscore ? ApiMethodPrefix : ''
-    const func = isExportDefault ? '' : `${methodPrefix}${method}`
+    const func = isExportDefault ? '' : `${underscore ? '_' : ''}${method}`
 
     const api = toUnix(
       join(
