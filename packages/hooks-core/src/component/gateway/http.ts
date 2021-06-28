@@ -69,7 +69,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
   getMiddleware() {
     const mws = [this.handleError]
 
-    const enableSuperjson = this.config.internal.superjson
+    const enableSuperjson = this.config.midwayConfig.superjson
     if (enableSuperjson) {
       mws.push(this.deserializeSuperjson)
     }
@@ -91,7 +91,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
     } catch (error) {
       const ctx = useContext()
 
-      if (this.config.internal.superjson) {
+      if (this.config.midwayConfig.superjson) {
         ctx.status = 500
         ctx.body = superjson.serialize(error)
       } else {
@@ -118,7 +118,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
 
     const baseDir = this.container.get('baseDir')
     const mw = staticCache({
-      dir: join(baseDir, '..', this.config.internal.build.viteOutDir),
+      dir: join(baseDir, '..', this.config.midwayConfig.build.viteOutDir),
       dynamic: true,
       alias: {
         '/': 'index.html',

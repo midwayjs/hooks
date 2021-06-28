@@ -1,4 +1,3 @@
-import parseArgs from 'fn-args'
 import { sync } from 'globby'
 import _ from 'lodash'
 import path from 'path'
@@ -10,7 +9,6 @@ import { ServerRoute } from '..'
 import { als } from '../runtime'
 import { ApiFunction, ApiModule } from '../types/common'
 import { ComponentConfig, HooksGatewayAdapter } from '../types/gateway'
-import { ApiHttpMethod } from '../types/http'
 import { useHooksMiddleware } from '../util'
 import { HTTPGateway } from './gateway/http'
 
@@ -21,7 +19,7 @@ export class HooksComponent {
 
   constructor(config: ComponentConfig) {
     this.config = config
-    this.adapters = config.runtime.gatewayAdapter.map(
+    this.adapters = config.runtimeConfig.gatewayAdapter.map(
       (adapter) => new adapter(this.config)
     )
   }
@@ -29,7 +27,7 @@ export class HooksComponent {
   init() {
     const {
       router,
-      internal: { routes },
+      midwayConfig: { routes },
     } = this.config
 
     let count = 0
@@ -126,13 +124,8 @@ export class HooksComponent {
         )
       }
 
-      const httpMethod: ApiHttpMethod =
-        parseArgs(fn).length === 0 ? 'GET' : 'POST'
-
-      // Set param for unit testing
       fn._param = {
         url: httpPath,
-        method: httpMethod,
         meta: { functionName: id },
       }
 
@@ -142,7 +135,7 @@ export class HooksComponent {
 
   getGlobalMiddleware() {
     const mws = [this.useAsyncLocalStorage]
-    this.config.runtime.middleware?.forEach?.((mw) =>
+    this.config.runtimeConfig.middleware?.forEach?.((mw) =>
       mws.push(useHooksMiddleware(mw))
     )
     return mws
