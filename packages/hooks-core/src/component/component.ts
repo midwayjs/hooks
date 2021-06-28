@@ -19,7 +19,7 @@ export class HooksComponent {
 
   constructor(config: ComponentConfig) {
     this.config = config
-    this.adapters = config.runtime.gatewayAdapter.map(
+    this.adapters = config.runtimeConfig.gatewayAdapter.map(
       (adapter) => new adapter(this.config)
     )
   }
@@ -27,7 +27,7 @@ export class HooksComponent {
   init() {
     const {
       router,
-      internal: { routes },
+      midwayConfig: { routes },
     } = this.config
 
     let count = 0
@@ -135,7 +135,7 @@ export class HooksComponent {
 
   getGlobalMiddleware() {
     const mws = [this.useAsyncLocalStorage]
-    this.config.runtime.middleware?.forEach?.((mw) =>
+    this.config.runtimeConfig.middleware?.forEach?.((mw) =>
       mws.push(useHooksMiddleware(mw))
     )
     return mws

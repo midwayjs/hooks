@@ -9,8 +9,8 @@ import { ServerRouter } from '../router'
 import { InternalConfig, RuntimeConfig, ServerRoute } from './config'
 
 export type ComponentConfig = {
-  runtime: RuntimeConfig
-  internal: InternalConfig
+  runtimeConfig: RuntimeConfig
+  midwayConfig: InternalConfig
   router: ServerRouter
   root: string
 }
