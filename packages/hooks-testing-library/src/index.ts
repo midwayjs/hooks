@@ -6,6 +6,7 @@ import {
   getProjectRoot,
   ApiFunction,
   InternalConfig,
+  validateFunction,
 } from '@midwayjs/hooks-core'
 import {
   createApp as createWebApp,
@@ -76,6 +77,8 @@ export class HooksApplication {
     fn: T,
     ...args: Parameters<T>
   ): Promise<ReturnType<T>> {
+    validateFunction(fn, 'fn')
+
     const response = await this.request(fn, ...args)
 
     if (!response.ok) {
@@ -90,6 +93,8 @@ export class HooksApplication {
   }
 
   request<T extends ApiFunction>(fn: T, ...args: Parameters<T>) {
+    validateFunction(fn, 'fn')
+
     const supertest = createHttpRequest(this.app)
     if (args.length === 0) {
       return supertest

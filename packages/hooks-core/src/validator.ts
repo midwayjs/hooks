@@ -1,13 +1,13 @@
 import { inspect } from 'util'
 
-export class ERR_INVALID_ARG_VALUE extends Error {
-  constructor(actual: any, name: string, reason = 'is invalid') {
-    const message = `[ERR_INVALID_ARG_VALUE]: The argument '${name}' ${reason} ${getTypeMessage(
-      actual
-    )}`
-    super(message)
-  }
-}
+// export class ERR_INVALID_ARG_VALUE extends Error {
+//   constructor(actual: any, name: string, reason = 'is invalid') {
+//     const message = `[ERR_INVALID_ARG_VALUE]: The argument '${name}' ${reason} ${getTypeMessage(
+//       actual
+//     )}`
+//     super(message)
+//   }
+// }
 
 export class ERR_INVALID_ARG_TYPE extends Error {
   constructor(name: string, expected: string, actual: any) {
@@ -51,16 +51,16 @@ export function validateString(value: any, name: string) {
     throw new ERR_INVALID_ARG_TYPE(name, 'string', value)
 }
 
-export function validateOneOf(value: any, name: string, oneOf: any[]) {
-  if (!oneOf.includes(value)) {
-    const allowed = oneOf
-      .map((v) => (typeof v === 'string' ? `'${v}'` : String(v)))
-      .join(', ')
+// export function validateOneOf(value: any, name: string, oneOf: any[]) {
+//   if (!oneOf.includes(value)) {
+//     const allowed = oneOf
+//       .map((v) => (typeof v === 'string' ? `'${v}'` : String(v)))
+//       .join(', ')
 
-    const reason = 'must be one of: ' + allowed
-    throw new ERR_INVALID_ARG_VALUE(name, value, reason)
-  }
-}
+//     const reason = 'must be one of: ' + allowed
+//     throw new ERR_INVALID_ARG_VALUE(name, value, reason)
+//   }
+// }
 
 export function validateFunction(value: any, name: string) {
   if (typeof value !== 'function') {
