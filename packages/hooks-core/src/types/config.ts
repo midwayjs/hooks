@@ -1,6 +1,8 @@
 import { HooksMiddleware } from './common'
 import { Class, HooksGatewayAdapter } from './gateway'
 
+export type IgnorePatternRequest = { url: string; [key: string]: any }
+
 export interface InternalConfig<T = HTTPRoute> {
   /**
    * @default false
@@ -15,7 +17,7 @@ export interface InternalConfig<T = HTTPRoute> {
   }
 
   dev?: {
-    ignorePattern?: (req: { url: string; [key: string]: any }) => boolean
+    ignorePattern?: (req: IgnorePatternRequest) => boolean
   }
   build?: {
     viteOutDir: string
