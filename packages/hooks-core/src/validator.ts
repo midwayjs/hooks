@@ -42,7 +42,7 @@ function getTypeMessage(actual: any) {
 
 export function validateArray(value: any, name: string) {
   if (!Array.isArray(value)) {
-    throw new ERR_INVALID_ARG_TYPE(value, 'Array', name)
+    throw new ERR_INVALID_ARG_TYPE(name, 'Array', value)
   }
 }
 
@@ -59,5 +59,11 @@ export function validateOneOf(value: any, name: string, oneOf: any[]) {
 
     const reason = 'must be one of: ' + allowed
     throw new ERR_INVALID_ARG_VALUE(name, value, reason)
+  }
+}
+
+export function validateFunction(value: any, name: string) {
+  if (typeof value !== 'function') {
+    throw new ERR_INVALID_ARG_TYPE(name, 'Function', value)
   }
 }
