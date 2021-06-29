@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useConfig validate arguments 1`] = `"[ERR_INVALID_ARG_TYPE]: The 'key' argument must be of type string. Received null"`;
+
+exports[`useConfig validate arguments 2`] = `"[ERR_INVALID_ARG_TYPE]: The 'key' argument must be of type string. Received type number (1)"`;
+
+exports[`useConfig validate arguments 3`] = `"[ERR_INVALID_ARG_TYPE]: The 'key' argument must be of type string. Received type boolean (true)"`;
+
+exports[`useConfig validate arguments 4`] = `"[ERR_INVALID_ARG_TYPE]: The 'key' argument must be of type string. Received type symbol (Symbol(test))"`;
+
+exports[`useInject validate arguments 1`] = `[Error: [ERR_INVALID_ARG_TYPE]: The 'identifier' argument must be of type class, string. Received null]`;
+
+exports[`useInject validate arguments 2`] = `[Error: [ERR_INVALID_ARG_TYPE]: The 'identifier' argument must be of type class, string. Received type number (1)]`;
+
+exports[`useInject validate arguments 3`] = `[Error: [ERR_INVALID_ARG_TYPE]: The 'identifier' argument must be of type class, string. Received type boolean (true)]`;
+
+exports[`useInject validate arguments 4`] = `[Error: [ERR_INVALID_ARG_TYPE]: The 'identifier' argument must be of type class, string. Received type symbol (Symbol(test))]`;
+
+exports[`usePlugin validate arguments 1`] = `"[ERR_INVALID_ARG_TYPE]: The 'key' argument must be of type string. Received null"`;
+
+exports[`usePlugin validate arguments 2`] = `"[ERR_INVALID_ARG_TYPE]: The 'key' argument must be of type string. Received type number (1)"`;
+
+exports[`usePlugin validate arguments 3`] = `"[ERR_INVALID_ARG_TYPE]: The 'key' argument must be of type string. Received type boolean (true)"`;
+
+exports[`usePlugin validate arguments 4`] = `"[ERR_INVALID_ARG_TYPE]: The 'key' argument must be of type string. Received type symbol (Symbol(test))"`;

@@ -1,26 +1,26 @@
 import { als, useContext } from '../'
 import { useConfig, useInject, useLogger, usePlugin } from '../hooks'
 
-test('', () => {
-  const mockContext = {
-    logger: jest.fn(),
-    app: {
-      mysql: jest.fn(),
+const mockContext = {
+  logger: jest.fn(),
+  app: {
+    mysql: jest.fn(),
+  },
+  cors: jest.fn(),
+  requestContext: {
+    getAsync: jest.fn(),
+    getConfigService() {
+      return {
+        getConfiguration(key) {
+          return key
+        },
+      }
     },
-    cors: jest.fn(),
-    requestContext: {
-      getAsync: jest.fn(),
-      getConfigService() {
-        return {
-          getConfiguration(key) {
-            return key
-          },
-        }
-      },
-    },
-  }
+  },
+}
 
-  als.run({ ctx: mockContext }, async () => {
+test('test hooks runtime', async () => {
+  await als.run({ ctx: mockContext }, async () => {
     expect(useContext()).toStrictEqual(mockContext)
 
     const logger = useLogger()
@@ -41,4 +41,24 @@ test('', () => {
     const config = useConfig('test')
     expect(config).toStrictEqual('test')
   })
+})
+
+const cases = [null, 1, true, Symbol('test')]
+
+test('usePlugin validate arguments', async () => {
+  for (const cse of cases) {
+    expect(() => (usePlugin as any)(cse)).toThrowErrorMatchingSnapshot()
+  }
+})
+
+test('useConfig validate arguments', async () => {
+  for (const cse of cases) {
+    expect(() => (useConfig as any)(cse)).toThrowErrorMatchingSnapshot()
+  }
+})
+
+test('useInject validate arguments', async () => {
+  for (const cse of cases) {
+    expect(() => (useInject as any)(cse)).rejects.toMatchSnapshot()
+  }
 })

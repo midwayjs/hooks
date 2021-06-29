@@ -1,5 +1,5 @@
 import parseArgs from 'fn-args'
-import _ from 'lodash'
+import { last } from 'lodash'
 
 export function isDevelopment() {
   if (
@@ -23,7 +23,7 @@ export function useHooksMiddleware(fn: (...args: any[]) => any) {
      * const middleware = (next) => { const ctx = useContext() }
      */
     if (parseArgs(fn).length === 1) {
-      const next = _.last(args)
+      const next = last(args)
       return fn(next)
     }
     return fn(...args)
