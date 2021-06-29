@@ -1,4 +1,5 @@
 import { createConfiguration as createConfigurationFromCore } from '@midwayjs/core'
+import { InjectionConfigurationOptions } from '@midwayjs/decorator'
 
 export * from './hoc'
 export {
@@ -15,8 +16,6 @@ export {
 
 const noop = () => {}
 
-export function createConfiguration(
-  options: Parameters<typeof createConfigurationFromCore>['0']
-) {
+export function createConfiguration(options: InjectionConfigurationOptions) {
   return createConfigurationFromCore(options).onReady(noop).onStop(noop)
 }

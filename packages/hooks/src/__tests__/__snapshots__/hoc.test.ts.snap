@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validate arguments 1`] = `"[ERR_INVALID_ARG_TYPE]: The 'func' argument must be of type Function. Received undefined"`;
+
+exports[`validate arguments 2`] = `"[ERR_INVALID_ARG_TYPE]: The 'middleware' argument must be of type Array. Received undefined"`;
+
+exports[`validate arguments 3`] = `"[ERR_INVALID_ARG_TYPE]: The 'controller.middleware' argument must be of type Array. Received null"`;
+
+exports[`validate arguments 4`] = `"[ERR_INVALID_ARG_TYPE]: The 'func' argument must be of type Function. Received null"`;
+
+exports[`validate arguments 5`] = `"[ERR_INVALID_ARG_TYPE]: The 'middleware' argument must be of type Array. Received null"`;
+
+exports[`validate arguments 6`] = `"[ERR_INVALID_ARG_TYPE]: The 'func' argument must be of type Function. Received null"`;
