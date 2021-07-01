@@ -46,7 +46,7 @@ export type HTTPRoute = {
   underscore?: boolean
 }
 
-export type ServerRoute<T = HTTPRoute> = BaseRoute & T
+export type ServerRoute<T = HTTPRoute> = BaseRoute & Partial<T>
 
 export interface UserConfig<T = HTTPRoute>
   extends Omit<InternalConfig<T>, 'build'> {}
