@@ -13,12 +13,12 @@
   },
   "dependencies": {
     "@midwayjs/hooks": "^2.2.5-next.0",
-    "@midwayjs/koa": "^2.11.1",
+    "@midwayjs/koa": "^2.11.2",
     "koa-bodyparser": "^4.3.0"
   },
   "devDependencies": {
-    "@midwayjs/cli": "^1.2.72",
-    "@midwayjs/cli-plugin-build": "^1.2.72",
+    "@midwayjs/cli": "^1.2.73",
+    "@midwayjs/cli-plugin-build": "^1.2.73",
     "@midwayjs/hooks-testing-library": "^2.2.5-next.0",
     "@midwayjs/vite-plugin-hooks": "^2.2.5-next.0",
     "@svitejs/vite-plugin-svelte": "^0.11.1",

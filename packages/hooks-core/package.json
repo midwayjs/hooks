@@ -19,8 +19,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@midwayjs/bootstrap": "^2.11.1",
-    "@midwayjs/core": "^2.11.1",
+    "@midwayjs/bootstrap": "^2.11.2",
+    "@midwayjs/core": "^2.11.2",
     "@midwayjs/decorator": "^2.11.1",
     "art-template": "^4.13.2",
     "asynchronous-local-storage": "^1.0.2",
@@ -45,7 +45,7 @@
     "@types/lodash": "^4.14.170",
     "@types/prettier": "^2.3.0",
     "jest-snapshot-serializer-raw": "^1.2.0",
-    "prettier": "^2.3.1"
+    "prettier": "^2.3.2"
   },
   "preconstruct": {
     "entrypoints": [
