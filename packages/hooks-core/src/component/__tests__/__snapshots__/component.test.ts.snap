@@ -1,5 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component should validate arguments 1`] = `"[ERR_INVALID_ARG_TYPE]: The 'runtime.gatewayAdapter' argument must be of type Array. Received null"`;
-
-exports[`component should validate arguments 2`] = `"[ERR_INVALID_ARG_TYPE]: The 'runtime.middleware' argument must be of type Array. Received null"`;
+exports[`component should validate arguments 1`] = `"[ERR_INVALID_ARG_TYPE]: The 'runtime.middleware' argument must be of type Array. Received null"`;

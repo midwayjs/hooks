@@ -9,6 +9,7 @@ Object {
   "dev": Object {
     "ignorePattern": [Function],
   },
+  "gateway": Array [],
   "request": Object {
     "client": "@midwayjs/hooks-core/request",
   },
@@ -32,6 +33,7 @@ Object {
   "dev": Object {
     "ignorePattern": [Function],
   },
+  "gateway": Array [],
   "request": Object {
     "client": "@midwayjs/hooks-core/request",
   },
@@ -55,6 +57,7 @@ Object {
   "dev": Object {
     "ignorePattern": [Function],
   },
+  "gateway": Array [],
   "request": Object {
     "client": "@midwayjs/hooks-core/request",
   },
