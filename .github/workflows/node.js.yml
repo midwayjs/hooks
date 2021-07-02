@@ -6,7 +6,7 @@ jobs:
   test:
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 15.x]
+        node-version: [12.x, 14.x, 16.x]
         os: [ubuntu-latest]
         include:
           - node-version: 12.x
@@ -21,7 +21,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: bahmutov/npm-install@v1
+      - uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          command: yarn
       - run: yarn ci
       - run: yarn build
       - name: Upload coverage to Codecov

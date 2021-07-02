@@ -10,22 +10,19 @@ import { HTTPGateway } from './gateway/http'
  * Create hooks component
  */
 export const hooks = (runtime: RuntimeConfig = {}) => {
-  if (runtime.gatewayAdapter !== undefined) {
-    validateArray(runtime.gatewayAdapter, 'runtime.gatewayAdapter')
-  }
   if (runtime.middleware !== undefined) {
     validateArray(runtime.middleware, 'runtime.middleware')
   }
 
-  ;(runtime.gatewayAdapter || (runtime.gatewayAdapter = [])).push(HTTPGateway)
-
   const root = getProjectRoot()
   const midwayConfig = getConfig()
+  midwayConfig.gateway.push(HTTPGateway)
+
   const router = new ServerRouter(root, midwayConfig, isDevelopment())
 
   const cmp = new HooksComponent({
     runtimeConfig: runtime,
-    midwayConfig: midwayConfig,
+    midwayConfig,
     router,
     root,
   })
