@@ -10,6 +10,7 @@ export interface InternalConfig<T = HTTPRoute> {
    * Enable superjson to serialize Set/Map/Error/BigInt, default is false
    */
   superjson?: boolean
+  gateway?: Class<HooksGatewayAdapter>[]
   source?: string
   routes: ServerRoute<T>[]
   request?: {
@@ -30,12 +31,11 @@ export type RuntimeConfig = {
    * Global middleware
    */
   middleware?: HooksMiddleware
-
-  gatewayAdapter?: Class<HooksGatewayAdapter>[]
 }
 
 export type BaseRoute = {
   baseDir: string
+  [key: string]: any
 }
 
 export type HTTPRoute = {

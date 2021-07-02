@@ -27,6 +27,7 @@ export function getConfig(cwd?: string): InternalConfig {
 
   return _.defaultsDeep({}, userConfig, {
     superjson: false,
+    gateway: [],
     source: './src/apis',
     dev: {
       ignorePattern(req: IgnorePatternRequest) {

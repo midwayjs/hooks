@@ -1,7 +1,10 @@
 import { defineConfig } from '@midwayjs/hooks'
 
+import { CustomGateway } from './custom'
+
 export default defineConfig({
   source: 'src',
+  gateway: [CustomGateway],
   routes: [
     {
       baseDir: 'lambda',
