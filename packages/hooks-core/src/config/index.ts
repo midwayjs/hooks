@@ -2,6 +2,7 @@ import createJITI from 'jiti'
 import _ from 'lodash'
 import { sync } from 'pkg-dir'
 import path from 'upath'
+import url from 'url'
 
 import {
   HTTPRoute,
@@ -30,11 +31,7 @@ export function getConfig(cwd?: string): InternalConfig {
     gateway: [],
     source: './src/apis',
     dev: {
-      ignorePattern(req: IgnorePatternRequest) {
-        const { pathname, search } = new URL(req.url)
-        const reg = /\.(js|css|map|json|png|jpg|jpeg|gif|svg|eot|woff2|ttf)$/
-        return reg.test(pathname) || reg.test(search)
-      },
+      ignorePattern,
     },
     build: {
       viteOutDir: './build',
@@ -44,6 +41,12 @@ export function getConfig(cwd?: string): InternalConfig {
       client: '@midwayjs/hooks-core/request',
     },
   })
+}
+
+function ignorePattern(req: IgnorePatternRequest) {
+  const { pathname, query } = url.parse(req.url)
+  const reg = /\.(js|css|map|json|png|jpg|jpeg|gif|svg|eot|woff2|ttf)$/
+  return reg.test(pathname) || reg.test(query)
 }
 
 export function defineConfig<T = HTTPRoute>(
