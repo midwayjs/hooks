@@ -1,6 +1,6 @@
 {
   "name": "svelte",
-  "version": "2.2.5-next.1",
+  "version": "2.2.5-next.2",
   "private": true,
   "scripts": {
     "start": "node bootstrap",
