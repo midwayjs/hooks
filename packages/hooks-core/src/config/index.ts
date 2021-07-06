@@ -1,4 +1,4 @@
-import createJITI from 'jiti'
+import merge from 'deepmerge'
 import _ from 'lodash'
 import { sync } from 'pkg-dir'
 import path from 'upath'
@@ -7,40 +7,37 @@ import url from 'url'
 import {
   HTTPRoute,
   IgnorePatternRequest,
-  InternalConfig,
+  MidwayConfig,
   UserConfig,
 } from '../types/config'
+import { tryRequire } from '../util'
 
 export function getProjectRoot(cwd?: string) {
   return sync(cwd) || process.cwd()
 }
 
-export function getConfig(cwd?: string): InternalConfig {
+const defaultConfig: Partial<MidwayConfig> = {
+  superjson: false,
+  gateway: [],
+  source: './src/apis',
+  dev: {
+    ignorePattern,
+  },
+  build: {
+    viteOutDir: './build',
+    outDir: './dist',
+  },
+  request: {
+    client: '@midwayjs/hooks-core/request',
+  },
+}
+
+export function getConfig(cwd?: string): MidwayConfig {
   const root = getProjectRoot(cwd)
+  const userConfig = loadConfigFromFile(root)
 
-  const configs = {
-    ts: path.join(root, 'midway.config.ts'),
-    js: path.join(root, 'midway.config.js'),
-  }
-
-  const userConfig =
-    tryRequire<UserConfig>(configs.ts) || tryRequire<UserConfig>(configs.js)
-
-  return _.defaultsDeep({}, userConfig, {
-    superjson: false,
-    gateway: [],
-    source: './src/apis',
-    dev: {
-      ignorePattern,
-    },
-    build: {
-      viteOutDir: './build',
-      outDir: './dist',
-    },
-    request: {
-      client: '@midwayjs/hooks-core/request',
-    },
-  })
+  let midwayConfig = merge(defaultConfig, userConfig)
+  return midwayConfig
 }
 
 export function ignorePattern(req: IgnorePatternRequest) {
@@ -59,13 +56,14 @@ export function defineConfig<T = HTTPRoute>(
   return config
 }
 
-const tryRequire = <T = unknown>(id: string): T => {
-  try {
-    const jiti = createJITI()
-    const contents = jiti(id)
-    if ('default' in contents) return contents.default
-    return contents
-  } catch {
-    return undefined
+function loadConfigFromFile(root: string) {
+  const configs = {
+    ts: path.join(root, 'midway.config.ts'),
+    js: path.join(root, 'midway.config.js'),
   }
+
+  const userConfig =
+    tryRequire<UserConfig>(configs.ts) || tryRequire<UserConfig>(configs.js)
+
+  return userConfig
 }

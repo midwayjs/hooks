@@ -1,4 +1,5 @@
 import parseArgs from 'fn-args'
+import createJITI from 'jiti'
 import { last } from 'lodash'
 
 export function isDevelopment() {
@@ -27,5 +28,16 @@ export function useHooksMiddleware(fn: (...args: any[]) => any) {
       return fn(next)
     }
     return fn(...args)
+  }
+}
+
+export function tryRequire<T>(id: string): T {
+  try {
+    const jiti = createJITI()
+    const mod = jiti(id)
+    if ('default' in mod) return mod.default
+    return mod
+  } catch {
+    return undefined
   }
 }
