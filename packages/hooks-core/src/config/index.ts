@@ -44,8 +44,12 @@ export function getConfig(cwd?: string): InternalConfig {
 }
 
 function ignorePattern(req: IgnorePatternRequest) {
+  // Ignore Vite dev server
+  if (req.url.includes('@vite')) {
+    return true
+  }
   const { pathname, query } = url.parse(req.url)
-  const reg = /\.(js|css|map|json|png|jpg|jpeg|gif|svg|eot|woff2|ttf)$/
+  const reg = /\.(js|css|ts|tsx|map|json|png|jpg|jpeg|gif|svg|eot|woff2|ttf)$/
   return reg.test(pathname) || reg.test(query)
 }
 
