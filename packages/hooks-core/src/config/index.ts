@@ -43,7 +43,7 @@ export function getConfig(cwd?: string): InternalConfig {
   })
 }
 
-function ignorePattern(req: IgnorePatternRequest) {
+export function ignorePattern(req: IgnorePatternRequest) {
   // Ignore Vite dev server
   if (req.url.includes('@vite')) {
     return true
