@@ -19,13 +19,13 @@ export function getProjectRoot(cwd?: string) {
 const defaultConfig: Partial<MidwayConfig> = {
   superjson: false,
   gateway: [],
-  source: './src/apis',
+  source: 'src/apis',
   dev: {
     ignorePattern,
   },
   build: {
-    viteOutDir: './build',
-    outDir: './dist',
+    viteOutDir: 'build',
+    outDir: 'dist',
   },
   request: {
     client: '@midwayjs/hooks-core/request',

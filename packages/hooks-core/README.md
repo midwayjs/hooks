@@ -1,3 +1,3 @@
 # @midwayjs/hooks-core
 
-Midway Hooks Core
+Midway Hooks internal runtime.
