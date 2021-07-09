@@ -6,11 +6,11 @@ import {
 
 import { ApiFunction } from '..'
 import { ServerRouter } from '../router'
-import { InternalConfig, RuntimeConfig, ServerRoute } from './config'
+import { MidwayConfig, RuntimeConfig, ServerRoute } from './config'
 
 export type ComponentConfig = {
   runtimeConfig: RuntimeConfig
-  midwayConfig: InternalConfig
+  midwayConfig: MidwayConfig
   router: ServerRouter
   root: string
 }

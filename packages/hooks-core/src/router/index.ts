@@ -10,19 +10,19 @@ import {
   toUnix,
 } from 'upath'
 
-import { InternalConfig } from '..'
+import { MidwayConfig } from '..'
 import { duplicateLogger } from './logger'
 
 export class ServerRouter {
   root: string
 
-  config: InternalConfig
+  config: MidwayConfig
 
   routes = new Map<string, string>()
 
   useSource: boolean
 
-  constructor(root: string, config: InternalConfig, useSource = true) {
+  constructor(root: string, config: MidwayConfig, useSource = true) {
     this.root = root
     this.config = config
     this.useSource = useSource

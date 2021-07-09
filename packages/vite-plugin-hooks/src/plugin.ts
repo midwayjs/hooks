@@ -7,7 +7,7 @@ import {
   ServerRouter,
   getConfig,
   createApiClient,
-  InternalConfig,
+  MidwayConfig,
 } from '@midwayjs/hooks-core'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
 
@@ -15,7 +15,7 @@ export class VitePlugin implements Plugin {
   root: string
   router: ServerRouter
 
-  midwayConfig: InternalConfig
+  midwayConfig: MidwayConfig
   midwayPlugins: any[]
 
   constructor() {

@@ -3,7 +3,7 @@ import { Class, HooksGatewayAdapter } from './gateway'
 
 export type IgnorePatternRequest = { url: string; [key: string]: any }
 
-export interface InternalConfig<T = HTTPRoute> {
+export interface MidwayConfig<T = HTTPRoute> {
   /**
    * @default false
    * @deprecated will be removed in next version.
@@ -12,7 +12,7 @@ export interface InternalConfig<T = HTTPRoute> {
   superjson?: boolean
   gateway?: Class<HooksGatewayAdapter>[]
   source?: string
-  routes: ServerRoute<T>[]
+  routes?: ServerRoute<T>[]
   request?: {
     client?: string
   }
@@ -24,6 +24,7 @@ export interface InternalConfig<T = HTTPRoute> {
     viteOutDir: string
     outDir: string
   }
+  presets?: ConfigPreset[]
 }
 
 export type RuntimeConfig = {
@@ -49,4 +50,6 @@ export type HTTPRoute = {
 export type ServerRoute<T = HTTPRoute> = BaseRoute & Partial<T>
 
 export interface UserConfig<T = HTTPRoute>
-  extends Omit<InternalConfig<T>, 'build'> {}
+  extends Omit<MidwayConfig<T>, 'build'> {}
+
+export type ConfigPreset = (config: UserConfig) => UserConfig
