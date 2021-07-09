@@ -3,8 +3,8 @@
 exports[`load user config 1`] = `
 Object {
   "build": Object {
-    "outDir": "./dist",
-    "viteOutDir": "./build",
+    "outDir": "dist",
+    "viteOutDir": "build",
   },
   "dev": Object {
     "ignorePattern": [Function],
@@ -27,8 +27,8 @@ Object {
 exports[`load user config 2`] = `
 Object {
   "build": Object {
-    "outDir": "./dist",
-    "viteOutDir": "./build",
+    "outDir": "dist",
+    "viteOutDir": "build",
   },
   "dev": Object {
     "ignorePattern": [Function],
@@ -51,8 +51,8 @@ Object {
 exports[`load user config 3`] = `
 Object {
   "build": Object {
-    "outDir": "./dist",
-    "viteOutDir": "./build",
+    "outDir": "dist",
+    "viteOutDir": "build",
   },
   "dev": Object {
     "ignorePattern": [Function],
