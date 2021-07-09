@@ -2,13 +2,15 @@
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@midwayjs/hooks">
-    <img src="https://img.shields.io/npm/v/@midwayjs/hooks/latest?style=for-the-badge">
+    <img src="https://img.shields.io/npm/v/@midwayjs/hooks/latest">
   </a>
-  <img src="https://img.shields.io/github/workflow/status/midwayjs/hooks/Node.js%20CI/master?style=for-the-badge">
   <a href="https://codecov.io/gh/midwayjs/hooks">
-    <img src="https://img.shields.io/codecov/c/github/midwayjs/hooks?style=for-the-badge">
+    <img src="https://img.shields.io/codecov/c/github/midwayjs/hooks">
   </a>
-  <img src="https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge">
+  <img src="https://img.shields.io/npm/l/@midwayjs/hooks">
+  <a href="https://open.vscode.dev/midwayjs/hooks">
+    <img src="https://open.vscode.dev/badges/open-in-vscode.svg">
+  </a>
 </p>
 
 # Full Stack Framework: Faster & More Productive
@@ -68,14 +70,12 @@ console.assert(method === 'POST');
 import { useContext } from '@midwayjs/hooks';
 
 export async function getPath() {
-  // Get HTTP request context by Hooks
+  / Get HTTP request context by Hooks
   const ctx = useContext();
   return ctx.path;
 }
-
 export async function post(name: string) {
   const ctx = useContext();
-
   return {
     message: `Hello ${name}!`,
     method: ctx.method,
