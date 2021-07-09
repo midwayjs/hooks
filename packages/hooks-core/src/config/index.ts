@@ -37,6 +37,15 @@ export function getConfig(cwd?: string): MidwayConfig {
   const userConfig = loadConfigFromFile(root)
 
   let midwayConfig = merge(defaultConfig, userConfig)
+
+  if (Array.isArray(userConfig.presets)) {
+    const presets = userConfig.presets
+    delete userConfig.presets
+    for (const p of presets) {
+      midwayConfig = merge(midwayConfig, p(midwayConfig))
+    }
+  }
+
   return midwayConfig
 }
 

@@ -12,7 +12,7 @@ export interface MidwayConfig<T = HTTPRoute> {
   superjson?: boolean
   gateway?: Class<HooksGatewayAdapter>[]
   source?: string
-  routes: ServerRoute<T>[]
+  routes?: ServerRoute<T>[]
   request?: {
     client?: string
   }
@@ -24,6 +24,7 @@ export interface MidwayConfig<T = HTTPRoute> {
     viteOutDir: string
     outDir: string
   }
+  presets?: ConfigPreset[]
 }
 
 export type RuntimeConfig = {
@@ -50,3 +51,5 @@ export type ServerRoute<T = HTTPRoute> = BaseRoute & Partial<T>
 
 export interface UserConfig<T = HTTPRoute>
   extends Omit<MidwayConfig<T>, 'build'> {}
+
+export type ConfigPreset = (config: UserConfig) => UserConfig

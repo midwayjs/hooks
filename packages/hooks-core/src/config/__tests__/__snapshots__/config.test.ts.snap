@@ -71,3 +71,67 @@ Object {
   "superjson": false,
 }
 `;
+
+exports[`load user config 4`] = `
+Object {
+  "build": Object {
+    "outDir": "dist",
+    "viteOutDir": "build",
+  },
+  "dev": Object {
+    "ignorePattern": [Function],
+  },
+  "gateway": Array [],
+  "presets": Array [
+    [Function],
+  ],
+  "request": Object {
+    "client": "@TEST/@midwayjs/hooks-core/request",
+  },
+  "routes": Array [
+    Object {
+      "baseDir": "lambda",
+      "basePath": "/preset-api",
+    },
+  ],
+  "source": "src",
+  "superjson": false,
+}
+`;
+
+exports[`load user config 5`] = `
+Object {
+  "build": Object {
+    "outDir": "dist",
+    "viteOutDir": "build",
+  },
+  "dev": Object {
+    "ignorePattern": [Function],
+  },
+  "gateway": Array [],
+  "presets": Array [
+    [Function],
+    [Function],
+    [Function],
+  ],
+  "request": Object {
+    "client": "@TEST/@midwayjs/hooks-core/request",
+  },
+  "routes": Array [
+    Object {
+      "baseDir": "lambda",
+      "basePath": "/preset-api",
+    },
+    Object {
+      "baseDir": "lambda-second",
+      "basePath": "/second-preset-api",
+    },
+    Object {
+      "baseDir": "lambda-second",
+      "basePath": "/third-preset-api",
+    },
+  ],
+  "source": "src",
+  "superjson": false,
+}
+`;

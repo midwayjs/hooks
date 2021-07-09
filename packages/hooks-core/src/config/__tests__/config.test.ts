@@ -3,7 +3,7 @@ import { join } from 'upath'
 import { getConfig } from '../'
 
 test('load user config', () => {
-  const fixtures = ['js', 'ts', 'ts-export-default']
+  const fixtures = ['js', 'ts', 'ts-export-default', 'presets', 'multi-presets']
   fixtures.forEach((fixture) => {
     expect(loadConfig(fixture)).toMatchSnapshot()
   })
