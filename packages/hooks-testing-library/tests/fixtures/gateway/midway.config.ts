@@ -14,5 +14,9 @@ export default defineConfig({
       baseDir: 'custom',
       custom: true,
     },
+    {
+      baseDir: 'wechat',
+      event: 'wechat-miniapp',
+    },
   ],
 })
