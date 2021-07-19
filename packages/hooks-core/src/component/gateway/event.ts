@@ -42,7 +42,7 @@ function getArgs(event: any, route: ServerRoute<EventRoute>) {
   let args: any[]
   switch (route.event) {
     case 'wechat-miniapp':
-      args = event?.data?.args
+      args = event?.args
   }
   return args || []
 }

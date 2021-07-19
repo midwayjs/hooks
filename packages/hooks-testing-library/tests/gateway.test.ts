@@ -35,9 +35,7 @@ describe('event gateway', () => {
     const container: any = iapp
       .getApplicationContext()
       .get('wechat-index-withargs')
-    expect(await container.handler({ data: { args: ['Jake'] } })).toEqual(
-      'Hello Jake'
-    )
+    expect(await container.handler({ args: ['Jake'] })).toEqual('Hello Jake')
   })
 })
 
