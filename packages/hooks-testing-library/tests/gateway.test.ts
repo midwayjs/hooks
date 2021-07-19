@@ -23,6 +23,24 @@ test('custom gateway', async () => {
   )
 })
 
+describe('event gateway', () => {
+  test('event gateway - wechat', async () => {
+    const iapp: IMidwayApplication<any> = (app as any).app
+    const container: any = iapp.getApplicationContext().get('wechat-index')
+    expect(await container.handler()).toEqual('Hello Wechat Cloud')
+  })
+
+  test('event gateway - wechat with args', async () => {
+    const iapp: IMidwayApplication<any> = (app as any).app
+    const container: any = iapp
+      .getApplicationContext()
+      .get('wechat-index-withargs')
+    expect(await container.handler({ data: { args: ['Jake'] } })).toEqual(
+      'Hello Jake'
+    )
+  })
+})
+
 test('http gateway', async () => {
   expect(await app.runFunction(get)).toMatchInlineSnapshot(`"GET"`)
 })
