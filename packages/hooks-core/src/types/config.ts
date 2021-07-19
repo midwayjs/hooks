@@ -46,6 +46,10 @@ export type HTTPRoute = {
   underscore?: boolean
 }
 
+export type EventRoute = {
+  event?: 'wechat-miniapp'
+}
+
 export type ServerRoute<T = HTTPRoute> = BaseRoute & Partial<T>
 
 export interface UserConfig<T = HTTPRoute>
