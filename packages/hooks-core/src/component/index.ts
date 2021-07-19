@@ -1,9 +1,11 @@
 import { getConfig, getProjectRoot } from '../config'
 import { ServerRouter } from '../router'
 import { RuntimeConfig } from '../types/config'
+import { Class, HooksGatewayAdapter } from '../types/gateway'
 import { isDevelopment } from '../util'
 import { validateArray } from '../validator'
 import { HooksComponent } from './component'
+import { EventGateway } from './gateway/event'
 import { HTTPGateway } from './gateway/http'
 
 /**
@@ -16,7 +18,13 @@ export const hooks = (runtime: RuntimeConfig = {}) => {
 
   const root = getProjectRoot()
   const midwayConfig = getConfig()
-  midwayConfig.gateway.push(HTTPGateway)
+
+  const builtinGateways = new Set<Class<HooksGatewayAdapter>>()
+  for (const route of midwayConfig.routes) {
+    if (route.basePath) builtinGateways.add(HTTPGateway)
+    if (route.event) builtinGateways.add(EventGateway)
+  }
+  midwayConfig.gateway.push(...builtinGateways)
 
   const router = new ServerRouter(root, midwayConfig, isDevelopment())
 

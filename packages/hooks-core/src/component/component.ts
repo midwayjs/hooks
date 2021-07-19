@@ -56,7 +56,7 @@ export class HooksComponent {
             // Create api function
             const adapter = this.getAdapterByRoute(route)
             const mod: ApiModule = require(file)
-            this.createApi(mod, file, adapter)
+            this.createApi(mod, file, adapter, route)
             container.bindClass(mod, '', file)
 
             // Call afterCreate hooks
@@ -97,7 +97,12 @@ export class HooksComponent {
     return adapter
   }
 
-  createApi(mod: ApiModule, file: string, adapter: HooksGatewayAdapter) {
+  createApi(
+    mod: ApiModule,
+    file: string,
+    adapter: HooksGatewayAdapter,
+    route: ServerRoute<any>
+  ) {
     const modMiddleware = mod?.config?.middleware || []
     const funcs = _.pickBy<ApiFunction>(mod, _.isFunction)
 
@@ -129,7 +134,7 @@ export class HooksComponent {
         meta: { functionName: id },
       }
 
-      adapter.createApi({ fn, id, httpPath })
+      adapter.createApi({ fn, id, httpPath, route })
     }
   }
 

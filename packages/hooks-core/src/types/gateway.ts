@@ -25,12 +25,14 @@ export interface CreateApiParam {
   id: string
 
   httpPath: string
+
+  route?: ServerRoute<any>
 }
 
 export interface HooksGatewayAdapter {
-  config: ComponentConfig
+  config?: ComponentConfig
   container: IMidwayContainer
-  app: IMidwayApplication<IMidwayContext>
+  app?: IMidwayApplication<IMidwayContext>
 
   createApi(config: CreateApiParam): void
   afterCreate?(): void
