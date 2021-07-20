@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-testing-library",
-  "version": "2.2.5-next.3",
+  "version": "2.2.5-next.4",
   "description": "The testing library for midway hooks",
   "keywords": [
     "midway",
@@ -22,7 +22,7 @@
     "axios": "^0.21.1"
   },
   "dependencies": {
-    "@midwayjs/hooks-core": "^2.2.5-next.3",
+    "@midwayjs/hooks-core": "^2.2.5-next.4",
     "@midwayjs/mock": "^2.11.4",
     "@testing-library/jest-dom": "^5.14.1",
     "debug": "^4.3.1",
