@@ -32,7 +32,7 @@
     "@babel/preset-typescript": "^7.14.5",
     "@preconstruct/cli": "^2.1.0",
     "@trivago/prettier-plugin-sort-imports": "^2.0.2",
-    "codecov": "^3.8.2",
+    "codecov": "^3.8.3",
     "esbuild": "^0.9.7",
     "execa": "^4.0.3",
     "husky": "^4.2.3",

@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@midwayjs/hooks": "^2.2.5-next.3",
-    "@midwayjs/koa": "^2.11.4",
+    "@midwayjs/koa": "^2.11.6",
     "koa-bodyparser": "^4.3.0"
   },
   "devDependencies": {
@@ -22,12 +22,12 @@
     "@midwayjs/hooks-testing-library": "^2.2.5-next.3",
     "@midwayjs/vite-plugin-hooks": "^2.2.5-next.3",
     "@svitejs/vite-plugin-svelte": "^0.11.1",
-    "@types/jest": "^26.0.23",
-    "@types/koa-bodyparser": "^4.3.1",
+    "@types/jest": "^26.0.24",
+    "@types/koa-bodyparser": "^4.3.2",
     "jest": "^26.6.3",
     "svelte": "^3.38.3",
-    "svelte-preprocess": "^4.7.3",
+    "svelte-preprocess": "^4.7.4",
     "typescript": "^4.3.5",
-    "vite": "^2.4.1"
+    "vite": "^2.4.3"
   }
 }
