@@ -10,19 +10,19 @@ import {
   toUnix,
 } from 'upath'
 
-import { InternalConfig } from '..'
+import { ProjectConfig } from '..'
 import { duplicateLogger } from './logger'
 
 export class ServerRouter {
   root: string
 
-  config: InternalConfig
+  config: ProjectConfig
 
   routes = new Map<string, string>()
 
   useSource: boolean
 
-  constructor(root: string, config: InternalConfig, useSource = true) {
+  constructor(root: string, config: ProjectConfig, useSource = true) {
     this.root = root
     this.config = config
     this.useSource = useSource

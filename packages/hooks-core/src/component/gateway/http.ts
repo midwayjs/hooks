@@ -15,22 +15,22 @@ import { useContext } from '../../runtime'
 import { ApiFunction } from '../../types/common'
 import { ServerRoute, HTTPRoute } from '../../types/config'
 import {
-  ComponentConfig,
+  ComponentOptions,
   CreateApiParam,
   HooksGatewayAdapter,
 } from '../../types/gateway'
 import { isDevelopment, useHooksMiddleware } from '../../util'
 
 export class HTTPGateway implements HooksGatewayAdapter {
-  config: ComponentConfig
+  options: ComponentOptions
   container: IMidwayContainer
   app: IMidwayApplication<IMidwayContext>
 
-  constructor(config: ComponentConfig) {
-    this.config = config
+  constructor(config: ComponentOptions) {
+    this.options = config
   }
 
-  is(route: ServerRoute<HTTPRoute>) {
+  is(route: ServerRoute) {
     return !!route?.basePath
   }
 
@@ -66,7 +66,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
   getMiddleware() {
     const mws = [this.handleError]
 
-    const enableSuperjson = this.config.midwayConfig.superjson
+    const enableSuperjson = this.options.projectConfig.superjson
     if (enableSuperjson) {
       mws.push(this.deserializeSuperjson)
     }
@@ -88,7 +88,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
     } catch (error) {
       const ctx = useContext()
 
-      if (this.config.midwayConfig.superjson) {
+      if (this.options.projectConfig.superjson) {
         ctx.status = 500
         ctx.body = superjson.serialize(error)
       } else {
@@ -108,14 +108,14 @@ export class HTTPGateway implements HooksGatewayAdapter {
 
     const {
       router: { routes },
-    } = this.config
+    } = this.options
     if (routes.has('/') || routes.has('/*')) {
       return
     }
 
     const baseDir = this.container.get('baseDir')
     const mw = staticCache({
-      dir: join(baseDir, '..', this.config.midwayConfig.build.viteOutDir),
+      dir: join(baseDir, '..', this.options.projectConfig.build.viteOutDir),
       dynamic: true,
       alias: {
         '/': 'index.html',
@@ -141,7 +141,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
 
   get isViteProject() {
     return ['vite.config.ts', 'vite.config.js'].some((config) =>
-      existsSync(join(this.config.root, config))
+      existsSync(join(this.options.root, config))
     )
   }
 }
