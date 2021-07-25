@@ -8,27 +8,27 @@ import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
 import { ServerRoute } from '..'
 import { als } from '../runtime'
 import { ApiFunction, ApiModule } from '../types/common'
-import { ComponentConfig, HooksGatewayAdapter } from '../types/gateway'
+import { ComponentOptions, HooksGatewayAdapter } from '../types/gateway'
 import { useHooksMiddleware } from '../util'
 import { HTTPGateway } from './gateway/http'
 
 export class HooksComponent {
-  config: ComponentConfig
+  options: ComponentOptions
 
   adapters: HooksGatewayAdapter[]
 
-  constructor(config: ComponentConfig) {
-    this.config = config
-    this.adapters = config.midwayConfig.gateway.map(
-      (adapter) => new adapter(this.config)
+  constructor(options: ComponentOptions) {
+    this.options = options
+    this.adapters = options.projectConfig.gateway.map(
+      (adapter) => new adapter(this.options)
     )
   }
 
   init() {
     const {
       router,
-      midwayConfig: { routes },
-    } = this.config
+      projectConfig: { routes },
+    } = this.options
 
     let count = 0
     const totalCount = routes.reduce((totalCount, route) => {
@@ -56,7 +56,7 @@ export class HooksComponent {
             // Create api function
             const adapter = this.getAdapterByRoute(route)
             const mod: ApiModule = require(file)
-            this.createApi(mod, file, adapter, route)
+            this.createApi(mod, adapter, file, route)
             container.bindClass(mod, '', file)
 
             // Call afterCreate hooks
@@ -85,7 +85,7 @@ export class HooksComponent {
     }
   }
 
-  getAdapterByRoute(route: ServerRoute<any>) {
+  getAdapterByRoute(route: ServerRoute) {
     const adapter = this.adapters.find((adapter) => adapter.is(route))
 
     if (!adapter) {
@@ -99,9 +99,9 @@ export class HooksComponent {
 
   createApi(
     mod: ApiModule,
-    file: string,
     adapter: HooksGatewayAdapter,
-    route: ServerRoute<any>
+    file: string,
+    route: ServerRoute
   ) {
     const modMiddleware = mod?.config?.middleware || []
     const funcs = _.pickBy<ApiFunction>(mod, _.isFunction)
@@ -113,7 +113,7 @@ export class HooksComponent {
 
       const isExportDefault = name === 'default'
       const functionName = isExportDefault ? '$default' : name
-      const id = this.config.router.getFunctionId(
+      const id = this.options.router.getFunctionId(
         file,
         functionName,
         isExportDefault
@@ -122,7 +122,7 @@ export class HooksComponent {
       let httpPath = ''
 
       if (adapter instanceof HTTPGateway) {
-        httpPath = this.config.router.getHTTPPath(
+        httpPath = this.options.router.getHTTPPath(
           file,
           functionName,
           isExportDefault
@@ -140,7 +140,7 @@ export class HooksComponent {
 
   getGlobalMiddleware() {
     const mws = [this.useAsyncLocalStorage]
-    this.config.runtimeConfig.middleware?.forEach?.((mw) =>
+    this.options.runtimeConfig.middleware?.forEach?.((mw) =>
       mws.push(useHooksMiddleware(mw))
     )
     return mws

@@ -11,7 +11,7 @@ import { CreateApiParam, HooksGatewayAdapter } from '../../types/gateway'
 export class EventGateway implements HooksGatewayAdapter {
   container: IMidwayContainer
 
-  is(route: ServerRoute<EventRoute>) {
+  is(route: ServerRoute) {
     return !!route?.event
   }
 
@@ -38,7 +38,7 @@ export class EventGateway implements HooksGatewayAdapter {
   }
 }
 
-function getArgs(event: any, route: ServerRoute<EventRoute>) {
+function getArgs(event: any, route: ServerRoute) {
   let args: any[]
   switch (route.event) {
     case 'wechat-miniapp':

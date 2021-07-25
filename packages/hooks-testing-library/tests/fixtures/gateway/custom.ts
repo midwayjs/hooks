@@ -4,7 +4,7 @@ import {
   Context,
 } from '@midwayjs/core'
 import {
-  ComponentConfig,
+  ComponentOptions,
   CreateApiParam,
   HooksGatewayAdapter,
   ServerRoute,
@@ -15,7 +15,7 @@ export type CustomRoute = {
 }
 
 export class CustomGateway implements HooksGatewayAdapter {
-  config: ComponentConfig
+  options: ComponentOptions
   container: IMidwayContainer
   app: IMidwayBaseApplication<Context>
 
@@ -25,7 +25,7 @@ export class CustomGateway implements HooksGatewayAdapter {
 
   afterCreate(): void {}
 
-  is(route: ServerRoute<CustomRoute>): boolean {
+  is(route: ServerRoute): boolean {
     return !!route?.custom
   }
 }
