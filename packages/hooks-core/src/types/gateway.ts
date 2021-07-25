@@ -6,13 +6,13 @@ import {
 
 import { ApiFunction } from '..'
 import { ServerRouter } from '../router'
-import { InternalConfig, RuntimeConfig, ServerRoute } from './config'
+import { ProjectConfig, RuntimeConfig, ServerRoute } from './config'
 
-export type ComponentConfig = {
-  runtimeConfig: RuntimeConfig
-  midwayConfig: InternalConfig
-  router: ServerRouter
+export type ComponentOptions = {
   root: string
+  router: ServerRouter
+  runtimeConfig: RuntimeConfig
+  projectConfig: ProjectConfig
 }
 
 export type Class<T = unknown, Arguments extends any[] = any[]> = new (
@@ -26,16 +26,16 @@ export interface CreateApiParam {
 
   httpPath: string
 
-  route?: ServerRoute<any>
+  route?: ServerRoute
 }
 
 export interface HooksGatewayAdapter {
-  config?: ComponentConfig
+  options?: ComponentOptions
   container: IMidwayContainer
   app?: IMidwayApplication<IMidwayContext>
 
   createApi(config: CreateApiParam): void
   afterCreate?(): void
 
-  is(route: ServerRoute<any>): boolean
+  is(route: ServerRoute): boolean
 }

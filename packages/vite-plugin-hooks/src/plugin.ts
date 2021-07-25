@@ -7,7 +7,7 @@ import {
   ServerRouter,
   getConfig,
   createApiClient,
-  InternalConfig,
+  ProjectConfig,
 } from '@midwayjs/hooks-core'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
 
@@ -15,13 +15,13 @@ export class VitePlugin implements Plugin {
   root: string
   router: ServerRouter
 
-  midwayConfig: InternalConfig
+  projectConfig: ProjectConfig
   midwayPlugins: any[]
 
   constructor() {
-    this.midwayConfig = getConfig()
+    this.projectConfig = getConfig()
     this.root = getProjectRoot()
-    this.router = new ServerRouter(this.root, this.midwayConfig, true)
+    this.router = new ServerRouter(this.root, this.projectConfig, true)
   }
 
   name = 'vite:@midwayjs/hooks'
@@ -34,8 +34,8 @@ export class VitePlugin implements Plugin {
     const client = await createApiClient(
       this.router.getBaseUrl(file),
       code,
-      this.midwayConfig.superjson,
-      this.midwayConfig.request.client
+      this.projectConfig.superjson,
+      this.projectConfig.request.client
     )
 
     return {
@@ -46,14 +46,14 @@ export class VitePlugin implements Plugin {
 
   configureServer = async (server) => {
     const devPack = getExpressDevPack(this.root, {
-      sourceDir: join(this.root, this.midwayConfig.source),
+      sourceDir: join(this.root, this.projectConfig.source),
       plugins: this.midwayPlugins,
     })
 
     server.middlewares.use(
       devPack({
         functionDir: this.root,
-        ignorePattern: this.midwayConfig.dev.ignorePattern,
+        ignorePattern: this.projectConfig.dev.ignorePattern,
       })
     )
   }
@@ -62,7 +62,7 @@ export class VitePlugin implements Plugin {
     return {
       plugin: [tsconfigPaths({ root: this.root })],
       optimizeDeps: {
-        include: [this.midwayConfig.request.client],
+        include: [this.projectConfig.request.client],
       },
       resolve: {
         alias: [
@@ -74,7 +74,7 @@ export class VitePlugin implements Plugin {
       },
       build: {
         manifest: true,
-        outDir: this.midwayConfig.build.viteOutDir,
+        outDir: this.projectConfig.build.viteOutDir,
       },
     }
   }

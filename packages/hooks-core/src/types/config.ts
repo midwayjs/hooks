@@ -1,25 +1,53 @@
 import { HooksMiddleware } from './common'
 import { Class, HooksGatewayAdapter } from './gateway'
 
-export type IgnorePatternRequest = { url: string; [key: string]: any }
+export type IgnorePattern = (req: {
+  url: string
+  [key: string]: any
+}) => boolean
 
-export interface InternalConfig<T = HTTPRoute> {
+/**
+ * @internal
+ */
+export interface ProjectConfig {
   /**
-   * @default false
    * @deprecated will be removed in next version.
    * Enable superjson to serialize Set/Map/Error/BigInt, default is false
    */
   superjson?: boolean
   gateway?: Class<HooksGatewayAdapter>[]
+  /**
+   * @description server root, default is src/apis
+   */
   source?: string
-  routes: ServerRoute<T>[]
+  /**
+   * @description api routes directory
+   * @example [{ baseDir: 'lambda', baseRoute: '/api' }]
+   */
+  routes: ServerRoute[]
+  /**
+   * @description customize the request client
+   */
   request?: {
+    /**
+     * @description midway hooks request client(npm package)
+     * @example axios
+     */
     client?: string
   }
 
+  /**
+   * @description customize dev server
+   */
   dev?: {
-    ignorePattern?: (req: IgnorePatternRequest) => boolean
+    /**
+     * @description If the function returns true, the server will ignore the request
+     */
+    ignorePattern?: IgnorePattern
   }
+  /**
+   * @description customize project build config
+   */
   build?: {
     viteOutDir: string
     outDir: string
@@ -28,17 +56,24 @@ export interface InternalConfig<T = HTTPRoute> {
 
 export type RuntimeConfig = {
   /**
-   * Global middleware
+   * @description global middleware, only avaible in http mode
    */
   middleware?: HooksMiddleware
 }
 
 export type BaseRoute = {
+  /**
+   * @description api route directory, exported functions in the directory will create a api
+   */
   baseDir: string
   [key: string]: any
 }
 
 export type HTTPRoute = {
+  /**
+   * @description http api prefix
+   * @example /api
+   */
   basePath: string
   /**
    * @deprecated will be removed in next major version.
@@ -47,10 +82,16 @@ export type HTTPRoute = {
 }
 
 export type EventRoute = {
+  /**
+   * @description event type
+   * @example wechat-miniapp
+   */
   event?: 'wechat-miniapp'
 }
 
-export type ServerRoute<T = HTTPRoute> = BaseRoute & Partial<T>
+/**
+ * @description route config
+ */
+export type ServerRoute = BaseRoute & (HTTPRoute | EventRoute)
 
-export interface UserConfig<T = HTTPRoute>
-  extends Omit<InternalConfig<T>, 'build'> {}
+export interface UserConfig extends Omit<ProjectConfig, 'build'> {}

@@ -5,7 +5,7 @@ import {
   getConfig,
   getProjectRoot,
   ApiFunction,
-  InternalConfig,
+  ProjectConfig,
   validateFunction,
 } from '@midwayjs/hooks-core'
 import {
@@ -67,8 +67,8 @@ export async function createFunctionApp<
 
 export class HooksApplication {
   private readonly app: IMidwayApplication<any>
-  private config: InternalConfig
-  constructor(app: IMidwayApplication<any>, config: InternalConfig) {
+  private config: ProjectConfig
+  constructor(app: IMidwayApplication<any>, config: ProjectConfig) {
     this.app = app
     this.config = config
   }
