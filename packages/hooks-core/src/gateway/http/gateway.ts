@@ -10,16 +10,16 @@ import {
 } from '@midwayjs/core'
 import { All, Controller, Inject, Provide } from '@midwayjs/decorator'
 
-import { superjson } from '../../../lib'
-import { useContext } from '../../../runtime'
-import { ApiFunction } from '../../../types/common'
-import { Route } from '../../../types/config'
+import { superjson } from '../../lib'
+import { useContext } from '../../runtime'
+import { ApiFunction } from '../../types/common'
+import { Route } from '../../types/config'
 import {
   ComponentOptions,
   CreateApiOptions,
   HooksGatewayAdapter,
-} from '../../../types/gateway'
-import { isDevelopment, useHooksMiddleware } from '../../../util'
+} from '../../types/gateway'
+import { isDevelopment, useHooksMiddleware } from '../../util'
 import { createHTTPApiClient } from './client'
 import { HTTPRouter } from './router'
 

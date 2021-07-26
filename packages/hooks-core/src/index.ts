@@ -1,5 +1,5 @@
 export * from './router/file'
-export * from './component/gateway/http/router'
+export * from './gateway/http/router'
 export * from './component'
 export * from './runtime'
 export * from './runtime/hooks'

@@ -8,10 +8,10 @@ import {
   ServerlessTriggerType,
 } from '@midwayjs/decorator'
 
-import { FileRouter } from '../../../'
-import { als } from '../../../runtime'
-import { Route } from '../../../types/config'
-import { CreateApiOptions, HooksGatewayAdapter } from '../../../types/gateway'
+import { FileRouter } from '../../index'
+import { als } from '../../runtime'
+import { Route } from '../../types/config'
+import { CreateApiOptions, HooksGatewayAdapter } from '../../types/gateway'
 import { createEventApiClient } from './client'
 
 export class EventGateway implements HooksGatewayAdapter {

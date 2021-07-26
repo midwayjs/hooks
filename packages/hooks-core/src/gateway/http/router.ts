@@ -1,6 +1,6 @@
 import { basename, dirname, extname, join, relative, toUnix } from 'upath'
 
-import { FileRouter } from '../../../router/file'
+import { FileRouter } from '../../router/file'
 import { duplicateLogger } from './logger'
 
 export class HTTPRouter extends FileRouter {
