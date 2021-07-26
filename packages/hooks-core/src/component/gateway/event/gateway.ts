@@ -10,12 +10,12 @@ import {
 
 import { FileRouter } from '../../../'
 import { als } from '../../../runtime'
-import { ServerRoute } from '../../../types/config'
+import { Route } from '../../../types/config'
 import { CreateApiOptions, HooksGatewayAdapter } from '../../../types/gateway'
 import { createEventApiClient } from './client'
 
 export class EventGateway implements HooksGatewayAdapter {
-  static is(route: ServerRoute) {
+  static is(route: Route) {
     return !!route?.event
   }
 
@@ -47,7 +47,7 @@ export class EventGateway implements HooksGatewayAdapter {
   }
 }
 
-function getArgs(event: any, route: ServerRoute) {
+function getArgs(event: any, route: Route) {
   let args: any[]
   switch (route.event) {
     case 'wechat-miniapp':

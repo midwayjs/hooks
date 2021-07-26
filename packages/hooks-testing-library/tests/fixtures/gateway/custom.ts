@@ -7,7 +7,7 @@ import {
   ComponentOptions,
   CreateApiOptions,
   HooksGatewayAdapter,
-  ServerRoute,
+  Route,
 } from '@midwayjs/hooks-core'
 
 export type CustomRoute = {
@@ -25,7 +25,7 @@ export class CustomGateway implements HooksGatewayAdapter {
 
   afterCreate(): void {}
 
-  static is(route: ServerRoute): boolean {
+  static is(route: Route): boolean {
     return !!route?.custom
   }
 

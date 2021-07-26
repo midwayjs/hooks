@@ -2,7 +2,7 @@ import inside from 'is-path-inside'
 import { kebabCase } from 'lodash'
 import { extname, join, relative, removeExt, toUnix } from 'upath'
 
-import { ProjectConfig, ServerRoute } from '../types/config'
+import { ProjectConfig, Route } from '../types/config'
 
 export class FileRouter {
   root: string
@@ -39,7 +39,7 @@ export class FileRouter {
     return routes[index]
   }
 
-  getGatewayByRoute(route: ServerRoute) {
+  getGatewayByRoute(route: Route) {
     const gateway = this.config.gateway.find((adapter) => adapter.is(route))
 
     if (!gateway) {
