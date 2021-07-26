@@ -18,9 +18,13 @@ export class VitePlugin implements Plugin {
   midwayPlugins: any[]
 
   constructor() {
-    this.projectConfig = getConfig()
     this.root = getProjectRoot()
-    this.router = new FileRouter(this.root, this.projectConfig, true)
+    this.projectConfig = getConfig()
+    this.router = new FileRouter({
+      root: this.root,
+      projectConfig: this.projectConfig,
+      useSourceFile: true,
+    })
   }
 
   name = 'vite:@midwayjs/hooks'

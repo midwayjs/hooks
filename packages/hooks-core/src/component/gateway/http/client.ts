@@ -24,7 +24,7 @@ export async function createHTTPApiClient(
   const {
     superjson,
     request: { client },
-  } = router.config
+  } = router.projectConfig
 
   const funcs: RenderParam[] = exports.map((name) => {
     const isExportDefault = name === 'default'

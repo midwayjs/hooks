@@ -9,8 +9,12 @@ export default async function MidwayHooksLoader(
   const callback = this.async()
 
   const root = getProjectRoot()
-  const config = getConfig()
-  const router = new FileRouter(root, config, true)
+  const projectConfig = getConfig()
+  const router = new FileRouter({
+    root,
+    projectConfig,
+    useSourceFile: true,
+  })
 
   if (!router.isApiFile(this.resourcePath)) {
     return callback(null, source)
@@ -21,14 +25,12 @@ export default async function MidwayHooksLoader(
   const client = await Gateway.createApiClient(
     this.resourcePath,
     source,
-    new Gateway.router(root, config, true)
+    new Gateway.router({
+      root,
+      projectConfig,
+      useSourceFile: true,
+    })
   )
 
-  // const client = await createApiClient(
-  //   router.getBaseUrl(this.resourcePath),
-  //   source,
-  //   config.superjson,
-  //   config.request.client
-  // )
   callback(null, client)
 }
