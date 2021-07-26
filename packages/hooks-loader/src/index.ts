@@ -1,11 +1,6 @@
 import { loader } from 'webpack'
 
-import {
-  getConfig,
-  getProjectRoot,
-  createApiClient,
-} from '@midwayjs/hooks-core'
-import { FileRouter } from '@midwayjs/hooks-core'
+import { FileRouter, getConfig, getProjectRoot } from '@midwayjs/hooks-core'
 
 export default async function MidwayHooksLoader(
   this: loader.LoaderContext,
