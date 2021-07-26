@@ -5,7 +5,7 @@ import upath from 'upath'
 
 import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
 
-import { ServerRoute } from '..'
+import { Route } from '..'
 import { als } from '../runtime'
 import { ApiFunction, ApiModule } from '../types/common'
 import { ComponentOptions, HooksGatewayAdapter } from '../types/gateway'
@@ -84,7 +84,7 @@ export class HooksComponent {
     }
   }
 
-  getAdapterByRoute(route: ServerRoute) {
+  getAdapterByRoute(route: Route) {
     const Adapter = this.options.router.getGatewayByRoute(route)
     const instance = this.adapters.find((inst) => inst instanceof Adapter)
     return instance
@@ -94,7 +94,7 @@ export class HooksComponent {
     mod: ApiModule,
     adapter: HooksGatewayAdapter,
     file: string,
-    route: ServerRoute
+    route: Route
   ) {
     const modMiddleware = mod?.config?.middleware || []
     const funcs = _.pickBy<ApiFunction>(mod, _.isFunction)

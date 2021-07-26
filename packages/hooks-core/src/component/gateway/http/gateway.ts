@@ -13,7 +13,7 @@ import { All, Controller, Inject, Provide } from '@midwayjs/decorator'
 import { superjson } from '../../../lib'
 import { useContext } from '../../../runtime'
 import { ApiFunction } from '../../../types/common'
-import { ServerRoute } from '../../../types/config'
+import { Route } from '../../../types/config'
 import {
   ComponentOptions,
   CreateApiOptions,
@@ -32,7 +32,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
 
   static router = HTTPRouter
 
-  static is(route: ServerRoute) {
+  static is(route: Route) {
     return !!route?.basePath
   }
 

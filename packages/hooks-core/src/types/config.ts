@@ -24,7 +24,7 @@ export interface ProjectConfig {
    * @description api routes directory
    * @example [{ baseDir: 'lambda', baseRoute: '/api' }]
    */
-  routes: ServerRoute[]
+  routes: Route[]
   /**
    * @description customize the request client
    */
@@ -92,6 +92,10 @@ export type EventRoute = {
 /**
  * @description route config
  */
-export type ServerRoute = BaseRoute & (HTTPRoute | EventRoute)
+export type Route = BaseRoute & (HTTPRoute | EventRoute)
+/**
+ * @deprecated ServerRoute now rename to Route
+ */
+export type ServerRoute = Route
 
 export interface UserConfig extends Omit<ProjectConfig, 'build'> {}
