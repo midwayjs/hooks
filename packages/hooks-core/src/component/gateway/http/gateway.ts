@@ -40,11 +40,11 @@ export class HTTPGateway implements HooksGatewayAdapter {
 
   constructor(options: ComponentOptions) {
     this.options = options
-    this.router = new HTTPGateway.router(
-      options.root,
-      options.projectConfig,
-      options.router.useSource
-    )
+    this.router = new HTTPGateway.router({
+      root: this.options.root,
+      projectConfig: this.options.projectConfig,
+      useSourceFile: this.options.router.useSourceFile,
+    })
   }
 
   createApi(options: CreateApiOptions) {

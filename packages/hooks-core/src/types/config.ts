@@ -56,7 +56,7 @@ export interface ProjectConfig {
 
 export type RuntimeConfig = {
   /**
-   * @description global middleware, only avaible in http mode
+   * @description global middleware, only available in http mode
    */
   middleware?: HooksMiddleware
 }
