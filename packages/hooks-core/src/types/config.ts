@@ -1,5 +1,9 @@
 import { HooksMiddleware } from './common'
-import { Class, HooksGatewayAdapter } from './gateway'
+import {
+  Class,
+  HooksGatewayAdapter,
+  HooksGatewayAdapterStatic,
+} from './gateway'
 
 export type IgnorePattern = (req: {
   url: string
@@ -15,7 +19,7 @@ export interface ProjectConfig {
    * Enable superjson to serialize Set/Map/Error/BigInt, default is false
    */
   superjson?: boolean
-  gateway?: Class<HooksGatewayAdapter>[]
+  gateway?: HooksGatewayAdapterStatic[]
   /**
    * @description server root, default is src/apis
    */

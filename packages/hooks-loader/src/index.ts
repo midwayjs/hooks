@@ -3,9 +3,9 @@ import { loader } from 'webpack'
 import {
   getConfig,
   getProjectRoot,
-  ServerRouter,
   createApiClient,
 } from '@midwayjs/hooks-core'
+import { FileRouter } from '@midwayjs/hooks-core'
 
 export default async function MidwayHooksLoader(
   this: loader.LoaderContext,
@@ -15,17 +15,25 @@ export default async function MidwayHooksLoader(
 
   const root = getProjectRoot()
   const config = getConfig()
-  const router = new ServerRouter(root, config, true)
+  const router = new FileRouter(root, config, true)
 
   if (!router.isApiFile(this.resourcePath)) {
     return callback(null, source)
   }
 
-  const client = await createApiClient(
-    router.getBaseUrl(this.resourcePath),
+  const route = router.getRoute(this.resourcePath)
+  const Gateway = router.getGatewayByRoute(route)
+  const client = await Gateway.createApiClient(
+    this.resourcePath,
     source,
-    config.superjson,
-    config.request.client
+    new Gateway.router(root, config, true)
   )
+
+  // const client = await createApiClient(
+  //   router.getBaseUrl(this.resourcePath),
+  //   source,
+  //   config.superjson,
+  //   config.request.client
+  // )
   callback(null, client)
 }

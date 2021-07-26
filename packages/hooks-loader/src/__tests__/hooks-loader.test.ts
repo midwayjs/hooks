@@ -1,6 +1,7 @@
-import { resolve } from 'path'
-import compiler from './compiler'
 import { wrap } from 'jest-snapshot-serializer-raw'
+import { resolve } from 'path'
+
+import compiler from './compiler'
 
 const root = resolve(__dirname, './fixtures/base-app')
 const cwd = process.cwd()
@@ -23,7 +24,7 @@ async function compile(entry: string) {
   return output.source
 }
 
-const desc = process.env.GITHUB_ACTION ? describe : describe.skip
+const desc = process.env.GITHUB_ACTION ? describe : describe
 
 // Skip due to slow compilation speed
 desc('hooks loader with proxy', () => {
@@ -89,6 +90,21 @@ desc('hooks loader with proxy', () => {
           meta: {
             superjson: false,
           },
+        });
+      }
+
+    `)
+  })
+
+  test('Compile event', async () => {
+    const output = await compile('wechat/index.ts')
+    expect(wrap(output)).toMatchInlineSnapshot(`
+      import { request } from '@midwayjs/hooks-core/request';
+
+      export default function $default(...args) {
+        return request({
+          functionId: 'wechat-index',
+          data: { args },
         });
       }
 
