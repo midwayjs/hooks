@@ -86,8 +86,7 @@ export class HooksComponent {
 
   getAdapterByRoute(route: Route) {
     const Adapter = this.options.router.getGatewayByRoute(route)
-    const instance = this.adapters.find((inst) => inst instanceof Adapter)
-    return instance
+    return this.adapters.find((inst) => inst instanceof Adapter)
   }
 
   createApi(
