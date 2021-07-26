@@ -1,6 +1,6 @@
 import { init, parse } from 'es-module-lexer'
 
-import { ApiBaseParam, FileRouter, formatCode } from '../../../'
+import { ApiBaseParam, FileRouter, formatCode } from '../../index'
 
 interface RenderParam extends ApiBaseParam {
   isExportDefault: boolean

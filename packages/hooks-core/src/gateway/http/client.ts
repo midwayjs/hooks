@@ -1,6 +1,6 @@
 import { init, parse } from 'es-module-lexer'
 
-import { ApiParam, formatCode } from '../../../'
+import { ApiParam, formatCode } from '../../index'
 import { HTTPRouter } from './router'
 
 interface RenderParam extends Partial<ApiParam> {

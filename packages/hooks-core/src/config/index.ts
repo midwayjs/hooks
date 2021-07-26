@@ -5,8 +5,8 @@ import { sync } from 'pkg-dir'
 import path from 'upath'
 
 import { HooksGatewayAdapterStatic } from '..'
-import { EventGateway } from '../component/gateway/event/gateway'
-import { HTTPGateway } from '../component/gateway/http/gateway'
+import { EventGateway } from '../gateway/event/gateway'
+import { HTTPGateway } from '../gateway/http/gateway'
 import { IgnorePattern, ProjectConfig, UserConfig } from '../types/config'
 import { validateArray } from '../validator'
 
