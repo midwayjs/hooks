@@ -21,7 +21,7 @@ export async function createEventApiClient(
 
   const {
     request: { client },
-  } = router.config
+  } = router.projectConfig
 
   const funcs: RenderParam[] = exports.map((name) => {
     const isExportDefault = name === 'default'

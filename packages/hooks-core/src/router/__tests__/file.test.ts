@@ -4,18 +4,22 @@ describe('FileRouter', () => {
   let router: FileRouter
 
   beforeEach(() => {
-    router = new FileRouter('/', {
-      source: 'src',
-      routes: [
-        {
-          baseDir: 'render',
-          basePath: '/',
-        },
-        {
-          baseDir: 'lambda',
-          basePath: '/api',
-        },
-      ],
+    router = new FileRouter({
+      root: '/',
+      projectConfig: {
+        source: 'src',
+        routes: [
+          {
+            baseDir: 'render',
+            basePath: '/',
+          },
+          {
+            baseDir: 'lambda',
+            basePath: '/api',
+          },
+        ],
+      },
+      useSourceFile: true,
     })
   })
 
