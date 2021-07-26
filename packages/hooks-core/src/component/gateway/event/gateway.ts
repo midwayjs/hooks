@@ -1,8 +1,12 @@
 import { __decorate } from 'tslib'
 
 import { IMidwayContainer } from '@midwayjs/core'
-import { ServerlessTrigger, ServerlessTriggerType } from '@midwayjs/decorator'
-import { Inject, Provide } from '@midwayjs/decorator'
+import {
+  Inject,
+  Provide,
+  ServerlessTrigger,
+  ServerlessTriggerType,
+} from '@midwayjs/decorator'
 
 import { FileRouter } from '../../../'
 import { als } from '../../../runtime'
