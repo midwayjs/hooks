@@ -3,11 +3,7 @@ import staticCache from 'koa-static-cache'
 import { __decorate } from 'tslib'
 import { join } from 'upath'
 
-import {
-  IMidwayApplication,
-  IMidwayContainer,
-  IMidwayContext,
-} from '@midwayjs/core'
+import { IMidwayContainer } from '@midwayjs/core'
 import { All, Controller, Inject, Provide } from '@midwayjs/decorator'
 
 import { superjson } from '../../lib'
@@ -24,12 +20,6 @@ import { createHTTPApiClient } from './client'
 import { HTTPRouter } from './router'
 
 export class HTTPGateway implements HooksGatewayAdapter {
-  options: ComponentOptions
-  container: IMidwayContainer
-  app: IMidwayApplication<IMidwayContext>
-
-  router: HTTPRouter
-
   static router = HTTPRouter
 
   static is(route: Route) {
@@ -38,9 +28,13 @@ export class HTTPGateway implements HooksGatewayAdapter {
 
   static createApiClient = createHTTPApiClient
 
+  options: ComponentOptions
+  container: IMidwayContainer
+  router: HTTPRouter
+
   constructor(options: ComponentOptions) {
     this.options = options
-    this.router = new HTTPGateway.router({
+    this.router = new HTTPRouter({
       root: this.options.root,
       projectConfig: this.options.projectConfig,
       useSourceFile: this.options.router.useSourceFile,
@@ -86,6 +80,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
 
     this.container.bind(functionId, FunctionContainer)
   }
+
   getMiddleware() {
     const mws = [this.handleError]
 
