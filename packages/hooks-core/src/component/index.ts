@@ -15,7 +15,11 @@ export const hooks = (runtimeConfig: RuntimeConfig = {}) => {
 
   const root = getProjectRoot()
   const projectConfig = getConfig()
-  const router = new FileRouter(root, projectConfig, isDevelopment())
+  const router = new FileRouter({
+    root,
+    projectConfig,
+    useSourceFile: isDevelopment(),
+  })
 
   const hooks = new HooksComponent({
     root,

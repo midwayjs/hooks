@@ -8,18 +8,22 @@ jest.mock('../logger', () => ({
 let router: HTTPRouter
 
 beforeEach(() => {
-  router = new HTTPRouter('/', {
-    source: 'src',
-    routes: [
-      {
-        baseDir: 'render',
-        basePath: '/',
-      },
-      {
-        baseDir: 'lambda',
-        basePath: '/api',
-      },
-    ],
+  router = new HTTPRouter({
+    root: '/',
+    projectConfig: {
+      source: 'src',
+      routes: [
+        {
+          baseDir: 'render',
+          basePath: '/',
+        },
+        {
+          baseDir: 'lambda',
+          basePath: '/api',
+        },
+      ],
+    },
+    useSourceFile: true,
   })
 })
 
