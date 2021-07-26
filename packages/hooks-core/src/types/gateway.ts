@@ -1,8 +1,4 @@
-import {
-  IMidwayApplication,
-  IMidwayContainer,
-  IMidwayContext,
-} from '@midwayjs/core'
+import { IMidwayContainer } from '@midwayjs/core'
 
 import { ApiFunction } from '..'
 import { FileRouter } from '../router/file'
@@ -33,7 +29,6 @@ export interface CreateApiOptions {
 export interface HooksGatewayAdapter {
   options?: ComponentOptions
   container: IMidwayContainer
-  app?: IMidwayApplication<IMidwayContext>
 
   createApi(config: CreateApiOptions): void
   afterCreate?(): void
@@ -41,9 +36,8 @@ export interface HooksGatewayAdapter {
 
 export interface HooksGatewayAdapterStatic {
   new (options?: ComponentOptions): HooksGatewayAdapter
-  is(route: Route): any
+  is(route: Route): boolean
 
   router: Class<FileRouter>
-
   createApiClient(file: string, code: string, router: FileRouter): any
 }
