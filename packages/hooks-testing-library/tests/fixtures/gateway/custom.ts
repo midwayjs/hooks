@@ -1,7 +1,7 @@
 import {
-  IMidwayContainer,
-  IMidwayBaseApplication,
   Context,
+  IMidwayBaseApplication,
+  IMidwayContainer,
 } from '@midwayjs/core'
 import {
   ComponentOptions,

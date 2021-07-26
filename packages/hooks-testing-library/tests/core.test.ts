@@ -2,11 +2,11 @@ import path from 'path'
 
 import { createApp, HooksApplication } from '../src'
 import {
-  returnString,
-  returnObject,
-  getContext,
   get,
+  getContext,
   post,
+  returnObject,
+  returnString,
 } from './fixtures/core/src/lambda/index'
 import { tryInject, tryInjectLocal } from './fixtures/core/src/lambda/ioc'
 import middleware from './fixtures/core/src/lambda/middleware'

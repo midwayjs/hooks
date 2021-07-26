@@ -1,4 +1,4 @@
-import { Provide, Inject } from '@midwayjs/decorator'
+import { Inject, Provide } from '@midwayjs/decorator'
 import { useInject } from '@midwayjs/hooks'
 
 import { CatService } from '../ioc/CatService'

@@ -1,4 +1,4 @@
-import { Provide, Inject } from '@midwayjs/decorator'
+import { Inject, Provide } from '@midwayjs/decorator'
 
 @Provide()
 export class CatRepository {
