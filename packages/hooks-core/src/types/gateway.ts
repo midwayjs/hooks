@@ -6,7 +6,7 @@ import {
 
 import { ApiFunction } from '..'
 import { FileRouter } from '../router/file'
-import { ProjectConfig, RuntimeConfig, ServerRoute } from './config'
+import { ProjectConfig, RuntimeConfig, Route } from './config'
 
 export type ComponentOptions = {
   root: string
@@ -27,7 +27,7 @@ export interface CreateApiOptions {
   isExportDefault?: boolean
 
   file?: string
-  route?: ServerRoute
+  route?: Route
 }
 
 export interface HooksGatewayAdapter {
@@ -41,7 +41,7 @@ export interface HooksGatewayAdapter {
 
 export interface HooksGatewayAdapterStatic {
   new (options?: ComponentOptions): HooksGatewayAdapter
-  is(route: ServerRoute): any
+  is(route: Route): any
 
   router: Class<FileRouter>
 
