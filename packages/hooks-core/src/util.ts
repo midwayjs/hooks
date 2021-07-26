@@ -29,3 +29,16 @@ export function useHooksMiddleware(fn: (...args: any[]) => any) {
     return fn(...args)
   }
 }
+
+export function formatCode(code: string) {
+  try {
+    const prettier = require('prettier')
+    return prettier.format(code, {
+      semi: true,
+      singleQuote: true,
+      parser: 'babel',
+    })
+  } catch {
+    return code
+  }
+}

@@ -1,3 +1,4 @@
+import { init, parse } from 'es-module-lexer'
 import { existsSync } from 'fs'
 import staticCache from 'koa-static-cache'
 import { __decorate } from 'tslib'
@@ -10,34 +11,58 @@ import {
 } from '@midwayjs/core'
 import { All, Controller, Inject, Provide } from '@midwayjs/decorator'
 
-import { superjson } from '../../lib'
-import { useContext } from '../../runtime'
-import { ApiFunction } from '../../types/common'
-import { ServerRoute, HTTPRoute } from '../../types/config'
+import { superjson } from '../../../lib'
+import { useContext } from '../../../runtime'
+import { ApiFunction } from '../../../types/common'
+import { ProjectConfig, ServerRoute } from '../../../types/config'
 import {
   ComponentOptions,
-  CreateApiParam,
+  CreateApiOptions,
   HooksGatewayAdapter,
-} from '../../types/gateway'
-import { isDevelopment, useHooksMiddleware } from '../../util'
+} from '../../../types/gateway'
+import { isDevelopment, useHooksMiddleware } from '../../../util'
+import { createHTTPApiClient } from './client'
+import { HTTPRouter } from './router'
 
 export class HTTPGateway implements HooksGatewayAdapter {
   options: ComponentOptions
   container: IMidwayContainer
   app: IMidwayApplication<IMidwayContext>
 
-  constructor(config: ComponentOptions) {
-    this.options = config
-  }
+  router: HTTPRouter
 
-  is(route: ServerRoute) {
+  static router = HTTPRouter
+
+  static is(route: ServerRoute) {
     return !!route?.basePath
   }
 
-  createApi(param: CreateApiParam) {
-    const { id, fn, httpPath } = param
+  static createApiClient = createHTTPApiClient
 
-    // 设置中间件
+  constructor(options: ComponentOptions) {
+    this.options = options
+    this.router = new HTTPGateway.router(
+      options.root,
+      options.projectConfig,
+      options.router.useSource
+    )
+  }
+
+  createApi(options: CreateApiOptions) {
+    const { file, functionName, isExportDefault, fn } = options
+    const httpPath = this.router.getHTTPPath(
+      file,
+      functionName,
+      isExportDefault
+    )
+
+    fn._param.url = httpPath
+    this.createHTTPApi(httpPath, options)
+  }
+
+  createHTTPApi(httpPath: string, options: CreateApiOptions) {
+    const { functionId, fn } = options
+    // setup middleware
     fn.middleware.unshift(...this.getMiddleware())
 
     // Source: https://www.typescriptlang.org/play?noImplicitAny=false&strictNullChecks=false&strictFunctionTypes=false&strictPropertyInitialization=false&strictBindCallApply=false&noImplicitThis=false&noImplicitReturns=false&alwaysStrict=false&importHelpers=true&emitDecoratorMetadata=false&ts=4.1.5#code/JYWwDg9gTgLgBAbzgSQHYCsCmBjGAaOAYQlRiggBsLMoCBBKggBXIDdgATTOAXzgDNyIOAHIAAiE4B3AIYBPdAGcA9F2zQZMaCIBQO9akXx+qOAF44ACgB0tmVADmigFxwZqOQG0AugEpzAHyIPHpiLBDsXJa+OmLEpORUNJYiyiIx2BQyiopwAGIArqi4wCTxMDLAqDSIOnD1cGJoWLjRdQ24AB6u7nJ6DY0MFCkiBEiSHBzUslCYrj68MQPZcsVwABbuUzXRtQP11PD2TuZwMOvAitZd1rMAjgWYRtYARhAcctbHuQA+P3A+dr7OCzGAFKCmGSyYDGVA2OyORRLBohEJAA
@@ -56,13 +81,12 @@ export class HTTPGateway implements HooksGatewayAdapter {
       null
     )
     FunctionContainer = __decorate(
-      [Provide(id), Controller('/')],
+      [Provide(functionId), Controller('/')],
       FunctionContainer
     )
 
-    this.container.bind(id, FunctionContainer)
+    this.container.bind(functionId, FunctionContainer)
   }
-
   getMiddleware() {
     const mws = [this.handleError]
 
@@ -106,9 +130,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
       return
     }
 
-    const {
-      router: { routes },
-    } = this.options
+    const { routes } = this.router
     if (routes.has('/') || routes.has('/*')) {
       return
     }
@@ -132,9 +154,8 @@ export class HTTPGateway implements HooksGatewayAdapter {
     const fn: ApiFunction = async () => {}
     fn.middleware = [mw]
 
-    this.createApi({
-      id: 'hooks-host',
-      httpPath: '/*',
+    this.createHTTPApi('/*', {
+      functionId: 'hooks-host',
       fn,
     })
   }

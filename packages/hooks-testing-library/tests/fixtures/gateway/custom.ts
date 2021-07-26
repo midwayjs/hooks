@@ -5,7 +5,7 @@ import {
 } from '@midwayjs/core'
 import {
   ComponentOptions,
-  CreateApiParam,
+  CreateApiOptions,
   HooksGatewayAdapter,
   ServerRoute,
 } from '@midwayjs/hooks-core'
@@ -19,13 +19,16 @@ export class CustomGateway implements HooksGatewayAdapter {
   container: IMidwayContainer
   app: IMidwayBaseApplication<Context>
 
-  createApi(config: CreateApiParam): void {
-    this.container.bind('custom', config.fn)
+  createApi(options: CreateApiOptions): void {
+    this.container.bind('custom', options.fn)
   }
 
   afterCreate(): void {}
 
-  is(route: ServerRoute): boolean {
+  static is(route: ServerRoute): boolean {
     return !!route?.custom
   }
+
+  static router = null
+  static createApiClient = null
 }

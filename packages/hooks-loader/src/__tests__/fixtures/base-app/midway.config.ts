@@ -11,5 +11,9 @@ export default defineConfig({
       baseDir: 'lambda',
       basePath: '/api',
     },
+    {
+      baseDir: 'wechat',
+      event: 'wechat-miniapp',
+    },
   ],
 })

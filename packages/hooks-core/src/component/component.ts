@@ -10,7 +10,6 @@ import { als } from '../runtime'
 import { ApiFunction, ApiModule } from '../types/common'
 import { ComponentOptions, HooksGatewayAdapter } from '../types/gateway'
 import { useHooksMiddleware } from '../util'
-import { HTTPGateway } from './gateway/http'
 
 export class HooksComponent {
   options: ComponentOptions
@@ -20,7 +19,7 @@ export class HooksComponent {
   constructor(options: ComponentOptions) {
     this.options = options
     this.adapters = options.projectConfig.gateway.map(
-      (adapter) => new adapter(this.options)
+      (Adapter) => new Adapter(this.options)
     )
   }
 
@@ -86,15 +85,9 @@ export class HooksComponent {
   }
 
   getAdapterByRoute(route: ServerRoute) {
-    const adapter = this.adapters.find((adapter) => adapter.is(route))
-
-    if (!adapter) {
-      throw new Error(
-        `Can't find the correct gateway adapter, please check if midway.config.ts is correct`
-      )
-    }
-
-    return adapter
+    const Adapter = this.options.router.getGatewayByRoute(route)
+    const instance = this.adapters.find((inst) => inst instanceof Adapter)
+    return instance
   }
 
   createApi(
@@ -113,28 +106,21 @@ export class HooksComponent {
 
       const isExportDefault = name === 'default'
       const functionName = isExportDefault ? '$default' : name
-      const id = this.options.router.getFunctionId(
+      const functionId = this.options.router.getFunctionId(
         file,
         functionName,
         isExportDefault
       )
 
-      let httpPath = ''
-
-      if (adapter instanceof HTTPGateway) {
-        httpPath = this.options.router.getHTTPPath(
-          file,
-          functionName,
-          isExportDefault
-        )
-      }
-
-      fn._param = {
-        url: httpPath,
-        meta: { functionName: id },
-      }
-
-      adapter.createApi({ fn, id, httpPath, route })
+      fn._param = { functionId }
+      adapter.createApi({
+        fn,
+        functionName,
+        isExportDefault,
+        functionId,
+        file,
+        route,
+      })
     }
   }
 

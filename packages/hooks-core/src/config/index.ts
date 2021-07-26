@@ -1,9 +1,13 @@
 import { existsSync } from 'fs'
 import createJITI from 'jiti'
 import _ from 'lodash'
+import { HooksGatewayAdapterStatic } from 'packages/hooks-core/dist/midwayjs-hooks-core.cjs'
 import { sync } from 'pkg-dir'
 import path from 'upath'
 
+import { Class, HooksGatewayAdapter } from '../'
+import { EventGateway } from '../component/gateway/event/gateway'
+import { HTTPGateway } from '../component/gateway/http/gateway'
 import { IgnorePattern, ProjectConfig, UserConfig } from '../types/config'
 import { validateArray } from '../validator'
 
@@ -42,9 +46,16 @@ export function getConfig(cwd?: string): ProjectConfig {
   const userConfig =
     tryRequire<UserConfig>(configs.ts) || tryRequire<UserConfig>(configs.js)
 
+  const builtinGateways = new Set<HooksGatewayAdapterStatic>()
+  for (const route of userConfig.routes) {
+    if (route.basePath) builtinGateways.add(HTTPGateway)
+    if (route.event) builtinGateways.add(EventGateway)
+  }
+  userConfig.gateway = userConfig.gateway || []
+  userConfig.gateway.push(...builtinGateways)
+
   return _.defaultsDeep({}, userConfig, {
     superjson: false,
-    gateway: [],
     source: './src/apis',
     dev: {
       ignorePattern,
