@@ -3,10 +3,10 @@ import { Plugin } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 import {
-  getProjectRoot,
-  getConfig,
-  ProjectConfig,
   FileRouter,
+  getConfig,
+  getProjectRoot,
+  ProjectConfig,
 } from '@midwayjs/hooks-core'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
 

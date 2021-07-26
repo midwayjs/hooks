@@ -1,4 +1,3 @@
-import { init, parse } from 'es-module-lexer'
 import { existsSync } from 'fs'
 import staticCache from 'koa-static-cache'
 import { __decorate } from 'tslib'
@@ -14,7 +13,7 @@ import { All, Controller, Inject, Provide } from '@midwayjs/decorator'
 import { superjson } from '../../../lib'
 import { useContext } from '../../../runtime'
 import { ApiFunction } from '../../../types/common'
-import { ProjectConfig, ServerRoute } from '../../../types/config'
+import { ServerRoute } from '../../../types/config'
 import {
   ComponentOptions,
   CreateApiOptions,

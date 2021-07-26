@@ -3,14 +3,14 @@ import path from 'path'
 import { createApp, HooksApplication } from '../src'
 import { CustomError } from './fixtures/superjson/src/error/custom'
 import {
-  returnString,
-  returnObject,
-  getContext,
   get,
+  getContext,
   post,
   returnError,
-  throwError,
+  returnObject,
+  returnString,
   throwCustomError,
+  throwError,
 } from './fixtures/superjson/src/lambda/index'
 
 let app: HooksApplication

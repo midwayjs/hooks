@@ -5,7 +5,6 @@ import { HooksGatewayAdapterStatic } from 'packages/hooks-core/dist/midwayjs-hoo
 import { sync } from 'pkg-dir'
 import path from 'upath'
 
-import { Class, HooksGatewayAdapter } from '../'
 import { EventGateway } from '../component/gateway/event/gateway'
 import { HTTPGateway } from '../component/gateway/http/gateway'
 import { IgnorePattern, ProjectConfig, UserConfig } from '../types/config'

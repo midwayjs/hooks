@@ -2,16 +2,16 @@ import { join } from 'path'
 
 import { IMidwayApplication, IMidwayFramework } from '@midwayjs/core'
 import {
+  ApiFunction,
   getConfig,
   getProjectRoot,
-  ApiFunction,
   ProjectConfig,
   validateFunction,
 } from '@midwayjs/hooks-core'
 import {
+  close,
   createApp as createWebApp,
   createFunctionApp as createFaaSApp,
-  close,
   createHttpRequest,
 } from '@midwayjs/mock'
 
