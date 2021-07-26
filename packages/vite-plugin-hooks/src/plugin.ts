@@ -4,16 +4,15 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 import {
   getProjectRoot,
-  ServerRouter,
   getConfig,
-  createApiClient,
   ProjectConfig,
+  FileRouter,
 } from '@midwayjs/hooks-core'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
 
 export class VitePlugin implements Plugin {
   root: string
-  router: ServerRouter
+  router: FileRouter
 
   projectConfig: ProjectConfig
   midwayPlugins: any[]
@@ -21,7 +20,7 @@ export class VitePlugin implements Plugin {
   constructor() {
     this.projectConfig = getConfig()
     this.root = getProjectRoot()
-    this.router = new ServerRouter(this.root, this.projectConfig, true)
+    this.router = new FileRouter(this.root, this.projectConfig, true)
   }
 
   name = 'vite:@midwayjs/hooks'
@@ -31,11 +30,12 @@ export class VitePlugin implements Plugin {
       return null
     }
 
-    const client = await createApiClient(
-      this.router.getBaseUrl(file),
+    const route = this.router.getRoute(file)
+    const Gateway = this.router.getGatewayByRoute(route)
+    const client = await Gateway.createApiClient(
+      file,
       code,
-      this.projectConfig.superjson,
-      this.projectConfig.request.client
+      new Gateway.router(this.root, this.config, true)
     )
 
     return {
