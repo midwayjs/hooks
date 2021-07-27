@@ -121,6 +121,9 @@ export class HooksComponent {
     }
   }
 
+  /**
+   * @description Web only
+   */
   getGlobalMiddleware() {
     const mws = [this.useAsyncLocalStorage]
     this.options.runtimeConfig.middleware?.forEach?.((mw) =>
