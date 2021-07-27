@@ -4,10 +4,10 @@ import { __decorate } from 'tslib'
 import { join } from 'upath'
 
 import { IMidwayContainer } from '@midwayjs/core'
-import { All, Controller, Inject, Provide } from '@midwayjs/decorator'
+import { All, Controller } from '@midwayjs/decorator'
 
 import { superjson } from '../../lib'
-import { useContext } from '../../runtime'
+import { createFunctionContainer, useContext } from '../../runtime'
 import { ApiFunction } from '../../types/common'
 import { Route } from '../../types/config'
 import {
@@ -55,27 +55,19 @@ export class HTTPGateway implements HooksGatewayAdapter {
   createHTTPApi(httpPath: string, options: CreateApiOptions) {
     const { functionId, fn } = options
     // setup middleware
-    fn.middleware.unshift(...this.getMiddleware())
+    const middleware = [...this.getMiddleware(), ...fn.middleware]
 
-    // Source: https://www.typescriptlang.org/play?noImplicitAny=false&strictNullChecks=false&strictFunctionTypes=false&strictPropertyInitialization=false&strictBindCallApply=false&noImplicitThis=false&noImplicitReturns=false&alwaysStrict=false&importHelpers=true&emitDecoratorMetadata=false&ts=4.1.5#code/JYWwDg9gTgLgBAbzgSQHYCsCmBjGAaOAYQlRiggBsLMoCBBKggBXIDdgATTOAXzgDNyIOAHIAAiE4B3AIYBPdAGcA9F2zQZMaCIBQO9akXx+qOAF44ACgB0tmVADmigFxwZqOQG0AugEpzAHyIPHpiLBDsXJa+OmLEpORUNJYiyiIx2BQyiopwAGIArqi4wCTxMDLAqDSIOnD1cGJoWLjRdQ24AB6u7nJ6DY0MFCkiBEiSHBzUslCYrj68MQPZcsVwABbuUzXRtQP11PD2TuZwMOvAitZd1rMAjgWYRtYARhAcctbHuQA+P3A+dr7OCzGAFKCmGSyYDGVA2OyORRLBohEJAA
-    let FunctionContainer = class FunctionContainer {
-      ctx: any
-      async handler() {
-        let args = this.ctx.request?.body?.args || []
-        return await fn(...args)
-      }
-    }
-    __decorate([Inject()], FunctionContainer.prototype, 'ctx', void 0)
-    __decorate(
-      [All(httpPath, { middleware: fn.middleware })],
-      FunctionContainer.prototype,
-      'handler',
-      null
-    )
-    FunctionContainer = __decorate(
-      [Provide(functionId), Controller('/')],
-      FunctionContainer
-    )
+    const FunctionContainer = createFunctionContainer({
+      isHTTP: true,
+      fn,
+      functionId,
+      parseArgs(ctx) {
+        const args = ctx.request?.body?.args || []
+        return args
+      },
+      classDecorators: [Controller('/')],
+      handlerDecorators: [All(httpPath, { middleware })],
+    })
 
     this.container.bind(functionId, FunctionContainer)
   }
