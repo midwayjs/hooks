@@ -89,10 +89,18 @@ export type EventRoute = {
   event?: 'wechat-miniapp'
 }
 
+export type MTOPRoute = {
+  mtop?: boolean
+}
+
+export type HSFRoute = {
+  hsf?: boolean
+}
+
 /**
  * @description route config
  */
-export type Route = BaseRoute & (HTTPRoute | EventRoute)
+export type Route = BaseRoute & (HTTPRoute | EventRoute | MTOPRoute | HSFRoute)
 /**
  * @deprecated ServerRoute now rename to Route
  */
