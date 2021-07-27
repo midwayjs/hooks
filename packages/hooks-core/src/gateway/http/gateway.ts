@@ -20,12 +20,11 @@ import { createHTTPApiClient } from './client'
 import { HTTPRouter } from './router'
 
 export class HTTPGateway implements HooksGatewayAdapter {
-  static router = HTTPRouter
-
   static is(route: Route) {
     return !!route?.basePath
   }
 
+  static router = HTTPRouter
   static createApiClient = createHTTPApiClient
 
   options: ComponentOptions
