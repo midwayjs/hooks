@@ -39,7 +39,11 @@ export class VitePlugin implements Plugin {
     const client = await Gateway.createApiClient(
       file,
       code,
-      new Gateway.router(this.root, this.config, true)
+      new Gateway.router({
+        root: this.root,
+        projectConfig: this.projectConfig,
+        useSourceFile: true,
+      })
     )
 
     return {
