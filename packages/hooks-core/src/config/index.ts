@@ -42,8 +42,9 @@ export function getConfig(cwd?: string): ProjectConfig {
     )
   }
 
-  const userConfig =
-    tryRequire<UserConfig>(configs.ts) || tryRequire<UserConfig>(configs.js)
+  const userConfig = existsSync(configs.ts)
+    ? requireByJiti<UserConfig>(configs.ts)
+    : requireByJiti<UserConfig>(configs.js)
 
   const builtinGateways = new Set<HooksGatewayAdapterStatic>()
   for (const route of userConfig.routes) {
@@ -74,13 +75,9 @@ export function defineConfig(config: UserConfig): UserConfig {
   return config
 }
 
-const tryRequire = <T = unknown>(id: string): T => {
-  try {
-    const jiti = createJITI()
-    const contents = jiti(id)
-    if ('default' in contents) return contents.default
-    return contents
-  } catch {
-    return undefined
-  }
+const requireByJiti = <T = unknown>(id: string): T => {
+  const jiti = createJITI()
+  const contents = jiti(id)
+  if ('default' in contents) return contents.default
+  return contents
 }
