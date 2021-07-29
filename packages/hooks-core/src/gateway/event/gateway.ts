@@ -27,7 +27,7 @@ export class EventGateway implements HooksGatewayAdapter {
       parseArgs(_, event) {
         let args: any[]
         switch (route.event) {
-          case 'wechat-miniapp':
+          case 'wechat-miniprogram':
             args = event?.args
         }
         return args || []

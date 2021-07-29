@@ -3967,6 +3967,11 @@
     anymatch "^3.0.0"
     source-map "^0.6.0"
 
+"@types/wechat-miniprogram@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.npmjs.org/@types/wechat-miniprogram/-/wechat-miniprogram-3.4.0.tgz#d743d5b3c17bd531c2c178ea1fe9d92a0b23bcd0"
+  integrity sha512-7d7KDwoV42/ANx/0C8C4ctBv1q9XnXYD4Fz0C+3ii0Tm+HRIwwDcinv8S88Ut/Y80czlI0shGpTgLFe0GbrXWQ==
+
 "@types/yargs-parser@*":
   version "20.2.0"
   resolved "https://registry.npmjs.org/@types/yargs-parser/-/yargs-parser-20.2.0.tgz#dd3e6699ba3237f0348cd085e4698780204842f9"
@@ -3998,6 +4003,11 @@
     lodash "^4.17.15"
     semver "^7.3.2"
     tsutils "^3.17.1"
+
+"@uni/env@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.npmjs.org/@uni/env/-/env-1.0.7.tgz#eb6c36fbcaa45f88108038f68f1a3688cd0f2ba7"
+  integrity sha512-qSyMTfk/v15FsJiehe5ICd3OVj9oq+0f+IXYEd3fdkzL4FFsxCSMGgi0LEUUhDXA8qVnJyiflwUtMrqDaZQo3w==
 
 "@vitejs/plugin-react-refresh@^1.3.5":
   version "1.3.5"
