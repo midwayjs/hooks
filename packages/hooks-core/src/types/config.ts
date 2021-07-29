@@ -84,9 +84,9 @@ export type HTTPRoute = {
 export type EventRoute = {
   /**
    * @description event type
-   * @example wechat-miniapp
+   * @example wechat-miniprogram
    */
-  event?: 'wechat-miniapp'
+  event?: 'wechat-miniprogram'
 }
 
 export type MTOPRoute = {
