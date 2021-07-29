@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-miniprogram-client",
-  "version": "2.2.5-next.5",
+  "version": "2.2.5-next.6",
   "description": "The api client from miniprogram",
   "main": "dist/midwayjs-hooks-miniprogram-client.cjs.js",
   "module": "dist/midwayjs-hooks-miniprogram-client.esm.js",
@@ -18,7 +18,7 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "devDependencies": {
-    "@midwayjs/hooks-core": "^2.2.5-next.5",
+    "@midwayjs/hooks-core": "^2.2.5-next.6",
     "@types/wechat-miniprogram": "^3.4.0"
   },
   "publishConfig": {
