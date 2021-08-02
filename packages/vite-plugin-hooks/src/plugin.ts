@@ -27,6 +27,7 @@ export class VitePlugin implements Plugin {
     })
   }
 
+  enforce: 'pre' | 'post' = 'pre'
   name = 'vite:@midwayjs/hooks'
 
   transform = async (code: string, file: string) => {
@@ -50,6 +51,16 @@ export class VitePlugin implements Plugin {
       code: client,
       map: null,
     }
+  }
+
+  resolveId = (_: string, importer: string) => {
+    if (this.router.isApiDirectoryFile(importer)) {
+      return {
+        id: 'MIDWAY_HOOKS_VIRTUAL_FILE',
+        external: true,
+      }
+    }
+    return null
   }
 
   configureServer = async (server) => {

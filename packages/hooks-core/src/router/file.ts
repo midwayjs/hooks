@@ -58,6 +58,10 @@ export class FileRouter {
     return gateway
   }
 
+  isApiDirectoryFile(file: string) {
+    return this.inside(file, this.source)
+  }
+
   isApiFile(file: string) {
     if (file.endsWith('.test.ts') || file.endsWith('.test.js')) {
       return false
@@ -79,7 +83,7 @@ export class FileRouter {
     return name.toLowerCase()
   }
 
-  protected inside(child: string, parent: string) {
+  private inside(child: string, parent: string) {
     return inside(toUnix(child), toUnix(parent))
   }
 }
