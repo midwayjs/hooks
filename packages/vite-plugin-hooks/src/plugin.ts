@@ -54,12 +54,14 @@ export class VitePlugin implements Plugin {
   }
 
   resolveId = (_: string, importer: string) => {
-    if (this.router.isApiDirectoryFile(importer)) {
-      return {
-        id: 'MIDWAY_HOOKS_VIRTUAL_FILE',
-        external: true,
-      }
+    if (
+      process.env.NODE_ENV !== 'production' &&
+      importer &&
+      this.router.isApiFile(importer)
+    ) {
+      return 'MIDWAY_HOOKS_VIRTUAL_FILE'
     }
+
     return null
   }
 
