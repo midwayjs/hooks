@@ -83,14 +83,6 @@ export class VitePlugin implements Plugin {
       optimizeDeps: {
         include: [this.projectConfig.request.client],
       },
-      resolve: {
-        alias: [
-          {
-            find: '@midwayjs/hooks',
-            replacement: '@midwayjs/hooks/universal',
-          },
-        ],
-      },
       build: {
         manifest: true,
         outDir: this.projectConfig.build.viteOutDir,
