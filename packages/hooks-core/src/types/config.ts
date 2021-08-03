@@ -10,11 +10,6 @@ export type IgnorePattern = (req: {
  * @internal
  */
 export interface ProjectConfig {
-  /**
-   * @deprecated will be removed in next version.
-   * Enable superjson to serialize Set/Map/Error/BigInt, default is false
-   */
-  superjson?: boolean
   gateway?: HooksGatewayAdapterStatic[]
   /**
    * @description server root, default is src/apis

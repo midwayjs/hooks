@@ -12,7 +12,6 @@ export * from './request'
 
 export * from './config'
 export * from './util'
-export * from './lib'
 export * from './validator'
 
 export * from './types/common'
