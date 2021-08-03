@@ -22,7 +22,6 @@ export async function createHTTPApiClient(
 
   const baseUrl = router.getBaseUrl(file)
   const {
-    superjson,
     request: { client },
   } = router.projectConfig
 
@@ -30,9 +29,7 @@ export async function createHTTPApiClient(
     const isExportDefault = name === 'default'
     return {
       url: getUrl(baseUrl, name),
-      meta: {
-        superjson,
-      },
+      meta: {},
       functionId: router.getFunctionId(file, name, isExportDefault),
       isExportDefault: isExportDefault,
       name: isExportDefault ? '$default' : name,
