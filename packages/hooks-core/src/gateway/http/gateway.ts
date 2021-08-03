@@ -6,7 +6,6 @@ import { join } from 'upath'
 import { IMidwayContainer } from '@midwayjs/core'
 import { All, Controller } from '@midwayjs/decorator'
 
-import { superjson } from '../../lib'
 import { createFunctionContainer, useContext } from '../../runtime'
 import { ApiFunction } from '../../types/common'
 import { Route } from '../../types/config'
@@ -55,7 +54,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
   createHTTPApi(httpPath: string, options: CreateApiOptions) {
     const { functionId, fn } = options
     // setup middleware
-    const middleware = [...this.getMiddleware(), ...fn.middleware]
+    const middleware = [...fn.middleware]
 
     const FunctionContainer = createFunctionContainer({
       isHTTP: true,
@@ -70,40 +69,6 @@ export class HTTPGateway implements HooksGatewayAdapter {
     })
 
     this.container.bind(functionId, FunctionContainer)
-  }
-
-  getMiddleware() {
-    const mws = [this.handleError]
-
-    const enableSuperjson = this.options.projectConfig.superjson
-    if (enableSuperjson) {
-      mws.push(this.deserializeSuperjson)
-    }
-
-    return mws.map(useHooksMiddleware)
-  }
-
-  async deserializeSuperjson(next: any) {
-    await next()
-    const ctx = useContext()
-    if (ctx.type.includes('application/json')) {
-      ctx.body = superjson.serialize(ctx.body)
-    }
-  }
-
-  handleError = async (next: any) => {
-    try {
-      await next()
-    } catch (error) {
-      const ctx = useContext()
-
-      if (this.options.projectConfig.superjson) {
-        ctx.status = 500
-        ctx.body = superjson.serialize(error)
-      } else {
-        throw error
-      }
-    }
   }
 
   afterCreate() {

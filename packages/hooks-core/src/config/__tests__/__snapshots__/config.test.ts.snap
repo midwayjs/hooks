@@ -22,7 +22,6 @@ Object {
     },
   ],
   "source": "src",
-  "superjson": false,
 }
 `;
 
@@ -48,7 +47,6 @@ Object {
     },
   ],
   "source": "src",
-  "superjson": false,
 }
 `;
 
@@ -74,6 +72,5 @@ Object {
     },
   ],
   "source": "src",
-  "superjson": false,
 }
 `;
