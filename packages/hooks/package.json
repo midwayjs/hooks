@@ -29,14 +29,12 @@
   "preconstruct": {
     "entrypoints": [
       "index.ts",
-      "request.ts",
-      "universal.ts"
+      "request.ts"
     ]
   },
   "files": [
     "dist",
     "request",
-    "universal",
     "jest-preset.js"
   ]
 }
