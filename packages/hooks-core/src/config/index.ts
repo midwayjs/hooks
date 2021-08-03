@@ -55,7 +55,6 @@ export function getConfig(cwd?: string): ProjectConfig {
   userConfig.gateway.push(...builtinGateways)
 
   return _.defaultsDeep({}, userConfig, {
-    superjson: false,
     source: './src/apis',
     dev: {
       ignorePattern,
