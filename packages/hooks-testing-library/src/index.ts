@@ -15,8 +15,6 @@ import {
   createHttpRequest,
 } from '@midwayjs/mock'
 
-import { SuperJSONPlugin } from './plugin'
-
 export type CreateAppOption = {
   root?: string
 }
@@ -97,14 +95,11 @@ export class HooksApplication {
 
     const supertest = createHttpRequest(this.app)
     if (args.length === 0) {
-      return supertest
-        .get(fn._param.url)
-        .use(SuperJSONPlugin(this.config.superjson))
+      return supertest.get(fn._param.url)
     }
 
     return supertest
       .post(fn._param.url)
-      .use(SuperJSONPlugin(this.config.superjson))
       .send({ args })
       .set('Content-Type', 'application/json')
   }

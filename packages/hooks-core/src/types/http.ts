@@ -25,7 +25,6 @@ export interface ApiParam extends ApiBaseParam {
 
   meta: {
     functionName?: string
-    superjson?: boolean
     [key: string]: any
   }
 }

@@ -6,7 +6,6 @@ export {
   hooks,
   defineConfig,
   ApiConfig,
-  superjson,
   useContext,
   useConfig,
   useInject,
