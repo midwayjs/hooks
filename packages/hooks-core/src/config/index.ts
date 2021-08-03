@@ -7,25 +7,12 @@ import path from 'upath'
 import { HooksGatewayAdapterStatic } from '..'
 import { EventGateway } from '../gateway/event/gateway'
 import { HTTPGateway } from '../gateway/http/gateway'
-import { IgnorePattern, ProjectConfig, UserConfig } from '../types/config'
+import { ProjectConfig, UserConfig } from '../types/config'
 import { validateArray } from '../validator'
+import { ignorePattern } from './ignorePattern'
 
 export function getProjectRoot(cwd?: string) {
   return sync(cwd) || process.cwd()
-}
-
-export const ignorePattern: IgnorePattern = (req) => {
-  // Ignore Vite dev server
-  const vite = ['@vite', '@react-refresh', '@id']
-  if (vite.some((api) => req.url.includes(api))) {
-    return true
-  }
-
-  const url = require('url')
-  const { pathname, query } = url.parse(req.url)
-  const reg =
-    /\.(js|ts|tsx|css|less|sass|scss|map|json|png|jpg|jpeg|gif|svg|eot|woff2|ttf)$/
-  return reg.test(pathname) || reg.test(query)
 }
 
 export function getConfig(cwd?: string): ProjectConfig {
