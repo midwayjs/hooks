@@ -1,6 +1,5 @@
 import { join } from 'path'
 import { Plugin } from 'vite'
-import tsconfigPaths from 'vite-tsconfig-paths'
 
 import {
   FileRouter,
@@ -81,7 +80,6 @@ export class VitePlugin implements Plugin {
 
   config = () => {
     return {
-      plugin: [tsconfigPaths({ root: this.root })],
       optimizeDeps: {
         include: [this.projectConfig.request.client],
       },
