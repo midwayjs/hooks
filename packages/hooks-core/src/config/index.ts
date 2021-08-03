@@ -16,7 +16,7 @@ export function getProjectRoot(cwd?: string) {
 
 export const ignorePattern: IgnorePattern = (req) => {
   // Ignore Vite dev server
-  const vite = ['@vite', '@react-refresh']
+  const vite = ['@vite', '@react-refresh', '@id']
   if (vite.some((api) => req.url.includes(api))) {
     return true
   }
