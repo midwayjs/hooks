@@ -1,5 +1,3 @@
-/* istanbul ignore file */
-import chalk from 'chalk'
 import { relative } from 'upath'
 
 export function duplicateLogger(
@@ -10,9 +8,9 @@ export function duplicateLogger(
 ) {
   console.log(
     '[%s] Duplicate routes detected. %s and %s both resolve to %s.',
-    chalk.yellow('warn'),
-    chalk.cyan(relative(root, existPath)),
-    chalk.cyan(relative(root, currentPath)),
-    chalk.cyan(api)
+    'warn',
+    relative(root, existPath),
+    relative(root, currentPath),
+    api
   )
 }
