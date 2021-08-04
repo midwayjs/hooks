@@ -1,5 +1,6 @@
 import parseArgs from 'fn-args'
 import { last } from 'lodash'
+import { relative, resolve, sep } from 'path'
 
 export function isDevelopment() {
   if (
@@ -41,4 +42,14 @@ export function formatCode(code: string) {
   } catch {
     return code
   }
+}
+
+export function isPathInside(child: string, parent: string) {
+  const relation = relative(parent, child)
+  return Boolean(
+    relation &&
+      relation !== '..' &&
+      !relation.startsWith(`..${sep}`) &&
+      relation !== resolve(child)
+  )
 }

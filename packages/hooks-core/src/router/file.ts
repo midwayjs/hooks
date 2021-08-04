@@ -1,8 +1,8 @@
-import inside from 'is-path-inside'
 import { kebabCase } from 'lodash'
 import { extname, join, relative, removeExt, toUnix } from 'upath'
 
 import { ProjectConfig, Route } from '../types/config'
+import { isPathInside } from '../util'
 
 interface RouterOptions {
   root: string
@@ -58,10 +58,6 @@ export class FileRouter {
     return gateway
   }
 
-  isApiDirectoryFile(file: string) {
-    return this.inside(file, this.source)
-  }
-
   isApiFile(file: string) {
     if (file.endsWith('.test.ts') || file.endsWith('.test.js')) {
       return false
@@ -84,6 +80,6 @@ export class FileRouter {
   }
 
   private inside(child: string, parent: string) {
-    return inside(toUnix(child), toUnix(parent))
+    return isPathInside(toUnix(child), toUnix(parent))
   }
 }

@@ -1,6 +1,7 @@
-import { request } from '..'
-import { mocked } from 'ts-jest/utils'
 import axios from 'axios'
+import { mocked } from 'ts-jest/utils'
+
+import { request } from '..'
 
 jest.mock('axios')
 
@@ -23,9 +24,7 @@ test('should call axios', () => {
     url: '/api/books',
     method: 'GET',
     data: { args: [] },
-    meta: {
-      superjson: true,
-    },
+    meta: {},
   })
 
   expect(mockedAxios.mock.calls).toHaveLength(3)
