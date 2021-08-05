@@ -1,5 +1,3 @@
-import { __decorate } from 'tslib'
-
 import { IMidwayContainer } from '@midwayjs/core'
 import { ServerlessTrigger, ServerlessTriggerType } from '@midwayjs/decorator'
 

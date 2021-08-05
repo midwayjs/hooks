@@ -2,7 +2,7 @@ import { IMidwayContainer } from '@midwayjs/core'
 
 import { ApiFunction } from '..'
 import { FileRouter } from '../router/file'
-import { ProjectConfig, RuntimeConfig, Route } from './config'
+import { ProjectConfig, Route, RuntimeConfig } from './config'
 
 export type ComponentOptions = {
   root: string

@@ -1,12 +1,11 @@
 import { existsSync } from 'fs'
 import staticCache from 'koa-static-cache'
-import { __decorate } from 'tslib'
 import { join } from 'upath'
 
 import { IMidwayContainer } from '@midwayjs/core'
 import { All, Controller } from '@midwayjs/decorator'
 
-import { createFunctionContainer, useContext } from '../../runtime'
+import { createFunctionContainer } from '../../runtime'
 import { ApiFunction } from '../../types/common'
 import { Route } from '../../types/config'
 import {
@@ -14,7 +13,7 @@ import {
   CreateApiOptions,
   HooksGatewayAdapter,
 } from '../../types/gateway'
-import { isDevelopment, useHooksMiddleware } from '../../util'
+import { isDevelopment } from '../../util'
 import { createHTTPApiClient } from './client'
 import { HTTPRouter } from './router'
 
