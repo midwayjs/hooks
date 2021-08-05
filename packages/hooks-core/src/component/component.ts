@@ -8,7 +8,7 @@ import type { ResolveFilter } from '@midwayjs/decorator'
 
 import { Route } from '..'
 import { als } from '../runtime'
-import { getSnapshot, SnapShot } from '../snapshot'
+import { getSnapshot, SnapShot } from '../runtime/snapshot'
 import { ApiFunction, ApiModule } from '../types/common'
 import { ComponentOptions, HooksGatewayAdapter } from '../types/gateway'
 import { useHooksMiddleware } from '../util'
@@ -104,16 +104,16 @@ export class HooksComponent {
   loadBySnapshot(snapshot: SnapShot) {
     const { router } = this.options
     const { container, modules } = snapshot
-    modules.forEach(({ mod, file }) => {
-      if (!router.isApiFile(file)) {
-        return
-      }
-      // Initialize container
-      this.adapters.forEach((adapter) => (adapter.container = container))
 
-      // Create api function
-      this.loadApiModule({ mod, file, container })
-    })
+    // Initialize container
+    this.adapters.forEach((adapter) => (adapter.container = container))
+
+    // Create api function
+    for (const { mod, file } of modules) {
+      if (router.isApiFile(file)) {
+        this.loadApiModule({ mod, file, container })
+      }
+    }
 
     this.adapters.forEach((adapter) => adapter.afterCreate?.())
   }
