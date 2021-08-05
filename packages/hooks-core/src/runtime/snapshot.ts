@@ -1,7 +1,7 @@
 import { IMidwayContainer } from '@midwayjs/core'
 
-import { ApiModule } from './types/common'
-import { ProjectConfig } from './types/config'
+import { ApiModule } from '../types/common'
+import { ProjectConfig } from '../types/config'
 
 export type SnapShot = {
   root: string
@@ -18,7 +18,7 @@ type PreloadModule = {
 export const SNAPSHOT_SYMBOL = Symbol.for('MIDWAY_HOOKS_SNAPSHOT')
 export const SNAPSHOT = globalThis[SNAPSHOT_SYMBOL]
 
-export function setSnapshot(snapshot: SnapShot) {
+export function createSnapshot(snapshot: SnapShot) {
   globalThis[SNAPSHOT_SYMBOL] = snapshot
 }
 
