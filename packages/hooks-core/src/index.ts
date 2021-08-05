@@ -6,7 +6,6 @@ export * from './gateway/event'
 export * from './component'
 
 export * from './runtime'
-export * from './runtime/hooks'
 
 export * from './request'
 

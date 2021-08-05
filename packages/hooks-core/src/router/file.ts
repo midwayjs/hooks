@@ -26,8 +26,10 @@ export class FileRouter {
 
   get source() {
     if (this.useSourceFile) {
+      // src/apis
       return join(this.root, this.projectConfig.source)
     }
+    // /dist
     return join(this.root, this.projectConfig.build.outDir)
   }
 

@@ -1,6 +1,6 @@
 import { getConfig, getProjectRoot } from '../config'
 import { FileRouter } from '../router/file'
-import { getSnapshot } from '../snapshot'
+import { getSnapshot } from '../runtime/snapshot'
 import { RuntimeConfig } from '../types/config'
 import { ComponentOptions } from '../types/gateway'
 import { isDevelopment } from '../util'
