@@ -4,12 +4,20 @@ import path from 'path'
 import upath from 'upath'
 
 import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
+import type { ResolveFilter } from '@midwayjs/decorator'
 
 import { Route } from '..'
 import { als } from '../runtime'
+import { getSnapshot, SnapShot } from '../snapshot'
 import { ApiFunction, ApiModule } from '../types/common'
 import { ComponentOptions, HooksGatewayAdapter } from '../types/gateway'
 import { useHooksMiddleware } from '../util'
+
+export type LoadApiModuleOption = {
+  mod: ApiModule
+  file: string
+  container: IMidwayContainer
+}
 
 export class HooksComponent {
   options: ComponentOptions
@@ -23,49 +31,19 @@ export class HooksComponent {
     )
   }
 
-  init() {
-    const {
-      router,
-      projectConfig: { routes },
-    } = this.options
+  load() {
+    const initOptions: { directoryResolveFilter?: ResolveFilter[] } = {}
 
-    let count = 0
-    const totalCount = routes.reduce((totalCount, route) => {
-      // Windows
-      const dir = upath.join(router.source, route.baseDir)
-      const files = sync([dir]).filter((file) => router.isApiFile(file))
-      return totalCount + files.length
-    }, 0)
+    const snapshot = getSnapshot()
+    if (snapshot) {
+      this.loadBySnapshot(snapshot)
+    } else {
+      initOptions.directoryResolveFilter = this.loadByDirectoryResolveFilter()
+    }
 
     const configuration = createConfiguration({
       namespace: '@midwayjs/hooks',
-      directoryResolveFilter: routes.map((route) => {
-        return {
-          // Windows
-          pattern: path.join(router.source, route.baseDir),
-          ignoreRequire: true,
-          filter: (_: void, file: string, container: IMidwayContainer) => {
-            if (!router.isApiFile(file)) {
-              return
-            }
-
-            // Initialize container
-            this.adapters.forEach((adapter) => (adapter.container = container))
-
-            // Create api function
-            const adapter = this.getAdapterByRoute(route)
-            const mod: ApiModule = require(file)
-            this.createApi(mod, adapter, file, route)
-            container.bindClass(mod, '', file)
-
-            // Call afterCreate hooks
-            count++
-            if (count === totalCount) {
-              this.adapters.forEach((adapter) => adapter.afterCreate?.())
-            }
-          },
-        }
-      }),
+      ...initOptions,
     })
 
     configuration
@@ -80,6 +58,71 @@ export class HooksComponent {
     return {
       Configuration: configuration,
     }
+  }
+
+  loadByDirectoryResolveFilter() {
+    const {
+      router,
+      projectConfig: { routes },
+    } = this.options
+
+    let count = 0
+    const totalCount = routes.reduce((totalCount, route) => {
+      // Windows
+      const dir = upath.join(router.source, route.baseDir)
+      const files = sync([dir]).filter((file) => router.isApiFile(file))
+      return totalCount + files.length
+    }, 0)
+
+    return routes.map((route) => {
+      return {
+        // Windows
+        pattern: path.join(router.source, route.baseDir),
+        ignoreRequire: true,
+        filter: (_: void, file: string, container: IMidwayContainer) => {
+          if (!router.isApiFile(file)) {
+            return
+          }
+
+          // Initialize container
+          this.adapters.forEach((adapter) => (adapter.container = container))
+
+          // Create api function
+          const mod: ApiModule = require(file)
+          this.loadApiModule({ mod, file, container })
+
+          // Call afterCreate hooks
+          count++
+          if (count === totalCount) {
+            this.adapters.forEach((adapter) => adapter.afterCreate?.())
+          }
+        },
+      }
+    })
+  }
+
+  loadBySnapshot(snapshot: SnapShot) {
+    const { router } = this.options
+    const { container, modules } = snapshot
+    modules.forEach(({ mod, file }) => {
+      if (!router.isApiFile(file)) {
+        return
+      }
+      // Initialize container
+      this.adapters.forEach((adapter) => (adapter.container = container))
+
+      // Create api function
+      this.loadApiModule({ mod, file, container })
+    })
+
+    this.adapters.forEach((adapter) => adapter.afterCreate?.())
+  }
+
+  loadApiModule({ mod, file, container }: LoadApiModuleOption) {
+    const route = this.options.router.getRoute(file)
+    const adapter = this.getAdapterByRoute(route)
+    this.createApi(mod, adapter, file, route)
+    container.bindClass(mod, '', file)
   }
 
   getAdapterByRoute(route: Route) {
