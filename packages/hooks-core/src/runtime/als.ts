@@ -1,5 +1,4 @@
 import { als as AsyncLocalStoragePolyfill } from 'asynchronous-local-storage'
-import { __decorate } from 'tslib'
 
 export type HooksContext = {
   ctx: any

@@ -1,4 +1,4 @@
-import { als, useContext, SINGLE_CONCURRENCY_MODE } from '../als'
+import { als, SINGLE_CONCURRENCY_MODE, useContext } from '../als'
 
 test('AsyncLocalStorage', async () => {
   const ctx = { name: 'Jake' }
