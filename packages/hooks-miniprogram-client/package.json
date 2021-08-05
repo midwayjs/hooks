@@ -8,7 +8,9 @@
     "midway",
     "hooks",
     "miniprogram",
-    "client"
+    "client",
+    "wechat",
+    "alipay"
   ],
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
