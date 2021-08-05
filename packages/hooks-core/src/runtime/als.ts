@@ -6,6 +6,21 @@ export type HooksContext = {
   event?: any
 }
 
+export const SINGLE_CONCURRENCY_MODE = Symbol.for(
+  'MIDWAY_HOOKS_SINGLE_CONCURRENCY_MODE'
+)
+
+const GlobalLocalStorage = {
+  isSingleConcurrencyMode: () => !!globalThis[SINGLE_CONCURRENCY_MODE],
+  getStore(key: string) {
+    return globalThis[SINGLE_CONCURRENCY_MODE][key]
+  },
+  async run(ctx: HooksContext, callback: any) {
+    globalThis[SINGLE_CONCURRENCY_MODE] = ctx
+    return await callback()
+  },
+}
+
 /**
  * @private
  * private api, may change without notice.
@@ -13,9 +28,17 @@ export type HooksContext = {
  */
 export const als = {
   getStore(key: string) {
+    if (GlobalLocalStorage.isSingleConcurrencyMode()) {
+      return GlobalLocalStorage.getStore(key)
+    }
+
     return AsyncLocalStoragePolyfill.get<any>(key)
   },
   run(ctx: HooksContext, callback: any) {
+    if (GlobalLocalStorage.isSingleConcurrencyMode()) {
+      return GlobalLocalStorage.run(ctx, callback)
+    }
+
     return new Promise((resolve) => {
       AsyncLocalStoragePolyfill.runWith(async () => {
         resolve(await callback())
