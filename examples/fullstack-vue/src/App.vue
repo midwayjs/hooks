@@ -7,8 +7,8 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
 import api, { post } from './apis/lambda';
+import HelloWorld from './components/HelloWorld.vue';
 
 export default defineComponent({
   name: 'App',

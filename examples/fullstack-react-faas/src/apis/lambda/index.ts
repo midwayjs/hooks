@@ -1,5 +1,5 @@
-import { useContext } from '@midwayjs/hooks';
 import { Context } from '@midwayjs/faas';
+import { useContext } from '@midwayjs/hooks';
 
 function useFaaSContext() {
   return useContext<Context>();

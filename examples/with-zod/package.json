@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node bootstrap",
+    "dev": "midway-bin dev",
     "test": "jest"
   },
   "dependencies": {
