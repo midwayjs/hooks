@@ -33,12 +33,8 @@ export function getConfig(cwd?: string): ProjectConfig {
     ? requireByJiti<UserConfig>(configs.ts)
     : requireByJiti<UserConfig>(configs.js)
 
-  const builtinGateways = new Set<HooksGatewayAdapterStatic>()
-  for (const route of userConfig.routes) {
-    if (route.basePath) builtinGateways.add(HTTPGateway)
-    if (route.event) builtinGateways.add(EventGateway)
-  }
-  userConfig.gateway = userConfig.gateway || []
+  const builtinGateways = getBuiltInGateways(userConfig)
+  userConfig.gateway ??= []
   userConfig.gateway.push(...builtinGateways)
 
   return _.defaultsDeep({}, userConfig, {
@@ -54,6 +50,15 @@ export function getConfig(cwd?: string): ProjectConfig {
       client: '@midwayjs/hooks-core/request',
     },
   })
+}
+
+export function getBuiltInGateways(userConfig: ProjectConfig) {
+  const builtinGateways = new Set<HooksGatewayAdapterStatic>()
+  for (const route of userConfig.routes) {
+    if (route.basePath) builtinGateways.add(HTTPGateway)
+    if (route.event) builtinGateways.add(EventGateway)
+  }
+  return [...builtinGateways]
 }
 
 export function defineConfig(config: UserConfig): UserConfig {

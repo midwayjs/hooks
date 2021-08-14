@@ -47,7 +47,7 @@ export class HooksComponent {
     })
 
     configuration
-      .onReady((_, app) => {
+      .onReady((_, app: any) => {
         // Setup global middleware
         for (const mw of this.getGlobalMiddleware()) {
           ;(app as any).use(mw)
