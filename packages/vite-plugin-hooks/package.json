@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/vite-plugin-hooks",
-  "version": "2.3.0",
+  "version": "2.4.0-alpha.0",
   "description": "Vite plugin for midway hooks support",
   "keywords": [
     "midway",
@@ -17,7 +17,7 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
-    "@midwayjs/hooks-core": "^2.3.0",
+    "@midwayjs/hooks-core": "^2.4.0-alpha.0",
     "@midwayjs/serverless-dev-pack": "^1.2.74",
     "vite": "^2.4.1"
   },
