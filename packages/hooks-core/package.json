@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-core",
-  "version": "2.3.0",
+  "version": "2.4.0-alpha.0",
   "description": "Midway Hooks Core",
   "keywords": [
     "midway",
@@ -35,12 +35,12 @@
     "upath": "^2.0.1"
   },
   "devDependencies": {
+    "@midwayjs/faas": "alpha",
     "@types/es-module-lexer": "^0.3.0",
     "@types/koa-static-cache": "^5.1.0",
     "@types/lodash": "^4.14.170",
     "@types/prettier": "^2.3.1",
-    "prettier": "^2.3.2",
-    "@midwayjs/faas": "alpha"
+    "prettier": "^2.3.2"
   },
   "preconstruct": {
     "entrypoints": [
