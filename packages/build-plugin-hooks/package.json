@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/build-plugin-hooks",
-  "version": "2.4.0-alpha.0",
+  "version": "2.5.0-alpha.0",
   "description": "Build integration plugin for Rax/Ice to convert references to backend Api in code to frontend SDK calls.",
   "main": "dist/midwayjs-build-plugin-hooks.cjs.js",
   "module": "dist/midwayjs-build-plugin-hooks.esm.js",
@@ -20,7 +20,7 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
-    "@midwayjs/hooks-loader": "^2.4.0-alpha.0"
+    "@midwayjs/hooks-loader": "^2.5.0-alpha.0"
   },
   "publishConfig": {
     "access": "public"
