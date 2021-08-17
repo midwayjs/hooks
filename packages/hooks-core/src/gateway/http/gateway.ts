@@ -1,5 +1,4 @@
 import { existsSync } from 'fs'
-import staticCache from 'koa-static-cache'
 import { join } from 'upath'
 
 import { IMidwayContainer } from '@midwayjs/core'
@@ -13,7 +12,7 @@ import {
   CreateApiOptions,
   HooksGatewayAdapter,
 } from '../../types/gateway'
-import { isDevelopment } from '../../util'
+import { isDevelopment, lazyRequire } from '../../util'
 import { createHTTPApiClient } from './client'
 import { HTTPRouter } from './router'
 
@@ -85,6 +84,7 @@ export class HTTPGateway implements HooksGatewayAdapter {
     }
 
     const baseDir = this.container.get('baseDir')
+    const staticCache = lazyRequire('koa-static-cache')
     const mw = staticCache({
       dir: join(baseDir, '..', this.options.projectConfig.build.viteOutDir),
       dynamic: true,

@@ -1,10 +1,8 @@
 import { existsSync } from 'fs'
-import createJITI from 'jiti'
-import _ from 'lodash'
-import { sync } from 'pkg-dir'
+import defaultsDeep from 'lodash/defaultsDeep'
 import path from 'upath'
 
-import { HooksGatewayAdapterStatic } from '..'
+import { HooksGatewayAdapterStatic, lazyRequire } from '..'
 import { EventGateway } from '../gateway/event/gateway'
 import { HTTPGateway } from '../gateway/http/gateway'
 import { ProjectConfig, UserConfig } from '../types/config'
@@ -12,6 +10,7 @@ import { validateArray } from '../validator'
 import { ignorePattern } from './ignorePattern'
 
 export function getProjectRoot(cwd?: string) {
+  const { sync } = lazyRequire('pkg-dir')
   return sync(cwd) || process.cwd()
 }
 
@@ -37,7 +36,7 @@ export function getConfig(cwd?: string): ProjectConfig {
   userConfig.gateway ??= []
   userConfig.gateway.push(...builtinGateways)
 
-  return _.defaultsDeep({}, userConfig, {
+  return defaultsDeep({}, userConfig, {
     source: './src/apis',
     dev: {
       ignorePattern,
@@ -67,7 +66,7 @@ export function defineConfig(config: UserConfig): UserConfig {
 }
 
 const requireByJiti = <T = unknown>(id: string): T => {
-  const jiti = createJITI()
+  const jiti = lazyRequire('jiti')
   const contents = jiti(id)
   if ('default' in contents) return contents.default
   return contents

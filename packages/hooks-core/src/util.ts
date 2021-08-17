@@ -1,7 +1,6 @@
 import parseArgs from 'fn-args'
-import { last } from 'lodash'
+import last from 'lodash/last'
 import { relative, resolve, sep } from 'path'
-import type Prettier from 'prettier'
 
 export function isDevelopment() {
   if (
