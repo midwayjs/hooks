@@ -1,4 +1,3 @@
-import { sync } from 'globby'
 import _ from 'lodash'
 import path from 'path'
 import upath from 'upath'
@@ -6,7 +5,7 @@ import upath from 'upath'
 import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
 import type { ResolveFilter } from '@midwayjs/decorator'
 
-import { Route } from '..'
+import { lazyRequire, Route } from '..'
 import { als } from '../runtime'
 import { getSnapshot, SnapShot } from '../runtime/snapshot'
 import { ApiFunction, ApiModule } from '../types/common'
@@ -70,6 +69,7 @@ export class HooksComponent {
     const totalCount = routes.reduce((totalCount, route) => {
       // Windows
       const dir = upath.join(router.source, route.baseDir)
+      const { sync } = lazyRequire('globby')
       const files = sync([dir]).filter((file) => router.isApiFile(file))
       return totalCount + files.length
     }, 0)

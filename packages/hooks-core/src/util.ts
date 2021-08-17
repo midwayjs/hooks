@@ -1,6 +1,7 @@
 import parseArgs from 'fn-args'
 import { last } from 'lodash'
 import { relative, resolve, sep } from 'path'
+import type Prettier from 'prettier'
 
 export function isDevelopment() {
   if (
@@ -33,7 +34,7 @@ export function useHooksMiddleware(fn: (...args: any[]) => any) {
 
 export function formatCode(code: string) {
   try {
-    const prettier = require('prettier')
+    const prettier = lazyRequire('prettier')
     return prettier.format(code, {
       semi: true,
       singleQuote: true,
@@ -52,4 +53,8 @@ export function isPathInside(child: string, parent: string) {
       !relation.startsWith(`..${sep}`) &&
       relation !== resolve(child)
   )
+}
+
+export function lazyRequire <T = any>(id: string):T {
+  return eval('require')(id)
 }

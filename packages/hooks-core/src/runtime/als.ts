@@ -1,5 +1,7 @@
 import type AsynchronousLocalStorage from 'asynchronous-local-storage'
 
+import { lazyRequire } from '..'
+
 export type HooksContext = {
   ctx: any
   event?: any
@@ -20,8 +22,20 @@ const GlobalLocalStorage = {
   },
 }
 
-function getAls(): typeof AsynchronousLocalStorage {
-  return eval('require')('asynchronous-local-storage').als
+const AsyncLocalStorage = {
+  get runtime(): typeof AsynchronousLocalStorage {
+    return lazyRequire('asynchronous-local-storage').als
+  },
+  getStore(key: string) {
+    return AsyncLocalStorage.runtime.get<any>(key)
+  },
+  run(ctx: HooksContext, callback: any) {
+    return new Promise((resolve) => {
+      AsyncLocalStorage.runtime.runWith(async () => {
+        resolve(await callback())
+      }, ctx)
+    })
+  },
 }
 
 /**
@@ -30,23 +44,16 @@ function getAls(): typeof AsynchronousLocalStorage {
  * Use asynchronous-local-storage due to serverless environment does not support node.js 12.17.0
  */
 export const als = {
+  get runtime() {
+    return GlobalLocalStorage.isSingleConcurrencyMode()
+      ? GlobalLocalStorage
+      : AsyncLocalStorage
+  },
   getStore(key: string) {
-    if (GlobalLocalStorage.isSingleConcurrencyMode()) {
-      return GlobalLocalStorage.getStore(key)
-    }
-
-    return getAls().get<any>(key)
+    return als.runtime.getStore(key)
   },
   run(ctx: HooksContext, callback: any) {
-    if (GlobalLocalStorage.isSingleConcurrencyMode()) {
-      return GlobalLocalStorage.run(ctx, callback)
-    }
-
-    return new Promise((resolve) => {
-      getAls().runWith(async () => {
-        resolve(await callback())
-      }, ctx)
-    })
+    return als.runtime.run(ctx, callback)
   },
 }
 
