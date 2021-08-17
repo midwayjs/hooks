@@ -1,4 +1,4 @@
-import { kebabCase } from 'lodash'
+import kebabCase from 'lodash/kebabCase'
 import { extname, join, relative, removeExt, toUnix } from 'upath'
 
 import { ProjectConfig, Route } from '../types/config'

@@ -1,6 +1,7 @@
-import { init, parse } from 'es-module-lexer'
-
 import { ApiBaseParam, FileRouter, formatCode } from '../../index'
+import { lazyRequire } from '../../util'
+
+
 
 interface RenderParam extends ApiBaseParam {
   isExportDefault: boolean
@@ -12,6 +13,8 @@ export async function createEventApiClient(
   code: string,
   router: FileRouter
 ) {
+  const { init, parse } = lazyRequire('es-module-lexer')
+
   await init
   const [, exports] = parse(code)
 

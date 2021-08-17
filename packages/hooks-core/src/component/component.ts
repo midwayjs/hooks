@@ -1,4 +1,7 @@
-import _ from 'lodash'
+import noop from 'lodash/noop'
+import pickBy from 'lodash/pickBy'
+import isFunction from 'lodash/isFunction'
+
 import path from 'path'
 import upath from 'upath'
 
@@ -52,7 +55,7 @@ export class HooksComponent {
           ;(app as any).use(mw)
         }
       })
-      .onStop(_.noop)
+      .onStop(noop)
 
     return {
       Configuration: configuration,
@@ -137,7 +140,7 @@ export class HooksComponent {
     route: Route
   ) {
     const modMiddleware = mod?.config?.middleware || []
-    const funcs = _.pickBy<ApiFunction>(mod, _.isFunction)
+    const funcs = pickBy<ApiFunction>(mod, isFunction)
 
     for (const [name, fn] of Object.entries(funcs)) {
       fn.middleware = (fn.middleware || (fn.middleware = []))
