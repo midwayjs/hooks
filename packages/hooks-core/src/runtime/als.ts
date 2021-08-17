@@ -21,7 +21,7 @@ const GlobalLocalStorage = {
 }
 
 function getAls(): typeof AsynchronousLocalStorage {
-  return require('asynchronous-local-storage').als
+  return eval('require')('asynchronous-local-storage').als
 }
 
 /**
