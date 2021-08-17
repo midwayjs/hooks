@@ -1,4 +1,4 @@
-import { als as AsyncLocalStoragePolyfill } from 'asynchronous-local-storage'
+import type AsynchronousLocalStorage from 'asynchronous-local-storage'
 
 export type HooksContext = {
   ctx: any
@@ -20,6 +20,10 @@ const GlobalLocalStorage = {
   },
 }
 
+function getAls(): typeof AsynchronousLocalStorage {
+  return require('asynchronous-local-storage').als
+}
+
 /**
  * @private
  * private api, may change without notice.
@@ -31,7 +35,7 @@ export const als = {
       return GlobalLocalStorage.getStore(key)
     }
 
-    return AsyncLocalStoragePolyfill.get<any>(key)
+    return getAls().get<any>(key)
   },
   run(ctx: HooksContext, callback: any) {
     if (GlobalLocalStorage.isSingleConcurrencyMode()) {
@@ -39,7 +43,7 @@ export const als = {
     }
 
     return new Promise((resolve) => {
-      AsyncLocalStoragePolyfill.runWith(async () => {
+      getAls().runWith(async () => {
         resolve(await callback())
       }, ctx)
     })
