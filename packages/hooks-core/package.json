@@ -19,9 +19,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@midwayjs/bootstrap": "alpha",
-    "@midwayjs/core": "alpha",
-    "@midwayjs/decorator": "alpha",
+    "@midwayjs/bootstrap": "^3.0.0-alpha.2",
+    "@midwayjs/core": "^3.0.0-alpha.2",
+    "@midwayjs/decorator": "^3.0.0-alpha.2",
     "asynchronous-local-storage": "^1.0.2",
     "axios": "^0.21.1",
     "es-module-lexer": "^0.4.0",
@@ -35,7 +35,7 @@
     "upath": "^2.0.1"
   },
   "devDependencies": {
-    "@midwayjs/faas": "alpha",
+    "@midwayjs/faas": "^3.0.0-alpha.2",
     "@types/es-module-lexer": "^0.3.0",
     "@types/koa-static-cache": "^5.1.0",
     "@types/lodash": "^4.14.170",
