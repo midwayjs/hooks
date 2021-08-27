@@ -1,6 +1,19 @@
 import { join } from 'upath'
 
-import { getConfig } from '../'
+import { getConfig, PRE_DEFINE_PROJECT_CONFIG, setConfig } from '../'
+
+beforeEach(() => {
+  globalThis[PRE_DEFINE_PROJECT_CONFIG] = undefined
+})
+
+test('load pre defined config', async () => {
+  setConfig({
+    source: '/',
+    routes: [{ baseDir: 'lambda', baseRoute: '/api' }],
+  })
+
+  expect(getConfig().source).toEqual('/')
+})
 
 test('load user config', () => {
   const fixtures = ['js', 'ts', 'ts-export-default']
