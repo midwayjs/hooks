@@ -6,6 +6,7 @@ import {
   getConfig,
   getProjectRoot,
   ProjectConfig,
+  buildApiClient,
 } from '@midwayjs/hooks-core'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
 
@@ -34,17 +35,7 @@ export class VitePlugin implements Plugin {
       return null
     }
 
-    const route = this.router.getRoute(file)
-    const Gateway = this.router.getGatewayByRoute(route)
-    const client = await Gateway.createApiClient(
-      file,
-      code,
-      new Gateway.router({
-        root: this.root,
-        projectConfig: this.projectConfig,
-        useSourceFile: true,
-      })
-    )
+    const client = await buildApiClient(file, code, this.router)
 
     return {
       code: client,

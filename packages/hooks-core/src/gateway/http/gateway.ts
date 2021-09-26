@@ -1,40 +1,39 @@
 import { existsSync } from 'fs'
 import { join } from 'upath'
 
-import { IMidwayContainer } from '@midwayjs/core'
+import { IMidwayApplication, IMidwayContainer } from '@midwayjs/core'
 import { All, Controller } from '@midwayjs/decorator'
 
-import { createFunctionContainer } from '../../runtime'
+import { useApiClientMatcher } from '../../request/builder'
+import { als, createFunctionContainer } from '../../runtime'
 import { ApiFunction } from '../../types/common'
 import { Route } from '../../types/config'
 import {
   ComponentOptions,
   CreateApiOptions,
+  GatewayAdapterOptions,
   HooksGatewayAdapter,
+  OnReadyArgs,
 } from '../../types/gateway'
-import { isDevelopment, lazyRequire } from '../../util'
-import { createHTTPApiClient } from './client'
+import { isDevelopment, lazyRequire, useHooksMiddleware } from '../../util'
+import { createHTTPClientMatcher } from './client'
 import { HTTPRouter } from './router'
 
 export class HTTPGateway implements HooksGatewayAdapter {
-  static is(route: Route) {
+  options: GatewayAdapterOptions
+  container: IMidwayContainer
+
+  private readonly router: HTTPRouter
+
+  is(route: Route) {
     return !!route?.basePath
   }
 
-  static router = HTTPRouter
-  static createApiClient = createHTTPApiClient
-
-  options: ComponentOptions
-  container: IMidwayContainer
-  router: HTTPRouter
-
   constructor(options: ComponentOptions) {
     this.options = options
-    this.router = new HTTPRouter({
-      root: this.options.root,
-      projectConfig: this.options.projectConfig,
-      useSourceFile: this.options.router.useSourceFile,
-    })
+    this.router = new HTTPRouter(options)
+
+    useApiClientMatcher(createHTTPClientMatcher(this.router))
   }
 
   createApi(options: CreateApiOptions) {
@@ -54,19 +53,16 @@ export class HTTPGateway implements HooksGatewayAdapter {
     // setup middleware
     const middleware = [...fn.middleware]
 
-    const FunctionContainer = createFunctionContainer({
-      isHTTP: true,
+    createFunctionContainer({
+      runWithAsyncLocalStorage: false,
       fn,
       functionId,
       parseArgs(ctx) {
-        const args = ctx.request?.body?.args || []
-        return args
+        return ctx.request?.body?.args || []
       },
-      classDecorators: [Controller('/')],
-      handlerDecorators: [All(httpPath, { middleware })],
+      classDecorators: [Controller(httpPath)],
+      handlerDecorators: [All('/', { middleware })],
     })
-
-    this.container.bind(functionId, FunctionContainer)
   }
 
   afterCreate() {
@@ -83,7 +79,8 @@ export class HTTPGateway implements HooksGatewayAdapter {
       return
     }
 
-    const baseDir = this.container.get('baseDir')
+    // TODO get base dir
+    const baseDir = 'TODO'
     const staticCache = lazyRequire('koa-static-cache')
     const mw = staticCache({
       dir: join(baseDir, '..', this.options.projectConfig.build.viteOutDir),
@@ -113,5 +110,21 @@ export class HTTPGateway implements HooksGatewayAdapter {
     return ['vite.config.ts', 'vite.config.js'].some((config) =>
       existsSync(join(this.options.root, config))
     )
+  }
+
+  async onReady(args: OnReadyArgs) {
+    const { app, runtimeConfig } = args
+    const mws = [this.useAsyncLocalStorage]
+    runtimeConfig.middleware?.forEach?.((mw) =>
+      mws.push(useHooksMiddleware(mw))
+    )
+
+    for (const mw of mws) {
+      ;(app as any).use(mw)
+    }
+  }
+
+  useAsyncLocalStorage = async (ctx: any, next: any) => {
+    await als.run({ ctx }, async () => await next())
   }
 }

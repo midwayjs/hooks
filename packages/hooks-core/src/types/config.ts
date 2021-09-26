@@ -1,5 +1,5 @@
 import { HooksMiddleware } from './common'
-import { HooksGatewayAdapterStatic } from './gateway'
+import { HooksGatewayAdapter, Class } from './gateway'
 
 export type IgnorePattern = (req: {
   url: string
@@ -10,14 +10,14 @@ export type IgnorePattern = (req: {
  * @internal
  */
 export interface ProjectConfig {
-  gateway?: HooksGatewayAdapterStatic[]
+  gateway?: Class<HooksGatewayAdapter>[]
   /**
    * @description server root, default is src/apis
    */
   source?: string
   /**
    * @description api routes directory
-   * @example [{ baseDir: 'lambda', baseRoute: '/api' }]
+   * @example [{ baseDir: 'lambda', basePath: '/api' }]
    */
   routes: Route[]
   /**

@@ -107,7 +107,7 @@ test.skip('load snapshot', async () => {
   expect(container.get('api-demo-post')).toBeTruthy()
 })
 
-test('hydrate', async () => {
+test.skip('hydrate', async () => {
   const invoke = await createHTTPInvoker(testConfig)
 
   const getResponse = await invoke(

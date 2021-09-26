@@ -1,8 +1,6 @@
 import { ApiBaseParam, FileRouter, formatCode } from '../../index'
 import { lazyRequire } from '../../util'
 
-
-
 interface RenderParam extends ApiBaseParam {
   isExportDefault: boolean
   name: string

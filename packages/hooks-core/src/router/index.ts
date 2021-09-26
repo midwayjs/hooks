@@ -1,35 +1,32 @@
 import kebabCase from 'lodash/kebabCase'
 import { extname, join, relative, removeExt, toUnix } from 'upath'
 
-import { ProjectConfig, Route } from '../types/config'
-import { isPathInside } from '../util'
+import { ProjectConfig } from '../types'
+import { isPathInside, isDevelopment } from '../util'
 
 interface RouterOptions {
   root: string
   projectConfig: ProjectConfig
-  useSourceFile: boolean
+  useSourceFile?: boolean
 }
 
 export class FileRouter {
   root: string
-
   projectConfig: ProjectConfig
-
   useSourceFile: boolean
 
   constructor(options: RouterOptions) {
-    const { root, projectConfig, useSourceFile } = options
-    this.root = root
-    this.projectConfig = projectConfig
-    this.useSourceFile = useSourceFile
+    this.root = options.root
+    this.projectConfig = options.projectConfig
+    this.useSourceFile = options.useSourceFile ?? isDevelopment()
   }
 
   get source() {
+    // src
     if (this.useSourceFile) {
-      // src/apis
       return join(this.root, this.projectConfig.source)
     }
-    // /dist
+    // dist
     return join(this.root, this.projectConfig.build.outDir)
   }
 
@@ -46,26 +43,14 @@ export class FileRouter {
     })
   }
 
-  getGatewayByRoute(route: Route) {
-    const gateway = this.projectConfig.gateway.find((adapter) =>
-      adapter.is(route)
-    )
-
-    if (!gateway) {
-      throw new Error(
-        `Can't find the correct gateway adapter, please check if midway.config.ts is correct`
-      )
-    }
-
-    return gateway
-  }
-
   isApiFile(file: string) {
-    if (file.endsWith('.test.ts') || file.endsWith('.test.js')) {
+    const extensions = ['.ts', '.tsx', '.js', '.jsx', '.mjs']
+    if (!extensions.includes(extname(file))) {
       return false
     }
 
-    if (extname(file) !== '.ts' && extname(file) !== '.js') {
+    const testExt = ['.test.ts', '.test.tsx', '.test.js', '.test.jsx']
+    if (testExt.some((ext) => file.endsWith(ext))) {
       return false
     }
 

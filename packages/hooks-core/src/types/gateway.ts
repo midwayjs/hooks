@@ -1,14 +1,17 @@
-import { IMidwayContainer } from '@midwayjs/core'
+import { IMidwayApplication, IMidwayContainer } from '@midwayjs/core'
 
 import { ApiFunction } from '..'
-import { FileRouter } from '../router/file'
+import { FileRouter } from '../router'
 import { ProjectConfig, Route, RuntimeConfig } from './config'
 
-export type ComponentOptions = {
+export type GatewayAdapterOptions = {
   root: string
-  router: FileRouter
-  runtimeConfig: RuntimeConfig
   projectConfig: ProjectConfig
+}
+
+export interface ComponentOptions extends GatewayAdapterOptions {
+  router?: FileRouter
+  runtimeConfig?: RuntimeConfig
 }
 
 export type Class<T = unknown, Arguments extends any[] = any[]> = new (
@@ -26,18 +29,22 @@ export interface CreateApiOptions {
   route?: Route
 }
 
-export interface HooksGatewayAdapter {
-  options?: ComponentOptions
-  container: IMidwayContainer
-
+interface GatewayBuilder {
   createApi(config: CreateApiOptions): void
+}
+
+interface GatewayLifeCycle {
   afterCreate?(): void
 }
 
-export interface HooksGatewayAdapterStatic {
-  new (options?: ComponentOptions): HooksGatewayAdapter
-  is(route: Route): boolean
+export type OnReadyArgs = {
+  container: IMidwayContainer
+  app: IMidwayApplication<any>
+  runtimeConfig: RuntimeConfig
+}
 
-  router: Class<FileRouter>
-  createApiClient(file: string, code: string, router: FileRouter): any
+export interface HooksGatewayAdapter extends GatewayBuilder, GatewayLifeCycle {
+  container: IMidwayContainer
+  is(route: Route): boolean
+  onReady?(args: OnReadyArgs): Promise<void> | void
 }
