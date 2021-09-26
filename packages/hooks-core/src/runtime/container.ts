@@ -1,3 +1,4 @@
+import camelCase from 'lodash/camelCase'
 import { __decorate } from 'tslib'
 
 import { Inject, Provide } from '@midwayjs/decorator'
@@ -5,36 +6,38 @@ import { Inject, Provide } from '@midwayjs/decorator'
 import { ApiFunction } from '..'
 import { als } from './als'
 
-type CreateFunctionContainerOptions = {
+type CreateOptions = {
   fn: ApiFunction
   functionId: string
   parseArgs: (ctx: any, ...args: any) => any[]
   handlerDecorators?: any[]
   classDecorators?: any[]
-  isHTTP?: boolean
+  runWithAsyncLocalStorage?: boolean
 }
 
-export function createFunctionContainer(
-  options: CreateFunctionContainerOptions
-) {
+export function createFunctionContainer(options: CreateOptions) {
   const {
     fn,
     functionId,
     parseArgs,
     handlerDecorators = [],
     classDecorators = [],
-    isHTTP,
+    runWithAsyncLocalStorage,
   } = options
 
-  let FunctionContainer = class FunctionContainer {
+  let FunctionContainer = class {
     ctx: any
     async handler(...handlerArgs: any[]) {
       const args = parseArgs(this.ctx, ...handlerArgs)
-      return isHTTP
-        ? await fn(...args)
-        : await als.run({ ctx: this.ctx }, async () => await fn(...args))
+      return runWithAsyncLocalStorage
+        ? await als.run({ ctx: this.ctx }, async () => await fn(...args))
+        : await fn(...args)
     }
   }
+
+  Object.defineProperty(FunctionContainer, 'name', {
+    value: camelCase(functionId),
+  })
 
   __decorate([Inject()], FunctionContainer.prototype, 'ctx', void 0)
   __decorate(

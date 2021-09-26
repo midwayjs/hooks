@@ -24,10 +24,7 @@ async function compile(entry: string) {
   return output.source
 }
 
-const desc = process.env.GITHUB_ACTION ? describe : describe
-
-// Skip due to slow compilation speed
-desc('hooks loader with proxy', () => {
+describe('hooks loader with proxy', () => {
   beforeEach(() => {
     process.chdir(root)
   })
@@ -39,33 +36,51 @@ desc('hooks loader with proxy', () => {
   test('Compile render', async () => {
     const output = await compile('render/[...index].ts')
     expect(wrap(output)).toMatchInlineSnapshot(`
-      import { request } from '@midwayjs/hooks-core/request';
+      import { request as request$0 } from '@midwayjs/hooks/request';
 
       export default function $default(...args) {
-        return request({
-          url: '/',
-          method: args.length === 0 ? 'GET' : 'POST',
-          data: { args },
-          meta: {},
-        });
+        const options = Object.assign(
+          {
+            functionId: 'render-index',
+            data: { args },
+          },
+          {
+            url: '/',
+            meta: {},
+          }
+        );
+
+        return request$0(options);
       }
 
       export function foo(...args) {
-        return request({
-          url: '/foo',
-          method: args.length === 0 ? 'GET' : 'POST',
-          data: { args },
-          meta: {},
-        });
+        const options = Object.assign(
+          {
+            functionId: 'render-index-foo',
+            data: { args },
+          },
+          {
+            url: '/foo',
+            meta: {},
+          }
+        );
+
+        return request$0(options);
       }
 
       export function bar(...args) {
-        return request({
-          url: '/bar',
-          method: args.length === 0 ? 'GET' : 'POST',
-          data: { args },
-          meta: {},
-        });
+        const options = Object.assign(
+          {
+            functionId: 'render-index-bar',
+            data: { args },
+          },
+          {
+            url: '/bar',
+            meta: {},
+          }
+        );
+
+        return request$0(options);
       }
 
     `)
@@ -74,15 +89,21 @@ desc('hooks loader with proxy', () => {
   test('Compile lambda', async () => {
     const output = await compile('lambda/index.ts')
     expect(wrap(output)).toMatchInlineSnapshot(`
-      import { request } from '@midwayjs/hooks-core/request';
+      import { request as request$0 } from '@midwayjs/hooks/request';
 
       export default function $default(...args) {
-        return request({
-          url: '/api',
-          method: args.length === 0 ? 'GET' : 'POST',
-          data: { args },
-          meta: {},
-        });
+        const options = Object.assign(
+          {
+            functionId: 'lambda-index',
+            data: { args },
+          },
+          {
+            url: '/api',
+            meta: {},
+          }
+        );
+
+        return request$0(options);
       }
 
     `)
@@ -91,13 +112,18 @@ desc('hooks loader with proxy', () => {
   test('Compile event', async () => {
     const output = await compile('wechat/index.ts')
     expect(wrap(output)).toMatchInlineSnapshot(`
-      import { request } from '@midwayjs/hooks-core/request';
+      import { request as request$0 } from '@midwayjs/hooks-miniprogram-client';
 
       export default function $default(...args) {
-        return request({
-          functionId: 'wechat-index',
-          data: { args },
-        });
+        const options = Object.assign(
+          {
+            functionId: 'wechat-index',
+            data: { args },
+          },
+          {}
+        );
+
+        return request$0(options);
       }
 
     `)

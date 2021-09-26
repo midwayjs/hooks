@@ -1,5 +1,6 @@
 import memoryfs from 'memory-fs'
 import path from 'path'
+
 import webpack from 'webpack'
 
 export default (
@@ -24,7 +25,17 @@ export default (
             ),
           },
         },
-        { test: /\.tsx?$/, loader: 'ts-loader' },
+        {
+          test: /\.tsx?$/,
+          use: [
+            {
+              loader: 'ts-loader',
+              options: {
+                transpileOnly: true,
+              },
+            },
+          ],
+        },
       ],
     },
   })

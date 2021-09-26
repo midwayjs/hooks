@@ -1,6 +1,7 @@
 import { join } from 'upath'
 
-import { getConfig, PRE_DEFINE_PROJECT_CONFIG, setConfig } from '../'
+import { getConfig, setConfig } from '../'
+import { PRE_DEFINE_PROJECT_CONFIG } from '../../const'
 
 beforeEach(() => {
   globalThis[PRE_DEFINE_PROJECT_CONFIG] = undefined
@@ -9,7 +10,7 @@ beforeEach(() => {
 test('load pre defined config', async () => {
   setConfig({
     source: '/',
-    routes: [{ baseDir: 'lambda', baseRoute: '/api' }],
+    routes: [{ baseDir: 'lambda', basePath: '/api' }],
   })
 
   expect(getConfig().source).toEqual('/')

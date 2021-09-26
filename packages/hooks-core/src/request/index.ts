@@ -6,8 +6,11 @@ export type { ApiParam, ApiHttpMethod } from '../types/http'
 
 export const defaults = {
   async request(param: ApiParam) {
+    const method = param.data.args.length === 0 ? 'GET' : 'POST'
+
     const response = await axios({
       baseURL: defaults.baseURL,
+      method,
       ...param,
     })
 

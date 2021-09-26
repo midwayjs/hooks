@@ -1,14 +1,18 @@
+import isFunction from 'lodash/isFunction'
 import noop from 'lodash/noop'
 import pickBy from 'lodash/pickBy'
-import isFunction from 'lodash/isFunction'
-
-import path from 'path'
 import upath from 'upath'
 
-import { createConfiguration, IMidwayContainer } from '@midwayjs/core'
+import {
+  createConfiguration,
+  IMidwayApplication,
+  IMidwayContainer,
+} from '@midwayjs/core'
 import type { ResolveFilter } from '@midwayjs/decorator'
 
 import { lazyRequire, Route } from '..'
+import { EXPORT_DEFAULT_FUNCTION_ALIAS } from '../const'
+import { GatewayManager, getGatewayManager } from '../gateway/manager'
 import { als } from '../runtime'
 import { getSnapshot, SnapShot } from '../runtime/snapshot'
 import { ApiFunction, ApiModule } from '../types/common'
@@ -18,18 +22,18 @@ import { useHooksMiddleware } from '../util'
 export type LoadApiModuleOption = {
   mod: ApiModule
   file: string
-  container: IMidwayContainer
+  container?: IMidwayContainer
 }
 
 export class HooksComponent {
   options: ComponentOptions
-
-  adapters: HooksGatewayAdapter[]
+  gatewayManager: GatewayManager
 
   constructor(options: ComponentOptions) {
     this.options = options
-    this.adapters = options.projectConfig.gateway.map(
-      (Adapter) => new Adapter(this.options)
+    this.gatewayManager = getGatewayManager(
+      this.options.root,
+      this.options.projectConfig
     )
   }
 
@@ -40,7 +44,7 @@ export class HooksComponent {
     if (snapshot) {
       this.loadBySnapshot(snapshot)
     } else {
-      initOptions.directoryResolveFilter = this.loadByDirectoryResolveFilter()
+      this.loadByScanner()
     }
 
     const configuration = createConfiguration({
@@ -49,10 +53,13 @@ export class HooksComponent {
     })
 
     configuration
-      .onReady((_, app: any) => {
-        // Setup global middleware
-        for (const mw of this.getGlobalMiddleware()) {
-          ;(app as any).use(mw)
+      .onReady(async (container, app: IMidwayApplication) => {
+        for (const gateway of this.gateways) {
+          await gateway.onReady?.({
+            container,
+            app,
+            runtimeConfig: this.options.runtimeConfig,
+          })
         }
       })
       .onStop(noop)
@@ -62,46 +69,30 @@ export class HooksComponent {
     }
   }
 
-  loadByDirectoryResolveFilter() {
+  get gateways() {
+    return this.gatewayManager.gateways
+  }
+
+  loadByScanner() {
+    const { sync } = lazyRequire<typeof import('globby')>('globby')
+
     const {
       router,
       projectConfig: { routes },
     } = this.options
 
-    let count = 0
-    const totalCount = routes.reduce((totalCount, route) => {
+    for (const route of routes) {
       // Windows
       const dir = upath.join(router.source, route.baseDir)
-      const { sync } = lazyRequire('globby')
       const files = sync([dir]).filter((file) => router.isApiFile(file))
-      return totalCount + files.length
-    }, 0)
 
-    return routes.map((route) => {
-      return {
-        // Windows
-        pattern: path.join(router.source, route.baseDir),
-        ignoreRequire: true,
-        filter: (_: void, file: string, container: IMidwayContainer) => {
-          if (!router.isApiFile(file)) {
-            return
-          }
-
-          // Initialize container
-          this.adapters.forEach((adapter) => (adapter.container = container))
-
-          // Create api function
-          const mod: ApiModule = require(file)
-          this.loadApiModule({ mod, file, container })
-
-          // Call afterCreate hooks
-          count++
-          if (count === totalCount) {
-            this.adapters.forEach((adapter) => adapter.afterCreate?.())
-          }
-        },
+      for (const file of files) {
+        const mod: ApiModule = require(file)
+        this.loadApiModule({ mod, file })
       }
-    })
+    }
+
+    this.gateways.forEach((gateway) => gateway.afterCreate?.())
   }
 
   loadBySnapshot(snapshot: SnapShot) {
@@ -109,7 +100,7 @@ export class HooksComponent {
     const { container, modules } = snapshot
 
     // Initialize container
-    this.adapters.forEach((adapter) => (adapter.container = container))
+    this.gateways.forEach((gateway) => (gateway.container = container))
 
     // Create api function
     for (const { mod, file } of modules) {
@@ -118,24 +109,18 @@ export class HooksComponent {
       }
     }
 
-    this.adapters.forEach((adapter) => adapter.afterCreate?.())
+    this.gateways.forEach((adapter) => adapter.afterCreate?.())
   }
 
-  loadApiModule({ mod, file, container }: LoadApiModuleOption) {
+  loadApiModule({ mod, file }: LoadApiModuleOption) {
     const route = this.options.router.getRoute(file)
-    const adapter = this.getAdapterByRoute(route)
-    this.createApi(mod, adapter, file, route)
-    container.bindClass(mod, '', file)
-  }
-
-  getAdapterByRoute(route: Route) {
-    const Adapter = this.options.router.getGatewayByRoute(route)
-    return this.adapters.find((inst) => inst instanceof Adapter)
+    const gateway = this.gatewayManager.getGatewayByRoute(route)
+    this.createApi(mod, gateway, file, route)
   }
 
   createApi(
     mod: ApiModule,
-    adapter: HooksGatewayAdapter,
+    gateway: HooksGatewayAdapter,
     file: string,
     route: Route
   ) {
@@ -148,7 +133,9 @@ export class HooksComponent {
         .map(useHooksMiddleware)
 
       const isExportDefault = name === 'default'
-      const functionName = isExportDefault ? '$default' : name
+      const functionName = isExportDefault
+        ? EXPORT_DEFAULT_FUNCTION_ALIAS
+        : name
       const functionId = this.options.router.getFunctionId(
         file,
         functionName,
@@ -156,7 +143,8 @@ export class HooksComponent {
       )
 
       fn._param = { functionId }
-      adapter.createApi({
+
+      gateway.createApi({
         fn,
         functionName,
         isExportDefault,
@@ -168,7 +156,7 @@ export class HooksComponent {
   }
 
   /**
-   * @description Web only
+   * @description HTTP Only
    */
   getGlobalMiddleware() {
     const mws = [this.useAsyncLocalStorage]

@@ -33,13 +33,14 @@ export function useHooksMiddleware(fn: (...args: any[]) => any) {
 
 export function formatCode(code: string) {
   try {
-    const prettier = lazyRequire('prettier')
+    const prettier = lazyRequire<typeof import('prettier')>('prettier')
     return prettier.format(code, {
       semi: true,
       singleQuote: true,
       parser: 'babel',
     })
-  } catch {
+  } catch (e) {
+    console.log('format code error', e)
     return code
   }
 }
@@ -54,6 +55,10 @@ export function isPathInside(child: string, parent: string) {
   )
 }
 
-export function lazyRequire <T = any>(id: string):T {
+export function lazyRequire<T = any>(id: string): T {
   return eval('require')(id)
+}
+
+export function isExportDefault(name: string) {
+  return name === 'default'
 }

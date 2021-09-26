@@ -21,27 +21,30 @@ const bootstrap = () =>
     })
   })
 
-beforeAll(async () => {
-  await bootstrap()
-})
+// TODO
+describe.skip('fullstack e2e', async () => {
+  beforeAll(async () => {
+    await bootstrap()
+  })
 
-afterAll(() => cp.kill())
+  afterAll(() => cp.kill())
 
-const client = axios.create({
-  baseURL: 'http://localhost:7001',
-})
+  const client = axios.create({
+    baseURL: 'http://localhost:7001',
+  })
 
-test('get html', async () => {
-  const { data } = await client.get('/')
-  expect(data.includes('Midway Hooks Fullstack Demo'))
-})
+  test('get html', async () => {
+    const { data } = await client.get('/')
+    expect(data.includes('Midway Hooks Fullstack Demo'))
+  })
 
-test('get api', async () => {
-  const { data } = await client.get('/api')
-  expect(data).toMatchInlineSnapshot(`
-    Object {
-      "message": "Hello World",
-      "method": "GET",
-    }
-  `)
+  test('get api', async () => {
+    const { data } = await client.get('/api')
+    expect(data).toMatchInlineSnapshot(`
+      Object {
+        "message": "Hello World",
+        "method": "GET",
+      }
+    `)
+  })
 })
