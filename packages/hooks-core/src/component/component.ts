@@ -38,8 +38,6 @@ export class HooksComponent {
   }
 
   load() {
-    const initOptions: { directoryResolveFilter?: ResolveFilter[] } = {}
-
     const snapshot = getSnapshot()
     if (snapshot) {
       this.loadBySnapshot(snapshot)
@@ -49,7 +47,6 @@ export class HooksComponent {
 
     const configuration = createConfiguration({
       namespace: '@midwayjs/hooks',
-      ...initOptions,
     })
 
     configuration
@@ -153,22 +150,5 @@ export class HooksComponent {
         route,
       })
     }
-  }
-
-  /**
-   * @description HTTP Only
-   */
-  getGlobalMiddleware() {
-    const mws = [this.useAsyncLocalStorage]
-    this.options.runtimeConfig.middleware?.forEach?.((mw) =>
-      mws.push(useHooksMiddleware(mw))
-    )
-    return mws
-  }
-
-  useAsyncLocalStorage = async (ctx: any, next: any) => {
-    await als.run({ ctx }, async () => {
-      await next()
-    })
   }
 }
