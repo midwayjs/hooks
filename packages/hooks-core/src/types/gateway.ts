@@ -30,7 +30,7 @@ export interface CreateApiOptions {
 }
 
 interface GatewayBuilder {
-  createApi(config: CreateApiOptions): void
+  createApi(options: CreateApiOptions): void
 }
 
 interface GatewayLifeCycle {

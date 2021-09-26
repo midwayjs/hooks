@@ -20,8 +20,8 @@ export function isDevelopment() {
 export function useHooksMiddleware(fn: (...args: any[]) => any) {
   return (...args: any[]) => {
     /**
-     * Hooks middleware
-     * const middleware = (next) => { const ctx = useContext() }
+     * @description Hooks middleware
+     * @example const middleware = (next) => { const ctx = useContext() }
      */
     if (parseArgs(fn).length === 1) {
       const next = last(args)
