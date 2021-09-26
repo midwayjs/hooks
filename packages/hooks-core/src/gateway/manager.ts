@@ -6,18 +6,17 @@ import { HTTPGateway } from './http'
 export class GatewayManager {
   private static instance: GatewayManager
 
+  static getInstance(root: string, projectConfig: ProjectConfig) {
+    GatewayManager.instance ??= new GatewayManager(root, projectConfig)
+    return GatewayManager.instance
+  }
+
   gateways: HooksGatewayAdapter[] = []
 
-  constructor(root: string, projectConfig: ProjectConfig) {
-    if (!GatewayManager.instance) {
-      GatewayManager.instance = this
-
-      this.gateways = [
-        ...this.getBuiltInGateways(projectConfig),
-        ...(projectConfig.gateway || []),
-      ]?.map?.((Adapter) => new Adapter({ root, projectConfig }))
-    }
-    return GatewayManager.instance
+  private constructor(root: string, projectConfig: ProjectConfig) {
+    this.gateways = this.getBuiltInGateways(projectConfig)
+      .concat(projectConfig.gateway)
+      .map((Adapter) => new Adapter({ root, projectConfig }))
   }
 
   private getBuiltInGateways(userConfig: ProjectConfig) {
@@ -26,7 +25,7 @@ export class GatewayManager {
       if (route.basePath) builtinGateways.add(HTTPGateway)
       if (route.event) builtinGateways.add(EventGateway)
     }
-    return [...builtinGateways]
+    return Array.from(builtinGateways)
   }
 
   getGatewayByRoute(route: Route) {
@@ -34,14 +33,10 @@ export class GatewayManager {
 
     if (!gateway) {
       throw new Error(
-        `Can't find the correct gateway adapter, please check if midway.config.ts is correct`
+        `Can't find the correct gateway adapter. Current route: ${route}`
       )
     }
 
     return gateway
   }
-}
-
-export function getGatewayManager(root: string, projectConfig: ProjectConfig) {
-  return new GatewayManager(root, projectConfig)
 }

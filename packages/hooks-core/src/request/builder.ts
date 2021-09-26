@@ -11,7 +11,7 @@ import {
   formatCode,
 } from '../'
 import { EXPORT_DEFAULT_FUNCTION_ALIAS } from '../const'
-import { getGatewayManager } from '../gateway/manager'
+import { GatewayManager } from '../gateway/manager'
 
 export const K_MATCHER_CALLBACK = Symbol('K_MATCHER_CALLBACK')
 
@@ -159,7 +159,7 @@ export function buildApiClient(
 ) {
   // Ensure that the gateway manager is initialized
   if (initializeGatewayManager) {
-    getGatewayManager(router.root, router.projectConfig)
+    GatewayManager.getInstance(router.root, router.projectConfig)
   }
   return ApiClientBuilder.instance.build(file, code, router)
 }

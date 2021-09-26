@@ -8,12 +8,10 @@ import {
   IMidwayApplication,
   IMidwayContainer,
 } from '@midwayjs/core'
-import type { ResolveFilter } from '@midwayjs/decorator'
 
 import { lazyRequire, Route } from '..'
 import { EXPORT_DEFAULT_FUNCTION_ALIAS } from '../const'
-import { GatewayManager, getGatewayManager } from '../gateway/manager'
-import { als } from '../runtime'
+import { GatewayManager } from '../gateway/manager'
 import { getSnapshot, SnapShot } from '../runtime/snapshot'
 import { ApiFunction, ApiModule } from '../types/common'
 import { ComponentOptions, HooksGatewayAdapter } from '../types/gateway'
@@ -31,7 +29,7 @@ export class HooksComponent {
 
   constructor(options: ComponentOptions) {
     this.options = options
-    this.gatewayManager = getGatewayManager(
+    this.gatewayManager = GatewayManager.getInstance(
       this.options.root,
       this.options.projectConfig
     )
