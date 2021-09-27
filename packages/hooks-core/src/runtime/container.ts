@@ -1,4 +1,3 @@
-import camelCase from 'lodash/camelCase'
 import { __decorate } from 'tslib'
 
 import { Inject, Provide } from '@midwayjs/decorator'
@@ -36,7 +35,7 @@ export function createFunctionContainer(options: CreateOptions) {
   }
 
   Object.defineProperty(FunctionContainer, 'name', {
-    value: camelCase(functionId),
+    value: functionId,
   })
 
   __decorate([Inject()], FunctionContainer.prototype, 'ctx', void 0)

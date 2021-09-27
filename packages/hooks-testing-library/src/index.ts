@@ -68,6 +68,7 @@ export class HooksApplication {
     this.app = app
   }
 
+  // TODO Support multiple protocol
   async runFunction<T extends ApiFunction>(
     fn: T,
     ...args: Parameters<T>
@@ -87,6 +88,9 @@ export class HooksApplication {
     return response.text
   }
 
+  /**
+   * @description Available with HTTP function
+   */
   request<T extends ApiFunction>(fn: T, ...args: Parameters<T>) {
     validateFunction(fn, 'fn')
 
