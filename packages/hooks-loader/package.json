@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-loader",
-  "version": "2.5.0-alpha.0",
+  "version": "3.0.0-alpha.0",
   "description": "Midway Hooks Webpack Loader",
   "main": "dist/midwayjs-hooks-loader.cjs.js",
   "module": "dist/midwayjs-hooks-loader.esm.js",
@@ -8,11 +8,11 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@midwayjs/hooks-core": "^2.5.0-alpha.0",
+    "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "debug": "^4.1.1"
   },
   "devDependencies": {
-    "@midwayjs/hooks": "^2.5.0-alpha.0",
+    "@midwayjs/hooks": "^3.0.0-alpha.0",
     "@midwayjs/hooks-core": "^2.1.0",
     "@types/debug": "^4.1.6",
     "@types/jest": "^26.0.23",
