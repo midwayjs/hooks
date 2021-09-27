@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-testing-library",
-  "version": "2.5.0-alpha.0",
+  "version": "3.0.0-alpha.0",
   "description": "The testing library for midway hooks",
   "keywords": [
     "midway",
@@ -20,7 +20,7 @@
     "axios": "^0.21.1"
   },
   "dependencies": {
-    "@midwayjs/hooks-core": "^2.5.0-alpha.0",
+    "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "@midwayjs/mock": "^3.0.0-alpha.9",
     "@testing-library/jest-dom": "^5.14.1",
     "identity-obj-proxy": "^3.0.0",
