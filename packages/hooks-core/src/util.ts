@@ -23,12 +23,16 @@ export function useHooksMiddleware(fn: (...args: any[]) => any) {
      * @description Hooks middleware
      * @example const middleware = (next) => { const ctx = useContext() }
      */
-    if (parseArgs(fn).length === 1) {
+    if (isHooksMiddleware(fn)) {
       const next = last(args)
       return fn(next)
     }
     return fn(...args)
   }
+}
+
+export function isHooksMiddleware(fn: (...args: any[]) => any) {
+  return parseArgs(fn).length === 1
 }
 
 export function formatCode(code: string) {
