@@ -6,17 +6,29 @@ import { HTTPGateway } from './http'
 export class GatewayManager {
   private static instance: GatewayManager
 
-  static getInstance(root: string, projectConfig: ProjectConfig) {
-    GatewayManager.instance ??= new GatewayManager(root, projectConfig)
+  static getInstance(
+    root: string,
+    projectConfig: ProjectConfig,
+    useSourceFile?: boolean
+  ) {
+    GatewayManager.instance ??= new GatewayManager(
+      root,
+      projectConfig,
+      useSourceFile
+    )
     return GatewayManager.instance
   }
 
   gateways: HooksGatewayAdapter[] = []
 
-  private constructor(root: string, projectConfig: ProjectConfig) {
+  private constructor(
+    root: string,
+    projectConfig: ProjectConfig,
+    useSourceFile: boolean
+  ) {
     this.gateways = this.getBuiltInGateways(projectConfig)
       .concat(projectConfig.gateway)
-      .map((Adapter) => new Adapter({ root, projectConfig }))
+      .map((Adapter) => new Adapter({ root, projectConfig, useSourceFile }))
   }
 
   private getBuiltInGateways(userConfig: ProjectConfig) {
