@@ -159,7 +159,11 @@ export function buildApiClient(
 ) {
   // Ensure that the gateway manager is initialized
   if (initializeGatewayManager) {
-    GatewayManager.getInstance(router.root, router.projectConfig)
+    GatewayManager.getInstance(
+      router.root,
+      router.projectConfig,
+      router.useSourceFile
+    )
   }
   return ApiClientBuilder.instance.build(file, code, router)
 }
