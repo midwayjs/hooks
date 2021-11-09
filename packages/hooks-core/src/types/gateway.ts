@@ -33,17 +33,13 @@ interface GatewayBuilder {
   createApi(options: CreateApiOptions): void
 }
 
-interface GatewayLifeCycle {
-  afterCreate?(): void
-}
-
 export type OnReadyArgs = {
   container: IMidwayContainer
   app: IMidwayApplication<any>
   runtimeConfig: RuntimeConfig
 }
 
-export interface HooksGatewayAdapter extends GatewayBuilder, GatewayLifeCycle {
+export interface HooksGatewayAdapter extends GatewayBuilder {
   container: IMidwayContainer
   is(route: Route): boolean
   onReady?(args: OnReadyArgs): Promise<void> | void

@@ -1,12 +1,8 @@
-import { existsSync } from 'fs'
-import { join } from 'upath'
-
 import { IMidwayContainer } from '@midwayjs/core'
 import { All, Controller } from '@midwayjs/decorator'
 
 import { useApiClientMatcher } from '../../request/builder'
 import { als, createFunctionContainer } from '../../runtime'
-import { ApiFunction } from '../../types/common'
 import { Route } from '../../types/config'
 import {
   ComponentOptions,
@@ -15,7 +11,7 @@ import {
   HooksGatewayAdapter,
   OnReadyArgs,
 } from '../../types/gateway'
-import { isDevelopment, lazyRequire, useHooksMiddleware } from '../../util'
+import { useHooksMiddleware } from '../../util'
 import { createHTTPClientMatcher } from './client'
 import { HTTPRouter } from './router'
 
@@ -63,53 +59,6 @@ export class HTTPGateway implements HooksGatewayAdapter {
       classDecorators: [Controller(httpPath)],
       handlerDecorators: [All('/', { middleware })],
     })
-  }
-
-  afterCreate() {
-    if (isDevelopment()) {
-      return
-    }
-
-    if (!this.isViteProject) {
-      return
-    }
-
-    const { routes } = this.router
-    if (routes.has('/') || routes.has('/*')) {
-      return
-    }
-
-    // TODO get base dir
-    const baseDir = 'TODO'
-    const staticCache = lazyRequire('koa-static-cache')
-    const mw = staticCache({
-      dir: join(baseDir, '..', this.options.projectConfig.build.viteOutDir),
-      dynamic: true,
-      alias: {
-        '/': 'index.html',
-        /**
-         * Add alias for windows, '/' -> '\\'
-         * https://github.com/koajs/static-cache/blob/master/index.js#L45
-         */
-        '\\': 'index.html',
-      },
-      buffer: true,
-      gzip: true,
-    })
-
-    const fn: ApiFunction = async () => {}
-    fn.middleware = [mw]
-
-    this.createHTTPApi('/*', {
-      functionId: 'hooks-host',
-      fn,
-    })
-  }
-
-  get isViteProject() {
-    return ['vite.config.ts', 'vite.config.js'].some((config) =>
-      existsSync(join(this.options.root, config))
-    )
   }
 
   async onReady(args: OnReadyArgs) {

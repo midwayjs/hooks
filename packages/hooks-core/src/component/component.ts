@@ -86,8 +86,6 @@ export class HooksComponent {
         this.loadApiModule({ mod, file })
       }
     }
-
-    this.gateways.forEach((gateway) => gateway.afterCreate?.())
   }
 
   loadBySnapshot(snapshot: SnapShot) {
@@ -103,8 +101,6 @@ export class HooksComponent {
         this.loadApiModule({ mod, file, container })
       }
     }
-
-    this.gateways.forEach((adapter) => adapter.afterCreate?.())
   }
 
   loadApiModule({ mod, file }: LoadApiModuleOption) {
