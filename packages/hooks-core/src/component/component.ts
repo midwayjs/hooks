@@ -12,7 +12,6 @@ import {
 import { lazyRequire, Route } from '..'
 import { EXPORT_DEFAULT_FUNCTION_ALIAS } from '../const'
 import { GatewayManager } from '../gateway/manager'
-import { getSnapshot, SnapShot } from '../runtime/snapshot'
 import { ApiFunction, ApiModule } from '../types/common'
 import { ComponentOptions, HooksGatewayAdapter } from '../types/gateway'
 import { useHooksMiddleware } from '../util'
@@ -36,12 +35,7 @@ export class HooksComponent {
   }
 
   load() {
-    const snapshot = getSnapshot()
-    if (snapshot) {
-      this.loadBySnapshot(snapshot)
-    } else {
-      this.loadByScanner()
-    }
+    this.loadByScanner()
 
     const configuration = createConfiguration({
       namespace: '@midwayjs/hooks',
@@ -84,21 +78,6 @@ export class HooksComponent {
       for (const file of files) {
         const mod: ApiModule = require(file)
         this.loadApiModule({ mod, file })
-      }
-    }
-  }
-
-  loadBySnapshot(snapshot: SnapShot) {
-    const { router } = this.options
-    const { container, modules } = snapshot
-
-    // Initialize container
-    this.gateways.forEach((gateway) => (gateway.container = container))
-
-    // Create api function
-    for (const { mod, file } of modules) {
-      if (router.isApiFile(file)) {
-        this.loadApiModule({ mod, file, container })
       }
     }
   }

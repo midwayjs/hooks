@@ -1,8 +1,6 @@
 import { getConfig, getProjectRoot } from '../config'
 import { FileRouter } from '../router'
-import { getSnapshot } from '../runtime/snapshot'
 import { RuntimeConfig } from '../types/config'
-import { ComponentOptions } from '../types/gateway'
 import { isDevelopment } from '../util'
 import { validateArray } from '../validator'
 import { HooksComponent } from './component'
@@ -15,28 +13,20 @@ export const hooks = (runtimeConfig: RuntimeConfig = {}) => {
     validateArray(runtimeConfig.middleware, 'runtimeConfig.middleware')
   }
 
-  const options: Partial<ComponentOptions> = {}
-  const snapshot = getSnapshot()
-
-  if (snapshot) {
-    options.root = snapshot.root
-    options.projectConfig = snapshot.projectConfig
-  } else {
-    options.root = getProjectRoot()
-    options.projectConfig = getConfig()
-  }
+  const root = getProjectRoot()
+  const projectConfig = getConfig()
 
   const router = new FileRouter({
-    root: options.root,
-    projectConfig: options.projectConfig,
+    root: root,
+    projectConfig: projectConfig,
     useSourceFile: isDevelopment(),
   })
 
   const hooks = new HooksComponent({
-    root: options.root,
+    root: root,
     router,
     runtimeConfig,
-    projectConfig: options.projectConfig,
+    projectConfig: projectConfig,
   })
 
   return hooks.load()
