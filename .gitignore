@@ -32,3 +32,4 @@ eagleeye
 sandbox
 !**/tests/**/dist
 !**/tests/**/build
+pipe

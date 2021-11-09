@@ -1,7 +1,7 @@
 import { existsSync } from 'fs'
 import { join } from 'upath'
 
-import { IMidwayApplication, IMidwayContainer } from '@midwayjs/core'
+import { IMidwayContainer } from '@midwayjs/core'
 import { All, Controller } from '@midwayjs/decorator'
 
 import { useApiClientMatcher } from '../../request/builder'
