@@ -38,8 +38,8 @@ export class FileRouter {
   getRoute(file: string) {
     const { routes } = this.projectConfig
     return routes.find((route) => {
-      const dir = this.getApiDirectory(route.baseDir)
-      return this.inside(file, dir)
+      const apiDir = this.getApiDirectory(route.baseDir)
+      return isPathInside(toUnix(file), toUnix(apiDir))
     })
   }
 
@@ -64,9 +64,5 @@ export class FileRouter {
     const id = kebabCase(removeExt(relativePath, extname(relativePath)))
     const name = [id, isExportDefault ? '' : `-${functionName}`].join('')
     return name.toLowerCase()
-  }
-
-  private inside(child: string, parent: string) {
-    return isPathInside(toUnix(child), toUnix(parent))
   }
 }
