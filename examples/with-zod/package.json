@@ -11,13 +11,13 @@
     "@midwayjs/hooks": "^2.2.2",
     "@midwayjs/koa": "^2.10.14",
     "koa-bodyparser": "^4.3.0",
-    "zod": "^3.7.1"
+    "zod": "^3.11.6"
   },
   "devDependencies": {
-    "@midwayjs/cli": "^1.2.71",
-    "@midwayjs/cli-plugin-build": "^1.2.70",
+    "@midwayjs/cli": "^1.2.87",
+    "@midwayjs/cli-plugin-build": "^1.2.86",
     "@midwayjs/hooks-testing-library": "^2.2.2",
-    "@types/koa-bodyparser": "^4.3.1"
+    "@types/koa-bodyparser": "^4.3.4"
   },
   "jest": {
     "preset": "@midwayjs/hooks"

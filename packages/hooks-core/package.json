@@ -23,23 +23,23 @@
     "@midwayjs/core": "^2.11.4",
     "@midwayjs/decorator": "^2.11.1",
     "asynchronous-local-storage": "^1.0.2",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "es-module-lexer": "^0.4.0",
     "fn-args": "^5.0.0",
     "globby": "^11.0.4",
-    "jiti": "^1.10.1",
+    "jiti": "^1.12.9",
     "koa-static-cache": "^5.1.4",
     "lodash": "^4.17.21",
     "pkg-dir": "^5.0.0",
-    "tslib": "^2.3.0",
+    "tslib": "^2.3.1",
     "upath": "^2.0.1"
   },
   "devDependencies": {
     "@types/es-module-lexer": "^0.3.0",
-    "@types/koa-static-cache": "^5.1.0",
-    "@types/lodash": "^4.14.170",
-    "@types/prettier": "^2.3.1",
-    "prettier": "^2.3.2"
+    "@types/koa-static-cache": "^5.1.1",
+    "@types/lodash": "^4.14.176",
+    "@types/prettier": "^2.4.1",
+    "prettier": "^2.4.1"
   },
   "preconstruct": {
     "entrypoints": [

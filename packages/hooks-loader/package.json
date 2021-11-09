@@ -14,10 +14,10 @@
   "devDependencies": {
     "@midwayjs/hooks": "^2.3.0",
     "@midwayjs/hooks-core": "^2.1.0",
-    "@types/debug": "^4.1.6",
-    "@types/jest": "^26.0.23",
+    "@types/debug": "^4.1.7",
+    "@types/jest": "^26.0.24",
     "@types/memory-fs": "^0.3.3",
-    "@types/webpack": "^4.41.30",
+    "@types/webpack": "^4.41.31",
     "memory-fs": "^0.5.0",
     "ts-loader": "^8.3.0",
     "webpack": "^4.42.1",
