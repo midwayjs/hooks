@@ -20,7 +20,7 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
-    "@midwayjs/hooks-loader": "^3.0.0-alpha.0"
+    "@midwayjs/unplugin-hooks": "^3.0.0-alpha.0"
   },
   "publishConfig": {
     "access": "public"

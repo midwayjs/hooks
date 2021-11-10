@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`unplugin-hooks webpack Compile event 1`] = `
+import { request as request$0 } from '@midwayjs/hooks-miniprogram-client';
+export default function $default(...args) {
+    const options = Object.assign({
+        functionId: 'wechat-index',
+        data: { args },
+    }, {});
+    return request$0(options);
+}
+
+`;
+
+exports[`unplugin-hooks webpack Compile lambda 1`] = `
+import { request as request$0 } from '@midwayjs/hooks/request';
+export default function $default(...args) {
+    const options = Object.assign({
+        functionId: 'lambda-index',
+        data: { args },
+    }, {
+        url: '/api',
+        meta: {},
+    });
+    return request$0(options);
+}
+
+`;
+
+exports[`unplugin-hooks webpack Compile render 1`] = `
+import { request as request$0 } from '@midwayjs/hooks/request';
+export default function $default(...args) {
+    const options = Object.assign({
+        functionId: 'render-index',
+        data: { args },
+    }, {
+        url: '/',
+        meta: {},
+    });
+    return request$0(options);
+}
+export function foo(...args) {
+    const options = Object.assign({
+        functionId: 'render-index-foo',
+        data: { args },
+    }, {
+        url: '/foo',
+        meta: {},
+    });
+    return request$0(options);
+}
+export function bar(...args) {
+    const options = Object.assign({
+        functionId: 'render-index-bar',
+        data: { args },
+    }, {
+        url: '/bar',
+        meta: {},
+    });
+    return request$0(options);
+}
+
+`;
+
+exports[`unplugin-hooks webpack non-lambda files should not be compiled 1`] = `
+export function isTrue(value) {
+    return value === 'true' || value === true;
+}
+
+`;

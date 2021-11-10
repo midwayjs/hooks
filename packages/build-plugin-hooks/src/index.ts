@@ -1,11 +1,9 @@
 import { IPlugin } from '@alib/build-scripts'
+import { HooksWebpackPlugin } from '@midwayjs/unplugin-hooks'
 
 const buildHooksRequest: IPlugin = (pluginApi) => {
   pluginApi.onGetWebpackConfig((config) => {
-    const MidwayHooksLoader = require.resolve('@midwayjs/hooks-loader')
-    ;['jsx', 'tsx'].forEach((type) => {
-      config.module.rule(type).use('midway-hooks').loader(MidwayHooksLoader)
-    })
+    config.plugin('@midwayjs/hooks').use(HooksWebpackPlugin())
   })
 }
 
