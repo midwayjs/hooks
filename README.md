@@ -15,7 +15,7 @@
 
 > [中文 README](./README.zh-cn.md)
 
-Docs：[Getting Started](https://www.yuque.com/midwayjs/faas/quickstart_integration?translate=en)
+Docs：[Getting Started](https://midwayjs.org/docs/hooks_intro)
 
 ## ✨ Features
 
