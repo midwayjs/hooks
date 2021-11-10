@@ -1,24 +1,26 @@
 const path = require('path')
 
-/** @typedef {import('ts-jest/dist/types')} */
+/** @type {import('@swc-node/core').Options} */
+const swcJestOptions = {
+  experimentalDecorators: true,
+}
+
 /** @type {import('@jest/types').Config.InitialOptions} */
 module.exports = {
-  preset: 'ts-jest',
+  transform: {
+    '^.+\\.(t|j)sx?$': [
+      '@swc-node/jest',
+      // https://github.com/Brooooooklyn/swc-node/blob/master/packages/core/index.ts#L13
+      swcJestOptions,
+    ],
+  },
   testEnvironment: path.resolve(
     __dirname,
     './packages/hooks-testing-library/jest-preset/environment.js'
   ),
-  testPathIgnorePatterns: [
-    'node_modules',
-    'fixtures',
-    'util.ts',
-    'compiler.ts',
-    '.serverless',
-    'dist',
-  ],
+  testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
   coveragePathIgnorePatterns: [
     'node_modules',
-    '.serverless',
     'examples',
     'fixtures',
     '__tests__',
@@ -29,10 +31,4 @@ module.exports = {
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
   ],
-  forceExit: true,
-  globals: {
-    'ts-jest': {
-      isolatedModules: true,
-    },
-  },
 }
