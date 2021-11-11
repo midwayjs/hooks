@@ -15,6 +15,18 @@ export {
 
 const noop = () => {}
 
-export function createConfiguration(options: InjectionConfigurationOptions) {
-  return createConfigurationFromCore(options).onReady(noop).onStop(noop)
+type FunctionalConfiguration = ReturnType<typeof createConfigurationFromCore>
+
+interface ConfigurationOptions extends InjectionConfigurationOptions {
+  onReady: FunctionalConfiguration['onReady']
+  onStop: FunctionalConfiguration['onStop']
+  onConfigLoad: FunctionalConfiguration['onConfigLoad']
+}
+
+export function createConfiguration(options: ConfigurationOptions) {
+  const { onReady, onStop, onConfigLoad } = options
+  return createConfigurationFromCore(options)
+    .onReady(onReady || noop)
+    .onStop(onStop || noop)
+    .onConfigLoad(onConfigLoad || noop)
 }
