@@ -2513,7 +2513,7 @@
   resolved "https://registry.npmjs.org/@midwayjs/boilerplate-list/-/boilerplate-list-1.0.1.tgz#2c5c8e9306f18104ed84894e70de0f7a57e1d7ae"
   integrity sha512-6zaFuHxztutzqBqrlffmBK2j4D49po1UVFVTmmzL8dOUj40f1OrL5QCfiG0GN0vjrOyL5NOl53vh5mKLpahyFw==
 
-"@midwayjs/bootstrap@3.0.0-alpha.43", "@midwayjs/bootstrap@^2.10.14", "@midwayjs/bootstrap@^2.11.4", "@midwayjs/bootstrap@^3.0.0-alpha.43+8b8075f0", "@midwayjs/bootstrap@alpha":
+"@midwayjs/bootstrap@3.0.0-alpha.43", "@midwayjs/bootstrap@^2.10.14", "@midwayjs/bootstrap@^2.11.4", "@midwayjs/bootstrap@^3.0.0-alpha.43+8b8075f0":
   version "3.0.0-alpha.43"
   resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-3.0.0-alpha.43.tgz#c834aca5f1449eb0729192b57b1c75d691fb5f34"
   integrity sha512-lrwiS7S5fSLH3pusrHW+1hqs1IIBs2THaMaFygVln7qlh9sEdzkbvrSYDkOx89k8fpJ2zSgChm4gbn5W1icssg==
@@ -2787,7 +2787,7 @@
   resolved "https://registry.npmjs.org/@midwayjs/faas-typings/-/faas-typings-3.0.0-alpha.43.tgz#8e66968a40fdec97afdb59de5159328ed9aa15b4"
   integrity sha512-hr0O1LpORzD8otXdjIx9OC0xzddnfmivWW96BE+zN+PNyE3vXkUJUjPcoC3S0NzY1QoG1J/BDHBpZqOdM9kR4g==
 
-"@midwayjs/faas@3.0.0-alpha.43", "@midwayjs/faas@^2.11.4", "@midwayjs/faas@alpha":
+"@midwayjs/faas@3.0.0-alpha.43", "@midwayjs/faas@^2.11.4":
   version "3.0.0-alpha.43"
   resolved "https://registry.npmjs.org/@midwayjs/faas/-/faas-3.0.0-alpha.43.tgz#e134bd64e13e53e624ef18fd1b60af1b48998474"
   integrity sha512-q+/R9sc/eI6OZJZwa/DJfTE5gr1PAv2ov7G8lOLTESBtsOb/4/1MjGwHr3G8hk6BZruo1IijFPlmbmoSSNluow==
@@ -3958,13 +3958,6 @@
   version "3.2.5"
   resolved "https://registry.npmjs.org/@types/koa-compose/-/koa-compose-3.2.5.tgz#85eb2e80ac50be95f37ccf8c407c09bbe3468e9d"
   integrity sha512-B8nG/OoE1ORZqCkBVsup/AKcvjdgoHnfi4pZMn5UwAPCbhk/96xyv284eBYW8JlQbQ7zDmnpFr68I/40mFoIBQ==
-  dependencies:
-    "@types/koa" "*"
-
-"@types/koa-static-cache@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.npmjs.org/@types/koa-static-cache/-/koa-static-cache-5.1.0.tgz#37c33f877ecd92c13065ed402184632ab18da326"
-  integrity sha512-9n89fpWYyhfdpjDmHYJikeah6r2F3LC8F+dm+nuCrKd+7R4CiCnlYbNR1AfB3H/1b7Ndz+uucrAycwi9u7QtRA==
   dependencies:
     "@types/koa" "*"
 

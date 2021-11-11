@@ -19,7 +19,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@midwayjs/bootstrap": "alpha",
     "@midwayjs/core": "alpha",
     "@midwayjs/decorator": "alpha",
     "asynchronous-local-storage": "^1.0.2",
@@ -28,16 +27,13 @@
     "fn-args": "^5.0.0",
     "globby": "^11.0.4",
     "jiti": "^1.10.1",
-    "koa-static-cache": "^5.1.4",
     "lodash": "^4.17.21",
     "pkg-dir": "^5.0.0",
     "tslib": "^2.3.0",
     "upath": "^2.0.1"
   },
   "devDependencies": {
-    "@midwayjs/faas": "alpha",
     "@types/es-module-lexer": "^0.3.0",
-    "@types/koa-static-cache": "^5.1.0",
     "@types/lodash": "^4.14.170",
     "@types/prettier": "^2.3.1",
     "prettier": "^2.3.2"
