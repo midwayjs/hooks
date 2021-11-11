@@ -1,4 +1,4 @@
-import { inspect } from 'util'
+import { inspect, types } from 'util'
 
 export class ERR_INVALID_ARG_TYPE extends Error {
   constructor(name: string, expected: string, actual: any) {
@@ -45,5 +45,11 @@ export function validateString(value: any, name: string) {
 export function validateFunction(value: any, name: string) {
   if (typeof value !== 'function') {
     throw new ERR_INVALID_ARG_TYPE(name, 'Function', value)
+  }
+}
+
+export function validateAsyncFunction(value: any, name: string) {
+  if (!types.isAsyncFunction(value)) {
+    throw new ERR_INVALID_ARG_TYPE(name, 'AsyncFunction', value)
   }
 }
