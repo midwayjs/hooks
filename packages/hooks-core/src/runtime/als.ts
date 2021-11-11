@@ -4,7 +4,6 @@ import { lazyRequire } from '..'
 
 export type HooksContext = {
   ctx: any
-  event?: any
 }
 
 /**
