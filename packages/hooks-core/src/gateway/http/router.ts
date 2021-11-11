@@ -42,7 +42,6 @@ export class HTTPRouter extends FileRouter {
          * demo -> '/demo'
          */
         fileRoute,
-        // underscore: getNoteList -> _getNoteList
         func,
         isCatchAllRoutes ? '/*' : ''
       )
