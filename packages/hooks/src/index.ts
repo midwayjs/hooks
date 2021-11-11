@@ -7,11 +7,9 @@ export {
   defineConfig,
   ApiConfig,
   useContext,
-  useConfig,
-  useInject,
-  usePlugin,
-  useLogger,
 } from '@midwayjs/hooks-core'
+
+export { useConfig, useInject, usePlugin, useLogger } from './hooks'
 
 const noop = () => {}
 

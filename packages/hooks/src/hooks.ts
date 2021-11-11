@@ -1,7 +1,9 @@
 import type { IMidwayContainer } from '@midwayjs/core'
-
-import { ERR_INVALID_ARG_TYPE, validateString } from '../validator'
-import { useContext } from './index'
+import {
+  ERR_INVALID_ARG_TYPE,
+  validateString,
+  useContext,
+} from '@midwayjs/hooks-core'
 
 export function useLogger() {
   const ctx = useContext()

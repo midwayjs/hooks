@@ -1,4 +1,5 @@
-import { als, useContext } from '../'
+import { als, useContext } from '@midwayjs/hooks-core'
+
 import { useConfig, useInject, useLogger, usePlugin } from '../hooks'
 
 const mockContext = {
@@ -11,7 +12,7 @@ const mockContext = {
     getAsync: jest.fn(),
     getConfigService() {
       return {
-        getConfiguration(key) {
+        getConfiguration(key: string) {
           return key
         },
       }
