@@ -70,10 +70,6 @@ export type HTTPRoute = {
    * @example /api
    */
   basePath: string
-  /**
-   * @deprecated will be removed in next major version.
-   */
-  underscore?: boolean
 }
 
 export type EventRoute = {

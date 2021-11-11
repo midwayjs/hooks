@@ -7,10 +7,5 @@ export default defineConfig({
       baseDir: 'lambda',
       basePath: '/api',
     },
-    {
-      baseDir: 'underscore',
-      basePath: '/underscore',
-      underscore: true,
-    },
   ],
 })

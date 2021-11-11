@@ -20,7 +20,7 @@ export class HTTPRouter extends FileRouter {
   }
 
   getHTTPPath(file: string, method: string, isExportDefault: boolean) {
-    const { basePath, baseDir, underscore } = this.getRoute(file)
+    const { basePath, baseDir } = this.getRoute(file)
     const lambdaDirectory = this.getApiDirectory(baseDir)
 
     const { isCatchAllRoutes, filename } = this.parseFilename(
@@ -28,7 +28,7 @@ export class HTTPRouter extends FileRouter {
     )
     const fileRoute = filename === 'index' ? '' : filename
     // TODO remove underscore support in future
-    const func = isExportDefault ? '' : `${underscore ? '_' : ''}${method}`
+    const func = isExportDefault ? '' : method
 
     const api = toUnix(
       join(

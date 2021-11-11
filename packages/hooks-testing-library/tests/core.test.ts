@@ -10,7 +10,6 @@ import {
 } from './fixtures/core/src/lambda/index'
 import { tryInject, tryInjectLocal } from './fixtures/core/src/lambda/ioc'
 import middleware from './fixtures/core/src/lambda/middleware'
-import { underscore } from './fixtures/core/src/underscore'
 
 let app: HooksApplication
 beforeAll(async () => {
@@ -45,12 +44,6 @@ describe('Hooks Api', () => {
   })
 
   // TODO Handle HTTP Error
-
-  test('underscore', async () => {
-    const { path } = await app.runFunction(underscore)
-    return expect(path).toEqual('/underscore/_underscore')
-  })
-
   test('middleware', async () => {
     const response = await app.request(middleware).expect(200)
     // Set by middleware
