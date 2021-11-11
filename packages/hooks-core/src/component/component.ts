@@ -43,7 +43,7 @@ export class HooksComponent {
 
     configuration
       .onReady(async (container, app: IMidwayApplication) => {
-        for (const gateway of this.gateways) {
+        for (const gateway of this.gatewayManager.gateways) {
           await gateway.onReady?.({
             container,
             app,
@@ -56,10 +56,6 @@ export class HooksComponent {
     return {
       Configuration: configuration,
     }
-  }
-
-  get gateways() {
-    return this.gatewayManager.gateways
   }
 
   loadByScanner() {
