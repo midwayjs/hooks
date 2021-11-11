@@ -1,4 +1,3 @@
-import { IMidwayContainer } from '@midwayjs/core'
 import { ServerlessTrigger, ServerlessTriggerType } from '@midwayjs/decorator'
 
 import {
@@ -15,8 +14,6 @@ import {
 } from '../../types/gateway'
 
 export class EventGateway implements HooksGatewayAdapter {
-  container: IMidwayContainer
-
   private router: FileRouter
   private defaultApiClient = '@midwayjs/hooks-miniprogram-client'
 

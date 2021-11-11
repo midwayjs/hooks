@@ -3,11 +3,7 @@ import noop from 'lodash/noop'
 import pickBy from 'lodash/pickBy'
 import upath from 'upath'
 
-import {
-  createConfiguration,
-  IMidwayApplication,
-  IMidwayContainer,
-} from '@midwayjs/core'
+import { createConfiguration, IMidwayApplication } from '@midwayjs/core'
 
 import { lazyRequire, Route } from '..'
 import { EXPORT_DEFAULT_FUNCTION_ALIAS } from '../const'
@@ -19,7 +15,6 @@ import { useHooksMiddleware } from '../util'
 export type LoadApiModuleOption = {
   mod: ApiModule
   file: string
-  container?: IMidwayContainer
 }
 
 export class HooksComponent {
@@ -45,7 +40,6 @@ export class HooksComponent {
       .onReady(async (container, app: IMidwayApplication) => {
         for (const gateway of this.gatewayManager.gateways) {
           await gateway.onReady?.({
-            container,
             app,
             runtimeConfig: this.options.runtimeConfig,
           })

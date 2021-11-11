@@ -1,4 +1,4 @@
-import { IMidwayApplication, IMidwayContainer } from '@midwayjs/core'
+import { IMidwayApplication } from '@midwayjs/core'
 
 import { ApiFunction } from '..'
 import { FileRouter } from '../router'
@@ -34,13 +34,11 @@ interface GatewayBuilder {
 }
 
 export type OnReadyArgs = {
-  container: IMidwayContainer
   app: IMidwayApplication<any>
   runtimeConfig: RuntimeConfig
 }
 
 export interface HooksGatewayAdapter extends GatewayBuilder {
-  container: IMidwayContainer
   is(route: Route): boolean
   onReady?(args: OnReadyArgs): Promise<void> | void
 }

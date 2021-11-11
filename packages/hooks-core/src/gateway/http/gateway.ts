@@ -1,4 +1,3 @@
-import { IMidwayContainer } from '@midwayjs/core'
 import { All, Controller } from '@midwayjs/decorator'
 
 import { useApiClientMatcher } from '../../request/builder'
@@ -17,7 +16,6 @@ import { HTTPRouter } from './router'
 
 export class HTTPGateway implements HooksGatewayAdapter {
   options: GatewayAdapterOptions
-  container: IMidwayContainer
 
   private readonly router: HTTPRouter
 
