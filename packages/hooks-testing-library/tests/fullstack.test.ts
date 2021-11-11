@@ -21,8 +21,7 @@ const bootstrap = () =>
     })
   })
 
-// TODO
-describe.skip('fullstack e2e', async () => {
+describe.skip('fullstack e2e', () => {
   beforeAll(async () => {
     await bootstrap()
   })

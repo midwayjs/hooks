@@ -27,7 +27,6 @@ export class HTTPRouter extends FileRouter {
       basename(file, extname(file))
     )
     const fileRoute = filename === 'index' ? '' : filename
-    // TODO remove underscore support in future
     const func = isExportDefault ? '' : method
 
     const api = toUnix(
