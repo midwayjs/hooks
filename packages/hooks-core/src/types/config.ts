@@ -53,7 +53,7 @@ export type RuntimeConfig = {
   /**
    * @description global middleware, only available in http mode
    */
-  middleware?: HooksMiddleware
+  middleware?: HooksMiddleware[]
 }
 
 export type BaseRoute = {
@@ -97,4 +97,7 @@ export type Route = BaseRoute & (HTTPRoute | EventRoute | MTOPRoute | HSFRoute)
  */
 export type ServerRoute = Route
 
+/**
+ * @description user define config
+ */
 export interface UserConfig extends Omit<ProjectConfig, 'build'> {}

@@ -6,7 +6,7 @@ import {
 } from '@midwayjs/hooks-core'
 
 type Controller = {
-  middleware?: HooksMiddleware
+  middleware?: HooksMiddleware[]
 }
 
 export function withController<T extends ApiFunction>(
@@ -30,7 +30,7 @@ export function withController<T extends ApiFunction>(
 }
 
 export function withMiddleware<T extends ApiFunction>(
-  middleware: HooksMiddleware,
+  middleware: HooksMiddleware[],
   func: T
 ) {
   validateArray(middleware, 'middleware')

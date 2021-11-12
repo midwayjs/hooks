@@ -1,7 +1,3 @@
 export * from './api'
-export {
-  hooks,
-  defineConfig,
-  ApiConfig,
-  useContext,
-} from '@midwayjs/hooks-core'
+export type { ApiConfig } from '@midwayjs/hooks-core'
+export { defineConfig, useContext, hooks } from '@midwayjs/hooks-core'
