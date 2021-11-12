@@ -2,11 +2,15 @@ import { createConfiguration as createConfigurationFromCore } from '@midwayjs/co
 import { InjectionConfigurationOptions } from '@midwayjs/decorator'
 
 type FunctionalConfiguration = ReturnType<typeof createConfigurationFromCore>
+type FirstArgument<T> = T extends (arg: infer A, ...args: any[]) => any
+  ? A
+  : never
+type ConfigurationLifeCycle = FirstArgument<FunctionalConfiguration['onReady']>
 
 interface ConfigurationOptions extends InjectionConfigurationOptions {
-  onReady: FunctionalConfiguration['onReady']
-  onStop: FunctionalConfiguration['onStop']
-  onConfigLoad: FunctionalConfiguration['onConfigLoad']
+  onReady?: ConfigurationLifeCycle
+  onStop?: ConfigurationLifeCycle
+  onConfigLoad?: ConfigurationLifeCycle
 }
 
 const noop = () => {}

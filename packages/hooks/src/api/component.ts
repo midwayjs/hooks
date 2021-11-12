@@ -1,4 +1,4 @@
-import { createConfiguration, IMidwayApplication } from '@midwayjs/core'
+import { IMidwayApplication } from '@midwayjs/core'
 import {
   RuntimeConfig,
   validateArray,
@@ -6,6 +6,8 @@ import {
   useHooksMiddleware,
   HooksMiddleware,
 } from '@midwayjs/hooks-core'
+
+import { createConfiguration } from './configuration'
 
 interface MidwayApplication extends IMidwayApplication {
   use?: (middleware: any) => void
@@ -18,11 +20,12 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
 
   const Configuration = createConfiguration({
     namespace: '@midwayjs/hooks',
-  }).onReady((_, app: MidwayApplication) => {
-    registerGlobalMiddleware(app, runtimeConfig.middleware)
+    onReady(_, app: MidwayApplication) {
+      registerGlobalMiddleware(app, runtimeConfig.middleware)
+    },
   })
 
-  // registry api routes
+  // TODO registry api routes
 
   return { Configuration }
 }
