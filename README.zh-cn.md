@@ -91,7 +91,7 @@ export async function post(name: string) {
 请先安装 @midwayjs/cli
 
 ```bash
-$ npm i @midwayjs/cli -g
+npm i @midwayjs/cli -g
 ```
 
 ### 创建
@@ -103,19 +103,19 @@ mw new my-app
 ### 运行
 
 ```bash
-$ npm run dev
+npm run dev
 ```
 
 ### 部署至服务器
 
 ```bash
-$ node bootstrap.js
+node bootstrap.js
 ```
 
 ### 部署至 Serverless
 
 ```bash
-$ npm run deploy
+npm run deploy
 ```
 
 ## Contribute
@@ -131,25 +131,25 @@ $ npm run deploy
 - install dependencies
 
 ```bash
-$ yarn
+yarn
 ```
 
 - build
 
 ```bash
-$ yarn build
+yarn build
 ```
 
 - watch
 
 ```bash
-$ yarn watch
+yarn watch
 ```
 
 - test
 
 ```bash
-$ yarn test
+yarn test
 ```
 
 ## 开源协议
