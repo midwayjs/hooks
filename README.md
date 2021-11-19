@@ -93,7 +93,7 @@ export async function post(name: string) {
 Please install `@midwayjs/cli` first.
 
 ```bash
-$ npm i @midwayjs/cli -g
+npm i @midwayjs/cli -g
 ```
 
 ### Create
@@ -105,19 +105,19 @@ mw new my-app
 ### Run
 
 ```bash
-$ npm run dev
+npm run dev
 ```
 
 ### Deploy to custom server
 
 ```bash
-$ node bootstrap.js
+node bootstrap.js
 ```
 
 ### Deploy to Serverless
 
 ```bash
-$ npm run deploy
+npm run deploy
 ```
 
 ## Contribute
@@ -133,25 +133,25 @@ We use yarn + lerna to manage the project.
 - install dependencies
 
 ```bash
-$ yarn
+yarn
 ```
 
 - build
 
 ```bash
-$ yarn build
+yarn build
 ```
 
 - watch
 
 ```bash
-$ yarn watch
+yarn watch
 ```
 
 - test
 
 ```bash
-$ yarn test
+yarn test
 ```
 
 ## license
