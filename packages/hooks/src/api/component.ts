@@ -25,8 +25,13 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
     },
   })
 
-  // TODO registry api routes
-
+  // TODO
+  /**
+   * register api routes
+   * 1. load api routes from file system
+   * 2. load user predefined api routes
+   * 3. enable middleware
+   */
   return { Configuration }
 }
 

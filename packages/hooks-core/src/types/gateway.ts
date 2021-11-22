@@ -1,5 +1,3 @@
-import { IMidwayApplication } from '@midwayjs/core'
-
 import { ApiFunction } from '..'
 import { FileRouter } from '../router'
 import { ProjectConfig, Route, RuntimeConfig } from './config'
@@ -34,7 +32,7 @@ interface GatewayBuilder {
 }
 
 export type OnReadyArgs = {
-  app: IMidwayApplication<any>
+  app: any
   runtimeConfig: RuntimeConfig
 }
 

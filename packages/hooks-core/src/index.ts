@@ -2,8 +2,7 @@ export * from './router'
 
 export * from './gateway/http'
 export * from './gateway/event'
-
-export * from './component'
+export * from './gateway/manager'
 
 export * from './runtime'
 

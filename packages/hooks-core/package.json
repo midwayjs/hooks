@@ -19,7 +19,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@midwayjs/core": "alpha",
     "@midwayjs/decorator": "alpha",
     "asynchronous-local-storage": "^1.0.2",
     "axios": "^0.21.1",

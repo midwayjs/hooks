@@ -1,8 +1,7 @@
+import { FileRouter, validateArray, isDevelopment } from '@midwayjs/hooks-core'
+
 import { getConfig, getProjectRoot } from '../config'
-import { FileRouter } from '../router'
-import { RuntimeConfig } from '../types/config'
-import { isDevelopment } from '../util'
-import { validateArray } from '../validator'
+import { RuntimeConfig } from '../config/type'
 import { HooksComponent } from './component'
 
 /**

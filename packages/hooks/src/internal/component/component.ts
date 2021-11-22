@@ -4,13 +4,17 @@ import pickBy from 'lodash/pickBy'
 import upath from 'upath'
 
 import { createConfiguration, IMidwayApplication } from '@midwayjs/core'
-
-import { lazyRequire, Route } from '..'
-import { EXPORT_DEFAULT_FUNCTION_ALIAS } from '../const'
-import { GatewayManager } from '../gateway/manager'
-import { ApiFunction, ApiModule } from '../types/common'
-import { ComponentOptions, HooksGatewayAdapter } from '../types/gateway'
-import { useHooksMiddleware } from '../util'
+import {
+  lazyRequire,
+  Route,
+  EXPORT_DEFAULT_FUNCTION_ALIAS,
+  ComponentOptions,
+  HooksGatewayAdapter,
+  ApiFunction,
+  ApiModule,
+  useHooksMiddleware,
+  GatewayManager,
+} from '@midwayjs/hooks-core'
 
 export type LoadApiModuleOption = {
   mod: ApiModule
