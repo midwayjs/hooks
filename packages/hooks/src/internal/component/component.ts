@@ -22,11 +22,9 @@ export type LoadApiModuleOption = {
 }
 
 export class HooksComponent {
-  options: ComponentOptions
   gatewayManager: GatewayManager
 
-  constructor(options: ComponentOptions) {
-    this.options = options
+  constructor(public options: ComponentOptions) {
     this.gatewayManager = GatewayManager.getInstance(
       this.options.root,
       this.options.projectConfig

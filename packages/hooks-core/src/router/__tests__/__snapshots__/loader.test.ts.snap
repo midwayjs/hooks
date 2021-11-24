@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`load file route with http trigger 1`] = `
+Array [
+  Object {
+    "function": [Function],
+    "functionId": "api-index-get",
+    "middleware": Array [],
+    "trigger": Object {
+      "method": "GET",
+      "path": "/get",
+      "type": "HTTP",
+    },
+  },
+  Object {
+    "function": [Function],
+    "functionId": "api-index-post",
+    "middleware": Array [],
+    "trigger": Object {
+      "method": "POST",
+      "path": "/post",
+      "type": "HTTP",
+    },
+  },
+  Object {
+    "function": [Function],
+    "functionId": "api-index-put",
+    "middleware": Array [],
+    "trigger": Object {
+      "method": "PUT",
+      "path": "/put",
+      "type": "HTTP",
+    },
+  },
+  Object {
+    "function": [Function],
+    "functionId": "api-index-delete",
+    "middleware": Array [],
+    "trigger": Object {
+      "method": "DELETE",
+      "path": "/delete",
+      "type": "HTTP",
+    },
+  },
+  Object {
+    "function": [Function],
+    "functionId": "api-index-patch",
+    "middleware": Array [],
+    "trigger": Object {
+      "method": "PATCH",
+      "path": "/patch",
+      "type": "HTTP",
+    },
+  },
+  Object {
+    "function": [Function],
+    "functionId": "api-index-head",
+    "middleware": Array [],
+    "trigger": Object {
+      "method": "HEAD",
+      "path": "/head",
+      "type": "HTTP",
+    },
+  },
+  Object {
+    "function": [Function],
+    "functionId": "api-index-options",
+    "middleware": Array [],
+    "trigger": Object {
+      "method": "OPTIONS",
+      "path": "/options",
+      "type": "HTTP",
+    },
+  },
+  Object {
+    "function": [Function],
+    "functionId": "api-index",
+    "middleware": Array [],
+    "trigger": Object {
+      "method": "ALL",
+      "path": "/",
+      "type": "HTTP",
+    },
+  },
+]
+`;

@@ -2783,9 +2783,9 @@
   integrity sha512-vAy+XNUgna21otu/ZOKMV4310AF7COoujDKQYcyRcKHL87oLtNRm9yHfX9zgoDlQSRKGZupEFHcecfcd0cDqrw==
 
 "@midwayjs/faas-typings@^3.0.0-alpha.43+8b8075f0":
-  version "3.0.0-alpha.43"
-  resolved "https://registry.npmjs.org/@midwayjs/faas-typings/-/faas-typings-3.0.0-alpha.43.tgz#8e66968a40fdec97afdb59de5159328ed9aa15b4"
-  integrity sha512-hr0O1LpORzD8otXdjIx9OC0xzddnfmivWW96BE+zN+PNyE3vXkUJUjPcoC3S0NzY1QoG1J/BDHBpZqOdM9kR4g==
+  version "3.0.0-beta.3"
+  resolved "https://registry.npmjs.org/@midwayjs/faas-typings/-/faas-typings-3.0.0-beta.3.tgz#4c37ee445b277b49d05d191890e42657aeb9e099"
+  integrity sha512-3bnOA2QhFSxLWfoxCfg1BDtQtcnEtxx++zvuOmn8nHEbQyPxLPwucxABsivXU2rY0BVqYsKlpXdT01CzB+xp8w==
 
 "@midwayjs/faas@3.0.0-alpha.43", "@midwayjs/faas@^2.11.4":
   version "3.0.0-alpha.43"
@@ -2859,7 +2859,7 @@
     path-to-regexp "^6.2.0"
     raw-body "^2.4.1"
 
-"@midwayjs/glob@^1.0.2":
+"@midwayjs/glob@^1.0.2", "@midwayjs/glob@^1.0.6":
   version "1.0.6"
   resolved "https://registry.npmjs.org/@midwayjs/glob/-/glob-1.0.6.tgz#40307c74398ad2a36ca68078b6f42c4a24ff0fd2"
   integrity sha512-2s4wdvDpMGKSC/1ZuHLprYcQlcGvGTYy4IPiv8UXD21PYbuEV0rBQaqNMKFnm2EYndc5KBPWGX2x8S7ZnULCwQ==

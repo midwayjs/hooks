@@ -63,10 +63,7 @@ export async function createFunctionApp<
 }
 
 export class HooksApplication {
-  private readonly app: IMidwayApplication<any>
-  constructor(app: IMidwayApplication<any>) {
-    this.app = app
-  }
+  constructor(private readonly app: IMidwayApplication<any>) {}
 
   // TODO Support multiple protocol
   async runFunction<T extends ApiFunction>(
