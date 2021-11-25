@@ -1,6 +1,10 @@
+import { deprecate } from 'util'
+
 import {
   ApiFunction,
   HooksMiddleware,
+  Middleware,
+  Pipe,
   validateArray,
   validateFunction,
 } from '@midwayjs/hooks-core'
@@ -9,34 +13,30 @@ type Controller = {
   middleware?: HooksMiddleware[]
 }
 
-export function withController<T extends ApiFunction>(
-  controller: Controller,
-  func: T
-) {
-  if (controller?.middleware !== undefined) {
-    validateArray(controller.middleware, 'controller.middleware')
-  }
-  validateFunction(func, 'func')
+/**
+ * @deprecated Use `Pipe(Middleware(...middlewares))` instead
+ */
+export const withController = deprecate(
+  <T extends ApiFunction>(controller: Controller, func: T) => {
+    if (controller?.middleware !== undefined) {
+      validateArray(controller.middleware, 'controller.middleware')
+    }
+    validateFunction(func, 'func')
 
-  const withControllerProxy: ApiFunction = async function withControllerProxy(
-    ...args: any[]
-  ) {
-    return func.apply(this, args)
-  }
+    return Pipe(Middleware(controller.middleware), func)
+  },
+  'withController is deprecated. Use `Pipe(Middleware(...middlewares))` instead.'
+)
 
-  withControllerProxy.middleware = controller.middleware
+/**
+ * @deprecated Use `Pipe(Middleware(...middlewares))` instead
+ */
+export const withMiddleware = deprecate(
+  <T extends ApiFunction>(middleware: HooksMiddleware[], func: T) => {
+    validateArray(middleware, 'middleware')
+    validateFunction(func, 'func')
 
-  return withControllerProxy as T
-}
-
-export function withMiddleware<T extends ApiFunction>(
-  middleware: HooksMiddleware[],
-  func: T
-) {
-  validateArray(middleware, 'middleware')
-  validateFunction(func, 'func')
-
-  const proxy: ApiFunction = async (...args: any[]) => func.apply(this, args)
-  proxy.middleware = middleware
-  return proxy as T
-}
+    return Pipe(Middleware(middleware), func)
+  },
+  'withMiddleware is deprecated. Use `Pipe(Middleware(...middlewares))` instead.'
+)
