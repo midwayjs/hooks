@@ -17,15 +17,15 @@
   },
   "dependencies": {
     "tslib": "^2.3.0",
-    "@midwayjs/decorator": "alpha",
-    "@midwayjs/core": "alpha",
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "lodash": "^4.17.21",
     "upath": "^2.0.1"
   },
   "devDependencies": {
     "@midwayjs/hooks-testing-library": "^3.0.0-alpha.0",
-    "@types/lodash": "^4.14.170"
+    "@types/lodash": "^4.14.170",
+    "@midwayjs/decorator": "alpha",
+    "@midwayjs/core": "alpha"
   },
   "publishConfig": {
     "access": "public"
@@ -33,14 +33,12 @@
   "preconstruct": {
     "entrypoints": [
       "index.ts",
-      "request.ts",
-      "internal/index.ts"
+      "request.ts"
     ]
   },
   "files": [
     "dist",
     "request",
-    "internal",
     "jest-preset.js"
   ]
 }
