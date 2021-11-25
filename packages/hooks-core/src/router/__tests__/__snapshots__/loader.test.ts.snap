@@ -1,9 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`load file route with custom trigger 1`] = `
+Array [
+  Object {
+    "fn": [Function],
+    "functionId": "api-index-custom",
+    "middleware": Array [],
+    "trigger": Object {
+      "isCustom": true,
+      "type": "Custom",
+    },
+  },
+]
+`;
+
 exports[`load file route with http trigger 1`] = `
 Array [
   Object {
-    "function": [Function],
+    "fn": [Function],
     "functionId": "api-index-get",
     "middleware": Array [],
     "trigger": Object {
@@ -13,7 +27,7 @@ Array [
     },
   },
   Object {
-    "function": [Function],
+    "fn": [Function],
     "functionId": "api-index-post",
     "middleware": Array [],
     "trigger": Object {
@@ -23,7 +37,7 @@ Array [
     },
   },
   Object {
-    "function": [Function],
+    "fn": [Function],
     "functionId": "api-index-put",
     "middleware": Array [],
     "trigger": Object {
@@ -33,7 +47,7 @@ Array [
     },
   },
   Object {
-    "function": [Function],
+    "fn": [Function],
     "functionId": "api-index-delete",
     "middleware": Array [],
     "trigger": Object {
@@ -43,7 +57,7 @@ Array [
     },
   },
   Object {
-    "function": [Function],
+    "fn": [Function],
     "functionId": "api-index-patch",
     "middleware": Array [],
     "trigger": Object {
@@ -53,7 +67,7 @@ Array [
     },
   },
   Object {
-    "function": [Function],
+    "fn": [Function],
     "functionId": "api-index-head",
     "middleware": Array [],
     "trigger": Object {
@@ -63,7 +77,7 @@ Array [
     },
   },
   Object {
-    "function": [Function],
+    "fn": [Function],
     "functionId": "api-index-options",
     "middleware": Array [],
     "trigger": Object {
@@ -73,7 +87,7 @@ Array [
     },
   },
   Object {
-    "function": [Function],
+    "fn": [Function],
     "functionId": "api-index",
     "middleware": Array [],
     "trigger": Object {

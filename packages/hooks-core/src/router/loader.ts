@@ -6,18 +6,21 @@ import { join } from 'upath'
 import { run } from '@midwayjs/glob'
 
 import {
-  PipeFunction,
+  PipeApiFunction,
   EXPORT_DEFAULT_FUNCTION_ALIAS,
   FunctionId,
   HooksMiddleware,
   useHooksMiddleware,
+  Route,
 } from '../'
-import { OperatorProperty } from '../pipe/type'
+import { HttpTrigger } from '../pipe/operator/http'
+import { OperatorType } from '../pipe/type'
 import { NewFileRouter } from './new-router'
 
 type LoadConfig = {
   root: string
   source: string
+  routes: Route[]
 }
 
 type BaseTrigger = {
@@ -41,19 +44,15 @@ interface HTTPTriger extends BaseTrigger {
   path: string
 }
 
-type ApiRoute = {
-  function: PipeFunction
+export type ApiRoute = {
+  fn: PipeApiFunction
   trigger: Trigger
   middleware: HooksMiddleware[]
   functionId: FunctionId
 }
 
-export async function loadApiRoutes(config: LoadConfig): Promise<ApiRoute[]> {
-  const router = new NewFileRouter({
-    root: config.root,
-    source: config.source,
-    routes: [],
-  })
+export function loadApiRoutes(config: LoadConfig): ApiRoute[] {
+  const router = new NewFileRouter(config)
 
   const files = run([join(router.source, '**/*.{ts,tsx,js,jsx,mjs}')], {
     cwd: router.source,
@@ -70,6 +69,7 @@ export async function loadApiRoutes(config: LoadConfig): Promise<ApiRoute[]> {
     const fileRoutes = loadFileApiRoutes(require(file), file, router)
     routes.push(...fileRoutes)
   }
+
   return routes
 }
 
@@ -81,28 +81,29 @@ export function loadFileApiRoutes(
   const apiRoutes: ApiRoute[] = []
   const fileMiddleware = mod?.config?.middleware || []
 
-  const funcs = pickBy<PipeFunction>(mod, isFunction)
+  const funcs = pickBy<PipeApiFunction>(mod, isFunction)
 
   for (let [name, fn] of Object.entries(funcs)) {
     const exportDefault = name === 'default'
     const functionName = exportDefault ? EXPORT_DEFAULT_FUNCTION_ALIAS : name
     const functionId = router.getFunctionId(file, functionName, exportDefault)
 
-    const trigger: Trigger = fn.meta.get(OperatorProperty.Trigger)
+    debugger
+    const trigger: Trigger = fn.meta.get(OperatorType.Trigger)
     // special case for http trigger
-    if (trigger.type === 'HTTP') {
+    if (trigger.type === HttpTrigger) {
       if (!fn.isPipe) {
         trigger.method = parseFunctionArgs(fn).length > 0 ? 'post' : 'get'
       }
       trigger.path = router.fileToHttpPath(file, functionName, exportDefault)
     }
 
-    const fnMiddleware = fn.meta.get(OperatorProperty.Middleware) || []
+    const fnMiddleware = fn.meta.get(OperatorType.Middleware) || []
     const middleware = fnMiddleware
       .concat(fileMiddleware)
       .map(useHooksMiddleware)
 
-    apiRoutes.push({ function: fn, trigger, functionId, middleware })
+    apiRoutes.push({ fn, trigger, functionId, middleware })
   }
 
   return apiRoutes

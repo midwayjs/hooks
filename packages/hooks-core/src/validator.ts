@@ -1,5 +1,14 @@
 import { inspect, types } from 'util'
 
+export class ERR_INVALID_ARG_VALUE extends Error {
+  constructor(actual: any, name: string, reason = 'is invalid') {
+    const message = `[ERR_INVALID_ARG_VALUE]: The argument '${name}' ${reason} ${getTypeMessage(
+      actual
+    )}`
+    super(message)
+  }
+}
+
 export class ERR_INVALID_ARG_TYPE extends Error {
   constructor(name: string, expected: string, actual: any) {
     const message = `[ERR_INVALID_ARG_TYPE]: The '${name}' argument must be of type ${expected}${getTypeMessage(
@@ -51,5 +60,15 @@ export function validateFunction(value: any, name: string) {
 export function validateAsyncFunction(value: any, name: string) {
   if (!types.isAsyncFunction(value)) {
     throw new ERR_INVALID_ARG_TYPE(name, 'AsyncFunction', value)
+  }
+}
+
+export function validateOneOf(value: any, name: string, oneOf: any[]) {
+  if (!oneOf.includes(value)) {
+    const allowed = oneOf
+      .map((v) => (typeof v === 'string' ? `'${v}'` : String(v)))
+      .join(', ')
+    const reason = 'must be one of: ' + allowed
+    throw new ERR_INVALID_ARG_VALUE(name, value, reason)
   }
 }

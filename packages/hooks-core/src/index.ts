@@ -15,3 +15,10 @@ export * from './validator'
 
 export * from './types'
 export * from './const'
+
+export * from './router/loader'
+export * from './router/new-router'
+
+export * from './pipe'
+export * from './pipe/operator/http'
+export * from './pipe/operator/middleware'

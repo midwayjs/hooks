@@ -11,7 +11,7 @@ export type ApiFunction = {
   _param?: Partial<ApiParam>
 }
 
-export type PipeFunction = {
+export type PipeApiFunction = {
   (...args: any[]): Promise<any>
   meta?: Map<any, any>
   isPipe?: boolean

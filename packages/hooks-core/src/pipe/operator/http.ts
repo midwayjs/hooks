@@ -1,8 +1,8 @@
-import { Operator, OperatorProperty } from './type'
+import { Operator, OperatorType } from '../type'
 
-const Protocol = 'HTTP'
+export const HttpTrigger = 'HTTP'
 
-enum HttpProperty {
+export enum HttpProperty {
   METHOD = 'METHOD',
   QUERY = 'QUERY',
   PARAM = 'PARAM',
@@ -13,9 +13,9 @@ function createHTTPMethodOperator(method: string) {
   return () => {
     return {
       name: method,
-      defineMeta({ setProperty: defineProperty }) {
-        defineProperty(OperatorProperty.Trigger, {
-          type: Protocol,
+      defineMeta({ setProperty }) {
+        setProperty(OperatorType.Trigger, {
+          type: HttpTrigger,
           method,
         })
       },
@@ -28,7 +28,7 @@ export const All = createHTTPMethodOperator('ALL')
 export const Get = createHTTPMethodOperator('GET')
 export const Post = createHTTPMethodOperator('POST')
 export const Put = createHTTPMethodOperator('PUT')
-export const Delete = createHTTPMethodOperator('DELETE')
+export const Del = createHTTPMethodOperator('DELETE')
 export const Patch = createHTTPMethodOperator('PATCH')
 export const Head = createHTTPMethodOperator('HEAD')
 export const Options = createHTTPMethodOperator('OPTIONS')
@@ -39,8 +39,9 @@ export function Query<T extends Record<string, string>>(): Operator<{
 }> {
   return {
     name: HttpProperty.QUERY,
-    defineMeta({ setProperty: defineProperty }) {
-      defineProperty(HttpProperty.QUERY, true)
+    requireInput: true,
+    defineMeta({ setProperty }) {
+      setProperty(HttpProperty.QUERY, true)
     },
   }
 }
@@ -50,8 +51,9 @@ export function Param<T extends Record<string, string>>(): Operator<{
 }> {
   return {
     name: HttpProperty.PARAM,
-    defineMeta({ setProperty: defineProperty }) {
-      defineProperty(HttpProperty.PARAM, true)
+    requireInput: true,
+    defineMeta({ setProperty }) {
+      setProperty(HttpProperty.PARAM, true)
     },
   }
 }
@@ -61,8 +63,9 @@ export function Header<T extends Record<string, string>>(): Operator<{
 }> {
   return {
     name: HttpProperty.HEADER,
-    defineMeta({ setProperty: defineProperty }) {
-      defineProperty(HttpProperty.HEADER, true)
+    requireInput: true,
+    defineMeta({ setProperty }) {
+      setProperty(HttpProperty.HEADER, true)
     },
   }
 }

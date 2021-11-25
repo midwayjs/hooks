@@ -1,4 +1,4 @@
-import { Merge } from 'type-fest'
+import type { Merge } from 'type-fest'
 
 export type ArrayToObject<T, R = {}> = T extends [infer First, ...infer Rest]
   ? First extends PromiseLike<infer PromiseValue>
@@ -9,34 +9,36 @@ export type ArrayToObject<T, R = {}> = T extends [infer First, ...infer Rest]
   : R
 
 export type PipeHandler<
-  Meta extends object | void,
+  Input extends object | void,
   Handler extends (...args: any) => Promise<any>
 > = (
-  ...args: Meta extends void
+  ...args: Input extends void
     ? Parameters<Handler>
-    : [meta: Meta, ...args: Parameters<Handler>]
+    : [input: Input, ...args: Parameters<Handler>]
 ) => ReturnType<Handler>
 
-export enum OperatorProperty {
+export enum OperatorType {
   Trigger = 'Trigger',
   Middleware = 'Middleware',
 }
 
 export type DefineHelper = {
-  setProperty: (type: any, value: any) => void
-  getProperty: (type: any) => any
+  setProperty: (key: any, value: any) => void
+  getProperty: (key: any) => any
 }
 
 type ExecuteHelper = {
-  next: () => Promise<void>
+  next?: () => Promise<void>
 }
-export type Operator<MetaType> = {
+
+export type Operator<Input> = {
   name: string
-  meta?: MetaType
-  defineMeta?: (helper: DefineHelper) => void | Promise<void>
+  type?: Input
+  requireInput?: boolean
+  defineMeta?: (helper: DefineHelper) => void
   execute?: (helper: ExecuteHelper) => Promise<void>
 }
 
-export type ExtractMeta<T> = {
-  [key in keyof T]: T[key] extends Operator<any> ? T[key]['meta'] : void
+export type ExtractInputType<T> = {
+  [key in keyof T]: T[key] extends Operator<any> ? T[key]['type'] : void
 }

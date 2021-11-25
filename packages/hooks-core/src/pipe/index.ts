@@ -1,67 +1,62 @@
-import { PipeFunction, validateAsyncFunction, validateFunction } from '../'
-import { Post, Query, Header } from './http'
+import { PipeApiFunction, validateFunction } from '../'
+import { compose } from './compose'
 import {
   ArrayToObject,
   Operator,
   PipeHandler,
-  ExtractMeta,
+  ExtractInputType,
   DefineHelper,
 } from './type'
 
 export function Pipe<
   Operators extends Operator<any>[],
-  Handler extends PipeFunction
+  Handler extends PipeApiFunction
 >(
   ...args: [...operators: Operators, handler: Handler]
 ): PipeHandler<
-  ExtractMeta<Operators> extends void[]
+  ExtractInputType<Operators> extends void[]
     ? void
-    : ArrayToObject<ExtractMeta<Operators>>,
+    : ArrayToObject<ExtractInputType<Operators>>,
   Handler
 > {
-  const handler = args.pop() as PipeFunction
-  validateAsyncFunction(handler, 'handler')
+  const handler = args.pop() as Function
+  validateFunction(handler, 'PipeHandler')
 
-  handler.isPipe = true
-  handler.meta = new Map()
+  const operators = args as Operator<any>[]
+  const requireInput = operators.some((operator) => operator.requireInput)
+
+  const stack = []
+  const executor: PipeApiFunction = function PipeExecutor(...args: any[]) {
+    const funcArgs = requireInput ? args.slice(1) : args
+    stack.push(() => handler(...funcArgs))
+    return compose(stack)()
+  }
+
+  for (const operator of operators) {
+    if (operator.execute) {
+      validateFunction(operator.execute, 'operator.execute')
+      stack.push(operator.execute)
+    }
+  }
 
   const defineHelper: DefineHelper = {
-    getProperty(type: any) {
-      return handler.meta.get(type)
+    getProperty(key: any) {
+      executor.meta ??= new Map()
+      return executor.meta.get(key)
     },
-    setProperty(type: any, value: any) {
-      handler.meta.set(type, value)
+    setProperty(key: any, value: any) {
+      executor.meta ??= new Map()
+      executor.meta.set(key, value)
     },
   }
 
-  const operators = args as Operator<any>[]
   for (const operator of operators) {
     if (operator.defineMeta) {
-      validateFunction(operator.defineMeta, 'operator.define')
+      validateFunction(operator.defineMeta, 'operator.defineMeta')
       operator.defineMeta(defineHelper)
     }
   }
 
-  return handler as any
+  executor.isPipe = true
+  return executor as any
 }
-
-const addUser = Pipe(
-  Post(),
-  Query<{ id: string }>(),
-  Header<{ token: string }>(),
-  async (name: string) => {
-    return name
-  }
-)
-
-addUser(
-  {
-    query: {
-      id: '123',
-    },
-    header: {
-      token: '456',
-    },
-  },
-  '123'
-)

@@ -16,6 +16,8 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
+    "tslib": "^2.3.0",
+    "@midwayjs/decorator": "alpha",
     "@midwayjs/core": "alpha",
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "lodash": "^4.17.21",

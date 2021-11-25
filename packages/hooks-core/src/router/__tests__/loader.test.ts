@@ -4,15 +4,15 @@ import { Pipe } from '../../pipe'
 import {
   Get,
   Post,
-  Delete,
+  Del,
   All,
   Patch,
   Head,
   Options,
   Put,
-} from '../../pipe/http'
-import { Middleware } from '../../pipe/meta'
-import { Operator, OperatorProperty } from '../../pipe/type'
+} from '../../pipe/operator/http'
+import { Middleware } from '../../pipe/operator/middleware'
+import { Operator, OperatorType } from '../../pipe/type'
 import { loadFileApiRoutes } from '../loader'
 import { NewFileRouter } from '../new-router'
 
@@ -33,7 +33,7 @@ it('load file route with http trigger', () => {
       get: Pipe(Get(), async () => {}),
       post: Pipe(Post(), async () => {}),
       put: Pipe(Put(), async () => {}),
-      delete: Pipe(Delete(), async () => {}),
+      delete: Pipe(Del(), async () => {}),
       patch: Pipe(Patch(), async () => {}),
       head: Pipe(Head(), async () => {}),
       options: Pipe(Options(), async () => {}),
@@ -50,7 +50,7 @@ it('load file route with custom trigger', () => {
     return {
       name: 'Custom',
       defineMeta({ setProperty: defineProperty }) {
-        defineProperty(OperatorProperty.Trigger, {
+        defineProperty(OperatorType.Trigger, {
           type: 'Custom',
           isCustom: true,
         })

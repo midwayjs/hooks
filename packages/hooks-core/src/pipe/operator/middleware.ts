@@ -1,5 +1,5 @@
-import { HooksMiddleware } from '../'
-import { Operator, OperatorProperty } from './type'
+import { HooksMiddleware } from '../../index'
+import { Operator, OperatorType } from '../type'
 
 export function Middleware(middleware: HooksMiddleware[]): Operator<void>
 export function Middleware(...args: HooksMiddleware[]): Operator<void>
@@ -11,8 +11,8 @@ export function Middleware(...middlewares): Operator<void> {
 
   return {
     name: 'Middleware',
-    defineMeta({ setProperty: defineProperty }) {
-      defineProperty(OperatorProperty.Middleware, middleware)
+    defineMeta({ setProperty }) {
+      setProperty(OperatorType.Middleware, middleware)
     },
   }
 }
