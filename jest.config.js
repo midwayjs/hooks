@@ -3,6 +3,8 @@ const path = require('path')
 /** @type {import('@swc-node/core').Options} */
 const swcJestOptions = {
   experimentalDecorators: true,
+  esModuleInterop: true,
+  sourcemap: 'inline',
 }
 
 /** @type {import('@jest/types').Config.InitialOptions} */
