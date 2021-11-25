@@ -33,14 +33,14 @@ type Trigger = BaseTrigger & HTTPTriger
 interface HTTPTriger extends BaseTrigger {
   type: 'HTTP'
   method:
-    | 'get'
-    | 'post'
-    | 'put'
-    | 'delete'
-    | 'patch'
-    | 'head'
-    | 'options'
-    | 'all'
+    | 'GET'
+    | 'POST'
+    | 'PUT'
+    | 'DELETE'
+    | 'PATCH'
+    | 'HEAD'
+    | 'OPTIONS'
+    | 'ALL'
   path: string
 }
 
@@ -93,7 +93,7 @@ export function loadFileApiRoutes(
     // special case for http trigger
     if (trigger.type === HttpTrigger) {
       if (!fn.isPipe) {
-        trigger.method = parseFunctionArgs(fn).length > 0 ? 'post' : 'get'
+        trigger.method = parseFunctionArgs(fn).length > 0 ? 'POST' : 'GET'
       }
       trigger.path = router.fileToHttpPath(file, functionName, exportDefault)
     }

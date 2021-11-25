@@ -93,7 +93,7 @@ const methodDecorators = {
   ALL: All,
 }
 
-function registerHTTPRoute(api: ApiRoute) {
+export function registerHTTPRoute(api: ApiRoute) {
   const { functionId, fn, trigger } = api
   const middleware = api.middleware as any
 

@@ -1,3 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`component should validate arguments 1`] = `"[ERR_INVALID_ARG_TYPE]: The 'runtimeConfig.middleware' argument must be of type Array. Received null"`;
+
+exports[`component should validate arguments 2`] = `"[ERR_INVALID_ARG_VALUE]: The argument 'ERROR' must be one of: 'GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS', 'ALL' . Received type string ('trigger.method')"`;
+
+exports[`should register api route as Controller 1`] = `
+Object {
+  "controller": Object {
+    "prefix": "/",
+    "routerOptions": Object {
+      "middleware": Array [],
+      "sensitive": true,
+    },
+  },
+  "route": Array [
+    Object {
+      "description": "",
+      "method": "handler",
+      "middleware": Array [],
+      "path": "/",
+      "requestMethod": "get",
+      "routerName": undefined,
+      "summary": "",
+    },
+  ],
+}
+`;
+
+exports[`should register api route as Controller 2`] = `
+Object {
+  "controller": Object {
+    "prefix": "/post",
+    "routerOptions": Object {
+      "middleware": Array [],
+      "sensitive": true,
+    },
+  },
+  "route": Array [
+    Object {
+      "description": "",
+      "method": "handler",
+      "middleware": Array [
+        [Function],
+      ],
+      "path": "/",
+      "requestMethod": "post",
+      "routerName": undefined,
+      "summary": "",
+    },
+  ],
+}
+`;
