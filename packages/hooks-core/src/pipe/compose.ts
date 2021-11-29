@@ -1,6 +1,11 @@
-// Fork from koa-compose, but remove context.
+import { ExecuteHelper } from './type'
 
-export function compose(functions?: Function[]) {
+type Executor = (helper: ExecuteHelper) => void | Promise<void>
+
+export function compose(
+  functions: Executor[],
+  preDefineHelper: Omit<ExecuteHelper, 'next'> = {}
+) {
   if (!Array.isArray(functions))
     throw new TypeError('Middleware stack must be an array!')
   for (const fn of functions) {
@@ -8,20 +13,29 @@ export function compose(functions?: Function[]) {
       throw new TypeError('Middleware must be composed of functions!')
   }
 
-  return function (next?: () => void): Promise<any> {
+  return function (): Promise<any> {
     // last called middleware #
     let index = -1
-    return dispatch(0)
+    return execute()
+
+    async function execute() {
+      await dispatch(0)
+      return preDefineHelper.result
+    }
 
     function dispatch(i: number) {
       if (i <= index)
         return Promise.reject(new Error('next() called multiple times'))
+
       index = i
       let fn = functions[i]
-      if (i === functions.length) fn = next
       if (!fn) return Promise.resolve()
+
       try {
-        return Promise.resolve(fn(dispatch.bind(null, i + 1)))
+        const helper = Object.assign(preDefineHelper, {
+          next: dispatch.bind(null, i + 1),
+        })
+        return Promise.resolve(fn(helper))
       } catch (err) {
         return Promise.reject(err)
       }

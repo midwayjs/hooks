@@ -5,8 +5,8 @@ import {
   extname,
   join,
   relative,
-  toUnix,
   removeExt,
+  toUnix,
 } from 'upath'
 
 import { isPathInside, Route } from '..'

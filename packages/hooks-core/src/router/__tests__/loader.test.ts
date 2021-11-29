@@ -2,13 +2,13 @@ import noop from 'lodash/noop'
 
 import { Pipe } from '../../pipe'
 import {
-  Get,
-  Post,
-  Del,
   All,
-  Patch,
+  Del,
+  Get,
   Head,
   Options,
+  Patch,
+  Post,
   Put,
 } from '../../pipe/operator/http'
 import { Middleware } from '../../pipe/operator/middleware'

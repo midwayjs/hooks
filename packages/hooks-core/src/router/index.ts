@@ -2,7 +2,7 @@ import kebabCase from 'lodash/kebabCase'
 import { extname, join, relative, removeExt, toUnix } from 'upath'
 
 import { ProjectConfig } from '../types'
-import { isPathInside, isDevelopment } from '../util'
+import { isDevelopment, isPathInside } from '../util'
 
 interface RouterOptions {
   root: string

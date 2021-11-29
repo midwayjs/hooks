@@ -1,5 +1,5 @@
 import { HooksMiddleware } from './common'
-import { HooksGatewayAdapter, Class } from './gateway'
+import { Class, HooksGatewayAdapter } from './gateway'
 
 export type IgnorePattern = (req: {
   url: string

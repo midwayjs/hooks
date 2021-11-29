@@ -1,9 +1,9 @@
 import { FileRouter, ProjectConfig } from '../../'
 import {
+  buildApiClient,
   createApiClientMatcher,
   K_MATCHER_CALLBACK,
   useApiClientMatcher,
-  buildApiClient,
 } from '../builder'
 
 describe('api client builder', () => {

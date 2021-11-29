@@ -11,12 +11,6 @@ export type ApiFunction = {
   _param?: Partial<ApiParam>
 }
 
-export type PipeApiFunction = {
-  (...args: any[]): Promise<any>
-  meta?: Map<any, any>
-  isPipe?: boolean
-}
-
 export type ApiConfig = {
   middleware?: HooksMiddleware[]
 }

@@ -3,12 +3,12 @@ import isEqual from 'lodash/isEqual'
 import uniq from 'lodash/uniq'
 
 import {
+  FileRouter,
+  formatCode,
+  isExportDefault,
+  lazyRequire,
   Route,
   validateFunction,
-  lazyRequire,
-  FileRouter,
-  isExportDefault,
-  formatCode,
 } from '../'
 import { EXPORT_DEFAULT_FUNCTION_ALIAS } from '../const'
 import { GatewayManager } from '../gateway/manager'

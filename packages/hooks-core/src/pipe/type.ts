@@ -1,5 +1,7 @@
 import type { Merge } from 'type-fest'
 
+import { AsyncFunction } from '../'
+
 export type ArrayToObject<T, R = {}> = T extends [infer First, ...infer Rest]
   ? First extends PromiseLike<infer PromiseValue>
     ? PromiseValue
@@ -10,7 +12,7 @@ export type ArrayToObject<T, R = {}> = T extends [infer First, ...infer Rest]
 
 export type PipeHandler<
   Input extends object | void,
-  Handler extends (...args: any) => Promise<any>
+  Handler extends AsyncFunction
 > = (
   ...args: Input extends void
     ? Parameters<Handler>
@@ -27,8 +29,10 @@ export type DefineHelper = {
   getProperty: (key: any) => any
 }
 
-type ExecuteHelper = {
+export type ExecuteHelper = {
+  result?: any
   next?: () => Promise<void>
+  getInputArguments?: () => any[]
 }
 
 export type Operator<Input> = {

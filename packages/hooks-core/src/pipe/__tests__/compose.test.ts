@@ -15,7 +15,7 @@ it('should work', async () => {
   const arr = []
   const stack = []
 
-  stack.push(async (next) => {
+  stack.push(async ({ next }) => {
     arr.push(1)
     await wait(1)
     await next()
@@ -23,7 +23,7 @@ it('should work', async () => {
     arr.push(6)
   })
 
-  stack.push(async (next) => {
+  stack.push(async ({ next }) => {
     arr.push(2)
     await wait(1)
     await next()
@@ -31,7 +31,7 @@ it('should work', async () => {
     arr.push(5)
   })
 
-  stack.push(async (next) => {
+  stack.push(async ({ next }) => {
     arr.push(3)
     await wait(1)
     await next()
@@ -40,18 +40,14 @@ it('should work', async () => {
   })
 
   await compose(stack)()
-  expect(arr).toEqual(expect.arrayContaining([1, 2, 3, 4, 5, 6]))
-})
-
-it('should only accept an array', () => {
-  expect(() => compose()).toThrow(TypeError)
+  expect(arr).toEqual([1, 2, 3, 4, 5, 6])
 })
 
 it('should create next functions that return a Promise', function () {
   const stack = []
   const arr = []
   for (let i = 0; i < 5; i++) {
-    stack.push((next) => {
+    stack.push(({ next }) => {
       arr.push(next())
     })
   }

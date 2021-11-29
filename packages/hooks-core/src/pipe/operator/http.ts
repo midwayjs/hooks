@@ -3,10 +3,10 @@ import { Operator, OperatorType } from '../type'
 export const HttpTrigger = 'HTTP'
 
 export enum HttpProperty {
-  METHOD = 'METHOD',
-  QUERY = 'QUERY',
-  PARAM = 'PARAM',
-  HEADER = 'HEADER',
+  METHOD = 'Http_Method',
+  QUERY = 'Http_Query',
+  PARAM = 'Http_Param',
+  HEADER = 'Http_Header',
 }
 
 function createHTTPMethodOperator(method: string) {

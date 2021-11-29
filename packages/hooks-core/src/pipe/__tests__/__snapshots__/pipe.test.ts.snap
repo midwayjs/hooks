@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`defineMeta 1`] = `
+Object {
+  "Http_Header": true,
+  "Http_Param": true,
+  "Http_Query": true,
+  "Middleware": Array [
+    [Function],
+  ],
+  "Trigger": Object {
+    "method": "GET",
+    "type": "HTTP",
+  },
+  "isPipe": true,
+}
+`;
