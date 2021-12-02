@@ -4,7 +4,12 @@ import urlJoin from 'proper-url-join'
 import { extname, join, relative, removeExt, toUnix } from 'upath'
 
 import { isPathInside, Route } from '..'
-import { CATCH_ALL, DYNAMIC, INDEX } from './const'
+
+export enum RouteKeyword {
+  INDEX = 'index',
+  CATCH_ALL = '/*',
+  DYNAMIC = ':',
+}
 
 export interface RouterConfig {
   root: string
@@ -110,7 +115,7 @@ export class NewFileRouter {
       if (!content) continue
 
       if (catchAll) {
-        if (content.slice(3) !== INDEX) {
+        if (content.slice(3) !== RouteKeyword.INDEX) {
           segments.push(content.slice(3))
         }
         continue
@@ -120,13 +125,13 @@ export class NewFileRouter {
        * /[api]/id -> /:api/id
        */
       if (dynamic) {
-        segments.push(`${DYNAMIC}${content}`)
+        segments.push(`${RouteKeyword.DYNAMIC}${content}`)
         continue
       }
 
       if (idx === parts.length - 1) {
         const contents = content.split('/')
-        if (last(contents) === INDEX) {
+        if (last(contents) === RouteKeyword.INDEX) {
           contents.pop()
           segments.push(contents.join('/'))
           continue
@@ -138,7 +143,7 @@ export class NewFileRouter {
 
     segments.push(functionName)
     if (catchAllIndex !== -1) {
-      segments.push(CATCH_ALL)
+      segments.push(RouteKeyword.CATCH_ALL)
     }
 
     return urlJoin.apply(null, [...segments, {}])
