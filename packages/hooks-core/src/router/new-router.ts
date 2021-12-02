@@ -1,20 +1,22 @@
 import kebabCase from 'lodash/kebabCase'
-import {
-  basename,
-  dirname,
-  extname,
-  join,
-  relative,
-  removeExt,
-  toUnix,
-} from 'upath'
+import last from 'lodash/last'
+import urlJoin from 'proper-url-join'
+import { extname, join, relative, removeExt, toUnix } from 'upath'
 
 import { isPathInside, Route } from '..'
+import { CATCH_ALL, DYNAMIC, INDEX } from './const'
 
 export interface RouterConfig {
   root: string
   source: string
   routes: Route[]
+}
+
+type Part = {
+  content: string
+  dynamic: boolean
+  qualifier?: string
+  catchAll?: boolean
 }
 
 export class NewFileRouter {
@@ -61,40 +63,84 @@ export class NewFileRouter {
   fileToHttpPath(file: string, functionName: string, exportDefault: boolean) {
     const { basePath, baseDir } = this.getRoute(file)
 
-    const { isCatchAllRoutes, filename } = this.parseFilename(
-      basename(file, extname(file))
+    const filePath = removeExt(
+      relative(this.getApiDirectory(baseDir), file),
+      extname(file)
     )
 
-    const dirPath = relative(this.getApiDirectory(baseDir), dirname(file))
-
-    const api = toUnix(
-      join(
+    return toUnix(
+      urlJoin(
         basePath,
-        /**
-         * /apis/lambda/index.ts -> ''
-         * /apis/lambda/note/index.ts -> 'note'
-         */
-        dirPath,
-        /**
-         * index -> ''
-         * demo -> '/demo'
-         */
-        filename === 'index' ? '' : filename,
-        exportDefault ? '' : functionName,
-        isCatchAllRoutes ? '/*' : ''
+        this.buildUrl(filePath, exportDefault ? '' : functionName),
+        { trailingSlash: false }
       )
     )
-
-    return api
   }
 
-  private parseFilename(filename: string) {
-    const re = /\[\.{3}(.+)]/
-    const isCatchAllRoutes = re.test(filename)
+  buildUrl(file: string, functionName = '') {
+    const parts: Part[] = file
+      .split(/\[(.+?\(.+?\)|.+?)\]/)
+      .map((str, i) => {
+        if (!str) return null
+        const dynamic = i % 2 === 1
 
-    return {
-      isCatchAllRoutes,
-      filename: isCatchAllRoutes ? re.exec(filename)?.[1] : filename,
+        const [, content, qualifier] = dynamic
+          ? /([^(]+)(\(.+\))?$/.exec(str)
+          : [null, str, null]
+
+        return {
+          content,
+          dynamic,
+          catchAll: /^\.{3}.+$/.test(content),
+          qualifier,
+        }
+      })
+      .filter(Boolean)
+
+    const catchAllIndex = parts.findIndex((part) => part.catchAll)
+    if (catchAllIndex !== -1 && catchAllIndex !== parts.length - 1) {
+      throw new Error(
+        `Catch all routes must be the last part of the path. Current input: ${file}`
+      )
     }
+
+    const segments: string[] = []
+
+    for (let [idx, { content, dynamic, catchAll }] of parts.entries()) {
+      if (!content) continue
+
+      if (catchAll) {
+        if (content.slice(3) !== INDEX) {
+          segments.push(content.slice(3))
+        }
+        continue
+      }
+
+      /**
+       * /[api]/id -> /:api/id
+       */
+      if (dynamic) {
+        segments.push(`${DYNAMIC}${content}`)
+        continue
+      }
+
+      if (idx === parts.length - 1) {
+        const contents = content.split('/')
+        if (last(contents) === INDEX) {
+          contents.pop()
+          segments.push(contents.join('/'))
+          continue
+        }
+      }
+
+      segments.push(content)
+    }
+
+    segments.push(functionName)
+    if (catchAllIndex !== -1) {
+      segments.push(CATCH_ALL)
+    }
+
+    return urlJoin.apply(null, [...segments, {}])
   }
 }
