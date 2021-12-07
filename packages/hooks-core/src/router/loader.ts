@@ -12,8 +12,8 @@ import {
   Route,
   useHooksMiddleware,
 } from '../'
-import { HttpTrigger } from '../pipe/operator/http'
-import { OperatorType } from '../pipe/type'
+import { HttpTrigger } from '../decorate/operator/http'
+import { OperatorType } from '../decorate/type'
 import { NewFileRouter } from './new-router'
 
 type LoadConfig = {
@@ -92,7 +92,7 @@ export function loadFileApiRoutes(
     const trigger: Trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
     // special case for http trigger
     if (trigger.type === HttpTrigger) {
-      if (!Reflect.getMetadata('isPipe', fn)) {
+      if (!Reflect.getMetadata('isDecorate', fn)) {
         trigger.method = parseFunctionArgs(fn).length > 0 ? 'POST' : 'GET'
       }
       trigger.path = router.fileToHttpPath(file, functionName, exportDefault)

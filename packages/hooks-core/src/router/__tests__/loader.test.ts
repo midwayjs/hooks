@@ -1,6 +1,6 @@
 import noop from 'lodash/noop'
 
-import { Pipe } from '../../pipe'
+import { Decorate } from '../../decorate'
 import {
   All,
   Del,
@@ -10,9 +10,9 @@ import {
   Patch,
   Post,
   Put,
-} from '../../pipe/operator/http'
-import { Middleware } from '../../pipe/operator/middleware'
-import { Operator, OperatorType } from '../../pipe/type'
+} from '../../decorate/operator/http'
+import { Middleware } from '../../decorate/operator/middleware'
+import { Operator, OperatorType } from '../../decorate/type'
 import { loadFileApiRoutes } from '../loader'
 import { NewFileRouter } from '../new-router'
 
@@ -30,14 +30,14 @@ const router = new NewFileRouter({
 it('load file route with http trigger', () => {
   const routes = loadFileApiRoutes(
     {
-      get: Pipe(Get(), async () => {}),
-      post: Pipe(Post(), async () => {}),
-      put: Pipe(Put(), async () => {}),
-      delete: Pipe(Del(), async () => {}),
-      patch: Pipe(Patch(), async () => {}),
-      head: Pipe(Head(), async () => {}),
-      options: Pipe(Options(), async () => {}),
-      default: Pipe(All(), async () => {}),
+      get: Decorate(Get(), async () => {}),
+      post: Decorate(Post(), async () => {}),
+      put: Decorate(Put(), async () => {}),
+      delete: Decorate(Del(), async () => {}),
+      patch: Decorate(Patch(), async () => {}),
+      head: Decorate(Head(), async () => {}),
+      options: Decorate(Options(), async () => {}),
+      default: Decorate(All(), async () => {}),
     },
     '/server/api/index.ts',
     router
@@ -60,7 +60,7 @@ it('load file route with custom trigger', () => {
 
   const routes = loadFileApiRoutes(
     {
-      custom: Pipe(CustomTrigger(), async () => {}),
+      custom: Decorate(CustomTrigger(), async () => {}),
     },
     '/server/api/index.ts',
     router
@@ -72,8 +72,8 @@ it('load file route with custom trigger', () => {
 it('load middleware', () => {
   const routes = loadFileApiRoutes(
     {
-      get: Pipe(Get(), Middleware(noop), async () => {}),
-      post: Pipe(Post(), Middleware([noop, noop]), async () => {}),
+      get: Decorate(Get(), Middleware(noop), async () => {}),
+      post: Decorate(Post(), Middleware([noop, noop]), async () => {}),
       config: {
         middleware: [noop],
       },

@@ -8,33 +8,32 @@ import {
   ExecuteHelper,
   ExtractInputType,
   Operator,
-  PipeHandler,
+  DecorateHandler,
 } from './type'
 
-export function Pipe<
+export function Decorate<
   Operators extends Operator<any>[],
   Handler extends AsyncFunction
 >(
   ...args: [...operators: Operators, handler: Handler]
-): PipeHandler<
+): DecorateHandler<
   ExtractInputType<Operators> extends void[]
     ? void
     : ArrayToObject<ExtractInputType<Operators>>,
   Handler
 > {
   const handler = args.pop() as Function
-  validateFunction(handler, 'PipeHandler')
+  validateFunction(handler, 'DecorateHandler')
 
   const operators = args as Operator<any>[]
   const requireInput = operators.some((operator) => operator.requireInput)
 
   const stack = []
   // TODO Direct call or frontend end invoke
-  const executor = function PipeExecutor(...args: any[]) {
+  const executor = function DecoratorExecutor(...args: any[]) {
     const funcArgs = requireInput ? args.slice(1) : args
     stack.push(async (helper: ExecuteHelper) => {
-      const result = await handler(...funcArgs)
-      helper.result = result
+      helper.result = await handler(...funcArgs)
       return helper.next()
     })
     return compose(stack, { getInputArguments: () => funcArgs })()
@@ -63,6 +62,6 @@ export function Pipe<
     }
   }
 
-  Reflect.defineMetadata('isPipe', true, executor)
+  Reflect.defineMetadata('isDecorate', true, executor)
   return executor as any
 }

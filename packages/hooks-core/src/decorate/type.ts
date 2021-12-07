@@ -10,7 +10,7 @@ export type ArrayToObject<T, R = {}> = T extends [infer First, ...infer Rest]
     : ArrayToObject<Rest, R>
   : R
 
-export type PipeHandler<
+export type DecorateHandler<
   Input extends object | void,
   Handler extends AsyncFunction
 > = (

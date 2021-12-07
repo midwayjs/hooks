@@ -4,7 +4,7 @@ import {
   ApiFunction,
   HooksMiddleware,
   Middleware,
-  Pipe,
+  Decorate,
   validateArray,
   validateFunction,
 } from '@midwayjs/hooks-core'
@@ -23,7 +23,7 @@ export const withController = deprecate(
     }
     validateFunction(func, 'func')
 
-    return Pipe(Middleware(controller.middleware), func)
+    return Decorate(Middleware(controller.middleware), func)
   },
   'withController is deprecated. Use `Pipe(Middleware(...middlewares))` instead.'
 )
@@ -36,7 +36,7 @@ export const withMiddleware = deprecate(
     validateArray(middleware, 'middleware')
     validateFunction(func, 'func')
 
-    return Pipe(Middleware(middleware), func)
+    return Decorate(Middleware(middleware), func)
   },
   'withMiddleware is deprecated. Use `Pipe(Middleware(...middlewares))` instead.'
 )

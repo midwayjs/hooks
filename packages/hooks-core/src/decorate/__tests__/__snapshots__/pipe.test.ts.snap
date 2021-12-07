@@ -12,6 +12,6 @@ Object {
     "method": "GET",
     "type": "HTTP",
   },
-  "isPipe": true,
+  "isDecorate": true,
 }
 `;

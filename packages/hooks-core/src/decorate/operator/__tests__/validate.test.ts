@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { Pipe } from '../..'
+import { Decorate } from '../..'
 import { Post } from '../http'
 import { Validate, Validator, setValidator } from '../validate'
 
@@ -8,7 +8,7 @@ describe('validator', () => {
   it('use default validator', async () => {
     const schema = z.number()
 
-    const fn = Pipe(
+    const fn = Decorate(
       Post(),
       Validate(schema),
       async (count: z.infer<typeof schema>) => {
@@ -25,7 +25,7 @@ describe('validator', () => {
       age: z.number(),
     })
 
-    const fn = Pipe(
+    const fn = Decorate(
       Post(),
       Validate(schema),
       async (user: z.infer<typeof schema>) => {
@@ -55,14 +55,14 @@ describe('validator', () => {
 
     setValidator(validator)
 
-    const fn = Pipe(Post(), Validate(String), async (name: string) => {
+    const fn = Decorate(Post(), Validate(String), async (name: string) => {
       return { name }
     })
 
     expect(await fn('hooks')).toEqual({ name: 'hooks' })
     expect(fn(1 as any)).rejects.toThrowErrorMatchingSnapshot()
 
-    const fn2 = Pipe(Post(), Validate(Number), async (age: number) => {
+    const fn2 = Decorate(Post(), Validate(Number), async (age: number) => {
       return { age }
     })
     expect(fn2(1)).rejects.toThrowErrorMatchingSnapshot()
