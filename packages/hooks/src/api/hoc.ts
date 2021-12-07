@@ -14,7 +14,7 @@ type Controller = {
 }
 
 /**
- * @deprecated Use `Pipe(Middleware(...middlewares))` instead
+ * @deprecated Use `Decorate(Middleware(...middlewares))` instead
  */
 export const withController = deprecate(
   <T extends ApiFunction>(controller: Controller, func: T) => {
@@ -25,11 +25,11 @@ export const withController = deprecate(
 
     return Decorate(Middleware(controller.middleware), func)
   },
-  'withController is deprecated. Use `Pipe(Middleware(...middlewares))` instead.'
+  'withController is deprecated. Use `Decorate(Middleware(...middlewares))` instead.'
 )
 
 /**
- * @deprecated Use `Pipe(Middleware(...middlewares))` instead
+ * @deprecated Use `Decorate(Middleware(...middlewares))` instead
  */
 export const withMiddleware = deprecate(
   <T extends ApiFunction>(middleware: HooksMiddleware[], func: T) => {
@@ -38,5 +38,5 @@ export const withMiddleware = deprecate(
 
     return Decorate(Middleware(middleware), func)
   },
-  'withMiddleware is deprecated. Use `Pipe(Middleware(...middlewares))` instead.'
+  'withMiddleware is deprecated. Use `Decorate(Middleware(...middlewares))` instead.'
 )

@@ -1,3 +1,5 @@
+import isFunction from 'lodash/isFunction'
+
 import { createConfiguration as createConfigurationFromCore } from '@midwayjs/core'
 import { InjectionConfigurationOptions } from '@midwayjs/decorator'
 
@@ -18,7 +20,7 @@ const noop = () => {}
 export function createConfiguration(options: ConfigurationOptions) {
   const { onReady, onStop, onConfigLoad } = options
   return createConfigurationFromCore(options)
-    .onReady(onReady || noop)
-    .onStop(onStop || noop)
-    .onConfigLoad(onConfigLoad || noop)
+    .onReady(isFunction(onReady) ? onReady : noop)
+    .onStop(isFunction(onStop) ? onStop : noop)
+    .onConfigLoad(isFunction(onConfigLoad) ? onConfigLoad : noop)
 }
