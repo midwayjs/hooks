@@ -16,6 +16,7 @@ Object {
   "route": Array [
     Object {
       "description": "",
+      "ignoreGlobalPrefix": false,
       "method": "handler",
       "middleware": Array [],
       "path": "/",
@@ -39,6 +40,7 @@ Object {
   "route": Array [
     Object {
       "description": "",
+      "ignoreGlobalPrefix": false,
       "method": "handler",
       "middleware": Array [
         [Function],

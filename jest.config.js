@@ -16,10 +16,6 @@ module.exports = {
       swcJestOptions,
     ],
   },
-  testEnvironment: path.resolve(
-    __dirname,
-    './packages/hooks-testing-library/jest-preset/environment.js'
-  ),
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
   coveragePathIgnorePatterns: [
     'node_modules',
