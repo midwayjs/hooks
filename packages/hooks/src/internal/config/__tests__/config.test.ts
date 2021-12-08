@@ -1,7 +1,5 @@
 import { join } from 'upath'
-
 import { PRE_DEFINE_PROJECT_CONFIG } from '@midwayjs/hooks-core'
-
 import { getConfig, setConfig } from '../'
 
 beforeEach(() => {

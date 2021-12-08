@@ -1,5 +1,4 @@
 import url from 'url'
-
 import type { IgnorePattern } from './type'
 
 // Ignore Vite dev server

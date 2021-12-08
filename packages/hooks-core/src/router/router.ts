@@ -2,7 +2,6 @@ import kebabCase from 'lodash/kebabCase'
 import last from 'lodash/last'
 import urlJoin from 'proper-url-join'
 import { extname, join, relative, removeExt, toUnix } from 'upath'
-
 import { isPathInside, Route } from '..'
 
 export enum RouteKeyword {

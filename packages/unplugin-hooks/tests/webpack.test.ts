@@ -1,9 +1,7 @@
 import { wrap } from 'jest-snapshot-serializer-raw'
 import Memoryfs from 'memory-fs'
 import { resolve as pathResolve } from 'path'
-
 import webpack from 'webpack'
-
 import { HooksWebpackPlugin } from '../src'
 
 describe.skip('unplugin-hooks webpack', () => {

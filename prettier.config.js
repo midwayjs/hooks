@@ -6,7 +6,6 @@ module.exports = {
   singleQuote: true,
   jsxSingleQuote: false,
   bracketSpacing: true,
-  jsxBracketSameLine: false,
   arrowParens: 'always',
   printWidth: 80,
   overrides: [
@@ -25,5 +24,4 @@ module.exports = {
     },
   ],
   importOrder: ['^[w+]', '^[@]', '^[./]'],
-  importOrderSeparation: true,
 }

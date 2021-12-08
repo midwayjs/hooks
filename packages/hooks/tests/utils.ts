@@ -1,5 +1,4 @@
 import { join } from 'path'
-
 import {
   IMidwayKoaConfigurationOptions,
   Framework,

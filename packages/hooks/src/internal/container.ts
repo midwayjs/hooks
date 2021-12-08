@@ -1,5 +1,4 @@
 import { __decorate } from 'tslib'
-
 import { Inject, Provide } from '@midwayjs/decorator'
 import { als, ApiFunction } from '@midwayjs/hooks-core'
 

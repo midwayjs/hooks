@@ -1,5 +1,4 @@
 import { z } from 'zod'
-
 import { MidwayValidationError } from '@midwayjs/core'
 import { setValidator } from '@midwayjs/hooks-core'
 

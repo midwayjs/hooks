@@ -4,7 +4,6 @@ import {
   getClassMetadata,
   WEB_ROUTER_KEY,
 } from '@midwayjs/decorator'
-
 import { HooksComponent, createHttpContainer } from '../component'
 
 it('component should validate arguments', () => {

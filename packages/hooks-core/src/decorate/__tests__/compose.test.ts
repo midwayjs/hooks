@@ -1,6 +1,5 @@
 // Ref: https://github.com/koajs/compose/blob/master/test/test.js
 import assert from 'assert'
-
 import { compose } from '../compose'
 
 function wait(ms: number) {

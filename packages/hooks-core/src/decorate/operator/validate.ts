@@ -1,5 +1,4 @@
 import { z } from 'zod'
-
 import { validateFunction } from '../../'
 import { Operator } from '../type'
 

@@ -1,9 +1,7 @@
 import parseFunctionArgs from 'fn-args'
 import isFunction from 'lodash/isFunction'
 import pickBy from 'lodash/pickBy'
-
 import { run } from '@midwayjs/glob'
-
 import {
   ApiModule,
   EXPORT_DEFAULT_FUNCTION_ALIAS,

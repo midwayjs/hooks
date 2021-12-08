@@ -1,5 +1,4 @@
 import { Context, IMidwayKoaNext } from '@midwayjs/koa'
-
 import { useContext } from '../../../../src'
 
 export function createLogger(level: string) {

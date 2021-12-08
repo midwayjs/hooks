@@ -1,5 +1,4 @@
 import 'reflect-metadata'
-
 import { AsyncFunction, validateFunction } from '../'
 import { compose } from './compose'
 import {

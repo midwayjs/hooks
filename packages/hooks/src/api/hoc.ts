@@ -1,5 +1,4 @@
 import { deprecate } from 'util'
-
 import {
   ApiFunction,
   HooksMiddleware,

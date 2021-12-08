@@ -1,5 +1,4 @@
 import isFunction from 'lodash/isFunction'
-
 import { createConfiguration as createConfigurationFromCore } from '@midwayjs/core'
 import { InjectionConfigurationOptions } from '@midwayjs/decorator'
 

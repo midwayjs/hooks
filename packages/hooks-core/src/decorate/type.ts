@@ -1,5 +1,4 @@
 import type { Merge } from 'type-fest'
-
 import { AsyncFunction } from '../'
 
 export type ArrayToObject<T, R = {}> = T extends [infer First, ...infer Rest]

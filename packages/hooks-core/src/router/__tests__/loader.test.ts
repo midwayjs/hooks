@@ -1,5 +1,4 @@
 import noop from 'lodash/noop'
-
 import { Decorate } from '../../decorate'
 import {
   All,

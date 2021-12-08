@@ -1,5 +1,4 @@
 import { z } from 'zod'
-
 import { Decorate } from '../..'
 import { Post } from '../http'
 import { Validate, Validator, setValidator } from '../validate'

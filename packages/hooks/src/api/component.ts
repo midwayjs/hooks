@@ -19,7 +19,6 @@ import {
   validateOneOf,
   isHooksMiddleware,
 } from '@midwayjs/hooks-core'
-
 import { getConfig, getProjectRoot } from '../internal'
 import { RuntimeConfig } from '../internal/config/type'
 import { createFunctionContainer } from '../internal/container'

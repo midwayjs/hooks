@@ -1,5 +1,4 @@
 import { createUnplugin, UnpluginOptions } from 'unplugin'
-
 import {
   FileRouter,
   getConfig,
