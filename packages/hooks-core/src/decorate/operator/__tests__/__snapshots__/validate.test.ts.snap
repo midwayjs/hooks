@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`validator should support custom validator 1`] = `
+exports[`validator should support custom validator 1`] = `"input must be a string"`;
+
+exports[`validator should support custom validator 2`] = `"unsupported schema"`;
+
+exports[`validator should throw error 1`] = `
 "[
   {
     \\"code\\": \\"invalid_type\\",
@@ -14,7 +18,7 @@ exports[`validator should support custom validator 1`] = `
 ]"
 `;
 
-exports[`validator should support custom validator 2`] = `
+exports[`validator should throw error 2`] = `
 "[
   {
     \\"code\\": \\"invalid_type\\",
@@ -27,7 +31,3 @@ exports[`validator should support custom validator 2`] = `
   }
 ]"
 `;
-
-exports[`validator should support custom validator 3`] = `"input must be a string"`;
-
-exports[`validator should support custom validator 4`] = `"unsupported schema"`;
