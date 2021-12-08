@@ -1,4 +1,4 @@
-import { als, useContext } from '../runtime'
+import { als, useContext } from '../'
 
 test('AsyncLocalStorage', async () => {
   const ctx = { name: 'Jake' }

@@ -1,4 +1,4 @@
-export * from './runtime/runtime'
+export * from './runtime'
 
 export * from './util'
 export * from './validator'
