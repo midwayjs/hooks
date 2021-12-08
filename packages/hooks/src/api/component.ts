@@ -13,11 +13,11 @@ import {
 import {
   validateArray,
   als,
-  useHooksMiddleware,
   HooksMiddleware,
   loadApiRoutes,
   ApiRoute,
   validateOneOf,
+  isHooksMiddleware,
 } from '@midwayjs/hooks-core'
 
 import { getConfig, getProjectRoot } from '../internal'
@@ -83,7 +83,7 @@ const methodDecorators = {
 
 export function createHttpContainer(api: ApiRoute) {
   const { functionId, fn, trigger } = api
-  const middleware = api.middleware as any
+  const middleware = api.middleware?.map(useHooksMiddleware) as any
 
   validateOneOf(trigger.method, 'trigger.method', Object.keys(methodDecorators))
   const Method = methodDecorators[trigger.method]
@@ -112,5 +112,19 @@ function registerGlobalMiddleware(
   app.use?.(useHooksRuntime)
   for (const mw of middlewares) {
     app.use?.(useHooksMiddleware(mw))
+  }
+}
+
+function useHooksMiddleware(fn: (...args: any[]) => any) {
+  return (...args: any[]) => {
+    /**
+     * @description Hooks middleware
+     * @example const middleware = (next) => { const ctx = useContext() }
+     */
+    if (isHooksMiddleware(fn)) {
+      const next = args[1]
+      return fn(next)
+    }
+    return fn(...args)
   }
 }

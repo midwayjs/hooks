@@ -10,7 +10,6 @@ import {
   FunctionId,
   HooksMiddleware,
   Route,
-  useHooksMiddleware,
 } from '../'
 import { HttpTrigger } from '../decorate/operator/http'
 import { OperatorType } from '../decorate/type'
@@ -103,9 +102,7 @@ export function loadFileApiRoutes(
     }
 
     const fnMiddleware = Reflect.getMetadata(OperatorType.Middleware, fn) || []
-    const middleware = fnMiddleware
-      .concat(fileMiddleware)
-      .map(useHooksMiddleware)
+    const middleware = fnMiddleware.concat(fileMiddleware)
 
     apiRoutes.push({ fn, trigger, functionId, middleware })
   }

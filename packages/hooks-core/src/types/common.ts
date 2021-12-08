@@ -5,7 +5,7 @@ export type ApiFunction = {
 }
 
 export type ApiConfig = {
-  middleware?: HooksMiddleware[]
+  middleware?: HooksMiddleware[] | any[]
 }
 
 export type ApiModule = {

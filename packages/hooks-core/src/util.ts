@@ -1,5 +1,4 @@
 import parseArgs from 'fn-args'
-import last from 'lodash/last'
 import { relative, resolve, sep } from 'path'
 
 export function isDevelopment() {
@@ -15,20 +14,6 @@ export function isDevelopment() {
 
   /* istanbul ignore next */
   return false
-}
-
-export function useHooksMiddleware(fn: (...args: any[]) => any) {
-  return (...args: any[]) => {
-    /**
-     * @description Hooks middleware
-     * @example const middleware = (next) => { const ctx = useContext() }
-     */
-    if (isHooksMiddleware(fn)) {
-      const next = last(args)
-      return fn(next)
-    }
-    return fn(...args)
-  }
 }
 
 export function isHooksMiddleware(fn: (...args: any[]) => any) {

@@ -15,5 +15,6 @@ export {
   Query,
   Param,
   Header,
+  Middleware,
 } from '@midwayjs/hooks-core'
 export * from './validate'

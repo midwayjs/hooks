@@ -22,7 +22,6 @@ export const withController = deprecate(
       validateArray(controller.middleware, 'controller.middleware')
     }
     validateFunction(func, 'func')
-
     return Decorate(Middleware(controller.middleware), func)
   },
   'withController is deprecated. Use `Decorate(Middleware(...middlewares))` instead.'
@@ -35,7 +34,6 @@ export const withMiddleware = deprecate(
   <T extends ApiFunction>(middleware: HooksMiddleware[], func: T) => {
     validateArray(middleware, 'middleware')
     validateFunction(func, 'func')
-
     return Decorate(Middleware(middleware), func)
   },
   'withMiddleware is deprecated. Use `Decorate(Middleware(...middlewares))` instead.'
