@@ -3,7 +3,6 @@
     "target": "ES2018",
     "module": "esnext",
     "moduleResolution": "node",
-    "inlineSourceMap": true,
     "noImplicitThis": false,
     "noUnusedLocals": false,
     "stripInternal": false,
@@ -19,8 +18,7 @@
     "skipLibCheck": true,
     "noEmit": true,
     "noImplicitOverride": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "experimentalDecorators": true
   },
   "exclude": ["*.test.ts", "dist"]
 }
