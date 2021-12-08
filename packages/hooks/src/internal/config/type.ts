@@ -1,8 +1,4 @@
-import type {
-  HooksMiddleware,
-  HooksGatewayAdapter,
-  Class,
-} from '@midwayjs/hooks-core'
+import type { HooksMiddleware, Route } from '@midwayjs/hooks-core'
 
 export type IgnorePattern = (req: {
   url: string
@@ -13,7 +9,6 @@ export type IgnorePattern = (req: {
  * @internal
  */
 export interface ProjectConfig {
-  gateway?: Class<HooksGatewayAdapter>[]
   /**
    * @description server root, default is src/apis
    */
@@ -58,47 +53,6 @@ export type RuntimeConfig = {
    */
   middleware?: HooksMiddleware[]
 }
-
-export type BaseRoute = {
-  /**
-   * @description api route directory, exported functions in the directory will create a api
-   */
-  baseDir: string
-  [key: string]: any
-}
-
-export type HTTPRoute = {
-  /**
-   * @description http api prefix
-   * @example /api
-   */
-  basePath: string
-}
-
-export type EventRoute = {
-  /**
-   * @description event type
-   * @example wechat-miniprogram
-   */
-  event?: 'wechat-miniprogram'
-}
-
-export type MTOPRoute = {
-  mtop?: boolean
-}
-
-export type HSFRoute = {
-  hsf?: boolean
-}
-
-/**
- * @description route config
- */
-export type Route = BaseRoute & (HTTPRoute | EventRoute | MTOPRoute | HSFRoute)
-/**
- * @deprecated ServerRoute now rename to Route
- */
-export type ServerRoute = Route
 
 /**
  * @description user define config

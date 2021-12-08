@@ -1,4 +1,4 @@
-import { IMidwayApplication } from '@midwayjs/core'
+import { IMidwayApplication, IMidwayContainer } from '@midwayjs/core'
 import {
   Controller,
   All,
@@ -21,19 +21,13 @@ import {
 } from '@midwayjs/hooks-core'
 
 import { getConfig, getProjectRoot } from '../internal'
+import { RuntimeConfig } from '../internal/config/type'
 import { createFunctionContainer } from '../internal/container'
 import { isDevelopment } from '../internal/util'
 import { createConfiguration } from './configuration'
 
 interface MidwayApplication extends IMidwayApplication {
   use?: (middleware: any) => void
-}
-
-type RuntimeConfig = {
-  /**
-   * @description global middleware, only available in http mode
-   */
-  middleware?: HooksMiddleware[]
 }
 
 export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
@@ -43,38 +37,32 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
 
   const Configuration = createConfiguration({
     namespace: '@midwayjs/hooks',
-    onReady(_, app: MidwayApplication) {
+    onReady(container: IMidwayContainer, app: MidwayApplication) {
+      registerApiRoutes(container)
       registerGlobalMiddleware(app, runtimeConfig.middleware)
     },
   })
 
-  const root = getProjectRoot()
-  const projectConfig = getConfig()
-  const apis = loadApiRoutes({
-    root,
-    source: isDevelopment() ? projectConfig.source : projectConfig.build.outDir,
-    routes: projectConfig.routes,
-  })
-  registerApiRoutes(apis)
-
   return { Configuration }
 }
 
-function registerGlobalMiddleware(
-  app: MidwayApplication,
-  middlewares: HooksMiddleware[] = []
-) {
-  app.use?.(useHooksRuntime)
-  for (const mw of middlewares) {
-    app.use?.(useHooksMiddleware(mw))
-  }
-}
+function registerApiRoutes(container: IMidwayContainer) {
+  const root = getProjectRoot()
+  const {
+    source,
+    build: { outDir },
+    routes,
+  } = getConfig()
+  const apis = loadApiRoutes({
+    root,
+    source: isDevelopment() ? source : outDir,
+    routes: routes,
+  })
 
-export function registerApiRoutes(apis: ApiRoute[]) {
   for (const api of apis) {
     switch (api.trigger.type) {
       case 'HTTP':
-        registerHTTPRoute(api)
+        container.bind(createHttpContainer(api))
         break
       default:
         throw new Error(`Unsupported trigger type: ${api.trigger.type}`)
@@ -93,14 +81,14 @@ const methodDecorators = {
   ALL: All,
 }
 
-export function registerHTTPRoute(api: ApiRoute) {
+export function createHttpContainer(api: ApiRoute) {
   const { functionId, fn, trigger } = api
   const middleware = api.middleware as any
 
   validateOneOf(trigger.method, 'trigger.method', Object.keys(methodDecorators))
   const Method = methodDecorators[trigger.method]
 
-  createFunctionContainer({
+  return createFunctionContainer({
     runWithAsyncLocalStorage: false,
     fn,
     functionId,
@@ -115,4 +103,14 @@ export function registerHTTPRoute(api: ApiRoute) {
 // For http
 async function useHooksRuntime(ctx: any, next: any) {
   await als.run({ ctx }, async () => await next())
+}
+
+function registerGlobalMiddleware(
+  app: MidwayApplication,
+  middlewares: HooksMiddleware[] = []
+) {
+  app.use?.(useHooksRuntime)
+  for (const mw of middlewares) {
+    app.use?.(useHooksMiddleware(mw))
+  }
 }

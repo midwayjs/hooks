@@ -24,7 +24,7 @@ type Part = {
   catchAll?: boolean
 }
 
-export class NewFileRouter {
+export class FileRouter {
   constructor(public config: RouterConfig) {}
 
   get source() {

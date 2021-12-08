@@ -14,9 +14,9 @@ import {
 import { Middleware } from '../../decorate/operator/middleware'
 import { Operator, OperatorType } from '../../decorate/type'
 import { loadFileApiRoutes } from '../loader'
-import { NewFileRouter } from '../new-router'
+import { FileRouter } from '../router'
 
-const router = new NewFileRouter({
+const router = new FileRouter({
   root: '/',
   source: 'server',
   routes: [

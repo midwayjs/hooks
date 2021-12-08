@@ -1,14 +1,7 @@
-import type { ApiParam } from './http'
-
 export type FunctionId = string
 
 export type ApiFunction = {
   (...args: any[]): Promise<any>
-  middleware?: HooksMiddleware[]
-  /**
-   * @private
-   */
-  _param?: Partial<ApiParam>
 }
 
 export type ApiConfig = {

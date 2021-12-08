@@ -35,20 +35,6 @@ export function isHooksMiddleware(fn: (...args: any[]) => any) {
   return parseArgs(fn).length === 1
 }
 
-export function formatCode(code: string) {
-  try {
-    const prettier = lazyRequire<typeof import('prettier')>('prettier')
-    return prettier.format(code, {
-      semi: true,
-      singleQuote: true,
-      parser: 'babel',
-    })
-  } catch (e) {
-    console.log('format code error', e)
-    return code
-  }
-}
-
 export function isPathInside(child: string, parent: string) {
   const relation = relative(parent, child)
   return Boolean(
@@ -57,14 +43,6 @@ export function isPathInside(child: string, parent: string) {
       !relation.startsWith(`..${sep}`) &&
       relation !== resolve(child)
   )
-}
-
-export function lazyRequire<T = any>(id: string): T {
-  return eval('require')(id)
-}
-
-export function isExportDefault(name: string) {
-  return name === 'default'
 }
 
 export function extractMetadata(target: any) {

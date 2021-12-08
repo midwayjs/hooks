@@ -1,11 +1,11 @@
 import parseFunctionArgs from 'fn-args'
 import isFunction from 'lodash/isFunction'
 import pickBy from 'lodash/pickBy'
-import { join } from 'upath'
 
 import { run } from '@midwayjs/glob'
 
 import {
+  ApiModule,
   EXPORT_DEFAULT_FUNCTION_ALIAS,
   FunctionId,
   HooksMiddleware,
@@ -14,7 +14,7 @@ import {
 } from '../'
 import { HttpTrigger } from '../decorate/operator/http'
 import { OperatorType } from '../decorate/type'
-import { NewFileRouter } from './new-router'
+import { FileRouter } from './router'
 
 type LoadConfig = {
   root: string
@@ -53,9 +53,9 @@ export type ApiRoute = {
 }
 
 export function loadApiRoutes(config: LoadConfig): ApiRoute[] {
-  const router = new NewFileRouter(config)
+  const router = new FileRouter(config)
 
-  const files = run([join(router.source, '**/*.{ts,tsx,js,jsx,mjs}')], {
+  const files = run(['**/*.{ts,tsx,js,jsx,mjs}'], {
     cwd: router.source,
     ignore: [
       '**/*.test.{ts,tsx,js,jsx,mjs}',
@@ -75,9 +75,9 @@ export function loadApiRoutes(config: LoadConfig): ApiRoute[] {
 }
 
 export function loadFileApiRoutes(
-  mod: any,
+  mod: ApiModule,
   file: string,
-  router: NewFileRouter
+  router: FileRouter
 ) {
   const apiRoutes: ApiRoute[] = []
   const fileMiddleware = mod?.config?.middleware || []
@@ -89,7 +89,11 @@ export function loadFileApiRoutes(
     const functionName = exportDefault ? EXPORT_DEFAULT_FUNCTION_ALIAS : name
     const functionId = router.getFunctionId(file, functionName, exportDefault)
 
-    const trigger: Trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
+    // default is http trigger
+    const trigger: Trigger = Reflect.getMetadata(OperatorType.Trigger, fn) || {
+      type: HttpTrigger,
+    }
+
     // special case for http trigger
     if (trigger.type === HttpTrigger) {
       if (!Reflect.getMetadata('isDecorate', fn)) {

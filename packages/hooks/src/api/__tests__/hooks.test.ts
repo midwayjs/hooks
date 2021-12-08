@@ -10,7 +10,7 @@ const mockContext = {
   cors: jest.fn(),
   requestContext: {
     getAsync: jest.fn(),
-    getConfigService() {
+    get() {
       return {
         getConfiguration(key: string) {
           return key

@@ -6,7 +6,7 @@ import webpack from 'webpack'
 
 import { HooksWebpackPlugin } from '../src'
 
-describe('unplugin-hooks webpack', () => {
+describe.skip('unplugin-hooks webpack', () => {
   const root = pathResolve(__dirname, './fixtures/base-app')
   const cwd = process.cwd()
 

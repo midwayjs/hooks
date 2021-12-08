@@ -5,7 +5,7 @@ import {
   WEB_ROUTER_KEY,
 } from '@midwayjs/decorator'
 
-import { HooksComponent, registerHTTPRoute } from '../component'
+import { HooksComponent, createHttpContainer } from '../component'
 
 it('component should validate arguments', () => {
   expect(() =>
@@ -13,7 +13,7 @@ it('component should validate arguments', () => {
   ).toThrowErrorMatchingSnapshot()
 
   expect(() =>
-    registerHTTPRoute({
+    createHttpContainer({
       trigger: {
         type: 'HTTP',
         method: 'ERROR',
@@ -23,7 +23,7 @@ it('component should validate arguments', () => {
 })
 
 it('should register api route as Controller', async () => {
-  registerHTTPRoute({
+  createHttpContainer({
     fn: async () => {},
     trigger: {
       type: 'HTTP',
@@ -34,7 +34,7 @@ it('should register api route as Controller', async () => {
     functionId: 'api-index',
   })
 
-  registerHTTPRoute({
+  createHttpContainer({
     fn: async () => {},
     trigger: {
       type: 'HTTP',

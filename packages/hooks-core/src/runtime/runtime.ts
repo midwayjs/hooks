@@ -1,6 +1,4 @@
-import type AsynchronousLocalStorage from 'asynchronous-local-storage'
-
-import { lazyRequire } from '..'
+import { als as AsynchronousLocalStorage } from 'asynchronous-local-storage'
 
 export type HooksContext = {
   ctx: any
@@ -12,17 +10,15 @@ export type HooksContext = {
  * Use asynchronous-local-storage due to serverless environment does not support node.js 12.17.0
  */
 export const als = {
-  get runtime(): typeof AsynchronousLocalStorage {
-    return lazyRequire('asynchronous-local-storage').als
+  get runtime() {
+    return AsynchronousLocalStorage
   },
   getStore(key: string) {
     return als.runtime.get<any>(key)
   },
-  run(ctx: HooksContext, callback: any) {
-    return new Promise((resolve) => {
-      als.runtime.runWith(async () => {
-        resolve(await callback())
-      }, ctx)
+  run(ctx: HooksContext, callback: () => Promise<any>) {
+    return new Promise((resolve, reject) => {
+      als.runtime.runWith(() => callback().then(resolve).catch(reject), ctx)
     })
   },
 }

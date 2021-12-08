@@ -5,6 +5,9 @@ const swcJestOptions = {
   experimentalDecorators: true,
   esModuleInterop: true,
   sourcemap: 'inline',
+  swc: {
+    sourceMaps: 'inline',
+  },
 }
 
 /** @type {import('@jest/types').Config.InitialOptions} */

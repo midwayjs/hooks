@@ -1,19 +1,15 @@
 import { existsSync } from 'fs'
-import type { default as CreateJITI } from 'jiti'
+import createJITI from 'jiti'
 import defaultsDeep from 'lodash/defaultsDeep'
+import { sync } from 'pkg-dir'
 import path from 'upath'
 
-import {
-  validateArray,
-  lazyRequire,
-  PRE_DEFINE_PROJECT_CONFIG,
-} from '@midwayjs/hooks-core'
+import { validateArray, PRE_DEFINE_PROJECT_CONFIG } from '@midwayjs/hooks-core'
 
 import { ignorePattern } from './ignorePattern'
 import { ProjectConfig, UserConfig } from './type'
 
 export function getProjectRoot(cwd?: string) {
-  const { sync } = lazyRequire('pkg-dir')
   return sync(cwd) || process.cwd()
 }
 
@@ -67,7 +63,6 @@ export function defineConfig(config: UserConfig): UserConfig {
 }
 
 const requireByJiti = <T = unknown>(id: string): T => {
-  const createJITI = lazyRequire<typeof CreateJITI>('jiti')
   const jiti = createJITI()
   const contents = jiti(id)
   if ('default' in contents) return contents.default

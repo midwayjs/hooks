@@ -1,9 +1,12 @@
 import type { IMidwayContainer } from '@midwayjs/core'
+import { MidwayConfigService } from '@midwayjs/core'
 import {
   ERR_INVALID_ARG_TYPE,
   validateString,
   useContext,
 } from '@midwayjs/hooks-core'
+
+export { useContext } from '@midwayjs/hooks-core'
 
 export function useLogger() {
   const ctx = useContext()
@@ -36,5 +39,5 @@ export function useConfig(key?: string) {
 
   const ctx = useContext()
   const requestContext: IMidwayContainer = ctx['requestContext']
-  return requestContext.getConfigService().getConfiguration(key)
+  return requestContext.get(MidwayConfigService).getConfiguration(key)
 }

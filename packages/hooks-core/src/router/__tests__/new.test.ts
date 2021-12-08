@@ -1,10 +1,10 @@
-import { NewFileRouter } from '../new-router'
+import { FileRouter } from '../router'
 
 describe('NewFileRouter', () => {
-  let router: NewFileRouter
+  let router: FileRouter
 
   beforeEach(() => {
-    router = new NewFileRouter({
+    router = new FileRouter({
       root: '/',
       source: 'src',
       routes: [
@@ -17,8 +17,8 @@ describe('NewFileRouter', () => {
   })
 
   test('should exist', () => {
-    expect(NewFileRouter).toBeTruthy()
-    expect(router).toBeInstanceOf(NewFileRouter)
+    expect(FileRouter).toBeTruthy()
+    expect(router).toBeInstanceOf(FileRouter)
   })
 
   test('test file router', () => {

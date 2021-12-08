@@ -17,12 +17,6 @@ export function setValidator(newValidator: Validator) {
   validator = newValidator
 }
 
-/**
- * 1. Access Context
- * 2. Access Input
- * 3. Validate Input
- * 4. Handler Error
- */
 export function Validate(...schemas: any[]): Operator<void> {
   return {
     name: 'Validate',
