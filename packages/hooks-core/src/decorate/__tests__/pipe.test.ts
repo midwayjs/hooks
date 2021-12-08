@@ -1,7 +1,7 @@
-import { Middleware, extractMetadata } from '@midwayjs/hooks-core'
-
 import { Decorate } from '../'
+import { extractMetadata } from '../../util'
 import { Get, Header, Param, Post, Query } from '../operator/http'
+import { Middleware } from '../operator/middleware'
 import { Operator } from '../type'
 
 it('Decorate should work', async () => {

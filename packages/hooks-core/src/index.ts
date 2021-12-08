@@ -1,7 +1,5 @@
 export * from './runtime/runtime'
 
-export * from './request'
-
 export * from './util'
 export * from './validator'
 

@@ -1,7 +1,6 @@
 import bodyParser from 'koa-bodyparser'
 
-import { createConfiguration, hooks } from '@midwayjs/hooks'
-
+import { createConfiguration, hooks } from '../../../../src'
 import { createLogger } from './middleware'
 
 export default createConfiguration({

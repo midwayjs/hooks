@@ -4,7 +4,8 @@
   "description": "Midway Hooks Core",
   "keywords": [
     "midway",
-    "hooks"
+    "hooks",
+    "core"
   ],
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
@@ -19,37 +20,20 @@
     "access": "public"
   },
   "dependencies": {
-    "@midwayjs/decorator": "alpha",
     "@midwayjs/glob": "^1.0.6",
     "asynchronous-local-storage": "^1.0.2",
-    "axios": "^0.21.1",
-    "es-module-lexer": "^0.4.0",
     "fn-args": "^5.0.0",
-    "globby": "^11.0.4",
-    "jiti": "^1.10.1",
     "lodash": "^4.17.21",
-    "pkg-dir": "^5.0.0",
     "proper-url-join": "^2.1.1",
     "reflect-metadata": "^0.1.13",
-    "tslib": "^2.3.0",
     "upath": "^2.0.1",
     "zod": "^3.11.6"
   },
   "devDependencies": {
-    "@types/es-module-lexer": "^0.3.0",
     "@types/lodash": "^4.14.170",
-    "@types/prettier": "^2.3.1",
-    "@types/proper-url-join": "^2.1.1",
-    "prettier": "^2.3.2"
-  },
-  "preconstruct": {
-    "entrypoints": [
-      "request/index.ts",
-      "index.ts"
-    ]
+    "@types/proper-url-join": "^2.1.1"
   },
   "files": [
-    "dist",
-    "request"
+    "dist"
   ]
 }

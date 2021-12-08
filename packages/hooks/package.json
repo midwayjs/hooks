@@ -16,32 +16,25 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
+    "jiti": "^1.12.9",
     "tslib": "^2.3.0",
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "lodash": "^4.17.21",
     "upath": "^2.0.1"
   },
   "devDependencies": {
-    "@midwayjs/hooks-testing-library": "^3.0.0-alpha.0",
     "@types/lodash": "^4.14.170",
     "@midwayjs/decorator": "beta",
     "@midwayjs/core": "beta",
     "@midwayjs/koa": "beta",
+    "@midwayjs/mock": "beta",
     "koa-bodyparser": "^4.3.0",
     "@types/supertest": "^2.0.11"
   },
   "publishConfig": {
     "access": "public"
   },
-  "preconstruct": {
-    "entrypoints": [
-      "index.ts",
-      "request.ts"
-    ]
-  },
   "files": [
-    "dist",
-    "request",
-    "jest-preset.js"
+    "dist"
   ]
 }
