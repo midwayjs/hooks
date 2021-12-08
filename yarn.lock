@@ -2672,7 +2672,7 @@
   resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-3.0.0-beta.7.tgz#e5098c4fd709150ef70e3ce7da4a3bcb325aee1e"
   integrity sha512-9bfBOFXPt7iS+HTAy6rbxZPQtlqtMH8Y2pCUlEJUBA05aN/UItbA5cBsI8wN8QQ7O3Ffm6LTuwwnwc7hWuWdnQ==
 
-"@midwayjs/core@3.0.0-beta.7", "@midwayjs/core@^3.0.0-beta.7", "@midwayjs/core@beta":
+"@midwayjs/core@3.0.0-beta.7", "@midwayjs/core@^3.0.0-beta.7":
   version "3.0.0-beta.7"
   resolved "https://registry.npmjs.org/@midwayjs/core/-/core-3.0.0-beta.7.tgz#8a7699b8b1fa574d3b135ef75205990aa7363cc5"
   integrity sha512-icNL83TPXlvisPYpk1cPEZ1CEMX9qCoVnNOhvi/kfkpmT77zMRRMZma2kmW+xL7LhznqhwH5p2gEg2zhnoC91Q==
@@ -2684,7 +2684,7 @@
     picomatch "^2.2.2"
     reflect-metadata "^0.1.13"
 
-"@midwayjs/decorator@3.0.0-beta.7", "@midwayjs/decorator@beta":
+"@midwayjs/decorator@3.0.0-beta.7":
   version "3.0.0-beta.7"
   resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-3.0.0-beta.7.tgz#56ca25b171a89ba16357f9171fde55636c4470d0"
   integrity sha512-ObXhsqH84uGb5QvkK0hsIeO53qblqiHAtZ3KXLtn2BzfdDYQcWpEUs/T19dRpDMgj/18wxQnEVv5l4K9//0tyA==
@@ -3415,11 +3415,6 @@
   dependencies:
     "@types/superagent" "*"
 
-"@types/wechat-miniprogram@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.npmjs.org/@types/wechat-miniprogram/-/wechat-miniprogram-3.4.0.tgz#d743d5b3c17bd531c2c178ea1fe9d92a0b23bcd0"
-  integrity sha512-7d7KDwoV42/ANx/0C8C4ctBv1q9XnXYD4Fz0C+3ii0Tm+HRIwwDcinv8S88Ut/Y80czlI0shGpTgLFe0GbrXWQ==
-
 "@types/yargs-parser@*":
   version "20.2.0"
   resolved "https://registry.npmjs.org/@types/yargs-parser/-/yargs-parser-20.2.0.tgz#dd3e6699ba3237f0348cd085e4698780204842f9"
@@ -3438,11 +3433,6 @@
   integrity sha512-YlFfTGS+zqCgXuXNV26rOIeETOkXnGQXP/pjjL9P0gO/EP9jTmc7pUBhx+jVEIxpq41RX33GQ7N3DzOSfZoglQ==
   dependencies:
     "@types/yargs-parser" "*"
-
-"@uni/env@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.npmjs.org/@uni/env/-/env-1.0.7.tgz#eb6c36fbcaa45f88108038f68f1a3688cd0f2ba7"
-  integrity sha512-qSyMTfk/v15FsJiehe5ICd3OVj9oq+0f+IXYEd3fdkzL4FFsxCSMGgi0LEUUhDXA8qVnJyiflwUtMrqDaZQo3w==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -10523,6 +10513,13 @@ pirates@^4.0.1:
   dependencies:
     node-modules-regexp "^1.0.0"
 
+pkg-dir@5.0.0, pkg-dir@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/pkg-dir/-/pkg-dir-5.0.0.tgz#a02d6aebe6ba133a928f74aec20bafdfe6b8e760"
+  integrity sha512-NPE8TDbzl/3YQYY7CSS228s3g2ollTFnc+Qi3tqmqJp9Vg2ovUpixcJEo2HJScN2Ez+kEaal6y70c0ehqJBJeA==
+  dependencies:
+    find-up "^5.0.0"
+
 pkg-dir@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/pkg-dir/-/pkg-dir-3.0.0.tgz#2749020f239ed990881b1f71210d51eb6523bea3"
@@ -10536,13 +10533,6 @@ pkg-dir@^4.2.0:
   integrity sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==
   dependencies:
     find-up "^4.0.0"
-
-pkg-dir@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/pkg-dir/-/pkg-dir-5.0.0.tgz#a02d6aebe6ba133a928f74aec20bafdfe6b8e760"
-  integrity sha512-NPE8TDbzl/3YQYY7CSS228s3g2ollTFnc+Qi3tqmqJp9Vg2ovUpixcJEo2HJScN2Ez+kEaal6y70c0ehqJBJeA==
-  dependencies:
-    find-up "^5.0.0"
 
 pkg-up@2.0.0:
   version "2.0.0"

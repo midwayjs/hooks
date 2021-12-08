@@ -63,8 +63,6 @@
     ]
   },
   "resolutions": {
-    "@midwayjs/faas": "3.0.0-beta.7",
-    "@midwayjs/bootstrap": "3.0.0-beta.7",
     "@midwayjs/core": "3.0.0-beta.7",
     "@midwayjs/decorator": "3.0.0-beta.7",
     "@midwayjs/mock": "3.0.0-beta.7",
