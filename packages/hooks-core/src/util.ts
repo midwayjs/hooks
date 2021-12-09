@@ -1,21 +1,6 @@
 import parseArgs from 'fn-args'
 import { relative, resolve, sep } from 'path'
 
-export function isDevelopment() {
-  if (
-    process.env.MIDWAY_TS_MODE === 'true' ||
-    /* istanbul ignore next */
-    process.env.NODE_ENV === 'test' ||
-    /* istanbul ignore next */
-    process.env.NODE_ENV === 'development'
-  ) {
-    return true
-  }
-
-  /* istanbul ignore next */
-  return false
-}
-
 export function isHooksMiddleware(fn: (...args: any[]) => any) {
   return parseArgs(fn).length === 1
 }

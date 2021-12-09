@@ -1,5 +1,6 @@
 import 'reflect-metadata'
 import { AsyncFunction, validateFunction } from '../'
+import { IS_DECORATE } from '../const'
 import { compose } from './compose'
 import {
   ArrayToObject,
@@ -61,6 +62,6 @@ export function Decorate<
     }
   }
 
-  Reflect.defineMetadata('isDecorate', true, executor)
+  Reflect.defineMetadata(IS_DECORATE, true, executor)
   return executor as any
 }

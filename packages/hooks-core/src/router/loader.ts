@@ -9,6 +9,7 @@ import {
   HooksMiddleware,
   Route,
 } from '../'
+import { IS_DECORATE } from '../const'
 import { HttpTrigger } from '../decorate/operator/http'
 import { OperatorType } from '../decorate/type'
 import { FileRouter } from './router'
@@ -91,9 +92,9 @@ export function loadFileApiRoutes(
       type: HttpTrigger,
     }
 
-    // special case for http trigger
     if (trigger.type === HttpTrigger) {
-      if (!Reflect.getMetadata('isDecorate', fn)) {
+      // special case for http trigger
+      if (!Reflect.getMetadata(IS_DECORATE, fn)) {
         trigger.method = parseFunctionArgs(fn).length > 0 ? 'POST' : 'GET'
       }
       trigger.path = router.fileToHttpPath(file, functionName, exportDefault)

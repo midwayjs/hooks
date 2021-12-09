@@ -25,6 +25,7 @@ export function createFunctionContainer(options: CreateOptions) {
     ctx: any
     async handler(...handlerArgs: any[]) {
       const args = parseArgs(this.ctx, ...handlerArgs)
+      // TODO refactor to use midway3 middleware
       return runWithAsyncLocalStorage
         ? await als.run({ ctx: this.ctx }, async () => await fn(...args))
         : await fn(...args)
