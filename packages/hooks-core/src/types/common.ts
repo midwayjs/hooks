@@ -13,4 +13,4 @@ export type ApiModule = {
   [index: string]: ApiFunction | any
 }
 
-export type HooksMiddleware = (next: () => Promise<void>) => any
+export type HooksMiddleware = (next: () => any | Promise<any>) => any

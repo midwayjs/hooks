@@ -12,7 +12,7 @@ import {
 } from '../../decorate/operator/http'
 import { Middleware } from '../../decorate/operator/middleware'
 import { Operator, OperatorType } from '../../decorate/type'
-import { loadFileApiRoutes } from '../loader'
+import { parseApiRouteFile } from '../loader'
 import { FileRouter } from '../router'
 
 const router = new FileRouter({
@@ -27,7 +27,7 @@ const router = new FileRouter({
 })
 
 it('load file route with http trigger', () => {
-  const routes = loadFileApiRoutes(
+  const routes = parseApiRouteFile(
     {
       get: Decorate(Get(), async () => {}),
       post: Decorate(Post(), async () => {}),
@@ -57,7 +57,7 @@ it('load file route with custom trigger', () => {
     }
   }
 
-  const routes = loadFileApiRoutes(
+  const routes = parseApiRouteFile(
     {
       custom: Decorate(CustomTrigger(), async () => {}),
     },
@@ -69,7 +69,7 @@ it('load file route with custom trigger', () => {
 })
 
 it('load middleware', () => {
-  const routes = loadFileApiRoutes(
+  const routes = parseApiRouteFile(
     {
       get: Decorate(Get(), Middleware(noop), async () => {}),
       post: Decorate(Post(), Middleware([noop, noop]), async () => {}),

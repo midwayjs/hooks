@@ -25,10 +25,10 @@ type BaseTrigger = {
   [key: string]: any
 }
 
-type Trigger = BaseTrigger & HTTPTriger
+type Trigger = BaseTrigger & HTTPTrigger
 
-interface HTTPTriger extends BaseTrigger {
-  type: 'HTTP'
+interface HTTPTrigger extends BaseTrigger {
+  type: typeof HttpTrigger
   method:
     | 'GET'
     | 'POST'
@@ -66,14 +66,14 @@ export function loadApiRoutes(config: LoadConfig): ApiRoute[] {
 
   const routes: ApiRoute[] = []
   for (const file of files) {
-    const fileRoutes = loadFileApiRoutes(require(file), file, router)
+    const fileRoutes = parseApiRouteFile(require(file), file, router)
     routes.push(...fileRoutes)
   }
 
   return routes
 }
 
-export function loadFileApiRoutes(
+export function parseApiRouteFile(
   mod: ApiModule,
   file: string,
   router: FileRouter

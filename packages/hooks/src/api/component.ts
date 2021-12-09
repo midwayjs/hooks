@@ -9,6 +9,7 @@ import {
   Patch,
   Head,
   Options,
+  MidwayFrameworkType,
 } from '@midwayjs/decorator'
 import {
   validateArray,
@@ -38,7 +39,7 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
   const Configuration = createConfiguration({
     namespace: '@midwayjs/hooks',
     onReady(container: IMidwayContainer, app: MidwayApplication) {
-      registerApiRoutes(container)
+      registerApiRoutes(app, container)
       registerGlobalMiddleware(app, runtimeConfig.middleware)
     },
   })
@@ -46,7 +47,10 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
   return { Configuration }
 }
 
-function registerApiRoutes(container: IMidwayContainer) {
+function registerApiRoutes(
+  app: MidwayApplication,
+  container: IMidwayContainer
+) {
   const root = getProjectRoot()
   const {
     source,
@@ -63,6 +67,9 @@ function registerApiRoutes(container: IMidwayContainer) {
   for (const api of apis) {
     switch (api.trigger.type) {
       case 'HTTP':
+        api.middleware = api.middleware?.map((mw) =>
+          useHooksMiddleware(mw, app.getFrameworkType())
+        )
         container.bind(createHttpContainer(api))
         break
       default:
@@ -84,49 +91,59 @@ const methodDecorators = {
 
 export function createHttpContainer(api: ApiRoute) {
   const { functionId, fn, trigger, route } = api
-  const middleware = api.middleware?.map(useHooksMiddleware) as any
 
   validateOneOf(trigger.method, 'trigger.method', Object.keys(methodDecorators))
   const Method = methodDecorators[trigger.method]
   const url = urlJoin((route as MidwayRoute).basePath, trigger.path, {})
 
   return createFunctionContainer({
-    runWithAsyncLocalStorage: false,
     fn,
     functionId,
     parseArgs(ctx) {
       return ctx.request?.body?.args || []
     },
     classDecorators: [Controller(url)],
-    handlerDecorators: [Method('/', { middleware })],
+    handlerDecorators: [Method('/', { middleware: api.middleware })],
   })
 }
 
-// For http
-async function useHooksRuntime(ctx: any, next: any) {
+// For non-express framework
+async function useUniversalRuntime(ctx: any, next: any) {
   await als.run({ ctx }, async () => await next())
+}
+
+async function useExpressRuntime(req: any, res: any, next: any) {
+  await als.run({ ctx: { req, res } }, async () => {
+    next()
+  })
 }
 
 function registerGlobalMiddleware(
   app: MidwayApplication,
   middlewares: HooksMiddleware[] = []
 ) {
-  app.use?.(useHooksRuntime)
+  const frameworkType = app.getFrameworkType()
+  const runtime =
+    frameworkType === MidwayFrameworkType.WEB_EXPRESS
+      ? useExpressRuntime
+      : useUniversalRuntime
+  app.use?.(runtime)
   for (const mw of middlewares) {
-    app.use?.(useHooksMiddleware(mw))
+    app.use?.(useHooksMiddleware(mw, app.getFrameworkType()))
   }
 }
 
-function useHooksMiddleware(fn: (...args: any[]) => any) {
+function useHooksMiddleware(
+  fn: (...args: any[]) => any,
+  frameworkType: MidwayFrameworkType
+) {
+  if (!isHooksMiddleware(fn)) return fn
+
   return (...args: any[]) => {
-    /**
-     * @description Hooks middleware
-     * @example const middleware = (next) => { const ctx = useContext() }
-     */
-    if (isHooksMiddleware(fn)) {
-      const next = args[1]
-      return fn(next)
-    }
-    return fn(...args)
+    const next =
+      frameworkType === MidwayFrameworkType.WEB_EXPRESS
+        ? args[args.length - 1]
+        : args[1]
+    return fn(next)
   }
 }

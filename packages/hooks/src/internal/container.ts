@@ -1,6 +1,6 @@
 import { __decorate } from 'tslib'
 import { Inject, Provide } from '@midwayjs/decorator'
-import { als, ApiFunction } from '@midwayjs/hooks-core'
+import { ApiFunction } from '@midwayjs/hooks-core'
 
 type CreateOptions = {
   fn: ApiFunction
@@ -8,7 +8,6 @@ type CreateOptions = {
   parseArgs: (ctx: any, ...args: any) => any[]
   handlerDecorators?: any[]
   classDecorators?: any[]
-  runWithAsyncLocalStorage?: boolean
 }
 
 export function createFunctionContainer(options: CreateOptions) {
@@ -18,17 +17,13 @@ export function createFunctionContainer(options: CreateOptions) {
     parseArgs,
     handlerDecorators = [],
     classDecorators = [],
-    runWithAsyncLocalStorage,
   } = options
 
   let FunctionContainer = class {
     ctx: any
     async handler(...handlerArgs: any[]) {
       const args = parseArgs(this.ctx, ...handlerArgs)
-      // TODO refactor to use midway3 middleware
-      return runWithAsyncLocalStorage
-        ? await als.run({ ctx: this.ctx }, async () => await fn(...args))
-        : await fn(...args)
+      return await fn(...args)
     }
   }
 
