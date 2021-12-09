@@ -8,8 +8,8 @@ import {
   FunctionId,
   HooksMiddleware,
 } from '../'
-import { IS_DECORATE } from '../const'
-import { HttpTrigger } from '../decorate/operator/http'
+import { Decorate } from '../decorate'
+import { Get, HttpTrigger, Post } from '../decorate/operator/http'
 import { OperatorType } from '../decorate/type'
 import { Route } from '../types'
 import { FileRouter } from './router'
@@ -66,14 +66,14 @@ export function loadApiRoutes(config: LoadConfig): ApiRoute[] {
 
   const routes: ApiRoute[] = []
   for (const file of files) {
-    const fileRoutes = parseApiRouteFile(require(file), file, router)
+    const fileRoutes = loadApiRoutesFromFile(require(file), file, router)
     routes.push(...fileRoutes)
   }
 
   return routes
 }
 
-export function parseApiRouteFile(
+export function loadApiRoutesFromFile(
   mod: ApiModule,
   file: string,
   router: FileRouter
@@ -89,15 +89,18 @@ export function parseApiRouteFile(
     const functionId = router.getFunctionId(file, functionName, exportDefault)
 
     // default is http trigger
-    const trigger: Trigger = Reflect.getMetadata(OperatorType.Trigger, fn) || {
-      type: HttpTrigger,
+    let trigger: Trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
+
+    if (!trigger) {
+      // default is http
+      const Method = parseFunctionArgs(fn).length === 0 ? Get : Post
+      // wrap pure function
+      fn = Decorate(Method(), fn)
+      // get trigger
+      trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
     }
 
     if (trigger.type === HttpTrigger) {
-      // special case for http trigger
-      if (!Reflect.getMetadata(IS_DECORATE, fn)) {
-        trigger.method = parseFunctionArgs(fn).length > 0 ? 'POST' : 'GET'
-      }
       trigger.path = router.fileToHttpPath(file, functionName, exportDefault)
     }
 

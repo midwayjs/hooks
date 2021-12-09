@@ -29,7 +29,6 @@ export type DefineHelper = {
 }
 
 export type ExecuteHelper = {
-  result?: any
   next?: () => Promise<void>
   getInputArguments?: () => any[]
 }

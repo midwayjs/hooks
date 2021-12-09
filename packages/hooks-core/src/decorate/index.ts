@@ -1,6 +1,7 @@
 import 'reflect-metadata'
-import { AsyncFunction, validateFunction } from '../'
+import { AsyncFunction, HttpProperty, validateFunction } from '../'
 import { IS_DECORATE } from '../const'
+import { getDriver } from '../driver'
 import { compose } from './compose'
 import {
   ArrayToObject,
@@ -30,13 +31,24 @@ export function Decorate<
 
   const stack = []
   // TODO Direct call or frontend end invoke
-  const executor = function DecoratorExecutor(...args: any[]) {
+  const executor = async function DecoratorExecutor(...args: any[]) {
     const funcArgs = requireInput ? args.slice(1) : args
-    stack.push(async (helper: ExecuteHelper) => {
-      helper.result = await handler(...funcArgs)
-      return helper.next()
+
+    let result: any
+    stack.push(async ({ next }: ExecuteHelper) => {
+      result = await handler(...funcArgs)
+      return next()
     })
-    return compose(stack, { getInputArguments: () => funcArgs })()
+
+    await compose(stack, { getInputArguments: () => funcArgs })()
+    const responseMetadata = Reflect.getMetadata(
+      HttpProperty.RESPONSE,
+      executor
+    )
+    if (Array.isArray(responseMetadata)) {
+      await getDriver()?.handleResponseMetaData?.(responseMetadata)
+    }
+    return result
   }
 
   for (const operator of operators) {

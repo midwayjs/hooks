@@ -4,7 +4,7 @@ type Executor = (helper: ExecuteHelper) => void | Promise<void>
 
 export function compose(
   functions: Executor[],
-  preDefineHelper: Omit<ExecuteHelper, 'next'> = {}
+  helper: Omit<ExecuteHelper, 'next'> = {}
 ) {
   if (!Array.isArray(functions))
     throw new TypeError('Middleware stack must be an array!')
@@ -16,12 +16,7 @@ export function compose(
   return function (): Promise<any> {
     // last called middleware #
     let index = -1
-    return execute()
-
-    async function execute() {
-      await dispatch(0)
-      return preDefineHelper.result
-    }
+    return dispatch(0)
 
     function dispatch(i: number) {
       if (i <= index)
@@ -32,10 +27,12 @@ export function compose(
       if (!fn) return Promise.resolve()
 
       try {
-        const helper = Object.assign(preDefineHelper, {
-          next: dispatch.bind(null, i + 1),
-        })
-        return Promise.resolve(fn(helper))
+        return Promise.resolve(
+          fn({
+            ...helper,
+            next: dispatch.bind(null, i + 1),
+          })
+        )
       } catch (err) {
         return Promise.reject(err)
       }

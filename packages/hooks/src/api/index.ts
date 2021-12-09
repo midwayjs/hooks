@@ -16,6 +16,9 @@ export {
   Param,
   Header,
   Middleware,
+  Redirect,
+  HttpCode,
+  SetHeader,
+  ContentType,
 } from '@midwayjs/hooks-core'
 export * from './operator/validate'
-export * from './operator/http'

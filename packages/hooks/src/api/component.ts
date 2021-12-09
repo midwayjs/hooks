@@ -20,6 +20,9 @@ import {
   validateOneOf,
   isHooksMiddleware,
   urlJoin,
+  useContext,
+  setDriver,
+  ResponseMetaType,
 } from '@midwayjs/hooks-core'
 import { getConfig, getProjectRoot } from '../internal'
 import { MidwayRoute, RuntimeConfig } from '../internal/config/type'
@@ -35,6 +38,30 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
   if (runtimeConfig.middleware !== undefined) {
     validateArray(runtimeConfig.middleware, 'runtimeConfig.middleware')
   }
+
+  setDriver({
+    handleResponseMetaData(metadata) {
+      const ctx = useContext()
+
+      for (const meta of metadata) {
+        switch (meta.type) {
+          case ResponseMetaType.CODE:
+            ctx.status = meta.code
+            break
+          case ResponseMetaType.HEADER:
+            ctx.set(meta.header.key, meta.header.value)
+            break
+          case ResponseMetaType.CONTENT_TYPE:
+            ctx.type = meta.contentType
+            break
+          case ResponseMetaType.REDIRCT:
+            ctx.status = meta.code || 302
+            ctx.redirect(meta.url)
+            break
+        }
+      }
+    },
+  })
 
   const Configuration = createConfiguration({
     namespace: '@midwayjs/hooks',
@@ -132,9 +159,10 @@ function registerGlobalMiddleware(
     frameworkType === MidwayFrameworkType.WEB_EXPRESS
       ? useExpressRuntime
       : useUniversalRuntime
+
   app.use?.(runtime)
   for (const mw of middlewares) {
-    app.use?.(useHooksMiddleware(mw, app.getFrameworkType()))
+    app.use?.(useHooksMiddleware(mw, frameworkType))
   }
 }
 
