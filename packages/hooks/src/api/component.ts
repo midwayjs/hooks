@@ -145,9 +145,8 @@ async function useUniversalRuntime(ctx: any, next: any) {
 }
 
 async function useExpressRuntime(req: any, res: any, next: any) {
-  await als.run({ ctx: { req, res } }, async () => {
-    next()
-  })
+  throw new Error('Express runtime is not supported. Please use koa.')
+  // await als.run({ ctx: { req, res } }, async () => { next() })
 }
 
 function registerGlobalMiddleware(
