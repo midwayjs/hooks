@@ -26,6 +26,7 @@ describe('test koa', () => {
     const post = await createHttpRequest(app)
       .post('/post')
       .send({ args: ['foo'] })
+
     expect(post.status).toEqual(200)
     expect(post.body).toEqual({
       path: '/post',
@@ -46,5 +47,16 @@ describe('test koa', () => {
     expect(header.global).toBeTruthy()
     expect(header.module).toBeTruthy()
     expect(header.function).toBeTruthy()
+  })
+
+  test('withHttpDecorator', async () => {
+    const { status, text, header, type } = await createHttpRequest(app).get(
+      '/withHttpDecorator'
+    )
+    expect(text).toEqual('withHttpCode')
+    expect(header.from).toEqual('operator')
+    expect(header.framework).toEqual('koa')
+    expect(type).toEqual('text/html')
+    expect(status).toEqual(201)
   })
 })

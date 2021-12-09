@@ -90,11 +90,11 @@ const methodDecorators = {
 }
 
 export function createHttpContainer(api: ApiRoute) {
-  const { functionId, fn, trigger, route } = api
+  const { functionId, fn, trigger } = api
 
   validateOneOf(trigger.method, 'trigger.method', Object.keys(methodDecorators))
   const Method = methodDecorators[trigger.method]
-  const url = urlJoin((route as MidwayRoute).basePath, trigger.path, {})
+  const url = normalizeUrl(api)
 
   return createFunctionContainer({
     fn,
@@ -105,6 +105,11 @@ export function createHttpContainer(api: ApiRoute) {
     classDecorators: [Controller(url)],
     handlerDecorators: [Method('/', { middleware: api.middleware })],
   })
+}
+
+export function normalizeUrl(api: ApiRoute) {
+  const { trigger, route } = api
+  return urlJoin((route as MidwayRoute).basePath, trigger.path, {})
 }
 
 // For non-express framework

@@ -17,4 +17,5 @@ export {
   Header,
   Middleware,
 } from '@midwayjs/hooks-core'
-export * from './validate'
+export * from './operator/validate'
+export * from './operator/http'

@@ -2,12 +2,14 @@ import { z } from 'zod'
 import {
   ApiConfig,
   Decorate,
-  Del,
   Get,
   Middleware,
   Post,
   useContext,
   Validate,
+  HttpCode,
+  SetHeader,
+  ContentType,
 } from '../../../../../src'
 import { createLogger } from '../middleware'
 
@@ -42,5 +44,16 @@ export const withMiddleware = Decorate(
   async () => {
     const ctx = useContext()
     return ctx.header
+  }
+)
+
+export const withHttpDecorator = Decorate(
+  Get(),
+  HttpCode(201),
+  SetHeader('framework', 'koa'),
+  SetHeader('from', 'operator'),
+  ContentType('text/html'),
+  async () => {
+    return 'withHttpCode'
   }
 )
