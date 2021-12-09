@@ -5,6 +5,16 @@ export type IgnorePattern = (req: {
   [key: string]: any
 }) => boolean
 
+type HTTPRoute = {
+  /**
+   * @description http api prefix
+   * @example /api
+   */
+  basePath: string
+}
+
+export type MidwayRoute = Route & HTTPRoute
+
 /**
  * @internal
  */
@@ -17,7 +27,7 @@ export interface ProjectConfig {
    * @description api routes directory
    * @example [{ baseDir: 'lambda', basePath: '/api' }]
    */
-  routes: Route[]
+  routes: MidwayRoute[]
   /**
    * @description customize the request client
    */

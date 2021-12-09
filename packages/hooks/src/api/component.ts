@@ -18,9 +18,10 @@ import {
   ApiRoute,
   validateOneOf,
   isHooksMiddleware,
+  urlJoin,
 } from '@midwayjs/hooks-core'
 import { getConfig, getProjectRoot } from '../internal'
-import { RuntimeConfig } from '../internal/config/type'
+import { MidwayRoute, RuntimeConfig } from '../internal/config/type'
 import { createFunctionContainer } from '../internal/container'
 import { isDevelopment } from '../internal/util'
 import { createConfiguration } from './configuration'
@@ -52,10 +53,11 @@ function registerApiRoutes(container: IMidwayContainer) {
     build: { outDir },
     routes,
   } = getConfig()
+
   const apis = loadApiRoutes({
     root,
     source: isDevelopment() ? source : outDir,
-    routes: routes,
+    routes,
   })
 
   for (const api of apis) {
@@ -81,11 +83,12 @@ const methodDecorators = {
 }
 
 export function createHttpContainer(api: ApiRoute) {
-  const { functionId, fn, trigger } = api
+  const { functionId, fn, trigger, route } = api
   const middleware = api.middleware?.map(useHooksMiddleware) as any
 
   validateOneOf(trigger.method, 'trigger.method', Object.keys(methodDecorators))
   const Method = methodDecorators[trigger.method]
+  const url = urlJoin((route as MidwayRoute).basePath, trigger.path, {})
 
   return createFunctionContainer({
     runWithAsyncLocalStorage: false,
@@ -94,7 +97,7 @@ export function createHttpContainer(api: ApiRoute) {
     parseArgs(ctx) {
       return ctx.request?.body?.args || []
     },
-    classDecorators: [Controller(trigger.path)],
+    classDecorators: [Controller(url)],
     handlerDecorators: [Method('/', { middleware })],
   })
 }

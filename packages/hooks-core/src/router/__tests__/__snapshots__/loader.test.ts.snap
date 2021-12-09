@@ -6,6 +6,10 @@ Array [
     "fn": [Function],
     "functionId": "api-index-custom",
     "middleware": Array [],
+    "route": Object {
+      "baseDir": "api",
+      "basePath": "/",
+    },
     "trigger": Object {
       "isCustom": true,
       "type": "Custom",
@@ -20,6 +24,10 @@ Array [
     "fn": [Function],
     "functionId": "api-index-get",
     "middleware": Array [],
+    "route": Object {
+      "baseDir": "api",
+      "basePath": "/",
+    },
     "trigger": Object {
       "method": "GET",
       "path": "/get",
@@ -30,6 +38,10 @@ Array [
     "fn": [Function],
     "functionId": "api-index-post",
     "middleware": Array [],
+    "route": Object {
+      "baseDir": "api",
+      "basePath": "/",
+    },
     "trigger": Object {
       "method": "POST",
       "path": "/post",
@@ -40,6 +52,10 @@ Array [
     "fn": [Function],
     "functionId": "api-index-put",
     "middleware": Array [],
+    "route": Object {
+      "baseDir": "api",
+      "basePath": "/",
+    },
     "trigger": Object {
       "method": "PUT",
       "path": "/put",
@@ -50,6 +66,10 @@ Array [
     "fn": [Function],
     "functionId": "api-index-delete",
     "middleware": Array [],
+    "route": Object {
+      "baseDir": "api",
+      "basePath": "/",
+    },
     "trigger": Object {
       "method": "DELETE",
       "path": "/delete",
@@ -60,6 +80,10 @@ Array [
     "fn": [Function],
     "functionId": "api-index-patch",
     "middleware": Array [],
+    "route": Object {
+      "baseDir": "api",
+      "basePath": "/",
+    },
     "trigger": Object {
       "method": "PATCH",
       "path": "/patch",
@@ -70,6 +94,10 @@ Array [
     "fn": [Function],
     "functionId": "api-index-head",
     "middleware": Array [],
+    "route": Object {
+      "baseDir": "api",
+      "basePath": "/",
+    },
     "trigger": Object {
       "method": "HEAD",
       "path": "/head",
@@ -80,6 +108,10 @@ Array [
     "fn": [Function],
     "functionId": "api-index-options",
     "middleware": Array [],
+    "route": Object {
+      "baseDir": "api",
+      "basePath": "/",
+    },
     "trigger": Object {
       "method": "OPTIONS",
       "path": "/options",
@@ -90,6 +122,10 @@ Array [
     "fn": [Function],
     "functionId": "api-index",
     "middleware": Array [],
+    "route": Object {
+      "baseDir": "api",
+      "basePath": "/",
+    },
     "trigger": Object {
       "method": "ALL",
       "path": "/",

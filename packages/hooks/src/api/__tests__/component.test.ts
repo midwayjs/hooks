@@ -24,6 +24,10 @@ it('component should validate arguments', () => {
 it('should register api route as Controller', async () => {
   createHttpContainer({
     fn: async () => {},
+    route: {
+      baseDir: '',
+      basePath: '/',
+    },
     trigger: {
       type: 'HTTP',
       method: 'GET',
@@ -35,6 +39,10 @@ it('should register api route as Controller', async () => {
 
   createHttpContainer({
     fn: async () => {},
+    route: {
+      baseDir: '',
+      basePath: '/',
+    },
     trigger: {
       type: 'HTTP',
       method: 'POST',

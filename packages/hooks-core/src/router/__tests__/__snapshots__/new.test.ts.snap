@@ -3,6 +3,5 @@
 exports[`NewFileRouter test file router 1`] = `
 Object {
   "baseDir": "lambda",
-  "basePath": "/api",
 }
 `;

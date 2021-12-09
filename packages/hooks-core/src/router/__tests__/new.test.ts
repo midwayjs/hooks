@@ -10,7 +10,6 @@ describe('NewFileRouter', () => {
       routes: [
         {
           baseDir: 'lambda',
-          basePath: '/api',
         },
       ],
     })
@@ -41,55 +40,55 @@ describe('NewFileRouter', () => {
         file: '/src/lambda/index.ts',
         functionName: '',
         exportDefault: true,
-        expected: '/api',
+        expected: '/',
       },
       {
         file: '/src/lambda/index.ts',
         functionName: 'index',
         exportDefault: true,
-        expected: '/api',
+        expected: '/',
       },
       {
         file: '/src/lambda/index.ts',
         functionName: '',
         exportDefault: true,
-        expected: '/api',
+        expected: '/',
       },
       {
         file: '/src/lambda/index.ts',
         functionName: 'index',
         exportDefault: false,
-        expected: '/api/index',
+        expected: '/index',
       },
       {
         file: '/src/lambda/foo.ts',
         functionName: '',
         exportDefault: true,
-        expected: '/api/foo',
+        expected: '/foo',
       },
       {
         file: '/src/lambda/foo.ts',
         functionName: 'bar',
         exportDefault: false,
-        expected: '/api/foo/bar',
+        expected: '/foo/bar',
       },
       {
         file: '/src/lambda/foo/bar/baz/qux.ts',
         functionName: 'getArticle',
         exportDefault: false,
-        expected: '/api/foo/bar/baz/qux/getArticle',
+        expected: '/foo/bar/baz/qux/getArticle',
       },
       {
         file: '/src/lambda/foo/baz.ts',
         functionName: 'bar',
         exportDefault: false,
-        expected: '/api/foo/baz/bar',
+        expected: '/foo/baz/bar',
       },
       {
         file: '/src/lambda/foo/[...baz].ts',
         functionName: 'bar',
         exportDefault: false,
-        expected: '/api/foo/baz/bar/*',
+        expected: '/foo/baz/bar/*',
       },
     ]
 

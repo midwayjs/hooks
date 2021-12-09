@@ -7,11 +7,11 @@ import {
   EXPORT_DEFAULT_FUNCTION_ALIAS,
   FunctionId,
   HooksMiddleware,
-  Route,
 } from '../'
 import { IS_DECORATE } from '../const'
 import { HttpTrigger } from '../decorate/operator/http'
 import { OperatorType } from '../decorate/type'
+import { Route } from '../types'
 import { FileRouter } from './router'
 
 type LoadConfig = {
@@ -48,6 +48,7 @@ export type ApiRoute = {
   trigger: Trigger
   middleware: HooksMiddleware[]
   functionId: FunctionId
+  route: Route
 }
 
 export function loadApiRoutes(config: LoadConfig): ApiRoute[] {
@@ -103,7 +104,13 @@ export function loadFileApiRoutes(
     const fnMiddleware = Reflect.getMetadata(OperatorType.Middleware, fn) || []
     const middleware = fnMiddleware.concat(fileMiddleware)
 
-    apiRoutes.push({ fn, trigger, functionId, middleware })
+    apiRoutes.push({
+      fn,
+      trigger,
+      functionId,
+      middleware,
+      route: router.getRoute(file),
+    })
   }
 
   return apiRoutes

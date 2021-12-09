@@ -65,7 +65,7 @@ export class FileRouter {
   }
 
   fileToHttpPath(file: string, functionName: string, exportDefault: boolean) {
-    const { basePath, baseDir } = this.getRoute(file)
+    const { baseDir } = this.getRoute(file)
 
     const filePath = removeExt(
       relative(this.getApiDirectory(baseDir), file),
@@ -73,11 +73,9 @@ export class FileRouter {
     )
 
     return toUnix(
-      urlJoin(
-        basePath,
-        this.buildUrl(filePath, exportDefault ? '' : functionName),
-        { trailingSlash: false }
-      )
+      urlJoin(this.buildUrl(filePath, exportDefault ? '' : functionName), {
+        trailingSlash: false,
+      })
     )
   }
 
