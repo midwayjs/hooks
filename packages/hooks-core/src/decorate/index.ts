@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { AsyncFunction, HttpProperty, validateFunction } from '../'
 import { IS_DECORATE } from '../const'
-import { getDriver } from '../driver'
+import { HooksFramework } from '../framework'
 import { compose } from './compose'
 import {
   ArrayToObject,
@@ -46,7 +46,7 @@ export function Decorate<
       executor
     )
     if (Array.isArray(responseMetadata)) {
-      await getDriver()?.handleResponseMetaData?.(responseMetadata)
+      HooksFramework.getFramework().handleResponseMetaData(responseMetadata)
     }
     return result
   }
