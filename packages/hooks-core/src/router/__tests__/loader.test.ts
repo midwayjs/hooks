@@ -1,5 +1,5 @@
 import noop from 'lodash/noop'
-import { Decorate } from '../../decorate'
+import { Decorate } from '../../decorate/decorate'
 import {
   All,
   Del,

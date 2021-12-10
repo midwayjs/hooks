@@ -8,7 +8,7 @@ import {
   FunctionId,
   HooksMiddleware,
 } from '../'
-import { Decorate } from '../decorate'
+import { Decorate } from '../decorate/decorate'
 import { Get, HttpTrigger, Post } from '../decorate/operator/http'
 import { OperatorType } from '../decorate/type'
 import { Route } from '../types'
@@ -79,8 +79,6 @@ export function loadApiRoutesFromFile(
   router: FileRouter
 ) {
   const apiRoutes: ApiRoute[] = []
-  const fileMiddleware = mod?.config?.middleware || []
-
   const funcs = pickBy(mod, isFunction)
 
   for (let [name, fn] of Object.entries(funcs)) {
@@ -105,7 +103,8 @@ export function loadApiRoutesFromFile(
     }
 
     const fnMiddleware = Reflect.getMetadata(OperatorType.Middleware, fn) || []
-    const middleware = fnMiddleware.concat(fileMiddleware)
+    const fileMiddleware = mod?.config?.middleware || []
+    const middleware = [...fnMiddleware, ...fileMiddleware]
 
     apiRoutes.push({
       fn,

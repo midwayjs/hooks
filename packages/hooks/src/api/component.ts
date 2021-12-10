@@ -147,7 +147,7 @@ export class MidwayHooksFramework extends HooksFramework {
         case ResponseMetaType.CONTENT_TYPE:
           ctx.type = meta.contentType
           break
-        case ResponseMetaType.REDIRCT:
+        case ResponseMetaType.REDIRECT:
           ctx.status = meta.code || 302
           ctx.redirect(meta.url)
           break

@@ -13,7 +13,7 @@ export abstract class HooksFramework {
     return this.framework
   }
 
-  constructor(public config: FrameworkConfig) {
+  protected constructor(public config: FrameworkConfig) {
     HooksFramework.framework = this
   }
 

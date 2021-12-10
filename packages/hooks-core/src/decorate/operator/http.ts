@@ -14,7 +14,7 @@ export enum ResponseMetaType {
   CODE = 'Http_Response_Code',
   HEADER = 'Http_Response_Header',
   CONTENT_TYPE = 'Http_Response_ContentType',
-  REDIRCT = 'Http_Response_Redirect',
+  REDIRECT = 'Http_Response_Redirect',
 }
 
 function createHTTPMethodOperator(method: string) {
@@ -116,7 +116,7 @@ export function Redirect(url: string, code?: number): Operator<void> {
   return {
     name: 'Redirect',
     defineMeta(helper) {
-      setResponseMetaData(helper, ResponseMetaType.REDIRCT, {
+      setResponseMetaData(helper, ResponseMetaType.REDIRECT, {
         url,
         code,
       })

@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { Decorate } from '../..'
 import { Post } from '../http'
-import { Validate, Validator, setValidator } from '../validate'
+import { setValidator, Validate, Validator } from '../validate'
 
 describe('validator', () => {
   it('use default validator', async () => {
