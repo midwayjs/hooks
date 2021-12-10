@@ -1,5 +1,5 @@
 import { IMidwayKoaApplication } from '@midwayjs/koa'
-import { creatApp, closeApp, createHttpRequest } from './utils'
+import { closeApp, creatApp, createHttpRequest } from './utils'
 
 describe('test koa', () => {
   let app: IMidwayKoaApplication

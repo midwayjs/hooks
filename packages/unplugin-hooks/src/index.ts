@@ -1,20 +1,6 @@
 import { createUnplugin, UnpluginOptions } from 'unplugin'
-import {
-  FileRouter,
-  getConfig,
-  getProjectRoot,
-  buildApiClient,
-} from '@midwayjs/hooks-core'
 
 const unplugin = createUnplugin<UnpluginOptions>((options) => {
-  const root = getProjectRoot()
-  const projectConfig = getConfig()
-  const router = new FileRouter({
-    root,
-    projectConfig,
-    useSourceFile: true,
-  })
-
   return {
     name: '@midwayjs/unplugin-hooks',
     enforce: 'pre',

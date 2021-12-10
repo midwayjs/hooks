@@ -1,9 +1,9 @@
 import { deprecate } from 'util'
 import {
   ApiFunction,
+  Decorate,
   HooksMiddleware,
   Middleware,
-  Decorate,
   validateArray,
   validateFunction,
 } from '@midwayjs/hooks-core'

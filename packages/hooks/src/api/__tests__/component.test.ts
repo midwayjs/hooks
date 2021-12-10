@@ -1,7 +1,7 @@
 import {
-  listModule,
   CONTROLLER_KEY,
   getClassMetadata,
+  listModule,
   WEB_ROUTER_KEY,
 } from '@midwayjs/decorator'
 import { HooksComponent, MidwayFrameworkAdapter } from '../component'

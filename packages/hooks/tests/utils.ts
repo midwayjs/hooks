@@ -1,11 +1,11 @@
 import { join } from 'path'
+import * as koaModule from '@midwayjs/koa'
 import {
-  IMidwayKoaConfigurationOptions,
   Framework,
   IMidwayKoaApplication,
+  IMidwayKoaConfigurationOptions,
 } from '@midwayjs/koa'
-import * as koaModule from '@midwayjs/koa'
-import { createApp, close } from '@midwayjs/mock'
+import { close, createApp } from '@midwayjs/mock'
 
 export async function creatApp(
   name: string,
