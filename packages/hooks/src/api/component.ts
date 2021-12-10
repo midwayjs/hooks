@@ -20,7 +20,7 @@ import {
   isHooksMiddleware,
   urlJoin,
   useContext,
-  ResponseMetaType,
+  ResponseMetadata,
   AbstractFrameworkAdapter,
   ResponseMetaData,
   FrameworkConfig,
@@ -139,16 +139,16 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
 
     for (const meta of metadata) {
       switch (meta.type) {
-        case ResponseMetaType.CODE:
+        case ResponseMetadata.CODE:
           ctx.status = meta.code
           break
-        case ResponseMetaType.HEADER:
+        case ResponseMetadata.HEADER:
           ctx.set(meta.header.key, meta.header.value)
           break
-        case ResponseMetaType.CONTENT_TYPE:
+        case ResponseMetadata.CONTENT_TYPE:
           ctx.type = meta.contentType
           break
-        case ResponseMetaType.REDIRECT:
+        case ResponseMetadata.REDIRECT:
           ctx.status = meta.code || 302
           ctx.redirect(meta.url)
           break

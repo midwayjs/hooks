@@ -13,8 +13,8 @@ export function Middleware(...middlewares): Operator<void> {
 
   return {
     name: 'Middleware',
-    defineMeta({ setProperty }) {
-      setProperty(OperatorType.Middleware, middleware)
+    metadata({ setMetadata }) {
+      setMetadata(OperatorType.Middleware, middleware)
     },
   }
 }

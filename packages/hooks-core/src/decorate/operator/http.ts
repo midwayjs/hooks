@@ -2,7 +2,7 @@ import { DefineHelper, Operator, OperatorType } from '../type'
 
 export const HttpTrigger = 'HTTP'
 
-export enum HttpProperty {
+export enum HttpMetadata {
   METHOD = 'Http_Method',
   QUERY = 'Http_Query',
   PARAM = 'Http_Param',
@@ -10,7 +10,7 @@ export enum HttpProperty {
   RESPONSE = 'Http_Response',
 }
 
-export enum ResponseMetaType {
+export enum ResponseMetadata {
   CODE = 'Http_Response_Code',
   HEADER = 'Http_Response_Header',
   CONTENT_TYPE = 'Http_Response_ContentType',
@@ -21,8 +21,8 @@ function createHTTPMethodOperator(method: string) {
   return () => {
     return {
       name: method,
-      defineMeta({ setProperty }) {
-        setProperty(OperatorType.Trigger, {
+      metadata({ setMetadata }) {
+        setMetadata(OperatorType.Trigger, {
           type: HttpTrigger,
           method,
         })
@@ -46,10 +46,10 @@ export function Query<T extends Record<string, string>>(): Operator<{
   query: T
 }> {
   return {
-    name: HttpProperty.QUERY,
-    requireInput: true,
-    defineMeta({ setProperty }) {
-      setProperty(HttpProperty.QUERY, true)
+    name: HttpMetadata.QUERY,
+    input: true,
+    metadata({ setMetadata }) {
+      setMetadata(HttpMetadata.QUERY, true)
     },
   }
 }
@@ -58,10 +58,10 @@ export function Param<T extends Record<string, string>>(): Operator<{
   param: T
 }> {
   return {
-    name: HttpProperty.PARAM,
-    requireInput: true,
-    defineMeta({ setProperty }) {
-      setProperty(HttpProperty.PARAM, true)
+    name: HttpMetadata.PARAM,
+    input: true,
+    metadata({ setMetadata }) {
+      setMetadata(HttpMetadata.PARAM, true)
     },
   }
 }
@@ -70,16 +70,16 @@ export function Header<T extends Record<string, string>>(): Operator<{
   header: T
 }> {
   return {
-    name: HttpProperty.HEADER,
-    requireInput: true,
-    defineMeta({ setProperty }) {
-      setProperty(HttpProperty.HEADER, true)
+    name: HttpMetadata.HEADER,
+    input: true,
+    metadata({ setMetadata }) {
+      setMetadata(HttpMetadata.HEADER, true)
     },
   }
 }
 
 export type ResponseMetaData = {
-  type: ResponseMetaType
+  type: ResponseMetadata
   code?: number
   header?: {
     key: string
@@ -92,8 +92,8 @@ export type ResponseMetaData = {
 export function HttpCode(code: number): Operator<void> {
   return {
     name: 'HttpCode',
-    defineMeta(helper) {
-      setResponseMetaData(helper, ResponseMetaType.CODE, { code })
+    metadata(helper) {
+      setResponseMetaData(helper, ResponseMetadata.CODE, { code })
     },
   }
 }
@@ -101,8 +101,8 @@ export function HttpCode(code: number): Operator<void> {
 export function SetHeader(key: string, value: string): Operator<void> {
   return {
     name: 'SetHeader',
-    defineMeta(helper) {
-      setResponseMetaData(helper, ResponseMetaType.HEADER, {
+    metadata(helper) {
+      setResponseMetaData(helper, ResponseMetadata.HEADER, {
         header: {
           key,
           value,
@@ -115,8 +115,8 @@ export function SetHeader(key: string, value: string): Operator<void> {
 export function Redirect(url: string, code?: number): Operator<void> {
   return {
     name: 'Redirect',
-    defineMeta(helper) {
-      setResponseMetaData(helper, ResponseMetaType.REDIRECT, {
+    metadata(helper) {
+      setResponseMetaData(helper, ResponseMetadata.REDIRECT, {
         url,
         code,
       })
@@ -127,8 +127,8 @@ export function Redirect(url: string, code?: number): Operator<void> {
 export function ContentType(contentType: string): Operator<void> {
   return {
     name: 'ContentType',
-    defineMeta(helper) {
-      setResponseMetaData(helper, ResponseMetaType.CONTENT_TYPE, {
+    metadata(helper) {
+      setResponseMetaData(helper, ResponseMetadata.CONTENT_TYPE, {
         contentType,
       })
     },
@@ -137,12 +137,13 @@ export function ContentType(contentType: string): Operator<void> {
 
 function setResponseMetaData(
   helper: DefineHelper,
-  type: ResponseMetaType,
+  type: ResponseMetadata,
   value: Partial<ResponseMetaData>
 ) {
-  const responseMetaData: ResponseMetaData[] =
-    helper.getProperty(HttpProperty.RESPONSE) || []
-  helper.setProperty(HttpProperty.RESPONSE, [
+  const responseMetaData =
+    helper.getMetadata<ResponseMetaData[]>(HttpMetadata.RESPONSE) || []
+
+  helper.setMetadata(HttpMetadata.RESPONSE, [
     ...responseMetaData,
     {
       type,

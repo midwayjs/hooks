@@ -3,7 +3,7 @@ import { adapter, AsyncFunction, validateFunction } from '../'
 import { AbstractFrameworkAdapter } from '../adapter'
 import { IS_DECORATE } from '../const'
 import { compose } from './compose'
-import { HttpProperty } from './operator/http'
+import { HttpMetadata } from './operator/http'
 import {
   ArrayToObject,
   DecorateHandler,
@@ -28,7 +28,7 @@ export function Decorate<
   validateFunction(handler, 'DecorateHandler')
 
   const operators = args as Operator<any>[]
-  const requireInput = operators.some((operator) => operator.requireInput)
+  const requireInput = operators.some((operator) => operator.input)
 
   const stack = []
   // TODO Direct call or frontend end invoke
@@ -43,7 +43,7 @@ export function Decorate<
 
     await compose(stack, { getInputArguments: () => funcArgs })()
     const responseMetadata = Reflect.getMetadata(
-      HttpProperty.RESPONSE,
+      HttpMetadata.RESPONSE,
       executor
     )
     if (Array.isArray(responseMetadata)) {
@@ -60,18 +60,18 @@ export function Decorate<
   }
 
   const defineHelper: DefineHelper = {
-    getProperty(key: any) {
+    getMetadata(key: any) {
       return Reflect.getMetadata(key, executor)
     },
-    setProperty(key: any, value: any) {
+    setMetadata(key: any, value: any) {
       return Reflect.defineMetadata(key, value, executor)
     },
   }
 
   for (const operator of operators) {
-    if (operator.defineMeta) {
-      validateFunction(operator.defineMeta, 'operator.defineMeta')
-      operator.defineMeta(defineHelper)
+    if (operator.metadata) {
+      validateFunction(operator.metadata, 'operator.defineMeta')
+      operator.metadata(defineHelper)
     }
   }
 

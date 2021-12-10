@@ -48,7 +48,7 @@ it('load file route with custom trigger', () => {
   const CustomTrigger = (): Operator<void> => {
     return {
       name: 'Custom',
-      defineMeta({ setProperty: defineProperty }) {
+      metadata({ setMetadata: defineProperty }) {
         defineProperty(OperatorType.Trigger, {
           type: 'Custom',
           isCustom: true,

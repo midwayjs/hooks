@@ -24,8 +24,8 @@ export enum OperatorType {
 }
 
 export type DefineHelper = {
-  setProperty: (key: any, value: any) => void
-  getProperty: (key: any) => any
+  setMetadata: (key: any, value: any) => void
+  getMetadata: <T = any>(key: any) => T
 }
 
 export type ExecuteHelper = {
@@ -36,8 +36,8 @@ export type ExecuteHelper = {
 export type Operator<Input> = {
   name: string
   type?: Input
-  requireInput?: boolean
-  defineMeta?: (helper: DefineHelper) => void
+  input?: boolean
+  metadata?: (helper: DefineHelper) => void
   execute?: (helper: ExecuteHelper) => Promise<void>
 }
 
