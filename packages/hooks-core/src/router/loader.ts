@@ -14,7 +14,7 @@ import { OperatorType } from '../decorate/type'
 import { Route } from '../types'
 import { FileRouter } from './router'
 
-type LoadConfig = {
+export type LoadConfig = {
   root: string
   source: string
   routes: Route[]

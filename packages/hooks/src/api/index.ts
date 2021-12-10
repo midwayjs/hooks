@@ -8,7 +8,7 @@ export {
   Get,
   Post,
   Put,
-  Del,
+  Delete,
   Patch,
   Head,
   Options,

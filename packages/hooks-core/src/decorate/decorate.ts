@@ -1,7 +1,7 @@
 import 'reflect-metadata'
-import { AsyncFunction, validateFunction } from '../'
+import { adapter, AsyncFunction, validateFunction } from '../'
+import { AbstractFrameworkAdapter } from '../adapter'
 import { IS_DECORATE } from '../const'
-import { HooksFramework } from '../framework'
 import { compose } from './compose'
 import { HttpProperty } from './operator/http'
 import {
@@ -47,9 +47,7 @@ export function Decorate<
       executor
     )
     if (Array.isArray(responseMetadata)) {
-      await HooksFramework.getFramework().handleResponseMetaData(
-        responseMetadata
-      )
+      await adapter.handleResponseMetaData(responseMetadata)
     }
     return result
   }

@@ -4,10 +4,10 @@ import {
   getClassMetadata,
   WEB_ROUTER_KEY,
 } from '@midwayjs/decorator'
-import { HooksComponent, MidwayHooksFramework } from '../component'
+import { HooksComponent, MidwayFrameworkAdapter } from '../component'
 
 describe('component', () => {
-  const framework = new MidwayHooksFramework(null, null, null)
+  const framework = new MidwayFrameworkAdapter(null, null, null)
 
   it('component should validate arguments', () => {
     expect(() =>

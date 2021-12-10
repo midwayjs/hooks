@@ -2,7 +2,7 @@ import noop from 'lodash/noop'
 import { Decorate } from '../../decorate/decorate'
 import {
   All,
-  Del,
+  Delete,
   Get,
   Head,
   Options,
@@ -32,7 +32,7 @@ it('load file route with http trigger', () => {
       get: Decorate(Get(), async () => {}),
       post: Decorate(Post(), async () => {}),
       put: Decorate(Put(), async () => {}),
-      delete: Decorate(Del(), async () => {}),
+      delete: Decorate(Delete(), async () => {}),
       patch: Decorate(Patch(), async () => {}),
       head: Decorate(Head(), async () => {}),
       options: Decorate(Options(), async () => {}),

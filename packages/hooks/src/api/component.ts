@@ -21,9 +21,10 @@ import {
   urlJoin,
   useContext,
   ResponseMetaType,
-  HooksFramework,
+  AbstractFrameworkAdapter,
   ResponseMetaData,
   FrameworkConfig,
+  createApplication,
 } from '@midwayjs/hooks-core'
 import { getConfig, getProjectRoot } from '../internal'
 import { MidwayRoute, RuntimeConfig } from '../internal/config/type'
@@ -35,7 +36,7 @@ interface MidwayApplication extends IMidwayApplication {
   use?: (middleware: any) => void
 }
 
-export class MidwayHooksFramework extends HooksFramework {
+export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
   constructor(
     config: FrameworkConfig,
     public app: MidwayApplication,
@@ -171,7 +172,7 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
         routes,
       } = getConfig()
 
-      const framework = new MidwayHooksFramework(
+      const midwayFrameworkAdapter = new MidwayFrameworkAdapter(
         {
           root,
           source: isDevelopment() ? source : outDir,
@@ -181,8 +182,9 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
         container
       )
 
-      framework.registerGlobalMiddleware(runtimeConfig.middleware)
-      await framework.init()
+      midwayFrameworkAdapter.registerGlobalMiddleware(runtimeConfig.middleware)
+
+      await createApplication(midwayFrameworkAdapter)
     },
   })
 

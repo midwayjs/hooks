@@ -9,6 +9,6 @@ export * from './router/router'
 export * from './router/loader'
 
 export * from './decorate'
-export * from './framework'
+export * from './adapter'
 
 export { default as urlJoin } from 'proper-url-join'
