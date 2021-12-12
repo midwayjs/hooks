@@ -1,8 +1,9 @@
 import kebabCase from 'lodash/kebabCase'
 import last from 'lodash/last'
+import { resolve, sep } from 'path'
 import urlJoin from 'proper-url-join'
 import { extname, join, relative, removeExt, toUnix } from 'upath'
-import { isPathInside, Route } from '..'
+import { Route } from '..'
 
 export enum RouteKeyword {
   INDEX = 'index',
@@ -145,4 +146,14 @@ export class FileRouter {
 
     return urlJoin.apply(null, [...segments, {}])
   }
+}
+
+function isPathInside(child: string, parent: string) {
+  const relation = relative(parent, child)
+  return Boolean(
+    relation &&
+      relation !== '..' &&
+      !relation.startsWith(`..${sep}`) &&
+      relation !== resolve(child)
+  )
 }

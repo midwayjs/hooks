@@ -1,6 +1,6 @@
 import 'reflect-metadata'
-import { adapter, AsyncFunction, validateFunction } from '../'
-import { AbstractFrameworkAdapter } from '../adapter'
+import { AsyncFunction, validateFunction } from '../'
+import { adapter } from '../adapter'
 import { IS_DECORATE } from '../const'
 import { compose } from './compose'
 import { HttpMetadata } from './operator/http'
@@ -70,7 +70,7 @@ export function Decorate<
 
   for (const operator of operators) {
     if (operator.metadata) {
-      validateFunction(operator.metadata, 'operator.defineMeta')
+      validateFunction(operator.metadata, 'operator.metadata')
       operator.metadata(defineHelper)
     }
   }
