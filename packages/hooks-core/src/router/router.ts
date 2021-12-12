@@ -77,11 +77,9 @@ export class FileRouter {
       extname(file)
     )
 
-    return toUnix(
-      urlJoin(this.buildUrl(filePath, exportDefault ? '' : functionName), {
-        trailingSlash: false,
-      })
-    )
+    return urlJoin(this.buildUrl(filePath, exportDefault ? '' : functionName), {
+      trailingSlash: false,
+    })
   }
 
   buildUrl(file: string, functionName = '') {
