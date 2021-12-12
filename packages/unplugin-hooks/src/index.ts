@@ -1,6 +1,6 @@
 import { createUnplugin, UnpluginOptions } from 'unplugin'
 
-const unplugin = createUnplugin<UnpluginOptions>((options) => {
+const unplugin = createUnplugin((options) => {
   return {
     name: '@midwayjs/unplugin-hooks',
     enforce: 'pre',

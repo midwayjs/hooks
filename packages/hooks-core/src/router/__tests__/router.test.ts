@@ -94,7 +94,7 @@ describe('NewFileRouter', () => {
 
     for (const cse of cases) {
       expect(
-        router.fileToHttpPath(cse.file, cse.functionName, cse.exportDefault)
+        router.functionToHttpPath(cse.file, cse.functionName, cse.exportDefault)
       ).toEqual(cse.expected)
     }
   })

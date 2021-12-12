@@ -35,6 +35,14 @@ export class FileRouter {
     return join(this.source, baseDir)
   }
 
+  getFunctionId(file: string, functionName: string, isExportDefault: boolean) {
+    const relativePath = relative(this.source, file)
+    // src/apis/lambda/index.ts -> apis-lambda-index
+    const id = kebabCase(removeExt(relativePath, extname(relativePath)))
+    const name = [id, isExportDefault ? '' : `-${functionName}`].join('')
+    return name.toLowerCase()
+  }
+
   getRoute(file: string) {
     return this.config.routes.find((route) => {
       const apiDir = this.getApiDirectory(route.baseDir)
@@ -57,15 +65,11 @@ export class FileRouter {
     return !!route
   }
 
-  getFunctionId(file: string, functionName: string, isExportDefault: boolean) {
-    const relativePath = relative(this.source, file)
-    // src/apis/lambda/index.ts -> apis-lambda-index
-    const id = kebabCase(removeExt(relativePath, extname(relativePath)))
-    const name = [id, isExportDefault ? '' : `-${functionName}`].join('')
-    return name.toLowerCase()
-  }
-
-  fileToHttpPath(file: string, functionName: string, exportDefault: boolean) {
+  functionToHttpPath(
+    file: string,
+    functionName: string,
+    exportDefault: boolean
+  ) {
     const { baseDir } = this.getRoute(file)
 
     const filePath = removeExt(

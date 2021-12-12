@@ -99,7 +99,11 @@ export function loadApiRoutesFromFile(
     }
 
     if (trigger.type === HttpTrigger) {
-      trigger.path = router.fileToHttpPath(file, functionName, exportDefault)
+      trigger.path = router.functionToHttpPath(
+        file,
+        functionName,
+        exportDefault
+      )
     }
 
     const fnMiddleware = Reflect.getMetadata(OperatorType.Middleware, fn) || []
