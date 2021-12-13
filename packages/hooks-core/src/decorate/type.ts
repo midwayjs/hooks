@@ -1,5 +1,5 @@
 import type { Merge } from 'type-fest'
-import { AsyncFunction, HttpTriggerType } from '../'
+import { AsyncFunction } from '../'
 
 export type ArrayToObject<T, R = {}> = T extends [infer First, ...infer Rest]
   ? First extends PromiseLike<infer PromiseValue>

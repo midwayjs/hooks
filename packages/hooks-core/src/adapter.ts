@@ -1,10 +1,4 @@
-import {
-  ApiRoute,
-  FileRouter,
-  loadApiRoutes,
-  LoadConfig,
-  ResponseMetaData,
-} from '.'
+import { ApiRoute, loadApiRoutes, LoadConfig, ResponseMetaData } from '.'
 
 export interface FrameworkConfig extends LoadConfig {}
 

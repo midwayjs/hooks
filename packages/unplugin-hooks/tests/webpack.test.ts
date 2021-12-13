@@ -11,7 +11,7 @@ const root = pathResolve(__dirname, './fixtures/base-app')
 const testBundlerAdapter = new TestBundlerAdapter({
   name: 'test',
   root,
-  source: '',
+  source: './',
   routes: [
     {
       baseDir: 'render',
