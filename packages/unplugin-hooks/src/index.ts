@@ -63,10 +63,10 @@ export abstract class AbstractBundlerAdapter {
         `import { ${fetcherName} as ${uniqueFetcher} } from '${clientName}'`
       )
 
-      const exportModifer =
+      const exportModifier =
         functionName === EXPORT_DEFAULT_FUNCTION_ALIAS ? 'default' : ''
       functionCodes.push(`
-        export ${exportModifer} function ${functionName} (...args) {
+        export ${exportModifier} function ${functionName} (...args) {
           const route = {
             trigger: ${JSON.stringify(omit(trigger, 'requestClient'))},
             functionId: '${functionId}',
