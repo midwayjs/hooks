@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generate client 1`] = `
+import { $fetch as request$0 } from '@midwayjs/fetch';
+
+export function get(...args) {
+  const route = {
+    trigger: { type: 'HTTP', method: 'GET', path: '/get' },
+    functionId: 'index-get',
+    hasMetadataInput: false,
+  };
+  return request$0(route, ...args);
+}
+
+export function post(...args) {
+  const route = {
+    trigger: { type: 'HTTP', method: 'POST', path: '/post' },
+    functionId: 'index-post',
+    hasMetadataInput: false,
+  };
+  return request$0(route, ...args);
+}
+
+export function put(...args) {
+  const route = {
+    trigger: { type: 'HTTP', method: 'PUT', path: '/put' },
+    functionId: 'index-put',
+    hasMetadataInput: false,
+  };
+  return request$0(route, ...args);
+}
+
+export function del(...args) {
+  const route = {
+    trigger: { type: 'HTTP', method: 'DELETE', path: '/del' },
+    functionId: 'index-del',
+    hasMetadataInput: false,
+  };
+  return request$0(route, ...args);
+}
+
+export function patch(...args) {
+  const route = {
+    trigger: { type: 'HTTP', method: 'PATCH', path: '/patch' },
+    functionId: 'index-patch',
+    hasMetadataInput: false,
+  };
+  return request$0(route, ...args);
+}
+
+export function head(...args) {
+  const route = {
+    trigger: { type: 'HTTP', method: 'HEAD', path: '/head' },
+    functionId: 'index-head',
+    hasMetadataInput: false,
+  };
+  return request$0(route, ...args);
+}
+
+export function options(...args) {
+  const route = {
+    trigger: { type: 'HTTP', method: 'OPTIONS', path: '/options' },
+    functionId: 'index-options',
+    hasMetadataInput: false,
+  };
+  return request$0(route, ...args);
+}
+
+export default function $default(...args) {
+  const route = {
+    trigger: { type: 'HTTP', method: 'ALL', path: '/' },
+    functionId: 'index',
+    hasMetadataInput: false,
+  };
+  return request$0(route, ...args);
+}
+
+`;
+
+exports[`with requestClient generate client 1`] = `
+"import { $fetch as request$0 } from '@midwayjs/fetch';
+import { websocket as request$1 } from '@midwayjs/fetch';
+
+export function get(...args) {
+  const route = {
+    trigger: { type: 'HTTP', method: 'GET', path: '/server/api/get' },
+    functionId: 'server-api-index-get',
+    hasMetadataInput: false,
+  };
+  return request$0(route, ...args);
+}
+
+export function custom(...args) {
+  const route = {
+    trigger: { type: 'Custom', isCustom: true },
+    functionId: 'server-api-index-custom',
+    hasMetadataInput: false,
+  };
+  return request$1(route, ...args);
+}
+"
+`;
+
+exports[`with requestClient generate multi client 1`] = `
+import { $fetch as request$0 } from '@midwayjs/fetch';
+import { cloud as request$1 } from 'cloud-invoker';
+
+export function get(...args) {
+  const route = {
+    trigger: { type: 'HTTP', method: 'GET', path: '/server/api/get' },
+    functionId: 'server-api-index-get',
+    hasMetadataInput: false,
+  };
+  return request$0(route, ...args);
+}
+
+export function custom(...args) {
+  const route = {
+    trigger: { type: 'Custom', isCustom: true },
+    functionId: 'server-api-index-custom',
+    hasMetadataInput: false,
+  };
+  return request$1(route, ...args);
+}
+
+`;

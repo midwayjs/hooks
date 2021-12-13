@@ -5,6 +5,8 @@ Array [
   Object {
     "fn": [Function],
     "functionId": "api-index-custom",
+    "functionName": "custom",
+    "hasMetadataInput": false,
     "middleware": Array [],
     "route": Object {
       "baseDir": "api",
@@ -23,6 +25,8 @@ Array [
   Object {
     "fn": [Function],
     "functionId": "api-index-get",
+    "functionName": "get",
+    "hasMetadataInput": false,
     "middleware": Array [],
     "route": Object {
       "baseDir": "api",
@@ -31,12 +35,18 @@ Array [
     "trigger": Object {
       "method": "GET",
       "path": "/get",
+      "requestClient": Object {
+        "client": "@midwayjs/fetch",
+        "fetcher": "$fetch",
+      },
       "type": "HTTP",
     },
   },
   Object {
     "fn": [Function],
     "functionId": "api-index-post",
+    "functionName": "post",
+    "hasMetadataInput": false,
     "middleware": Array [],
     "route": Object {
       "baseDir": "api",
@@ -45,12 +55,18 @@ Array [
     "trigger": Object {
       "method": "POST",
       "path": "/post",
+      "requestClient": Object {
+        "client": "@midwayjs/fetch",
+        "fetcher": "$fetch",
+      },
       "type": "HTTP",
     },
   },
   Object {
     "fn": [Function],
     "functionId": "api-index-put",
+    "functionName": "put",
+    "hasMetadataInput": false,
     "middleware": Array [],
     "route": Object {
       "baseDir": "api",
@@ -59,12 +75,18 @@ Array [
     "trigger": Object {
       "method": "PUT",
       "path": "/put",
+      "requestClient": Object {
+        "client": "@midwayjs/fetch",
+        "fetcher": "$fetch",
+      },
       "type": "HTTP",
     },
   },
   Object {
     "fn": [Function],
-    "functionId": "api-index-delete",
+    "functionId": "api-index-del",
+    "functionName": "del",
+    "hasMetadataInput": false,
     "middleware": Array [],
     "route": Object {
       "baseDir": "api",
@@ -72,13 +94,19 @@ Array [
     },
     "trigger": Object {
       "method": "DELETE",
-      "path": "/delete",
+      "path": "/del",
+      "requestClient": Object {
+        "client": "@midwayjs/fetch",
+        "fetcher": "$fetch",
+      },
       "type": "HTTP",
     },
   },
   Object {
     "fn": [Function],
     "functionId": "api-index-patch",
+    "functionName": "patch",
+    "hasMetadataInput": false,
     "middleware": Array [],
     "route": Object {
       "baseDir": "api",
@@ -87,12 +115,18 @@ Array [
     "trigger": Object {
       "method": "PATCH",
       "path": "/patch",
+      "requestClient": Object {
+        "client": "@midwayjs/fetch",
+        "fetcher": "$fetch",
+      },
       "type": "HTTP",
     },
   },
   Object {
     "fn": [Function],
     "functionId": "api-index-head",
+    "functionName": "head",
+    "hasMetadataInput": false,
     "middleware": Array [],
     "route": Object {
       "baseDir": "api",
@@ -101,12 +135,18 @@ Array [
     "trigger": Object {
       "method": "HEAD",
       "path": "/head",
+      "requestClient": Object {
+        "client": "@midwayjs/fetch",
+        "fetcher": "$fetch",
+      },
       "type": "HTTP",
     },
   },
   Object {
     "fn": [Function],
     "functionId": "api-index-options",
+    "functionName": "options",
+    "hasMetadataInput": false,
     "middleware": Array [],
     "route": Object {
       "baseDir": "api",
@@ -115,12 +155,18 @@ Array [
     "trigger": Object {
       "method": "OPTIONS",
       "path": "/options",
+      "requestClient": Object {
+        "client": "@midwayjs/fetch",
+        "fetcher": "$fetch",
+      },
       "type": "HTTP",
     },
   },
   Object {
     "fn": [Function],
     "functionId": "api-index",
+    "functionName": "$default",
+    "hasMetadataInput": false,
     "middleware": Array [],
     "route": Object {
       "baseDir": "api",
@@ -129,6 +175,10 @@ Array [
     "trigger": Object {
       "method": "ALL",
       "path": "/",
+      "requestClient": Object {
+        "client": "@midwayjs/fetch",
+        "fetcher": "$fetch",
+      },
       "type": "HTTP",
     },
   },

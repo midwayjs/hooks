@@ -84,7 +84,7 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
       Object.keys(this.methodDecorators)
     )
     const Method = this.methodDecorators[trigger.method]
-    const url = this.normalizeUrl(api)
+    const url = normalizeUrl(api)
 
     return createFunctionContainer({
       fn,
@@ -189,4 +189,9 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
   })
 
   return { Configuration }
+}
+
+export function normalizeUrl(api: ApiRoute) {
+  const { trigger, route } = api
+  return urlJoin((route as MidwayRoute).basePath, trigger.path, {})
 }

@@ -1,6 +1,6 @@
-import { DefineHelper, Operator, OperatorType } from '../type'
+import { BaseTrigger, MetadataHelper, Operator, OperatorType } from '../type'
 
-export const HttpTrigger = 'HTTP'
+export const HttpTriggerType = 'HTTP'
 
 export enum HttpMetadata {
   METHOD = 'Http_Method',
@@ -17,14 +17,34 @@ export enum ResponseMetadata {
   REDIRECT = 'Http_Response_Redirect',
 }
 
-function createHTTPMethodOperator(method: string) {
+export enum HttpMethod {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+  PATCH = 'PATCH',
+  HEAD = 'HEAD',
+  OPTIONS = 'OPTIONS',
+  ALL = 'ALL',
+}
+export interface HTTPTrigger extends BaseTrigger {
+  type: typeof HttpTriggerType
+  method: HttpMethod
+  path?: string
+}
+
+function createHTTPMethodOperator(method: HttpMethod) {
   return () => {
     return {
       name: method,
       metadata({ setMetadata }) {
-        setMetadata(OperatorType.Trigger, {
-          type: HttpTrigger,
+        setMetadata<HTTPTrigger>(OperatorType.Trigger, {
+          type: HttpTriggerType,
           method,
+          requestClient: {
+            fetcher: '$fetch',
+            client: '@midwayjs/fetch',
+          },
         })
       },
     } as Operator<void>
@@ -32,14 +52,14 @@ function createHTTPMethodOperator(method: string) {
 }
 
 // HTTP Method
-export const All = createHTTPMethodOperator('ALL')
-export const Get = createHTTPMethodOperator('GET')
-export const Post = createHTTPMethodOperator('POST')
-export const Put = createHTTPMethodOperator('PUT')
-export const Delete = createHTTPMethodOperator('DELETE')
-export const Patch = createHTTPMethodOperator('PATCH')
-export const Head = createHTTPMethodOperator('HEAD')
-export const Options = createHTTPMethodOperator('OPTIONS')
+export const All = createHTTPMethodOperator(HttpMethod.ALL)
+export const Get = createHTTPMethodOperator(HttpMethod.GET)
+export const Post = createHTTPMethodOperator(HttpMethod.POST)
+export const Delete = createHTTPMethodOperator(HttpMethod.DELETE)
+export const Put = createHTTPMethodOperator(HttpMethod.PUT)
+export const Patch = createHTTPMethodOperator(HttpMethod.PATCH)
+export const Head = createHTTPMethodOperator(HttpMethod.HEAD)
+export const Options = createHTTPMethodOperator(HttpMethod.OPTIONS)
 
 // HTTP Helper
 export function Query<T extends Record<string, string>>(): Operator<{
@@ -136,7 +156,7 @@ export function ContentType(contentType: string): Operator<void> {
 }
 
 function setResponseMetaData(
-  helper: DefineHelper,
+  helper: MetadataHelper,
   type: ResponseMetadata,
   value: Partial<ResponseMetaData>
 ) {

@@ -1,15 +1,15 @@
 import 'reflect-metadata'
 import { AsyncFunction, validateFunction } from '../'
-import { adapter } from '../adapter'
-import { IS_DECORATE } from '../const'
+import { framework } from '../adapter'
+import { HAS_METADATA_INPUT } from '../const'
 import { compose } from './compose'
 import { HttpMetadata } from './operator/http'
 import {
   ArrayToObject,
   DecorateHandler,
-  DefineHelper,
   ExecuteHelper,
   ExtractInputType,
+  MetadataHelper,
   Operator,
 } from './type'
 
@@ -28,12 +28,12 @@ export function Decorate<
   validateFunction(handler, 'DecorateHandler')
 
   const operators = args as Operator<any>[]
-  const requireInput = operators.some((operator) => operator.input)
+  const hasMetadataInput = operators.some((operator) => operator.input)
 
   const stack = []
   // TODO Direct call or frontend end invoke
   const executor = async function DecoratorExecutor(...args: any[]) {
-    const funcArgs = requireInput ? args.slice(1) : args
+    const funcArgs = hasMetadataInput ? args.slice(1) : args
 
     let result: any
     stack.push(async ({ next }: ExecuteHelper) => {
@@ -47,7 +47,7 @@ export function Decorate<
       executor
     )
     if (Array.isArray(responseMetadata)) {
-      await adapter.handleResponseMetaData(responseMetadata)
+      await framework.handleResponseMetaData(responseMetadata)
     }
     return result
   }
@@ -59,7 +59,7 @@ export function Decorate<
     }
   }
 
-  const defineHelper: DefineHelper = {
+  const metadataHelper: MetadataHelper = {
     getMetadata(key: any) {
       return Reflect.getMetadata(key, executor)
     },
@@ -71,10 +71,10 @@ export function Decorate<
   for (const operator of operators) {
     if (operator.metadata) {
       validateFunction(operator.metadata, 'operator.metadata')
-      operator.metadata(defineHelper)
+      operator.metadata(metadataHelper)
     }
   }
 
-  Reflect.defineMetadata(IS_DECORATE, true, executor)
+  Reflect.defineMetadata(HAS_METADATA_INPUT, hasMetadataInput, executor)
   return executor as any
 }

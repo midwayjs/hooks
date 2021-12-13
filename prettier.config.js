@@ -19,9 +19,7 @@ module.exports = {
       files: 'examples/**/*',
       options: {
         semi: true,
-        importOrderSeparation: false,
       },
     },
   ],
-  importOrder: ['^[w+]', '^[@]', '^[./]'],
 }

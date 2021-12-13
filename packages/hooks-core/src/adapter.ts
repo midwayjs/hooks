@@ -1,4 +1,10 @@
-import { ApiRoute, loadApiRoutes, LoadConfig, ResponseMetaData } from '.'
+import {
+  ApiRoute,
+  FileRouter,
+  loadApiRoutes,
+  LoadConfig,
+  ResponseMetaData,
+} from '.'
 
 export interface FrameworkConfig extends LoadConfig {}
 
@@ -14,10 +20,10 @@ export abstract class AbstractFrameworkAdapter {
   abstract handleResponseMetaData(metadata: ResponseMetaData[]): Promise<any>
 }
 
-export let adapter: AbstractFrameworkAdapter
+export let framework: AbstractFrameworkAdapter
 export async function createApplication(
   frameworkAdapter: AbstractFrameworkAdapter
 ) {
-  adapter = frameworkAdapter
-  await adapter.init()
+  framework = frameworkAdapter
+  await framework.init()
 }

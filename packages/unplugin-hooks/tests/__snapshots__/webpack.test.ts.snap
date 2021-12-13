@@ -1,63 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`unplugin-hooks webpack Compile event 1`] = `
-import { request as request$0 } from '@midwayjs/hooks-miniprogram-client';
-export default function $default(...args) {
-    const options = Object.assign({
-        functionId: 'wechat-index',
-        data: { args },
-    }, {});
-    return request$0(options);
-}
-
-`;
-
 exports[`unplugin-hooks webpack Compile lambda 1`] = `
-import { request as request$0 } from '@midwayjs/hooks/request';
+import { $fetch as request$0 } from '@midwayjs/fetch';
 export default function $default(...args) {
-    const options = Object.assign({
+    const route = {
+        trigger: { type: 'HTTP', method: 'GET', path: '/' },
         functionId: 'lambda-index',
-        data: { args },
-    }, {
-        url: '/api',
-        meta: {},
-    });
-    return request$0(options);
+        hasMetadataInput: false,
+    };
+    return request$0(route, ...args);
+}
+export function usePost(...args) {
+    const route = {
+        trigger: { type: 'HTTP', method: 'POST', path: '/usePost' },
+        functionId: 'lambda-index-usepost',
+        hasMetadataInput: false,
+    };
+    return request$0(route, ...args);
+}
+export function withQuery(...args) {
+    const route = {
+        trigger: { type: 'HTTP', method: 'GET', path: '/withQuery' },
+        functionId: 'lambda-index-withquery',
+        hasMetadataInput: true,
+    };
+    return request$0(route, ...args);
 }
 
 `;
 
 exports[`unplugin-hooks webpack Compile render 1`] = `
-import { request as request$0 } from '@midwayjs/hooks/request';
+import { $fetch as request$0 } from '@midwayjs/fetch';
+export function bar(...args) {
+    const route = {
+        trigger: { type: 'HTTP', method: 'GET', path: '/bar/*' },
+        functionId: 'render-index-bar',
+        hasMetadataInput: false,
+    };
+    return request$0(route, ...args);
+}
 export default function $default(...args) {
-    const options = Object.assign({
+    const route = {
+        trigger: { type: 'HTTP', method: 'GET', path: '/*' },
         functionId: 'render-index',
-        data: { args },
-    }, {
-        url: '/',
-        meta: {},
-    });
-    return request$0(options);
+        hasMetadataInput: false,
+    };
+    return request$0(route, ...args);
 }
 export function foo(...args) {
-    const options = Object.assign({
+    const route = {
+        trigger: { type: 'HTTP', method: 'GET', path: '/foo/*' },
         functionId: 'render-index-foo',
-        data: { args },
-    }, {
-        url: '/foo',
-        meta: {},
-    });
-    return request$0(options);
-}
-export function bar(...args) {
-    const options = Object.assign({
-        functionId: 'render-index-bar',
-        data: { args },
-    }, {
-        url: '/bar',
-        meta: {},
-    });
-    return request$0(options);
+        hasMetadataInput: false,
+    };
+    return request$0(route, ...args);
 }
 
 `;

@@ -1,5 +1,5 @@
 import type { Merge } from 'type-fest'
-import { AsyncFunction } from '../'
+import { AsyncFunction, HttpTriggerType } from '../'
 
 export type ArrayToObject<T, R = {}> = T extends [infer First, ...infer Rest]
   ? First extends PromiseLike<infer PromiseValue>
@@ -23,8 +23,8 @@ export enum OperatorType {
   Middleware = 'Middleware',
 }
 
-export type DefineHelper = {
-  setMetadata: (key: any, value: any) => void
+export type MetadataHelper = {
+  setMetadata: <T = any>(key: any, value: T) => void
   getMetadata: <T = any>(key: any) => T
 }
 
@@ -37,10 +37,19 @@ export type Operator<Input> = {
   name: string
   type?: Input
   input?: boolean
-  metadata?: (helper: DefineHelper) => void
+  metadata?: (helper: MetadataHelper) => void
   execute?: (helper: ExecuteHelper) => Promise<void>
 }
 
 export type ExtractInputType<T> = {
   [key in keyof T]: T[key] extends Operator<any> ? T[key]['type'] : void
+}
+
+export type BaseTrigger = {
+  type: string
+  requestClient?: {
+    fetcher: string
+    client: string
+  }
+  [key: string]: any
 }

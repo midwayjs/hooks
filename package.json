@@ -32,7 +32,6 @@
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-typescript": "^7.16.0",
     "@preconstruct/cli": "^2.1.0",
-    "@trivago/prettier-plugin-sort-imports": "^2.0.2",
     "@types/jest": "27",
     "codecov": "^3.8.2",
     "esbuild": "^0.9.7",
@@ -43,7 +42,7 @@
     "jest-snapshot-serializer-raw": "^1.2.0",
     "jest-watch-typeahead": "^0.6.4",
     "lerna": "latest",
-    "prettier": "^2.3.2",
+    "prettier": "^2.5.1",
     "pretty-quick": "^3.1.1",
     "typescript": "^4.5.2",
     "yalc": "^1.0.0-pre.53"

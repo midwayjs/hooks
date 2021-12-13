@@ -12,6 +12,7 @@ Midway Hooks Plugin for Webpack & Vite
 
 ```typescript
 import { HooksWebpackPlugin } from '@midwayjs/unplugin-hooks';
+
 function useWebpackChain(config) {
   config.plugin('@midwayjs/hooks').use(HooksWebpackPlugin());
   return config;

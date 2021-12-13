@@ -2,6 +2,7 @@
 
 exports[`defineMeta 1`] = `
 Object {
+  "HAS_METADATA_INPUT": true,
   "Http_Header": true,
   "Http_Param": true,
   "Http_Query": true,
@@ -10,8 +11,11 @@ Object {
   ],
   "Trigger": Object {
     "method": "GET",
+    "requestClient": Object {
+      "client": "@midwayjs/fetch",
+      "fetcher": "$fetch",
+    },
     "type": "HTTP",
   },
-  "isDecorate": true,
 }
 `;

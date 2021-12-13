@@ -4,6 +4,7 @@ import {
   listModule,
   WEB_ROUTER_KEY,
 } from '@midwayjs/decorator'
+import { HttpMethod } from '@midwayjs/hooks-core'
 import { HooksComponent, MidwayFrameworkAdapter } from '../component'
 
 describe('component', () => {
@@ -31,9 +32,10 @@ describe('component', () => {
         baseDir: '',
         basePath: '/',
       },
+      functionName: 'index',
       trigger: {
         type: 'HTTP',
-        method: 'GET',
+        method: HttpMethod.GET,
         path: '/',
       },
       middleware: [],
@@ -42,13 +44,14 @@ describe('component', () => {
 
     framework.createHttpApi({
       fn: async () => {},
+      functionName: 'post',
       route: {
         baseDir: '',
         basePath: '/',
       },
       trigger: {
         type: 'HTTP',
-        method: 'POST',
+        method: HttpMethod.POST,
         path: '/post',
       },
       middleware: [async () => {}],

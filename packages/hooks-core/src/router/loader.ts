@@ -8,9 +8,15 @@ import {
   FunctionId,
   HooksMiddleware,
 } from '../'
+import { HAS_METADATA_INPUT } from '../const'
 import { Decorate } from '../decorate/decorate'
-import { Get, HttpTrigger, Post } from '../decorate/operator/http'
-import { OperatorType } from '../decorate/type'
+import {
+  Get,
+  HTTPTrigger,
+  HttpTriggerType,
+  Post,
+} from '../decorate/operator/http'
+import { BaseTrigger, OperatorType } from '../decorate/type'
 import { Route } from '../types'
 import { FileRouter } from './router'
 
@@ -20,35 +26,18 @@ export type LoadConfig = {
   routes: Route[]
 }
 
-type BaseTrigger = {
-  type: string
-  [key: string]: any
-}
+export type AsyncFunction = (...args: any[]) => Promise<any>
 
 type Trigger = BaseTrigger & HTTPTrigger
 
-interface HTTPTrigger extends BaseTrigger {
-  type: typeof HttpTrigger
-  method:
-    | 'GET'
-    | 'POST'
-    | 'PUT'
-    | 'DELETE'
-    | 'PATCH'
-    | 'HEAD'
-    | 'OPTIONS'
-    | 'ALL'
-  path: string
-}
-
-export type AsyncFunction = (...args: any[]) => Promise<any>
-
 export type ApiRoute = {
   fn: AsyncFunction
+  functionName: string
   trigger: Trigger
   middleware: HooksMiddleware[]
   functionId: FunctionId
   route: Route
+  hasMetadataInput?: boolean
 }
 
 export function loadApiRoutes(config: LoadConfig): ApiRoute[] {
@@ -98,7 +87,7 @@ export function loadApiRoutesFromFile(
       trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
     }
 
-    if (trigger.type === HttpTrigger) {
+    if (trigger.type === HttpTriggerType) {
       trigger.path = router.functionToHttpPath(
         file,
         functionName,
@@ -112,9 +101,11 @@ export function loadApiRoutesFromFile(
 
     apiRoutes.push({
       fn,
-      trigger,
+      functionName,
       functionId,
+      trigger,
       middleware,
+      hasMetadataInput: Reflect.getMetadata(HAS_METADATA_INPUT, fn),
       route: router.getRoute(file),
     })
   }
