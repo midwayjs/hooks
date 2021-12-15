@@ -58,7 +58,7 @@ export abstract class AbstractBundlerAdapter {
       }
 
       const [clientName, fetcherName, idx] = importClient.get(clientId)
-      const uniqueFetcher = `request$${idx}`
+      const uniqueFetcher = `rpc$${idx}`
       importCodes.add(
         `import { ${fetcherName} as ${uniqueFetcher} } from '${clientName}'`
       )

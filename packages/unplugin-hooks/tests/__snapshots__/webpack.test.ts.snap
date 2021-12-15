@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`unplugin-hooks webpack Compile lambda 1`] = `
-import { $fetch as request$0 } from '@midwayjs/fetch';
+import { http as rpc$0 } from '@midwayjs/rpc';
 export default function $default(...args) {
     const route = {
         trigger: { type: 'HTTP', method: 'GET', path: '/' },
         functionId: 'lambda-index',
         hasMetadataInput: false,
     };
-    return request$0(route, ...args);
+    return rpc$0(route, ...args);
 }
 export function usePost(...args) {
     const route = {
@@ -16,7 +16,7 @@ export function usePost(...args) {
         functionId: 'lambda-index-usepost',
         hasMetadataInput: false,
     };
-    return request$0(route, ...args);
+    return rpc$0(route, ...args);
 }
 export function withQuery(...args) {
     const route = {
@@ -24,20 +24,20 @@ export function withQuery(...args) {
         functionId: 'lambda-index-withquery',
         hasMetadataInput: true,
     };
-    return request$0(route, ...args);
+    return rpc$0(route, ...args);
 }
 
 `;
 
 exports[`unplugin-hooks webpack Compile render 1`] = `
-import { $fetch as request$0 } from '@midwayjs/fetch';
+import { http as rpc$0 } from '@midwayjs/rpc';
 export function bar(...args) {
     const route = {
         trigger: { type: 'HTTP', method: 'GET', path: '/bar/*' },
         functionId: 'render-index-bar',
         hasMetadataInput: false,
     };
-    return request$0(route, ...args);
+    return rpc$0(route, ...args);
 }
 export default function $default(...args) {
     const route = {
@@ -45,7 +45,7 @@ export default function $default(...args) {
         functionId: 'render-index',
         hasMetadataInput: false,
     };
-    return request$0(route, ...args);
+    return rpc$0(route, ...args);
 }
 export function foo(...args) {
     const route = {
@@ -53,7 +53,7 @@ export function foo(...args) {
         functionId: 'render-index-foo',
         hasMetadataInput: false,
     };
-    return request$0(route, ...args);
+    return rpc$0(route, ...args);
 }
 
 `;

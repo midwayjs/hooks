@@ -95,8 +95,8 @@ it('with requestClient generate client', async () => {
           type: 'Custom',
           isCustom: true,
           requestClient: {
-            fetcher: 'websocket',
-            client: '@midwayjs/fetch',
+            fetcher: 'ws',
+            client: '@midwayjs/rpc',
           },
         })
       },

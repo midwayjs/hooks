@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`generate client 1`] = `
-import { $fetch as request$0 } from '@midwayjs/fetch';
+import { http as rpc$0 } from '@midwayjs/rpc';
 
 export function get(...args) {
   const route = {
@@ -9,7 +9,7 @@ export function get(...args) {
     functionId: 'index-get',
     hasMetadataInput: false,
   };
-  return request$0(route, ...args);
+  return rpc$0(route, ...args);
 }
 
 export function post(...args) {
@@ -18,7 +18,7 @@ export function post(...args) {
     functionId: 'index-post',
     hasMetadataInput: false,
   };
-  return request$0(route, ...args);
+  return rpc$0(route, ...args);
 }
 
 export function put(...args) {
@@ -27,7 +27,7 @@ export function put(...args) {
     functionId: 'index-put',
     hasMetadataInput: false,
   };
-  return request$0(route, ...args);
+  return rpc$0(route, ...args);
 }
 
 export function del(...args) {
@@ -36,7 +36,7 @@ export function del(...args) {
     functionId: 'index-del',
     hasMetadataInput: false,
   };
-  return request$0(route, ...args);
+  return rpc$0(route, ...args);
 }
 
 export function patch(...args) {
@@ -45,7 +45,7 @@ export function patch(...args) {
     functionId: 'index-patch',
     hasMetadataInput: false,
   };
-  return request$0(route, ...args);
+  return rpc$0(route, ...args);
 }
 
 export function head(...args) {
@@ -54,7 +54,7 @@ export function head(...args) {
     functionId: 'index-head',
     hasMetadataInput: false,
   };
-  return request$0(route, ...args);
+  return rpc$0(route, ...args);
 }
 
 export function options(...args) {
@@ -63,7 +63,7 @@ export function options(...args) {
     functionId: 'index-options',
     hasMetadataInput: false,
   };
-  return request$0(route, ...args);
+  return rpc$0(route, ...args);
 }
 
 export default function $default(...args) {
@@ -72,14 +72,14 @@ export default function $default(...args) {
     functionId: 'index',
     hasMetadataInput: false,
   };
-  return request$0(route, ...args);
+  return rpc$0(route, ...args);
 }
 
 `;
 
 exports[`with requestClient generate client 1`] = `
-"import { $fetch as request$0 } from '@midwayjs/fetch';
-import { websocket as request$1 } from '@midwayjs/fetch';
+"import { http as rpc$0 } from '@midwayjs/rpc';
+import { ws as rpc$1 } from '@midwayjs/rpc';
 
 export function get(...args) {
   const route = {
@@ -87,7 +87,7 @@ export function get(...args) {
     functionId: 'server-api-index-get',
     hasMetadataInput: false,
   };
-  return request$0(route, ...args);
+  return rpc$0(route, ...args);
 }
 
 export function custom(...args) {
@@ -96,14 +96,14 @@ export function custom(...args) {
     functionId: 'server-api-index-custom',
     hasMetadataInput: false,
   };
-  return request$1(route, ...args);
+  return rpc$1(route, ...args);
 }
 "
 `;
 
 exports[`with requestClient generate multi client 1`] = `
-import { $fetch as request$0 } from '@midwayjs/fetch';
-import { cloud as request$1 } from 'cloud-invoker';
+import { http as rpc$0 } from '@midwayjs/rpc';
+import { cloud as rpc$1 } from 'cloud-invoker';
 
 export function get(...args) {
   const route = {
@@ -111,7 +111,7 @@ export function get(...args) {
     functionId: 'server-api-index-get',
     hasMetadataInput: false,
   };
-  return request$0(route, ...args);
+  return rpc$0(route, ...args);
 }
 
 export function custom(...args) {
@@ -120,7 +120,7 @@ export function custom(...args) {
     functionId: 'server-api-index-custom',
     hasMetadataInput: false,
   };
-  return request$1(route, ...args);
+  return rpc$1(route, ...args);
 }
 
 `;

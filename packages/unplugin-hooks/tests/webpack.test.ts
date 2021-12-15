@@ -62,7 +62,7 @@ function compile(context: string, entry: string): Promise<string> {
         filename: 'client.js',
       },
       externals: {
-        '@midwayjs/fetch': 'fetch',
+        '@midwayjs/rpc': 'fetch',
         axios: 'axios',
       },
       mode: 'development',

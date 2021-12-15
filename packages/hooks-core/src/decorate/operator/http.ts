@@ -27,6 +27,7 @@ export enum HttpMethod {
   OPTIONS = 'OPTIONS',
   ALL = 'ALL',
 }
+
 export interface HTTPTrigger extends BaseTrigger {
   type: typeof HttpTriggerType
   method: HttpMethod
@@ -34,16 +35,17 @@ export interface HTTPTrigger extends BaseTrigger {
 }
 
 function createHTTPMethodOperator(method: HttpMethod) {
-  return () => {
+  return (path?: string) => {
     return {
       name: method,
       metadata({ setMetadata }) {
         setMetadata<HTTPTrigger>(OperatorType.Trigger, {
           type: HttpTriggerType,
           method,
+          path,
           requestClient: {
-            fetcher: '$fetch',
-            client: '@midwayjs/fetch',
+            fetcher: 'http',
+            client: '@midwayjs/rpc',
           },
         })
       },

@@ -11,9 +11,10 @@ Object {
   ],
   "Trigger": Object {
     "method": "GET",
+    "path": undefined,
     "requestClient": Object {
-      "client": "@midwayjs/fetch",
-      "fetcher": "$fetch",
+      "client": "@midwayjs/rpc",
+      "fetcher": "http",
     },
     "type": "HTTP",
   },
