@@ -8,7 +8,7 @@ import {
   FunctionId,
   HooksMiddleware,
 } from '../'
-import { HAS_METADATA_INPUT } from '../const'
+import { HAS_METADATA_INPUT } from '../common/const'
 import { Decorate } from '../decorate/decorate'
 import {
   Get,
@@ -18,7 +18,7 @@ import {
 } from '../decorate/operator/http'
 import { BaseTrigger, OperatorType } from '../decorate/type'
 import { Route } from '../types'
-import { FileRouter } from './router'
+import { AbstractRouter } from './base'
 
 export type LoadConfig = {
   root: string
@@ -32,19 +32,23 @@ type Trigger = BaseTrigger & HTTPTrigger
 
 export type ApiRoute = {
   fn: AsyncFunction
+  file: string
   functionName: string
+
   trigger: Trigger
   middleware: HooksMiddleware[]
   functionId: FunctionId
-  route: Route
+
+  // route: Route
   hasMetadataInput?: boolean
 }
 
-export function loadApiRoutes(config: LoadConfig): ApiRoute[] {
-  const router = new FileRouter(config)
-
+export function loadApiRoutes(
+  source: string,
+  router: AbstractRouter
+): ApiRoute[] {
   const files = run(['**/*.{ts,tsx,js,jsx,mjs}'], {
-    cwd: router.source,
+    cwd: source,
     ignore: [
       '**/*.test.{ts,tsx,js,jsx,mjs}',
       '**/*.spec.{ts,tsx,js,jsx,mjs}',
@@ -65,7 +69,7 @@ export function loadApiRoutes(config: LoadConfig): ApiRoute[] {
 export function loadApiRoutesFromFile(
   mod: ApiModule,
   file: string,
-  router: FileRouter
+  router: AbstractRouter
 ) {
   const apiRoutes: ApiRoute[] = []
   const funcs = pickBy(mod, isFunction)
@@ -88,7 +92,7 @@ export function loadApiRoutesFromFile(
     }
 
     if (trigger.type === HttpTriggerType) {
-      trigger.path = router.functionToHttpPath(
+      trigger.path ??= router.functionToHttpPath(
         file,
         functionName,
         exportDefault
@@ -101,12 +105,12 @@ export function loadApiRoutesFromFile(
 
     apiRoutes.push({
       fn,
+      file,
       functionName,
       functionId,
       trigger,
       middleware,
       hasMetadataInput: Reflect.getMetadata(HAS_METADATA_INPUT, fn),
-      route: router.getRoute(file),
     })
   }
 

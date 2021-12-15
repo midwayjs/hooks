@@ -3,15 +3,12 @@
 exports[`load file route with custom trigger 1`] = `
 Array [
   Object {
+    "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-custom",
     "functionName": "custom",
     "hasMetadataInput": false,
     "middleware": Array [],
-    "route": Object {
-      "baseDir": "api",
-      "basePath": "/",
-    },
     "trigger": Object {
       "isCustom": true,
       "type": "Custom",
@@ -23,15 +20,12 @@ Array [
 exports[`load file route with http trigger 1`] = `
 Array [
   Object {
+    "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-get",
     "functionName": "get",
     "hasMetadataInput": false,
     "middleware": Array [],
-    "route": Object {
-      "baseDir": "api",
-      "basePath": "/",
-    },
     "trigger": Object {
       "method": "GET",
       "path": "/get",
@@ -43,15 +37,12 @@ Array [
     },
   },
   Object {
+    "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-post",
     "functionName": "post",
     "hasMetadataInput": false,
     "middleware": Array [],
-    "route": Object {
-      "baseDir": "api",
-      "basePath": "/",
-    },
     "trigger": Object {
       "method": "POST",
       "path": "/post",
@@ -63,15 +54,12 @@ Array [
     },
   },
   Object {
+    "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-put",
     "functionName": "put",
     "hasMetadataInput": false,
     "middleware": Array [],
-    "route": Object {
-      "baseDir": "api",
-      "basePath": "/",
-    },
     "trigger": Object {
       "method": "PUT",
       "path": "/put",
@@ -83,15 +71,12 @@ Array [
     },
   },
   Object {
+    "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-del",
     "functionName": "del",
     "hasMetadataInput": false,
     "middleware": Array [],
-    "route": Object {
-      "baseDir": "api",
-      "basePath": "/",
-    },
     "trigger": Object {
       "method": "DELETE",
       "path": "/del",
@@ -103,15 +88,12 @@ Array [
     },
   },
   Object {
+    "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-patch",
     "functionName": "patch",
     "hasMetadataInput": false,
     "middleware": Array [],
-    "route": Object {
-      "baseDir": "api",
-      "basePath": "/",
-    },
     "trigger": Object {
       "method": "PATCH",
       "path": "/patch",
@@ -123,15 +105,12 @@ Array [
     },
   },
   Object {
+    "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-head",
     "functionName": "head",
     "hasMetadataInput": false,
     "middleware": Array [],
-    "route": Object {
-      "baseDir": "api",
-      "basePath": "/",
-    },
     "trigger": Object {
       "method": "HEAD",
       "path": "/head",
@@ -143,15 +122,12 @@ Array [
     },
   },
   Object {
+    "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-options",
     "functionName": "options",
     "hasMetadataInput": false,
     "middleware": Array [],
-    "route": Object {
-      "baseDir": "api",
-      "basePath": "/",
-    },
     "trigger": Object {
       "method": "OPTIONS",
       "path": "/options",
@@ -163,15 +139,12 @@ Array [
     },
   },
   Object {
+    "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index",
     "functionName": "$default",
     "hasMetadataInput": false,
     "middleware": Array [],
-    "route": Object {
-      "baseDir": "api",
-      "basePath": "/",
-    },
     "trigger": Object {
       "method": "ALL",
       "path": "/",

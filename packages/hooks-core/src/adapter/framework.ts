@@ -1,14 +1,8 @@
-import { ApiRoute, loadApiRoutes, LoadConfig, ResponseMetaData } from '.'
-
-export interface FrameworkConfig extends LoadConfig {}
+import { ApiRoute, loadApiRoutes, ResponseMetaData } from '../index'
+import { AbstractRouter } from '../router/base'
 
 export abstract class AbstractFrameworkAdapter {
-  protected constructor(public config: FrameworkConfig) {}
-
-  async init() {
-    const apis = loadApiRoutes(this.config)
-    await this.handleApiRoutes(apis)
-  }
+  protected constructor(public router: AbstractRouter) {}
 
   abstract handleApiRoutes(apis: ApiRoute[]): Promise<any>
   abstract handleResponseMetaData(metadata: ResponseMetaData[]): Promise<any>
@@ -16,8 +10,10 @@ export abstract class AbstractFrameworkAdapter {
 
 export let framework: AbstractFrameworkAdapter
 export async function createApplication(
+  source: string,
   frameworkAdapter: AbstractFrameworkAdapter
 ) {
   framework = frameworkAdapter
-  await framework.init()
+  const apis = loadApiRoutes(source, framework.router)
+  await framework.handleApiRoutes(apis)
 }

@@ -1,4 +1,4 @@
-import { FileRouter } from '../router'
+import { FileRouter } from '../file'
 
 describe('NewFileRouter', () => {
   let router: FileRouter

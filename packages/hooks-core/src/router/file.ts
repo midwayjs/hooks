@@ -1,8 +1,9 @@
 import kebabCase from 'lodash/kebabCase'
 import last from 'lodash/last'
 import urlJoin from 'proper-url-join'
-import { extname, join, relative, removeExt, toUnix, resolve, sep } from 'upath'
+import { extname, join, relative, removeExt, resolve, sep, toUnix } from 'upath'
 import { Route } from '..'
+import { AbstractRouter } from './base'
 
 export enum RouteKeyword {
   INDEX = 'index',
@@ -23,8 +24,10 @@ type Part = {
   catchAll?: boolean
 }
 
-export class FileRouter {
-  constructor(public config: RouterConfig) {}
+export class FileRouter extends AbstractRouter {
+  constructor(public config: RouterConfig) {
+    super()
+  }
 
   get source() {
     return join(this.config.root, this.config.source)
@@ -50,13 +53,7 @@ export class FileRouter {
   }
 
   isApiFile(file: string) {
-    const extensions = ['.ts', '.tsx', '.js', '.jsx', '.mjs']
-    if (!extensions.includes(extname(file))) {
-      return false
-    }
-
-    const testExt = ['.test.ts', '.test.tsx', '.test.js', '.test.jsx']
-    if (testExt.some((ext) => file.endsWith(ext))) {
+    if (!super.isJavaScriptFile(file)) {
       return false
     }
 

@@ -3,28 +3,25 @@ import {
   AbstractBundlerAdapter,
   createBundlerPlugin,
 } from '@midwayjs/unplugin-hooks'
-import { getConfig, getProjectRoot } from './internal'
 import { normalizeUrl } from './api/component'
+import { getRouter } from './internal/router'
 
 class MidwayBundlerAdapter extends AbstractBundlerAdapter {
   override transformApiRoutes(apis: ApiRoute[]): ApiRoute[] {
     for (const api of apis) {
       if (api.trigger.type === HttpTriggerType) {
-        api.trigger.path = normalizeUrl(api)
+        api.trigger.path = normalizeUrl(this.getRouter(), api)
       }
     }
     return apis
   }
 }
 
-const root = getProjectRoot()
-const { source, routes } = getConfig()
+const router = getRouter()
 
 const midwayBundlerAdapter = new MidwayBundlerAdapter({
   name: '@midwayjs/hooks-bundler',
-  root,
-  source,
-  routes,
+  router,
 })
 
 const plugin = createBundlerPlugin(midwayBundlerAdapter)

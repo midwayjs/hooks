@@ -1,4 +1,4 @@
-import { inspect, types } from 'util'
+import { inspect } from 'util'
 
 export class ERR_INVALID_ARG_VALUE extends Error {
   constructor(actual: any, name: string, reason = 'is invalid') {

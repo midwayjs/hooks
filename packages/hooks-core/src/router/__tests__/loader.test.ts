@@ -13,7 +13,7 @@ import {
 import { Middleware } from '../../decorate/operator/middleware'
 import { Operator, OperatorType } from '../../decorate/type'
 import { loadApiRoutesFromFile } from '../loader'
-import { FileRouter } from '../router'
+import { FileRouter } from '../file'
 
 const router = new FileRouter({
   root: '/',

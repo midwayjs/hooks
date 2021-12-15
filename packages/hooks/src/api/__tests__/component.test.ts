@@ -28,10 +28,7 @@ describe('component', () => {
   it('should register api route as Controller', async () => {
     framework.createHttpApi({
       fn: async () => {},
-      route: {
-        baseDir: '',
-        basePath: '/',
-      },
+      file: '/index.ts',
       functionName: 'index',
       trigger: {
         type: 'HTTP',
@@ -44,11 +41,8 @@ describe('component', () => {
 
     framework.createHttpApi({
       fn: async () => {},
+      file: '/index.ts',
       functionName: 'post',
-      route: {
-        baseDir: '',
-        basePath: '/',
-      },
       trigger: {
         type: 'HTTP',
         method: HttpMethod.POST,

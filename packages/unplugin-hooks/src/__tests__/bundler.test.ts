@@ -3,6 +3,7 @@ import {
   BaseTrigger,
   Decorate,
   Delete,
+  FileRouter,
   Get,
   Head,
   loadApiRoutesFromFile,
@@ -16,17 +17,21 @@ import {
 import { AbstractBundlerAdapter } from '..'
 import { wrap } from 'jest-snapshot-serializer-raw'
 
+const router = new FileRouter({
+  root: '/',
+  source: '/',
+  routes: [
+    {
+      baseDir: '/',
+    },
+  ],
+})
+
 class TestBundlerAdapter extends AbstractBundlerAdapter {
   constructor() {
     super({
       name: 'test',
-      root: '/',
-      source: '/',
-      routes: [
-        {
-          baseDir: '/',
-        },
-      ],
+      router,
     })
   }
 }

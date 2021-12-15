@@ -13,10 +13,10 @@ import {
 } from '@midwayjs/decorator'
 import {
   AbstractFrameworkAdapter,
+  AbstractRouter,
   als,
   ApiRoute,
   createApplication,
-  FrameworkConfig,
   HooksMiddleware,
   isHooksMiddleware,
   ResponseMetadata,
@@ -26,23 +26,43 @@ import {
   validateArray,
   validateOneOf,
 } from '@midwayjs/hooks-core'
-import { getConfig, getProjectRoot } from '../internal'
-import { MidwayRoute, RuntimeConfig } from '../internal/config/type'
+import { RuntimeConfig } from '../internal/config/type'
 import { createFunctionContainer } from '../internal/container'
-import { isDevelopment } from '../internal/util'
 import { createConfiguration } from './configuration'
+import { getRouter, getSource, isFileSystemRouter } from '../internal/router'
 
 interface MidwayApplication extends IMidwayApplication {
   use?: (middleware: any) => void
 }
 
+export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
+  if (runtimeConfig.middleware !== undefined) {
+    validateArray(runtimeConfig.middleware, 'runtimeConfig.middleware')
+  }
+
+  const Configuration = createConfiguration({
+    namespace: '@midwayjs/hooks',
+    async onReady(container: IMidwayContainer, app: MidwayApplication) {
+      const source = getSource()
+      const router = getRouter()
+
+      const midway = new MidwayFrameworkAdapter(router, app, container)
+      midway.registerGlobalMiddleware(runtimeConfig.middleware)
+
+      await createApplication(source, midway)
+    },
+  })
+
+  return { Configuration }
+}
+
 export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
   constructor(
-    config: FrameworkConfig,
+    router: AbstractRouter,
     public app: MidwayApplication,
     public container: IMidwayContainer
   ) {
-    super(config)
+    super(router)
   }
 
   private get frameworkType() {
@@ -84,7 +104,7 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
       Object.keys(this.methodDecorators)
     )
     const Method = this.methodDecorators[trigger.method]
-    const url = normalizeUrl(api)
+    const url = normalizeUrl(this.router, api)
 
     return createFunctionContainer({
       fn,
@@ -152,41 +172,12 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
   }
 }
 
-export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
-  if (runtimeConfig.middleware !== undefined) {
-    validateArray(runtimeConfig.middleware, 'runtimeConfig.middleware')
+export function normalizeUrl(router: AbstractRouter, api: ApiRoute) {
+  const { trigger, file } = api
+
+  if (isFileSystemRouter(router)) {
+    return urlJoin(router.getRoute(file).basePath, trigger.path, {})
   }
 
-  const Configuration = createConfiguration({
-    namespace: '@midwayjs/hooks',
-    async onReady(container: IMidwayContainer, app: MidwayApplication) {
-      const root = getProjectRoot()
-      const {
-        source,
-        build: { outDir },
-        routes,
-      } = getConfig()
-
-      const midwayFrameworkAdapter = new MidwayFrameworkAdapter(
-        {
-          root,
-          source: isDevelopment() ? source : outDir,
-          routes,
-        },
-        app,
-        container
-      )
-
-      midwayFrameworkAdapter.registerGlobalMiddleware(runtimeConfig.middleware)
-
-      await createApplication(midwayFrameworkAdapter)
-    },
-  })
-
-  return { Configuration }
-}
-
-export function normalizeUrl(api: ApiRoute) {
-  const { trigger, route } = api
-  return urlJoin((route as MidwayRoute).basePath, trigger.path, {})
+  return trigger.path
 }

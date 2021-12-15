@@ -1,5 +1,5 @@
 import { Decorate } from '../'
-import { extractMetadata } from '../../util'
+import { extractMetadata } from '../../common/util'
 import { Get, Header, Param, Post, Query } from '../operator/http'
 import { Middleware } from '../operator/middleware'
 import { Operator } from '../type'

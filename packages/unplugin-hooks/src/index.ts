@@ -1,31 +1,27 @@
 import omit from 'lodash/omit'
 import { createUnplugin, UnpluginOptions } from 'unplugin'
 import {
+  AbstractRouter,
   ApiRoute,
   EXPORT_DEFAULT_FUNCTION_ALIAS,
-  FileRouter,
   loadApiRoutesFromFile,
-  RouterConfig,
 } from '@midwayjs/hooks-core'
 
-interface BundlerConfig extends RouterConfig {
+interface BundlerConfig {
   name: string
+  router: AbstractRouter
   unplugin?: UnpluginOptions
 }
 
 export abstract class AbstractBundlerAdapter {
-  private router: FileRouter
-
-  constructor(private config: BundlerConfig) {
-    this.router = new FileRouter(config)
-  }
+  constructor(private config: BundlerConfig) {}
 
   getName() {
     return this.config.name
   }
 
   getRouter() {
-    return this.router
+    return this.config.router
   }
 
   getUnplugin() {

@@ -1,3 +1,4 @@
+import { FileRouter } from '@midwayjs/hooks-core'
 import { wrap } from 'jest-snapshot-serializer-raw'
 import Memoryfs from 'memory-fs'
 import { resolve as pathResolve } from 'path'
@@ -7,9 +8,7 @@ import { AbstractBundlerAdapter, createBundlerPlugin } from '../src'
 class TestBundlerAdapter extends AbstractBundlerAdapter {}
 
 const root = pathResolve(__dirname, './fixtures/base-app')
-
-const testBundlerAdapter = new TestBundlerAdapter({
-  name: 'test',
+const router = new FileRouter({
   root,
   source: './',
   routes: [
@@ -20,6 +19,11 @@ const testBundlerAdapter = new TestBundlerAdapter({
       baseDir: 'lambda',
     },
   ],
+})
+
+const testBundlerAdapter = new TestBundlerAdapter({
+  name: 'test',
+  router,
 })
 
 const { webpack: WebpackPlugin } = createBundlerPlugin(testBundlerAdapter)
