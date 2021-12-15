@@ -97,11 +97,6 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
     })
   }
 
-  normalizeUrl(api: ApiRoute) {
-    const { trigger, route } = api
-    return urlJoin((route as MidwayRoute).basePath, trigger.path, {})
-  }
-
   registerGlobalMiddleware(middlewares: HooksMiddleware[] = []) {
     const runtime =
       this.frameworkType === MidwayFrameworkType.WEB_EXPRESS

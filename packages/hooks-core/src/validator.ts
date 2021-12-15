@@ -57,12 +57,6 @@ export function validateFunction(value: any, name: string) {
   }
 }
 
-export function validateAsyncFunction(value: any, name: string) {
-  if (!types.isAsyncFunction(value)) {
-    throw new ERR_INVALID_ARG_TYPE(name, 'AsyncFunction', value)
-  }
-}
-
 export function validateOneOf(value: any, name: string, oneOf: any[]) {
   if (!oneOf.includes(value)) {
     const allowed = oneOf
