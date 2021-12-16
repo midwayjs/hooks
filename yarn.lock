@@ -2370,22 +2370,22 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@midwayjs/core@3.0.0-beta.7", "@midwayjs/core@^3.0.0-beta.7":
-  version "3.0.0-beta.7"
-  resolved "https://registry.npmjs.org/@midwayjs/core/-/core-3.0.0-beta.7.tgz#8a7699b8b1fa574d3b135ef75205990aa7363cc5"
-  integrity sha512-icNL83TPXlvisPYpk1cPEZ1CEMX9qCoVnNOhvi/kfkpmT77zMRRMZma2kmW+xL7LhznqhwH5p2gEg2zhnoC91Q==
+"@midwayjs/core@3.0.0-beta.9", "@midwayjs/core@^3.0.0-beta.9":
+  version "3.0.0-beta.9"
+  resolved "https://registry.npmmirror.com/@midwayjs/core/download/@midwayjs/core-3.0.0-beta.9.tgz#83094b64b96bee2cc094c4503b66b41388fc8aa9"
+  integrity sha512-FCE29dfu1LRA8kg2hZbFb6LL23OYxx98BWnm52hVXWkGvm/Q9VKRtbUuNwaTyyCUJTPH9RBq+5ll6df13Ne2zw==
   dependencies:
     "@midwayjs/glob" "^1.0.2"
-    "@midwayjs/logger" "^3.0.0-beta.7"
+    "@midwayjs/logger" "^3.0.0-beta.9"
     class-transformer "^0.5.1"
     extend2 "^1.0.0"
     picomatch "^2.2.2"
     reflect-metadata "^0.1.13"
 
-"@midwayjs/decorator@3.0.0-beta.7":
-  version "3.0.0-beta.7"
-  resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-3.0.0-beta.7.tgz#56ca25b171a89ba16357f9171fde55636c4470d0"
-  integrity sha512-ObXhsqH84uGb5QvkK0hsIeO53qblqiHAtZ3KXLtn2BzfdDYQcWpEUs/T19dRpDMgj/18wxQnEVv5l4K9//0tyA==
+"@midwayjs/decorator@3.0.0-beta.9":
+  version "3.0.0-beta.9"
+  resolved "https://registry.npmmirror.com/@midwayjs/decorator/download/@midwayjs/decorator-3.0.0-beta.9.tgz#70b95cd7496e3e46d9824509f5078fab7e01fa36"
+  integrity sha512-IOPBGCG2ocGdB8GKBNj2K6D+6j7JhA/wzAjRyZuqiT5yq0xO30EwdcqTG+hLmI2JnzsUi5MkcytRzoqnTAj5sg==
   dependencies:
     camelcase "^6.2.0"
     reflect-metadata "^0.1.13"
@@ -2397,21 +2397,21 @@
   dependencies:
     picomatch "^2.2.2"
 
-"@midwayjs/koa@3.0.0-beta.7", "@midwayjs/koa@beta":
-  version "3.0.0-beta.7"
-  resolved "https://registry.npmjs.org/@midwayjs/koa/-/koa-3.0.0-beta.7.tgz#83fcb048f2f0a8c681d753817279ab823e8f21f3"
-  integrity sha512-jFMxPpQ02RHR4CSmkiEcq3p1bsS1Hc48asbKeRRMWNGek3VRTku5prp0XS2L2BtPnEuqUE4UX4dlElfBY0kJ4Q==
+"@midwayjs/koa@3.0.0-beta.9", "@midwayjs/koa@beta":
+  version "3.0.0-beta.9"
+  resolved "https://registry.npmmirror.com/@midwayjs/koa/download/@midwayjs/koa-3.0.0-beta.9.tgz#7704c71de27d367ff8908fa54981a7f24afa62b4"
+  integrity sha512-Ovna0wNdCI6lp7L0DSzwv2YVadUtoUEX1TNxeFV7MqHo0yZicGsXg3XVHDTj5er+HtPRrNaG6cN+e7F/jiA7FA==
   dependencies:
     "@koa/router" "^10.0.0"
-    "@midwayjs/core" "^3.0.0-beta.7"
-    "@midwayjs/logger" "^3.0.0-beta.7"
+    "@midwayjs/core" "^3.0.0-beta.9"
+    "@midwayjs/logger" "^3.0.0-beta.9"
     koa "^2.13.0"
     koa-onerror "^4.1.0"
 
-"@midwayjs/logger@^3.0.0-beta.7":
-  version "3.0.0-beta.7"
-  resolved "https://registry.npmjs.org/@midwayjs/logger/-/logger-3.0.0-beta.7.tgz#46c2d2db16522c6a1f85e5d187ee7aa9737738c6"
-  integrity sha512-Ifz7VhjJQ8waJ7pFZDJXozeUyRR5HdwoWoRVznUbj1ayggsQRnRvw39WOE1dbrPtkxQU4HIn0P+e+97gx1ubww==
+"@midwayjs/logger@^3.0.0-beta.9":
+  version "3.0.0-beta.9"
+  resolved "https://registry.npmmirror.com/@midwayjs/logger/download/@midwayjs/logger-3.0.0-beta.9.tgz#b1dd8cc8538b12858815ffb673ccb26b0422a553"
+  integrity sha512-m6DkT7QERS4b4pt9bHH5uGyKq60PVjATZ/AcjwXpnyInh7pLHOJ09Z2VhjDOdAjgyjSkf8SSj+/mbiF9QlFLxQ==
   dependencies:
     dayjs "^1.10.7"
     object-hash "^2.0.1"
@@ -2419,10 +2419,10 @@
     winston "^3.3.3"
     winston-transport "^4.4.0"
 
-"@midwayjs/mock@3.0.0-beta.7", "@midwayjs/mock@beta":
-  version "3.0.0-beta.7"
-  resolved "https://registry.npmjs.org/@midwayjs/mock/-/mock-3.0.0-beta.7.tgz#a3edf3a40e3fb010ae53363d680de3faab205bd1"
-  integrity sha512-X1aU9OIVLBz8y+7U8ilg260XvIMiZ2Pam3vWedsa+4YJTY0DSztlqcVEu6XPiJI4y5hz+gCFPYk9ppdQcQcTUw==
+"@midwayjs/mock@3.0.0-beta.9", "@midwayjs/mock@beta":
+  version "3.0.0-beta.9"
+  resolved "https://registry.npmmirror.com/@midwayjs/mock/download/@midwayjs/mock-3.0.0-beta.9.tgz#aa6f5ec09ed0829ab8f34eee409d27c4358a10ab"
+  integrity sha512-5xjR/1SIm0KoJEG3JuOjNIRdeFagPR8cjbnX9NllUgT4JlhPANGtabXpSCh1qchpGWfP0u0/5DoUvOEjUKMwGw==
   dependencies:
     fs-extra "^8.0.1"
     supertest "^6.0.0"
