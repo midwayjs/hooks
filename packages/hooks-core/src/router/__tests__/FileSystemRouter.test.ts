@@ -1,10 +1,10 @@
-import { FileRouter } from '../file'
+import { FileSystemRouter } from '../file'
 
 describe('NewFileRouter', () => {
-  let router: FileRouter
+  let router: FileSystemRouter
 
   beforeEach(() => {
-    router = new FileRouter({
+    router = new FileSystemRouter({
       root: '/',
       source: 'src',
       routes: [
@@ -16,8 +16,8 @@ describe('NewFileRouter', () => {
   })
 
   test('should exist', () => {
-    expect(FileRouter).toBeTruthy()
-    expect(router).toBeInstanceOf(FileRouter)
+    expect(FileSystemRouter).toBeTruthy()
+    expect(router).toBeInstanceOf(FileSystemRouter)
   })
 
   test('test file router', () => {
@@ -158,5 +158,11 @@ describe('NewFileRouter', () => {
     for (const [input, expected, functionName] of cases) {
       expect(router.buildUrl(input, functionName)).toEqual(expected)
     }
+  })
+
+  it('buildUrl', () => {
+    expect(() =>
+      router.buildUrl('/[...index]/index.ts')
+    ).toThrowErrorMatchingSnapshot()
   })
 })

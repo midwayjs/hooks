@@ -1,7 +1,7 @@
 import kebabCase from 'lodash/kebabCase'
 import last from 'lodash/last'
 import urlJoin from 'proper-url-join'
-import { extname, join, relative, removeExt, resolve, sep, toUnix } from 'upath'
+import { extname, join, relative, removeExt, toUnix } from 'upath'
 import { Route } from '..'
 import { AbstractRouter } from './base'
 
@@ -11,7 +11,7 @@ export enum RouteKeyword {
   DYNAMIC = ':',
 }
 
-export interface RouterConfig {
+export interface FileSystemRouterConfig {
   root: string
   source: string
   routes: Route[]
@@ -24,13 +24,9 @@ type Part = {
   catchAll?: boolean
 }
 
-export class FileRouter extends AbstractRouter {
-  constructor(public config: RouterConfig) {
-    super()
-  }
-
-  get source() {
-    return join(this.config.root, this.config.source)
+export class FileSystemRouter extends AbstractRouter {
+  constructor(public config: FileSystemRouterConfig) {
+    super(join(config.root, config.source))
   }
 
   getApiDirectory(baseDir: string) {
@@ -48,7 +44,7 @@ export class FileRouter extends AbstractRouter {
   getRoute(file: string) {
     return this.config.routes.find((route) => {
       const apiDir = this.getApiDirectory(route.baseDir)
-      return isPathInside(toUnix(file), toUnix(apiDir))
+      return this.isPathInside(toUnix(file), toUnix(apiDir))
     })
   }
 
@@ -144,14 +140,4 @@ export class FileRouter extends AbstractRouter {
 
     return urlJoin.apply(null, [...segments, {}])
   }
-}
-
-function isPathInside(child: string, parent: string) {
-  const relation = relative(parent, child)
-  return Boolean(
-    relation &&
-      relation !== '..' &&
-      !relation.startsWith(`..${sep}`) &&
-      relation !== resolve(child)
-  )
 }

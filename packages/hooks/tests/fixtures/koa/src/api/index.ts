@@ -7,6 +7,7 @@ import {
   HttpCode,
   Middleware,
   Post,
+  Redirect,
   SetHeader,
   useContext,
   Validate,
@@ -55,5 +56,13 @@ export const withHttpDecorator = Decorate(
   ContentType('text/html'),
   async () => {
     return 'withHttpCode'
+  }
+)
+
+export const withRedirectDecorator = Decorate(
+  Get(),
+  Redirect('/redirect', 301),
+  async () => {
+    return 'withRedirectDecorator'
   }
 )

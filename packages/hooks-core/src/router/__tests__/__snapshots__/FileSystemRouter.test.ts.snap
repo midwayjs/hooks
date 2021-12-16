@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewFileRouter buildUrl 1`] = `"Catch all routes must be the last part of the path. Current input: /[...index]/index.ts"`;
+
+exports[`NewFileRouter test file router 1`] = `
+Object {
+  "baseDir": "lambda",
+}
+`;

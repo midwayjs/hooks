@@ -1,26 +1,38 @@
-import { basename, extname, removeExt } from 'upath'
+import { basename, extname, removeExt, toUnix } from 'upath'
 import { AbstractRouter } from './base'
 import urlJoin from 'proper-url-join'
 import some from 'lodash/some'
 import { OperatorType } from '../decorate/type'
 import { DECORATE_BASE_PATH } from '../common'
 
-type DecoratorRouterConfig = {
+export type DecoratorRouterConfig = {
+  source?: string
   basePath?: string
 }
 
 export class DecorateRouter extends AbstractRouter {
   constructor(public config: DecoratorRouterConfig) {
-    super()
-    this.config.basePath ??= DECORATE_BASE_PATH
+    super(config.source)
+    config.basePath ??= DECORATE_BASE_PATH
   }
 
   isApiFile(file: string): boolean {
-    if (!super.isJavaScriptFile(file)) {
+    if (
+      !super.isJavaScriptFile(file) ||
+      !this.isPathInside(toUnix(file), toUnix(this.source))
+    ) {
       return false
     }
 
-    const mod = require(file)
+    try {
+      return this.hasExportApiRoutes(require(file))
+    } catch (error) {
+      console.log('require error', error)
+      return false
+    }
+  }
+
+  hasExportApiRoutes(mod: any) {
     return some(mod, (exp) => Reflect.getMetadata(OperatorType.Trigger, exp))
   }
 

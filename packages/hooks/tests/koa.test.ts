@@ -59,4 +59,13 @@ describe('test koa', () => {
     expect(type).toEqual('text/html')
     expect(status).toEqual(201)
   })
+
+  test('withRedirectDecorator', async () => {
+    const { status, text, header } = await createHttpRequest(app).get(
+      '/withRedirectDecorator'
+    )
+    expect(status).toEqual(301)
+    expect(header.location).toEqual('/redirect')
+    expect(text).toEqual('withRedirectDecorator')
+  })
 })

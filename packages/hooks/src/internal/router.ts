@@ -1,4 +1,4 @@
-import { AbstractRouter, FileRouter } from '@midwayjs/hooks-core'
+import { AbstractRouter, FileSystemRouter } from '@midwayjs/hooks-core'
 import { getConfig, getProjectRoot } from './config'
 import { isDevelopment } from './util'
 import { join } from 'upath'
@@ -11,7 +11,7 @@ export function getRouter(): AbstractRouter {
     routes,
   } = getConfig()
 
-  return new FileRouter({
+  return new FileSystemRouter({
     root,
     source: isDevelopment() ? source : outDir,
     routes,
@@ -27,6 +27,6 @@ export function getSource() {
   return join(root, isDevelopment() ? source : outDir)
 }
 
-export function isFileSystemRouter(router: any): router is FileRouter {
-  return router instanceof FileRouter
+export function isFileSystemRouter(router: any): router is FileSystemRouter {
+  return router instanceof FileSystemRouter
 }
