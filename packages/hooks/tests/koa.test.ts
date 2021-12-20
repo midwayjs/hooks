@@ -68,4 +68,17 @@ describe('test koa', () => {
     expect(header.location).toEqual('/redirect')
     expect(text).toEqual('withRedirectDecorator')
   })
+
+  test('slot', async () => {
+    const { status, body } = await createHttpRequest(app)
+      .get('/slot/withSlot')
+      .query({ query: 'query' })
+      .set('header', 'header')
+
+    expect(status).toEqual(200)
+
+    expect(body.header.header).toEqual('header')
+    expect(body.query.query).toEqual('query')
+    expect(body.params.slot).toEqual('slot')
+  })
 })

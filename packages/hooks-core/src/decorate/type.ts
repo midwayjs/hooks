@@ -15,7 +15,7 @@ export type DecorateHandler<
 > = (
   ...args: Input extends void
     ? Parameters<Handler>
-    : [input: Input, ...args: Parameters<Handler>]
+    : [...args: Parameters<Handler>, input: Input]
 ) => ReturnType<Handler>
 
 export enum OperatorType {

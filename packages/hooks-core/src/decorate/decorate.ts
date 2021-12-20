@@ -33,7 +33,7 @@ export function Decorate<
   const stack = []
   // TODO Direct call or frontend end invoke
   const executor = async function DecoratorExecutor(...args: any[]) {
-    const funcArgs = hasMetadataInput ? args.slice(1) : args
+    const funcArgs = hasMetadataInput ? args.slice(0, -1) : args
 
     let result: any
     stack.push(async ({ next }: ExecuteHelper) => {
@@ -42,6 +42,7 @@ export function Decorate<
     })
 
     await compose(stack, { getInputArguments: () => funcArgs })()
+    // handle HttpCode/Redirect/etc.
     const responseMetadata = Reflect.getMetadata(
       HttpMetadata.RESPONSE,
       executor
