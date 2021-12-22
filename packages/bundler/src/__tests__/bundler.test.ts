@@ -45,7 +45,7 @@ it('create bundler', async () => {
 
 it('generate client', async () => {
   const testBundlerAdapter = new TestBundlerAdapter()
-  expect(testBundlerAdapter.generateClient([])).toEqual('')
+  expect(testBundlerAdapter.generateClient([])).toMatchSnapshot()
 
   const apis = loadApiRoutesFromFile(
     {
@@ -88,7 +88,7 @@ it('with requestClient should not generate client', async () => {
     testBundlerAdapter.getRouter()
   )
 
-  expect(testBundlerAdapter.generateClient(apis)).toBe('')
+  expect(testBundlerAdapter.generateClient(apis)).toMatchSnapshot()
 })
 
 it('with requestClient generate client', async () => {

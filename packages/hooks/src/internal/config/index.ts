@@ -27,7 +27,6 @@ export function getConfig(cwd?: string): ProjectConfig {
     },
     gateway: [],
     build: {
-      viteOutDir: './build',
       outDir: './dist',
     },
     request: {

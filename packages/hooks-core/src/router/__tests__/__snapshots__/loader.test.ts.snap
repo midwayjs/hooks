@@ -7,12 +7,12 @@ Array [
     "fn": [Function],
     "functionId": "api-index-custom",
     "functionName": "custom",
-    "hasMetadataInput": false,
     "middleware": Array [],
     "trigger": Object {
       "isCustom": true,
       "type": "Custom",
     },
+    "useInputMetadata": false,
   },
 ]
 `;
@@ -24,7 +24,6 @@ Array [
     "fn": [Function],
     "functionId": "api-index-get",
     "functionName": "get",
-    "hasMetadataInput": false,
     "middleware": Array [],
     "trigger": Object {
       "method": "GET",
@@ -35,13 +34,13 @@ Array [
       },
       "type": "HTTP",
     },
+    "useInputMetadata": false,
   },
   Object {
     "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-post",
     "functionName": "post",
-    "hasMetadataInput": false,
     "middleware": Array [],
     "trigger": Object {
       "method": "POST",
@@ -52,13 +51,13 @@ Array [
       },
       "type": "HTTP",
     },
+    "useInputMetadata": false,
   },
   Object {
     "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-put",
     "functionName": "put",
-    "hasMetadataInput": false,
     "middleware": Array [],
     "trigger": Object {
       "method": "PUT",
@@ -69,13 +68,13 @@ Array [
       },
       "type": "HTTP",
     },
+    "useInputMetadata": false,
   },
   Object {
     "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-del",
     "functionName": "del",
-    "hasMetadataInput": false,
     "middleware": Array [],
     "trigger": Object {
       "method": "DELETE",
@@ -86,13 +85,13 @@ Array [
       },
       "type": "HTTP",
     },
+    "useInputMetadata": false,
   },
   Object {
     "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-patch",
     "functionName": "patch",
-    "hasMetadataInput": false,
     "middleware": Array [],
     "trigger": Object {
       "method": "PATCH",
@@ -103,13 +102,13 @@ Array [
       },
       "type": "HTTP",
     },
+    "useInputMetadata": false,
   },
   Object {
     "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-head",
     "functionName": "head",
-    "hasMetadataInput": false,
     "middleware": Array [],
     "trigger": Object {
       "method": "HEAD",
@@ -120,13 +119,13 @@ Array [
       },
       "type": "HTTP",
     },
+    "useInputMetadata": false,
   },
   Object {
     "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index-options",
     "functionName": "options",
-    "hasMetadataInput": false,
     "middleware": Array [],
     "trigger": Object {
       "method": "OPTIONS",
@@ -137,13 +136,13 @@ Array [
       },
       "type": "HTTP",
     },
+    "useInputMetadata": false,
   },
   Object {
     "file": "/server/api/index.ts",
     "fn": [Function],
     "functionId": "api-index",
     "functionName": "$default",
-    "hasMetadataInput": false,
     "middleware": Array [],
     "trigger": Object {
       "method": "ALL",
@@ -154,6 +153,7 @@ Array [
       },
       "type": "HTTP",
     },
+    "useInputMetadata": false,
   },
 ]
 `;

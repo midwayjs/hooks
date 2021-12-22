@@ -10,6 +10,7 @@ export type DecoratorRouterConfig = {
   basePath?: string
 }
 
+// TODO support manual setup
 export class DecorateRouter extends AbstractRouter {
   constructor(public config: DecoratorRouterConfig) {
     super(config.source)
@@ -33,7 +34,7 @@ export class DecorateRouter extends AbstractRouter {
   }
 
   hasExportApiRoutes(mod: any) {
-    return some(mod, (exp) => Reflect.getMetadata(OperatorType.Trigger, exp))
+    return some(mod, (exp) => !!Reflect.getMetadata(OperatorType.Trigger, exp))
   }
 
   getFunctionId(

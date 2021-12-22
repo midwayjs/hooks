@@ -1,4 +1,8 @@
-import { AbstractRouter, FileSystemRouter } from '@midwayjs/hooks-core'
+import {
+  AbstractRouter,
+  DecorateRouter,
+  FileSystemRouter,
+} from '@midwayjs/hooks-core'
 import { getConfig, getProjectRoot } from './config'
 import { isDevelopment } from './util'
 import { join } from 'upath'
@@ -11,11 +15,15 @@ export function getRouter(): AbstractRouter {
     routes,
   } = getConfig()
 
-  return new FileSystemRouter({
-    root,
-    source: isDevelopment() ? source : outDir,
-    routes,
-  })
+  if (Array.isArray(routes)) {
+    return new FileSystemRouter({
+      root,
+      source: isDevelopment() ? source : outDir,
+      routes,
+    })
+  }
+
+  return new DecorateRouter({ source: join(root, source) })
 }
 
 export function getSource() {

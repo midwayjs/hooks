@@ -1,5 +1,5 @@
 import { IPlugin } from '@alib/build-scripts'
-import { HooksWebpackPlugin } from '@midwayjs/unplugin-hooks'
+import { HooksWebpackPlugin } from '@midwayjs/bundler'
 
 const buildHooksRequest: IPlugin = (pluginApi) => {
   pluginApi.onGetWebpackConfig((config) => {

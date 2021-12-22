@@ -19,12 +19,10 @@
     "jiti": "1.12.9",
     "tslib": "^2.3.0",
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
-    "@midwayjs/unplugin-hooks": "^3.0.0-alpha.0",
+    "@midwayjs/bundler": "^3.0.0-alpha.0",
     "lodash": "^4.17.21",
     "upath": "^2.0.1",
-    "pkg-dir": "5.0.0"
-  },
-  "peerDependencies": {
+    "pkg-dir": "5.0.0",
     "@midwayjs/decorator": "beta",
     "@midwayjs/core": "beta"
   },

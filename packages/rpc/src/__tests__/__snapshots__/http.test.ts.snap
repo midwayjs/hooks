@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`buildRequestOptions 1`] = `
+Object {
+  "baseURL": "",
+  "data": Object {
+    "args": Array [
+      "a",
+      "b",
+    ],
+  },
+  "headers": undefined,
+  "method": "GET",
+  "query": undefined,
+  "url": "/foo/baz",
+  "withCredentials": false,
+}
+`;
+
+exports[`buildRequestOptions 2`] = `
+Object {
+  "baseURL": "",
+  "data": null,
+  "headers": undefined,
+  "method": "GET",
+  "query": undefined,
+  "url": "/foo",
+  "withCredentials": false,
+}
+`;
+
+exports[`http normal 1`] = `
+Array [
+  Array [
+    Object {
+      "baseURL": "",
+      "data": null,
+      "headers": undefined,
+      "method": "GET",
+      "query": undefined,
+      "url": "/foo",
+      "withCredentials": false,
+    },
+  ],
+]
+`;

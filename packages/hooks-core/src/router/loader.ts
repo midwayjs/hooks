@@ -8,16 +8,16 @@ import {
   FunctionId,
   HooksMiddleware,
 } from '../'
-import { HAS_METADATA_INPUT } from '../common/const'
+import { USE_INPUT_METADATA } from '../common/const'
 import { Decorate } from '../decorate/decorate'
 import {
   Get,
-  HTTPTrigger,
+  HttpTrigger,
   HttpTriggerType,
   Post,
 } from '../decorate/operator/http'
 import { BaseTrigger, OperatorType } from '../decorate/type'
-import { Route } from '../types'
+import { ApiFunction, Route } from '../types'
 import { AbstractRouter } from './base'
 
 export type LoadConfig = {
@@ -26,21 +26,17 @@ export type LoadConfig = {
   routes: Route[]
 }
 
-export type AsyncFunction = (...args: any[]) => Promise<any>
-
-type Trigger = BaseTrigger & HTTPTrigger
+type Trigger = BaseTrigger & HttpTrigger
 
 export type ApiRoute = {
-  fn: AsyncFunction
+  fn: ApiFunction
   file: string
   functionName: string
 
   trigger: Trigger
   middleware: HooksMiddleware[]
   functionId: FunctionId
-
-  // route: Route
-  hasMetadataInput?: boolean
+  useInputMetadata?: boolean
 }
 
 export function loadApiRoutes(
@@ -110,7 +106,7 @@ export function loadApiRoutesFromFile(
       functionId,
       trigger,
       middleware,
-      hasMetadataInput: Reflect.getMetadata(HAS_METADATA_INPUT, fn),
+      useInputMetadata: Reflect.getMetadata(USE_INPUT_METADATA, fn),
     })
   }
 

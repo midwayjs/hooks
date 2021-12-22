@@ -1,8 +1,9 @@
 {
-  "name": "@midwayjs/unplugin-hooks",
+  "name": "@midwayjs/bundler",
   "version": "3.0.0-alpha.0",
   "description": "Midway Hooks Plugin for Webpack & Vite",
-  "main": "dist/midwayjs-unplugin-hooks.cjs.js",
+  "main": "dist/midwayjs-bundler.cjs.js",
+  "module": "dist/midwayjs-bundler.esm.js",
   "keywords": [],
   "author": "",
   "license": "MIT",

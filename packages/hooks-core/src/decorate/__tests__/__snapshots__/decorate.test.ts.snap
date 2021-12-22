@@ -2,7 +2,6 @@
 
 exports[`defineMeta 1`] = `
 Object {
-  "HAS_METADATA_INPUT": true,
   "Http_Header": true,
   "Http_Param": true,
   "Http_Query": true,
@@ -18,5 +17,6 @@ Object {
     },
     "type": "HTTP",
   },
+  "USE_INPUT_METADATA": true,
 }
 `;

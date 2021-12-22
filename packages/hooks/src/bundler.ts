@@ -1,8 +1,5 @@
 import { ApiRoute, HttpTriggerType } from '@midwayjs/hooks-core'
-import {
-  AbstractBundlerAdapter,
-  createBundlerPlugin,
-} from '@midwayjs/unplugin-hooks'
+import { AbstractBundlerAdapter, createBundlerPlugin } from '@midwayjs/bundler'
 import { normalizeUrl } from './api/component'
 import { getRouter } from './internal/router'
 

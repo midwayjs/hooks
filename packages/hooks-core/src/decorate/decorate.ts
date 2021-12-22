@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { AsyncFunction, validateFunction } from '../'
 import { framework } from '../adapter/framework'
-import { HAS_METADATA_INPUT } from '../common/const'
+import { USE_INPUT_METADATA } from '../common/const'
 import { compose } from './compose'
 import { HttpMetadata } from './operator/http'
 import {
@@ -28,12 +28,12 @@ export function Decorate<
   validateFunction(handler, 'DecorateHandler')
 
   const operators = args as Operator<any>[]
-  const hasMetadataInput = operators.some((operator) => operator.input)
+  const useInputMetadata = operators.some((operator) => operator.input)
 
   const stack = []
   // TODO Direct call or frontend end invoke
   const executor = async function DecoratorExecutor(...args: any[]) {
-    const funcArgs = hasMetadataInput ? args.slice(0, -1) : args
+    const funcArgs = useInputMetadata ? args.slice(0, -1) : args
 
     let result: any
     stack.push(async ({ next }: ExecuteHelper) => {
@@ -42,6 +42,7 @@ export function Decorate<
     })
 
     await compose(stack, { getInputArguments: () => funcArgs })()
+
     // handle HttpCode/Redirect/etc.
     const responseMetadata = Reflect.getMetadata(
       HttpMetadata.RESPONSE,
@@ -76,6 +77,6 @@ export function Decorate<
     }
   }
 
-  Reflect.defineMetadata(HAS_METADATA_INPUT, hasMetadataInput, executor)
+  Reflect.defineMetadata(USE_INPUT_METADATA, useInputMetadata, executor)
   return executor as any
 }

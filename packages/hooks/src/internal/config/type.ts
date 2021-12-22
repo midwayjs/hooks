@@ -27,18 +27,10 @@ export interface ProjectConfig {
    * @description api routes directory
    * @example [{ baseDir: 'lambda', basePath: '/api' }]
    */
-  routes: MidwayRoute[]
+  routes?: MidwayRoute[]
   /**
    * @description customize the request client
    */
-  request?: {
-    /**
-     * @description midway hooks request client(npm package)
-     * @example axios
-     */
-    client?: string
-  }
-
   /**
    * @description customize dev server
    */
@@ -52,7 +44,6 @@ export interface ProjectConfig {
    * @description customize project build config
    */
   build?: {
-    viteOutDir: string
     outDir: string
   }
 }

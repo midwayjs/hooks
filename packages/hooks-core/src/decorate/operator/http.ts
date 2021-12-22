@@ -28,10 +28,16 @@ export enum HttpMethod {
   ALL = 'ALL',
 }
 
-export interface HTTPTrigger extends BaseTrigger {
+export interface HttpTrigger extends BaseTrigger {
   type: typeof HttpTriggerType
   method: HttpMethod
   path?: string
+}
+
+export type HttpInputMetadata = {
+  query?: Record<string, string>
+  headers?: Record<string, string>
+  params?: Record<string, string>
 }
 
 function createHTTPMethodOperator(method: HttpMethod) {
@@ -39,7 +45,7 @@ function createHTTPMethodOperator(method: HttpMethod) {
     return {
       name: method,
       metadata({ setMetadata }) {
-        setMetadata<HTTPTrigger>(OperatorType.Trigger, {
+        setMetadata<HttpTrigger>(OperatorType.Trigger, {
           type: HttpTriggerType,
           method,
           path,
