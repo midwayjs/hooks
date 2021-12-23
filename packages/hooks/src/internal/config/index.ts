@@ -55,7 +55,6 @@ function getConfigFromFile(cwd?: string) {
 }
 
 export function defineConfig(config: UserConfig): UserConfig {
-  validateArray(config.routes, 'defineConfig.routes')
   return config
 }
 

@@ -1,11 +1,11 @@
 import { IMidwayKoaApplication } from '@midwayjs/koa'
 import { closeApp, creatApp, createHttpRequest } from './utils'
 
-describe('test koa', () => {
+describe('test koa with fs-router', () => {
   let app: IMidwayKoaApplication
 
   beforeAll(async () => {
-    app = await creatApp('koa')
+    app = await creatApp('fs-router')
   })
 
   afterAll(async () => {

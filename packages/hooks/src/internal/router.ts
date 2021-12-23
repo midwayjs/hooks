@@ -23,7 +23,7 @@ export function getRouter(): AbstractRouter {
     })
   }
 
-  return new DecorateRouter({ source: join(root, source) })
+  return new DecorateRouter({ source: getSource() })
 }
 
 export function getSource() {
@@ -32,6 +32,7 @@ export function getSource() {
     source,
     build: { outDir },
   } = getConfig()
+
   return join(root, isDevelopment() ? source : outDir)
 }
 
