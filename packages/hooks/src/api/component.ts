@@ -69,7 +69,7 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
     return this.app.getFrameworkType()
   }
 
-  async handleApiRoutes(apis: ApiRoute[]): Promise<any> {
+  async registerApiRoutes(apis: ApiRoute[]): Promise<any> {
     for (const api of apis) {
       switch (api.trigger.type) {
         case 'HTTP':

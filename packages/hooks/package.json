@@ -37,6 +37,13 @@
     "access": "public"
   },
   "files": [
-    "dist"
-  ]
+    "dist",
+    "bundler"
+  ],
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "bundler.ts"
+    ]
+  }
 }
