@@ -10,7 +10,7 @@ Object {
   },
   "gateway": Array [],
   "request": Object {
-    "client": "@midwayjs/hooks/request",
+    "client": "@midwayjs/rpc",
   },
   "routes": Array [
     Object {
@@ -32,7 +32,7 @@ Object {
   },
   "gateway": Array [],
   "request": Object {
-    "client": "@midwayjs/hooks/request",
+    "client": "@midwayjs/rpc",
   },
   "routes": Array [
     Object {
@@ -54,7 +54,7 @@ Object {
   },
   "gateway": Array [],
   "request": Object {
-    "client": "@midwayjs/hooks/request",
+    "client": "@midwayjs/rpc",
   },
   "routes": Array [
     Object {

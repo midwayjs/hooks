@@ -7,7 +7,7 @@ import { getConfig, getProjectRoot } from './config'
 import { isDevelopment } from './util'
 import { join } from 'upath'
 
-export function getRouter(): AbstractRouter {
+export function getRouter(isDevelopment: boolean): AbstractRouter {
   const root = getProjectRoot()
   const {
     source,
@@ -18,12 +18,14 @@ export function getRouter(): AbstractRouter {
   if (Array.isArray(routes)) {
     return new FileSystemRouter({
       root,
-      source: isDevelopment() ? source : outDir,
+      source: isDevelopment ? source : outDir,
       routes,
     })
   }
 
-  return new DecorateRouter({ source: getSource() })
+  return new DecorateRouter({
+    source: join(root, isDevelopment ? source : outDir),
+  })
 }
 
 export function getSource() {

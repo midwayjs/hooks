@@ -2,7 +2,7 @@ import url from 'url'
 import type { IgnorePattern } from './type'
 
 // Ignore Vite dev server
-const VITE_REQUEST = ['@vite', '@react-refresh']
+const VITE_REQUEST = ['@vite', '@react-refresh', '__vite_ping']
 
 // Ref: https://github.com/vitejs/vite/blob/d156a9f364dddcfc41338f83e39db38a00a2ceb0/packages/vite/src/node/constants.ts#L49
 const KNOWN_ASSET_TYPES = [

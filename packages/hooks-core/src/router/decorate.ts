@@ -4,11 +4,14 @@ import urlJoin from 'proper-url-join'
 import some from 'lodash/some'
 import { OperatorType } from '../decorate/type'
 import { DECORATE_BASE_PATH } from '../common'
+import createJITI from 'jiti'
 
 export type DecoratorRouterConfig = {
   source?: string
   basePath?: string
 }
+
+const jiti = createJITI()
 
 // TODO support manual setup
 export class DecorateRouter extends AbstractRouter {
@@ -26,7 +29,7 @@ export class DecorateRouter extends AbstractRouter {
     }
 
     try {
-      return this.hasExportApiRoutes(require(file))
+      return this.hasExportApiRoutes(jiti(file))
     } catch (error) {
       console.log('require error', error)
       return false
@@ -34,7 +37,12 @@ export class DecorateRouter extends AbstractRouter {
   }
 
   hasExportApiRoutes(mod: any) {
-    return some(mod, (exp) => !!Reflect.getMetadata(OperatorType.Trigger, exp))
+    return some(
+      mod,
+      (exp) =>
+        typeof exp === 'function' &&
+        !!Reflect.getMetadata(OperatorType.Trigger, exp)
+    )
   }
 
   getFunctionId(

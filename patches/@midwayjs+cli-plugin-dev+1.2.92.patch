@@ -1,0 +1,13 @@
+diff --git a/node_modules/@midwayjs/cli-plugin-dev/dist/index.js b/node_modules/@midwayjs/cli-plugin-dev/dist/index.js
+index c3d57cc..c840e47 100644
+--- a/node_modules/@midwayjs/cli-plugin-dev/dist/index.js
++++ b/node_modules/@midwayjs/cli-plugin-dev/dist/index.js
+@@ -82,7 +82,7 @@ class DevPlugin extends command_core_1.BasePlugin {
+                 this.port = port;
+             }
+         }
+-        process.env.MIDWAY_LOCAL_DEV_PORT = String(this.port);
++        process.env.MIDWAY_LOCAL_DEV_PORT = process.env.MIDWAY_HTTP_PORT = String(this.port);
+         this.setStore('dev:port', this.port, true);
+         const cwd = this.core.cwd;
+         if (this.options.ts === undefined) {

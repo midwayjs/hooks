@@ -10,7 +10,6 @@ import {
 interface BundlerConfig {
   name: string
   router: AbstractRouter
-  unplugin?: UnpluginOptions
 }
 
 export abstract class AbstractBundlerAdapter {
@@ -24,8 +23,8 @@ export abstract class AbstractBundlerAdapter {
     return this.config.router
   }
 
-  getUnplugin() {
-    return this.config.unplugin || {}
+  getUnplugin(): Partial<UnpluginOptions> {
+    return {}
   }
 
   transformApiRoutes(apis: ApiRoute[]) {

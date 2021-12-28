@@ -83,7 +83,7 @@ export function Query<T extends Record<string, string>>(): Operator<{
 }
 
 export function Param<T extends Record<string, string>>(): Operator<{
-  param: T
+  params: T
 }> {
   return {
     name: HttpMetadata.PARAM,
@@ -95,7 +95,7 @@ export function Param<T extends Record<string, string>>(): Operator<{
 }
 
 export function Header<T extends Record<string, string>>(): Operator<{
-  header: T
+  headers: T
 }> {
   return {
     name: HttpMetadata.HEADER,

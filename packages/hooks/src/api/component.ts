@@ -30,6 +30,7 @@ import { RuntimeConfig } from '../internal/config/type'
 import { createFunctionContainer } from '../internal/container'
 import { createConfiguration } from './configuration'
 import { getRouter, getSource, isFileSystemRouter } from '../internal/router'
+import { isDevelopment } from '../internal/util'
 
 interface MidwayApplication extends IMidwayApplication {
   use?: (middleware: any) => void
@@ -44,7 +45,7 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
     namespace: '@midwayjs/hooks',
     async onReady(container: IMidwayContainer, app: MidwayApplication) {
       const source = getSource()
-      const router = getRouter()
+      const router = getRouter(isDevelopment())
 
       const midway = new MidwayFrameworkAdapter(router, app, container)
       midway.registerGlobalMiddleware(runtimeConfig.middleware)
@@ -112,8 +113,8 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
       parseArgs(ctx) {
         return ctx.request?.body?.args || []
       },
-      classDecorators: [Controller(url)],
-      handlerDecorators: [Method('/', { middleware: api.middleware })],
+      classDecorators: [Controller()],
+      handlerDecorators: [Method(url, { middleware: api.middleware })],
     })
   }
 

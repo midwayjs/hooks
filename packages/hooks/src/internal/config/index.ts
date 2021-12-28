@@ -30,7 +30,7 @@ export function getConfig(cwd?: string): ProjectConfig {
       outDir: './dist',
     },
     request: {
-      client: '@midwayjs/hooks/request',
+      client: '@midwayjs/rpc',
     },
   })
 }

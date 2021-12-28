@@ -24,7 +24,8 @@
     "upath": "^2.0.1",
     "pkg-dir": "5.0.0",
     "@midwayjs/decorator": "beta",
-    "@midwayjs/core": "beta"
+    "@midwayjs/core": "beta",
+    "@midwayjs/serverless-dev-pack": "^1.2.92"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.170",
@@ -38,12 +39,14 @@
   },
   "files": [
     "dist",
-    "bundler"
+    "bundler",
+    "internal"
   ],
   "preconstruct": {
     "entrypoints": [
       "index.ts",
-      "bundler.ts"
+      "bundler.ts",
+      "internal/index.ts"
     ]
   }
 }

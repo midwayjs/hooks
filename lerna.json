@@ -1,5 +1,5 @@
 {
-  "packages": ["packages/*", "examples/*"],
+  "packages": ["packages/*", "examples/midway/*"],
   "command": {
     "bootstrap": {
       "noCi": true,

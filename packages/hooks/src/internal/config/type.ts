@@ -58,4 +58,4 @@ export type RuntimeConfig = {
 /**
  * @description user define config
  */
-export interface UserConfig extends Omit<ProjectConfig, 'build'> {}
+export interface UserConfig extends ProjectConfig {}

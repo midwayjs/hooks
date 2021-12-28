@@ -1,0 +1,33 @@
+diff --git a/node_modules/@midwayjs/cli-plugin-build/dist/index.js b/node_modules/@midwayjs/cli-plugin-build/dist/index.js
+index be0c646..c9c49d5 100644
+--- a/node_modules/@midwayjs/cli-plugin-build/dist/index.js
++++ b/node_modules/@midwayjs/cli-plugin-build/dist/index.js
+@@ -76,9 +76,9 @@ class BuildPlugin extends command_core_1.BasePlugin {
+         ].find(file => (0, fs_extra_1.existsSync)(file));
+         if (midwayConfig) {
+             this.isMidwayHooks = true;
+-            const modInfo = (0, command_core_1.findNpmModule)(this.core.cwd, '@midwayjs/hooks-core');
++            const modInfo = (0, command_core_1.findNpmModule)(this.core.cwd, '@midwayjs/hooks');
+             if (modInfo) {
+-                const { getConfig } = require(modInfo);
++                const { getConfig } = require(`${modInfo}/internal`);
+                 const config = getConfig(this.core.cwd);
+                 if (config.source) {
+                     this.options.srcDir = config.source;
+diff --git a/node_modules/@midwayjs/cli-plugin-build/src/index.ts b/node_modules/@midwayjs/cli-plugin-build/src/index.ts
+index 98fb7e2..713fd55 100644
+--- a/node_modules/@midwayjs/cli-plugin-build/src/index.ts
++++ b/node_modules/@midwayjs/cli-plugin-build/src/index.ts
+@@ -81,9 +81,10 @@ export class BuildPlugin extends BasePlugin {
+     ].find(file => existsSync(file));
+     if (midwayConfig) {
+       this.isMidwayHooks = true;
+-      const modInfo = findNpmModule(this.core.cwd, '@midwayjs/hooks-core');
++      const modInfo = findNpmModule(this.core.cwd, '@midwayjs/hooks');
+       if (modInfo) {
+-        const { getConfig } = require(modInfo);
++        const internalApi = `${modInfo}/internal`
++        const { getConfig } = require(internalApi);
+         const config = getConfig(this.core.cwd);
+         if (config.source) {
+           this.options.srcDir = config.source;
