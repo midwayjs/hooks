@@ -1,0 +1,20 @@
+{
+  "name": "api-hello-world",
+  "version": "2.3.0",
+  "private": true,
+  "scripts": {
+    "start": "node scripts/bootstrap",
+    "dev": "mw dev --fast",
+    "build": "mw build"
+  },
+  "dependencies": {
+    "@midwayjs/hooks": "^3.0.0-alpha.0",
+    "@midwayjs/koa": "beta",
+    "@midwayjs/bootstrap": "beta"
+  },
+  "devDependencies": {
+    "@midwayjs/cli": "^1.2.74",
+    "@midwayjs/cli-plugin-build": "^1.2.74",
+    "typescript": "^4.3.5"
+  }
+}

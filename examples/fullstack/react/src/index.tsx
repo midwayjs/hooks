@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { useRequest } from 'ahooks';
 import { getDate } from './api/date';
-import './index.css';
 import fetchGithubStars from './api/star';
 import { getBookByParams, getBookByQuery } from './api/book';
+import './index.css';
 
 function App() {
   const { data: date } = useRequest(() => getDate());
