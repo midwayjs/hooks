@@ -15,5 +15,10 @@ export async function createApplication(
 ) {
   framework = frameworkAdapter
   const apis = loadApiRoutes(source, framework.router)
+
+  if (apis.length === 0) {
+    console.warn('No api routes found, source is:', source)
+  }
+
   await framework.registerApiRoutes(apis)
 }

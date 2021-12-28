@@ -19,6 +19,9 @@ import {
 import { BaseTrigger, OperatorType } from '../decorate/type'
 import { ApiFunction, Route } from '../types'
 import { AbstractRouter } from './base'
+import { createDebug } from '../common'
+
+const debug = createDebug('hooks-core: loader')
 
 export type LoadConfig = {
   root: string
@@ -53,9 +56,12 @@ export function loadApiRoutes(
     ],
   }).filter((file) => router.isApiFile(file))
 
+  debug('api files to load: %o', files)
+
   const routes: ApiRoute[] = []
   for (const file of files) {
     const fileRoutes = loadApiRoutesFromFile(require(file), file, router)
+    debug('load api routes from file: %s %o', file, fileRoutes)
     routes.push(...fileRoutes)
   }
 

@@ -17,6 +17,7 @@ import {
   als,
   ApiRoute,
   createApplication,
+  createDebug,
   HooksMiddleware,
   isHooksMiddleware,
   ResponseMetadata,
@@ -31,6 +32,8 @@ import { createFunctionContainer } from '../internal/container'
 import { createConfiguration } from './configuration'
 import { getRouter, getSource, isFileSystemRouter } from '../internal/router'
 import { isDevelopment } from '../internal/util'
+
+const debug = createDebug('hooks:component')
 
 interface MidwayApplication extends IMidwayApplication {
   use?: (middleware: any) => void
@@ -106,6 +109,8 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
     )
     const Method = this.methodDecorators[trigger.method]
     const url = normalizeUrl(this.router, api)
+
+    debug('create http api: %s %s', trigger.method, url)
 
     return createFunctionContainer({
       fn,
