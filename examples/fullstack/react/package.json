@@ -8,15 +8,13 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "tsc && vite build",
     "build:server": "mw build",
-    "serve": "vite preview",
-    "test": "jest"
+    "serve": "vite preview"
   },
   "dependencies": {
     "@midwayjs/hooks": "^3.0.0-alpha.0",
     "@midwayjs/rpc": "^3.0.0-alpha.0",
     "@midwayjs/koa": "beta",
     "ahooks": "^3.1.2",
-    "koa-bodyparser": "^4.3.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "@midwayjs/bootstrap": "beta"
@@ -24,8 +22,6 @@
   "devDependencies": {
     "@midwayjs/cli": "^1.2.74",
     "@midwayjs/cli-plugin-build": "^1.2.74",
-    "@types/jest": "^26.0.23",
-    "@types/koa-bodyparser": "^4.3.1",
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.8",
     "@vitejs/plugin-react": "^1.1.3",

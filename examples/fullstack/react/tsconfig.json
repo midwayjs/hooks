@@ -15,7 +15,7 @@
     "jsx": "react",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": ["vite/client", "jest"],
+    "types": ["vite/client"],
     "outDir": "./dist/server"
   },
   "include": ["./src"],
