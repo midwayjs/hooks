@@ -23,11 +23,13 @@
     "upath": "^2.0.1",
     "pkg-dir": "5.0.0",
     "@midwayjs/decorator": "beta",
-    "@midwayjs/core": "beta"
+    "@midwayjs/core": "beta",
+    "@midwayjs/command-core": "^1.2.92",
+    "@midwayjs/cli-plugin-build": "^1.2.92",
+    "@midwayjs/serverless-dev-pack": "^1.2.92",
+    "@midwayjs/bundler": "^3.0.0-alpha.0"
   },
   "devDependencies": {
-    "@midwayjs/serverless-dev-pack": "^1.2.92",
-    "@midwayjs/bundler": "^3.0.0-alpha.0",
     "@types/lodash": "^4.14.170",
     "@midwayjs/koa": "beta",
     "@midwayjs/mock": "beta",

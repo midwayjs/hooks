@@ -34,7 +34,6 @@
     "@preconstruct/cli": "^2.1.0",
     "@types/jest": "27",
     "codecov": "^3.8.2",
-    "esbuild": "^0.9.7",
     "execa": "^4.0.3",
     "husky": "^4.2.3",
     "jest": "27",

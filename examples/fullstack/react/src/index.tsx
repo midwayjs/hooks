@@ -19,26 +19,36 @@ function App() {
   return (
     <div className="app">
       <img src="/logo.png" className="logo"></img>
-      <h1>Hello Midway Hooks</h1>
+      <h2>Hello Midway Hooks</h2>
+      <p style={{ textAlign: 'center' }}>
+        Edit <code>src/api/*.ts</code> and watch it change.
+        <br />
+        You can also open Devtools to see the request details.
+      </p>
+      <p></p>
       <div>
         <p>
-          <span className="lambda">{'λ GET'}</span>
-          <span className="lambda">{'api/date.ts -> getDate()'}</span>
+          <span className="lambda">λ GET</span>
+          <span className="lambda">getDate()</span>
           <span>Server Date: {date}</span>
         </p>
         <p>
-          <span className="lambda">{'λ POST'}</span>
-          <span className="lambda">{`api/star.ts -> fetchStars('midwayjs/midway')`}</span>
+          <span className="lambda">λ POST</span>
+          <span className="lambda">fetchStars('midwayjs/midway')</span>
           <span>Github Stars: {repo?.stars}</span>
         </p>
         <p>
-          <span className="lambda">{'λ GET'}</span>
-          <span className="lambda">{`api/book.ts -> getBookByParams({ param: { id: '1' } })`}</span>
+          <span className="lambda">λ GET</span>
+          <span className="lambda">
+            {`getBookByParams({ params: { id: '1' } })`}
+          </span>
           <span>Book title: {book?.title}</span>
         </p>
         <p>
-          <span className="lambda">{'λ GET'}</span>
-          <span className="lambda">{`api/book.ts -> getBookByQuery({ query: { id: '1' } })`}</span>
+          <span className="lambda">λ GET</span>
+          <span className="lambda">
+            {`getBookByQuery({ query: { id: '2' } })`}
+          </span>
           <span>Book title: {book2?.title}</span>
         </p>
       </div>

@@ -52,7 +52,7 @@ export const getBookByParams = Decorate(
     const { id } = ctx.params;
     const book = books.find((b) => b.id === Number(id));
     if (!book) {
-      ctx.throw(404, 'book not found');
+      ctx.throw(400, 'book not found');
     }
     return book;
   }
@@ -66,7 +66,7 @@ export const getBookByQuery = Decorate(
     const { id } = ctx.query;
     const book = books.find((b) => b.id === Number(id));
     if (!book) {
-      ctx.throw(404, 'book not found');
+      ctx.throw(400, 'book not found');
     }
     return book;
   }
