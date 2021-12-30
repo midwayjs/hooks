@@ -22,6 +22,7 @@ import {
   loadApiModule,
   ResponseMetadata,
   ResponseMetaData,
+  setupFramework,
   urlJoin,
   useContext,
   validateArray,
@@ -97,6 +98,7 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
     public container: IMidwayContainer
   ) {
     super(router)
+    setupFramework(this)
   }
 
   private get frameworkType() {

@@ -46,7 +46,7 @@ export function loadApiModule(
   file: string,
   router: AbstractRouter
 ) {
-  const apiRoutes: ApiRoute[] = []
+  const apis: ApiRoute[] = []
   const funcs = pickBy(mod, isFunction)
 
   for (let [name, fn] of Object.entries(funcs)) {
@@ -79,7 +79,7 @@ export function loadApiModule(
     const fileMiddleware = mod?.config?.middleware || []
     const middleware = [...fnMiddleware, ...fileMiddleware]
 
-    apiRoutes.push({
+    apis.push({
       fn,
       file,
       functionName,
@@ -90,5 +90,5 @@ export function loadApiModule(
     })
   }
 
-  return apiRoutes
+  return apis
 }

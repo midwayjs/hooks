@@ -7,3 +7,6 @@ export abstract class AbstractFrameworkAdapter {
 }
 
 export let framework: AbstractFrameworkAdapter
+export function setupFramework(adapter: AbstractFrameworkAdapter) {
+  framework = adapter
+}
