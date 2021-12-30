@@ -4,7 +4,7 @@ import {
   AbstractRouter,
   ApiRoute,
   EXPORT_DEFAULT_FUNCTION_ALIAS,
-  loadApiRoutesFromFile,
+  loadApiModule,
 } from '@midwayjs/hooks-core'
 
 interface BundlerConfig {
@@ -105,7 +105,7 @@ export function createBundlerPlugin(adapter: AbstractBundlerAdapter) {
         return adapter.getRouter().isApiFile(id)
       },
       async transform(code: string, id: string) {
-        const apis = loadApiRoutesFromFile(require(id), id, adapter.getRouter())
+        const apis = loadApiModule(require(id), id, adapter.getRouter())
         const transformedApis = adapter.transformApiRoutes(apis)
         return adapter.generateClient(transformedApis)
       },

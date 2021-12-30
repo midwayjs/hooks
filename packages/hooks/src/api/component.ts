@@ -16,10 +16,10 @@ import {
   AbstractRouter,
   als,
   ApiRoute,
-  createApplication,
   createDebug,
   HooksMiddleware,
   isHooksMiddleware,
+  loadApiModule,
   ResponseMetadata,
   ResponseMetaData,
   urlJoin,
@@ -30,8 +30,10 @@ import {
 import { RuntimeConfig } from '../internal/config/type'
 import { createFunctionContainer } from '../internal/container'
 import { createConfiguration } from './configuration'
-import { getRouter, getSource, isFileSystemRouter } from '../internal/router'
+import { getRouter, getSource, isFileSystemRouter } from '../internal'
 import { isDevelopment } from '../internal/util'
+import { run } from '@midwayjs/glob'
+import flattenDeep from 'lodash/flattenDeep'
 
 const debug = createDebug('hooks:component')
 
@@ -53,11 +55,39 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
       const midway = new MidwayFrameworkAdapter(router, app, container)
       midway.registerGlobalMiddleware(runtimeConfig.middleware)
 
-      await createApplication(source, midway)
+      const apis = await loadApiModules(source, router)
+      if (apis.length === 0) {
+        console.warn('No api routes found, source is:', source)
+      }
+
+      await midway.registerApiRoutes(apis)
     },
   })
 
   return { Configuration }
+}
+
+async function loadApiModules(source: string, router: AbstractRouter) {
+  const files = run(['**/*.{ts,js}'], {
+    cwd: source,
+    ignore: [
+      '**/node_modules/**',
+      '**/*.d.ts',
+      '**/*.{test,spec}.{ts,tsx,js,jsx,mjs}',
+    ],
+  })
+
+  debug('api files to load: %o', files)
+
+  const routes = files
+    .filter((file) => router.isApiFile(file))
+    .map((file) => {
+      const apis = loadApiModule(require(file), file, router)
+      debug('load api routes from file: %s %o', file, apis)
+      return apis
+    })
+
+  return flattenDeep(routes)
 }
 
 export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {

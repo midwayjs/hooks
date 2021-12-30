@@ -3,7 +3,7 @@ import createJITI from 'jiti'
 import defaultsDeep from 'lodash/defaultsDeep'
 import { sync } from 'pkg-dir'
 import path from 'upath'
-import { PRE_DEFINE_PROJECT_CONFIG, validateArray } from '@midwayjs/hooks-core'
+import { PRE_DEFINE_PROJECT_CONFIG } from '@midwayjs/hooks-core'
 import { ignorePattern } from './ignorePattern'
 import { ProjectConfig, UserConfig } from './type'
 

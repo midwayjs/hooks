@@ -1,7 +1,6 @@
 import parseFunctionArgs from 'fn-args'
 import isFunction from 'lodash/isFunction'
 import pickBy from 'lodash/pickBy'
-import { run } from '@midwayjs/glob'
 import {
   ApiModule,
   EXPORT_DEFAULT_FUNCTION_ALIAS,
@@ -42,33 +41,7 @@ export type ApiRoute = {
   useInputMetadata?: boolean
 }
 
-export function loadApiRoutes(
-  source: string,
-  router: AbstractRouter
-): ApiRoute[] {
-  const files = run(['**/*.{ts,tsx,js,jsx,mjs}'], {
-    cwd: source,
-    ignore: [
-      '**/*.test.{ts,tsx,js,jsx,mjs}',
-      '**/*.spec.{ts,tsx,js,jsx,mjs}',
-      '**/*.d.{ts,tsx}',
-      '**/node_modules/**',
-    ],
-  }).filter((file) => router.isApiFile(file))
-
-  debug('api files to load: %o', files)
-
-  const routes: ApiRoute[] = []
-  for (const file of files) {
-    const fileRoutes = loadApiRoutesFromFile(require(file), file, router)
-    debug('load api routes from file: %s %o', file, fileRoutes)
-    routes.push(...fileRoutes)
-  }
-
-  return routes
-}
-
-export function loadApiRoutesFromFile(
+export function loadApiModule(
   mod: ApiModule,
   file: string,
   router: AbstractRouter
@@ -99,6 +72,7 @@ export function loadApiRoutesFromFile(
         functionName,
         exportDefault
       )
+      debug('trigger: %o', trigger)
     }
 
     const fnMiddleware = Reflect.getMetadata(OperatorType.Middleware, fn) || []

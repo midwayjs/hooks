@@ -27,7 +27,8 @@
     "@midwayjs/command-core": "^1.2.92",
     "@midwayjs/cli-plugin-build": "^1.2.92",
     "@midwayjs/serverless-dev-pack": "^1.2.92",
-    "@midwayjs/bundler": "^3.0.0-alpha.0"
+    "@midwayjs/bundler": "^3.0.0-alpha.0",
+    "@midwayjs/glob": "^1.0.6"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.170",

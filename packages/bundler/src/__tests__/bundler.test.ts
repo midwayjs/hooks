@@ -6,7 +6,7 @@ import {
   FileSystemRouter,
   Get,
   Head,
-  loadApiRoutesFromFile,
+  loadApiModule,
   Operator,
   OperatorType,
   Options,
@@ -47,7 +47,7 @@ it('generate client', async () => {
   const testBundlerAdapter = new TestBundlerAdapter()
   expect(testBundlerAdapter.generateClient([])).toMatchSnapshot()
 
-  const apis = loadApiRoutesFromFile(
+  const apis = loadApiModule(
     {
       get: Decorate(Get(), async () => {}),
       post: Decorate(Post(), async () => {}),
@@ -80,7 +80,7 @@ it('with requestClient should not generate client', async () => {
 
   const testBundlerAdapter = new TestBundlerAdapter()
 
-  const apis = loadApiRoutesFromFile(
+  const apis = loadApiModule(
     {
       custom: Decorate(CustomTrigger(), async () => {}),
     },
@@ -110,7 +110,7 @@ it('with requestClient generate client', async () => {
 
   const testBundlerAdapter = new TestBundlerAdapter()
 
-  const apis = loadApiRoutesFromFile(
+  const apis = loadApiModule(
     {
       get: Decorate(Get(), async () => {}),
       custom: Decorate(CustomTrigger(), async () => {}),
@@ -141,7 +141,7 @@ it('with requestClient generate multi client', async () => {
 
   const testBundlerAdapter = new TestBundlerAdapter()
 
-  const apis = loadApiRoutesFromFile(
+  const apis = loadApiModule(
     {
       get: Decorate(Get(), async () => {}),
       custom: Decorate(CustomTrigger(), async () => {}),
