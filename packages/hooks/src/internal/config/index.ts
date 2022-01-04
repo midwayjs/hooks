@@ -21,14 +21,9 @@ export function getConfig(cwd?: string): ProjectConfig {
     : getConfigFromFile(cwd)
 
   return defaultsDeep({}, userConfig, {
-    source: './src/apis',
-    dev: {
-      ignorePattern,
-    },
-    gateway: [],
-    build: {
-      outDir: './dist',
-    },
+    source: './src/api',
+    dev: { ignorePattern },
+    build: { outDir: './dist' },
   })
 }
 

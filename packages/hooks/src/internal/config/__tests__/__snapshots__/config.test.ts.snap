@@ -8,7 +8,6 @@ Object {
   "dev": Object {
     "ignorePattern": [Function],
   },
-  "gateway": Array [],
   "routes": Array [
     Object {
       "baseDir": "lambda",
@@ -27,7 +26,6 @@ Object {
   "dev": Object {
     "ignorePattern": [Function],
   },
-  "gateway": Array [],
   "routes": Array [
     Object {
       "baseDir": "lambda",
@@ -46,7 +44,6 @@ Object {
   "dev": Object {
     "ignorePattern": [Function],
   },
-  "gateway": Array [],
   "routes": Array [
     Object {
       "baseDir": "lambda",

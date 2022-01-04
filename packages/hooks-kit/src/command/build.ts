@@ -1,11 +1,12 @@
 import { CAC } from 'cac'
 import { build, InlineConfig, mergeConfig } from 'vite'
 import colors from 'picocolors'
-import { resolveConfig } from '../config'
 import { join, resolve } from 'path'
 import { CommandCore } from '@midwayjs/command-core'
 import { BuildPlugin } from '@midwayjs/cli-plugin-build'
 import fs from 'fs'
+import { getProjectRoot } from '@midwayjs/hooks/internal'
+import { resolveConfig } from '../config'
 
 type BuildOptions = {
   outDir: string
@@ -14,14 +15,14 @@ type BuildOptions = {
 export function setupBuildCommand(cli: CAC) {
   cli
     .command('build [root]')
-    .option('--outDir <dir>', `[string] output directory (default: dist)`, {
-      default: 'dist',
-    })
+    .option('--outDir <dir>', `[string] output directory (default: dist)`)
     .action(async (root: string, options: BuildOptions) => {
-      root = root ? resolve(root) : process.cwd()
+      const projectRoot = getProjectRoot()
+      const userConfig = resolveConfig(projectRoot)
+      const outDir = options.outDir || userConfig.build.outDir
+      root = root ? resolve(root) : projectRoot
 
-      const client = join(options.outDir, '_client')
-      const userConfig = resolveConfig(root)
+      const client = join(outDir, '_client')
       const defaultConfig: InlineConfig = {
         root,
         configFile: false,
@@ -33,9 +34,9 @@ export function setupBuildCommand(cli: CAC) {
       }
 
       try {
-        await build(mergeConfig(defaultConfig, userConfig))
-        createRender(join(root, options.outDir))
-        await buildServer(root)
+        await build(mergeConfig(defaultConfig, userConfig?.vite))
+        createRender(join(root, outDir))
+        await buildServer(root, outDir)
       } catch (e) {
         console.error(colors.red(`error during build:\n${e.stack}`), {
           error: e,
@@ -68,12 +69,15 @@ function createRender(dist: string) {
   fs.writeFileSync(join(dist, '_render.js'), code, 'utf-8')
 }
 
-async function buildServer(cwd: string) {
+async function buildServer(cwd: string, outDir: string) {
   const core = new CommandCore({
     commands: ['build'],
     cwd,
     log: {
       log: () => {},
+    },
+    options: {
+      outDir,
     },
   })
   core.addPlugin(BuildPlugin)

@@ -2,15 +2,13 @@ import { CAC } from 'cac'
 import { createServer, InlineConfig, mergeConfig } from 'vite'
 import { resolveConfig } from '../config'
 import { resolve } from 'path'
-import { setConfig } from '@midwayjs/hooks/internal'
+import { getProjectRoot, setConfig } from '@midwayjs/hooks/internal'
 
 type DevOptions = {
   port: number
   host: string
   force: boolean
 }
-
-setConfig({ source: 'src/api' })
 
 export function setupDevCommand(cli: CAC) {
   cli
@@ -28,7 +26,8 @@ export function setupDevCommand(cli: CAC) {
       }
     )
     .action(async (root: string, options: DevOptions) => {
-      root = root ? resolve(root) : process.cwd()
+      root = root ? resolve(root) : getProjectRoot()
+      setConfig({ source: 'src/api' })
 
       const userConfig = resolveConfig(root)
       const defaultConfig: InlineConfig = {
@@ -39,7 +38,7 @@ export function setupDevCommand(cli: CAC) {
           host: options.host,
           force: options.force,
         },
-        plugins: [require('@midwayjs/hooks/bundler').vite()] as any,
+        plugins: [require('@midwayjs/hooks/bundler').vite()],
       }
 
       const server = await createServer(
