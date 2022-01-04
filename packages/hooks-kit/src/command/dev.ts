@@ -1,5 +1,5 @@
 import { CAC } from 'cac'
-import { createServer, mergeConfig, InlineConfig } from 'vite'
+import { createServer, InlineConfig, mergeConfig } from 'vite'
 import { resolveConfig } from '../config'
 import { resolve } from 'path'
 import { setConfig } from '@midwayjs/hooks/internal'

@@ -35,6 +35,7 @@ class MidwayBundlerAdapter extends AbstractBundlerAdapter {
           return null
         },
         async configureServer(server) {
+          // TODO support custom plugins
           const devPack = getExpressDevPack(root, {
             sourceDir: join(root, projectConfig.source),
             plugins: [],

@@ -1,7 +1,7 @@
 import {
   HttpInputMetadata,
-  RequestRoute,
   HttpTrigger,
+  RequestRoute,
 } from '@midwayjs/hooks-core'
 import { buildRPCArgs, parseRequestArgs } from '../util'
 

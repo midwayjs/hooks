@@ -1,8 +1,8 @@
 import type {
-  HttpTrigger,
-  RequestArgs,
   HttpInputMetadata,
   HttpRequestOptions,
+  HttpTrigger,
+  RequestArgs,
 } from '@midwayjs/hooks-core'
 import { buildRPCArgs, parseRequestArgs } from './util'
 import compose from 'koa-compose'
