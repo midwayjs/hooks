@@ -3,7 +3,7 @@ import { PRE_DEFINE_PROJECT_CONFIG } from '@midwayjs/hooks-core'
 import { getConfig, setConfig } from '../'
 
 beforeEach(() => {
-  globalThis[PRE_DEFINE_PROJECT_CONFIG] = undefined
+  delete process.env[PRE_DEFINE_PROJECT_CONFIG]
 })
 
 test('load pre defined config', async () => {

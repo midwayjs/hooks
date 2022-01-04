@@ -16,9 +16,9 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "types": ["vite/client"],
-    "outDir": "./dist/server"
+    "outDir": "./dist"
   },
-  "include": ["./src"],
+  "include": ["./src", "dist/host.js"],
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"

@@ -12,12 +12,12 @@ export function getProjectRoot(cwd?: string) {
 }
 
 export function setConfig(config: Partial<ProjectConfig>) {
-  globalThis[PRE_DEFINE_PROJECT_CONFIG] = config
+  process.env[PRE_DEFINE_PROJECT_CONFIG] = JSON.stringify(config)
 }
 
 export function getConfig(cwd?: string): ProjectConfig {
-  const userConfig = globalThis[PRE_DEFINE_PROJECT_CONFIG]
-    ? globalThis[PRE_DEFINE_PROJECT_CONFIG]
+  const userConfig: UserConfig = process.env[PRE_DEFINE_PROJECT_CONFIG]
+    ? JSON.parse(process.env[PRE_DEFINE_PROJECT_CONFIG])
     : getConfigFromFile(cwd)
 
   return defaultsDeep({}, userConfig, {
@@ -29,13 +29,10 @@ export function getConfig(cwd?: string): ProjectConfig {
     build: {
       outDir: './dist',
     },
-    request: {
-      client: '@midwayjs/rpc',
-    },
   })
 }
 
-function getConfigFromFile(cwd?: string) {
+export function getConfigFromFile<T>(cwd?: string): T {
   const root = getProjectRoot(cwd)
 
   const configs = {
@@ -50,8 +47,8 @@ function getConfigFromFile(cwd?: string) {
   }
 
   return existsSync(configs.ts)
-    ? requireByJiti<UserConfig>(configs.ts)
-    : requireByJiti<UserConfig>(configs.js)
+    ? requireByJiti(configs.ts)
+    : requireByJiti(configs.js)
 }
 
 export function defineConfig(config: UserConfig): UserConfig {

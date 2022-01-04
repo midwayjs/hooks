@@ -1,8 +1,8 @@
-import { defineConfig } from '@midwayjs/hooks';
+import react from '@vitejs/plugin-react';
+import { defineConfig } from '@midwayjs/hooks-kit';
 
 export default defineConfig({
-  source: './src/api',
-  build: {
-    outDir: './dist/server',
+  vite: {
+    plugins: [react()],
   },
 });

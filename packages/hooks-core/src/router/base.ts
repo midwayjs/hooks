@@ -16,7 +16,12 @@ export abstract class AbstractRouter {
       '.test.jsx',
       '.test.mjs',
     ]
-    return !testExt.some((ext) => file.endsWith(ext))
+
+    if (testExt.some((ext) => file.endsWith(ext))) {
+      return false
+    }
+
+    return !file.includes('_client')
   }
 
   abstract isApiFile(file: string): boolean

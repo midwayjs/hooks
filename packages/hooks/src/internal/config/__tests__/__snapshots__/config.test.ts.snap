@@ -9,9 +9,6 @@ Object {
     "ignorePattern": [Function],
   },
   "gateway": Array [],
-  "request": Object {
-    "client": "@midwayjs/rpc",
-  },
   "routes": Array [
     Object {
       "baseDir": "lambda",
@@ -31,9 +28,6 @@ Object {
     "ignorePattern": [Function],
   },
   "gateway": Array [],
-  "request": Object {
-    "client": "@midwayjs/rpc",
-  },
   "routes": Array [
     Object {
       "baseDir": "lambda",
@@ -53,9 +47,6 @@ Object {
     "ignorePattern": [Function],
   },
   "gateway": Array [],
-  "request": Object {
-    "client": "@midwayjs/rpc",
-  },
   "routes": Array [
     Object {
       "baseDir": "lambda",

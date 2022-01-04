@@ -10,7 +10,7 @@ export enum HttpMetadata {
   RESPONSE = 'Http_Response',
 }
 
-export enum ResponseMetadata {
+export enum ResponseMetaType {
   CODE = 'Http_Response_Code',
   HEADER = 'Http_Response_Header',
   CONTENT_TYPE = 'Http_Response_ContentType',
@@ -107,7 +107,7 @@ export function Header<T extends Record<string, string>>(): Operator<{
 }
 
 export type ResponseMetaData = {
-  type: ResponseMetadata
+  type: ResponseMetaType
   code?: number
   header?: {
     key: string
@@ -121,7 +121,7 @@ export function HttpCode(code: number): Operator<void> {
   return {
     name: 'HttpCode',
     metadata(helper) {
-      setResponseMetaData(helper, ResponseMetadata.CODE, { code })
+      setResponseMetaData(helper, ResponseMetaType.CODE, { code })
     },
   }
 }
@@ -130,7 +130,7 @@ export function SetHeader(key: string, value: string): Operator<void> {
   return {
     name: 'SetHeader',
     metadata(helper) {
-      setResponseMetaData(helper, ResponseMetadata.HEADER, {
+      setResponseMetaData(helper, ResponseMetaType.HEADER, {
         header: {
           key,
           value,
@@ -144,7 +144,7 @@ export function Redirect(url: string, code?: number): Operator<void> {
   return {
     name: 'Redirect',
     metadata(helper) {
-      setResponseMetaData(helper, ResponseMetadata.REDIRECT, {
+      setResponseMetaData(helper, ResponseMetaType.REDIRECT, {
         url,
         code,
       })
@@ -156,7 +156,7 @@ export function ContentType(contentType: string): Operator<void> {
   return {
     name: 'ContentType',
     metadata(helper) {
-      setResponseMetaData(helper, ResponseMetadata.CONTENT_TYPE, {
+      setResponseMetaData(helper, ResponseMetaType.CONTENT_TYPE, {
         contentType,
       })
     },
@@ -165,7 +165,7 @@ export function ContentType(contentType: string): Operator<void> {
 
 function setResponseMetaData(
   helper: MetadataHelper,
-  type: ResponseMetadata,
+  type: ResponseMetaType,
   value: Partial<ResponseMetaData>
 ) {
   const responseMetaData =

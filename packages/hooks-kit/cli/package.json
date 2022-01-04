@@ -1,0 +1,4 @@
+{
+  "main": "dist/midwayjs-hooks-kit-cli.cjs.js",
+  "module": "dist/midwayjs-hooks-kit-cli.esm.js"
+}
