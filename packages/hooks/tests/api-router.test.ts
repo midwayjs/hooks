@@ -1,18 +1,18 @@
 import { IMidwayKoaApplication } from '@midwayjs/koa'
 import { closeApp, creatApp, createHttpRequest } from './utils'
 
-describe('test koa with decorate-router', () => {
+describe('test koa with api router', () => {
   let app: IMidwayKoaApplication
 
   beforeAll(async () => {
-    app = await creatApp('decorate-router')
+    app = await creatApp('api-router')
   })
 
   afterAll(async () => {
     await closeApp(app)
   })
 
-  test('decorate case', async () => {
+  test('api case', async () => {
     const get = await createHttpRequest(app).get('/rpc/get')
     expect(get.status).toEqual(200)
     expect(get.text).toEqual('/rpc/get')

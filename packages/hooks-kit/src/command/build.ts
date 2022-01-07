@@ -48,11 +48,11 @@ export function setupBuildCommand(cli: CAC) {
 function createRender(dist: string) {
   const clientDir = join(dist, '_client')
   const code = `
-  const { Decorate, Get, Middleware } = require('@midwayjs/hooks');
+  const { Api, Get, Middleware } = require('@midwayjs/hooks');
   const static = require('koa-static-cache');
   const path = require('path');
 
-  exports.default = Decorate(
+  exports.default = Api(
     Get('/*'),
     Middleware(
       static({

@@ -1,4 +1,5 @@
 export const PRE_DEFINE_PROJECT_CONFIG = 'PRE_DEFINE_PROJECT_CONFIG'
 export const EXPORT_DEFAULT_FUNCTION_ALIAS = '$default'
 export const USE_INPUT_METADATA = 'USE_INPUT_METADATA'
-export const DECORATE_BASE_PATH = '/rpc'
+// TODO use /api
+export const API_BASE_PATH = '/rpc'

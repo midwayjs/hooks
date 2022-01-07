@@ -1,7 +1,7 @@
 import {
   All,
   BaseTrigger,
-  Decorate,
+  Api,
   Delete,
   FileSystemRouter,
   Get,
@@ -49,14 +49,14 @@ it('generate client', async () => {
 
   const apis = loadApiModule(
     {
-      get: Decorate(Get(), async () => {}),
-      post: Decorate(Post(), async () => {}),
-      put: Decorate(Put(), async () => {}),
-      del: Decorate(Delete(), async () => {}),
-      patch: Decorate(Patch(), async () => {}),
-      head: Decorate(Head(), async () => {}),
-      options: Decorate(Options(), async () => {}),
-      default: Decorate(All(), async () => {}),
+      get: Api(Get(), async () => {}),
+      post: Api(Post(), async () => {}),
+      put: Api(Put(), async () => {}),
+      del: Api(Delete(), async () => {}),
+      patch: Api(Patch(), async () => {}),
+      head: Api(Head(), async () => {}),
+      options: Api(Options(), async () => {}),
+      default: Api(All(), async () => {}),
     },
     '/index.ts',
     testBundlerAdapter.getRouter()
@@ -82,7 +82,7 @@ it('with requestClient should not generate client', async () => {
 
   const apis = loadApiModule(
     {
-      custom: Decorate(CustomTrigger(), async () => {}),
+      custom: Api(CustomTrigger(), async () => {}),
     },
     '/server/api/index.ts',
     testBundlerAdapter.getRouter()
@@ -112,8 +112,8 @@ it('with requestClient generate client', async () => {
 
   const apis = loadApiModule(
     {
-      get: Decorate(Get(), async () => {}),
-      custom: Decorate(CustomTrigger(), async () => {}),
+      get: Api(Get(), async () => {}),
+      custom: Api(CustomTrigger(), async () => {}),
     },
     '/server/api/index.ts',
     testBundlerAdapter.getRouter()
@@ -143,8 +143,8 @@ it('with requestClient generate multi client', async () => {
 
   const apis = loadApiModule(
     {
-      get: Decorate(Get(), async () => {}),
-      custom: Decorate(CustomTrigger(), async () => {}),
+      get: Api(Get(), async () => {}),
+      custom: Api(CustomTrigger(), async () => {}),
     },
     '/server/api/index.ts',
     testBundlerAdapter.getRouter()

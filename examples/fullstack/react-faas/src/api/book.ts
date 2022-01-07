@@ -1,4 +1,4 @@
-import { Decorate, Get, Param, Query, useContext } from '@midwayjs/hooks';
+import { Api, Get, Param, Query, useContext } from '@midwayjs/hooks';
 import { Context } from '@midwayjs/koa';
 
 const books = [
@@ -44,7 +44,7 @@ const books = [
   },
 ];
 
-export const getBookByParams = Decorate(
+export const getBookByParams = Api(
   Get('/book/:id'),
   Param<{ id: string }>(),
   async () => {
@@ -58,7 +58,7 @@ export const getBookByParams = Decorate(
   }
 );
 
-export const getBookByQuery = Decorate(
+export const getBookByQuery = Api(
   Get('/book'),
   Query<{ id: string }>(),
   async () => {

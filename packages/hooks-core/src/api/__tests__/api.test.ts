@@ -1,28 +1,28 @@
-import { Decorate } from '..'
+import { Api } from '..'
 import { extractMetadata } from '../../common/util'
 import { Get, Header, Param, Post, Query } from '../operator/http'
 import { Middleware } from '../operator/middleware'
 import { Operator } from '../type'
 
-it('Decorate should work', async () => {
-  const hello = Decorate(async () => {
-    return 'Hello Decorate!'
+it('Api should work', async () => {
+  const hello = Api(async () => {
+    return 'Hello Api!'
   })
-  expect(await hello()).toEqual('Hello Decorate!')
+  expect(await hello()).toEqual('Hello Api!')
 
-  const withArgs = Decorate(async (name: string) => {
+  const withArgs = Api(async (name: string) => {
     return name
   })
   expect(await withArgs('hooks')).toEqual('hooks')
 
-  const withOperator = Decorate(Post(), async (name: string) => {
+  const withOperator = Api(Post(), async (name: string) => {
     return name
   })
   expect(await withOperator('hooks')).toEqual('hooks')
 })
 
 it('compose with meta operator', async () => {
-  const withQuery = Decorate(Get(), Query<{ name: string }>(), async () => {
+  const withQuery = Api(Get(), Query<{ name: string }>(), async () => {
     return 'Hello World'
   })
   expect(await withQuery({ query: { name: 'hooks' } })).toEqual('Hello World')
@@ -30,7 +30,7 @@ it('compose with meta operator', async () => {
 
 it('defineMeta', async () => {
   const logger = () => {}
-  const fn = Decorate(
+  const fn = Api(
     Get(),
     Query(),
     Param(),
@@ -55,7 +55,7 @@ it('execute', async () => {
     }
   }
 
-  const fn = Decorate(CustomExecutor(), async (...numbers: number[]) => {
+  const fn = Api(CustomExecutor(), async (...numbers: number[]) => {
     stack.push(...numbers)
     return numbers
   })

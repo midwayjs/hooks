@@ -1,8 +1,8 @@
 import { z } from 'zod'
 import {
+  Api,
   ApiConfig,
   ContentType,
-  Decorate,
   Get,
   HttpCode,
   Middleware,
@@ -18,28 +18,24 @@ export const hello = () => {
   return 'Hello World!'
 }
 
-export const get = Decorate(Get(), async () => {
+export const get = Api(Get(), async () => {
   const ctx = useContext()
   return ctx.path
 })
 
-export const post = Decorate(
-  Post(),
-  Validate(z.string()),
-  async (input: string) => {
-    const ctx = useContext()
-    return {
-      path: ctx.path,
-      input,
-    }
+export const post = Api(Post(), Validate(z.string()), async (input: string) => {
+  const ctx = useContext()
+  return {
+    path: ctx.path,
+    input,
   }
-)
+})
 
 export const config: ApiConfig = {
   middleware: [createLogger('Module')],
 }
 
-export const withMiddleware = Decorate(
+export const withMiddleware = Api(
   Get(),
   Middleware(createLogger('Function')),
   async () => {
@@ -48,7 +44,7 @@ export const withMiddleware = Decorate(
   }
 )
 
-export const withHttpDecorator = Decorate(
+export const withHttpDecorator = Api(
   Get(),
   HttpCode(201),
   SetHeader('framework', 'koa'),
@@ -59,7 +55,7 @@ export const withHttpDecorator = Decorate(
   }
 )
 
-export const withRedirectDecorator = Decorate(
+export const withRedirectDecorator = Api(
   Get(),
   Redirect('/redirect', 301),
   async () => {

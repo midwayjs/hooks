@@ -1,5 +1,5 @@
-import { Decorate, Get } from '@midwayjs/hooks';
+import { Api, Get } from '@midwayjs/hooks';
 
-export const getDate = Decorate(Get(), async () => {
+export const getDate = Api(Get(), async () => {
   return new Date().toString();
 });

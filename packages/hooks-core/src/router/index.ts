@@ -1,4 +1,4 @@
 export * from './base'
-export * from './decorate'
+export * from './api'
 export * from './loader'
 export * from './file'

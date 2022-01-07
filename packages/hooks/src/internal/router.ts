@@ -1,6 +1,6 @@
 import {
   AbstractRouter,
-  DecorateRouter,
+  ApiRouter,
   FileSystemRouter,
 } from '@midwayjs/hooks-core'
 import { getConfig, getProjectRoot } from './config'
@@ -23,7 +23,7 @@ export function getRouter(isDevelopment: boolean): AbstractRouter {
     })
   }
 
-  return new DecorateRouter({
+  return new ApiRouter({
     source: join(root, isDevelopment ? source : outDir),
   })
 }

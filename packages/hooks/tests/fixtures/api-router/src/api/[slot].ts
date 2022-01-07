@@ -1,13 +1,6 @@
-import {
-  Decorate,
-  Get,
-  Header,
-  Param,
-  Query,
-  useContext,
-} from '../../../../../src'
+import { Api, Get, Header, Param, Query, useContext } from '../../../../../src'
 
-export const withSlot = Decorate(
+export const withSlot = Api(
   Get('/:slot/withSlot'),
   Query<{ query: string }>(),
   Param<{ slot: string }>(),

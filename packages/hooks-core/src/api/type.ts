@@ -9,7 +9,7 @@ export type ArrayToObject<T, R = {}> = T extends [infer First, ...infer Rest]
     : ArrayToObject<Rest, R>
   : R
 
-export type DecorateHandler<
+export type ApiRunner<
   Input extends object | void,
   Handler extends AsyncFunction
 > = (

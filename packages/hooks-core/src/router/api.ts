@@ -2,11 +2,11 @@ import { basename, extname, removeExt, toUnix } from 'upath'
 import { AbstractRouter } from './base'
 import urlJoin from 'proper-url-join'
 import some from 'lodash/some'
-import { OperatorType } from '../decorate/type'
-import { DECORATE_BASE_PATH } from '../common'
+import { OperatorType } from '../api'
+import { API_BASE_PATH } from '../common'
 import createJITI from 'jiti'
 
-export type DecoratorRouterConfig = {
+export type ApiRouterConfig = {
   source?: string
   basePath?: string
 }
@@ -14,10 +14,10 @@ export type DecoratorRouterConfig = {
 const jiti = createJITI()
 
 // TODO support manual setup
-export class DecorateRouter extends AbstractRouter {
-  constructor(public config: DecoratorRouterConfig) {
+export class ApiRouter extends AbstractRouter {
+  constructor(public config: ApiRouterConfig) {
     super(config.source)
-    config.basePath ??= DECORATE_BASE_PATH
+    config.basePath ??= API_BASE_PATH
   }
 
   isApiFile(file: string): boolean {

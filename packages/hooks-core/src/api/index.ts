@@ -1,5 +1,5 @@
 export * from './compose'
-export * from './decorate'
+export * from './api'
 export * from './type'
 
 export * from './operator/middleware'

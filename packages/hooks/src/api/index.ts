@@ -3,7 +3,7 @@ export * from './hoc'
 export * from './configuration'
 export { HooksComponent as hooks } from './component'
 export {
-  Decorate,
+  Api,
   All,
   Get,
   Post,

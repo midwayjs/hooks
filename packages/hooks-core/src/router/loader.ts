@@ -8,14 +8,15 @@ import {
   HooksMiddleware,
 } from '../'
 import { USE_INPUT_METADATA } from '../common/const'
-import { Decorate } from '../decorate/decorate'
 import {
+  Api,
+  BaseTrigger,
   Get,
   HttpTrigger,
   HttpTriggerType,
+  OperatorType,
   Post,
-} from '../decorate/operator/http'
-import { BaseTrigger, OperatorType } from '../decorate/type'
+} from '../api'
 import { ApiFunction, Route } from '../types'
 import { AbstractRouter } from './base'
 import { createDebug } from '../common'
@@ -61,7 +62,7 @@ export function loadApiModule(
       // default is http
       const Method = parseFunctionArgs(fn).length === 0 ? Get : Post
       // wrap pure function
-      fn = Decorate(Method(), fn)
+      fn = Api(Method(), fn)
       // get trigger
       trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
     }

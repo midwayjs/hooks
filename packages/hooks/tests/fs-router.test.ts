@@ -18,7 +18,7 @@ describe('test koa with fs-router', () => {
     expect(result.text).toEqual('Hello World!')
   })
 
-  test('decorate case', async () => {
+  test('api case', async () => {
     const get = await createHttpRequest(app).get('/get')
     expect(get.status).toEqual(200)
     expect(get.text).toEqual('/get')

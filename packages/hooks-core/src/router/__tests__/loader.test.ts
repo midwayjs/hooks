@@ -1,17 +1,18 @@
 import noop from 'lodash/noop'
-import { Decorate } from '../../decorate/decorate'
 import {
   All,
+  Api,
   Delete,
   Get,
   Head,
+  Middleware,
+  Operator,
+  OperatorType,
   Options,
   Patch,
   Post,
   Put,
-} from '../../decorate/operator/http'
-import { Middleware } from '../../decorate/operator/middleware'
-import { Operator, OperatorType } from '../../decorate/type'
+} from '../../api'
 import { loadApiModule } from '../loader'
 import { FileSystemRouter } from '../file'
 
@@ -29,14 +30,14 @@ const router = new FileSystemRouter({
 it('load file route with http trigger', () => {
   const routes = loadApiModule(
     {
-      get: Decorate(Get(), async () => {}),
-      post: Decorate(Post(), async () => {}),
-      put: Decorate(Put(), async () => {}),
-      del: Decorate(Delete(), async () => {}),
-      patch: Decorate(Patch(), async () => {}),
-      head: Decorate(Head(), async () => {}),
-      options: Decorate(Options(), async () => {}),
-      default: Decorate(All(), async () => {}),
+      get: Api(Get(), async () => {}),
+      post: Api(Post(), async () => {}),
+      put: Api(Put(), async () => {}),
+      del: Api(Delete(), async () => {}),
+      patch: Api(Patch(), async () => {}),
+      head: Api(Head(), async () => {}),
+      options: Api(Options(), async () => {}),
+      default: Api(All(), async () => {}),
     },
     '/server/api/index.ts',
     router
@@ -59,7 +60,7 @@ it('load file route with custom trigger', () => {
 
   const routes = loadApiModule(
     {
-      custom: Decorate(CustomTrigger(), async () => {}),
+      custom: Api(CustomTrigger(), async () => {}),
     },
     '/server/api/index.ts',
     router
@@ -71,8 +72,8 @@ it('load file route with custom trigger', () => {
 it('load middleware', () => {
   const routes = loadApiModule(
     {
-      get: Decorate(Get(), Middleware(noop), async () => {}),
-      post: Decorate(Post(), Middleware([noop, noop]), async () => {}),
+      get: Api(Get(), Middleware(noop), async () => {}),
+      post: Api(Post(), Middleware([noop, noop]), async () => {}),
       config: {
         middleware: [noop],
       },

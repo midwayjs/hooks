@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { Decorate } from '../..'
+import { Api } from '../..'
 import { Post } from '../http'
 import { setValidator, Validate, Validator } from '../validate'
 
@@ -7,7 +7,7 @@ describe('validator', () => {
   it('use default validator', async () => {
     const schema = z.number()
 
-    const fn = Decorate(
+    const fn = Api(
       Post(),
       Validate(schema),
       async (count: z.infer<typeof schema>) => {
@@ -24,7 +24,7 @@ describe('validator', () => {
       age: z.number(),
     })
 
-    const fn = Decorate(
+    const fn = Api(
       Post(),
       Validate(schema),
       async (user: z.infer<typeof schema>) => {
@@ -54,14 +54,14 @@ describe('validator', () => {
 
     setValidator(validator)
 
-    const fn = Decorate(Post(), Validate(String), async (name: string) => {
+    const fn = Api(Post(), Validate(String), async (name: string) => {
       return { name }
     })
 
     expect(await fn('hooks')).toEqual({ name: 'hooks' })
     expect(fn(1 as any)).rejects.toThrowErrorMatchingSnapshot()
 
-    const fn2 = Decorate(Post(), Validate(Number), async (age: number) => {
+    const fn2 = Api(Post(), Validate(Number), async (age: number) => {
       return { age }
     })
     expect(fn2(1)).rejects.toThrowErrorMatchingSnapshot()

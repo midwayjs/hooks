@@ -5,34 +5,34 @@ import { USE_INPUT_METADATA } from '../common/const'
 import { compose } from './compose'
 import { HttpMetadata } from './operator/http'
 import {
+  ApiRunner,
   ArrayToObject,
-  DecorateHandler,
   ExecuteHelper,
   ExtractInputType,
   MetadataHelper,
   Operator,
 } from './type'
 
-export function Decorate<
+export function Api<
   Operators extends Operator<any>[],
   Handler extends AsyncFunction
 >(
   ...args: [...operators: Operators, handler: Handler]
-): DecorateHandler<
+): ApiRunner<
   ExtractInputType<Operators> extends void[]
     ? void
     : ArrayToObject<ExtractInputType<Operators>>,
   Handler
 > {
   const handler = args.pop() as Function
-  validateFunction(handler, 'DecorateHandler')
+  validateFunction(handler, 'ApiHandler')
 
   const operators = args as Operator<any>[]
   const useInputMetadata = operators.some((operator) => operator.input)
 
   const stack = []
   // TODO Direct call or frontend end invoke
-  const executor = async function DecoratorExecutor(...args: any[]) {
+  const runner = async (...args: any[]) => {
     const funcArgs = useInputMetadata ? args.slice(0, -1) : args
 
     let result: any
@@ -44,10 +44,7 @@ export function Decorate<
     await compose(stack, { getInputArguments: () => funcArgs })()
 
     // handle HttpCode/Redirect/etc.
-    const responseMetadata = Reflect.getMetadata(
-      HttpMetadata.RESPONSE,
-      executor
-    )
+    const responseMetadata = Reflect.getMetadata(HttpMetadata.RESPONSE, runner)
     if (Array.isArray(responseMetadata)) {
       await framework.handleResponseMetaData(responseMetadata)
     }
@@ -63,10 +60,10 @@ export function Decorate<
 
   const metadataHelper: MetadataHelper = {
     getMetadata(key: any) {
-      return Reflect.getMetadata(key, executor)
+      return Reflect.getMetadata(key, runner)
     },
     setMetadata(key: any, value: any) {
-      return Reflect.defineMetadata(key, value, executor)
+      return Reflect.defineMetadata(key, value, runner)
     },
   }
 
@@ -77,6 +74,6 @@ export function Decorate<
     }
   }
 
-  Reflect.defineMetadata(USE_INPUT_METADATA, useInputMetadata, executor)
-  return executor as any
+  Reflect.defineMetadata(USE_INPUT_METADATA, useInputMetadata, runner)
+  return runner as any
 }

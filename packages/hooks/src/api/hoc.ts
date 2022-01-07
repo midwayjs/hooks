@@ -1,7 +1,7 @@
 import { deprecate } from 'util'
 import {
+  Api,
   ApiFunction,
-  Decorate,
   HooksMiddleware,
   Middleware,
   validateArray,
@@ -13,7 +13,7 @@ type Controller = {
 }
 
 /**
- * @deprecated Use `Decorate(Middleware(...middlewares))` instead
+ * @deprecated Use `Api(Middleware(...middlewares))` instead
  */
 export const withController = deprecate(
   <T extends ApiFunction>(controller: Controller, func: T) => {
@@ -21,19 +21,19 @@ export const withController = deprecate(
       validateArray(controller.middleware, 'controller.middleware')
     }
     validateFunction(func, 'func')
-    return Decorate(Middleware(controller.middleware), func)
+    return Api(Middleware(controller.middleware), func)
   },
-  'withController is deprecated. Use `Decorate(Middleware(...middlewares))` instead.'
+  'withController is deprecated. Use `Api(Middleware(...middlewares))` instead.'
 )
 
 /**
- * @deprecated Use `Decorate(Middleware(...middlewares))` instead
+ * @deprecated Use `Api(Middleware(...middlewares))` instead
  */
 export const withMiddleware = deprecate(
   <T extends ApiFunction>(middleware: HooksMiddleware[], func: T) => {
     validateArray(middleware, 'middleware')
     validateFunction(func, 'func')
-    return Decorate(Middleware(middleware), func)
+    return Api(Middleware(middleware), func)
   },
-  'withMiddleware is deprecated. Use `Decorate(Middleware(...middlewares))` instead.'
+  'withMiddleware is deprecated. Use `Api(Middleware(...middlewares))` instead.'
 )

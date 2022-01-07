@@ -1,11 +1,7 @@
-import { Decorate, Get, Post, Query } from '../../../decorate'
+import { Api, Get, Post, Query } from '../../../api'
 
-export default Decorate(Get(), async () => {})
+export default Api(Get(), async () => {})
 
-export const usePost = Decorate(Post(), async () => {})
+export const usePost = Api(Post(), async () => {})
 
-export const withQuery = Decorate(
-  Get(),
-  Query<{ id: string }>(),
-  async () => {}
-)
+export const withQuery = Api(Get(), Query<{ id: string }>(), async () => {})
