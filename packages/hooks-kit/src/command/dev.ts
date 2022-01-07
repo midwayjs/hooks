@@ -15,7 +15,7 @@ export function setupDevCommand(cli: CAC) {
     .command('[root]', 'Start development server')
     .alias('dev')
     .option('-p, --port <port>', '[number] specify port', { default: 3000 })
-    .option('-h, --host <host>', '[string] specify hostname', {
+    .option('-h, --host [host]', '[string] specify hostname', {
       default: 'localhost',
     })
     .option(
