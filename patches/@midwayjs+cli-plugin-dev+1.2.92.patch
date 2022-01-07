@@ -1,5 +1,33 @@
+diff --git a/node_modules/@midwayjs/cli-plugin-dev/dist/child.js b/node_modules/@midwayjs/cli-plugin-dev/dist/child.js
+index d022d85..9d945e6 100644
+--- a/node_modules/@midwayjs/cli-plugin-dev/dist/child.js
++++ b/node_modules/@midwayjs/cli-plugin-dev/dist/child.js
+@@ -32,14 +32,20 @@ process.exit = async () => {
+     if (!modPath) {
+         throw new Error('Please add @midwayjs/mock to your devDependencies');
+     }
+-    const { createApp, close, createBootstrap } = require(modPath);
++    const {
++        createApp,
++        close,
++        createFunctionApp,
++        createBootstrap,
++      } = require(modPath);
+     closeFun = close;
+     let startSuccess = false;
+     try {
+         if (options.entryFile) {
+             bootstrapStarter = await createBootstrap(options.entryFile);
+-        }
+-        else {
++        }  else if (process.env.MIDWAY_DEV_IS_SERVERLESS === 'true') {
++            app = await createFunctionApp(process.cwd(), options);
++          } else {
+             app = await createApp(process.cwd(), options, options.framework);
+         }
+         startSuccess = true;
 diff --git a/node_modules/@midwayjs/cli-plugin-dev/dist/index.js b/node_modules/@midwayjs/cli-plugin-dev/dist/index.js
-index c3d57cc..c840e47 100644
+index c3d57cc..c06792a 100644
 --- a/node_modules/@midwayjs/cli-plugin-dev/dist/index.js
 +++ b/node_modules/@midwayjs/cli-plugin-dev/dist/index.js
 @@ -82,7 +82,7 @@ class DevPlugin extends command_core_1.BasePlugin {
@@ -11,3 +39,28 @@ index c3d57cc..c840e47 100644
          this.setStore('dev:port', this.port, true);
          const cwd = this.core.cwd;
          if (this.options.ts === undefined) {
+diff --git a/node_modules/@midwayjs/cli-plugin-dev/src/child.ts b/node_modules/@midwayjs/cli-plugin-dev/src/child.ts
+index 9b86c20..a3a2197 100644
+--- a/node_modules/@midwayjs/cli-plugin-dev/src/child.ts
++++ b/node_modules/@midwayjs/cli-plugin-dev/src/child.ts
+@@ -30,12 +30,19 @@ const closeApp = async () => {
+   if (!modPath) {
+     throw new Error('Please add @midwayjs/mock to your devDependencies');
+   }
+-  const { createApp, close, createBootstrap } = require(modPath);
++  const {
++    createApp,
++    close,
++    createFunctionApp,
++    createBootstrap,
++  } = require(modPath);
+   closeFun = close;
+   let startSuccess = false;
+   try {
+     if (options.entryFile) {
+       bootstrapStarter = await createBootstrap(options.entryFile);
++    } else if (process.env.MIDWAY_DEV_IS_SERVERLESS === 'true') {
++      app = await createFunctionApp(process.cwd(), options);
+     } else {
+       app = await createApp(process.cwd(), options, options.framework);
+     }

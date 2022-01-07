@@ -18,6 +18,7 @@ import {
   ApiRoute,
   createDebug,
   HooksMiddleware,
+  HttpTriggerType,
   isHooksMiddleware,
   loadApiModule,
   ResponseMetaData,
@@ -47,28 +48,32 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
     validateArray(runtimeConfig.middleware, 'runtimeConfig.middleware')
   }
 
+  const source = getSource()
+  const router = getRouter(isDevelopment())
+  const midway = new MidwayFrameworkAdapter(router, null, null)
+
+  const apis = loadApiModules(source, router)
+  if (apis.length === 0) {
+    console.warn('No api routes found, source is:', source)
+  }
+
+  midway.registerApiRoutes(apis)
+
   const Configuration = createConfiguration({
     namespace: '@midwayjs/hooks',
     async onReady(container: IMidwayContainer, app: MidwayApplication) {
-      const source = getSource()
-      const router = getRouter(isDevelopment())
+      midway.container = container
+      midway.app = app
 
-      const midway = new MidwayFrameworkAdapter(router, app, container)
       midway.registerGlobalMiddleware(runtimeConfig.middleware)
-
-      const apis = await loadApiModules(source, router)
-      if (apis.length === 0) {
-        console.warn('No api routes found, source is:', source)
-      }
-
-      await midway.registerApiRoutes(apis)
+      midway.bindControllers()
     },
   })
 
   return { Configuration }
 }
 
-async function loadApiModules(source: string, router: AbstractRouter) {
+function loadApiModules(source: string, router: AbstractRouter) {
   const files = run(['**/*.{ts,js}'], {
     cwd: source,
     ignore: [
@@ -105,14 +110,21 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
     return this.app.getFrameworkType()
   }
 
-  async registerApiRoutes(apis: ApiRoute[]): Promise<any> {
+  private controllers = []
+  bindControllers() {
+    for (const controller of this.controllers) {
+      this.container.bind(controller)
+    }
+  }
+
+  registerApiRoutes(apis: ApiRoute[]) {
     for (const api of apis) {
       switch (api.trigger.type) {
         case 'HTTP':
           api.middleware = api.middleware?.map((mw) =>
             this.useHooksMiddleware(mw)
           )
-          this.container.bind(this.createHttpApi(api))
+          this.controllers.push(this.createHttpApi(api))
           break
         default:
           throw new Error(`Unsupported trigger type: ${api.trigger.type}`)
@@ -143,6 +155,17 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
     const url = normalizeUrl(this.router, api)
 
     debug('create http api: %s %s', trigger.method, url)
+
+    if (isDevelopment()) {
+      globalThis['HOOKS_ROUTER'] ??= []
+      globalThis['HOOKS_ROUTER'].push({
+        type: HttpTriggerType.toLowerCase(),
+        path: url,
+        method: trigger.method,
+        functionId,
+        handler: `${functionId}.handler`,
+      })
+    }
 
     return createFunctionContainer({
       fn,

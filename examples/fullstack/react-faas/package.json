@@ -1,0 +1,30 @@
+{
+  "name": "hooks-react-faas",
+  "version": "2.3.0",
+  "private": true,
+  "scripts": {
+    "dev": "hooks dev",
+    "build": "hooks build",
+    "deploy": "npm run build && mw deploy"
+  },
+  "dependencies": {
+    "@midwayjs/hooks": "^3.0.0-alpha.0",
+    "@midwayjs/rpc": "^3.0.0-alpha.0",
+    "@midwayjs/faas": "beta",
+    "ahooks": "^3.1.2",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
+  "devDependencies": {
+    "@midwayjs/hooks-kit": "^3.0.0-alpha.0",
+    "@midwayjs/cli": "^1.2.49",
+    "@midwayjs/cli-plugin-faas": "^1.2.49",
+    "@midwayjs/fcli-plugin-fc": "^1.2.49",
+    "@midwayjs/serverless-fc-starter": "beta",
+    "@midwayjs/serverless-fc-trigger": "beta",
+    "@types/react": "^17.0.13",
+    "@types/react-dom": "^17.0.8",
+    "@vitejs/plugin-react": "^1.1.3",
+    "typescript": "^4.3.5"
+  }
+}

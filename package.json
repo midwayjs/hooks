@@ -67,6 +67,8 @@
     "@midwayjs/decorator": "3.0.0-beta.11",
     "@midwayjs/mock": "3.0.0-beta.11",
     "@midwayjs/koa": "3.0.0-beta.11",
-    "@midwayjs/bootstrap": "3.0.0-beta.11"
+    "@midwayjs/bootstrap": "3.0.0-beta.11",
+    "@midwayjs/serverless-app": "3.0.0-beta.11",
+    "@midwayjs/serverless-fc-starter": "3.0.0-beta.11"
   }
 }
