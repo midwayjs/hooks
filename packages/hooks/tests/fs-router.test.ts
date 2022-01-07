@@ -49,9 +49,9 @@ describe('test koa with fs-router', () => {
     expect(header.function).toBeTruthy()
   })
 
-  test('withHttpDecorator', async () => {
+  test('withHttpOperator', async () => {
     const { status, text, header, type } = await createHttpRequest(app).get(
-      '/withHttpDecorator'
+      '/withHttpOperator'
     )
     expect(text).toEqual('withHttpCode')
     expect(header.from).toEqual('operator')
@@ -60,13 +60,13 @@ describe('test koa with fs-router', () => {
     expect(status).toEqual(201)
   })
 
-  test('withRedirectDecorator', async () => {
+  test('withRedirectOperator', async () => {
     const { status, text, header } = await createHttpRequest(app).get(
-      '/withRedirectDecorator'
+      '/withRedirectOperator'
     )
     expect(status).toEqual(301)
     expect(header.location).toEqual('/redirect')
-    expect(text).toEqual('withRedirectDecorator')
+    expect(text).toEqual('withRedirectOperator')
   })
 
   test('slot', async () => {

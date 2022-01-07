@@ -40,7 +40,7 @@ export const withMiddleware = Api(
   }
 )
 
-export const withHttpDecorator = Api(
+export const withHttpOperator = Api(
   Get(),
   HttpCode(201),
   SetHeader('framework', 'koa'),
@@ -51,10 +51,10 @@ export const withHttpDecorator = Api(
   }
 )
 
-export const withRedirectDecorator = Api(
+export const withRedirectOperator = Api(
   Get(),
   Redirect('/redirect', 301),
   async () => {
-    return 'withRedirectDecorator'
+    return 'withRedirectOperator'
   }
 )
