@@ -13,31 +13,31 @@ describe('test koa with api router', () => {
   })
 
   test('api case', async () => {
-    const get = await createHttpRequest(app).get('/rpc/get')
+    const get = await createHttpRequest(app).get('/api/get')
     expect(get.status).toEqual(200)
-    expect(get.text).toEqual('/rpc/get')
+    expect(get.text).toEqual('/api/get')
 
     const post = await createHttpRequest(app)
-      .post('/rpc/post')
+      .post('/api/post')
       .send({ args: ['foo'] })
 
     expect(post.status).toEqual(200)
     expect(post.body).toEqual({
-      path: '/rpc/post',
+      path: '/api/post',
       input: 'foo',
     })
   })
 
   test('use validator', async () => {
     const { status } = await createHttpRequest(app)
-      .post('/rpc/post')
+      .post('/api/post')
       .send({ args: [false] })
 
     expect(status).toEqual(422)
   })
 
   test('with middleware', async () => {
-    const { header } = await createHttpRequest(app).get('/rpc/withMiddleware')
+    const { header } = await createHttpRequest(app).get('/api/withMiddleware')
     expect(header.global).toBeTruthy()
     expect(header.module).toBeTruthy()
     expect(header.function).toBeTruthy()
@@ -45,7 +45,7 @@ describe('test koa with api router', () => {
 
   test('withHttpDecorator', async () => {
     const { status, text, header, type } = await createHttpRequest(app).get(
-      '/rpc/withHttpDecorator'
+      '/api/withHttpDecorator'
     )
     expect(text).toEqual('withHttpCode')
     expect(header.from).toEqual('operator')
@@ -56,7 +56,7 @@ describe('test koa with api router', () => {
 
   test('withRedirectDecorator', async () => {
     const { status, text, header } = await createHttpRequest(app).get(
-      '/rpc/withRedirectDecorator'
+      '/api/withRedirectDecorator'
     )
     expect(status).toEqual(301)
     expect(header.location).toEqual('/redirect')
