@@ -7,6 +7,7 @@ import { BuildPlugin } from '@midwayjs/cli-plugin-build'
 import fs from 'fs'
 import { getProjectRoot } from '@midwayjs/hooks/internal'
 import { resolveConfig } from '../config'
+import ora from 'ora'
 
 type BuildOptions = {
   outDir: string
@@ -34,15 +35,31 @@ export function setupBuildCommand(cli: CAC) {
       }
 
       try {
-        await build(mergeConfig(defaultConfig, userConfig?.vite))
+        const clientSpinner = ora('Building client...\n').start().stop()
+        const clientBuild = await executePromise(build(mergeConfig(defaultConfig, userConfig?.vite)))
+        clientSpinner.succeed(`Client built in ${clientBuild.time}ms`)
+
+        const serverSpinner = ora('Building server...').start()
         createRender(join(root, outDir))
-        await buildServer(root, outDir)
+        const serverBuild = await executePromise(buildServer(root, outDir))
+        serverSpinner.succeed(`Server built in ${serverBuild.time}ms`)
       } catch (e) {
         console.error(colors.red(`error during build:\n${e.stack}`), {
           error: e,
         })
       }
     })
+}
+
+async function executePromise (promise: Promise<any> | any) {
+  const start = Date.now()
+  const result = await promise
+  const time = Date.now() - start
+
+  return {
+    result,
+    time
+  }
 }
 
 function createRender(dist: string) {

@@ -41,10 +41,10 @@ test('ApiRouter functionToHttpPath', () => {
   const router = new ApiRouter({ source: '/' })
 
   const cases: [string, string, boolean, string][] = [
-    ['/index.ts', 'foo', false, '/rpc/foo'],
-    ['/index.ts', 'foo', true, '/rpc/index'],
-    ['/api/[slot].ts', 'foo', false, '/rpc/foo'],
-    ['/api/[slot].ts', 'foo', true, '/rpc/[slot]'],
+    ['/index.ts', 'foo', false, '/api/foo'],
+    ['/index.ts', 'foo', true, '/api/index'],
+    ['/api/[slot].ts', 'foo', false, '/api/foo'],
+    ['/api/[slot].ts', 'foo', true, '/api/[slot]'],
   ]
 
   for (const [file, functionName, exportDefault, expected] of cases) {
