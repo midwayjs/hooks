@@ -13,7 +13,7 @@ export function setupStartCommand(cli: CAC) {
   cli
     .command('start [root]')
     .option('-p, --port <port>', '[number] specify port', { default: 3000 })
-    .option('-h, --host <host>', '[string] specify hostname', {
+    .option('-h, --host [host]', '[string] specify hostname', {
       default: 'localhost',
     })
     .action(async (root: string, options: StartOptions) => {
