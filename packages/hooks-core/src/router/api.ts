@@ -16,14 +16,14 @@ const jiti = createJITI()
 // TODO support manual setup
 export class ApiRouter extends AbstractRouter {
   constructor(public config: ApiRouterConfig) {
-    super(config.source)
+    super()
     config.basePath ??= API_BASE_PATH
   }
 
   isApiFile(file: string): boolean {
     if (
       !super.isJavaScriptFile(file) ||
-      !this.isPathInside(toUnix(file), toUnix(this.source))
+      !this.isPathInside(toUnix(file), toUnix(this.config.source))
     ) {
       return false
     }

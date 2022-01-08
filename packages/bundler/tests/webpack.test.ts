@@ -9,8 +9,7 @@ class TestBundlerAdapter extends AbstractBundlerAdapter {}
 
 const root = pathResolve(__dirname, './fixtures/base-app')
 const router = new FileSystemRouter({
-  root,
-  source: './',
+  source: root,
   routes: [
     {
       baseDir: 'render',

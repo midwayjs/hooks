@@ -12,7 +12,6 @@ export enum RouteKeyword {
 }
 
 export interface FileSystemRouterConfig {
-  root: string
   source: string
   routes: Route[]
 }
@@ -26,15 +25,15 @@ type Part = {
 
 export class FileSystemRouter extends AbstractRouter {
   constructor(public config: FileSystemRouterConfig) {
-    super(join(config.root, config.source))
+    super()
   }
 
   getApiDirectory(baseDir: string) {
-    return join(this.source, baseDir)
+    return join(this.config.source, baseDir)
   }
 
   getFunctionId(file: string, functionName: string, isExportDefault: boolean) {
-    const relativePath = relative(this.source, file)
+    const relativePath = relative(this.config.source, file)
     // src/apis/lambda/index.ts -> apis-lambda-index
     const id = kebabCase(removeExt(relativePath, extname(relativePath)))
     const name = [id, isExportDefault ? '' : `-${functionName}`].join('')

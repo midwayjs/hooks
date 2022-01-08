@@ -1,14 +1,13 @@
 import { ApiRoute, HttpTriggerType } from '@midwayjs/hooks-core'
 import { AbstractBundlerAdapter, createBundlerPlugin } from '@midwayjs/bundler'
-import { normalizeUrl } from '../api/component'
-import { getRouter } from '../internal/router'
 import { join } from 'upath'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
-import { getConfig, getProjectRoot } from '../internal'
+import { getConfig, getProjectRoot, getRouter } from '../internal'
+import { normalizeUrl } from '../api/component/adapter'
 
 const root = getProjectRoot()
 const projectConfig = getConfig()
-const router = getRouter(true)
+const router = getRouter({ useSourceFile: true })
 
 class MidwayBundlerAdapter extends AbstractBundlerAdapter {
   override transformApiRoutes(apis: ApiRoute[]): ApiRoute[] {

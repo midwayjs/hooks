@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import { AsyncFunction, validateFunction } from '../'
-import { framework } from '../adapter/framework'
+import { AbstractFrameworkAdapter } from '../adapter/framework'
 import { USE_INPUT_METADATA } from '../common/const'
 import { compose } from './compose'
 import { HttpMetadata } from './operator/http'
@@ -46,7 +46,9 @@ export function Api<
     // handle HttpCode/Redirect/etc.
     const responseMetadata = Reflect.getMetadata(HttpMetadata.RESPONSE, runner)
     if (Array.isArray(responseMetadata)) {
-      await framework.handleResponseMetaData(responseMetadata)
+      await AbstractFrameworkAdapter.instance.handleResponseMetaData(
+        responseMetadata
+      )
     }
     return result
   }

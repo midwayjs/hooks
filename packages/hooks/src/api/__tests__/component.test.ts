@@ -5,7 +5,8 @@ import {
   WEB_ROUTER_KEY,
 } from '@midwayjs/decorator'
 import { HttpMethod } from '@midwayjs/hooks-core'
-import { HooksComponent, MidwayFrameworkAdapter } from '../component'
+import { HooksComponent } from '../component'
+import { MidwayFrameworkAdapter } from '../component/adapter'
 
 describe('component', () => {
   const framework = new MidwayFrameworkAdapter(null, null, null)

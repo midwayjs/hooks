@@ -42,7 +42,7 @@ export type ApiRoute = {
   useInputMetadata?: boolean
 }
 
-export function loadApiModule(
+export function parseApiModule(
   mod: ApiModule,
   file: string,
   router: AbstractRouter
@@ -60,9 +60,9 @@ export function loadApiModule(
 
     if (!trigger) {
       // default is http
-      const Method = parseFunctionArgs(fn).length === 0 ? Get : Post
+      const HttpMethod = parseFunctionArgs(fn).length === 0 ? Get : Post
       // wrap pure function
-      fn = Api(Method(), fn)
+      fn = Api(HttpMethod(), fn)
       // get trigger
       trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
     }

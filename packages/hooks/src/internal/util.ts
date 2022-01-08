@@ -1,4 +1,4 @@
-export function isDevelopment() {
+export function isDev() {
   return (
     process.env.MIDWAY_TS_MODE === 'true' ||
     /* istanbul ignore next */

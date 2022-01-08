@@ -36,7 +36,9 @@ export function setupBuildCommand(cli: CAC) {
 
       try {
         const clientSpinner = ora('Building client...\n').start().stop()
-        const clientBuild = await executePromise(build(mergeConfig(defaultConfig, userConfig?.vite)))
+        const clientBuild = await executePromise(
+          build(mergeConfig(defaultConfig, userConfig?.vite))
+        )
         clientSpinner.succeed(`Client built in ${clientBuild.time}ms`)
 
         const serverSpinner = ora('Building server...').start()
@@ -51,14 +53,14 @@ export function setupBuildCommand(cli: CAC) {
     })
 }
 
-async function executePromise (promise: Promise<any> | any) {
+async function executePromise(promise: Promise<any> | any) {
   const start = Date.now()
   const result = await promise
   const time = Date.now() - start
 
   return {
     result,
-    time
+    time,
   }
 }
 

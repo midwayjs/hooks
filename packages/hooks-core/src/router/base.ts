@@ -1,19 +1,15 @@
 import { extname, relative, resolve, sep } from 'upath'
 
 export abstract class AbstractRouter {
-  constructor(public source: string) {}
-
   isJavaScriptFile(file: string) {
-    const extensions = ['.ts', '.tsx', '.js', '.jsx', '.mjs']
+    const extensions = ['.ts', '.js', '.mjs']
     if (!extensions.includes(extname(file))) {
       return false
     }
 
     const testExt = [
       '.test.ts',
-      '.test.tsx',
       '.test.js',
-      '.test.jsx',
       '.test.mjs',
     ]
 

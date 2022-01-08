@@ -4,38 +4,31 @@ import {
   FileSystemRouter,
 } from '@midwayjs/hooks-core'
 import { getConfig, getProjectRoot } from './config'
-import { isDevelopment } from './util'
 import { join } from 'upath'
 
-export function getRouter(isDevelopment: boolean): AbstractRouter {
-  const root = getProjectRoot()
-  const {
-    source,
-    build: { outDir },
-    routes,
-  } = getConfig()
-
-  if (Array.isArray(routes)) {
-    return new FileSystemRouter({
-      root,
-      source: isDevelopment ? source : outDir,
-      routes,
-    })
-  }
-
-  return new ApiRouter({
-    source: join(root, isDevelopment ? source : outDir),
-  })
+type GetSourceOptions = {
+  useSourceFile: boolean
 }
 
-export function getSource() {
+export function getRouter(options: GetSourceOptions): AbstractRouter {
+  const source = getSource(options)
+  const { routes } = getConfig()
+
+  if (Array.isArray(routes)) {
+    return new FileSystemRouter({ source, routes })
+  }
+
+  return new ApiRouter({ source })
+}
+
+export function getSource(options: GetSourceOptions) {
   const root = getProjectRoot()
   const {
     source,
     build: { outDir },
   } = getConfig()
 
-  return join(root, isDevelopment() ? source : outDir)
+  return join(root, options.useSourceFile ? source : outDir)
 }
 
 export function isFileSystemRouter(router: any): router is FileSystemRouter {

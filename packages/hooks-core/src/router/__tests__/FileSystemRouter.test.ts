@@ -5,8 +5,7 @@ describe('NewFileRouter', () => {
 
   beforeEach(() => {
     router = new FileSystemRouter({
-      root: '/',
-      source: 'src',
+      source: '/src',
       routes: [
         {
           baseDir: 'lambda',
@@ -21,7 +20,7 @@ describe('NewFileRouter', () => {
   })
 
   test('test file router', () => {
-    expect(router.source.endsWith('/src')).toBeTruthy()
+    expect(router.config.source.endsWith('/src')).toBeTruthy()
 
     const api = '/src/lambda/index.ts'
     expect(router.isApiFile(api)).toBeTruthy()

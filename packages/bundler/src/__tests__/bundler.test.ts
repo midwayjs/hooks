@@ -6,7 +6,7 @@ import {
   FileSystemRouter,
   Get,
   Head,
-  loadApiModule,
+  parseApiModule,
   Operator,
   OperatorType,
   Options,
@@ -18,7 +18,6 @@ import { AbstractBundlerAdapter } from '..'
 import { wrap } from 'jest-snapshot-serializer-raw'
 
 const router = new FileSystemRouter({
-  root: '/',
   source: '/',
   routes: [
     {
@@ -47,7 +46,7 @@ it('generate client', async () => {
   const testBundlerAdapter = new TestBundlerAdapter()
   expect(testBundlerAdapter.generateClient([])).toMatchSnapshot()
 
-  const apis = loadApiModule(
+  const apis = parseApiModule(
     {
       get: Api(Get(), async () => {}),
       post: Api(Post(), async () => {}),
@@ -80,7 +79,7 @@ it('with requestClient should not generate client', async () => {
 
   const testBundlerAdapter = new TestBundlerAdapter()
 
-  const apis = loadApiModule(
+  const apis = parseApiModule(
     {
       custom: Api(CustomTrigger(), async () => {}),
     },
@@ -110,7 +109,7 @@ it('with requestClient generate client', async () => {
 
   const testBundlerAdapter = new TestBundlerAdapter()
 
-  const apis = loadApiModule(
+  const apis = parseApiModule(
     {
       get: Api(Get(), async () => {}),
       custom: Api(CustomTrigger(), async () => {}),
@@ -141,7 +140,7 @@ it('with requestClient generate multi client', async () => {
 
   const testBundlerAdapter = new TestBundlerAdapter()
 
-  const apis = loadApiModule(
+  const apis = parseApiModule(
     {
       get: Api(Get(), async () => {}),
       custom: Api(CustomTrigger(), async () => {}),

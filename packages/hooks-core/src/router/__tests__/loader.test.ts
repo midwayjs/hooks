@@ -13,12 +13,11 @@ import {
   Post,
   Put,
 } from '../../api'
-import { loadApiModule } from '../loader'
+import { parseApiModule } from '../loader'
 import { FileSystemRouter } from '../file'
 
 const router = new FileSystemRouter({
-  root: '/',
-  source: 'server',
+  source: '/server',
   routes: [
     {
       baseDir: 'api',
@@ -28,7 +27,7 @@ const router = new FileSystemRouter({
 })
 
 it('load file route with http trigger', () => {
-  const routes = loadApiModule(
+  const routes = parseApiModule(
     {
       get: Api(Get(), async () => {}),
       post: Api(Post(), async () => {}),
@@ -58,7 +57,7 @@ it('load file route with custom trigger', () => {
     }
   }
 
-  const routes = loadApiModule(
+  const routes = parseApiModule(
     {
       custom: Api(CustomTrigger(), async () => {}),
     },
@@ -70,7 +69,7 @@ it('load file route with custom trigger', () => {
 })
 
 it('load middleware', () => {
-  const routes = loadApiModule(
+  const routes = parseApiModule(
     {
       get: Api(Get(), Middleware(noop), async () => {}),
       post: Api(Post(), Middleware([noop, noop]), async () => {}),
