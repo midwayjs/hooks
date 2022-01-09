@@ -4,7 +4,7 @@ import type {
   HttpTrigger,
   RequestArgs,
 } from '@midwayjs/hooks-core'
-import { buildRPCArgs, parseRequestArgs } from './util'
+import { buildArgs, parseRequestArgs } from './util'
 import compose from 'koa-compose'
 import { client, Context, Middleware } from './client'
 
@@ -38,7 +38,7 @@ export function buildRequestOptions(
       typeof inputMetadata?.params === 'object'
         ? format(trigger.path, inputMetadata.params)
         : trigger.path,
-    data: args.length > 0 ? buildRPCArgs(args) : null,
+    data: args.length > 0 ? buildArgs(args) : null,
 
     query: inputMetadata?.query,
     headers: inputMetadata?.headers,

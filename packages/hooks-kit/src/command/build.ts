@@ -1,26 +1,35 @@
 import { CAC } from 'cac'
 import { build, InlineConfig, mergeConfig } from 'vite'
-import colors from 'picocolors'
 import { join, resolve } from 'path'
 import { CommandCore } from '@midwayjs/command-core'
 import { BuildPlugin } from '@midwayjs/cli-plugin-build'
 import fs from 'fs'
 import { getProjectRoot } from '@midwayjs/hooks/internal'
 import { resolveConfig } from '../config'
-import ora from 'ora'
+import consola from 'consola'
 
 type BuildOptions = {
   outDir: string
+  clean: boolean
 }
 
 export function setupBuildCommand(cli: CAC) {
   cli
     .command('build [root]')
     .option('--outDir <dir>', `[string] output directory (default: dist)`)
+    .option('--clean', `[boolean] clean output directory before build`, {
+      default: false
+    })
     .action(async (root: string, options: BuildOptions) => {
       const projectRoot = getProjectRoot()
       const userConfig = resolveConfig(projectRoot)
       const outDir = options.outDir || userConfig.build.outDir
+
+      if (options.clean) {
+        consola.info('clean output directory before build')
+        await fs.promises.rm(outDir, { recursive: true })
+      }
+
       root = root ? resolve(root) : projectRoot
 
       const client = join(outDir, '_client')
@@ -35,20 +44,30 @@ export function setupBuildCommand(cli: CAC) {
       }
 
       try {
-        const clientSpinner = ora('Building client...\n').start().stop()
+        consola.info('Building client...')
+
         const clientBuild = await executePromise(
           build(mergeConfig(defaultConfig, userConfig?.vite))
         )
-        clientSpinner.succeed(`Client built in ${clientBuild.time}ms`)
+        consola.success(`Client built in ${clientBuild.time}ms`)
 
-        const serverSpinner = ora('Building server...').start()
-        createRender(join(root, outDir))
+        consola.info('Building server...')
+        if (userConfig.static) {
+          consola.info('static files and html will be served from server')
+          createRender(join(root, outDir))
+        } else {
+          consola.info(
+            'Serve static disabled, you should serve static files manually'
+          )
+        }
+
         const serverBuild = await executePromise(buildServer(root, outDir))
-        serverSpinner.succeed(`Server built in ${serverBuild.time}ms`)
+        consola.success(`Server built in ${serverBuild.time}ms`)
       } catch (e) {
-        console.error(colors.red(`error during build:\n${e.stack}`), {
-          error: e,
-        })
+        consola.error(`error during build:\n${e.stack}`),
+          {
+            error: e,
+          }
       }
     })
 }
@@ -85,7 +104,7 @@ function createRender(dist: string) {
   );
   `
 
-  fs.writeFileSync(join(dist, '_render.js'), code, 'utf-8')
+  fs.writeFileSync(join(dist, '_serve.js'), code, 'utf-8')
 }
 
 async function buildServer(cwd: string, outDir: string) {

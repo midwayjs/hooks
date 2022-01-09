@@ -3,6 +3,7 @@ import { resolve } from 'path'
 import { Bootstrap } from '@midwayjs/bootstrap'
 import { setConfig, getProjectRoot } from '@midwayjs/hooks/internal'
 import { resolveConfig } from '../config'
+import consola from 'consola'
 
 type StartOptions = {
   port: number
@@ -35,7 +36,7 @@ export function setupStartCommand(cli: CAC) {
       })
 
       await server.run()
-      console.log(
+      consola.success(
         `Your application is running at http://localhost:${options.port}`
       )
     })

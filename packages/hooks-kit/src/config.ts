@@ -6,6 +6,7 @@ export type { UserConfig as ViteConfig } from 'vite'
 export interface KitConfig extends Omit<UserConfig, 'source' | 'routes'> {
   [key: string]: any
   vite?: ViteConfig
+  static?: boolean
 }
 
 export function defineConfig(config: KitConfig): KitConfig {
@@ -13,5 +14,5 @@ export function defineConfig(config: KitConfig): KitConfig {
 }
 
 export function resolveConfig(cwd: string): KitConfig {
-  return getConfig(cwd)
+  return Object.assign({ static: true }, getConfig(cwd))
 }

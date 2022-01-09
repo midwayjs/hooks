@@ -17,7 +17,7 @@ export function parseRequestArgs<T, I = void>(requestArgs: RequestArgs<T, I>) {
   }
 }
 
-export function buildRPCArgs(args: any[]) {
+export function buildArgs(args: any[]) {
   if (!Array.isArray(args)) {
     throw new Error('args must be an array')
   }

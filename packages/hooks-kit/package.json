@@ -17,12 +17,10 @@
     "@midwayjs/hooks": "^3.0.0-alpha.0",
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "@midwayjs/serverless-dev-pack": "^1.2.92",
-    "@vitejs/plugin-react": "^1.1.3",
     "cac": "^6.7.12",
+    "consola": "^2.15.3",
     "jiti": "^1.12.9",
     "koa-static-cache": "^5.1.4",
-    "ora": "5.4.1",
-    "picocolors": "^1.0.0",
     "vite": "^2.7.9"
   },
   "publishConfig": {

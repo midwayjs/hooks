@@ -3,12 +3,12 @@ import {
   HttpTrigger,
   RequestRoute,
 } from '@midwayjs/hooks-core'
-import { buildRPCArgs, parseRequestArgs } from '../util'
+import { buildArgs, parseRequestArgs } from '../util'
 
 test('buildRPCArgs', () => {
-  expect(() => buildRPCArgs(null)).toThrowError('args must be an array')
-  expect(buildRPCArgs([])).toEqual({ args: [] })
-  expect(buildRPCArgs(['a', 'b'])).toEqual({ args: ['a', 'b'] })
+  expect(() => buildArgs(null)).toThrowError('args must be an array')
+  expect(buildArgs([])).toEqual({ args: [] })
+  expect(buildArgs(['a', 'b'])).toEqual({ args: ['a', 'b'] })
 })
 
 test('parseRequestArgs useInputMetadata', () => {
