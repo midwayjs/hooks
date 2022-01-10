@@ -52,7 +52,7 @@ export function setupBuildCommand(cli: CAC) {
 
         consola.info('Building server...')
         if (userConfig.static) {
-          consola.info('static files and html will be served from server')
+          consola.info('Static files and html will be automatically served from server')
           createRender(join(root, outDir))
         } else {
           consola.info(
@@ -62,6 +62,12 @@ export function setupBuildCommand(cli: CAC) {
 
         const serverBuild = await executePromise(buildServer(root, outDir))
         consola.success(`Server built in ${serverBuild.time}ms`)
+
+        const pkg = require(join(projectRoot, 'package.json'))
+        // Web
+        if (pkg.dependencies['@midwayjs/koa']) {
+          consola.info('Use `npm start` to start server!')
+        }
       } catch (e) {
         consola.error(`error during build:\n${e.stack}`),
           {
