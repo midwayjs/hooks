@@ -6,6 +6,9 @@ import {
   EXPORT_DEFAULT_FUNCTION_ALIAS,
   parseApiModule,
 } from '@midwayjs/hooks-core'
+import jiti from 'jiti'
+
+jiti().register()
 
 interface BundlerConfig {
   name: string

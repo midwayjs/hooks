@@ -1,5 +1,4 @@
 import { existsSync } from 'fs'
-import createJITI from 'jiti'
 import defaultsDeep from 'lodash/defaultsDeep'
 import { sync } from 'pkg-dir'
 import path from 'upath'
@@ -42,17 +41,16 @@ export function getConfigFromFile<T>(cwd?: string): T {
   }
 
   return existsSync(configs.ts)
-    ? requireByJiti(configs.ts)
-    : requireByJiti(configs.js)
+    ? requireMod(configs.ts)
+    : requireMod(configs.js)
 }
 
 export function defineConfig(config: UserConfig): UserConfig {
   return config
 }
 
-const requireByJiti = <T = unknown>(id: string): T => {
-  const jiti = createJITI()
-  const contents = jiti(id)
+const requireMod = <T = unknown>(id: string): T => {
+  const contents = require(id)
   if ('default' in contents) return contents.default
   return contents
 }

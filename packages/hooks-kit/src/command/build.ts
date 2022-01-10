@@ -94,13 +94,13 @@ function createRender(dist: string) {
   const clientDir = join(dist, '_client')
   const code = `
   const { Api, Get, Middleware } = require('@midwayjs/hooks');
-  const static = require('koa-static-cache');
+  const cache = require('koa-static-cache');
   const path = require('path');
 
   exports.default = Api(
     Get('/*'),
     Middleware(
-      static({
+      cache({
         dir: '${clientDir}',
         dynamic: true,
         alias: { '/': 'index.html' },

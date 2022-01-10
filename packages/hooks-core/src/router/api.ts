@@ -4,16 +4,13 @@ import urlJoin from 'proper-url-join'
 import some from 'lodash/some'
 import { OperatorType } from '../api'
 import { API_BASE_PATH } from '../common'
-import createJITI from 'jiti'
 
 export type ApiRouterConfig = {
   source?: string
   basePath?: string
 }
 
-const jiti = createJITI()
 
-// TODO support manual setup
 export class ApiRouter extends AbstractRouter {
   constructor(public config: ApiRouterConfig) {
     super()
@@ -29,7 +26,11 @@ export class ApiRouter extends AbstractRouter {
     }
 
     try {
-      return this.hasExportApiRoutes(jiti(file))
+      const mod = require(file)
+      if (mod.__JITI_ERROR__) {
+        throw mod.__JITI_ERROR__
+      }
+      return this.hasExportApiRoutes(mod)
     } catch (error) {
       console.log('require error', error)
       return false

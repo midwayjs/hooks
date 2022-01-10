@@ -16,7 +16,6 @@
     "url": "git@github.com:midwayjs/hooks.git"
   },
   "dependencies": {
-    "jiti": "1.12.9",
     "tslib": "^2.3.0",
     "lodash": "^4.17.21",
     "upath": "^2.0.1",

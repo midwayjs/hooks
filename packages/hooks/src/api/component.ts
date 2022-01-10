@@ -48,6 +48,7 @@ function loadApiModules(source: string, router: AbstractRouter) {
       '**/node_modules/**',
       '**/*.d.ts',
       '**/*.{test,spec}.{ts,tsx,js,jsx,mjs}',
+      '**/_client/**/*.js',
     ],
   })
 

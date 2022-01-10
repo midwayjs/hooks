@@ -10,7 +10,8 @@
   "dependencies": {
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "unplugin": "^0.2.20",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "jiti": "^1.12.9"
   },
   "devDependencies": {
     "webpack": "4",
