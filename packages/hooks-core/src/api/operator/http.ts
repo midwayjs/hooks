@@ -40,7 +40,7 @@ export type HttpInputMetadata = {
   params?: Record<string, string>
 }
 
-function createHTTPMethodOperator(method: HttpMethod) {
+function createHttpMethodOperator(method: HttpMethod) {
   return (path?: string) => {
     return {
       name: method,
@@ -60,14 +60,14 @@ function createHTTPMethodOperator(method: HttpMethod) {
 }
 
 // HTTP Method
-export const All = createHTTPMethodOperator(HttpMethod.ALL)
-export const Get = createHTTPMethodOperator(HttpMethod.GET)
-export const Post = createHTTPMethodOperator(HttpMethod.POST)
-export const Delete = createHTTPMethodOperator(HttpMethod.DELETE)
-export const Put = createHTTPMethodOperator(HttpMethod.PUT)
-export const Patch = createHTTPMethodOperator(HttpMethod.PATCH)
-export const Head = createHTTPMethodOperator(HttpMethod.HEAD)
-export const Options = createHTTPMethodOperator(HttpMethod.OPTIONS)
+export const All = createHttpMethodOperator(HttpMethod.ALL)
+export const Get = createHttpMethodOperator(HttpMethod.GET)
+export const Post = createHttpMethodOperator(HttpMethod.POST)
+export const Delete = createHttpMethodOperator(HttpMethod.DELETE)
+export const Put = createHttpMethodOperator(HttpMethod.PUT)
+export const Patch = createHttpMethodOperator(HttpMethod.PATCH)
+export const Head = createHttpMethodOperator(HttpMethod.HEAD)
+export const Options = createHttpMethodOperator(HttpMethod.OPTIONS)
 
 // HTTP Helper
 export function Query<T extends Record<string, string>>(): Operator<{

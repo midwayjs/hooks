@@ -1,6 +1,6 @@
 import { getApiTrigger, HttpTrigger } from '../test'
 import { IMidwayKoaApplication } from '@midwayjs/koa'
-import { closeApp, creatApp, createHttpRequest } from './utils'
+import { closeApp, createApp, createHttpRequest } from './utils'
 import * as index from './fixtures/fs-router/src/api/index'
 import { args } from '@midwayjs/rpc'
 import supertest from 'supertest'
@@ -9,7 +9,7 @@ describe('test koa with fs-router', () => {
   let app: IMidwayKoaApplication
 
   beforeAll(async () => {
-    app = await creatApp('fs-router')
+    app = await createApp('fs-router')
   })
 
   afterAll(async () => {
