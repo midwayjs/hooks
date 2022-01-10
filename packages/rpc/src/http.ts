@@ -4,7 +4,7 @@ import type {
   HttpTrigger,
   RequestArgs,
 } from '@midwayjs/hooks-core'
-import { buildArgs, parseRequestArgs } from './util'
+import { args, parseRequestArgs } from './util'
 import compose from 'koa-compose'
 import { client, Context, Middleware } from './client'
 
@@ -29,7 +29,7 @@ export function buildRequestOptions(
   const {
     route: { trigger },
     inputMetadata,
-    args,
+    args: inputs,
   } = parseRequestArgs(requestArgs)
 
   const options: HttpRequestOptions = {
@@ -38,7 +38,7 @@ export function buildRequestOptions(
       typeof inputMetadata?.params === 'object'
         ? format(trigger.path, inputMetadata.params)
         : trigger.path,
-    data: args.length > 0 ? buildArgs(args) : null,
+    data: inputs.length > 0 ? args(...inputs) : null,
 
     query: inputMetadata?.query,
     headers: inputMetadata?.headers,

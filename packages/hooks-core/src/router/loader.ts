@@ -63,6 +63,7 @@ export function parseApiModule(
       const HttpMethod = parseFunctionArgs(fn).length === 0 ? Get : Post
       // wrap pure function
       fn = Api(HttpMethod(), fn)
+      mod[name] = fn
       // get trigger
       trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
     }

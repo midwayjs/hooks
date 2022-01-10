@@ -7,11 +7,7 @@ export abstract class AbstractRouter {
       return false
     }
 
-    const testExt = [
-      '.test.ts',
-      '.test.js',
-      '.test.mjs',
-    ]
+    const testExt = ['.test.ts', '.test.js', '.test.mjs']
 
     if (testExt.some((ext) => file.endsWith(ext))) {
       return false

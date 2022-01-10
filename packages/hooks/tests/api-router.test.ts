@@ -1,5 +1,9 @@
+import { getApiTrigger, HttpTrigger } from '../test'
 import { IMidwayKoaApplication } from '@midwayjs/koa'
 import { closeApp, creatApp, createHttpRequest } from './utils'
+import * as index from './fixtures/api-router/src/api/index'
+import { args } from '@midwayjs/rpc'
+import supertest from 'supertest'
 
 describe('test koa with api router', () => {
   let app: IMidwayKoaApplication
@@ -12,15 +16,17 @@ describe('test koa with api router', () => {
     await closeApp(app)
   })
 
+  function createRequest(api: any): supertest.Test {
+    const trigger = getApiTrigger(api) as HttpTrigger
+    return createHttpRequest(app)[trigger.method.toLowerCase()](trigger.path)
+  }
+
   test('api case', async () => {
-    const get = await createHttpRequest(app).get('/api/get')
+    const get = await createRequest(index.get)
     expect(get.status).toEqual(200)
     expect(get.text).toEqual('/api/get')
 
-    const post = await createHttpRequest(app)
-      .post('/api/post')
-      .send({ args: ['foo'] })
-
+    const post = await createRequest(index.post).send(args('foo'))
     expect(post.status).toEqual(200)
     expect(post.body).toEqual({
       path: '/api/post',
@@ -29,23 +35,20 @@ describe('test koa with api router', () => {
   })
 
   test('use validator', async () => {
-    const { status } = await createHttpRequest(app)
-      .post('/api/post')
-      .send({ args: [false] })
-
+    const { status } = await createRequest(index.post).send(args(false))
     expect(status).toEqual(422)
   })
 
   test('with middleware', async () => {
-    const { header } = await createHttpRequest(app).get('/api/withMiddleware')
+    const { header } = await createRequest(index.withMiddleware)
     expect(header.global).toBeTruthy()
     expect(header.module).toBeTruthy()
     expect(header.function).toBeTruthy()
   })
 
   test('withHttpOperator', async () => {
-    const { status, text, header, type } = await createHttpRequest(app).get(
-      '/api/withHttpOperator'
+    const { status, text, header, type } = await createRequest(
+      index.withHttpOperator
     )
     expect(text).toEqual('withHttpCode')
     expect(header.from).toEqual('operator')
@@ -55,8 +58,8 @@ describe('test koa with api router', () => {
   })
 
   test('withRedirectOperator', async () => {
-    const { status, text, header } = await createHttpRequest(app).get(
-      '/api/withRedirectOperator'
+    const { status, text, header } = await createRequest(
+      index.withRedirectOperator
     )
     expect(status).toEqual(301)
     expect(header.location).toEqual('/redirect')

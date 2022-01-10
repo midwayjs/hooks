@@ -17,12 +17,10 @@ export function parseRequestArgs<T, I = void>(requestArgs: RequestArgs<T, I>) {
   }
 }
 
-export function buildArgs(args: any[]) {
-  if (!Array.isArray(args)) {
+export function args(...inputs: any[]) {
+  if (!Array.isArray(inputs)) {
     throw new Error('args must be an array')
   }
 
-  return {
-    args,
-  }
+  return { args: inputs }
 }

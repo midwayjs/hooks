@@ -18,14 +18,12 @@
   "dependencies": {
     "jiti": "1.12.9",
     "tslib": "^2.3.0",
-    "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "lodash": "^4.17.21",
     "upath": "^2.0.1",
     "pkg-dir": "5.0.0",
+    "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "@midwayjs/decorator": "beta",
     "@midwayjs/core": "beta",
-    "@midwayjs/command-core": "^1.2.92",
-    "@midwayjs/cli-plugin-build": "^1.2.92",
     "@midwayjs/serverless-dev-pack": "^1.2.92",
     "@midwayjs/bundler": "^3.0.0-alpha.0",
     "@midwayjs/glob": "^1.0.6"
@@ -34,7 +32,6 @@
     "@types/lodash": "^4.14.170",
     "@midwayjs/koa": "beta",
     "@midwayjs/mock": "beta",
-    "koa-bodyparser": "^4.3.0",
     "@types/supertest": "^2.0.11"
   },
   "publishConfig": {
@@ -43,13 +40,15 @@
   "files": [
     "dist",
     "bundler",
-    "internal"
+    "internal",
+    "test"
   ],
   "preconstruct": {
     "entrypoints": [
       "index.ts",
       "bundler.ts",
-      "internal/index.ts"
+      "internal/index.ts",
+      "test/index.ts"
     ]
   }
 }

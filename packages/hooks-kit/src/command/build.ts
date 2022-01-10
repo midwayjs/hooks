@@ -18,7 +18,7 @@ export function setupBuildCommand(cli: CAC) {
     .command('build [root]')
     .option('--outDir <dir>', `[string] output directory (default: dist)`)
     .option('--clean', `[boolean] clean output directory before build`, {
-      default: false
+      default: false,
     })
     .action(async (root: string, options: BuildOptions) => {
       const projectRoot = getProjectRoot()
