@@ -1,10 +1,6 @@
 import type { IMidwayContainer } from '@midwayjs/core'
 import { MidwayConfigService } from '@midwayjs/core'
-import {
-  ERR_INVALID_ARG_TYPE,
-  useContext,
-  validateString,
-} from '@midwayjs/hooks-core'
+import { ERR_INVALID_ARG_TYPE, useContext, validateString } from '@midwayjs/hooks-core'
 
 export { useContext } from '@midwayjs/hooks-core'
 

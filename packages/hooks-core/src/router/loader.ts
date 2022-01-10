@@ -29,14 +29,14 @@ export type LoadConfig = {
   routes: Route[]
 }
 
-type Trigger = BaseTrigger & HttpTrigger
+type Trigger = BaseTrigger | HttpTrigger
 
-export type ApiRoute = {
+export type ApiRoute<T = BaseTrigger> = {
   fn: ApiFunction
   file: string
   functionName: string
 
-  trigger: Trigger
+  trigger: T
   middleware: HooksMiddleware[]
   functionId: FunctionId
   useInputMetadata?: boolean
@@ -49,7 +49,6 @@ export function parseApiModule(
 ) {
   const apis: ApiRoute[] = []
   const funcs = pickBy(mod, isFunction)
-
   for (let [name, fn] of Object.entries(funcs)) {
     const exportDefault = name === 'default'
     const functionName = exportDefault ? EXPORT_DEFAULT_FUNCTION_ALIAS : name

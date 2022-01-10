@@ -22,3 +22,4 @@ export {
   ContentType,
 } from '@midwayjs/hooks-core'
 export * from './operator/validate'
+export * from './operator/serverless'

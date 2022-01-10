@@ -1,8 +1,4 @@
-import {
-  AbstractRouter,
-  ApiRouter,
-  FileSystemRouter,
-} from '@midwayjs/hooks-core'
+import { AbstractRouter, ApiRouter, FileSystemRouter } from '@midwayjs/hooks-core'
 import { getConfig, getProjectRoot } from './config'
 import { join } from 'upath'
 

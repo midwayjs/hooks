@@ -1,10 +1,5 @@
 import { IMidwayContainer } from '@midwayjs/core'
-import {
-  AbstractRouter,
-  createDebug,
-  parseApiModule,
-  validateArray,
-} from '@midwayjs/hooks-core'
+import { AbstractRouter, createDebug, parseApiModule, validateArray } from '@midwayjs/hooks-core'
 import { getRouter, getSource, isDev, RuntimeConfig } from '../internal'
 import { createConfiguration } from './configuration'
 import { run } from '@midwayjs/glob'

@@ -52,7 +52,9 @@ export function setupBuildCommand(cli: CAC) {
 
         consola.info('Building server...')
         if (userConfig.static) {
-          consola.info('Static files and html will be automatically served from server')
+          consola.info(
+            'Static files and html will be automatically served from server'
+          )
           createRender(join(root, outDir))
         } else {
           consola.info(

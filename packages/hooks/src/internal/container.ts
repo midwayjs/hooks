@@ -5,7 +5,7 @@ import { ApiFunction } from '@midwayjs/hooks-core'
 type CreateOptions = {
   fn: ApiFunction
   functionId: string
-  parseArgs: (ctx: any, ...args: any) => any[]
+  parseArgs: (inputs: { ctx: any; args: any[] }) => any[]
   handlerDecorators?: any[]
   classDecorators?: any[]
 }
@@ -22,7 +22,10 @@ export function createFunctionContainer(options: CreateOptions) {
   let FunctionContainer = class {
     ctx: any
     async handler(...handlerArgs: any[]) {
-      const args = parseArgs(this.ctx, ...handlerArgs)
+      const args = parseArgs({
+        ctx: this.ctx,
+        args: handlerArgs,
+      })
       return await fn(...args)
     }
   }

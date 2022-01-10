@@ -5,6 +5,7 @@ import {
   ApiRoute,
   createDebug,
   HooksMiddleware,
+  HttpTrigger,
   HttpTriggerType,
   isHooksMiddleware,
   ResponseMetaData,
@@ -25,12 +26,11 @@ import {
   Patch,
   Post,
   Put,
+  ServerlessTrigger,
+  ServerlessTriggerType,
 } from '@midwayjs/decorator'
-import {
-  createFunctionContainer,
-  isDev,
-  isFileSystemRouter,
-} from '../../internal'
+import { createFunctionContainer, isDev, isFileSystemRouter } from '../../internal'
+import { HSFTrigger, MTopTrigger, ServerlessTimerTrigger } from '../operator/serverless'
 
 const debug = createDebug('hooks:MidwayFrameworkAdapter')
 
@@ -58,30 +58,100 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
     }
   }
 
+  isHttpTrigger(api: ApiRoute): api is ApiRoute<HttpTrigger> {
+    return api.trigger.type === 'HTTP'
+  }
+
+  isServerlessTimerTrigger(
+    api: ApiRoute
+  ): api is ApiRoute<ServerlessTimerTrigger> {
+    return api.trigger.type === ServerlessTriggerType.TIMER
+  }
+
+  isMTopTrigger(api: ApiRoute): api is ApiRoute<MTopTrigger> {
+    return api.trigger.type === ServerlessTriggerType.MTOP
+  }
+
+  isHSFTrigger(api: ApiRoute): api is ApiRoute<HSFTrigger> {
+    return api.trigger.type === ServerlessTriggerType.HSF
+  }
+
   registerApiRoutes(apis: ApiRoute[]) {
     for (const api of apis) {
-      switch (api.trigger.type) {
-        case 'HTTP':
-          api.middleware = api.middleware?.map((mw) =>
-            this.useHooksMiddleware(mw)
-          )
-          this.controllers.push(this.createHttpApi(api))
-          break
-        default:
-          throw new Error(`Unsupported trigger type: ${api.trigger.type}`)
+      if (this.isHttpTrigger(api)) {
+        api.middleware = api.middleware?.map((mw) =>
+          this.useHooksMiddleware(mw)
+        )
+        this.controllers.push(this.createHttpApi(api))
+        continue
       }
+
+      if (this.isHSFTrigger(api)) {
+        this.controllers.push(this.createHSFApi(api))
+        continue
+      }
+
+      if (this.isMTopTrigger(api)) {
+        this.controllers.push(this.createMTopApi(api))
+        continue
+      }
+
+      if (this.isServerlessTimerTrigger(api)) {
+        this.controllers.push(this.createServerlessTimer(api))
+        continue
+      }
+
+      throw new Error(`Unsupported trigger type: ${api.trigger.type}`)
     }
   }
 
-  private methodDecorators = {
-    GET: Get,
-    POST: Post,
-    PUT: Put,
-    DELETE: Del,
-    PATCH: Patch,
-    HEAD: Head,
-    OPTIONS: Options,
-    ALL: All,
+  createHSFApi(api: ApiRoute<HSFTrigger>) {
+    const { functionId, fn } = api
+
+    debug('create hsf api: %s', functionId)
+
+    return createFunctionContainer({
+      fn,
+      functionId,
+      parseArgs({ args }) {
+        const event = args[0]
+        return event?.args || []
+      },
+      handlerDecorators: [ServerlessTrigger(ServerlessTriggerType.HSF)],
+    })
+  }
+
+  createMTopApi(api: ApiRoute<MTopTrigger>) {
+    const { functionId, fn } = api
+
+    debug('create mtop api: %s', functionId)
+
+    return createFunctionContainer({
+      fn,
+      functionId,
+      parseArgs({ args }) {
+        const event = args[0]
+        return event?.args || []
+      },
+      handlerDecorators: [ServerlessTrigger(ServerlessTriggerType.MTOP)],
+    })
+  }
+
+  createServerlessTimer(api: ApiRoute<ServerlessTimerTrigger>) {
+    const { trigger, fn, functionId } = api
+
+    debug('create serverless timer: %s %O', functionId, trigger.options)
+
+    return createFunctionContainer({
+      fn,
+      functionId,
+      parseArgs({ args }) {
+        return args
+      },
+      handlerDecorators: [
+        ServerlessTrigger(ServerlessTriggerType.TIMER, trigger.options),
+      ],
+    })
   }
 
   createHttpApi(api: ApiRoute) {
@@ -111,12 +181,23 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
     return createFunctionContainer({
       fn,
       functionId,
-      parseArgs(ctx) {
+      parseArgs({ ctx }) {
         return ctx.request?.body?.args || []
       },
       classDecorators: [Controller()],
       handlerDecorators: [Method(url, { middleware: api.middleware })],
     })
+  }
+
+  private methodDecorators = {
+    GET: Get,
+    POST: Post,
+    PUT: Put,
+    DELETE: Del,
+    PATCH: Patch,
+    HEAD: Head,
+    OPTIONS: Options,
+    ALL: All,
   }
 
   registerGlobalMiddleware(middlewares: HooksMiddleware[] = []) {
