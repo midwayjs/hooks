@@ -45,7 +45,6 @@ export function setupBuildCommand(cli: CAC) {
 
       try {
         consola.info('Building client...')
-
         const clientBuild = await executePromise(
           build(mergeConfig(defaultConfig, userConfig?.vite))
         )
