@@ -23,6 +23,7 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
   const router = getRouter({ useSourceFile })
   const midway = new MidwayFrameworkAdapter(router, null, null)
 
+  // TODO Rely on file system
   const apis = loadApiModules(source, router)
   if (apis.length === 0) {
     console.warn('No api routes found, source is:', source)

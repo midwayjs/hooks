@@ -6,13 +6,14 @@ import {
   IMidwayKoaConfigurationOptions,
 } from '@midwayjs/koa'
 import { close, createApp as createMockApp } from '@midwayjs/mock'
+import { setProjectRoot } from '../src'
 
 export async function createApp(
   name: string,
   options: IMidwayKoaConfigurationOptions = {}
 ): Promise<IMidwayKoaApplication> {
   const fixture = join(__dirname, 'fixtures', name)
-  process.chdir(fixture)
+  setProjectRoot(fixture)
   return createMockApp<Framework>(fixture, options, koaModule)
 }
 
