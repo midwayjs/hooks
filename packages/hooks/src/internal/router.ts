@@ -1,4 +1,8 @@
-import { AbstractRouter, ApiRouter, FileSystemRouter } from '@midwayjs/hooks-core'
+import {
+  AbstractRouter,
+  ApiRouter,
+  FileSystemRouter,
+} from '@midwayjs/hooks-core'
 import { getConfig, getProjectRoot } from './config'
 import { join } from 'upath'
 
@@ -7,14 +11,14 @@ type GetSourceOptions = {
 }
 
 export function getRouter(options: GetSourceOptions): AbstractRouter {
-  const source = getSource(options)
   const { routes } = getConfig()
 
   if (Array.isArray(routes)) {
+    const source = getSource(options)
     return new FileSystemRouter({ source, routes })
   }
 
-  return new ApiRouter({ source })
+  return new ApiRouter()
 }
 
 export function getSource(options: GetSourceOptions) {

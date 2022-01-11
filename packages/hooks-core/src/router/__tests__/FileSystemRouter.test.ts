@@ -23,8 +23,8 @@ describe('NewFileRouter', () => {
     expect(router.config.source.endsWith('/src')).toBeTruthy()
 
     const api = '/src/lambda/index.ts'
-    expect(router.isApiFile(api)).toBeTruthy()
-    expect(router.isApiFile('/dist')).toBeFalsy()
+    expect(router.isApiFile({ file: api })).toBeTruthy()
+    expect(router.isApiFile({ file: '/dist' })).toBeFalsy()
 
     const rule = router.getRoute(api)
     expect(rule).toMatchSnapshot()

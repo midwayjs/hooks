@@ -6,9 +6,10 @@ import {
   EXPORT_DEFAULT_FUNCTION_ALIAS,
   parseApiModule,
 } from '@midwayjs/hooks-core'
-import jiti from 'jiti'
+import createJITI from 'jiti'
 
-jiti().register()
+const jiti = createJITI()
+jiti.register()
 
 interface BundlerConfig {
   name: string
@@ -21,6 +22,8 @@ export abstract class AbstractBundlerAdapter {
   getName() {
     return this.config.name
   }
+
+  abstract getSource(): string
 
   getRouter() {
     return this.config.router
@@ -105,7 +108,17 @@ export function createBundlerPlugin(adapter: AbstractBundlerAdapter) {
       name: adapter.getName(),
       enforce: 'pre',
       transformInclude(id: string) {
-        return adapter.getRouter().isApiFile(id)
+        const source = adapter.getSource()
+        const router = adapter.getRouter()
+
+        if (!router.isSourceFile(id, source)) {
+          return false
+        }
+
+        return router.isApiFile({
+          file: id,
+          mod: require(id),
+        })
       },
       async transform(code: string, id: string) {
         const apis = parseApiModule(require(id), id, adapter.getRouter())

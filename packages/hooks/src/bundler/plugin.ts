@@ -2,11 +2,12 @@ import { ApiRoute, HttpTriggerType } from '@midwayjs/hooks-core'
 import { AbstractBundlerAdapter, createBundlerPlugin } from '@midwayjs/bundler'
 import { join } from 'upath'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
-import { getConfig, getProjectRoot, getRouter } from '../internal'
+import { getConfig, getProjectRoot, getRouter, getSource } from '../internal'
 import { normalizeUrl } from '../api/component/adapter'
 
 const root = getProjectRoot()
 const projectConfig = getConfig()
+const source = getSource({ useSourceFile: true })
 const router = getRouter({ useSourceFile: true })
 
 class MidwayBundlerAdapter extends AbstractBundlerAdapter {
@@ -19,6 +20,10 @@ class MidwayBundlerAdapter extends AbstractBundlerAdapter {
     return apis
   }
 
+  override getSource(): string {
+    return source
+  }
+
   override getUnplugin() {
     return {
       vite: {
@@ -26,7 +31,8 @@ class MidwayBundlerAdapter extends AbstractBundlerAdapter {
           if (
             process.env.NODE_ENV !== 'production' &&
             importer &&
-            router.isApiFile(importer)
+            router.isSourceFile(importer, source) &&
+            router.isApiFile({ mod: require(importer), file: importer })
           ) {
             return 'MIDWAY_HOOKS_VIRTUAL_FILE'
           }

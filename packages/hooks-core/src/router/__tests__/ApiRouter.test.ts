@@ -4,20 +4,28 @@ import { ApiRouter } from '../api'
 import { resolve } from 'upath'
 
 test('ApiRouter', async () => {
-  const router = new ApiRouter({ source: '/' })
+  const router = new ApiRouter()
   expect(router).toBeInstanceOf(ApiRouter)
   expect(router.config.basePath).toEqual(API_BASE_PATH)
 })
 
 test('ApiRouter isApiFile', async () => {
-  const root = resolve(__dirname, 'fixtures')
-  const router = new ApiRouter({ source: root })
-  expect(router.isApiFile(resolve(root, 'invalid.ts'))).toBeFalsy()
-  expect(router.isApiFile(resolve(root, 'valid.ts'))).toBeTruthy()
+  const source = resolve(__dirname, 'fixtures')
+  const router = new ApiRouter()
+  expect(
+    router.isApiFile({
+      mod: require(resolve(source, 'invalid.ts')),
+    })
+  ).toBeFalsy()
+  expect(
+    router.isApiFile({
+      mod: require(resolve(source, 'valid.ts')),
+    })
+  ).toBeTruthy()
 })
 
 test('ApiRouter hasExportApiRoutes', () => {
-  const router = new ApiRouter({ source: '/' })
+  const router = new ApiRouter()
 
   expect(router.hasExportApiRoutes(null)).toBeFalsy()
   expect(router.hasExportApiRoutes(undefined)).toBeFalsy()
@@ -38,7 +46,7 @@ test('ApiRouter hasExportApiRoutes', () => {
 })
 
 test('ApiRouter functionToHttpPath', () => {
-  const router = new ApiRouter({ source: '/' })
+  const router = new ApiRouter()
 
   const cases: [string, string, boolean, string][] = [
     ['/index.ts', 'foo', false, '/api/foo'],

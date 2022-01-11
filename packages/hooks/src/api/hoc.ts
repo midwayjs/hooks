@@ -1,5 +1,12 @@
 import { deprecate } from 'util'
-import { Api, ApiFunction, HooksMiddleware, Middleware, validateArray, validateFunction } from '@midwayjs/hooks-core'
+import {
+  Api,
+  ApiFunction,
+  HooksMiddleware,
+  Middleware,
+  validateArray,
+  validateFunction,
+} from '@midwayjs/hooks-core'
 
 type Controller = {
   middleware?: HooksMiddleware[]

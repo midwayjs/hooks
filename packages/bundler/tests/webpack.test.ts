@@ -5,9 +5,14 @@ import { resolve as pathResolve } from 'path'
 import webpack from 'webpack'
 import { AbstractBundlerAdapter, createBundlerPlugin } from '../src'
 
-class TestBundlerAdapter extends AbstractBundlerAdapter {}
-
 const root = pathResolve(__dirname, './fixtures/base-app')
+
+class TestBundlerAdapter extends AbstractBundlerAdapter {
+  getSource(): string {
+    return root
+  }
+}
+
 const router = new FileSystemRouter({
   source: root,
   routes: [

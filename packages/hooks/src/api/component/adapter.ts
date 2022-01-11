@@ -29,8 +29,16 @@ import {
   ServerlessTrigger,
   ServerlessTriggerType,
 } from '@midwayjs/decorator'
-import { createFunctionContainer, isDev, isFileSystemRouter } from '../../internal'
-import { HSFTrigger, MTopTrigger, ServerlessTimerTrigger } from '../operator/serverless'
+import {
+  createFunctionContainer,
+  isDev,
+  isFileSystemRouter,
+} from '../../internal'
+import {
+  HSFTrigger,
+  MTopTrigger,
+  ServerlessTimerTrigger,
+} from '../operator/serverless'
 
 const debug = createDebug('hooks:MidwayFrameworkAdapter')
 

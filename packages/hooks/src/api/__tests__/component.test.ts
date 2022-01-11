@@ -1,4 +1,9 @@
-import { CONTROLLER_KEY, getClassMetadata, listModule, WEB_ROUTER_KEY } from '@midwayjs/decorator'
+import {
+  CONTROLLER_KEY,
+  getClassMetadata,
+  listModule,
+  WEB_ROUTER_KEY,
+} from '@midwayjs/decorator'
 import { HttpMethod } from '@midwayjs/hooks-core'
 import { HooksComponent } from '../component'
 import { MidwayFrameworkAdapter } from '../component/adapter'

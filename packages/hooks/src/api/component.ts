@@ -1,5 +1,10 @@
 import { IMidwayContainer } from '@midwayjs/core'
-import { AbstractRouter, createDebug, parseApiModule, validateArray } from '@midwayjs/hooks-core'
+import {
+  AbstractRouter,
+  createDebug,
+  parseApiModule,
+  validateArray,
+} from '@midwayjs/hooks-core'
 import { getRouter, getSource, isDev, RuntimeConfig } from '../internal'
 import { createConfiguration } from './configuration'
 import { run } from '@midwayjs/glob'
@@ -55,7 +60,11 @@ function loadApiModules(source: string, router: AbstractRouter) {
   debug('api files: %O', files)
 
   const routes = files
-    .filter((file) => router.isApiFile(file))
+    .filter(
+      (file) =>
+        router.isSourceFile(file, source) &&
+        router.isApiFile({ file, mod: require(file) })
+    )
     .map((file) => {
       const apis = parseApiModule(require(file), file, router)
       debug('load api routes from file: %s %O', file, apis)

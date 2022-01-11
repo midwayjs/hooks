@@ -47,11 +47,7 @@ export class FileSystemRouter extends AbstractRouter {
     })
   }
 
-  isApiFile(file: string) {
-    if (!super.isJavaScriptFile(file)) {
-      return false
-    }
-
+  isApiFile({ file }) {
     const route = this.getRoute(file)
     return !!route
   }
