@@ -1,28 +1,28 @@
-import { als as AsynchronousLocalStorage } from 'asynchronous-local-storage'
+import { AsyncLocalStorageRuntime } from './AsyncLocalStorage'
+import { HooksContext } from './type'
+import {
+  isEnableSingleLocalStorage,
+  SingletonLocalStorageRuntime,
+} from './SingletonLocalStorage'
 
-export type HooksContext = {
-  ctx: any
-}
+export * from './type'
+export * from './AsyncLocalStorage'
 
-/**
- * @private
- * private api, may change without notice.
- * Use asynchronous-local-storage due to serverless environment does not support node.js 12.17.0
- */
-export const als = {
+export const ContextManager = {
   get runtime() {
-    return AsynchronousLocalStorage
+    if (isEnableSingleLocalStorage()) {
+      return SingletonLocalStorageRuntime
+    }
+    return AsyncLocalStorageRuntime
   },
-  getStore(key: string) {
-    return als.runtime.get<any>(key)
+  getValue(key: string) {
+    return ContextManager.runtime.getValue(key)
   },
   run(ctx: HooksContext, callback: () => Promise<any>) {
-    return new Promise((resolve, reject) => {
-      als.runtime.runWith(() => callback().then(resolve).catch(reject), ctx)
-    })
+    return ContextManager.runtime.run(ctx, callback)
   },
 }
 
 export function useContext<T = any>(): T {
-  return als.getStore('ctx')
+  return ContextManager.getValue('ctx')
 }

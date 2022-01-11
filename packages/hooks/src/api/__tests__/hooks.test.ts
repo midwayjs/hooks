@@ -1,4 +1,4 @@
-import { als, useContext } from '@midwayjs/hooks-core'
+import { ContextManager, useContext } from '@midwayjs/hooks-core'
 import { useConfig, useInject, useLogger, usePlugin } from '../hooks'
 
 const mockContext = {
@@ -20,7 +20,7 @@ const mockContext = {
 }
 
 test('test hooks runtime', async () => {
-  await als.run({ ctx: mockContext }, async () => {
+  await ContextManager.run({ ctx: mockContext }, async () => {
     expect(useContext()).toStrictEqual(mockContext)
 
     const logger = useLogger()

@@ -1,7 +1,7 @@
 import {
   AbstractFrameworkAdapter,
   AbstractRouter,
-  als,
+  ContextManager,
   ApiRoute,
   createDebug,
   HooksMiddleware,
@@ -225,7 +225,7 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
   }
 
   private async useUniversalRuntime(ctx: any, next: any) {
-    await als.run({ ctx }, async () => await next())
+    await ContextManager.run({ ctx }, async () => await next())
   }
 
   private useHooksMiddleware(fn: (...args: any[]) => any) {
