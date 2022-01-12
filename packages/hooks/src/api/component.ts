@@ -10,8 +10,9 @@ import { createConfiguration } from './configuration'
 import { run } from '@midwayjs/glob'
 import flattenDeep from 'lodash/flattenDeep'
 import { MidwayApplication, MidwayFrameworkAdapter } from './component/adapter'
+import { getHydrateOptions, isHydrate } from '../internal/bundle/hydrate'
 
-const debug = createDebug('hooks:component')
+const debug = createDebug('hooks: component')
 
 export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
   if (runtimeConfig.middleware !== undefined) {
@@ -19,12 +20,17 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
   }
 
   const useSourceFile = isDev()
+  debug('useSourceFile: %s', useSourceFile)
+
   const source = getSource({ useSourceFile })
-  const router = getRouter({ useSourceFile })
+  const router = getRouter(source)
   const midway = new MidwayFrameworkAdapter(router, null, null)
 
   // TODO Rely on file system
-  const apis = loadApiModules(source, router)
+  const apis = isHydrate()
+    ? loadHydrateModules(router)
+    : loadApiModules(source, router)
+
   if (apis.length === 0) {
     console.warn('No api routes found, source is:', source)
   }
@@ -45,8 +51,8 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
   return { Configuration }
 }
 
-function loadApiModules(source: string, router: AbstractRouter) {
-  debug('load api modules from: %s', source)
+export function loadApiFiles(source: string, router: AbstractRouter) {
+  debug('load source: %s', source)
 
   const files = run(['**/*.{ts,js}'], {
     cwd: source,
@@ -58,19 +64,30 @@ function loadApiModules(source: string, router: AbstractRouter) {
     ],
   })
 
-  debug('api files: %O', files)
+  debug('scan files: %O', files)
 
-  const routes = files
-    .filter(
-      (file) =>
-        router.isSourceFile(file, source) &&
-        router.isApiFile({ file, mod: require(file) })
-    )
-    .map((file) => {
-      const apis = parseApiModule(require(file), file, router)
-      debug('load api routes from file: %s %O', file, apis)
-      return apis
-    })
+  const apiFiles = files.filter(
+    (file) =>
+      router.isSourceFile(file, source) &&
+      router.isApiFile({ file, mod: require(file) })
+  )
 
+  debug('api files: %O', apiFiles)
+  return apiFiles
+}
+
+function loadHydrateModules(router: AbstractRouter) {
+  const { modules } = getHydrateOptions()
+  debug('load hydrate modules %O', modules)
+  const routes = modules.map(({ mod, file }) =>
+    parseApiModule(mod, file, router)
+  )
+  return flattenDeep(routes)
+}
+
+function loadApiModules(source: string, router: AbstractRouter) {
+  const routes = loadApiFiles(source, router).map((file) =>
+    parseApiModule(require(file), file, router)
+  )
   return flattenDeep(routes)
 }

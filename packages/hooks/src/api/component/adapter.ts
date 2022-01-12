@@ -40,7 +40,7 @@ import {
   ServerlessTimerTrigger,
 } from '../operator/serverless'
 
-const debug = createDebug('hooks:MidwayFrameworkAdapter')
+const debug = createDebug('hooks: MidwayFrameworkAdapter')
 
 export interface MidwayApplication extends IMidwayApplication {
   use?: (middleware: any) => void

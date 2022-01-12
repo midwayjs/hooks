@@ -1,13 +1,13 @@
 import { ContextRuntime } from '.'
-import { createDebug } from '..'
+import { createDebug } from '../common/util'
 
-const USE_SINGLETON_LOCAL_STORAGE = Symbol.for(
-  'MIDWAY_HOOKS_USE_SINGLETON_LOCAL_STORAGE'
-)
+const debug = createDebug('hooks-core: runtime')
+
+const USE_SINGLETON_LOCAL_STORAGE = 'MIDWAY_HOOKS_USE_SINGLETON_LOCAL_STORAGE'
 
 export const enableSingleLocalStorage = () => {
-  createDebug('hooks-core: runtime')('Enable SingletonLocalStorageRuntime')
-  global[USE_SINGLETON_LOCAL_STORAGE] = true
+  debug('Enable SingletonLocalStorageRuntime')
+  globalThis[USE_SINGLETON_LOCAL_STORAGE] = true
 }
 
 export const isEnableSingleLocalStorage = () => {

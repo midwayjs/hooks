@@ -10,11 +10,10 @@ type GetSourceOptions = {
   useSourceFile: boolean
 }
 
-export function getRouter(options: GetSourceOptions): AbstractRouter {
+export function getRouter(source: string): AbstractRouter {
   const { routes } = getConfig()
 
   if (Array.isArray(routes)) {
-    const source = getSource(options)
     return new FileSystemRouter({ source, routes })
   }
 

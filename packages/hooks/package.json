@@ -28,6 +28,7 @@
     "@midwayjs/glob": "^1.0.6"
   },
   "devDependencies": {
+    "art-template": "^4.13.2",
     "@types/lodash": "^4.14.170",
     "@midwayjs/koa": "beta",
     "@midwayjs/mock": "beta",

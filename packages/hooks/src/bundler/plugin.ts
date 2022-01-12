@@ -8,7 +8,7 @@ import { normalizeUrl } from '../api/component/adapter'
 const root = getProjectRoot()
 const projectConfig = getConfig()
 const source = getSource({ useSourceFile: true })
-const router = getRouter({ useSourceFile: true })
+const router = getRouter(source)
 
 class MidwayBundlerAdapter extends AbstractBundlerAdapter {
   override transformApiRoutes(apis: ApiRoute[]): ApiRoute[] {

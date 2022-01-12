@@ -33,3 +33,4 @@ sandbox
 !**/tests/**/dist
 !**/tests/**/build
 .depp
+dist

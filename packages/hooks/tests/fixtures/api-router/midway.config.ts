@@ -1,4 +1,4 @@
-import { defineConfig } from '../../../dist/midwayjs-hooks.cjs'
+import { defineConfig } from '../../../'
 
 export default defineConfig({
   source: 'src',

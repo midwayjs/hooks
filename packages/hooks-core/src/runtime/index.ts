@@ -7,6 +7,7 @@ import {
 
 export * from './type'
 export * from './AsyncLocalStorage'
+export * from './SingletonLocalStorage'
 
 export const ContextManager = {
   get runtime() {
