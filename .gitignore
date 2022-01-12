@@ -1,36 +1,30 @@
-node_modules
-*.log
-*.log.*
-logs
-.vscode
-dest
+# build output
 dist
-coverage
-.idea
-package-lock.json
-.DS_*
-.nyc*
-!**/fixtures/app/node_modules/hello/*
-run/
-package-lock.json
-.nodejs-cache
-AUTHORS
 .serverless
-.midway
 .ncc_entry
 .zip
-.aliyun_credentials
-.env_temp
-serverless.zip
-.faas_debug_tmp
+
+# Editors
+**/.idea
+**/.vscode
+
+# dependencies
+node_modules
+package-lock.json
+
+# logs & pids
+*.log
+logs
+pids
+*.cpuprofile
+
+# coverage
+.nyc_output
+coverage
+
+# Cache
 *.tsbuildinfo
-lib
-.serverless
-code.zip
-build
-eagleeye
-sandbox
-!**/tests/**/dist
-!**/tests/**/build
-.depp
-dist
+.DS_*
+
+# Third party files
+.aliyun_credentials
