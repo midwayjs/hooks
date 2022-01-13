@@ -1,6 +1,6 @@
 <p align="center">
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   <img src="https://img.alicdn.com/imgextra/i4/O1CN01AJ1lNS20vkL7tTuUj_!!6000000006912-2-tps-1060-868.png" height="300" alt="Midway Logo" />
 </p>
@@ -195,6 +195,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://blog.lxxyx.cn/"><img src="https://avatars.githubusercontent.com/u/13161470?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lxxyx</b></sub></a><br /><a href="https://github.com/hooks/midwayjs/commits?author=Lxxyx" title="Code">💻</a> <a href="#content-Lxxyx" title="Content">🖋</a> <a href="#ideas-Lxxyx" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/hooks/midwayjs/pulls?q=is%3Apr+reviewed-by%3ALxxyx" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/hooks/midwayjs/commits?author=Lxxyx" title="Tests">⚠️</a> <a href="https://github.com/hooks/midwayjs/commits?author=Lxxyx" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://iam.gy/"><img src="https://avatars.githubusercontent.com/u/14832743?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gao Yang</b></sub></a><br /><a href="https://github.com/hooks/midwayjs/commits?author=echosoar" title="Code">💻</a> <a href="#content-echosoar" title="Content">🖋</a> <a href="#ideas-echosoar" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/hooks/midwayjs/pulls?q=is%3Apr+reviewed-by%3Aechosoar" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/hooks/midwayjs/commits?author=echosoar" title="Tests">⚠️</a> <a href="https://github.com/hooks/midwayjs/commits?author=echosoar" title="Documentation">📖</a></td>
   </tr>
 </table>
 
