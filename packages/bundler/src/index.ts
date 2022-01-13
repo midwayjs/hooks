@@ -1,4 +1,3 @@
-import omit from 'lodash/omit'
 import { createUnplugin, UnpluginOptions } from 'unplugin'
 import {
   AbstractRouter,
@@ -10,6 +9,8 @@ import createJITI from 'jiti'
 
 const jiti = createJITI()
 jiti.register()
+
+const omit = (key: string, { [key]: _, ...obj }) => obj
 
 interface BundlerConfig {
   name: string
@@ -72,7 +73,7 @@ export abstract class AbstractBundlerAdapter {
           return ${uniqueFetcher}(...args, route)
         };
         ${functionName}.route = {
-          trigger: ${JSON.stringify(omit(trigger, 'requestClient'))},
+          trigger: ${JSON.stringify(omit('requestClient', trigger))},
           functionId: '${functionId}',
           useInputMetadata: ${!!useInputMetadata},
         };

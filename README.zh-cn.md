@@ -11,26 +11,28 @@
   <img src="https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge">
 </p>
 
-# 全栈框架：更快 & 更具生产力
+<h1 align="center">函数式全栈框架</h1>
 
-Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/midwayjs/faas/quickstart_integration?translate=en)
+<h5 align="center">"零" Api & 类型安全 & 全栈套件 & 强大后端</h5>
+<h5 align="center">在阿里巴巴，有 2800+ 全栈应用基于 Midway Hooks 开发（2022.01）</h5>
 
 ## ✨ 特性
 
-- ☁️&nbsp;&nbsp;全栈，在 src 一个目录中开发前后端代码
-- 🌈&nbsp;&nbsp;"零" API，从后端 import 函数，调用时自动转换为 API 请求
-- 🌍 使用 "React Hooks | Vue composition Api" 开发后端
-- ⚡️&nbsp;&nbsp;极快的启动速度（小于 3 秒）
-- ⚙️&nbsp;&nbsp;使用 Vite，支持 React/Vue 等框架
-- ✈️&nbsp;&nbsp;可部署至 Server 或者 Serverless
-- 🛡 完善的 TypeScript 支持
+- ☁️&nbsp;&nbsp;最大化生产力 & 开发者体验，支持开发全栈应用 & Api 服务
+- ⚡️&nbsp;&nbsp;开箱即用的全栈套件，支持 React/Vue/Svelte...多框架
+- 🌈&nbsp;&nbsp;"零" API，全栈应用下导入函数直接调用接口，抹去胶水层
+- ⛑️&nbsp;&nbsp;类型安全，从前端到后端使用同一份类型定义，提前发现错误
+- 🌍&nbsp;&nbsp;函数式编程，前后端统一使用 `Hooks`
+- ⚙️&nbsp;&nbsp;支持 Webpack / Vite 前端工程体系接入
+- ✈️&nbsp;&nbsp;部署至 Server & Serverless
+- 🛡&nbsp;&nbsp;基于超强的 Node.js 框架 Midway，支撑企业级应用开发
 
 ## 🌰 Demo
 
 <table>
 <tr>
-<th style="text-align: center;"> 前端调用 </th>
-<th style="text-align: center;"> 后端 API </th>
+<th style="text-align: center;"> 前端(React) </th>
+<th style="text-align: center;"> 后端(Midway Hooks) </th>
 </tr>
 <tr>
 <td>
@@ -38,21 +40,41 @@ Docs：[Getting Started - 新云端一体解决方案](https://www.yuque.com/mid
 
 <!-- prettier-ignore -->
 ```ts
-import { getPath, post } from './apis/lambda';
+// src/pages/articles.tsx
+import { getArticles } from '../api';
+import { useRequest } from 'ahooks';
+import ArticleList from './components/ArticleList';
 
-// send GET request to /api/getPath
-const path = await getPath();
-console.assert(path === '/api/getPath');
+export default () => {
+  const { data } = useRequest(() =>
+    getArticles({
+      query: {
+        page: '1',
+        per_page: '10',
+      },
+    })
+  );
 
-const { message, method } = await post('Jake');
+  return <ArticleList articles={data} />;
+};
 
-console.assert(message === 'Hello Jake!');
-console.assert(method === 'POST');
+// src/pages/new.tsx
+import { createArticle } from '../api';
+import Editor from './components/Editor';
+import { useState } from 'react';
 
+export default () => {
+  const [loading, setLoading] = useState(false);
 
+  const handleSubmit = async (title: string, content: string) => {
+    setLoading(true);
+    const { id } = await createArticle({ title, content });
+    setLoading(false);
+    location.href = `/articles/${id}`;
+  };
 
-
-
+  return <Editor loading={loading} onSubmit={handleSubmit} />;
+};
 
 ```
 
@@ -63,60 +85,47 @@ console.assert(method === 'POST');
 <sub>
 
 ```ts
-import { useContext } from '@midwayjs/hooks';
+// src/api/index.ts
+import { Api, Get, Post, Validate, Query, useContext } from '@midwayjs/hooks';
+import { z } from 'zod';
+import database from './database';
 
-export async function getPath() {
-  // Get HTTP request context by Hooks
-  const ctx = useContext();
-  return ctx.path;
-}
+export const getArticles = Api(
+  Get(),
+  Query<{ page: string; per_page: string }>(),
+  async () => {
+    const ctx = useContext();
 
-export async function post(name: string) {
-  const ctx = useContext();
+    const articles = await database.articles.find({
+      page: ctx.query.page,
+      per_page: ctx.query.per_page,
+    });
 
-  return {
-    message: `Hello ${name}!`,
-    method: ctx.method,
-  };
-}
+    return articles;
+  }
+);
+
+const ArticleSchema = z.object({
+  title: z.string().min(3).max(16),
+  content: z.string().min(1),
+});
+
+export const createArticle = Api(
+  Post(),
+  Validate(ArticleSchema),
+  async (article: z.infer<typeof ArticleSchema>) => {
+    const newArticle = await database.articles.create(article);
+    return {
+      id: newArticle.id,
+    };
+  }
+);
 ```
 
 </sub>
 </td>
 </tr>
 </table>
-
-## 🚀 快速开始
-
-请先安装 @midwayjs/cli
-
-```bash
-$ npm i @midwayjs/cli -g
-```
-
-### 创建
-
-```bash
-mw new my-app
-```
-
-### 运行
-
-```bash
-$ npm run dev
-```
-
-### 部署至服务器
-
-```bash
-$ node bootstrap.js
-```
-
-### 部署至 Serverless
-
-```bash
-$ npm run deploy
-```
 
 ## Contribute
 
@@ -151,10 +160,6 @@ $ yarn watch
 ```bash
 $ yarn test
 ```
-
-## 开源协议
-
-Midway Serverless based [MIT licensed](./LICENSE).
 
 ## 关于我们
 

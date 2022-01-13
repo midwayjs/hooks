@@ -1,16 +1,33 @@
 {
   "name": "@midwayjs/bundler",
   "version": "3.0.0-alpha.0",
-  "description": "Midway Hooks Plugin for Webpack & Vite",
+  "description": "Midway Hooks bundler plugin for Webpack & Vite",
+  "keywords": [
+    "midway",
+    "fullstack",
+    "bundler",
+    "unplugin",
+    "vite",
+    "webpack"
+  ],
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
   "main": "dist/midwayjs-bundler.cjs.js",
   "module": "dist/midwayjs-bundler.esm.js",
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "unplugin": "^0.2.20",
-    "lodash": "^4.17.21",
     "jiti": "^1.12.9"
   },
   "devDependencies": {
@@ -18,11 +35,5 @@
     "memory-fs": "^0.5.0",
     "ts-loader": "^8.3.0",
     "prettier": "^2.5.1"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "dist"
-  ]
+  }
 }

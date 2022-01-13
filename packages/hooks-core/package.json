@@ -5,17 +5,17 @@
   "keywords": [
     "midway",
     "hooks",
-    "core"
+    "runtime"
   ],
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
-  "main": "dist/midwayjs-hooks-core.cjs.js",
-  "module": "dist/midwayjs-hooks-core.esm.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:midwayjs/hooks.git"
   },
+  "main": "dist/midwayjs-hooks-core.cjs.js",
+  "module": "dist/midwayjs-hooks-core.esm.js",
   "publishConfig": {
     "access": "public"
   },

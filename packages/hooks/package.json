@@ -1,20 +1,23 @@
 {
   "name": "@midwayjs/hooks",
   "version": "3.0.0-alpha.0",
-  "description": "The next generation of integrated front and back-end application development solutions",
+  "description": "A framework for building api & fullstack applications faster",
   "keywords": [
     "midway",
-    "hooks"
+    "hooks",
+    "fullstack",
+    "api",
+    "applications"
   ],
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
-  "main": "dist/midwayjs-hooks.cjs.js",
-  "module": "dist/midwayjs-hooks.esm.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:midwayjs/hooks.git"
   },
+  "main": "dist/midwayjs-hooks.cjs.js",
+  "module": "dist/midwayjs-hooks.esm.js",
   "dependencies": {
     "tslib": "^2.3.0",
     "lodash": "^4.17.21",
@@ -23,11 +26,11 @@
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "@midwayjs/decorator": "beta",
     "@midwayjs/core": "beta",
-    "@midwayjs/serverless-dev-pack": "^1.2.92",
-    "@midwayjs/bundler": "^3.0.0-alpha.0",
     "@midwayjs/glob": "^1.0.6"
   },
   "devDependencies": {
+    "@midwayjs/bundler": "^3.0.0-alpha.0",
+    "@midwayjs/serverless-dev-pack": "^1.2.92",
     "art-template": "^4.13.2",
     "@types/lodash": "^4.14.170",
     "@midwayjs/koa": "beta",

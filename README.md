@@ -11,28 +11,28 @@
   <img src="https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge">
 </p>
 
-# Full Stack Framework: Faster & More Productive
+<h1 align="center">Functional Fullstack Framework</h1>
 
-> [中文 README](./README.zh-cn.md)
-
-Docs：[Getting Started](https://www.yuque.com/midwayjs/faas/quickstart_integration?translate=en)
+<h5 align="center">"Zero" Api & Type Safe & Fullstack Kit & Powerful Backend</h5>
+<h5 align="center">At Alibaba, 2800+ full-stack applications are developed based on Midway Hooks (2022.01)</h5>
 
 ## ✨ Features
 
-- ☁️&nbsp;&nbsp;Fullstack, the src directory contains front-end and back-end code
-- 🌈&nbsp;&nbsp;"Zero" Api, import server functions directly into frontend and automatically create API requests.
-- 🌍&nbsp;&nbsp;Using "React Hooks | Vue composition Api" to develop the back-end
-- ⚡️&nbsp;&nbsp;Extremely fast start-up speed, less than 3S
-- ⚙️&nbsp;&nbsp;Using Vite, supports Vue/React (any other framework supported by Vite)
+- ☁️&nbsp;&nbsp;Maximize productivity and developer experience, support fullstack development & API service
+- ⚡️&nbsp;&nbsp;Fullstack kit that supports React/Vue/Svelte... and more frameworks
+- 🌈&nbsp;&nbsp;Functional programming, using `Hooks` for frontend and backend
+- ⛑️&nbsp;&nbsp;Type safe, use the identical type definition from frontend to backend, detect errors in advance
+- 🌍&nbsp;&nbsp;"Zero" Api data layer, import functions from the backend to call the API directly, without the ajax glue layer
+- ⚙️&nbsp;&nbsp;Support for `Webpack / Vite` based projects
 - ✈️&nbsp;&nbsp;Deploy to Server or Serverless
-- 🛡&nbsp;&nbsp;TypeScript Ready
+- 🛡&nbsp;&nbsp;Based on Midway, a powerful Node.js framework that supports enterprise-level application development
 
 ## 🌰 Demo
 
 <table>
 <tr>
-<th style="text-align: center;"> front-end invoke </th>
-<th style="text-align: center;"> back-end api </th>
+<th style="text-align: center;"> Frontend(React) </th>
+<th style="text-align: center;"> Backend(Midway Hooks) </th>
 </tr>
 <tr>
 <td>
@@ -40,21 +40,41 @@ Docs：[Getting Started](https://www.yuque.com/midwayjs/faas/quickstart_integrat
 
 <!-- prettier-ignore -->
 ```ts
-import { getPath, post } from './apis/lambda';
+// src/pages/articles.tsx
+import { getArticles } from '../api';
+import { useRequest } from 'ahooks';
+import ArticleList from './components/ArticleList';
 
-// send GET request to /api/getPath
-const path = await getPath();
-console.assert(path === '/api/getPath');
+export default () => {
+  const { data } = useRequest(() =>
+    getArticles({
+      query: {
+        page: '1',
+        per_page: '10',
+      },
+    })
+  );
 
-const { message, method } = await post('Jake');
+  return <ArticleList articles={data} />;
+};
 
-console.assert(message === 'Hello Jake!');
-console.assert(method === 'POST');
+// src/pages/new.tsx
+import { createArticle } from '../api';
+import Editor from './components/Editor';
+import { useState } from 'react';
 
+export default () => {
+  const [loading, setLoading] = useState(false);
 
+  const handleSubmit = async (title: string, content: string) => {
+    setLoading(true);
+    const { id } = await createArticle({ title, content });
+    setLoading(false);
+    location.href = `/articles/${id}`;
+  };
 
-
-
+  return <Editor loading={loading} onSubmit={handleSubmit} />;
+};
 
 ```
 
@@ -65,60 +85,47 @@ console.assert(method === 'POST');
 <sub>
 
 ```ts
-import { useContext } from '@midwayjs/hooks';
+// src/api/index.ts
+import { Api, Get, Post, Validate, Query, useContext } from '@midwayjs/hooks';
+import { z } from 'zod';
+import database from './database';
 
-export async function getPath() {
-  // Get HTTP request context by Hooks
-  const ctx = useContext();
-  return ctx.path;
-}
+export const getArticles = Api(
+  Get(),
+  Query<{ page: string; per_page: string }>(),
+  async () => {
+    const ctx = useContext();
 
-export async function post(name: string) {
-  const ctx = useContext();
+    const articles = await database.articles.find({
+      page: ctx.query.page,
+      per_page: ctx.query.per_page,
+    });
 
-  return {
-    message: `Hello ${name}!`,
-    method: ctx.method,
-  };
-}
+    return articles;
+  }
+);
+
+const ArticleSchema = z.object({
+  title: z.string().min(3).max(16),
+  content: z.string().min(1),
+});
+
+export const createArticle = Api(
+  Post(),
+  Validate(ArticleSchema),
+  async (article: z.infer<typeof ArticleSchema>) => {
+    const newArticle = await database.articles.create(article);
+    return {
+      id: newArticle.id,
+    };
+  }
+);
 ```
 
 </sub>
 </td>
 </tr>
 </table>
-
-## 🚀 Quick Start
-
-Please install `@midwayjs/cli` first.
-
-```bash
-$ npm i @midwayjs/cli -g
-```
-
-### Create
-
-```bash
-mw new my-app
-```
-
-### Run
-
-```bash
-$ npm run dev
-```
-
-### Deploy to custom server
-
-```bash
-$ node bootstrap.js
-```
-
-### Deploy to Serverless
-
-```bash
-$ npm run deploy
-```
 
 ## Contribute
 
@@ -153,10 +160,6 @@ $ yarn watch
 ```bash
 $ yarn test
 ```
-
-## license
-
-Midway Serverless based [MIT licensed](./LICENSE).
 
 ## About
 

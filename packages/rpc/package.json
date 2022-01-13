@@ -1,13 +1,7 @@
 {
   "name": "@midwayjs/rpc",
   "version": "3.0.0-alpha.0",
-  "description": "Build integration plugin for Rax/Ice to convert references to backend Api in code to frontend SDK calls.",
-  "main": "dist/midwayjs-rpc.cjs.js",
-  "module": "dist/midwayjs-rpc.esm.js",
-  "keywords": [
-    "midway",
-    "rpc"
-  ],
+  "description": "A rpc client for Midway Hooks",
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
@@ -15,6 +9,13 @@
     "type": "git",
     "url": "git@github.com:midwayjs/hooks.git"
   },
+  "keywords": [
+    "rpc",
+    "midway",
+    "hooks"
+  ],
+  "main": "dist/midwayjs-rpc.cjs.js",
+  "module": "dist/midwayjs-rpc.esm.js",
   "devDependencies": {
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "@types/koa-compose": "^3.2.5"

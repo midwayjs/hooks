@@ -1,12 +1,16 @@
 {
   "name": "@midwayjs/hooks-kit",
   "version": "3.0.0-alpha.0",
-  "description": "A tookit for building fullstack web applications with speed and simplicity",
+  "description": "A framework for building api & fullstack applications faster",
   "main": "dist/midwayjs-hooks-kit.cjs.js",
   "module": "dist/midwayjs-hooks-kit.esm.js",
-  "keywords": [],
-  "author": "Lxxyx",
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
   "bin": {
     "hooks": "./bin/hooks.js"
   },
@@ -16,7 +20,6 @@
     "@midwayjs/command-core": "^1.2.92",
     "@midwayjs/hooks": "^3.0.0-alpha.0",
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
-    "@midwayjs/serverless-dev-pack": "^1.2.92",
     "cac": "^6.7.12",
     "consola": "^2.15.3",
     "jiti": "^1.12.9",
