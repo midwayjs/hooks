@@ -31,19 +31,19 @@
 - ✈️&nbsp;&nbsp;部署至 Server & Serverless
 - 🛡&nbsp;&nbsp;基于超强的 Node.js 框架 Midway，支撑企业级应用开发
 
-## 🌰 Demo
+## 🔨 预览
 
 <table>
 <tr>
-<th style="text-align: center;"> 前端(React) </th>
-<th style="text-align: center;"> 后端(Midway Hooks) </th>
+<th style="text-align: center;"> Frontend(React) </th>
+<th style="text-align: center;"> Backend(Midway Hooks) </th>
 </tr>
 <tr>
 <td>
 <sub>
 
 <!-- prettier-ignore -->
-```ts
+```tsx
 // src/pages/articles.tsx
 import { getArticles } from '../api';
 import { useRequest } from 'ahooks';
@@ -70,15 +70,21 @@ import { useState } from 'react';
 export default () => {
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (title: string, content: string) => {
+  const handleSubmit = async (article) => {
     setLoading(true);
-    const { id } = await createArticle({ title, content });
+    const { id } = await createArticle(article);
     setLoading(false);
     location.href = `/articles/${id}`;
   };
 
-  return <Editor loading={loading} onSubmit={handleSubmit} />;
+  return (
+    <Editor
+      loading={loading}
+      onSubmit={handleSubmit}
+    />
+  );
 };
+
 
 ```
 
@@ -90,9 +96,16 @@ export default () => {
 
 ```ts
 // src/api/index.ts
-import { Api, Get, Post, Validate, Query, useContext } from '@midwayjs/hooks';
+import {
+  Api,
+  Get,
+  Post,
+  Validate,
+  Query,
+  useContext,
+} from '@midwayjs/hooks';
 import { z } from 'zod';
-import database from './database';
+import db from './database';
 
 export const getArticles = Api(
   Get(),
@@ -100,7 +113,7 @@ export const getArticles = Api(
   async () => {
     const ctx = useContext();
 
-    const articles = await database.articles.find({
+    const articles = await db.articles.find({
       page: ctx.query.page,
       per_page: ctx.query.per_page,
     });

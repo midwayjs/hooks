@@ -31,7 +31,7 @@ English | [简体中文](./README.zh-cn.md)
 - ✈️&nbsp;&nbsp;Deploy to Server or Serverless
 - 🛡&nbsp;&nbsp;Based on Midway, a powerful Node.js framework that supports enterprise-level application development
 
-## 🌰 Demo
+## 🔨 Preview
 
 <table>
 <tr>
@@ -43,7 +43,7 @@ English | [简体中文](./README.zh-cn.md)
 <sub>
 
 <!-- prettier-ignore -->
-```ts
+```tsx
 // src/pages/articles.tsx
 import { getArticles } from '../api';
 import { useRequest } from 'ahooks';
@@ -70,15 +70,21 @@ import { useState } from 'react';
 export default () => {
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (title: string, content: string) => {
+  const handleSubmit = async (article) => {
     setLoading(true);
-    const { id } = await createArticle({ title, content });
+    const { id } = await createArticle(article);
     setLoading(false);
     location.href = `/articles/${id}`;
   };
 
-  return <Editor loading={loading} onSubmit={handleSubmit} />;
+  return (
+    <Editor
+      loading={loading}
+      onSubmit={handleSubmit}
+    />
+  );
 };
+
 
 ```
 
@@ -90,9 +96,16 @@ export default () => {
 
 ```ts
 // src/api/index.ts
-import { Api, Get, Post, Validate, Query, useContext } from '@midwayjs/hooks';
+import {
+  Api,
+  Get,
+  Post,
+  Validate,
+  Query,
+  useContext,
+} from '@midwayjs/hooks';
 import { z } from 'zod';
-import database from './database';
+import db from './database';
 
 export const getArticles = Api(
   Get(),
@@ -100,7 +113,7 @@ export const getArticles = Api(
   async () => {
     const ctx = useContext();
 
-    const articles = await database.articles.find({
+    const articles = await db.articles.find({
       page: ctx.query.page,
       per_page: ctx.query.per_page,
     });

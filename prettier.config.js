@@ -9,6 +9,12 @@ module.exports = {
       },
     },
     {
+      files: 'README*.md',
+      options: {
+        printWidth: 75,
+      },
+    },
+    {
       files: 'examples/**/*',
       options: {
         semi: true,
