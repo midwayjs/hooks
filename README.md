@@ -18,6 +18,8 @@
 <h5 align="center">"Zero" Api & Type Safe & Fullstack Kit & Powerful Backend</h5>
 <h5 align="center">At Alibaba, 2800+ full-stack applications are developed based on Midway Hooks (2022.01)</h5>
 
+English | [简体中文](./README.zh-cn.md)
+
 ## ✨ Features
 
 - ☁️&nbsp;&nbsp;Maximize productivity and developer experience, support fullstack development & API service

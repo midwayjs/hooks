@@ -18,6 +18,8 @@
 <h5 align="center">"零" Api & 类型安全 & 全栈套件 & 强大后端</h5>
 <h5 align="center">在阿里巴巴，有 2800+ 全栈应用基于 Midway Hooks 开发（2022.01）</h5>
 
+[English](./README.md) | 简体中文
+
 ## ✨ 特性
 
 - ☁️&nbsp;&nbsp;最大化生产力 & 开发者体验，支持开发全栈应用 & Api 服务
