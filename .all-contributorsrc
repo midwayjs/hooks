@@ -1,0 +1,29 @@
+{
+  "projectName": "midwayjs",
+  "projectOwner": "hooks",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "gitmoji",
+  "contributors": [
+    {
+      "login": "Lxxyx",
+      "name": "Lxxyx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13161470?v=4",
+      "profile": "https://blog.lxxyx.cn/",
+      "contributions": [
+        "code",
+        "content",
+        "ideas",
+        "review",
+        "test",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
