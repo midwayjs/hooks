@@ -1,4 +1,6 @@
-<img src="https://img.alicdn.com/imgextra/i1/O1CN01xQLU011T2R7PHksIv_!!6000000002324-2-tps-1200-616.png" width="1000" alt="Midway Logo" />
+<p align="center">
+  <img src="https://img.alicdn.com/imgextra/i4/O1CN01AJ1lNS20vkL7tTuUj_!!6000000006912-2-tps-1060-868.png" height="300" alt="Midway Logo" />
+</p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@midwayjs/hooks">
