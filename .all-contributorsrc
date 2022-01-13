@@ -37,6 +37,15 @@
         "test",
         "doc"
       ]
+    },
+    {
+      "login": "i5ting",
+      "name": "狼叔",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3118295?v=4",
+      "profile": "http://i5ting.com/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7
