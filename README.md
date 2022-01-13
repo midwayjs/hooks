@@ -1,6 +1,6 @@
 <p align="center">
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   <img src="https://img.alicdn.com/imgextra/i4/O1CN01AJ1lNS20vkL7tTuUj_!!6000000006912-2-tps-1060-868.png" height="300" alt="Midway Logo" />
 </p>
@@ -198,6 +198,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://iam.gy/"><img src="https://avatars.githubusercontent.com/u/14832743?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gao Yang</b></sub></a><br /><a href="https://github.com/hooks/midwayjs/commits?author=echosoar" title="Code">💻</a> <a href="#content-echosoar" title="Content">🖋</a> <a href="https://github.com/hooks/midwayjs/commits?author=echosoar" title="Tests">⚠️</a> <a href="https://github.com/hooks/midwayjs/commits?author=echosoar" title="Documentation">📖</a></td>
     <td align="center"><a href="http://i5ting.com/"><img src="https://avatars.githubusercontent.com/u/3118295?v=4?s=100" width="100px;" alt=""/><br /><sub><b>狼叔</b></sub></a><br /><a href="https://github.com/hooks/midwayjs/commits?author=i5ting" title="Documentation">📖</a></td>
     <td align="center"><a href="https://www.yuque.com/eward/blog"><img src="https://avatars.githubusercontent.com/u/452899?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eward</b></sub></a><br /><a href="https://github.com/hooks/midwayjs/commits?author=shepherdwind" title="Code">💻</a></td>
+    <td align="center"><a href="https://linbudu.top/"><img src="https://avatars.githubusercontent.com/u/48507806?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Linbudu</b></sub></a><br /><a href="https://github.com/hooks/midwayjs/commits?author=linbudu599" title="Documentation">📖</a></td>
   </tr>
 </table>
 
