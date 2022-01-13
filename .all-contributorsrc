@@ -23,6 +23,20 @@
         "test",
         "doc"
       ]
+    },
+    {
+      "login": "echosoar",
+      "name": "Gao Yang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14832743?v=4",
+      "profile": "https://iam.gy/",
+      "contributions": [
+        "code",
+        "content",
+        "ideas",
+        "review",
+        "test",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7
