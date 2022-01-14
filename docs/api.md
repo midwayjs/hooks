@@ -46,7 +46,67 @@ export default Api(
 );
 ```
 
-### 传递参数
+## 请求上下文（Context / Request / Response）
+
+你可以通过 `@midwayjs/hooks` 提供的 `useContext` 来获取请求上下文对象。
+
+以使用 [Koa](https://koajs.com/) 框架为例，那么 `useContext` 将返回 Koa 的 [Context](https://koajs.com/#context) 对象。
+
+基础示例：
+
+1. 获取请求 Method 和 Path
+
+```ts
+import {
+  Api,
+  Get,
+  useContext,
+} from '@midwayjs/hooks';
+import { Context } from '@midwayjs/koa';
+
+export default Api(Get(), async () => {
+  const ctx = useContext<Context>();
+  return {
+    method: ctx.method,
+    path: ctx.path,
+  };
+});
+```
+
+2. 设置返回的 Header
+
+```ts
+import {
+  Api,
+  Get,
+  useContext,
+} from '@midwayjs/hooks';
+
+export default Api(Get(), async () => {
+  const ctx = useContext<Context>();
+  ctx.set('X-Powered-By', 'Midway');
+  return 'Hello World!';
+});
+```
+
+同时我们也可以通过 SetHeader() 来设置 Header。
+
+## Http 触发器
+
+| 触发器                   | 注释                        |
+| ------------------------ | --------------------------- |
+| `All(path?: string)`     | 接受所有 Http Method 的请求 |
+| `Get(path?: string)`     | 接受 GET 请求               |
+| `Post(path?: string)`    | 接受 POST 请求              |
+| `Put(path?: string)`     | 接受 PUT 请求               |
+| `Delete(path?: string)`  | 接受 DELETE 请求            |
+| `Patch(path?: string)`   | 接受 PATCH 请求             |
+| `Head(path?: string)`    | 接受 HEAD 请求              |
+| `Options(path?: string)` | 接受 OPTIONS 请求           |
+
+## 请求 Request
+
+### 传递参数 Data
 
 在 Midway Hooks 中，接口的入参就是声明函数的参数。
 
@@ -96,82 +156,6 @@ fetch('/api/say', {
   .then((res) => res.text())
   .then((res) => console.log(res)); // Hello Midway!
 ```
-
-## 请求上下文（Context / Request / Response）
-
-你可以通过 `@midwayjs/hooks` 提供的 `useContext` 来获取请求上下文对象。
-
-请求上下文由底层框架决定（Web 下为 `@midwayjs/koa`，FaaS 下为 `@midwayjs/faas`）。
-
-以使用 [Koa](https://koajs.com/) 框架为例，那么 `useContext` 将返回 Koa 的 [Context](https://koajs.com/#context) 对象。
-
-基础示例：
-
-1. 获取请求 Method 和 Path
-
-```ts
-import {
-  Api,
-  Get,
-  useContext,
-} from '@midwayjs/hooks';
-import { Context } from '@midwayjs/koa';
-
-export default Api(Get(), async () => {
-  const ctx = useContext<Context>();
-  return {
-    method: ctx.method,
-    path: ctx.path,
-  };
-});
-```
-
-2. 设置返回的 Header
-
-```ts
-import {
-  Api,
-  Get,
-  useContext,
-} from '@midwayjs/hooks';
-
-export default Api(Get(), async () => {
-  const ctx = useContext<Context>();
-  ctx.set('X-Powered-By', 'Midway');
-  return 'Hello World!';
-});
-```
-
-同时我们也可以通过 `SetHeader(key: string, value: string)` 来设置 Header
-
-```ts
-import {
-  Api,
-  Get,
-  SetHeader,
-} from '@midwayjs/hooks';
-
-export default Api(
-  Get(),
-  SetHeader('X-Powered-By', 'Midway'),
-  async () => {
-    return 'Hello World!';
-  }
-);
-```
-
-## Http 触发器
-
-| 触发器                   | 注释                        |
-| ------------------------ | --------------------------- |
-| `All(path?: string)`     | 接受所有 Http Method 的请求 |
-| `Get(path?: string)`     | 接受 GET 请求               |
-| `Post(path?: string)`    | 接受 POST 请求              |
-| `Put(path?: string)`     | 接受 PUT 请求               |
-| `Delete(path?: string)`  | 接受 DELETE 请求            |
-| `Patch(path?: string)`   | 接受 PATCH 请求             |
-| `Head(path?: string)`    | 接受 HEAD 请求              |
-| `Options(path?: string)` | 接受 OPTIONS 请求           |
 
 ### 查询参数 Query
 
@@ -308,7 +292,9 @@ fetch('/auth', {
   .then((res) => console.log(res)); // { token: '123456' }
 ```
 
-## 状态码
+## 响应 Response
+
+### 状态码 HttpCode
 
 使用 `HttpCode(status: number)`：
 
@@ -344,7 +330,7 @@ export default Api(Get(), async () => {
 });
 ```
 
-## 设置 Headers
+### 响应头 SetHeader
 
 使用：`SetHeader(key: string, value: string)`
 
@@ -380,7 +366,7 @@ export default Api(Get(), async () => {
 });
 ```
 
-## 重定向
+### 重定向 Redirect
 
 使用 `Redirect(url: string, code?: number = 302)`：
 
@@ -416,7 +402,7 @@ export default Api(
 );
 ```
 
-## 返回值类型 ContentType
+### 返回值类型 ContentType
 
 使用 `ContentType(type: string)`：
 
