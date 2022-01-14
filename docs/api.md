@@ -29,7 +29,7 @@ export default Api(
 - `Get(path?: string)`：指定 Http 触发器，指定请求方法为 GET，可选参数 `path` 为接口路径，不指定路径的情况下会根据`函数名 + 文件名`生成路径
 - `Handler: async (...args: any[]) => { ... }`：用户逻辑，处理请求并返回结果
 
-指定路径例子如下。
+你也可以指定路径，例子如下。
 
 ```ts
 // src/hello.ts
@@ -175,7 +175,7 @@ export default Api(
 
 ### 查询参数 Query
 
-查询参数可以实现在 URL 上传递参数的方式。
+查询参数可以实现在 URL 上传递参数的方式，使用该功能时，必须通过 `Query<T>` 声明类型。
 
 如果希望接口路径是 `/articles?page=0&limit=10`，可以这样写。
 
@@ -223,7 +223,7 @@ fetch('/api/articles?page=0&limit=10')
 
 ### 路径参数 Params
 
-路径参数可以实现动态路径和从路径中获取参数的功能。
+路径参数可以实现动态路径和从路径中获取参数的功能。使用该功能时，必须手动设置路径，并通过 `Params<T>` 声明类型。
 
 如果希望接口路径是 `/article/100`，并获取 id 为 `100` 的值，可以这样写：
 
@@ -262,7 +262,7 @@ fetch('/article/100')
 
 ### 请求头 Headers
 
-请求头可以实现通过 Http Headers 传递参数的功能。
+请求头可以实现通过 Http Headers 传递参数的功能，使用该功能时，必须通过 `Headers<T>` 声明类型。
 
 如果希望请求 `/auth`，并在 `Request Headers` 中 传递 token，可以这样写：
 
