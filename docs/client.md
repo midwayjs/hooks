@@ -6,9 +6,9 @@ title: 前端请求客户端
 
 ## 配置
 
-`@midwayjs/rpc` 提供了 `setupHttpClient` 方法来配置请求客户端，支持的配置项如下：
+`@midwayjs/rpc` 提供了 `setupHttpClient` 方法来配置请求客户端（📢 `setupHttpClient` 应放置于前端代码的入口处。）。
 
-📢 `setupHttpClient` 应放置于前端代码的入口处。
+支持的配置项如下：
 
 ```ts
 type SetupOptions = {
@@ -50,9 +50,29 @@ type HttpRequestOptions = {
 
 设置请求的基础 URL，默认为 `/`。
 
+```ts
+import { setupHttpClient } from '@midwayjs/rpc';
+
+setupHttpClient({
+  baseURL:
+    process.env.NODE_ENV ===
+    'development'
+      ? 'http://localhost:7001'
+      : 'https://api.example.com',
+});
+```
+
 ### withCredentials: boolean
 
 默认为 `false`。具体可参考：[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/withCredentials)
+
+```ts
+import { setupHttpClient } from '@midwayjs/rpc';
+
+setupHttpClient({
+  withCredentials: true,
+});
+```
 
 ### fetcher: Fetcher
 
