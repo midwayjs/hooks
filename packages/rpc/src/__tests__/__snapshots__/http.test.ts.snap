@@ -2,7 +2,6 @@
 
 exports[`buildRequestOptions 1`] = `
 Object {
-  "baseURL": "",
   "data": Object {
     "args": Array [
       "a",
@@ -13,19 +12,16 @@ Object {
   "method": "GET",
   "query": undefined,
   "url": "/foo/baz",
-  "withCredentials": false,
 }
 `;
 
 exports[`buildRequestOptions 2`] = `
 Object {
-  "baseURL": "",
   "data": null,
   "headers": undefined,
   "method": "GET",
   "query": undefined,
   "url": "/foo",
-  "withCredentials": false,
 }
 `;
 
@@ -33,12 +29,26 @@ exports[`http normal 1`] = `
 Array [
   Array [
     Object {
-      "baseURL": "",
       "data": null,
       "headers": undefined,
       "method": "GET",
       "query": undefined,
       "url": "/foo",
+    },
+    Object {
+      "baseURL": "",
+      "fetcher": [MockFunction] {
+        "calls": [Circular],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": Object {
+              "isTest": true,
+            },
+          },
+        ],
+      },
+      "middleware": Array [],
       "withCredentials": false,
     },
   ],
