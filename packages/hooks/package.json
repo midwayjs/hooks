@@ -24,9 +24,11 @@
     "upath": "^2.0.1",
     "pkg-dir": "5.0.0",
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
-    "@midwayjs/decorator": "beta",
-    "@midwayjs/core": "beta",
     "@midwayjs/glob": "^1.0.6"
+  },
+  "peerDependencies": {
+    "@midwayjs/decorator": "beta",
+    "@midwayjs/core": "beta"
   },
   "devDependencies": {
     "@midwayjs/bundler": "^3.0.0-alpha.0",

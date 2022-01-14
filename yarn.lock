@@ -2465,7 +2465,7 @@
     scmp "^2.1.0"
     should-send-same-site-none "^2.0.5"
 
-"@midwayjs/core@3.0.0-beta.15", "@midwayjs/core@^3.0.0-beta.13", "@midwayjs/core@^3.0.0-beta.14", "@midwayjs/core@^3.0.0-beta.15", "@midwayjs/core@beta":
+"@midwayjs/core@3.0.0-beta.15", "@midwayjs/core@^3.0.0-beta.13", "@midwayjs/core@^3.0.0-beta.14", "@midwayjs/core@^3.0.0-beta.15":
   version "3.0.0-beta.15"
   resolved "https://registry.npmjs.org/@midwayjs/core/-/core-3.0.0-beta.15.tgz#f85914a41388c74e253665ea4a811f1e5f26128a"
   integrity sha512-/hYzHLdkf++771DIj2L+laeIuqqcXd/G4Cexr6bBpKxw0AvmEqO6f9q8uILFUTStOTcvSCi7xFfSxgxQvhqwmg==
@@ -2485,7 +2485,7 @@
     ts-node "^9.0.0"
     ws "^7.2.3"
 
-"@midwayjs/decorator@3.0.0-beta.15", "@midwayjs/decorator@beta":
+"@midwayjs/decorator@3.0.0-beta.15":
   version "3.0.0-beta.15"
   resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-3.0.0-beta.15.tgz#cb773a5c999539e65f54e5a1aa7a24de77c1f40c"
   integrity sha512-palDU7NtBS8PrSCm92At174xq2veh8+ZECmjqeiZXdMQPzflivPFTl0rDSjkTLkdy7xS7f5rXM8wHXwNC5PaJQ==
@@ -2996,7 +2996,7 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@preconstruct/cli@^2.1.0":
+"@preconstruct/cli@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@preconstruct/cli/-/cli-2.1.5.tgz#f7f6d06809f382521589af15f67b87009b240c58"
   integrity sha512-bMnGTkaotxq+xoOkXoUOfTFvxBX/ZUxukcacf3mx3G7Iz5m/T4ZGzSOU12pxl64e+rVWGTKlUsgaDSgyFkup0A==
