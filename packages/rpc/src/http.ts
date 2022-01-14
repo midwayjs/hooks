@@ -13,7 +13,7 @@ export async function http(
 ) {
   const options = buildRequestOptions(requestArgs)
   const handler: Middleware = async (ctx, next) => {
-    ctx.res = await client.fetcher(options)
+    ctx.res = await client.fetcher(options, client)
     return next()
   }
   const ctx: Context = { req: options, res: null }
@@ -42,9 +42,6 @@ export function buildRequestOptions(
 
     query: inputMetadata?.query,
     headers: inputMetadata?.headers,
-
-    withCredentials: client.withCredentials,
-    baseURL: client.baseURL,
   }
 
   return options

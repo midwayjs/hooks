@@ -27,10 +27,6 @@ export type HttpRequestOptions = {
   // query & headers
   query?: Record<string, string>
   headers?: Record<string, string>
-
-  // config
-  baseURL?: string
-  withCredentials?: boolean
 }
 
 export type RequestRoute<T = any> = {

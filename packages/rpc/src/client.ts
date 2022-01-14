@@ -11,13 +11,13 @@ export type Middleware = (ctx: Context, next: () => Promise<any>) => void
 
 export const client: SetupOptions = {
   baseURL: '',
-  async fetcher(options: HttpRequestOptions) {
+  async fetcher(req: HttpRequestOptions, options: SetupOptions) {
     const res = await axios({
-      method: options.method as Options['method'],
-      url: options.url,
-      data: options.data,
-      params: options.query,
-      headers: options.headers,
+      method: req.method as Options['method'],
+      url: req.url,
+      data: req.data,
+      params: req.query,
+      headers: req.headers,
       baseURL: options.baseURL,
       withCredentials: options.withCredentials,
       fetch,
@@ -36,7 +36,10 @@ export type SetupOptions = {
   withCredentials?: boolean
 }
 
-export type Fetcher = (options: HttpRequestOptions) => Promise<any>
+export type Fetcher = (
+  req: HttpRequestOptions,
+  options: SetupOptions
+) => Promise<any>
 
 export function setupHttpClient(options: SetupOptions) {
   Object.assign(client, options)
