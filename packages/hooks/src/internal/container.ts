@@ -2,7 +2,7 @@ import { __decorate } from 'tslib'
 import { Inject, Provide } from '@midwayjs/decorator'
 import { ApiFunction } from '@midwayjs/hooks-core'
 
-type CreateOptions = {
+export type CreateOptions = {
   fn: ApiFunction
   functionId: string
   parseArgs: (inputs: { ctx: any; args: any[] }) => any[]

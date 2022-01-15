@@ -26,19 +26,13 @@ import {
   Patch,
   Post,
   Put,
-  ServerlessTrigger,
-  ServerlessTriggerType,
 } from '@midwayjs/decorator'
 import {
   createFunctionContainer,
   isDev,
   isFileSystemRouter,
 } from '../../internal'
-import {
-  HSFTrigger,
-  MTopTrigger,
-  ServerlessTimerTrigger,
-} from '../operator/serverless'
+import { HooksTrigger } from '../operator/type'
 
 const debug = createDebug('hooks: MidwayFrameworkAdapter')
 
@@ -70,22 +64,14 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
     return api.trigger.type === 'HTTP'
   }
 
-  isServerlessTimerTrigger(
-    api: ApiRoute
-  ): api is ApiRoute<ServerlessTimerTrigger> {
-    return api.trigger.type === ServerlessTriggerType.TIMER
-  }
-
-  isMTopTrigger(api: ApiRoute): api is ApiRoute<MTopTrigger> {
-    return api.trigger.type === ServerlessTriggerType.MTOP
-  }
-
-  isHSFTrigger(api: ApiRoute): api is ApiRoute<HSFTrigger> {
-    return api.trigger.type === ServerlessTriggerType.HSF
+  isHooksTrigger(api: ApiRoute): api is ApiRoute<HooksTrigger> {
+    return typeof (api.trigger as HooksTrigger)?.parseArgs === 'function'
   }
 
   registerApiRoutes(apis: ApiRoute[]) {
     for (const api of apis) {
+      const type = api.trigger.type
+
       if (this.isHttpTrigger(api)) {
         api.middleware = api.middleware?.map((mw) =>
           this.useHooksMiddleware(mw)
@@ -94,71 +80,27 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
         continue
       }
 
-      if (this.isHSFTrigger(api)) {
-        this.controllers.push(this.createHSFApi(api))
+      if (this.isHooksTrigger(api)) {
+        this.controllers.push(
+          this.createServerlessApi(api as ApiRoute<HooksTrigger>)
+        )
         continue
       }
 
-      if (this.isMTopTrigger(api)) {
-        this.controllers.push(this.createMTopApi(api))
-        continue
-      }
-
-      if (this.isServerlessTimerTrigger(api)) {
-        this.controllers.push(this.createServerlessTimer(api))
-        continue
-      }
-
-      throw new Error(`Unsupported trigger type: ${api.trigger.type}`)
+      throw new Error(`Unsupported trigger type: ${type}`)
     }
   }
 
-  createHSFApi(api: ApiRoute<HSFTrigger>) {
-    const { functionId, fn } = api
+  createServerlessApi(api: ApiRoute<HooksTrigger>) {
+    const { functionId, fn, trigger } = api
 
-    debug('create hsf api: %s', functionId)
-
-    return createFunctionContainer({
-      fn,
-      functionId,
-      parseArgs({ args }) {
-        const event = args[0]
-        return event?.args || []
-      },
-      handlerDecorators: [ServerlessTrigger(ServerlessTriggerType.HSF)],
-    })
-  }
-
-  createMTopApi(api: ApiRoute<MTopTrigger>) {
-    const { functionId, fn } = api
-
-    debug('create mtop api: %s', functionId)
+    debug('create %s api: %s', trigger.type, functionId)
 
     return createFunctionContainer({
       fn,
       functionId,
-      parseArgs({ args }) {
-        const event = args[0]
-        return event?.args || []
-      },
-      handlerDecorators: [ServerlessTrigger(ServerlessTriggerType.MTOP)],
-    })
-  }
-
-  createServerlessTimer(api: ApiRoute<ServerlessTimerTrigger>) {
-    const { trigger, fn, functionId } = api
-
-    debug('create serverless timer: %s %O', functionId, trigger.options)
-
-    return createFunctionContainer({
-      fn,
-      functionId,
-      parseArgs({ args }) {
-        return args
-      },
-      handlerDecorators: [
-        ServerlessTrigger(ServerlessTriggerType.TIMER, trigger.options),
-      ],
+      parseArgs: trigger.parseArgs,
+      handlerDecorators: trigger.handlerDecorators,
     })
   }
 

@@ -23,3 +23,4 @@ export {
 } from '@midwayjs/hooks-core'
 export * from './operator/validate'
 export * from './operator/serverless'
+export * from './operator/type'
