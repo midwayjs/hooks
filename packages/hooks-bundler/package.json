@@ -1,0 +1,41 @@
+{
+  "name": "@midwayjs/hooks-bundler",
+  "version": "3.0.0-alpha.0",
+  "description": "Bundler plugin for @midwayjs/hooks",
+  "keywords": [
+    "midway",
+    "fullstack",
+    "bundler",
+    "unplugin",
+    "vite",
+    "webpack"
+  ],
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/midwayjs-hooks-bundler.cjs.js",
+  "module": "dist/midwayjs-hooks-bundler.esm.js",
+  "dependencies": {
+    "@midwayjs/hooks": "^3.0.0-alpha.0",
+    "@midwayjs/hooks-core": "^3.0.0-alpha.0",
+    "@midwayjs/bundler": "^3.0.0-alpha.0",
+    "@midwayjs/serverless-dev-pack": "^1.2.92",
+    "upath": "^2.0.1"
+  },
+  "devDependencies": {
+    "webpack": "4",
+    "memory-fs": "^0.5.0",
+    "ts-loader": "^8.3.0",
+    "prettier": "^2.5.1"
+  }
+}

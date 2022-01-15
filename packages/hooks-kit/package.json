@@ -21,12 +21,11 @@
     "cac": "^6.7.12",
     "consola": "^2.15.3",
     "jiti": "^1.12.9",
-    "koa-static-cache": "^5.1.4"
-  },
-  "devDependencies": {
+    "koa-static-cache": "^5.1.4",
+    "vite": "^2.7.9",
     "@midwayjs/cli-plugin-build": "^1.2.92",
     "@midwayjs/command-core": "^1.2.92",
-    "vite": "^2.7.9"
+    "@midwayjs/hooks-bundler": "^3.0.0-alpha.0"
   },
   "publishConfig": {
     "access": "public"

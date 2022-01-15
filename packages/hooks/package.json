@@ -31,8 +31,6 @@
     "@midwayjs/core": "beta"
   },
   "devDependencies": {
-    "@midwayjs/bundler": "^3.0.0-alpha.0",
-    "@midwayjs/serverless-dev-pack": "^1.2.92",
     "art-template": "^4.13.2",
     "@types/lodash": "^4.14.170",
     "@midwayjs/koa": "beta",
@@ -44,14 +42,12 @@
   },
   "files": [
     "dist",
-    "bundler",
     "internal",
     "test"
   ],
   "preconstruct": {
     "entrypoints": [
       "index.ts",
-      "bundler.ts",
       "internal/index.ts",
       "test/index.ts"
     ]
