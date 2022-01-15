@@ -1,6 +1,5 @@
 {
-  "name": "hooks-react-faas",
-  "version": "2.3.0",
+  "name": "example-react-faas",
   "private": true,
   "scripts": {
     "dev": "hooks dev",

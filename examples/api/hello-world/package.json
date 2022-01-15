@@ -1,6 +1,5 @@
 {
-  "name": "api-hello-world",
-  "version": "2.3.0",
+  "name": "example-hello-world",
   "private": true,
   "scripts": {
     "start": "node scripts/bootstrap",

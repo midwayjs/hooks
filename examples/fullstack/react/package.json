@@ -1,6 +1,5 @@
 {
-  "name": "hooks-react",
-  "version": "2.3.0",
+  "name": "example-react",
   "private": true,
   "scripts": {
     "start": "hooks start",
