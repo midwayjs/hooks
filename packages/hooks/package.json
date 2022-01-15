@@ -31,6 +31,7 @@
     "@midwayjs/core": "beta"
   },
   "devDependencies": {
+    "@midwayjs/rpc": "^3.0.0-alpha.0",
     "art-template": "^4.13.2",
     "@types/lodash": "^4.14.170",
     "@midwayjs/koa": "beta",
