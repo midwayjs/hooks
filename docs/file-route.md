@@ -9,7 +9,7 @@ title: 简易模式 & 文件系统路由
 📢 注意：
 
 - 简易模式需启用文件路由系统，需要在 `midway.config.js` 中启用 `routes` 配置。
-- 纯函数自动生成的路由仅支持 `GET` 和 `POST` 方法，且不支持传递 `Query / Params / Header` 参数
+- 纯函数自动生成的路由仅支持 `GET` 和 `POST` 方法，且全栈应用中，不支持传递 `Query / Params / Header` 参数
 - 简易模式下，仍可以使用 `Api()` 定义路由，但不支持手动定义路径
 
 ### Get 请求
