@@ -16,6 +16,12 @@ module.exports = {
       },
     },
     {
+      files: 'docs/test.md',
+      options: {
+        printWidth: 60,
+      },
+    },
+    {
       files: 'README*.md',
       options: {
         printWidth: 75,

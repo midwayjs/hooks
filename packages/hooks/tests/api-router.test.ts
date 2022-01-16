@@ -17,7 +17,7 @@ describe('test koa with api router', () => {
   })
 
   function createRequest(api: any): supertest.Test {
-    const trigger = getApiTrigger(api) as HttpTrigger
+    const trigger = getApiTrigger<HttpTrigger>(api)
     return createHttpRequest(app)[trigger.method.toLowerCase()](trigger.path)
   }
 

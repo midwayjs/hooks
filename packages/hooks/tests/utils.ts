@@ -1,23 +1,15 @@
 import { join } from 'path'
-import * as koaModule from '@midwayjs/koa'
-import {
-  Framework,
-  IMidwayKoaApplication,
-  IMidwayKoaConfigurationOptions,
-} from '@midwayjs/koa'
+import { Framework, IMidwayKoaApplication } from '@midwayjs/koa'
 import { close, createApp as createMockApp } from '@midwayjs/mock'
 import { setProjectRoot } from '../src'
 
-export async function createApp(
-  name: string,
-  options: IMidwayKoaConfigurationOptions = {}
-): Promise<IMidwayKoaApplication> {
+export async function createApp(name: string): Promise<IMidwayKoaApplication> {
   const fixture = join(__dirname, 'fixtures', name)
   setProjectRoot(fixture)
-  return createMockApp<Framework>(fixture, options, koaModule)
+  return createMockApp<Framework>(fixture)
 }
 
-export async function closeApp(app) {
+export async function closeApp(app: IMidwayKoaApplication) {
   return close(app)
 }
 
