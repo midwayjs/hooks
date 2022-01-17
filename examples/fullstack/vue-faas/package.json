@@ -1,0 +1,25 @@
+{
+  "name": "hooks-vue-faas-starter",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "hooks dev",
+    "build": "hooks build",
+    "deploy": "npm run build && mw deploy",
+    "check": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "vue": "^3.2.25",
+    "@midwayjs/hooks": "^3.0.0-alpha.0",
+    "@midwayjs/rpc": "^3.0.0-alpha.0",
+    "@midwayjs/faas": "beta"
+  },
+  "devDependencies": {
+    "@midwayjs/hooks-kit": "^3.0.0-alpha.0",
+    "@midwayjs/cli": "^1.2.49",
+    "@midwayjs/cli-plugin-faas": "^1.2.49",
+    "@midwayjs/fcli-plugin-fc": "^1.2.49",
+    "@vitejs/plugin-vue": "^2.0.0",
+    "vue-tsc": "^0.29.8",
+    "typescript": "^4.4.4"
+  }
+}
