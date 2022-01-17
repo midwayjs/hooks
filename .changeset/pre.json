@@ -1,0 +1,18 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "hooks-api-starter": "1.0.0",
+    "hooks-react-starter": "1.0.0",
+    "hooks-react-faas-starter": "1.0.0",
+    "hooks-vue-starter": "0.0.0",
+    "hooks-vue-faas-starter": "0.0.0",
+    "@midwayjs/bundler": "3.0.0-alpha.0",
+    "@midwayjs/hooks": "3.0.0-alpha.0",
+    "@midwayjs/hooks-bundler": "3.0.0-alpha.0",
+    "@midwayjs/hooks-core": "3.0.0-alpha.0",
+    "@midwayjs/hooks-kit": "3.0.0-alpha.0",
+    "@midwayjs/rpc": "3.0.0-alpha.0"
+  },
+  "changesets": []
+}
