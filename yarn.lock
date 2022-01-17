@@ -8000,10 +8000,10 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-fn-args@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/fn-args/-/fn-args-5.0.0.tgz#7a18e105c8fb3bf0a51c30389bf16c9ebe740bb3"
-  integrity sha512-CtbfI3oFFc3nbdIoHycrfbrxiGgxXBXXuyOl49h47JawM1mYrqpiRqnH5CB2mBatdXvHHOUO6a+RiAuuvKt0lw==
+fn-args@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/fn-args/-/fn-args-6.0.0.tgz#7e1f560459d4f26af61fbb66ce81d3842d2c3bbd"
+  integrity sha512-da4veZTtOBKQ+H0V4RRQzfIxxZzNGE0+0R0WrwCsOeHYGMhm4lM46Tfh8v3ihlHXd1z0hpySN2+B7US22YzmCw==
 
 fn.name@1.x.x:
   version "1.1.0"

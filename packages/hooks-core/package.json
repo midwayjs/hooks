@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "asynchronous-local-storage": "^1.0.2",
-    "fn-args": "^5.0.0",
+    "fn-args": "^6.0.0",
     "lodash": "^4.17.21",
     "proper-url-join": "^2.1.1",
     "reflect-metadata": "^0.1.13",
