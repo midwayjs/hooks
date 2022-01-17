@@ -22,7 +22,7 @@
     "tslib": "^2.3.0",
     "lodash": "^4.17.21",
     "upath": "^2.0.1",
-    "pkg-dir": "5.0.0",
+    "pkg-dir": "6.0.1",
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "@midwayjs/glob": "^1.0.6"
   },
