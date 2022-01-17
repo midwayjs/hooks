@@ -3,7 +3,7 @@ import { createServer, InlineConfig, mergeConfig } from 'vite'
 import { resolveConfig } from '../config'
 import { resolve } from 'path'
 import { vite } from '@midwayjs/hooks-bundler'
-import { getProjectRoot, setConfig } from '@midwayjs/hooks/internal'
+import { getProjectRoot } from '@midwayjs/hooks/internal'
 
 type DevOptions = {
   port: number
@@ -28,9 +28,11 @@ export function setupDevCommand(cli: CAC) {
     )
     .action(async (root: string, options: DevOptions) => {
       root = root ? resolve(root) : getProjectRoot()
-      setConfig({ source: 'src/api' })
 
-      const userConfig = resolveConfig(root)
+      const userConfig = {
+        source: 'src/api',
+        ...resolveConfig(root),
+      }
       const defaultConfig: InlineConfig = {
         root,
         configFile: false,
@@ -42,9 +44,8 @@ export function setupDevCommand(cli: CAC) {
         plugins: [vite()],
       }
 
-      const server = await createServer(
-        mergeConfig(defaultConfig, userConfig?.vite)
-      )
+      const config = mergeConfig(defaultConfig, userConfig?.vite)
+      const server = await createServer(config)
       await server.listen()
 
       server.printUrls()

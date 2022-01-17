@@ -15,17 +15,17 @@
     "hooks": "./bin/hooks.js"
   },
   "dependencies": {
-    "@midwayjs/bootstrap": "beta",
     "@midwayjs/hooks": "^3.0.0-alpha.0",
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
+    "@midwayjs/hooks-bundler": "^3.0.0-alpha.0",
+    "@midwayjs/bootstrap": "beta",
+    "@midwayjs/cli-plugin-build": "^1.2.92",
+    "@midwayjs/command-core": "^1.2.92",
     "cac": "^6.7.12",
     "consola": "^2.15.3",
     "jiti": "^1.12.9",
     "koa-static-cache": "^5.1.4",
-    "vite": "^2.7.9",
-    "@midwayjs/cli-plugin-build": "^1.2.92",
-    "@midwayjs/command-core": "^1.2.92",
-    "@midwayjs/hooks-bundler": "^3.0.0-alpha.0"
+    "vite": "^2.7.9"
   },
   "publishConfig": {
     "access": "public"

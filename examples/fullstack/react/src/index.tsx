@@ -27,7 +27,6 @@ function App() {
         <br />
         You can also open Devtools to see the request details.
       </p>
-      <p></p>
       <div>
         <p>
           <span className="lambda">λ GET</span>

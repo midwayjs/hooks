@@ -7,6 +7,7 @@ import fs from 'fs'
 import { getProjectRoot } from '@midwayjs/hooks/internal'
 import { resolveConfig } from '../config'
 import consola from 'consola'
+import { vite } from '@midwayjs/hooks-bundler'
 
 type BuildOptions = {
   outDir: string
@@ -36,7 +37,7 @@ export function setupBuildCommand(cli: CAC) {
       const defaultConfig: InlineConfig = {
         root,
         configFile: false,
-        plugins: [require('@midwayjs/hooks/bundler').vite()] as any,
+        plugins: [vite()],
         build: {
           outDir: client,
           manifest: true,
