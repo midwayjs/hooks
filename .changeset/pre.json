@@ -15,6 +15,8 @@
     "@midwayjs/rpc": "3.0.0-alpha.0"
   },
   "changesets": [
-    "mighty-trees-bake"
+    "angry-mugs-greet",
+    "mighty-trees-bake",
+    "plenty-coats-switch"
   ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-kit",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0-alpha.2",
   "description": "A framework for building api & fullstack applications faster",
   "main": "dist/midwayjs-hooks-kit.cjs.js",
   "module": "dist/midwayjs-hooks-kit.esm.js",
@@ -15,9 +15,9 @@
     "hooks": "./bin/hooks.js"
   },
   "dependencies": {
-    "@midwayjs/hooks": "^3.0.0-alpha.1",
-    "@midwayjs/hooks-core": "^3.0.0-alpha.1",
-    "@midwayjs/hooks-bundler": "^3.0.0-alpha.1",
+    "@midwayjs/hooks": "^3.0.0-alpha.2",
+    "@midwayjs/hooks-core": "^3.0.0-alpha.2",
+    "@midwayjs/hooks-bundler": "^3.0.0-alpha.2",
     "@midwayjs/bootstrap": "beta",
     "@midwayjs/cli-plugin-build": "^1.2.92",
     "@midwayjs/command-core": "^1.2.92",

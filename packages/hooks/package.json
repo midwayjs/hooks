@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0-alpha.2",
   "description": "A framework for building api & fullstack applications faster",
   "keywords": [
     "midway",
@@ -23,7 +23,7 @@
     "lodash": "^4.17.21",
     "upath": "^2.0.1",
     "pkg-dir": "5.0.0",
-    "@midwayjs/hooks-core": "^3.0.0-alpha.1",
+    "@midwayjs/hooks-core": "^3.0.0-alpha.2",
     "@midwayjs/glob": "^1.0.6"
   },
   "peerDependencies": {
@@ -31,7 +31,7 @@
     "@midwayjs/core": "beta"
   },
   "devDependencies": {
-    "@midwayjs/rpc": "^3.0.0-alpha.1",
+    "@midwayjs/rpc": "^3.0.0-alpha.2",
     "art-template": "^4.13.2",
     "@types/lodash": "^4.14.170",
     "@midwayjs/koa": "beta",
