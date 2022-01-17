@@ -26,7 +26,7 @@ export function setupBuildCommand(cli: CAC) {
       const userConfig = resolveConfig(projectRoot)
       const outDir = options.outDir || userConfig.build.outDir
 
-      if (options.clean) {
+      if (options.clean && fs.existsSync(outDir)) {
         consola.info('clean output directory before build')
         await fs.promises.rm(outDir, { recursive: true })
       }

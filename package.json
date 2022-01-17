@@ -54,12 +54,12 @@
     ]
   },
   "resolutions": {
-    "@midwayjs/core": "3.0.0-beta.15",
-    "@midwayjs/decorator": "3.0.0-beta.15",
-    "@midwayjs/mock": "3.0.0-beta.15",
-    "@midwayjs/koa": "3.0.0-beta.15",
-    "@midwayjs/bootstrap": "3.0.0-beta.15",
-    "@midwayjs/serverless-app": "3.0.0-beta.14"
+    "@midwayjs/core": "3.0.0-beta.16",
+    "@midwayjs/decorator": "3.0.0-beta.16",
+    "@midwayjs/mock": "3.0.0-beta.16",
+    "@midwayjs/koa": "3.0.0-beta.16",
+    "@midwayjs/bootstrap": "3.0.0-beta.16",
+    "@midwayjs/serverless-app": "3.0.0-beta.16"
   },
   "devDependencies": {
     "all-contributors-cli": "^6.20.0"
