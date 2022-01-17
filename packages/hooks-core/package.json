@@ -30,9 +30,9 @@
     "debug": "^4.3.3"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.170",
-    "@types/proper-url-join": "^2.1.1",
-    "@types/debug": "^4.1.7"
+    "@types/lodash": "4.14.178",
+    "@types/proper-url-join": "2.1.1",
+    "@types/debug": "4.1.7"
   },
   "files": [
     "dist"
