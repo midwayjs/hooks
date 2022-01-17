@@ -15368,10 +15368,10 @@ unpipe@1.0.0, unpipe@~1.0.0:
   resolved "https://registry.npmjs.org/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
   integrity sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
 
-unplugin@^0.2.20:
-  version "0.2.21"
-  resolved "https://registry.npmjs.org/unplugin/-/unplugin-0.2.21.tgz#7852cddd9f78f0b32881812fd2efd5a39dcc64e5"
-  integrity sha512-IJ15/L5XbhnV7J09Zjk0FT5HEkBjkXucWAXQWRsmEtUxmmxwh23yavrmDbCF6ZPxWiVB28+wnKIHePTRRpQPbQ==
+unplugin@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.3.0.tgz#8008d2cf700618fb8f87810870cfa6808f90b80a"
+  integrity sha512-9yLlOo+XC4NdIRgpkDSHOAHkQDq2x4mbuVNO/eKVa3C8WTn5wWGfzEFfRJFL8euqnX3Gf7hEur0AhXxy+WSwkg==
   dependencies:
     webpack-virtual-modules "^0.4.3"
 
