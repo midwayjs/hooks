@@ -2731,7 +2731,7 @@
   resolved "https://registry.npmjs.org/@midwayjs/boilerplate-list/-/boilerplate-list-1.0.12.tgz#b2e28afa3e0e064278d6899b715c4739abe07bab"
   integrity sha512-lP3nE9ksHbRxhpxGx10JE5qSK5Ayhn7aHci/Lq9/SR38qGyl1ONRwYoxYmJ3nDyUgH0YsRBnTH5yRAAMpFp5ow==
 
-"@midwayjs/bootstrap@3.0.0-beta.16", "@midwayjs/bootstrap@^3.0.0-beta.16", "@midwayjs/bootstrap@beta":
+"@midwayjs/bootstrap@3.0.0-beta.16", "@midwayjs/bootstrap@^3.0.0-beta.17", "@midwayjs/bootstrap@beta":
   version "3.0.0-beta.16"
   resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-3.0.0-beta.16.tgz#e84a51e63a22dc91a82a4df689b423ceef44d221"
   integrity sha512-5gFlTSanltpKXWypJ6u6SiiLLUA5XxEhQWTIm0yoWdPzRf6/Q5vhMlhoXCVoBlB1tKg8PWeoOXOWKyEs3+Mlcg==
@@ -2993,7 +2993,7 @@
     scmp "^2.1.0"
     should-send-same-site-none "^2.0.5"
 
-"@midwayjs/core@3.0.0-beta.16", "@midwayjs/core@^3.0.0-beta.13", "@midwayjs/core@^3.0.0-beta.16":
+"@midwayjs/core@3.0.0-beta.16", "@midwayjs/core@^3.0.0-beta.13", "@midwayjs/core@^3.0.0-beta.16", "@midwayjs/core@^3.0.0-beta.17":
   version "3.0.0-beta.16"
   resolved "https://registry.npmjs.org/@midwayjs/core/-/core-3.0.0-beta.16.tgz#f18b42f31654c713d7b22e392b6af76e7a884595"
   integrity sha512-vLMXyexdStbUwUCaqfRPqOY1F4fKq/IdNVxVTQVCGX//OvHHRwlAjUI802C7qayP+GCn902PQ1a8sGIHg9rvjw==
@@ -3050,18 +3050,18 @@
   resolved "https://registry.npmjs.org/@midwayjs/faas-typings/-/faas-typings-3.0.0-beta.13.tgz#60b30322c5fb82ba2d3e57f162a7972eb16dc32d"
   integrity sha512-1rspBCs/65/agaE60Sr38JUX4CWUF7iNrG2pSt1G3pefZwhbqzPnxwLeQ9K4vihWurttc1Ggy4ihQZiU9mCx9A==
 
-"@midwayjs/faas-typings@^3.0.0-beta.16":
-  version "3.0.0-beta.16"
-  resolved "https://registry.npmjs.org/@midwayjs/faas-typings/-/faas-typings-3.0.0-beta.16.tgz#a29a4dbfb2053670252228fa38495c092e962509"
-  integrity sha512-ghzwcEz3mKWo8hGXsUcm89dAyrcNuHiwkpWwOWhWIv70DISvVqcgMC43e/PhmILbn7G/oJ7kgUQ8Q4vWGV2+8g==
+"@midwayjs/faas-typings@^3.0.0-beta.17":
+  version "3.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@midwayjs/faas-typings/-/faas-typings-3.0.0-beta.17.tgz#c51adde28d90c729cf98e4254bb3f28824131f51"
+  integrity sha512-XSxtH570cDXj+wAXk+MXcWkP874JnZelp33EZcnrhOjHTGkhuHUmCs2JiUttbNLn136lmc92JVILc5kGdqVcSA==
 
-"@midwayjs/faas@^3.0.0-beta.16":
-  version "3.0.0-beta.16"
-  resolved "https://registry.npmjs.org/@midwayjs/faas/-/faas-3.0.0-beta.16.tgz#4e9c7853b91b61e968b08c157769fa1af37dc000"
-  integrity sha512-bRA60rETAjTz5fMyVaVvLCPcA8IzC47qFhkIcOk8ZdJvDJb5cF4tTUP7oPSX7kqp1P8/NBXfOe+ZCDbX03A/Mg==
+"@midwayjs/faas@^3.0.0-beta.17":
+  version "3.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@midwayjs/faas/-/faas-3.0.0-beta.17.tgz#82487cd4df5ff61b28e700021c2c6d2698764b01"
+  integrity sha512-fWs5JyNpyClrZk9V81Qr7U5pXpZbzv/egyLZkmSbAC6zibZWsg44crjf+Iy0VmapAYEAF76qV0+teXzZY6a6xw==
   dependencies:
-    "@midwayjs/core" "^3.0.0-beta.16"
-    "@midwayjs/faas-typings" "^3.0.0-beta.16"
+    "@midwayjs/core" "^3.0.0-beta.17"
+    "@midwayjs/faas-typings" "^3.0.0-beta.17"
     "@midwayjs/logger" "2.14.0"
     "@midwayjs/simple-lock" "^1.1.4"
 
@@ -3222,15 +3222,15 @@
   dependencies:
     "@midwayjs/runtime-engine" "^2.13.3"
 
-"@midwayjs/serverless-app@3.0.0-beta.16", "@midwayjs/serverless-app@^2.8.9":
-  version "3.0.0-beta.16"
-  resolved "https://registry.npmjs.org/@midwayjs/serverless-app/-/serverless-app-3.0.0-beta.16.tgz#52ad119427b46485816b88eceab5fcebc22e0fe2"
-  integrity sha512-q134R6AfeFmisak8lRM5GGoreB2jqnE5QkJPDASDTDeQ8ezwvgea5pkg8yo3bGqnOO9nM0JcBPDXe2dreBruKg==
+"@midwayjs/serverless-app@3.0.0-beta.17", "@midwayjs/serverless-app@^2.8.9":
+  version "3.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@midwayjs/serverless-app/-/serverless-app-3.0.0-beta.17.tgz#cf18b32a5b28289e751f97ba00141e5fd88ad1ff"
+  integrity sha512-192dj1zy/w+VsrJIIZGCP/vZB8y9SLhcG5skwgYHnUOulwQ22VQSo7CFj0Ve9cceXGLFKfzyhm2atvt+02xV6A==
   dependencies:
-    "@midwayjs/bootstrap" "^3.0.0-beta.16"
-    "@midwayjs/core" "^3.0.0-beta.16"
-    "@midwayjs/faas" "^3.0.0-beta.16"
-    "@midwayjs/faas-typings" "^3.0.0-beta.16"
+    "@midwayjs/bootstrap" "^3.0.0-beta.17"
+    "@midwayjs/core" "^3.0.0-beta.17"
+    "@midwayjs/faas" "^3.0.0-beta.17"
+    "@midwayjs/faas-typings" "^3.0.0-beta.17"
     "@midwayjs/gateway-common-http" "^1.2.41"
     "@midwayjs/serverless-spec-builder" "^1.2.41"
     body-parser "1.19.1"
