@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { AsyncFunction, validateFunction } from '../'
+import { AsyncFunction, createDebug, validateFunction } from '../'
 import { AbstractFrameworkAdapter } from '../adapter/framework'
 import { USE_INPUT_METADATA } from '../common/const'
 import { compose } from './compose'
@@ -31,7 +31,6 @@ export function Api<
   const useInputMetadata = operators.some((operator) => operator.input)
 
   const stack = []
-  // TODO Direct call or frontend end invoke
   const runner = async (...args: any[]) => {
     const funcArgs = useInputMetadata ? args.slice(0, -1) : args
 

@@ -5,6 +5,7 @@
   "scripts": {
     "build": "preconstruct build",
     "dev": "preconstruct dev",
+    "watch": "preconstruct watch",
     "test": "jest --passWithNoTests",
     "cov": "yarn dev && yarn test --coverage",
     "ci": "yarn cov --ci",

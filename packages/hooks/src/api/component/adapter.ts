@@ -10,7 +10,6 @@ import {
   isHooksMiddleware,
   ResponseMetaData,
   ResponseMetaType,
-  urlJoin,
   useContext,
   validateOneOf,
 } from '@midwayjs/hooks-core'
@@ -27,11 +26,7 @@ import {
   Post,
   Put,
 } from '@midwayjs/decorator'
-import {
-  createFunctionContainer,
-  isDev,
-  isFileSystemRouter,
-} from '../../internal'
+import { createFunctionContainer, isDev, normalizeUrl } from '../../internal'
 import { HooksTrigger } from '../operator/type'
 
 const debug = createDebug('hooks: MidwayFrameworkAdapter')
@@ -203,15 +198,4 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
       }
     }
   }
-}
-
-export function normalizeUrl(router: AbstractRouter, api: ApiRoute) {
-  const { trigger, file } = api
-
-  if (isFileSystemRouter(router)) {
-    const basePath = router.getRoute(file).basePath
-    return urlJoin(basePath, trigger.path, {})
-  }
-
-  return trigger.path
 }

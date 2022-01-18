@@ -1,4 +1,0 @@
-{
-  "main": "dist/midwayjs-hooks-bundler.cjs.js",
-  "module": "dist/midwayjs-hooks-bundler.esm.js"
-}
