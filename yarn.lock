@@ -3190,13 +3190,13 @@
     semver "^7.3.4"
     supports-color "^8.1.0"
 
-"@midwayjs/mock@3.0.0-beta.16", "@midwayjs/mock@beta":
-  version "3.0.0-beta.16"
-  resolved "https://registry.npmjs.org/@midwayjs/mock/-/mock-3.0.0-beta.16.tgz#21f26860697f1e55a282419e753b8bd6c84a6f24"
-  integrity sha512-uJTpf8XhOPt0nbWQpvYb7xcZHwKwmWFknehHQRBPrQuhmHCSG1DskM5eUqoqR4ect9P7zfhS8UYhtzK6om5uJw==
+"@midwayjs/mock@3.0.0-beta.17", "@midwayjs/mock@beta":
+  version "3.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@midwayjs/mock/-/mock-3.0.0-beta.17.tgz#d56c9b77fe7fe3414fbd918872f03107d6742513"
+  integrity sha512-51a87ZFa32JQECFI8x13hcxOMRsoou8B8J6WAmrT0DiI1M+mXOiA8RUEEzaBmw3OLKgOEYBhlkvZFLAZyxKR4w==
   dependencies:
     fs-extra "10.0.0"
-    supertest "6.2.0"
+    supertest "6.2.1"
 
 "@midwayjs/mwcc@^0.7.x":
   version "0.7.0"
@@ -14682,9 +14682,9 @@ superagent@^3.8.3:
     qs "^6.5.1"
     readable-stream "^2.3.5"
 
-superagent@^7.0.1:
+superagent@^7.0.2:
   version "7.0.2"
-  resolved "https://registry.npmjs.org/superagent/-/superagent-7.0.2.tgz#8fa6d283c9e7cd52928b96cf422356019248e8c4"
+  resolved "https://registry.yarnpkg.com/superagent/-/superagent-7.0.2.tgz#8fa6d283c9e7cd52928b96cf422356019248e8c4"
   integrity sha512-2Kx35bZxLLJMBKtuXezxvD0aZQ7l923VwoCn7EtUx+aFxdG7co7PeRIddfrNtvvMuGaLZXA0mKzX+yWRhjrJ7A==
   dependencies:
     component-emitter "^1.3.0"
@@ -14699,13 +14699,13 @@ superagent@^7.0.1:
     readable-stream "^3.6.0"
     semver "^7.3.5"
 
-supertest@6.2.0:
-  version "6.2.0"
-  resolved "https://registry.npmjs.org/supertest/-/supertest-6.2.0.tgz#5ce9e1603744d79b6620e65d2e16e9dc635244ae"
-  integrity sha512-JU30iTy0Utm5GbVJvrtt6RHNQECiqVl6KckEVhnR0AoGzFGq0IFMmBXnoTxYy9pM/vgufiPevjxlF39XaKn77Q==
+supertest@6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/supertest/-/supertest-6.2.1.tgz#add42f1afa661fa5b3083da05c6c964069768e0f"
+  integrity sha512-2kBKhfZgnPLmjpzB0n7A2ZnEAWTaLXq4bn3EEVY9w8rUpLyIlSusqKKvWA1Cav7hxXBnXGpxBsSeOHj5wQGe1Q==
   dependencies:
     methods "^1.1.2"
-    superagent "^7.0.1"
+    superagent "^7.0.2"
 
 supertest@^4.0.2:
   version "4.0.2"
