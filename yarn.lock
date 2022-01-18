@@ -2993,7 +2993,7 @@
     scmp "^2.1.0"
     should-send-same-site-none "^2.0.5"
 
-"@midwayjs/core@3.0.0-beta.16", "@midwayjs/core@^3.0.0-beta.13", "@midwayjs/core@^3.0.0-beta.16":
+"@midwayjs/core@3.0.0-beta.16", "@midwayjs/core@^3.0.0-beta.13", "@midwayjs/core@^3.0.0-beta.16", "@midwayjs/core@^3.0.0-beta.17":
   version "3.0.0-beta.16"
   resolved "https://registry.npmjs.org/@midwayjs/core/-/core-3.0.0-beta.16.tgz#f18b42f31654c713d7b22e392b6af76e7a884595"
   integrity sha512-vLMXyexdStbUwUCaqfRPqOY1F4fKq/IdNVxVTQVCGX//OvHHRwlAjUI802C7qayP+GCn902PQ1a8sGIHg9rvjw==
@@ -3136,15 +3136,15 @@
   dependencies:
     picomatch "^2.2.2"
 
-"@midwayjs/koa@3.0.0-beta.16", "@midwayjs/koa@beta":
-  version "3.0.0-beta.16"
-  resolved "https://registry.npmjs.org/@midwayjs/koa/-/koa-3.0.0-beta.16.tgz#d28feb213da2e739ec3f908c7c80e0de23045290"
-  integrity sha512-/fsDRqzHw+ci8Vb2sVezGGtM+jNNe/UHmTloWTK0pFarF7G/1rJJ8pz6aLaay4ZayqsDbbw1wQuSaMpDG7vVYg==
+"@midwayjs/koa@3.0.0-beta.17", "@midwayjs/koa@beta":
+  version "3.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@midwayjs/koa/-/koa-3.0.0-beta.17.tgz#f71ad8676721c10ab83d32119a8e4fdf0bd862d3"
+  integrity sha512-ydvSOe8u6A4+/ozGyDdPx6cJKNIG29BDs8bYt6m5WRIqNZX8c8jtiaQH22GcWzC911fxSWhqmWVLLEyBWOeAig==
   dependencies:
     "@koa/router" "^10.0.0"
     "@midwayjs/cookies" "1.0.1"
-    "@midwayjs/core" "^3.0.0-beta.16"
-    "@midwayjs/session" "^3.0.0-beta.16"
+    "@midwayjs/core" "^3.0.0-beta.17"
+    "@midwayjs/session" "^3.0.0-beta.17"
     koa "2.13.4"
     koa-bodyparser "4.3.0"
     koa-onerror "^4.1.0"
@@ -3309,12 +3309,13 @@
     js-yaml "^4.1.0"
     mkdirp "^0.5.1"
 
-"@midwayjs/session@^3.0.0-beta.16":
-  version "3.0.0-beta.16"
-  resolved "https://registry.npmjs.org/@midwayjs/session/-/session-3.0.0-beta.16.tgz#d11482029f88f7367c340031e60f325d4d0788cb"
-  integrity sha512-Jzmi3cc7ila9aHm4nQDd/KLseiRyYam6fpYwYESlSNV2rPt99aAfZ/Sbdo/Emw0I2wPFfYRCH/iuP4EtZ3ByHw==
+"@midwayjs/session@^3.0.0-beta.17":
+  version "3.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@midwayjs/session/-/session-3.0.0-beta.17.tgz#3875c2db82af9dcd1dd7c75efade3b10228566c7"
+  integrity sha512-pj+FoywrmkjO7UmhfNRQYX+KmF4b0j1VAuKtXvLCYM7G7gaS849gQni5XEKD1UlY1xh7jvqT/HSITYv7IChR8w==
   dependencies:
-    koa-session "^6.2.0"
+    "@midwayjs/cookies" "1.0.1"
+    crc "4.1.0"
 
 "@midwayjs/simple-lock@^1.1.4":
   version "1.1.4"
@@ -6469,6 +6470,11 @@ crc64-ecma182.js@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/crc64-ecma182.js/-/crc64-ecma182.js-1.0.0.tgz#0bf73bf2585b59c687f85773e7991df72d759f7a"
   integrity sha1-C/c78lhbWcaH+Fdz55kd9y11n3o=
+
+crc@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/crc/-/crc-4.1.0.tgz#bb875159ac3012d52611f13a2bcf5d46b401c8e7"
+  integrity sha512-xl6/PgOWZCDOA9mnytKzg2ftRS2YT/SUnNPPiCMoD6KWuiJayRjHcaLmBzGWNZGHSXDSrDuLNUEIljLRMbn7vA==
 
 crc@^3.4.4:
   version "3.8.0"
@@ -10773,16 +10779,6 @@ koa-onerror@^4.1.0:
   dependencies:
     escape-html "^1.0.3"
     stream-wormhole "^1.1.0"
-
-koa-session@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.npmjs.org/koa-session/-/koa-session-6.2.0.tgz#c0da2a808b520f62a25dac9f2914b580b2402078"
-  integrity sha512-l2ZC6D1BnRkIXhWkRgpewdqKn38/9/2WScmxyShuN408TxX+J/gUzdzGBIvGZaRwmezOU819sNpGmfFGLeDckg==
-  dependencies:
-    crc "^3.4.4"
-    debug "^3.1.0"
-    is-type-of "^1.0.0"
-    uuid "^3.3.2"
 
 koa-static-cache@^5.1.4:
   version "5.1.4"
