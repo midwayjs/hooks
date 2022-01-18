@@ -1,41 +1,19 @@
-## Getting Started
+## hooks-react-starter
 
-Docs：[Midway Hooks - Getting Started](https://www.yuque.com/midwayjs/midway_v2/hooks_intro?translate=en)
+Use `npm install` to install the dependencies
 
-### Directory Structure
+## Commands
 
-```
-.
-├── bootstrap.js //
-├── jest.config.js // Unit test file
-├── midway.config.ts // config file for setup directory and middleware
-├── src
-│   ├── apis // Backend directory
-│   │   ├── configuration.ts // Midway Hooks configuration
-│   │   └── lambda // Api directory(Can be modified in midway.config.ts)
-│   │       ├── index.test.ts // Api test file
-│   │       └── index.ts // Api file
-│   └── main.ts // Frontend framework file
-├── tsconfig.json
-└── vite.config.ts
-```
+- `npm run dev`: Starts the development server
+- `npm run build`: Builds the application for production
+- `npm run deploy`: Deploy the application to the serverless platform
 
-### Commands
+## File Structure
 
-#### Start Dev Server
-
-```bash
-$ npm run dev
-```
-
-#### Build
-
-```bash
-$ npm run build
-```
-
-### Running in production mode
-
-```bash
-$ node bootstrap.js
-```
+- `src`: source code, include backend and frontend
+  - `api`: backend code
+  - `others`: frontend code
+- `public`: static files
+- `midway.config.ts`: project config
+- `index.html`: entry file
+- `f.yml` : serverless config

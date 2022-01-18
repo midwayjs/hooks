@@ -1,7 +1,18 @@
-# Vue 3 + Vite
+## hooks-react-faas-starter
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Use `npm install` to install the dependencies
 
-## Recommended IDE Setup
+## Commands
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+- `npm run dev`: Starts the development server
+- `npm run build`: Builds the application for production
+- `npm run start`: Runs the application in production mode
+
+## File Structure
+
+- `src`: source code, include backend and frontend
+  - `api`: backend code
+  - `others`: frontend code
+- `public`: static files
+- `midway.config.ts`: project config
+- `index.html`: entry file
