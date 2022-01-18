@@ -22,14 +22,14 @@ English | [简体中文](./README.zh-cn.md)
 
 ## ✨ Features
 
-- ☁️&nbsp;&nbsp;Maximize productivity and developer experience, support fullstack development & API service
-- ⚡️&nbsp;&nbsp;Fullstack kit that supports React/Vue/Svelte... and more frameworks
-- 🌈&nbsp;&nbsp;Functional programming, using `Hooks` for frontend and backend
-- ⛑️&nbsp;&nbsp;Type safe, use the identical type definition from frontend to backend, detect errors in advance
-- 🌍&nbsp;&nbsp;"Zero" Api data layer, import functions from the backend to call the API directly, without the ajax glue layer
-- ⚙️&nbsp;&nbsp;Support for `Webpack / Vite` based projects
-- ✈️&nbsp;&nbsp;Deploy to Server or Serverless
-- 🛡&nbsp;&nbsp;Based on Midway, a powerful Node.js framework that supports enterprise-level application development
+- ☁️ Maximize productivity and developer experience, support fullstack development & API service
+- ⚡️ Fullstack kit that supports React/Vue/Svelte... and more frameworks
+- 🌈 "Zero" Api data layer, import functions from the backend to call the API directly, without the ajax glue layer
+- ⛑️ Type safe, use the identical type definition from frontend to backend, detect errors in advance
+- 🌍 Functional programming, using `Hooks` for frontend and backend
+- ⚙️ Support for `Webpack / Vite` based projects
+- ✈️ Deploy to Server or Serverless
+- 🛡 Based on Midway, a powerful Node.js framework that supports enterprise-level application development
 
 ## 🔨 Preview
 

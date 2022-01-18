@@ -22,14 +22,14 @@
 
 ## ✨ 特性
 
-- ☁️&nbsp;&nbsp;最大化生产力 & 开发者体验，支持开发全栈应用 & Api 服务
-- ⚡️&nbsp;&nbsp;开箱即用的全栈套件，支持 React/Vue/Svelte...多框架
-- 🌈&nbsp;&nbsp;"零" API，全栈应用下导入函数直接调用接口，抹去胶水层
-- ⛑️&nbsp;&nbsp;类型安全，从前端到后端使用同一份类型定义，提前发现错误
-- 🌍&nbsp;&nbsp;函数式编程，前后端统一使用 `Hooks`
-- ⚙️&nbsp;&nbsp;支持 Webpack / Vite 前端工程体系接入
-- ✈️&nbsp;&nbsp;部署至 Server & Serverless
-- 🛡&nbsp;&nbsp;基于超强的 Node.js 框架 Midway，支撑企业级应用开发
+- ☁️ 最大化生产力 & 开发者体验，支持开发全栈应用 & Api 服务
+- ⚡️ 开箱即用的全栈套件，支持 React/Vue/Svelte...多框架
+- 🌈 "零" API，全栈应用下导入函数直接调用接口，抹去胶水层
+- ⛑️ 类型安全，从前端到后端使用同一份类型定义，提前发现错误
+- 🌍 函数式编程，前后端统一使用 `Hooks`
+- ⚙️ 支持 Webpack / Vite 前端工程体系接入
+- ✈️ 部署至 Server & Serverless
+- 🛡 基于超强的 Node.js 框架 Midway，支撑企业级应用开发
 
 ## 🔨 预览
 
