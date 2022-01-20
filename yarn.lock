@@ -2786,10 +2786,10 @@
   resolved "https://registry.npmjs.org/@midwayjs/boilerplate-list/-/boilerplate-list-1.0.12.tgz#b2e28afa3e0e064278d6899b715c4739abe07bab"
   integrity sha512-lP3nE9ksHbRxhpxGx10JE5qSK5Ayhn7aHci/Lq9/SR38qGyl1ONRwYoxYmJ3nDyUgH0YsRBnTH5yRAAMpFp5ow==
 
-"@midwayjs/bootstrap@3.0.0-beta.16", "@midwayjs/bootstrap@^3.0.0-beta.16", "@midwayjs/bootstrap@beta":
-  version "3.0.0-beta.16"
-  resolved "https://registry.npmjs.org/@midwayjs/bootstrap/-/bootstrap-3.0.0-beta.16.tgz#e84a51e63a22dc91a82a4df689b423ceef44d221"
-  integrity sha512-5gFlTSanltpKXWypJ6u6SiiLLUA5XxEhQWTIm0yoWdPzRf6/Q5vhMlhoXCVoBlB1tKg8PWeoOXOWKyEs3+Mlcg==
+"@midwayjs/bootstrap@3.0.0", "@midwayjs/bootstrap@^3.0.0-beta.16", "@midwayjs/bootstrap@beta":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@midwayjs/bootstrap/-/bootstrap-3.0.0.tgz#de76fc13edd4879d697497f67eb4b2d2b7e9c914"
+  integrity sha512-nugd3acuuPcfQ6zRJhG9b6VTPjna84punw+LwwHr3Cp9s9JT6qkoOMI83vuP4KtI7zRsjP6cM/c1Rv9S3pqxQQ==
 
 "@midwayjs/cli-plugin-add@^1.2.92":
   version "1.2.92"
