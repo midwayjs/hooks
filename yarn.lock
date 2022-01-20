@@ -3048,7 +3048,7 @@
     scmp "^2.1.0"
     should-send-same-site-none "^2.0.5"
 
-"@midwayjs/core@3.0.0-beta.16", "@midwayjs/core@^3.0.0-beta.13", "@midwayjs/core@^3.0.0-beta.16":
+"@midwayjs/core@3.0.0-beta.16", "@midwayjs/core@^3.0.0", "@midwayjs/core@^3.0.0-beta.13", "@midwayjs/core@^3.0.0-beta.16":
   version "3.0.0-beta.16"
   resolved "https://registry.npmjs.org/@midwayjs/core/-/core-3.0.0-beta.16.tgz#f18b42f31654c713d7b22e392b6af76e7a884595"
   integrity sha512-vLMXyexdStbUwUCaqfRPqOY1F4fKq/IdNVxVTQVCGX//OvHHRwlAjUI802C7qayP+GCn902PQ1a8sGIHg9rvjw==
@@ -3191,18 +3191,17 @@
   dependencies:
     picomatch "^2.2.2"
 
-"@midwayjs/koa@3.0.0-beta.16", "@midwayjs/koa@beta":
-  version "3.0.0-beta.16"
-  resolved "https://registry.npmjs.org/@midwayjs/koa/-/koa-3.0.0-beta.16.tgz#d28feb213da2e739ec3f908c7c80e0de23045290"
-  integrity sha512-/fsDRqzHw+ci8Vb2sVezGGtM+jNNe/UHmTloWTK0pFarF7G/1rJJ8pz6aLaay4ZayqsDbbw1wQuSaMpDG7vVYg==
+"@midwayjs/koa@3.0.0", "@midwayjs/koa@beta":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@midwayjs/koa/-/koa-3.0.0.tgz#5c48f6dda71413818a037f00ac9fcadab6b6b859"
+  integrity sha512-ls80x6loehu0XN0hnD+E4VFCsAiKVw7XFSBAnVhTWQU3nqmupVN8Ek6qi7vTOxkjMYNCOw57ImdpUX+vKqGJ+w==
   dependencies:
     "@koa/router" "^10.0.0"
     "@midwayjs/cookies" "1.0.1"
-    "@midwayjs/core" "^3.0.0-beta.16"
-    "@midwayjs/session" "^3.0.0-beta.16"
+    "@midwayjs/core" "^3.0.0"
+    "@midwayjs/session" "^3.0.0"
     koa "2.13.4"
     koa-bodyparser "4.3.0"
-    koa-onerror "^4.1.0"
 
 "@midwayjs/locate@^1.0.3":
   version "1.8.0"
@@ -3364,12 +3363,13 @@
     js-yaml "^4.1.0"
     mkdirp "^0.5.1"
 
-"@midwayjs/session@^3.0.0-beta.16":
-  version "3.0.0-beta.16"
-  resolved "https://registry.npmjs.org/@midwayjs/session/-/session-3.0.0-beta.16.tgz#d11482029f88f7367c340031e60f325d4d0788cb"
-  integrity sha512-Jzmi3cc7ila9aHm4nQDd/KLseiRyYam6fpYwYESlSNV2rPt99aAfZ/Sbdo/Emw0I2wPFfYRCH/iuP4EtZ3ByHw==
+"@midwayjs/session@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@midwayjs/session/-/session-3.0.0.tgz#5be850e4ad06d69f668abb7c33996ec8ce65ad47"
+  integrity sha512-S807HaoFYWgm/KBWhEyVMLZEawB7CAMh+eb6jIyzuQ1XusGUjXVV/q14o3V4LjlohAAKL0rdWh5IlJcFxUqq9Q==
   dependencies:
-    koa-session "^6.2.0"
+    "@midwayjs/cookies" "1.0.1"
+    crc "4.1.0"
 
 "@midwayjs/simple-lock@^1.1.4":
   version "1.1.4"
@@ -6587,6 +6587,11 @@ crc64-ecma182.js@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/crc64-ecma182.js/-/crc64-ecma182.js-1.0.0.tgz#0bf73bf2585b59c687f85773e7991df72d759f7a"
   integrity sha1-C/c78lhbWcaH+Fdz55kd9y11n3o=
+
+crc@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/crc/-/crc-4.1.0.tgz#bb875159ac3012d52611f13a2bcf5d46b401c8e7"
+  integrity sha512-xl6/PgOWZCDOA9mnytKzg2ftRS2YT/SUnNPPiCMoD6KWuiJayRjHcaLmBzGWNZGHSXDSrDuLNUEIljLRMbn7vA==
 
 crc@^3.4.4:
   version "3.8.0"
@@ -11077,24 +11082,6 @@ koa-convert@^2.0.0:
     co "^4.6.0"
     koa-compose "^4.1.0"
 
-koa-onerror@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/koa-onerror/-/koa-onerror-4.1.0.tgz#7949c7651941e67b11813bf1fad03c2d34470b1c"
-  integrity sha512-UDvOkkXiyVtlhRIvo9wbqKG/pTiiVE5x2uIFpG5e6OmBawxBSURG/PeFa6e6UZjjxinXde3BmPWVSIVePMG6TA==
-  dependencies:
-    escape-html "^1.0.3"
-    stream-wormhole "^1.1.0"
-
-koa-session@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.npmjs.org/koa-session/-/koa-session-6.2.0.tgz#c0da2a808b520f62a25dac9f2914b580b2402078"
-  integrity sha512-l2ZC6D1BnRkIXhWkRgpewdqKn38/9/2WScmxyShuN408TxX+J/gUzdzGBIvGZaRwmezOU819sNpGmfFGLeDckg==
-  dependencies:
-    crc "^3.4.4"
-    debug "^3.1.0"
-    is-type-of "^1.0.0"
-    uuid "^3.3.2"
-
 koa-static-cache@^5.1.4:
   version "5.1.4"
   resolved "https://registry.npmjs.org/koa-static-cache/-/koa-static-cache-5.1.4.tgz#bb24bbae4845316d101da2f8a1d89088e1916afe"
@@ -15128,7 +15115,7 @@ stream-transform@^2.1.3:
   dependencies:
     mixme "^0.5.1"
 
-stream-wormhole@^1.0.4, stream-wormhole@^1.1.0:
+stream-wormhole@^1.0.4:
   version "1.1.0"
   resolved "https://registry.npmjs.org/stream-wormhole/-/stream-wormhole-1.1.0.tgz#300aff46ced553cfec642a05251885417693c33d"
   integrity sha512-gHFfL3px0Kctd6Po0M8TzEvt3De/xu6cnRrjlfYNhwbhLPLwigI2t1nc6jrzNuaYg5C4YF78PPFuQPzRiqn9ew==
