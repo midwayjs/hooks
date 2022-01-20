@@ -2,7 +2,7 @@
 
 exports[`defineMeta 1`] = `
 Object {
-  "Http_Header": true,
+  "Http_Headers": true,
   "Http_Params": true,
   "Http_Query": true,
   "Middleware": Array [
