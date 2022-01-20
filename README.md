@@ -86,6 +86,9 @@ export default () => {
 };
 
 
+
+
+
 ```
 
 </sub>
@@ -143,6 +146,31 @@ export const createArticle = Api(
 </td>
 </tr>
 </table>
+
+## 🧩 Templates
+
+Midway Hooks currently provide the following templates:
+
+- Fullstack
+  - [react](https://github.com/midwayjs/hooks/blob/v3/examples/react)
+  - [react-faas](https://github.com/midwayjs/hooks/blob/v3/examples/react-faas)
+  - [vue](https://github.com/midwayjs/hooks/blob/v3/examples/vue)
+  - [vue](https://github.com/midwayjs/hooks/blob/v3/examples/vue-faas)
+  - [prisma](https://github.com/midwayjs/hooks/blob/v3/examples/prisma)
+- Api Server
+  - [api](https://github.com/midwayjs/hooks/blob/v3/examples/api)
+
+You can create applications quickly with templates:
+
+```bash
+npx degit https://github.com/midwayjs/hooks/examples/<name>
+```
+
+For example, create a fullstack application with react:
+
+```bash
+npx degit https://github.com/midwayjs/hooks/examples/react
+```
 
 ## Contribute
 
