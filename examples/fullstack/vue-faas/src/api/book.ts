@@ -1,4 +1,4 @@
-import { Api, Get, Param, Query, useContext } from '@midwayjs/hooks';
+import { Api, Get, Params, Query, useContext } from '@midwayjs/hooks';
 import { Context } from '@midwayjs/koa';
 
 const books = [
@@ -46,7 +46,7 @@ const books = [
 
 export const getBookByParams = Api(
   Get('/book/:id'),
-  Param<{ id: string }>(),
+  Params<{ id: string }>(),
   async () => {
     const ctx = useContext<Context>();
     const { id } = ctx.params;

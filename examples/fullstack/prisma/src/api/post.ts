@@ -2,7 +2,7 @@ import {
   Api,
   Delete,
   Get,
-  Param,
+  Params,
   Post,
   Put,
   Query,
@@ -27,7 +27,7 @@ type Id = z.infer<typeof IdSchema>;
 
 export const getPost = Api(
   Get('/api/post/:id'),
-  Param<Id>(),
+  Params<Id>(),
   ValidateHttp({ params: IdSchema }),
   async () => {
     const id = usePostId();
@@ -89,7 +89,7 @@ export const createPost = Api(
 
 export const publishPost = Api(
   Put('/api/post/publish/:id'),
-  Param<{ id: string }>(),
+  Params<{ id: string }>(),
   async () => {
     const id = usePostId();
     const post = await prisma.post.update({
@@ -102,7 +102,7 @@ export const publishPost = Api(
 
 export const deletePost = Api(
   Delete('/api/post/:id'),
-  Param<Id>(),
+  Params<Id>(),
   ValidateHttp({ params: IdSchema }),
   async () => {
     const id = usePostId();

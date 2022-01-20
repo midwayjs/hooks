@@ -5,7 +5,7 @@ export const HttpTriggerType = 'HTTP'
 export enum HttpMetadata {
   METHOD = 'Http_Method',
   QUERY = 'Http_Query',
-  PARAM = 'Http_Param',
+  PARAMS = 'Http_Params',
   HEADER = 'Http_Header',
   RESPONSE = 'Http_Response',
 }
@@ -82,14 +82,14 @@ export function Query<T extends Record<string, string>>(): Operator<{
   }
 }
 
-export function Param<T extends Record<string, string>>(): Operator<{
+export function Params<T extends Record<string, string>>(): Operator<{
   params: T
 }> {
   return {
-    name: HttpMetadata.PARAM,
+    name: HttpMetadata.PARAMS,
     input: true,
     metadata({ setMetadata }) {
-      setMetadata(HttpMetadata.PARAM, true)
+      setMetadata(HttpMetadata.PARAMS, true)
     },
   }
 }

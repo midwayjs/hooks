@@ -13,7 +13,7 @@ export {
   Head,
   Options,
   Query,
-  Param,
+  Params,
   Header,
   Middleware,
   Redirect,
