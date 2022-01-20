@@ -1,6 +1,6 @@
 import { Api } from '..'
 import { extractMetadata } from '../../common/util'
-import { Get, Header, Params, Post, Query } from '../operator/http'
+import { Get, Headers, Params, Post, Query } from '../operator/http'
 import { Middleware } from '../operator/middleware'
 import { Operator } from '../type'
 
@@ -34,7 +34,7 @@ it('defineMeta', async () => {
     Get(),
     Query(),
     Params(),
-    Header(),
+    Headers(),
     Middleware(logger),
     async () => {}
   )
