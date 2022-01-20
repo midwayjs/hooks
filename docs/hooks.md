@@ -8,7 +8,7 @@ Midway Hooks 可以通过使用 `Hooks` 函数来获取运行时上下文。
 
 Hooks 需要在 Api 接口中使用。
 
-有效的例子
+有效的例子:
 
 ```ts
 import {
