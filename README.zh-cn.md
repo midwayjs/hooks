@@ -86,6 +86,9 @@ export default () => {
 };
 
 
+
+
+
 ```
 
 </sub>
@@ -143,6 +146,31 @@ export const createArticle = Api(
 </td>
 </tr>
 </table>
+
+## 🧩 Templates
+
+Midway Hooks 提供如下模版：
+
+- Fullstack
+  - [react](https://github.com/midwayjs/hooks/blob/v3/examples/react)
+  - [react-faas](https://github.com/midwayjs/hooks/blob/v3/examples/react-faas)
+  - [vue](https://github.com/midwayjs/hooks/blob/v3/examples/vue)
+  - [vue](https://github.com/midwayjs/hooks/blob/v3/examples/vue-faas)
+  - [prisma](https://github.com/midwayjs/hooks/blob/v3/examples/prisma)
+- Api Server
+  - [api](https://github.com/midwayjs/hooks/blob/v3/examples/api)
+
+你可以使用下面的命令快速创建应用:
+
+```bash
+npx degit https://github.com/midwayjs/hooks/examples/<name>
+```
+
+以 React 全栈应用为例:
+
+```bash
+npx degit https://github.com/midwayjs/hooks/examples/react
+```
 
 ## Contribute
 
