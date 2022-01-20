@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { AsyncFunction, createDebug, validateFunction } from '../'
+import { AsyncFunction, validateFunction } from '../'
 import { AbstractFrameworkAdapter } from '../adapter/framework'
 import { USE_INPUT_METADATA } from '../common/const'
 import { compose } from './compose'
@@ -28,11 +28,31 @@ export function Api<
   validateFunction(handler, 'ApiHandler')
 
   const operators = args as Operator<any>[]
-  const useInputMetadata = operators.some((operator) => operator.input)
 
-  const stack = []
-  const runner = async (...args: any[]) => {
+  const metadataHelper: MetadataHelper = {
+    getMetadata(key: any) {
+      return Reflect.getMetadata(key, runner)
+    },
+    setMetadata(key: any, value: any) {
+      return Reflect.defineMetadata(key, value, runner)
+    },
+  }
+
+  for (const operator of operators) {
+    if (operator.metadata) {
+      validateFunction(operator.metadata, 'operator.metadata')
+      operator.metadata(metadataHelper)
+    }
+  }
+
+  const useInputMetadata = operators.some((operator) => operator.input)
+  const executors = operators
+    .filter((operator) => typeof operator.execute === 'function')
+    .map((operator) => operator.execute)
+
+  async function runner(...args: any[]) {
     const funcArgs = useInputMetadata ? args.slice(0, -1) : args
+    const stack = [...executors]
 
     let result: any
     stack.push(async ({ next }: ExecuteHelper) => {
@@ -50,29 +70,6 @@ export function Api<
       )
     }
     return result
-  }
-
-  for (const operator of operators) {
-    if (operator.execute) {
-      validateFunction(operator.execute, 'operator.execute')
-      stack.push(operator.execute)
-    }
-  }
-
-  const metadataHelper: MetadataHelper = {
-    getMetadata(key: any) {
-      return Reflect.getMetadata(key, runner)
-    },
-    setMetadata(key: any, value: any) {
-      return Reflect.defineMetadata(key, value, runner)
-    },
-  }
-
-  for (const operator of operators) {
-    if (operator.metadata) {
-      validateFunction(operator.metadata, 'operator.metadata')
-      operator.metadata(metadataHelper)
-    }
   }
 
   Reflect.defineMetadata(USE_INPUT_METADATA, useInputMetadata, runner)
