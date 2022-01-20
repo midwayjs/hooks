@@ -6,7 +6,7 @@ title: 全栈套件
 
 ## 命令行界面
 
-在使用了 `@midwayjs/hooks-kit` 的项目中，可以在 npm scripts 中使用 hooks 可执行文件，或者直接使用 npx hooks 运行它。下面是通过脚手架创建的 Midway 全栈项目中默认的 npm scripts：
+在使用了 `@midwayjs/hooks-kit` 的项目中，可以在 npm scripts 中使用 hooks 可执行文件，或者通过 `npx hooks` 运行。下面是通过脚手架创建的 Midway 全栈项目中默认的 npm scripts：
 
 ```json
 {

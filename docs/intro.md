@@ -129,5 +129,5 @@ npx degit https://github.com/midwayjs/hooks/examples/api ./hooks-app
 ## 下一步
 
 - 了解如何开发接口并提供给前端调用：[接口开发](./api.md)
-- 如何使用和创建可复用的 Hooks：[Hooks](./hooks.md)
+- 如何使用和创建可复用的 Hooks：[Hooks](./builtin-hooks.md)
 - 如何在运行时校验用户参数：[校验器](./validate.md)
