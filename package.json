@@ -17,12 +17,12 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@babel/core": "7.16.7",
+    "@babel/core": "7.16.10",
     "@babel/plugin-proposal-class-properties": "7.16.7",
     "@babel/plugin-proposal-optional-chaining": "7.16.7",
     "@babel/plugin-proposal-private-methods": "7.16.7",
     "@babel/plugin-proposal-private-property-in-object": "7.16.7",
-    "@babel/preset-env": "7.16.8",
+    "@babel/preset-env": "7.16.10",
     "@babel/preset-typescript": "7.16.7",
     "@changesets/cli": "2.19.0",
     "@preconstruct/cli": "2.1.5",
