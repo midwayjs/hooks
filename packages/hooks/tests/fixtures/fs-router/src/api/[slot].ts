@@ -3,7 +3,7 @@ import {
   Get,
   Header,
   Middleware,
-  Param,
+  Params,
   Query,
   useContext,
 } from '../../../../../src'
@@ -11,7 +11,7 @@ import {
 export const withSlot = Api(
   Get(),
   Query<{ query: string }>(),
-  Param<{ slot: string }>(),
+  Params<{ slot: string }>(),
   Header<{ header: string }>(),
   Middleware(),
   async () => {

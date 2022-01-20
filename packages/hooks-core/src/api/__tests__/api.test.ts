@@ -1,6 +1,6 @@
 import { Api } from '..'
 import { extractMetadata } from '../../common/util'
-import { Get, Header, Param, Post, Query } from '../operator/http'
+import { Get, Header, Params, Post, Query } from '../operator/http'
 import { Middleware } from '../operator/middleware'
 import { Operator } from '../type'
 
@@ -33,7 +33,7 @@ it('defineMeta', async () => {
   const fn = Api(
     Get(),
     Query(),
-    Param(),
+    Params(),
     Header(),
     Middleware(logger),
     async () => {}
