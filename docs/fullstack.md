@@ -1,5 +1,5 @@
 ---
-title: 全栈应用
+title: 全栈套件
 ---
 
 在 Midway Hooks 中，我们提供了 `@midwayjs/hooks-kit` 来快速开发全栈应用。
