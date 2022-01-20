@@ -42,8 +42,7 @@
   },
   "workspaces": [
     "packages/*",
-    "examples/fullstack/*",
-    "examples/api/*"
+    "examples/*"
   ],
   "preconstruct": {
     "packages": [

@@ -1,4 +1,10 @@
-## hooks-vue-faas-starter
+## hooks-react-starter
+
+Use this template:
+
+```bash
+npx degit https://github.com/midwayjs/hooks/examples/react ./hooks-app
+```
 
 Use `npm install` to install the dependencies
 
@@ -6,7 +12,7 @@ Use `npm install` to install the dependencies
 
 - `npm run dev`: Starts the development server
 - `npm run build`: Builds the application for production
-- `npm run deploy`: Deploy the application to the serverless platform
+- `npm run start`: Runs the application in production mode
 
 ## File Structure
 
@@ -16,4 +22,3 @@ Use `npm install` to install the dependencies
 - `public`: static files
 - `midway.config.ts`: project config
 - `index.html`: entry file
-- `f.yml` : serverless config

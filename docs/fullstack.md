@@ -2,9 +2,7 @@
 title: 全栈应用
 ---
 
-在 Midway 中，我们提供了 `@midwayjs/hooks-kit` 来快速开发全栈应用。
-
-<!-- TODO 创建项目 -->
+在 Midway Hooks 中，我们提供了 `@midwayjs/hooks-kit` 来快速开发全栈应用。
 
 ## 命令行界面
 

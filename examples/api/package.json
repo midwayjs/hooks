@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node scripts/bootstrap",
-    "dev": "mw dev --fast",
-    "build": "mw build"
+    "dev": "node_modules/.bin/mw dev --fast",
+    "build": "node_modules/.bin/mw build"
   },
   "dependencies": {
     "@midwayjs/hooks": "^3.0.0-alpha.0",
