@@ -2,7 +2,7 @@
 title: 测试
 ---
 
-在 Midway Hooks 中，我们可以快速的对接口进行测试。
+在 Midway Hooks 中，我们可以快速的对 Http 接口进行测试。
 
 ## 接口测试
 
