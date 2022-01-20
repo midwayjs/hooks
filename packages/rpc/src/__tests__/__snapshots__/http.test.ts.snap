@@ -8,7 +8,9 @@ Object {
       "b",
     ],
   },
-  "headers": undefined,
+  "headers": Object {
+    "accept": "application/json",
+  },
   "method": "GET",
   "query": undefined,
   "url": "/foo/baz",
@@ -18,7 +20,9 @@ Object {
 exports[`buildRequestOptions 2`] = `
 Object {
   "data": null,
-  "headers": undefined,
+  "headers": Object {
+    "accept": "application/json",
+  },
   "method": "GET",
   "query": undefined,
   "url": "/foo",
@@ -30,7 +34,9 @@ Array [
   Array [
     Object {
       "data": null,
-      "headers": undefined,
+      "headers": Object {
+        "accept": "application/json",
+      },
       "method": "GET",
       "query": undefined,
       "url": "/foo",
