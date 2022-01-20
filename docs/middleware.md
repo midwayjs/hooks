@@ -54,7 +54,7 @@ export default createConfiguration({
 });
 ```
 
-### 文件级中间件
+## 文件级中间件
 
 文件级中间件在 Api 文件中定义，通过导出的 `config.middleware`，该中间件对文件内所有 Api 函数生效。
 
@@ -76,7 +76,7 @@ export default Api(Get(), async () => {
 });
 ```
 
-## 单函数中间件。
+## 单函数中间件
 
 通过 `Middleware(...middlewares: HooksMiddleware[])` 定义的中间件仅对单个函数生效
 
