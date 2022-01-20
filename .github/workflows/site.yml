@@ -1,0 +1,15 @@
+# ref: https://github.com/midwayjs/midway/blob/main/.github/workflows/site.yml#L7
+
+name: Site
+
+on:
+  push:
+    branches: [v3]
+    paths: [docs/**]
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    name: '📦 Update Hooks Docs'
+    steps:
+      - uses: passeidireto/trigger-external-workflow-action@main
