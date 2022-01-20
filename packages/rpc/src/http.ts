@@ -41,7 +41,10 @@ export function buildRequestOptions(
     data: inputs.length > 0 ? args(...inputs) : null,
 
     query: inputMetadata?.query,
-    headers: inputMetadata?.headers,
+    headers: {
+      accept: 'application/json',
+      ...inputMetadata?.headers,
+    },
   }
 
   return options
