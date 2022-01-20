@@ -3068,10 +3068,10 @@
     ts-node "^9.0.0"
     ws "^7.2.3"
 
-"@midwayjs/decorator@3.0.0-beta.16":
-  version "3.0.0-beta.16"
-  resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-3.0.0-beta.16.tgz#6f59357c32db1435f009aa6ab6b605f6059b69f2"
-  integrity sha512-PKHlV1hZrgCHQeFJhBruP6x6CKfxWlBB1k0sARW/8Z8ZLIfLQZV/1H3WRBkVsNS51Lp7OVBXWDZym/ctmB44yQ==
+"@midwayjs/decorator@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@midwayjs/decorator/-/decorator-3.0.0.tgz#d26eecd79e739b4c2189d0146820d24e8eb8766c"
+  integrity sha512-usjUR66FrxBKMFgHKbd7CrtmgrzMS3RYD+s/afm6dNxleg+29RyGcnH2QbAeHdo9pyew6L125IbvL3N8FIpe/g==
   dependencies:
     reflect-metadata "^0.1.13"
 
