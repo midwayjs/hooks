@@ -1,5 +1,5 @@
 {
-  "packages": ["packages/*", "examples/fullstack/*", "examples/api/*"],
+  "packages": ["packages/*", "examples/*"],
   "command": {
     "bootstrap": {
       "noCi": true,

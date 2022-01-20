@@ -8,7 +8,7 @@ title: Prisma ORM
 
 ## Example
 
-我们提供了一个简单的例子 [hooks-prisma-starter](https://github.com/midwayjs/hooks/blob/v3/examples/fullstack/prisma/README.md)，来演示在 Midway Hooks 如何使用 Prisma。
+我们提供了一个简单的例子 [hooks-prisma-starter](https://github.com/midwayjs/hooks/blob/v3/examples/prisma/README.md)，来演示在 Midway Hooks 如何使用 Prisma。
 
 下面我也会简单介绍，Midway Hooks 配合 Prisma 开发应用会有多么的简单。
 
@@ -37,7 +37,7 @@ model Post {
 }
 ```
 
-具体的数据库设置 & 初始数据填充工作，参考 [hooks-prisma-starter](https://github.com/midwayjs/hooks/blob/v3/examples/fullstack/prisma/README.md) 文档即可。
+具体的数据库设置 & 初始数据填充工作，参考 [hooks-prisma-starter](https://github.com/midwayjs/hooks/blob/v3/examples/prisma/README.md) 文档即可。
 
 ### 初始化 Prisma
 

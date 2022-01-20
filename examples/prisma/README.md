@@ -4,6 +4,12 @@ This example shows how to implement a \*\*fullstack app in TypeScript with [Reac
 
 ## Getting started
 
+Use this template:
+
+```bash
+npx degit https://github.com/midwayjs/hooks/examples/prisma ./hooks-app
+```
+
 ### 1. Install dependencies
 
 ```

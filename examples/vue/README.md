@@ -1,4 +1,10 @@
-## hooks-react-faas-starter
+## hooks-vue-starter
+
+Use this template:
+
+```bash
+npx degit https://github.com/midwayjs/hooks/examples/vue ./hooks-app
+```
 
 Use `npm install` to install the dependencies
 
