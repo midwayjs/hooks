@@ -14,7 +14,7 @@ export {
   Options,
   Query,
   Params,
-  Header,
+  Headers,
   Middleware,
   Redirect,
   HttpCode,

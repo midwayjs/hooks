@@ -6,7 +6,7 @@ export enum HttpMetadata {
   METHOD = 'Http_Method',
   QUERY = 'Http_Query',
   PARAMS = 'Http_Params',
-  HEADER = 'Http_Header',
+  HEADERS = 'Http_Headers',
   RESPONSE = 'Http_Response',
 }
 
@@ -94,14 +94,14 @@ export function Params<T extends Record<string, string>>(): Operator<{
   }
 }
 
-export function Header<T extends Record<string, string>>(): Operator<{
+export function Headers<T extends Record<string, string>>(): Operator<{
   headers: T
 }> {
   return {
-    name: HttpMetadata.HEADER,
+    name: HttpMetadata.HEADERS,
     input: true,
     metadata({ setMetadata }) {
-      setMetadata(HttpMetadata.HEADER, true)
+      setMetadata(HttpMetadata.HEADERS, true)
     },
   }
 }
