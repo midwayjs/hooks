@@ -3048,15 +3048,14 @@
     scmp "^2.1.0"
     should-send-same-site-none "^2.0.5"
 
-"@midwayjs/core@3.0.0-beta.16", "@midwayjs/core@^3.0.0-beta.13", "@midwayjs/core@^3.0.0-beta.16":
-  version "3.0.0-beta.16"
-  resolved "https://registry.npmjs.org/@midwayjs/core/-/core-3.0.0-beta.16.tgz#f18b42f31654c713d7b22e392b6af76e7a884595"
-  integrity sha512-vLMXyexdStbUwUCaqfRPqOY1F4fKq/IdNVxVTQVCGX//OvHHRwlAjUI802C7qayP+GCn902PQ1a8sGIHg9rvjw==
+"@midwayjs/core@3.0.0", "@midwayjs/core@^3.0.0-beta.13", "@midwayjs/core@^3.0.0-beta.16":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@midwayjs/core/-/core-3.0.0.tgz#be71f78671b80e210c9f6bf2c88a6432ac7be020"
+  integrity sha512-Ls/JhRdpte7Mhwz5cdh4y2Qv7ogbMNP0RXnHESoL7sj4pFkbpI0+tCrN3vTk4QRKGKCOK/D21XK2B0H+PGOFnQ==
   dependencies:
     "@midwayjs/glob" "^1.0.2"
     "@midwayjs/logger" "2.14.0"
     class-transformer "^0.5.1"
-    extend2 "^1.0.0"
     picomatch "2.3.1"
 
 "@midwayjs/debugger@^1.0.x":
