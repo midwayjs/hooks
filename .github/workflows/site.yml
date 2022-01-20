@@ -13,3 +13,10 @@ jobs:
     name: '📦 Update Hooks Docs'
     steps:
       - uses: passeidireto/trigger-external-workflow-action@main
+        env:
+          PAYLOAD_AUTHOR: ${{ github.author }}
+          PAYLOAD_REVISION: '3'
+        with:
+          repository: midwayjs/midway
+          event: update-hooks-docs
+          github_pat: ${{ secrets.GOD }}
