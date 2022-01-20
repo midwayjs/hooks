@@ -8,15 +8,90 @@ title: Prisma
 
 ## Example
 
-我们提供了一个简单的例子，来演示在 Midway Hooks 如何使用 Prisma。
+我们提供了一个简单的例子 [hooks-prisma-starter](https://github.com/midwayjs/hooks/blob/v3/examples/fullstack/prisma/README.md)，来演示在 Midway Hooks 如何使用 Prisma。
 
-例子：[hooks-prisma-starter](https://github.com/midwayjs/hooks/blob/v3/examples/fullstack/prisma/README.md)
+下面我也会简单介绍，Midway Hooks 配合 Prisma 开发应用会有多么的简单。
 
-## 静态类型安全 + 运行时安全
+### 数据库 Schema
 
-使用 Prisma 和 `@midwayjs/hooks` 提供的 `Validate` 校验器，可以实现从前端到后端再到数据库的类型安全链路。
+例子基于 sqlite，数据库 Schema 如下：
 
-以 `POST /api/post` 接口为例，代码如下：
+```prisma
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  posts Post[]
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  content   String?
+  published Boolean  @default(false)
+  viewCount Int      @default(0)
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
+}
+```
+
+具体的数据库设置 & 初始数据填充工作，参考 [hooks-prisma-starter](https://github.com/midwayjs/hooks/blob/v3/examples/fullstack/prisma/README.md) 文档即可。
+
+### 初始化 Prisma
+
+在项目的 src/api 下新建 prisma 文件，使用如下代码即可初始化 Client。
+
+```ts
+import { PrismaClient } from '@prisma/client';
+
+export const prisma =
+  new PrismaClient();
+```
+
+### 查询数据
+
+以获取所有发布的文章为例，你可以通过生成的 Prisma Client 快速完成操作。
+
+后端代码：
+
+```ts
+import {
+  Api,
+  Get,
+} from '@midwayjs/hooks';
+import { prisma } from './prisma';
+
+export default Api(Get(), async () => {
+  const posts =
+    await prisma.post.findMany({
+      where: { published: true },
+      include: { author: true },
+    });
+  return posts;
+});
+```
+
+一体化调用：
+
+```ts
+import fetchFeeds from '../api/feeds';
+
+fetchFeeds().then((feeds) => {
+  console.log(feeds);
+});
+```
+
+### 增加数据
+
+以注册登录为例，基于一体化调用 + Prisma 生成的客户端，可以在简单的几行代码中完成所有的工作。
+
+包含：
+
+- 前端类型提示
+- 后端参数校验
+- 数据库操作
 
 ```ts
 import {
@@ -24,31 +99,24 @@ import {
   Post,
   Validate,
 } from '@midwayjs/hooks';
-import { prisma } from './prisma';
 import { z } from 'zod';
+import { prisma } from './prisma';
 
-const PostSchema = z.object({
-  title: z.string().min(1),
-  content: z.string().min(1),
-  authorEmail: z.string().email(),
-});
-
-export const createPost = Api(
-  Post('/api/post'),
-  Validate(PostSchema),
+export const signUp = Api(
+  Post(),
+  Validate(
+    z.string(),
+    z.string().email()
+  ),
   async (
-    post: z.infer<typeof PostSchema>
+    name: string,
+    email: string
   ) => {
     const result =
-      await prisma.post.create({
+      await prisma.user.create({
         data: {
-          title: post.title,
-          content: post.content,
-          author: {
-            connect: {
-              email: post.authorEmail,
-            },
-          },
+          name,
+          email,
         },
       });
     return result;
@@ -56,24 +124,18 @@ export const createPost = Api(
 );
 ```
 
-前端调用：
+一体化调用：
 
 ```ts
-import { createPost } from '../api/post';
+import { signUp } from '../api/feeds';
 
-await createPost({
-  title: 'Hello Midway',
-  content: 'Hello Prisma',
-  authorEmail: 'test@test.com',
-});
+signUp('John', 'test@test.com').then(
+  (user) => {
+    console.log(user);
+  }
+);
 ```
 
-此时，前端基于 Zod 的 Schema 获取类型提示，后端则使用 `Validate` 校验器进行类型检查，最终调用 `prisma.post.create` 方法来创建用户。
+### 更多示例
 
-整个过程中。
-
-- 前端：基于类型，静态校验输入参数，并获取类型提示
-- 后端：校验前端传入参数
-- 数据库：使用正确的数据
-
-通过这种方式，我们可以低成本的实现静态类型安全 + 运行时安全。
+关于 Prisma 的更多示例，可以参考 [Prisma 官网文档](https://www.prisma.io/)。

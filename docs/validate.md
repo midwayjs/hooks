@@ -4,7 +4,13 @@ title: 参数校验
 
 ## 校验
 
-Midway Hooks 内置了 [zod](https://www.npmjs.com/package/zod) 校验器，并提供 `Validate(...schemas: any[])` 校验用户入参，`ValidateHttp(options)` 函数来校验 Http 结构。
+Midway Hooks 使用 [zod@3](https://www.npmjs.com/package/zod) 作为校验器，并提供 `Validate(...schemas: any[])` 校验用户入参，`ValidateHttp(options)` 函数来校验 Http 结构。
+
+使用前请安装 [zod](https://www.npmjs.com/package/zod)。
+
+```
+npm install zod
+```
 
 ## Validate
 
