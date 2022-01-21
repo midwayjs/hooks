@@ -65,7 +65,7 @@ export const withRedirectOperator = Api(
 )
 
 const QuerySchema = z.object({ isQuery: z.string() })
-const HeadersSchema = z.object({ isHeader: z.string() })
+const HeadersSchema = z.object({ isheader: z.string() })
 const ParamsSchema = z.object({ isParams: z.string().regex(/^\d+$/) })
 const DataSchema = z.string()
 
@@ -85,7 +85,7 @@ export const withValidateHttp = Api(
     return {
       data: `Hello ${name}`,
       query: ctx.query.isQuery,
-      header: ctx.header.isHeader,
+      header: ctx.header.isheader,
       params: ctx.params.isParams,
     }
   }

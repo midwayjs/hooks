@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test koa with api router withValidateHttp 1`] = `
+Object {
+  "data": "Hello Midway",
+  "header": "foo",
+  "params": "123",
+  "query": "foo",
+}
+`;
