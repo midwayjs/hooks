@@ -13,7 +13,8 @@
     "@midwayjs/faas": "beta",
     "ahooks": "^3.1.2",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "isomorphic-unfetch": "^3.1.0"
   },
   "devDependencies": {
     "@midwayjs/hooks-kit": "^3.0.0-alpha.0",

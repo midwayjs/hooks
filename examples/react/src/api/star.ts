@@ -1,5 +1,5 @@
 import { Api, Post } from '@midwayjs/hooks';
-import { fetch } from '@midwayjs/rpc';
+import fetch from 'isomorphic-unfetch';
 
 export default Api(Post(), async (repo: string) => {
   const response = await fetch(`https://api.github.com/repos/${repo}`);
