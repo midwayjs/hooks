@@ -1,5 +1,5 @@
 import type { Merge } from 'type-fest'
-import { AsyncFunction } from '../'
+import { AsyncFunction } from '../types/common'
 
 export type ArrayToObject<T, R = {}> = T extends [infer First, ...infer Rest]
   ? First extends PromiseLike<infer PromiseValue>
@@ -29,7 +29,7 @@ export type MetadataHelper = {
 }
 
 export type ExecuteHelper = {
-  next?: () => Promise<void>
+  result?: any
   getInputArguments?: () => any[]
 }
 
@@ -38,7 +38,7 @@ export type Operator<Input> = {
   type?: Input
   input?: boolean
   metadata?: (helper: MetadataHelper) => void
-  execute?: (helper: ExecuteHelper) => Promise<void>
+  execute?: (helper: ExecuteHelper, next: () => Promise<any>) => Promise<void>
 }
 
 export type ExtractInputType<T> = {

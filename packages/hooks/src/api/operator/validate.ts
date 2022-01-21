@@ -32,21 +32,20 @@ type ValidateHttpOption = {
   headers?: z.Schema<any>
 }
 
-export function ValidateHttp(option: ValidateHttpOption): Operator<void> {
+export function ValidateHttp(options: ValidateHttpOption): Operator<void> {
   return {
     name: 'ValidateHttp',
-    async execute({ next, getInputArguments }) {
+    async execute({ getInputArguments }, next) {
       const ctx = useContext()
 
       try {
-        if (option.params) await option.params.parseAsync(ctx.params)
-        if (option.query) await option.query.parseAsync(ctx.query)
-        if (option.headers) await option.headers.safeParseAsync(ctx.headers)
-
-        if (option.data) {
+        if (options.params) await options.params.parseAsync(ctx.params)
+        if (options.query) await options.query.parseAsync(ctx.query)
+        if (options.headers) await options.headers.parseAsync(ctx.headers)
+        if (options.data) {
           const inputs = getInputArguments()
-          for (let i = 0; i < option.data.length; i++) {
-            const schema = option.data[i]
+          for (let i = 0; i < options.data.length; i++) {
+            const schema = options.data[i]
             const input = inputs[i]
             await schema.parseAsync(input)
           }

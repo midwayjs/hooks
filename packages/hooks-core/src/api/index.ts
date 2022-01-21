@@ -6,7 +6,6 @@ export function getApiTrigger<T extends BaseTrigger = BaseTrigger>(
   return Reflect.getOwnMetadata(OperatorType.Trigger, target)
 }
 
-export * from './compose'
 export * from './api'
 export * from './type'
 
