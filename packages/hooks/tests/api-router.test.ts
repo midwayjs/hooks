@@ -100,13 +100,15 @@ describe('test koa with api router', () => {
       .expect(422)
 
     // Valid Case
-    await createHttpRequest(app)
+    const response = await createHttpRequest(app)
       .post('/api/withValidateHttp/123')
       .set('accept', 'application/json')
-      .set('isHeader', 'foo')
+      .set('isheader', 'foo')
       .query({ isQuery: 'foo' })
       .send(args('Midway'))
       .expect(200)
+
+    expect(response.body).toMatchSnapshot()
   })
 
   test('slot', async () => {
