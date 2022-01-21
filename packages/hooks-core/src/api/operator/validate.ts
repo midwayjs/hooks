@@ -19,7 +19,7 @@ export function setValidator(newValidator: Validator) {
 export function Validate(...schemas: any[]): Operator<void> {
   return {
     name: 'Validate',
-    async execute({ next, getInputArguments }) {
+    async execute({ getInputArguments }, next) {
       const inputs = getInputArguments()
 
       // validate args using valdiators

@@ -47,7 +47,7 @@ it('execute', async () => {
   const CustomExecutor = (): Operator<void> => {
     return {
       name: 'CustomExecutor',
-      async execute({ next }) {
+      async execute(helper, next) {
         stack.push(1)
         await next()
         stack.push(4)

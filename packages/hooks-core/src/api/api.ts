@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { AsyncFunction, validateFunction } from '../'
 import { AbstractFrameworkAdapter } from '../adapter/framework'
 import { USE_INPUT_METADATA } from '../common/const'
-import { compose } from './compose'
+import compose from 'koa-compose'
 import { HttpMetadata } from './operator/http'
 import {
   ApiRunner,
@@ -53,13 +53,17 @@ export function Api<
   async function runner(...args: any[]) {
     const stack = [...executors]
 
-    let result: any
-    stack.push(async ({ next }: ExecuteHelper) => {
-      result = await handler(...args)
+    const executeHelper: ExecuteHelper = {
+      result: undefined,
+      getInputArguments: () => args,
+    }
+
+    stack.push(async (helper: ExecuteHelper, next: any) => {
+      helper.result = await handler(...args)
       return next()
     })
 
-    await compose(stack, { getInputArguments: () => args })()
+    await compose(stack)(executeHelper)
 
     // handle HttpCode/Redirect/etc.
     const responseMetadata = Reflect.getMetadata(HttpMetadata.RESPONSE, runner)
@@ -68,7 +72,7 @@ export function Api<
         responseMetadata
       )
     }
-    return result
+    return executeHelper.result
   }
 
   Reflect.defineMetadata(USE_INPUT_METADATA, useInputMetadata, runner)
