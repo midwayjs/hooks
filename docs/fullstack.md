@@ -4,6 +4,15 @@ title: 全栈套件
 
 在 Midway Hooks 中，我们提供了 `@midwayjs/hooks-kit` 来快速开发全栈应用。
 
+目前以下模版是基于 `@midwayjs/hooks-kit` 开发的：
+
+- 全栈应用
+  - [react](https://github.com/midwayjs/hooks/blob/v3/examples/react)
+  - [react-faas](https://github.com/midwayjs/hooks/blob/v3/examples/react-faas)
+  - [vue](https://github.com/midwayjs/hooks/blob/v3/examples/vue)
+  - [vue](https://github.com/midwayjs/hooks/blob/v3/examples/vue-faas)
+  - [prisma](https://github.com/midwayjs/hooks/blob/v3/examples/prisma)
+
 ## 命令行界面
 
 在使用了 `@midwayjs/hooks-kit` 的项目中，可以在 npm scripts 中使用 hooks 可执行文件，或者通过 `npx hooks` 运行。下面是通过脚手架创建的 Midway 全栈项目中默认的 npm scripts：

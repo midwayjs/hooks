@@ -2,7 +2,7 @@
 title: 项目配置
 ---
 
-我们通过 `midway.config.ts` 来配置项目，具体的配置项如下。
+我们通过项目根目录下的 `midway.config.ts` 来配置项目，具体的配置项如下。
 
 ## source: string
 
@@ -22,7 +22,7 @@ title: 项目配置
 
 ## vite: ViteConfig
 
-仅 `import {defineConfig} from '@midwayjs/hooks-kit' 时可用。
+仅 `import {defineConfig} from '@midwayjs/hooks-kit'` 时可用。
 
 配置全栈应用下 Vite 的配置，具体配置项参考 [Vite](https://vitejs.dev/config/)。
 
