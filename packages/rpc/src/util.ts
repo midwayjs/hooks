@@ -1,4 +1,14 @@
-import type { RequestArgs, RequestRoute } from '@midwayjs/hooks-core'
+import type {
+  RequestArgs,
+  RequestRoute,
+  ApiRoute,
+  HttpTrigger,
+} from '@midwayjs/hooks-core'
+
+type TranspileApiFunction = {
+  (...args: any[]): Promise<any>
+  route?: ApiRoute<HttpTrigger>
+}
 
 export function parseRequestArgs<T, I = void>(requestArgs: RequestArgs<T, I>) {
   const route = requestArgs[requestArgs.length - 1] as RequestRoute<T>
@@ -23,4 +33,8 @@ export function args(...inputs: any[]) {
   }
 
   return { args: inputs }
+}
+
+export function getHttpTrigger(fn: TranspileApiFunction) {
+  return fn.route.trigger
 }
