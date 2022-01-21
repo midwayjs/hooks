@@ -18,7 +18,11 @@ describe('test koa with api router', () => {
 
   function createRequest(api: any): supertest.Test {
     const trigger = getApiTrigger<HttpTrigger>(api)
-    return createHttpRequest(app)[trigger.method.toLowerCase()](trigger.path)
+    const request: supertest.Test = createHttpRequest(app)[
+      trigger.method.toLowerCase()
+    ](trigger.path)
+    request.set('accept', 'application/json')
+    return request
   }
 
   test('api case', async () => {
@@ -64,6 +68,45 @@ describe('test koa with api router', () => {
     expect(status).toEqual(301)
     expect(header.location).toEqual('/redirect')
     expect(text).toEqual('withRedirectOperator')
+  })
+
+  test('withValidateHttp', async () => {
+    // Incorrect params format, expect number, but got string
+    await createHttpRequest(app)
+      .post('/api/withValidateHttp/foo')
+      .set('accept', 'application/json')
+      .expect(422)
+
+    // Missing Query
+    await createHttpRequest(app)
+      .post('/api/withValidateHttp/123')
+      .set('accept', 'application/json')
+      .expect(422)
+
+    // Missing Header
+    await createHttpRequest(app)
+      .post('/api/withValidateHttp/123')
+      .set('accept', 'application/json')
+      .query({ isQuery: 'foo' })
+      .expect(422)
+
+    // Incorrect data format, expect string, but got number
+    await createHttpRequest(app)
+      .post('/api/withValidateHttp/123')
+      .set('accept', 'application/json')
+      .set('isHeader', 'foo')
+      .query({ isQuery: 'foo' })
+      .send(args(1))
+      .expect(422)
+
+    // Valid Case
+    await createHttpRequest(app)
+      .post('/api/withValidateHttp/123')
+      .set('accept', 'application/json')
+      .set('isHeader', 'foo')
+      .query({ isQuery: 'foo' })
+      .send(args('Midway'))
+      .expect(200)
   })
 
   test('slot', async () => {
