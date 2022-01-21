@@ -2,16 +2,13 @@
 title: 全栈套件
 ---
 
-在 Midway Hooks 中，我们提供了 `@midwayjs/hooks-kit` 来快速开发全栈应用。
+在 Midway Hooks 中，我们提供了 `@midwayjs/hooks-kit` 来快速开发全栈应用。目前我们提供了以下可直接使用的模版：
 
-目前以下模版是基于 `@midwayjs/hooks-kit` 开发的：
-
-- 全栈应用
-  - [react](https://github.com/midwayjs/hooks/blob/v3/examples/react)
-  - [react-faas](https://github.com/midwayjs/hooks/blob/v3/examples/react-faas)
-  - [vue](https://github.com/midwayjs/hooks/blob/v3/examples/vue)
-  - [vue](https://github.com/midwayjs/hooks/blob/v3/examples/vue-faas)
-  - [prisma](https://github.com/midwayjs/hooks/blob/v3/examples/prisma)
+- [react](https://github.com/midwayjs/hooks/blob/v3/examples/react)
+- [react-faas](https://github.com/midwayjs/hooks/blob/v3/examples/react-faas)
+- [vue](https://github.com/midwayjs/hooks/blob/v3/examples/vue)
+- [vue](https://github.com/midwayjs/hooks/blob/v3/examples/vue-faas)
+- [prisma](https://github.com/midwayjs/hooks/blob/v3/examples/prisma)
 
 ## 命令行界面
 
