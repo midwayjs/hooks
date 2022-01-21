@@ -7,12 +7,17 @@ import {
   HttpCode,
   Middleware,
   Post,
+  Query,
+  Params,
+  Headers,
   Redirect,
   SetHeader,
   useContext,
   Validate,
+  ValidateHttp,
 } from '../../../../../src'
 import { createLogger } from '../middleware'
+import { Context } from '@midwayjs/koa'
 
 export const get = Api(Get(), async () => {
   const ctx = useContext()
@@ -56,5 +61,32 @@ export const withRedirectOperator = Api(
   Redirect('/redirect', 301),
   async () => {
     return 'withRedirectOperator'
+  }
+)
+
+const QuerySchema = z.object({ isQuery: z.string() })
+const HeadersSchema = z.object({ isHeader: z.string() })
+const ParamsSchema = z.object({ isParams: z.string().regex(/^\d+$/) })
+const DataSchema = z.string()
+
+export const withValidateHttp = Api(
+  Post('/api/withValidateHttp/:isParams'),
+  Query<z.infer<typeof QuerySchema>>(),
+  Headers<z.infer<typeof HeadersSchema>>(),
+  Params<z.infer<typeof ParamsSchema>>(),
+  ValidateHttp({
+    query: QuerySchema,
+    headers: HeadersSchema,
+    params: ParamsSchema,
+    data: [DataSchema],
+  }),
+  async (name: string) => {
+    const ctx = useContext<Context>()
+    return {
+      data: `Hello ${name}`,
+      query: ctx.query.isQuery,
+      header: ctx.header.isHeader,
+      params: ctx.params.isParams,
+    }
   }
 )

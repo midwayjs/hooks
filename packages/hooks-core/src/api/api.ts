@@ -51,16 +51,15 @@ export function Api<
     .map((operator) => operator.execute)
 
   async function runner(...args: any[]) {
-    const funcArgs = useInputMetadata ? args.slice(0, -1) : args
     const stack = [...executors]
 
     let result: any
     stack.push(async ({ next }: ExecuteHelper) => {
-      result = await handler(...funcArgs)
+      result = await handler(...args)
       return next()
     })
 
-    await compose(stack, { getInputArguments: () => funcArgs })()
+    await compose(stack, { getInputArguments: () => args })()
 
     // handle HttpCode/Redirect/etc.
     const responseMetadata = Reflect.getMetadata(HttpMetadata.RESPONSE, runner)

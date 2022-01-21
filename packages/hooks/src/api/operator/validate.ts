@@ -39,9 +39,9 @@ export function ValidateHttp(option: ValidateHttpOption): Operator<void> {
       const ctx = useContext()
 
       try {
-        if (option.query) await option.query.parseAsync(ctx.query)
         if (option.params) await option.params.parseAsync(ctx.params)
-        if (option.headers) await option.headers.parseAsync(ctx.headers)
+        if (option.query) await option.query.parseAsync(ctx.query)
+        if (option.headers) await option.headers.safeParseAsync(ctx.headers)
 
         if (option.data) {
           const inputs = getInputArguments()
