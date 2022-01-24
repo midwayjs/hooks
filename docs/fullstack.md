@@ -7,7 +7,7 @@ title: 全栈套件
 - [react](https://github.com/midwayjs/hooks/blob/v3/examples/react)
 - [react-faas](https://github.com/midwayjs/hooks/blob/v3/examples/react-faas)
 - [vue](https://github.com/midwayjs/hooks/blob/v3/examples/vue)
-- [vue](https://github.com/midwayjs/hooks/blob/v3/examples/vue-faas)
+- [vue-faas](https://github.com/midwayjs/hooks/blob/v3/examples/vue-faas)
 - [prisma](https://github.com/midwayjs/hooks/blob/v3/examples/prisma)
 
 ## 命令行界面
