@@ -4,6 +4,10 @@ import { resolveConfig } from '../config'
 import { resolve } from 'path'
 import { vite } from '@midwayjs/hooks-bundler'
 import { getProjectRoot } from '@midwayjs/hooks/internal'
+import getPort from 'detect-port'
+import { createDebug } from '@midwayjs/hooks-core'
+
+const debug = createDebug('hooks-kit')
 
 type DevOptions = {
   port: number
@@ -29,10 +33,15 @@ export function setupDevCommand(cli: CAC) {
     .action(async (root: string, options: DevOptions) => {
       root = root ? resolve(root) : getProjectRoot()
 
+      const serverPort = await getPort(7001)
+      debug('server port: %s', serverPort)
+      process.env.MIDWAY_HTTP_PORT = `${serverPort}`
+
       const userConfig = {
         source: 'src/api',
         ...resolveConfig(root),
       }
+
       const defaultConfig: InlineConfig = {
         root,
         configFile: false,
