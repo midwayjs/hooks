@@ -1,5 +1,15 @@
 # @midwayjs/hooks-kit
 
+## 3.0.0-rc.4
+
+### Patch Changes
+
+- Fix bugs
+- Updated dependencies
+  - @midwayjs/hooks@3.0.0-rc.4
+  - @midwayjs/hooks-bundler@3.0.0-rc.4
+  - @midwayjs/hooks-core@3.0.0-rc.4
+
 ## 3.0.0-rc.3
 
 ### Patch Changes

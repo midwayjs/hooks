@@ -1,5 +1,11 @@
 # @midwayjs/rpc
 
+## 3.0.0-rc.4
+
+### Patch Changes
+
+- Fix bugs
+
 ## 3.0.0-rc.3
 
 ### Patch Changes
