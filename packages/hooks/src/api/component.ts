@@ -1,4 +1,4 @@
-import { IMidwayContainer } from '@midwayjs/core'
+import type { IMidwayContainer } from '@midwayjs/core'
 import {
   AbstractRouter,
   createDebug,

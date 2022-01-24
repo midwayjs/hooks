@@ -12,14 +12,16 @@ interface ConfigurationOptions extends InjectionConfigurationOptions {
   onReady?: ConfigurationLifeCycle
   onStop?: ConfigurationLifeCycle
   onConfigLoad?: ConfigurationLifeCycle
+  onServerReady?: ConfigurationLifeCycle
 }
 
 const noop = () => {}
 
 export function createConfiguration(options: ConfigurationOptions) {
-  const { onReady, onStop, onConfigLoad } = options
+  const { onReady, onStop, onConfigLoad, onServerReady } = options
   return createConfigurationFromCore(options)
     .onReady(isFunction(onReady) ? onReady : noop)
     .onStop(isFunction(onStop) ? onStop : noop)
     .onConfigLoad(isFunction(onConfigLoad) ? onConfigLoad : noop)
+    .onServerReady(isFunction(onServerReady) ? onServerReady : noop)
 }
