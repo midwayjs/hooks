@@ -8,7 +8,7 @@
     "build": "node_modules/.bin/mw build"
   },
   "dependencies": {
-    "@midwayjs/hooks": "^3.0.0-alpha.0",
+    "@midwayjs/hooks": "^3.0.0-rc.3",
     "@midwayjs/koa": "^3.0.0",
     "@midwayjs/bootstrap": "^3.0.0"
   },

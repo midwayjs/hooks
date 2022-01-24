@@ -1,5 +1,21 @@
 # @midwayjs/hooks
 
+## 3.0.0-rc.3
+
+### Patch Changes
+
+- Set correct version for examples
+- Updated dependencies
+  - @midwayjs/hooks-core@3.0.0-rc.3
+
+## 3.0.0-rc.2
+
+### Patch Changes
+
+- Build after publish
+- Updated dependencies
+  - @midwayjs/hooks-core@3.0.0-rc.2
+
 ## 3.0.0-rc.1
 
 ### Patch Changes
