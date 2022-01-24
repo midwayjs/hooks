@@ -2888,6 +2888,14 @@
     semver "^7.3.4"
     supports-color "^8.1.0"
 
+"@midwayjs/mock@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@midwayjs/mock/-/mock-3.0.1.tgz#ca439bf3bc084e32a1144c8432816ec3ca152415"
+  integrity sha512-+OQ6o3mp5RsbKescVaHJsXjyWlQyXltrnAKLF7NwOh3VYNbTU2U+LE7qE86WNR1jymqcTSy5gazeu1xyV9eHLA==
+  dependencies:
+    fs-extra "10.0.0"
+    supertest "6.2.2"
+
 "@midwayjs/mock@^3.0.0":
   version "3.0.0"
   resolved "https://registry.npmjs.org/@midwayjs/mock/-/mock-3.0.0.tgz#7d2d045551b24837015993e4799e371c5cd359f8"
