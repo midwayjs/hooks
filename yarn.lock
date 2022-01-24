@@ -2745,6 +2745,16 @@
     class-transformer "^0.5.1"
     picomatch "2.3.1"
 
+"@midwayjs/core@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@midwayjs/core/-/core-3.0.1.tgz#89e479ae56f13a5ce63ee29555ce5d1f2d4b0152"
+  integrity sha512-6WG0XkJVPrB6TLoK3BfZo3mY8JJb/mI+bzBlG53QPhGgrHrDPEUB0YiCOQtuxhkeRRidVA8xHlEujJd8HmtHfg==
+  dependencies:
+    "@midwayjs/glob" "^1.0.2"
+    "@midwayjs/logger" "^2.14.0"
+    class-transformer "^0.5.1"
+    picomatch "2.3.1"
+
 "@midwayjs/debugger@^1.0.x":
   version "1.0.8"
   resolved "https://registry.npmjs.org/@midwayjs/debugger/-/debugger-1.0.8.tgz#0b1807d5ba36c8c02231813d798a42daf49fb6d6"
@@ -2846,6 +2856,18 @@
   dependencies:
     picomatch "^2.2.2"
 
+"@midwayjs/koa@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@midwayjs/koa/-/koa-3.0.1.tgz#f3db144b9424284f78a129e890d95c029435f1a1"
+  integrity sha512-RrUG77hsJ/iTR0eQOPXCoCIJpQ6kZbECPtzmD5pbQ6GH0KlxyQYF7iS5x1I39oNG06AWUm9N4rKCAu1C26TMtg==
+  dependencies:
+    "@koa/router" "^10.0.0"
+    "@midwayjs/cookies" "1.0.1"
+    "@midwayjs/core" "^3.0.1"
+    "@midwayjs/session" "^3.0.1"
+    koa "2.13.4"
+    koa-bodyparser "4.3.0"
+
 "@midwayjs/koa@^3.0.0":
   version "3.0.0"
   resolved "https://registry.npmjs.org/@midwayjs/koa/-/koa-3.0.0.tgz#5c48f6dda71413818a037f00ac9fcadab6b6b859"
@@ -2870,6 +2892,17 @@
   version "2.14.0"
   resolved "https://registry.npmjs.org/@midwayjs/logger/-/logger-2.14.0.tgz#1c56e899fe0b416e326050e51b85698ea62c0d60"
   integrity sha512-xDGBxU8zsgNjUoysuoI0dUeFiK64h26Qw2WqodoZnfzzsGPuAzALzSUQedusHKYeZnS2UrKgNBTxl7KO1T7xuA==
+  dependencies:
+    dayjs "^1.10.7"
+    object-hash "^2.0.1"
+    triple-beam "^1.3.0"
+    winston "^3.3.3"
+    winston-transport "^4.4.0"
+
+"@midwayjs/logger@^2.14.0":
+  version "2.14.1"
+  resolved "https://registry.yarnpkg.com/@midwayjs/logger/-/logger-2.14.1.tgz#fb47d7fc34029891f127e03820231794ebe0aa98"
+  integrity sha512-LmSEdnCyCUdtKfnXFXc7LWaEw4WfUcUDxBapu+jpF+ys6b43hb5pwwSXMq+oKu0UjVpyzECYwqaXBXEyij73Rw==
   dependencies:
     dayjs "^1.10.7"
     object-hash "^2.0.1"
@@ -2934,6 +2967,14 @@
   version "3.0.0"
   resolved "https://registry.npmjs.org/@midwayjs/session/-/session-3.0.0.tgz#5be850e4ad06d69f668abb7c33996ec8ce65ad47"
   integrity sha512-S807HaoFYWgm/KBWhEyVMLZEawB7CAMh+eb6jIyzuQ1XusGUjXVV/q14o3V4LjlohAAKL0rdWh5IlJcFxUqq9Q==
+  dependencies:
+    "@midwayjs/cookies" "1.0.1"
+    crc "4.1.0"
+
+"@midwayjs/session@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@midwayjs/session/-/session-3.0.1.tgz#6a2ae22ac39f062a258e0c01ad784a23515e9d14"
+  integrity sha512-WedJ32PNZBNEAxNWkTUtbEKt0O6sJmAXhw+BaaXs9DEyQcOP3sr/X/ImYO0NFb/z3+UCKDYXlTqtu9UMR4dMqA==
   dependencies:
     "@midwayjs/cookies" "1.0.1"
     crc "4.1.0"

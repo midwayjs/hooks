@@ -36,7 +36,7 @@
     "@midwayjs/rpc": "^3.0.0-rc.3",
     "art-template": "4.13.2",
     "@types/lodash": "4.14.178",
-    "@midwayjs/koa": "^3.0.0",
+    "@midwayjs/koa": "3.0.1",
     "@midwayjs/mock": "^3.0.0",
     "@types/supertest": "2.0.11"
   },
