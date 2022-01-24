@@ -10,7 +10,7 @@
   "dependencies": {
     "@midwayjs/hooks": "^3.0.0-alpha.0",
     "@midwayjs/rpc": "^3.0.0-alpha.0",
-    "@midwayjs/koa": "beta",
+    "@midwayjs/koa": "^3.0.0",
     "ahooks": "^3.1.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",

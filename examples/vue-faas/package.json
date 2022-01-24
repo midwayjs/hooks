@@ -11,7 +11,7 @@
     "vue": "^3.2.25",
     "@midwayjs/hooks": "^3.0.0-alpha.0",
     "@midwayjs/rpc": "^3.0.0-alpha.0",
-    "@midwayjs/faas": "beta",
+    "@midwayjs/faas": "^3.0.0",
     "isomorphic-unfetch": "^3.1.0"
   },
   "devDependencies": {

@@ -28,3 +28,7 @@ coverage
 
 # Third party files
 .aliyun_credentials
+
+# prisma
+*.db
+prisma/migrations

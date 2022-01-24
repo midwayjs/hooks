@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "@midwayjs/hooks": "^3.0.0-alpha.0",
-    "@midwayjs/koa": "beta",
-    "@midwayjs/bootstrap": "beta"
+    "@midwayjs/koa": "^3.0.0",
+    "@midwayjs/bootstrap": "^3.0.0"
   },
   "devDependencies": {
     "@midwayjs/cli": "^1.2.95",
