@@ -1,5 +1,11 @@
 # @midwayjs/hooks-core
 
+## 3.0.0-rc.6
+
+### Patch Changes
+
+- Add missing deps
+
 ## 3.0.0-rc.5
 
 ### Patch Changes
