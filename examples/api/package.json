@@ -13,8 +13,8 @@
     "@midwayjs/bootstrap": "beta"
   },
   "devDependencies": {
-    "@midwayjs/cli": "^1.2.74",
-    "@midwayjs/cli-plugin-build": "^1.2.74",
+    "@midwayjs/cli": "^1.2.95",
+    "@midwayjs/cli-plugin-build": "^1.2.95",
     "typescript": "^4.3.5"
   }
 }

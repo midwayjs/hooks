@@ -18,9 +18,9 @@
   },
   "devDependencies": {
     "@midwayjs/hooks-kit": "^3.0.0-alpha.0",
-    "@midwayjs/cli": "^1.2.49",
-    "@midwayjs/cli-plugin-faas": "^1.2.49",
-    "@midwayjs/fcli-plugin-fc": "^1.2.49",
+    "@midwayjs/cli": "^1.2.95",
+    "@midwayjs/cli-plugin-faas": "^1.2.95",
+    "@midwayjs/fcli-plugin-fc": "^1.2.95",
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.8",
     "@vitejs/plugin-react": "^1.1.3",
