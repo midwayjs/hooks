@@ -29,7 +29,7 @@
     "@midwayjs/hooks": "^3.0.0-rc.3",
     "@midwayjs/hooks-core": "^3.0.0-rc.3",
     "@midwayjs/bundler": "^3.0.0-rc.3",
-    "@midwayjs/serverless-dev-pack": "^1.2.94",
+    "@midwayjs/serverless-dev-pack": "^1.2.95",
     "upath": "^2.0.1"
   },
   "devDependencies": {
