@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@midwayjs/hooks": "^3.0.0-alpha.0",
-    "@midwayjs/koa": "beta",
+    "@midwayjs/koa": "^3.0.0",
     "@midwayjs/rpc": "^3.0.0-alpha.0",
     "@prisma/client": "3.8.1",
     "ahooks": "^3.1.2",

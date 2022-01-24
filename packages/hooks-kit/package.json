@@ -18,7 +18,7 @@
     "@midwayjs/hooks": "^3.0.0-alpha.0",
     "@midwayjs/hooks-core": "^3.0.0-alpha.0",
     "@midwayjs/hooks-bundler": "^3.0.0-alpha.0",
-    "@midwayjs/bootstrap": "beta",
+    "@midwayjs/bootstrap": "^3.0.0",
     "@midwayjs/cli-plugin-build": "^1.2.95",
     "@midwayjs/command-core": "^1.2.95",
     "cac": "^6.7.12",
