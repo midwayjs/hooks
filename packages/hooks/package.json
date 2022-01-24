@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@midwayjs/decorator": "^3.0.0",
-    "@midwayjs/core": "^3.0.0",
+    "@midwayjs/core": "3.0.1",
     "@midwayjs/rpc": "^3.0.0-rc.3",
     "art-template": "4.13.2",
     "@types/lodash": "4.14.178",
