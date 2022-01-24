@@ -2735,7 +2735,7 @@
     scmp "^2.1.0"
     should-send-same-site-none "^2.0.5"
 
-"@midwayjs/core@^3.0.0":
+"@midwayjs/core@3.0.0", "@midwayjs/core@^3.0.0":
   version "3.0.0"
   resolved "https://registry.npmjs.org/@midwayjs/core/-/core-3.0.0.tgz#be71f78671b80e210c9f6bf2c88a6432ac7be020"
   integrity sha512-Ls/JhRdpte7Mhwz5cdh4y2Qv7ogbMNP0RXnHESoL7sj4pFkbpI0+tCrN3vTk4QRKGKCOK/D21XK2B0H+PGOFnQ==
@@ -2754,9 +2754,9 @@
     ts-node "^9.0.0"
     ws "^7.2.3"
 
-"@midwayjs/decorator@^3.0.0":
+"@midwayjs/decorator@3.0.0":
   version "3.0.0"
-  resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-3.0.0.tgz#d26eecd79e739b4c2189d0146820d24e8eb8766c"
+  resolved "https://registry.yarnpkg.com/@midwayjs/decorator/-/decorator-3.0.0.tgz#d26eecd79e739b4c2189d0146820d24e8eb8766c"
   integrity sha512-usjUR66FrxBKMFgHKbd7CrtmgrzMS3RYD+s/afm6dNxleg+29RyGcnH2QbAeHdo9pyew6L125IbvL3N8FIpe/g==
   dependencies:
     reflect-metadata "^0.1.13"
@@ -2846,7 +2846,7 @@
   dependencies:
     picomatch "^2.2.2"
 
-"@midwayjs/koa@^3.0.0":
+"@midwayjs/koa@3.0.0", "@midwayjs/koa@^3.0.0":
   version "3.0.0"
   resolved "https://registry.npmjs.org/@midwayjs/koa/-/koa-3.0.0.tgz#5c48f6dda71413818a037f00ac9fcadab6b6b859"
   integrity sha512-ls80x6loehu0XN0hnD+E4VFCsAiKVw7XFSBAnVhTWQU3nqmupVN8Ek6qi7vTOxkjMYNCOw57ImdpUX+vKqGJ+w==
@@ -2888,7 +2888,7 @@
     semver "^7.3.4"
     supports-color "^8.1.0"
 
-"@midwayjs/mock@^3.0.0":
+"@midwayjs/mock@3.0.0", "@midwayjs/mock@^3.0.0":
   version "3.0.0"
   resolved "https://registry.npmjs.org/@midwayjs/mock/-/mock-3.0.0.tgz#7d2d045551b24837015993e4799e371c5cd359f8"
   integrity sha512-qJOJTxNse04wxVQ6p+cgfaFvCt8WMv8+1HCcO0p9rI0Gq7hZm91LiMIhRjlObSfNSZ6Nc9Je1TUd0U0aHHdlMw==
