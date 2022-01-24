@@ -1,5 +1,21 @@
 # @midwayjs/bundler
 
+## 3.0.0-rc.5
+
+### Patch Changes
+
+- Build
+- Updated dependencies
+  - @midwayjs/hooks-core@3.0.0-rc.5
+
+## 3.0.0-rc.4
+
+### Patch Changes
+
+- Fix bugs
+- Updated dependencies
+  - @midwayjs/hooks-core@3.0.0-rc.4
+
 ## 3.0.0-rc.3
 
 ### Patch Changes
