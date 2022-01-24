@@ -152,13 +152,13 @@ export const createArticle = Api(
 Midway Hooks 提供如下模版：
 
 - Fullstack
-  - [react](https://github.com/midwayjs/hooks/blob/v3/examples/react)
-  - [react-faas](https://github.com/midwayjs/hooks/blob/v3/examples/react-faas)
-  - [vue](https://github.com/midwayjs/hooks/blob/v3/examples/vue)
-  - [vue-faas](https://github.com/midwayjs/hooks/blob/v3/examples/vue-faas)
-  - [prisma](https://github.com/midwayjs/hooks/blob/v3/examples/prisma)
+  - [react](https://github.com/midwayjs/hooks/blob/main/examples/react)
+  - [react-faas](https://github.com/midwayjs/hooks/blob/main/examples/react-faas)
+  - [vue](https://github.com/midwayjs/hooks/blob/main/examples/vue)
+  - [vue-faas](https://github.com/midwayjs/hooks/blob/main/examples/vue-faas)
+  - [prisma](https://github.com/midwayjs/hooks/blob/main/examples/prisma)
 - Api Server
-  - [api](https://github.com/midwayjs/hooks/blob/v3/examples/api)
+  - [api](https://github.com/midwayjs/hooks/blob/main/examples/api)
 
 你可以使用下面的命令快速创建应用:
 
