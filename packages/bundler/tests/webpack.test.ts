@@ -4,6 +4,15 @@ import Memoryfs from 'memory-fs'
 import { resolve as pathResolve } from 'path'
 import webpack from 'webpack'
 import { AbstractBundlerAdapter, createBundlerPlugin } from '../src'
+import prettier from 'prettier'
+
+const formatCode = (code: string) => {
+  return prettier.format(code, {
+    semi: true,
+    singleQuote: true,
+    parser: 'babel',
+  })
+}
 
 const root = pathResolve(__dirname, './fixtures/base-app')
 
@@ -39,12 +48,12 @@ describe('unplugin-hooks webpack', () => {
 
   test('Compile render', async () => {
     const output = await compile(root, getEntry('render/[...index].ts'))
-    expect(wrap(output)).toMatchSnapshot()
+    expect(wrap(formatCode(output))).toMatchSnapshot()
   })
 
   test('Compile lambda', async () => {
     const output = await compile(root, getEntry('lambda/index.ts'))
-    expect(wrap(output)).toMatchSnapshot()
+    expect(wrap(formatCode(output))).toMatchSnapshot()
   })
 
   test('the second build should match the first.', async () => {
@@ -55,7 +64,7 @@ describe('unplugin-hooks webpack', () => {
 
   test('non-lambda files should not be compiled', async () => {
     const output = await compile(root, getEntry('util/util.ts'))
-    expect(wrap(output)).toMatchSnapshot()
+    expect(wrap(formatCode(output))).toMatchSnapshot()
   })
 })
 

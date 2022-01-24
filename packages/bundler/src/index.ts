@@ -2,10 +2,13 @@ import { createUnplugin, UnpluginOptions } from 'unplugin'
 import {
   AbstractRouter,
   ApiRoute,
+  createDebug,
   EXPORT_DEFAULT_FUNCTION_ALIAS,
   parseApiModule,
 } from '@midwayjs/hooks-core'
 import createJITI from 'jiti'
+
+const debug = createDebug('hooks-bundler')
 
 const jiti = createJITI()
 jiti.register()
@@ -85,21 +88,10 @@ export abstract class AbstractBundlerAdapter {
       ...importCodes,
       ...functionCodes,
     ].join('\n')
-    return this.formatCode(code)
-  }
 
-  private formatCode(code: string) {
-    try {
-      const prettier = require('prettier')
-      return prettier.format(code, {
-        semi: true,
-        singleQuote: true,
-        parser: 'babel',
-      })
-    } catch (e) {
-      console.log('format code error', e)
-      return code
-    }
+    debug('generate client code: %s', code)
+
+    return code
   }
 }
 
