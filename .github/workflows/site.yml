@@ -4,7 +4,7 @@ name: Site
 
 on:
   push:
-    branches: [v3]
+    branches: [main]
     paths: [docs/**]
 
 jobs:
