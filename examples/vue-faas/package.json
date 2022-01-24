@@ -16,9 +16,9 @@
   },
   "devDependencies": {
     "@midwayjs/hooks-kit": "^3.0.0-alpha.0",
-    "@midwayjs/cli": "^1.2.49",
-    "@midwayjs/cli-plugin-faas": "^1.2.49",
-    "@midwayjs/fcli-plugin-fc": "^1.2.49",
+    "@midwayjs/cli": "^1.2.95",
+    "@midwayjs/cli-plugin-faas": "^1.2.95",
+    "@midwayjs/fcli-plugin-fc": "^1.2.95",
     "@vitejs/plugin-vue": "^2.0.0",
     "vue-tsc": "^0.29.8",
     "typescript": "^4.4.4"
