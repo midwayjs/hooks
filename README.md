@@ -153,9 +153,7 @@ Midway Hooks currently provide the following templates:
 
 - Fullstack
   - [react](https://github.com/midwayjs/hooks/blob/main/examples/react)
-  - [react-faas](https://github.com/midwayjs/hooks/blob/main/examples/react-faas)
   - [vue](https://github.com/midwayjs/hooks/blob/main/examples/vue)
-  - [vue-faas](https://github.com/midwayjs/hooks/blob/main/examples/vue-faas)
   - [prisma](https://github.com/midwayjs/hooks/blob/main/examples/prisma)
 - Api Server
   - [api](https://github.com/midwayjs/hooks/blob/main/examples/api)

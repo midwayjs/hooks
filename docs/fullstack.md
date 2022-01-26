@@ -5,9 +5,7 @@ title: 全栈套件
 在 Midway Hooks 中，我们提供了 `@midwayjs/hooks-kit` 来快速开发全栈应用。目前我们提供了以下可直接使用的模版：
 
 - [react](https://github.com/midwayjs/hooks/blob/main/examples/react)
-- [react-faas](https://github.com/midwayjs/hooks/blob/main/examples/react-faas)
 - [vue](https://github.com/midwayjs/hooks/blob/main/examples/vue)
-- [vue-faas](https://github.com/midwayjs/hooks/blob/main/examples/vue-faas)
 - [prisma](https://github.com/midwayjs/hooks/blob/main/examples/prisma)
 
 ## 命令行界面
