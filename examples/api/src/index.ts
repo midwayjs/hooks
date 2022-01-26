@@ -1,5 +1,5 @@
 import { Api, Get, useContext } from '@midwayjs/hooks';
-import { Context } from '@midwayjs/koa';
+import type { Context } from '@midwayjs/koa';
 
 export default Api(Get('/'), async () => {
   const ctx = useContext<Context>();

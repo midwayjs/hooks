@@ -17,7 +17,7 @@ import {
   ValidateHttp,
 } from '../../../../../src'
 import { createLogger } from '../middleware'
-import { Context } from '@midwayjs/koa'
+import type { Context } from '@midwayjs/koa'
 
 export const get = Api(Get(), async () => {
   const ctx = useContext()

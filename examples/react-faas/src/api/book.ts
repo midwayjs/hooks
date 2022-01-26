@@ -1,5 +1,5 @@
 import { Api, Get, Params, Query, useContext } from '@midwayjs/hooks';
-import { Context } from '@midwayjs/koa';
+import type { Context } from '@midwayjs/faas';
 
 const books = [
   {
