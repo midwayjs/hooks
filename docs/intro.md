@@ -101,9 +101,7 @@ Midway Hooks 目前提供了如下模版：
 
 - 全栈应用
   - [react](https://github.com/midwayjs/hooks/blob/main/examples/react)
-  - [react-faas](https://github.com/midwayjs/hooks/blob/main/examples/react-faas)
   - [vue](https://github.com/midwayjs/hooks/blob/main/examples/vue)
-  - [vue-faas](https://github.com/midwayjs/hooks/blob/main/examples/vue-faas)
   - [prisma](https://github.com/midwayjs/hooks/blob/main/examples/prisma)
 - Api Server
   - [api](https://github.com/midwayjs/hooks/blob/main/examples/api)
