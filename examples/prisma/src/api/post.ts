@@ -10,7 +10,7 @@ import {
   Validate,
   ValidateHttp,
 } from '@midwayjs/hooks';
-import { Context } from '@midwayjs/koa';
+import type { Context } from '@midwayjs/koa';
 import { prisma } from './prisma';
 import { z } from 'zod';
 
