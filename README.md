@@ -35,8 +35,8 @@ English | [简体中文](./README.zh-cn.md)
 
 <table>
 <tr>
-<th style="text-align: center;"> Frontend(React) </th>
 <th style="text-align: center;"> Backend(Midway Hooks) </th>
+<th style="text-align: center;"> Frontend(React) </th>
 </tr>
 <tr>
 <td>
@@ -44,60 +44,6 @@ English | [简体中文](./README.zh-cn.md)
 
 <!-- prettier-ignore -->
 ```tsx
-// src/pages/articles.tsx
-import { getArticles } from '../api';
-import { useRequest } from 'ahooks';
-import ArticleList from './components/ArticleList';
-
-export default () => {
-  const { data } = useRequest(() =>
-    getArticles({
-      query: {
-        page: '1',
-        per_page: '10',
-      },
-    })
-  );
-
-  return <ArticleList articles={data} />;
-};
-
-// src/pages/new.tsx
-import { createArticle } from '../api';
-import Editor from './components/Editor';
-import { useState } from 'react';
-
-export default () => {
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (article) => {
-    setLoading(true);
-    const { id } = await createArticle(article);
-    setLoading(false);
-    location.href = `/articles/${id}`;
-  };
-
-  return (
-    <Editor
-      loading={loading}
-      onSubmit={handleSubmit}
-    />
-  );
-};
-
-
-
-
-
-```
-
-</sub>
-</td>
-<td>
-
-<sub>
-
-```ts
 // src/api/index.ts
 import {
   Api,
@@ -140,6 +86,53 @@ export const createArticle = Api(
     };
   }
 );
+
+
+
+```
+
+</sub>
+</td>
+<td>
+
+<sub>
+
+```ts
+// src/pages/articles.tsx
+import { getArticles } from '../api';
+import { useRequest } from 'ahooks';
+import ArticleList from './components/ArticleList';
+
+export default () => {
+  const { data } = useRequest(() =>
+    getArticles({
+      query: {
+        page: '1',
+        per_page: '10',
+      },
+    })
+  );
+
+  return <ArticleList articles={data} />;
+};
+
+// src/pages/new.tsx
+import { createArticle } from '../api';
+import Editor from './components/Editor';
+import { useState } from 'react';
+
+export default () => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (article) => {
+    setLoading(true);
+    const { id } = await createArticle(article);
+    setLoading(false);
+    location.href = `/articles/${id}`;
+  };
+
+  return <Editor loading={loading} onSubmit={handleSubmit} />;
+};
 ```
 
 </sub>
