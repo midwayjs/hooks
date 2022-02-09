@@ -37,11 +37,11 @@ export interface MidwayApplication extends IMidwayApplication {
 
 export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
   constructor(
-    router: AbstractRouter,
+    public router: AbstractRouter,
     public app: MidwayApplication,
     public container: IMidwayContainer
   ) {
-    super(router)
+    super()
   }
 
   private get frameworkType() {
