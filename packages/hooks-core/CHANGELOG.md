@@ -1,5 +1,12 @@
 # @midwayjs/hooks-core
 
+## 3.0.0-rc.7
+
+### Patch Changes
+
+- b15fda8: fix https://github.com/midwayjs/midway/issues/1641
+- b15fda8: fix https://github.com/midwayjs/hooks/issues/193
+
 ## 3.0.0-rc.6
 
 ### Patch Changes

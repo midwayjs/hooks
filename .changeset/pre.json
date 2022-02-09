@@ -16,9 +16,11 @@
     "@midwayjs/rpc": "3.0.0-alpha.0"
   },
   "changesets": [
+    "beige-colts-tell",
     "eight-cameras-move",
     "eighty-colts-play",
     "fuzzy-mugs-grow",
+    "itchy-zoos-rush",
     "rare-tables-fail",
     "small-cameras-guess",
     "tricky-books-knock"
