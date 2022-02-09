@@ -4,17 +4,18 @@
   "private": true,
   "scripts": {
     "start": "node scripts/bootstrap",
-    "dev": "node_modules/.bin/mw dev --fast",
-    "build": "node_modules/.bin/mw build"
+    "dev": "mw dev --fast",
+    "build": "mw build"
   },
   "dependencies": {
+    "@midwayjs/bootstrap": "^3.0.0",
     "@midwayjs/hooks": "^3.0.0-rc.5",
-    "@midwayjs/koa": "^3.0.0",
-    "@midwayjs/bootstrap": "^3.0.0"
+    "@midwayjs/koa": "^3.0.0"
   },
   "devDependencies": {
     "@midwayjs/cli": "^1.2.95",
     "@midwayjs/cli-plugin-build": "^1.2.95",
+    "@midwayjs/mock": "^3.0.0",
     "typescript": "^4.3.5"
   }
 }
