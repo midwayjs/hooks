@@ -2,7 +2,6 @@ import { CAC } from 'cac'
 import { resolve } from 'path'
 import { Bootstrap } from '@midwayjs/bootstrap'
 import { setConfig } from '@midwayjs/hooks/internal'
-import { resolveConfig } from '../config'
 import consola from 'consola'
 
 type StartOptions = {

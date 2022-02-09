@@ -6,6 +6,7 @@ import { vite } from '@midwayjs/hooks-bundler'
 import { getProjectRoot } from '@midwayjs/hooks/internal'
 import getPort from 'detect-port'
 import { createDebug } from '@midwayjs/hooks-core'
+import { registerJiti } from '../util'
 
 const debug = createDebug('hooks-kit')
 
@@ -31,6 +32,8 @@ export function setupDevCommand(cli: CAC) {
       }
     )
     .action(async (root: string, options: DevOptions) => {
+      registerJiti()
+
       root = root ? resolve(root) : getProjectRoot()
 
       const serverPort = await getPort(7001)
