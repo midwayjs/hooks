@@ -1,7 +1,7 @@
 import { defineConfig } from '@midwayjs/hooks';
 
 export default defineConfig({
-  source: './src/a',
+  source: './src',
   build: {
     outDir: './dist',
   },
