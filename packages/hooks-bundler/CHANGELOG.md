@@ -1,5 +1,17 @@
 # @midwayjs/hooks-bundler
 
+## 3.0.0-rc.7
+
+### Patch Changes
+
+- b15fda8: fix https://github.com/midwayjs/midway/issues/1641
+- b15fda8: fix https://github.com/midwayjs/hooks/issues/193
+- Updated dependencies [b15fda8]
+- Updated dependencies [b15fda8]
+  - @midwayjs/bundler@3.0.0-rc.7
+  - @midwayjs/hooks@3.0.0-rc.7
+  - @midwayjs/hooks-core@3.0.0-rc.7
+
 ## 3.0.0-rc.6
 
 ### Patch Changes
