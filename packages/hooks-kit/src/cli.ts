@@ -3,9 +3,6 @@ import { join } from 'path'
 import { setupBuildCommand } from './command/build'
 import { setupDevCommand } from './command/dev'
 import { setupStartCommand } from './command/start'
-import jiti from 'jiti'
-
-jiti().register()
 
 export { defineConfig } from './config'
 

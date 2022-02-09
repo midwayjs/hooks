@@ -8,6 +8,7 @@ import { getProjectRoot } from '@midwayjs/hooks/internal'
 import { resolveConfig } from '../config'
 import consola from 'consola'
 import { vite } from '@midwayjs/hooks-bundler'
+import { registerJiti } from '../util'
 
 type BuildOptions = {
   outDir: string
@@ -22,6 +23,8 @@ export function setupBuildCommand(cli: CAC) {
       default: false,
     })
     .action(async (root: string, options: BuildOptions) => {
+      registerJiti()
+
       const projectRoot = getProjectRoot()
       const userConfig = resolveConfig(projectRoot)
       const outDir = options.outDir || userConfig.build.outDir
