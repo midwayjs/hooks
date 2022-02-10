@@ -1,6 +1,6 @@
 import { getConfig, getRouter, getSource } from '..'
 import { run } from '@midwayjs/glob'
-import { relative, join } from 'upath'
+import { join, relative } from 'upath'
 import fs from 'fs'
 import template from 'art-template'
 

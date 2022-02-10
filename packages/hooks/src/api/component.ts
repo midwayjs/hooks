@@ -3,6 +3,7 @@ import {
   AbstractRouter,
   createDebug,
   parseApiModule,
+  useFrameworkAdapter,
   validateArray,
 } from '@midwayjs/hooks-core'
 import { getRouter, getSource, isDev, RuntimeConfig } from '../internal'
@@ -25,6 +26,11 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
   const source = getSource({ useSourceFile })
   const router = getRouter(source)
   const midway = new MidwayFrameworkAdapter(router, null, null)
+
+  useFrameworkAdapter({
+    name: 'Midway',
+    handleResponseMetaData: midway.handleResponseMetaData,
+  })
 
   // TODO Rely on file system
   const apis = isHydrate()
