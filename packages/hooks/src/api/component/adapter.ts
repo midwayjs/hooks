@@ -1,8 +1,7 @@
 import {
-  AbstractFrameworkAdapter,
   AbstractRouter,
-  ContextManager,
   ApiRoute,
+  ContextManager,
   createDebug,
   HooksMiddleware,
   HttpTrigger,
@@ -35,14 +34,12 @@ export interface MidwayApplication extends IMidwayApplication {
   use?: (middleware: any) => void
 }
 
-export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
+export class MidwayFrameworkAdapter {
   constructor(
     public router: AbstractRouter,
     public app: MidwayApplication,
     public container: IMidwayContainer
-  ) {
-    super()
-  }
+  ) {}
 
   private get frameworkType() {
     return this.app.getFrameworkType()
@@ -113,6 +110,7 @@ export class MidwayFrameworkAdapter extends AbstractFrameworkAdapter {
     debug('create http api: %s %s %s', functionId, trigger.method, url)
 
     if (isDev()) {
+      // Midway Cli
       globalThis['HOOKS_ROUTER'] ??= []
       globalThis['HOOKS_ROUTER'].push({
         type: HttpTriggerType.toLowerCase(),

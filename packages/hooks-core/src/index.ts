@@ -4,6 +4,6 @@ export * from './types'
 export * from './common'
 
 export * from './api'
-export * from './adapter/framework'
+export * from './adapter'
 
 export { default as urlJoin } from 'proper-url-join'

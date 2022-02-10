@@ -1,5 +1,4 @@
-import { useContext } from '..'
-import { ContextManager } from '..'
+import { ContextManager, useContext } from '..'
 
 test('AsyncLocalStorage', async () => {
   const ctx = { name: 'Jake' }

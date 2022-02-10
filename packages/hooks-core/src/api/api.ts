@@ -1,6 +1,5 @@
 import 'reflect-metadata'
 import { AsyncFunction, validateFunction } from '../'
-import { AbstractFrameworkAdapter } from '../adapter/framework'
 import { USE_INPUT_METADATA } from '../common/const'
 import compose from 'koa-compose'
 import { HttpMetadata } from './operator/http'
@@ -12,6 +11,7 @@ import {
   MetadataHelper,
   Operator,
 } from './type'
+import { framework } from '../adapter'
 
 export function Api<
   Operators extends Operator<any>[],
@@ -68,9 +68,7 @@ export function Api<
     // handle HttpCode/Redirect/etc.
     const responseMetadata = Reflect.getMetadata(HttpMetadata.RESPONSE, runner)
     if (Array.isArray(responseMetadata)) {
-      await AbstractFrameworkAdapter.instance.handleResponseMetaData(
-        responseMetadata
-      )
+      await framework.handleResponseMetaData(responseMetadata)
     }
     return executeHelper.result
   }
