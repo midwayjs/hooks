@@ -2646,6 +2646,13 @@
     globby "^11.0.0"
     read-yaml-file "^1.1.0"
 
+"@midwayjs/asynchronous-local-storage@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@midwayjs/asynchronous-local-storage/-/asynchronous-local-storage-1.0.2.tgz#9d35becade49a27398621d48d837da05a2974bfc"
+  integrity sha512-/PMRUUvTgOfQxXJvK5n3gD1jyMbsrjWqy6Zs0wc+eQtjAdQwqRfY6EJkXbjAC1SM9pBMiX627UPIFJX6igDONw==
+  dependencies:
+    cls-hooked "^4.2.2"
+
 "@midwayjs/boilerplate-list@^1.0.0":
   version "1.0.12"
   resolved "https://registry.npmjs.org/@midwayjs/boilerplate-list/-/boilerplate-list-1.0.12.tgz#b2e28afa3e0e064278d6899b715c4739abe07bab"
@@ -4418,13 +4425,6 @@ async@^3.1.0:
   version "3.2.2"
   resolved "https://registry.npmjs.org/async/-/async-3.2.2.tgz#2eb7671034bb2194d45d30e31e24ec7e7f9670cd"
   integrity sha512-H0E+qZaDEfx/FY4t7iLRv1W2fFI6+pyCeTw1uN20AQPiwqwM6ojPxHxdLv4z8hi2DtnW9BOckSspLucW7pIE5g==
-
-asynchronous-local-storage@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/asynchronous-local-storage/-/asynchronous-local-storage-1.0.2.tgz#df2491534707566e039e2508a019b6e348ef49cc"
-  integrity sha512-VEsn1B7dfxb2x8sl0fruvHnPj7xUFEfRQSQapnPvI5H3b0GeRVnoI3MRKj6h9upC4ltVKoAvVWusPv7rMCXiaA==
-  dependencies:
-    cls-hooked "^4.2.2"
 
 asynckit@^0.4.0:
   version "0.4.0"
