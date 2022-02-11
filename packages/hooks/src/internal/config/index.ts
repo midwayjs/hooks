@@ -27,12 +27,13 @@ export function setConfig(config: Partial<ProjectConfig>) {
 }
 
 export function getConfig(cwd = getProjectRoot()): ProjectConfig {
-  if (process.env[PRE_DEFINE_PROJECT_CONFIG]) {
+  const preDefineConfig = process.env[PRE_DEFINE_PROJECT_CONFIG]
+  if (preDefineConfig) {
     debug('getConfig from PRE_DEFINE_PROJECT_CONFIG')
   }
 
-  const userConfig: UserConfig = process.env[PRE_DEFINE_PROJECT_CONFIG]
-    ? JSON.parse(process.env[PRE_DEFINE_PROJECT_CONFIG])
+  const userConfig: UserConfig = preDefineConfig
+    ? JSON.parse(preDefineConfig)
     : getConfigFromFile(cwd)
 
   return defaultsDeep({}, userConfig, {
@@ -43,20 +44,20 @@ export function getConfig(cwd = getProjectRoot()): ProjectConfig {
 }
 
 export function getConfigFromFile<T>(root: string): T {
-  const configs = {
-    ts: path.join(root, 'midway.config.ts'),
-    js: path.join(root, 'midway.config.js'),
-  }
+  const configs = [
+    path.join(root, 'midway.config.ts'),
+    path.join(root, 'midway.config.js'),
+  ]
 
-  if (!existsSync(configs.ts) && !existsSync(configs.js)) {
+  const config = configs.find(existsSync)
+
+  if (!config) {
     throw new Error(
-      `[ERR_INVALID_CONFIG] midway.config.ts is not found, root: ${root}`
+      `[ERR_INVALID_CONFIG] midway.config.[ts|js]  is not found at ${root}`
     )
   }
 
-  return existsSync(configs.ts)
-    ? requireMod(configs.ts)
-    : requireMod(configs.js)
+  return requireMod<T>(config)
 }
 
 export function defineConfig(config: UserConfig): UserConfig {
