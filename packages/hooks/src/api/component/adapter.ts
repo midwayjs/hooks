@@ -160,7 +160,7 @@ export class MidwayFrameworkAdapter {
   }
 
   private async useUniversalRuntime(ctx: any, next: any) {
-    await ContextManager.run({ ctx }, async () => await next())
+    return await ContextManager.run({ ctx }, async () => await next())
   }
 
   private useHooksMiddleware(fn: (...args: any[]) => any) {
