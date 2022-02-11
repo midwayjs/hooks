@@ -1,5 +1,11 @@
 # @midwayjs/rpc
 
+## 3.0.0-rc.8
+
+### Patch Changes
+
+- Add support for serverless worker
+
 ## 3.0.0-rc.7
 
 ### Patch Changes
