@@ -1,5 +1,5 @@
 import { ContextRuntime, HooksContext } from './type'
-import { als } from 'asynchronous-local-storage'
+import { als } from '@midwayjs/asynchronous-local-storage'
 
 export const AsyncLocalStorageRuntime: ContextRuntime = {
   name: 'AsyncLocalStorageRuntime',
