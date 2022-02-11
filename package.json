@@ -11,6 +11,7 @@
     "ci": "yarn cov --ci",
     "format": "pretty-quick",
     "publish-local": "lerna exec yalc publish",
+    "push-local": "lerna exec yalc push",
     "publish-release": "yarn build && changeset publish",
     "publish-next": "yarn build && lerna publish --dist-tag=next",
     "postinstall": "patch-package",
