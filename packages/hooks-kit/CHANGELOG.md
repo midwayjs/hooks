@@ -1,5 +1,15 @@
 # @midwayjs/hooks-kit
 
+## 3.0.0-rc.9
+
+### Patch Changes
+
+- c1ce152: refactor: remove @midwayjs/hooks/test, import from @midwayjs/hooks directly
+- Updated dependencies [c1ce152]
+  - @midwayjs/hooks@3.0.0-rc.9
+  - @midwayjs/hooks-bundler@3.0.0-rc.9
+  - @midwayjs/hooks-core@3.0.0-rc.9
+
 ## 3.0.0-rc.8
 
 ### Patch Changes

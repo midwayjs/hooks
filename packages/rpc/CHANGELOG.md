@@ -1,5 +1,11 @@
 # @midwayjs/rpc
 
+## 3.0.0-rc.9
+
+### Patch Changes
+
+- c1ce152: refactor: remove @midwayjs/hooks/test, import from @midwayjs/hooks directly
+
 ## 3.0.0-rc.8
 
 ### Patch Changes
