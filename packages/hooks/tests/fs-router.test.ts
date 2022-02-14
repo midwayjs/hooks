@@ -1,4 +1,4 @@
-import { getApiTrigger, HttpTrigger } from '../test'
+import { getApiTrigger, HttpTrigger } from '../src'
 import { IMidwayKoaApplication } from '@midwayjs/koa'
 import { closeApp, createApp, createHttpRequest } from './utils'
 import * as index from './fixtures/fs-router/src/api/index'

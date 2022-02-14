@@ -33,14 +33,12 @@
   },
   "files": [
     "dist",
-    "internal",
-    "test"
+    "internal"
   ],
   "preconstruct": {
     "entrypoints": [
       "index.ts",
-      "internal/index.ts",
-      "test/index.ts"
+      "internal/index.ts"
     ]
   }
 }
