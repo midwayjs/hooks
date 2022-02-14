@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@midwayjs/bootstrap": "^3.0.0",
-    "@midwayjs/hooks": "^3.0.0-rc.5",
+    "@midwayjs/hooks": "^3.0.0-rc.8",
     "@midwayjs/koa": "^3.0.0"
   },
   "devDependencies": {
