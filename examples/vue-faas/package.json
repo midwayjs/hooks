@@ -12,7 +12,7 @@
     "vue": "^3.2.25",
     "@midwayjs/hooks": "^3.0.0-rc.8",
     "@midwayjs/rpc": "^3.0.0-rc.8",
-    "@midwayjs/faas": "^3.0.0",
+    "@midwayjs/faas": "^3.0.6",
     "isomorphic-unfetch": "^3.1.0"
   },
   "devDependencies": {
