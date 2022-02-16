@@ -1,7 +1,7 @@
 import { getRouter, getSource, loadApiFiles } from '@midwayjs/hooks/internal'
 import { run } from '@midwayjs/glob'
 import { join, relative } from 'upath'
-import fs from 'fs/promises'
+import fse from 'fs-extra'
 import art from 'art-template'
 import { difference } from 'lodash'
 import prettier from 'prettier'
@@ -69,7 +69,7 @@ export async function buildEntry() {
   })
 
   const entry = join(source, 'hcc.js')
-  await fs.writeFile(entry, code, 'utf8')
+  await fse.writeFile(entry, code, 'utf8')
 
   debug('code %s', code)
 

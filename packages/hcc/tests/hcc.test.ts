@@ -1,7 +1,7 @@
 import execa from 'execa'
 import { join } from 'path'
 import { existsSync } from 'fs'
-import { rm } from 'fs/promises'
+import { remove } from 'fs-extra'
 import { buildEntry } from '../src/midway'
 import { fetch } from 'undici'
 
@@ -12,7 +12,7 @@ describe('hcc', () => {
     process.env.NODE_ENV = 'production'
     process.chdir(fixture)
 
-    await rm(join(fixture, 'dist'), { recursive: true, force: true })
+    await remove(join(fixture, 'dist'))
     await execa('npm', ['run', 'build'])
     await buildEntry()
 
