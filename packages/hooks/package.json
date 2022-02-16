@@ -28,7 +28,7 @@
   },
   "peerDependencies": {
     "@midwayjs/decorator": ">=3.0.0",
-    "@midwayjs/core": "=3.0.0"
+    "@midwayjs/core": "=3.0.0 || =3.0.6"
   },
   "devDependencies": {
     "@midwayjs/decorator": "^3.0.6",
