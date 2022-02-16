@@ -33,6 +33,9 @@
     "@midwayjs/hooks-core": "^3.0.0-rc.8",
     "prettier": "2.5.1"
   },
+  "devDependencies": {
+    "undici": "^4.14.1"
+  },
   "files": [
     "dist",
     "cli"

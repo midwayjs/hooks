@@ -1,0 +1,50 @@
+import execa from 'execa'
+import { join } from 'path'
+import { existsSync } from 'fs'
+import { rm } from 'fs/promises'
+import { buildEntry } from '../src/midway'
+import { fetch } from 'undici'
+
+describe('hcc', () => {
+  test('build api project', async () => {
+    const fixture = join(__dirname, 'fixtures/api')
+
+    process.env.NODE_ENV = 'production'
+    process.chdir(fixture)
+
+    await rm(join(fixture, 'dist'), { recursive: true, force: true })
+    await execa('npm', ['run', 'build'])
+    await buildEntry()
+
+    expect(existsSync(join(fixture, 'dist/hcc.js'))).toBe(true)
+
+    const cp = execa.node(join(fixture, 'scripts/bootstrap'))
+    const promise = new Promise((resolve, reject) => {
+      cp.stdout.once('data', async () => {
+        try {
+          {
+            const response = await fetch('http://localhost:7001')
+            const json: any = await response.json()
+            expect(response.status).toBe(200)
+            expect(json.message).toBe('Hello World!')
+          }
+
+          {
+            const response = await fetch('http://localhost:7001/api/date')
+            const json: any = await response.json()
+            expect(response.status).toBe(200)
+            expect(json.date).toBeTruthy()
+          }
+
+          cp.kill()
+
+          resolve(null)
+        } catch (error) {
+          reject(error)
+        }
+      })
+    })
+
+    await promise
+  })
+})

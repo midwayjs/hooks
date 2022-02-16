@@ -1,0 +1,25 @@
+{
+  "name": "api-bundle-test",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node scripts/bootstrap",
+    "dev": "mw dev --fast",
+    "build": "mw build"
+  },
+  "dependencies": {
+    "@midwayjs/bootstrap": "^3.0.6",
+    "@midwayjs/hooks": "^3.0.0-rc.8",
+    "@midwayjs/koa": "^3.0.6"
+  },
+  "devDependencies": {
+    "@midwayjs/cli": "^1.2.95",
+    "@midwayjs/cli-plugin-build": "^1.2.95",
+    "typescript": "^4.3.5"
+  },
+  "midway-cli": {
+    "experimentalFeatures": {
+      "ignoreTsError": true
+    }
+  }
+}
