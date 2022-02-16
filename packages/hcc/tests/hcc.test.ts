@@ -3,7 +3,7 @@ import { join } from 'path'
 import { existsSync } from 'fs'
 import { remove } from 'fs-extra'
 import { buildEntry } from '../src/midway'
-import { fetch } from 'undici'
+import fetch from 'isomorphic-unfetch'
 
 describe('hcc', () => {
   test('build api project', async () => {

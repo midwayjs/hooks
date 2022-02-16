@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "9.0.13",
-    "undici": "^4.14.1"
+    "isomorphic-unfetch": "^3.1.0"
   },
   "files": [
     "dist",
