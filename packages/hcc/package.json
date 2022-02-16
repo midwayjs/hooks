@@ -34,7 +34,7 @@
     "prettier": "2.5.1"
   },
   "devDependencies": {
-    "undici": "^4.14.1"
+    "undici": "4.14.1"
   },
   "files": [
     "dist",

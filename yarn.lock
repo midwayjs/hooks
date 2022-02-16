@@ -2787,7 +2787,7 @@
     scmp "^2.1.0"
     should-send-same-site-none "^2.0.5"
 
-"@midwayjs/core@^3.0.6":
+"@midwayjs/core@3.0.6", "@midwayjs/core@^3.0.6":
   version "3.0.6"
   resolved "https://registry.npmjs.org/@midwayjs/core/-/core-3.0.6.tgz#926aecae3d3fc221c59f42a484c54f58a1a29479"
   integrity sha512-Nor7BRYM36oMdo7Eu3E2xFE+VvNPIlwp4OEkl7K7rr7oXYod+j95jJTAGPGu7j7LBi3xscFhzG6QoIjMAWgcuw==
@@ -2806,9 +2806,9 @@
     ts-node "^9.0.0"
     ws "^7.2.3"
 
-"@midwayjs/decorator@^3.0.6":
+"@midwayjs/decorator@3.0.6":
   version "3.0.6"
-  resolved "https://registry.npmjs.org/@midwayjs/decorator/-/decorator-3.0.6.tgz#47d152419ee8fc7bfb0450f3fb376e0777ba108c"
+  resolved "https://registry.yarnpkg.com/@midwayjs/decorator/-/decorator-3.0.6.tgz#47d152419ee8fc7bfb0450f3fb376e0777ba108c"
   integrity sha512-plpe8YP6PydL+YX96FLKYJ5QHIB3Fe58XdeVBQFM7uhDG7wy0Sc3tvCMyC8wCdRnOC1AQeLTvnNzQlOz5ID6lw==
   dependencies:
     reflect-metadata "^0.1.13"
@@ -13565,9 +13565,9 @@ unbox-primitive@^1.0.1:
     has-symbols "^1.0.2"
     which-boxed-primitive "^1.0.2"
 
-undici@^4.14.1:
+undici@4.14.1:
   version "4.14.1"
-  resolved "https://registry.npmjs.org/undici/-/undici-4.14.1.tgz#7633b143a8a10d6d63335e00511d071e8d52a1d9"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-4.14.1.tgz#7633b143a8a10d6d63335e00511d071e8d52a1d9"
   integrity sha512-WJ+g+XqiZcATcBaUeluCajqy4pEDcQfK1vy+Fo+bC4/mqXI9IIQD/XWHLS70fkGUT6P52Drm7IFslO651OdLPQ==
 
 unfetch@^4.2.0:
