@@ -6,12 +6,17 @@ import {
   useFrameworkAdapter,
   validateArray,
 } from '@midwayjs/hooks-core'
-import { getRouter, getSource, isDev, RuntimeConfig } from '../internal'
+import {
+  getRouter,
+  getSource,
+  isDev,
+  loadApiFiles,
+  RuntimeConfig,
+} from '../internal'
 import { createConfiguration } from './configuration'
-import { run } from '@midwayjs/glob'
 import flattenDeep from 'lodash/flattenDeep'
 import { MidwayApplication, MidwayFrameworkAdapter } from './component/adapter'
-import { getHydrateOptions, isHydrate } from '../internal/bundle/hydrate'
+import { getHydrateOptions, isHydrate } from '../internal/hydrate'
 
 const debug = createDebug('hooks: component')
 
@@ -55,31 +60,6 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
   })
 
   return { Configuration }
-}
-
-export function loadApiFiles(source: string, router: AbstractRouter) {
-  debug('load source: %s', source)
-
-  const files = run(['**/*.{ts,js}'], {
-    cwd: source,
-    ignore: [
-      '**/node_modules/**',
-      '**/*.d.ts',
-      '**/*.{test,spec}.{ts,tsx,js,jsx,mjs}',
-      '**/_client/**/*.js',
-    ],
-  })
-
-  debug('scan files: %O', files)
-
-  const apiFiles = files.filter(
-    (file) =>
-      router.isSourceFile(file, source) &&
-      router.isApiFile({ file, mod: require(file) })
-  )
-
-  debug('api files: %O', apiFiles)
-  return apiFiles
 }
 
 function loadHydrateModules(router: AbstractRouter) {

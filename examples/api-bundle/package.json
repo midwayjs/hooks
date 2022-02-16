@@ -1,11 +1,11 @@
 {
-  "name": "hooks-api-starter",
+  "name": "hooks-api-bundle-starter",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node scripts/bootstrap",
     "dev": "mw dev --fast",
-    "build": "mw build"
+    "build": "mw build && hcc && ncc build scripts/bootstrap -o build"
   },
   "dependencies": {
     "@midwayjs/bootstrap": "^3.0.6",
@@ -13,8 +13,10 @@
     "@midwayjs/koa": "^3.0.6"
   },
   "devDependencies": {
+    "@midwayjs/hcc": "^3.0.0-rc.8",
     "@midwayjs/cli": "^1.2.95",
     "@midwayjs/cli-plugin-build": "^1.2.95",
+    "@vercel/ncc": "^0.33.3",
     "@midwayjs/mock": "^3.0.6",
     "typescript": "^4.3.5"
   }

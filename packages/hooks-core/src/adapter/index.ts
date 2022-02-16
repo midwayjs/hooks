@@ -11,11 +11,11 @@ type FrameworkAdapter = {
 export let framework: FrameworkAdapter = null
 
 export function useFrameworkAdapter(adapter: FrameworkAdapter) {
-  if (framework) {
-    throw new Error(
-      `FrameworkAdapter is already set, current: ${framework.name}, new: ${adapter.name}`
-    )
-  }
+  // if (framework) {
+  //   throw new Error(
+  //     `FrameworkAdapter is already set, current: ${framework.name}, new: ${adapter.name}`
+  //   )
+  // }
   validateFunction(
     adapter.handleResponseMetaData,
     'adapter.handleResponseMetaData'
