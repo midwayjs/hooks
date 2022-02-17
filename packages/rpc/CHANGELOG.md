@@ -1,5 +1,13 @@
 # @midwayjs/rpc
 
+## 3.0.0-rc.9
+
+### Patch Changes
+
+- 47b7842: add @midwayjs/hcc to compile project into single file
+- 4a27b18: refactor: remove @midwayjs/hooks/test, import from @midwayjs/hooks directly
+- 49f5113: Fix the duplicate path issue(#199)
+
 ## 3.0.0-rc.8
 
 ### Patch Changes
