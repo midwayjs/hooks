@@ -1,5 +1,11 @@
 # @midwayjs/rpc
 
+## 3.0.0-rc.10
+
+### Patch Changes
+
+- 29d6d05: Add midwayjs deps to @midwayjs/hooks
+
 ## 3.0.0-rc.9
 
 ### Patch Changes
