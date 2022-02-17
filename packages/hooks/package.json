@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks",
-  "version": "3.0.0-rc.8",
+  "version": "3.0.0-rc.9",
   "description": "A framework for building api & fullstack applications faster",
   "keywords": [
     "midway",
@@ -23,7 +23,7 @@
     "lodash": "^4.17.21",
     "upath": "^2.0.1",
     "pkg-dir": "5.0.0",
-    "@midwayjs/hooks-core": "^3.0.0-rc.8",
+    "@midwayjs/hooks-core": "^3.0.0-rc.9",
     "@midwayjs/glob": "^1.0.6"
   },
   "peerDependencies": {
