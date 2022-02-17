@@ -1,5 +1,15 @@
 # @midwayjs/hooks-kit
 
+## 3.0.0-rc.10
+
+### Patch Changes
+
+- 29d6d05: Add midwayjs deps to @midwayjs/hooks
+- Updated dependencies [29d6d05]
+  - @midwayjs/hooks@3.0.0-rc.10
+  - @midwayjs/hooks-bundler@3.0.0-rc.10
+  - @midwayjs/hooks-core@3.0.0-rc.10
+
 ## 3.0.0-rc.9
 
 ### Patch Changes
