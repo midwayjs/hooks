@@ -32,8 +32,6 @@ export class MidwayBundlerAdapter extends AbstractBundlerAdapter {
     this.router = router
   }
 
-  // Ref: https://github.com/midwayjs/hooks/issues/199
-
   override transformApiRoutes(apis: ApiRoute[]): ApiRoute[] {
     apis = cloneDeep(apis)
     for (const api of apis) {
