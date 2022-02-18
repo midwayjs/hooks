@@ -20,7 +20,7 @@ export type MidwayRoute = Route & HTTPRoute
  */
 export interface ProjectConfig {
   /**
-   * @description server root, default is src/apis
+   * @description server root, default is src/api
    */
   source?: string
   /**

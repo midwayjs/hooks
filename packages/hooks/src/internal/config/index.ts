@@ -1,7 +1,6 @@
 import { existsSync } from 'fs'
 import defaultsDeep from 'lodash/defaultsDeep'
-import { sync } from 'pkg-dir'
-import path from 'upath'
+import path, { dirname } from 'upath'
 import {
   createDebug,
   PRE_DEFINE_PROJECT_CONFIG,
@@ -9,6 +8,7 @@ import {
 } from '@midwayjs/hooks-core'
 import { ignorePattern } from './ignorePattern'
 import { ProjectConfig, UserConfig } from './type'
+import findUp from 'find-up'
 
 const debug = createDebug('hooks: config')
 
@@ -18,7 +18,16 @@ export function setProjectRoot(root: string) {
 }
 
 export function getProjectRoot(cwd?: string) {
-  return process.env[PROJECT_ROOT] || sync(cwd) || process.cwd()
+  if (process.env[PROJECT_ROOT]) {
+    return process.env[PROJECT_ROOT]
+  }
+
+  const pkg = findUp.sync('package.json', { cwd })
+  if (pkg) {
+    return dirname(pkg)
+  }
+
+  return process.cwd()
 }
 
 export function setConfig(config: Partial<ProjectConfig>) {
@@ -53,7 +62,7 @@ export function getConfigFromFile<T>(root: string): T {
 
   if (!config) {
     throw new Error(
-      `[ERR_INVALID_CONFIG] midway.config.[ts|js]  is not found at ${root}`
+      `[ERR_INVALID_CONFIG] midway.config.[ts|js] is not found at ${root}`
     )
   }
 
