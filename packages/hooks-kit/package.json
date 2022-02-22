@@ -28,7 +28,7 @@
     "jiti": "^1.12.9",
     "koa-static-cache": "^5.1.4",
     "vite": "^2.7.9",
-    "fs-extra": "10.0.0"
+    "fs-extra": "10.0.1"
   },
   "devDependencies": {
     "@types/detect-port": "1.3.2"
