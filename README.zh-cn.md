@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@midwayjs/hooks">
-    <img src="https://img.shields.io/npm/v/@midwayjs/hooks/latest?style=for-the-badge">
+    <img src="https://img.shields.io/npm/v/@midwayjs/hooks/rc?style=for-the-badge">
   </a>
   <img src="https://img.shields.io/github/workflow/status/midwayjs/hooks/Node.js%20CI/master?style=for-the-badge">
   <a href="https://codecov.io/gh/midwayjs/hooks">
