@@ -50,13 +50,15 @@ export const prisma =
   new PrismaClient();
 ```
 
+#### 使用代理镜像
+
 Prisma 在安装时会根据平台动态下载可执行文件，如果你的网络环境不好，可以通过环境变量来设置镜像。
 
 ```bash
-PRISMA_BINARIES_MIRROR=https://r.cnpmjs.org/-/binary/prisma/
+PRISMA_BINARIES_MIRROR=https://registry.npmmirror.com/-/binary/prisma/
 ```
 
-相关讨论: [mirror prisma](https://github.com/cnpm/mirrors/issues/248)
+相关 Issue: [mirror prisma](https://github.com/cnpm/mirrors/issues/248)
 
 ### 查询数据
 
