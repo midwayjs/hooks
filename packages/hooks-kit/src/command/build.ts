@@ -3,11 +3,10 @@ import { build, InlineConfig, mergeConfig } from 'vite'
 import { join, resolve } from 'path'
 import { CommandCore } from '@midwayjs/command-core'
 import { BuildPlugin } from '@midwayjs/cli-plugin-build'
-import fs from 'fs'
+import fs from 'fs-extra'
 import { getProjectRoot } from '@midwayjs/hooks/internal'
-import { resolveConfig } from '../config'
+import { KitConfig, resolveConfig } from '../config'
 import consola from 'consola'
-import { vite } from '@midwayjs/hooks-bundler'
 import { registerJiti } from '../util'
 
 type BuildOptions = {
@@ -40,7 +39,7 @@ export function setupBuildCommand(cli: CAC) {
       const defaultConfig: InlineConfig = {
         root,
         configFile: false,
-        plugins: [vite()],
+        plugins: [require('@midwayjs/hooks-bundler').vite()],
         build: {
           outDir: client,
           manifest: true,
@@ -65,6 +64,24 @@ export function setupBuildCommand(cli: CAC) {
             'Serve static disabled, you should serve static files manually'
           )
         }
+
+        if (Array.isArray(userConfig.routes)) {
+          userConfig.routes.push({
+            baseDir: '_serve',
+            basePath: '/',
+          })
+        }
+
+        const productionConfig = {
+          routes: userConfig.routes,
+        } as KitConfig
+
+        fs.writeFileSync(
+          join(outDir, 'midway.config.js'),
+          `module.exports = ${JSON.stringify(productionConfig, null, 2)}`,
+          'utf-8'
+        )
+        consola.info('Generate config for production')
 
         const serverBuild = await executePromise(buildServer(root, outDir))
         consola.success(`Server built in ${serverBuild.time}ms`)
@@ -100,7 +117,7 @@ function createRender(dist: string) {
   const cache = require('koa-static-cache');
   const path = require('path');
   
-  const client = path.join(__dirname, '_client');
+  const client = path.join(__dirname, '..', '_client');
 
   exports.default = Api(
     Get('/*'),
@@ -116,7 +133,9 @@ function createRender(dist: string) {
   );
   `
 
-  fs.writeFileSync(join(dist, '_serve.js'), code, 'utf-8')
+  const file = join(dist, '_serve/index.js')
+  fs.ensureFileSync(file)
+  fs.writeFileSync(file, code, 'utf-8')
 }
 
 async function buildServer(cwd: string, outDir: string) {

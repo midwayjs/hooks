@@ -1,8 +1,9 @@
 import { CAC } from 'cac'
 import { resolve } from 'path'
 import { Bootstrap } from '@midwayjs/bootstrap'
-import { setConfig } from '@midwayjs/hooks/internal'
+import { setConfig, setProjectRoot } from '@midwayjs/hooks/internal'
 import consola from 'consola'
+import { resolveConfig } from '../config'
 
 type StartOptions = {
   port: number
@@ -17,13 +18,17 @@ export function setupStartCommand(cli: CAC) {
       default: 'localhost',
     })
     .action(async (root: string, options: StartOptions) => {
-      if (root) {
-        setConfig({ build: { outDir: root } })
-        root = resolve(root)
-      } else {
-        setConfig({ build: { outDir: 'dist' } })
-        root = resolve('dist')
+      root = root ? resolve(root) : resolve('dist')
+
+      const config = {
+        ...resolveConfig(root),
+        build: {
+          outDir: './',
+        },
       }
+
+      setProjectRoot(root)
+      setConfig(config)
 
       process.env.MIDWAY_HTTP_PORT = options.port.toString()
 

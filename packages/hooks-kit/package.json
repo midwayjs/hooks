@@ -27,7 +27,8 @@
     "consola": "^2.15.3",
     "jiti": "^1.12.9",
     "koa-static-cache": "^5.1.4",
-    "vite": "^2.7.9"
+    "vite": "^2.7.9",
+    "fs-extra": "10.0.0"
   },
   "devDependencies": {
     "@types/detect-port": "1.3.2"

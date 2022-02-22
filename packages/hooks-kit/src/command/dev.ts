@@ -2,7 +2,6 @@ import { CAC } from 'cac'
 import { createServer, InlineConfig, mergeConfig } from 'vite'
 import { resolveConfig } from '../config'
 import { resolve } from 'path'
-import { vite } from '@midwayjs/hooks-bundler'
 import { getProjectRoot } from '@midwayjs/hooks/internal'
 import getPort from 'detect-port'
 import { createDebug } from '@midwayjs/hooks-core'
@@ -53,7 +52,7 @@ export function setupDevCommand(cli: CAC) {
           host: options.host,
           force: options.force,
         },
-        plugins: [vite()],
+        plugins: [require('@midwayjs/hooks-bundler').vite()],
       }
 
       const config = mergeConfig(defaultConfig, userConfig?.vite)
