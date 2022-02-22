@@ -3,7 +3,7 @@ const { resolve } = require('path');
 
 const baseDir = resolve(__dirname, '../dist');
 
-Bootstrap.configure(baseDir)
+Bootstrap.configure({ baseDir })
   .run()
   .then(() => {
     console.log('Your application is running at http://localhost:7001');
