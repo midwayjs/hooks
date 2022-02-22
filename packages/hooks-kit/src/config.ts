@@ -1,7 +1,7 @@
 import { UserConfig, getConfig } from '@midwayjs/hooks/internal'
 import type { UserConfig as ViteConfig } from 'vite'
 
-export interface KitConfig extends Omit<UserConfig, 'source' | 'routes'> {
+export interface KitConfig extends Omit<UserConfig, 'source'> {
   [key: string]: any
   vite?: ViteConfig
   static?: boolean

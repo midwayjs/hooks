@@ -1,4 +1,4 @@
-import { getRouter, getSource, loadApiFiles } from '@midwayjs/hooks/internal'
+import { getRouter, getSource } from '@midwayjs/hooks/internal'
 import { run } from '@midwayjs/glob'
 import { join, relative } from 'upath'
 import fse from 'fs-extra'
