@@ -22,7 +22,7 @@
     "tslib": "^2.3.0",
     "lodash": "^4.17.21",
     "upath": "^2.0.1",
-    "find-up": "5.0.0",
+    "find-up": "6.3.0",
     "@midwayjs/hooks-core": "^3.0.0-rc.10",
     "@midwayjs/glob": "^1.0.6",
     "@midwayjs/decorator": "^3.0.6",
