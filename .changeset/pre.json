@@ -15,21 +15,25 @@
     "@midwayjs/hooks-kit": "3.0.0-alpha.0",
     "@midwayjs/rpc": "3.0.0-alpha.0",
     "hooks-api-bundle-starter": "1.0.0",
-    "@midwayjs/hcc": "3.0.0-rc.8"
+    "@midwayjs/hcc": "3.0.0-rc.8",
+    "@midwayjs/esrun": "3.0.0-rc.10"
   },
   "changesets": [
     "beige-colts-tell",
+    "brave-laws-rule",
     "eight-cameras-move",
     "eighty-colts-play",
     "eleven-trainers-train",
     "fuzzy-mugs-grow",
     "itchy-zoos-rush",
     "lemon-avocados-doubt",
+    "light-boats-perform",
     "light-suits-design",
     "rare-tables-fail",
     "serious-kids-reflect",
     "small-cameras-guess",
     "tricky-books-knock",
+    "twenty-bats-protect",
     "twenty-rivers-relax"
   ]
 }

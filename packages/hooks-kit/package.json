@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-kit",
-  "version": "3.0.0-rc.10",
+  "version": "3.0.0-rc.11",
   "description": "A framework for building api & fullstack applications faster",
   "main": "dist/midwayjs-hooks-kit.cjs.js",
   "module": "dist/midwayjs-hooks-kit.esm.js",
@@ -18,9 +18,9 @@
     "@midwayjs/bootstrap": "^3.0.6",
     "@midwayjs/cli-plugin-build": "^1.2.95",
     "@midwayjs/command-core": "^1.2.95",
-    "@midwayjs/hooks": "^3.0.0-rc.10",
-    "@midwayjs/hooks-bundler": "^3.0.0-rc.10",
-    "@midwayjs/hooks-core": "^3.0.0-rc.10",
+    "@midwayjs/hooks": "^3.0.0-rc.11",
+    "@midwayjs/hooks-bundler": "^3.0.0-rc.11",
+    "@midwayjs/hooks-core": "^3.0.0-rc.11",
     "@midwayjs/mock": "^3.0.6",
     "cac": "^6.7.12",
     "consola": "^2.15.3",
@@ -28,7 +28,7 @@
     "koa-static-cache": "^5.1.4",
     "vite": "^2.7.9",
     "fs-extra": "10.0.1",
-    "@midwayjs/esrun": "^3.0.0-rc.10"
+    "@midwayjs/esrun": "^3.0.0-rc.11"
   },
   "devDependencies": {
     "@types/detect-port": "1.3.2"

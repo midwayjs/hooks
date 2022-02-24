@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-bundler",
-  "version": "3.0.0-rc.10",
+  "version": "3.0.0-rc.11",
   "description": "Bundler plugin for @midwayjs/hooks",
   "keywords": [
     "midway",
@@ -26,9 +26,9 @@
   "main": "dist/midwayjs-hooks-bundler.cjs.js",
   "module": "dist/midwayjs-hooks-bundler.esm.js",
   "dependencies": {
-    "@midwayjs/hooks": "^3.0.0-rc.10",
-    "@midwayjs/hooks-core": "^3.0.0-rc.10",
-    "@midwayjs/bundler": "^3.0.0-rc.10",
+    "@midwayjs/hooks": "^3.0.0-rc.11",
+    "@midwayjs/hooks-core": "^3.0.0-rc.11",
+    "@midwayjs/bundler": "^3.0.0-rc.11",
     "@midwayjs/serverless-dev-pack": "^1.2.95",
     "upath": "^2.0.1",
     "lodash": "^4.17.21"
