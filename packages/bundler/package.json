@@ -28,7 +28,7 @@
   "dependencies": {
     "@midwayjs/hooks-core": "^3.0.0-rc.10",
     "unplugin": "^0.3.0",
-    "jiti": "^1.12.9"
+    "@midwayjs/esrun": "^3.0.0-rc.10"
   },
   "devDependencies": {
     "webpack": "4.46.0",

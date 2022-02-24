@@ -7,7 +7,7 @@ import fs from 'fs-extra'
 import { getProjectRoot } from '@midwayjs/hooks/internal'
 import { KitConfig, resolveConfig } from '../config'
 import consola from 'consola'
-import { registerJiti } from '../util'
+import { register } from '@midwayjs/esrun'
 
 type BuildOptions = {
   outDir: string
@@ -22,7 +22,7 @@ export function setupBuildCommand(cli: CAC) {
       default: false,
     })
     .action(async (root: string, options: BuildOptions) => {
-      registerJiti()
+      register()
 
       const projectRoot = getProjectRoot()
       const userConfig = resolveConfig(projectRoot)

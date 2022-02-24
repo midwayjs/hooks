@@ -4,16 +4,17 @@ import { existsSync } from 'fs'
 import { remove } from 'fs-extra'
 import { buildEntry } from '../src/midway'
 import fetch from 'isomorphic-unfetch'
+import { setProjectRoot } from '@midwayjs/hooks/internal'
 
 describe('hcc', () => {
   test('build api project', async () => {
     const fixture = join(__dirname, 'fixtures/api')
 
     process.env.NODE_ENV = 'production'
-    process.chdir(fixture)
+    setProjectRoot(fixture)
 
     await remove(join(fixture, 'dist'))
-    await execa('npm', ['run', 'build'])
+    await execa('npm', ['run', 'build'], { cwd: fixture })
     await buildEntry()
 
     expect(existsSync(join(fixture, 'dist/hcc.js'))).toBe(true)

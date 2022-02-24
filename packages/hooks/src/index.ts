@@ -3,7 +3,7 @@ export * from './api'
 export type { ApiConfig } from '@midwayjs/hooks-core'
 
 // User Config
-export { defineConfig, setProjectRoot } from './internal'
+export { defineConfig } from './internal'
 export type { UserConfig } from './internal/config/type'
 
 // For unit test
