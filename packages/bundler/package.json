@@ -33,7 +33,7 @@
   "devDependencies": {
     "webpack": "4.46.0",
     "memory-fs": "0.5.0",
-    "ts-loader": "8.3.0",
+    "ts-loader": "9.2.6",
     "prettier": "2.5.1"
   }
 }
