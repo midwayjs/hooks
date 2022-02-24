@@ -8,8 +8,8 @@ export default function $default(...args) {
   return rpc$0(...args, route);
 }
 $default.route = {
-  trigger: { type: 'HTTP', method: 'GET', path: '/' },
-  functionId: 'lambda-index',
+  trigger: { type: 'HTTP', method: 'GET', path: '/api/index' },
+  functionId: 'index',
   useInputMetadata: false,
 };
 export function usePost(...args) {
@@ -17,8 +17,8 @@ export function usePost(...args) {
   return rpc$0(...args, route);
 }
 usePost.route = {
-  trigger: { type: 'HTTP', method: 'POST', path: '/usePost' },
-  functionId: 'lambda-index-usepost',
+  trigger: { type: 'HTTP', method: 'POST', path: '/api/usePost' },
+  functionId: 'usePost',
   useInputMetadata: false,
 };
 export function withQuery(...args) {
@@ -26,8 +26,8 @@ export function withQuery(...args) {
   return rpc$0(...args, route);
 }
 withQuery.route = {
-  trigger: { type: 'HTTP', method: 'GET', path: '/withQuery' },
-  functionId: 'lambda-index-withquery',
+  trigger: { type: 'HTTP', method: 'GET', path: '/api/withQuery' },
+  functionId: 'withQuery',
   useInputMetadata: true,
 };
 
@@ -41,8 +41,8 @@ export function bar(...args) {
   return rpc$0(...args, route);
 }
 bar.route = {
-  trigger: { type: 'HTTP', method: 'GET', path: '/bar/*' },
-  functionId: 'render-index-bar',
+  trigger: { type: 'HTTP', method: 'GET', path: '/api/bar' },
+  functionId: 'bar',
   useInputMetadata: false,
 };
 export default function $default(...args) {
@@ -51,7 +51,7 @@ export default function $default(...args) {
 }
 $default.route = {
   trigger: { type: 'HTTP', method: 'GET', path: '/*' },
-  functionId: 'render-index',
+  functionId: 'index',
   useInputMetadata: false,
 };
 export function foo(...args) {
@@ -59,8 +59,8 @@ export function foo(...args) {
   return rpc$0(...args, route);
 }
 foo.route = {
-  trigger: { type: 'HTTP', method: 'GET', path: '/foo/*' },
-  functionId: 'render-index-foo',
+  trigger: { type: 'HTTP', method: 'GET', path: '/api/foo' },
+  functionId: 'foo',
   useInputMetadata: false,
 };
 

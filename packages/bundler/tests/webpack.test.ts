@@ -1,4 +1,4 @@
-import { FileSystemRouter } from '@midwayjs/hooks-core'
+import { ApiRouter } from '@midwayjs/hooks-core'
 import { wrap } from 'jest-snapshot-serializer-raw'
 import Memoryfs from 'memory-fs'
 import { resolve as pathResolve } from 'path'
@@ -22,17 +22,7 @@ class TestBundlerAdapter extends AbstractBundlerAdapter {
   }
 }
 
-const router = new FileSystemRouter({
-  source: root,
-  routes: [
-    {
-      baseDir: 'render',
-    },
-    {
-      baseDir: 'lambda',
-    },
-  ],
-})
+const router = new ApiRouter()
 
 const testBundlerAdapter = new TestBundlerAdapter({
   name: 'test',
@@ -47,7 +37,7 @@ describe('unplugin-hooks webpack', () => {
   }
 
   test('Compile render', async () => {
-    const output = await compile(root, getEntry('render/[...index].ts'))
+    const output = await compile(root, getEntry('render/index.ts'))
     expect(wrap(formatCode(output))).toMatchSnapshot()
   })
 

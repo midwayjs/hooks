@@ -1,9 +1,9 @@
 import {
   All,
   Api,
+  ApiRouter,
   BaseTrigger,
   Delete,
-  FileSystemRouter,
   Get,
   Head,
   Operator,
@@ -17,14 +17,7 @@ import {
 import { AbstractBundlerAdapter } from '..'
 import { wrap } from 'jest-snapshot-serializer-raw'
 
-const router = new FileSystemRouter({
-  source: '/',
-  routes: [
-    {
-      baseDir: '/',
-    },
-  ],
-})
+const router = new ApiRouter()
 
 class TestBundlerAdapter extends AbstractBundlerAdapter {
   constructor() {
@@ -32,6 +25,10 @@ class TestBundlerAdapter extends AbstractBundlerAdapter {
       name: 'test',
       router,
     })
+  }
+
+  getSource(): string {
+    return '/'
   }
 }
 
