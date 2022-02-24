@@ -1,0 +1,36 @@
+{
+  "name": "@midwayjs/esrun",
+  "version": "3.0.0-rc.10",
+  "description": "Super fast alternative for ts-node/jiti, support tsconfig paths",
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "keywords": [
+    "esrun",
+    "midway",
+    "hooks"
+  ],
+  "main": "dist/midwayjs-esrun.cjs.js",
+  "module": "dist/midwayjs-esrun.esm.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@swc-node/register": "1.4.2",
+    "tsconfig-paths": "3.12.0"
+  },
+  "files": [
+    "dist",
+    "register"
+  ],
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "register.ts"
+    ]
+  }
+}

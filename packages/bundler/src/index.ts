@@ -6,12 +6,9 @@ import {
   EXPORT_DEFAULT_FUNCTION_ALIAS,
   parseApiModule,
 } from '@midwayjs/hooks-core'
-import createJITI from 'jiti'
+import '@midwayjs/esrun/register'
 
 const debug = createDebug('hooks-bundler')
-
-const jiti = createJITI()
-jiti.register()
 
 const omit = (key: string, { [key]: _, ...obj }) => obj
 

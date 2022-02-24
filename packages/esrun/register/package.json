@@ -1,0 +1,4 @@
+{
+  "main": "dist/midwayjs-esrun-register.cjs.js",
+  "module": "dist/midwayjs-esrun-register.esm.js"
+}

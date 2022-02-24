@@ -5,7 +5,7 @@ import { resolve } from 'path'
 import { getProjectRoot } from '@midwayjs/hooks/internal'
 import getPort from 'detect-port'
 import { createDebug } from '@midwayjs/hooks-core'
-import { registerJiti } from '../util'
+import { register } from '@midwayjs/esrun'
 
 const debug = createDebug('hooks-kit')
 
@@ -31,7 +31,7 @@ export function setupDevCommand(cli: CAC) {
       }
     )
     .action(async (root: string, options: DevOptions) => {
-      registerJiti()
+      register()
 
       root = root ? resolve(root) : getProjectRoot()
 
