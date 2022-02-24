@@ -13,7 +13,11 @@
     "noEmit": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
   "include": ["./src"],
   "ts-node": {
