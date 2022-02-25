@@ -13,18 +13,10 @@ import {
   Post,
   Put,
 } from '../../api'
+import { ApiRouter } from '../api'
 import { parseApiModule } from '../loader'
-import { FileSystemRouter } from '../file'
 
-const router = new FileSystemRouter({
-  source: '/server',
-  routes: [
-    {
-      baseDir: 'api',
-      basePath: '/',
-    },
-  ],
-})
+const router = new ApiRouter()
 
 it('load file route with http trigger', () => {
   const routes = parseApiModule(
@@ -38,7 +30,7 @@ it('load file route with http trigger', () => {
       options: Api(Options(), async () => {}),
       default: Api(All(), async () => {}),
     },
-    '/server/api/index.ts',
+    '/index.ts',
     router
   )
   expect(routes).toMatchSnapshot()
@@ -61,7 +53,7 @@ it('load file route with custom trigger', () => {
     {
       custom: Api(CustomTrigger(), async () => {}),
     },
-    '/server/api/index.ts',
+    '/index.ts',
     router
   )
 
@@ -77,7 +69,7 @@ it('load middleware', () => {
         middleware: [noop],
       },
     },
-    '/server/api/index.ts',
+    '/index.ts',
     router
   )
 

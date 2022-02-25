@@ -1,9 +1,7 @@
 import kebabCase from 'lodash/kebabCase'
 import last from 'lodash/last'
-import urlJoin from 'proper-url-join'
 import { extname, join, relative, removeExt, toUnix } from 'upath'
-import { Route } from '..'
-import { AbstractRouter } from './base'
+import { AbstractRouter, Route, urlJoin } from '@midwayjs/hooks-core'
 
 export enum RouteKeyword {
   INDEX = 'index',

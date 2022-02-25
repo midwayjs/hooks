@@ -2,13 +2,13 @@ import {
   AbstractRouter,
   ApiRoute,
   ApiRouter,
-  FileSystemRouter,
   urlJoin,
 } from '@midwayjs/hooks-core'
-import { getConfig, getProjectRoot } from './config'
+import { getConfig, getProjectRoot } from '../config'
 import { join } from 'upath'
 import { createDebug } from '@midwayjs/hooks-core'
 import { run } from '@midwayjs/glob'
+import { FileSystemRouter } from './file'
 
 const debug = createDebug('hooks: router')
 
@@ -19,7 +19,7 @@ type GetSourceOptions = {
 export function getRouter(source: string): AbstractRouter {
   const { routes } = getConfig()
 
-  if (Array.isArray(routes)) {
+  if (Array.isArray(routes) && routes.length > 0) {
     return new FileSystemRouter({ source, routes })
   }
 
@@ -36,14 +36,10 @@ export function getSource(options: GetSourceOptions) {
   return join(root, options.useSourceFile ? source : outDir)
 }
 
-export function isFileSystemRouter(router: any): router is FileSystemRouter {
-  return router instanceof FileSystemRouter
-}
-
 export function normalizeUrl(router: AbstractRouter, api: ApiRoute) {
   const { trigger, file } = api
 
-  if (isFileSystemRouter(router)) {
+  if (router instanceof FileSystemRouter) {
     const basePath = router.getRoute(file).basePath
     return urlJoin(basePath, trigger.path, {})
   }
