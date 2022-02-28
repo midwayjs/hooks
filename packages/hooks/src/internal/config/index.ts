@@ -1,14 +1,11 @@
 import { existsSync } from 'fs'
 import defaultsDeep from 'lodash/defaultsDeep'
 import path, { dirname } from 'upath'
-import {
-  createDebug,
-  PRE_DEFINE_PROJECT_CONFIG,
-  PROJECT_ROOT,
-} from '@midwayjs/hooks-core'
+import { createDebug } from '@midwayjs/hooks-core'
 import { ignorePattern } from './ignorePattern'
 import { ProjectConfig, UserConfig } from './type'
 import findUp from 'find-up'
+import { PRE_DEFINE_PROJECT_CONFIG, PROJECT_ROOT } from '../const'
 
 const debug = createDebug('hooks: config')
 
