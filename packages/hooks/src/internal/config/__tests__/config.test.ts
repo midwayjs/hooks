@@ -1,6 +1,6 @@
 import { join } from 'upath'
-import { PRE_DEFINE_PROJECT_CONFIG } from '@midwayjs/hooks-core'
 import { getConfig, setConfig } from '../'
+import { PRE_DEFINE_PROJECT_CONFIG } from '../../const'
 
 beforeEach(() => {
   delete process.env[PRE_DEFINE_PROJECT_CONFIG]
