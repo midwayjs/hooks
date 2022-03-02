@@ -2839,7 +2839,7 @@
 
 "@midwayjs/cli-plugin-faas@^1.3.0":
   version "1.3.0"
-  resolved "https://registry.npm.alibaba-inc.com/@midwayjs/cli-plugin-faas/download/@midwayjs/cli-plugin-faas-1.3.0.tgz#f2383a7c303d2da4843b0efd1eaa03f61080d2d3"
+  resolved "https://registry.npmjs.org/@midwayjs/cli-plugin-faas/-/cli-plugin-faas-1.3.0.tgz#f2383a7c303d2da4843b0efd1eaa03f61080d2d3"
   integrity sha512-yvW8YEJv4MWHVNpMuSXE6tBQBK23XLkXDWILmVGwpQvf1lIy0deVtiA5m+tUJT8Fd1PXU8jS5pfxc2ZlhhGhKA==
   dependencies:
     "@midwayjs/command-core" "^1.2.97"
@@ -2879,7 +2879,7 @@
 
 "@midwayjs/command-core@^1.2.97":
   version "1.2.97"
-  resolved "https://registry.npm.alibaba-inc.com/@midwayjs/command-core/download/@midwayjs/command-core-1.2.97.tgz#236e2fa5b9dfcb3cbab63b811efd6c0253463fa9"
+  resolved "https://registry.npmjs.org/@midwayjs/command-core/-/command-core-1.2.97.tgz#236e2fa5b9dfcb3cbab63b811efd6c0253463fa9"
   integrity sha512-KUU8uF9VWyWULWfNg7sLEyRX9x8UsbQrBErenPIv83qh4LH2C6bIiYJ9qbUc/yzcItJvwUZW8e8OaYmb5VVFPw==
   dependencies:
     light-spinner "^1.0.0"
@@ -2946,7 +2946,7 @@
 
 "@midwayjs/fcli-plugin-deploy@^1.2.97":
   version "1.2.97"
-  resolved "https://registry.npm.alibaba-inc.com/@midwayjs/fcli-plugin-deploy/download/@midwayjs/fcli-plugin-deploy-1.2.97.tgz#5a0ab80c56413cd2b832e39f02c21b6a360a00e9"
+  resolved "https://registry.npmjs.org/@midwayjs/fcli-plugin-deploy/-/fcli-plugin-deploy-1.2.97.tgz#5a0ab80c56413cd2b832e39f02c21b6a360a00e9"
   integrity sha512-S3wTX15/ENCeEKvkoaIHmOJ/eYfhEGg/f1V5mE6JMhOjeRTGfmBmn7Qu/qrLPijGq2e29yOwoTYprrXPA7kr0Q==
   dependencies:
     "@midwayjs/command-core" "^1.2.97"
@@ -2967,7 +2967,7 @@
 
 "@midwayjs/fcli-plugin-package@^1.3.0":
   version "1.3.0"
-  resolved "https://registry.npm.alibaba-inc.com/@midwayjs/fcli-plugin-package/download/@midwayjs/fcli-plugin-package-1.3.0.tgz#ea13ab29bf1b7187a3246ac47cf0ddad874e02c5"
+  resolved "https://registry.npmjs.org/@midwayjs/fcli-plugin-package/-/fcli-plugin-package-1.3.0.tgz#ea13ab29bf1b7187a3246ac47cf0ddad874e02c5"
   integrity sha512-tHkbpdfhQg5DyVIzlUYOEEj5vEG/w8AK75GcYOsbypKO4MHOO5MneU3Ve2Zt5EUms/wdq8H2InQ51uABzvDRYA==
   dependencies:
     "@midwayjs/command-core" "^1.2.97"

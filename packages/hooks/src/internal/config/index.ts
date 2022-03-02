@@ -71,9 +71,6 @@ export function defineConfig(config: UserConfig): UserConfig {
 }
 
 const requireMod = <T = unknown>(id: string): T => {
-  if (!require.extensions[extname(id)]) {
-    throw new Error(`[ERR_INVALID_CONFIG] Loading ${id} failed.`)
-  }
   const contents = require(id)
   debug('requireMod: %s, %O', id, contents)
   if ('default' in contents) return contents.default
