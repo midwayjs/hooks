@@ -5,6 +5,7 @@ dist
 .zip
 serverless.zip
 .swc
+build
 
 # Editors
 **/.idea
