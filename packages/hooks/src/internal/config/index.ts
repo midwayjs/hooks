@@ -1,6 +1,6 @@
 import { existsSync } from 'fs'
 import defaultsDeep from 'lodash/defaultsDeep'
-import path, { dirname } from 'upath'
+import path, { dirname, extname } from 'upath'
 import { createDebug } from '@midwayjs/hooks-core'
 import { ignorePattern } from './ignorePattern'
 import { ProjectConfig, UserConfig } from './type'
@@ -71,6 +71,9 @@ export function defineConfig(config: UserConfig): UserConfig {
 }
 
 const requireMod = <T = unknown>(id: string): T => {
+  if (!require.extensions[extname(id)]) {
+    throw new Error(`[ERR_INVALID_CONFIG] Loading ${id} failed.`)
+  }
   const contents = require(id)
   debug('requireMod: %s, %O', id, contents)
   if ('default' in contents) return contents.default
