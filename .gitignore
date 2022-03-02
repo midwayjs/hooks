@@ -3,6 +3,9 @@ dist
 .serverless
 .ncc_entry
 .zip
+serverless.zip
+.swc
+build
 
 # Editors
 **/.idea
@@ -11,6 +14,7 @@ dist
 # dependencies
 node_modules
 package-lock.json
+pnpm-lock.yaml
 
 # logs & pids
 *.log

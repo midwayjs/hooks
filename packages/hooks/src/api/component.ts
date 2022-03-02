@@ -7,16 +7,17 @@ import {
   validateArray,
 } from '@midwayjs/hooks-core'
 import {
+  getHydrateOptions,
   getRouter,
   getSource,
   isDev,
+  isHydrate,
   loadApiFiles,
   RuntimeConfig,
 } from '../internal'
 import { createConfiguration } from './configuration'
 import flattenDeep from 'lodash/flattenDeep'
 import { MidwayApplication, MidwayFrameworkAdapter } from './component/adapter'
-import { getHydrateOptions, isHydrate } from '../internal/hydrate'
 
 const debug = createDebug('hooks: component')
 
@@ -37,7 +38,6 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
     handleResponseMetaData: midway.handleResponseMetaData,
   })
 
-  // TODO Rely on file system
   const apis = isHydrate()
     ? loadHydrateModules(router)
     : loadApiModules(source, router)

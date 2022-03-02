@@ -1,6 +1,6 @@
 import { existsSync } from 'fs'
 import defaultsDeep from 'lodash/defaultsDeep'
-import path, { dirname } from 'upath'
+import path, { dirname, extname } from 'upath'
 import { createDebug } from '@midwayjs/hooks-core'
 import { ignorePattern } from './ignorePattern'
 import { ProjectConfig, UserConfig } from './type'

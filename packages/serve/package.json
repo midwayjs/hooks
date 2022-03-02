@@ -1,0 +1,27 @@
+{
+  "name": "@midwayjs/serve",
+  "version": "3.0.0-rc.10",
+  "description": "Static Middleware for midway hooks",
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "keywords": [
+    "rpc",
+    "midway",
+    "hooks"
+  ],
+  "main": "dist/midwayjs-serve.cjs.js",
+  "module": "dist/midwayjs-serve.esm.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@midwayjs/hooks": "^3.0.0-rc.10",
+    "koa-static-cache": "5.1.4",
+    "@types/koa-static-cache": "5.1.1"
+  }
+}
