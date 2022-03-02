@@ -1,5 +1,18 @@
 # @midwayjs/bundler
 
+## 3.0.0-rc.11
+
+### Patch Changes
+
+- e991c98: use midway.config.js for api server project, fix #195
+- 5883056: add @midwayjs/esrun to support decorator & tsconfig-paths, fix #207
+- e991c98: hooks-kit now support file-route
+- Updated dependencies [e991c98]
+- Updated dependencies [5883056]
+- Updated dependencies [e991c98]
+  - @midwayjs/hooks-core@3.0.0-rc.11
+  - @midwayjs/esrun@3.0.0-rc.11
+
 ## 3.0.0-rc.10
 
 ### Patch Changes

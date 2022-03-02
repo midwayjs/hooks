@@ -1,5 +1,11 @@
 # @midwayjs/rpc
 
+## 3.0.0-rc.11
+
+### Patch Changes
+
+- 5883056: add @midwayjs/esrun to support decorator & tsconfig-paths, fix #207
+
 ## 3.0.0-rc.10
 
 ### Patch Changes

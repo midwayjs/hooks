@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/esrun",
-  "version": "3.0.0-rc.10",
+  "version": "3.0.0-rc.11",
   "description": "Super fast alternative for ts-node/jiti, support tsconfig paths",
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
