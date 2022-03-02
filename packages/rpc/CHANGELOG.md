@@ -1,5 +1,14 @@
 # @midwayjs/rpc
 
+## 3.0.0-rc.11
+
+### Patch Changes
+
+- e991c98: use midway.config.js for api server project, fix #195
+- 5883056: add @midwayjs/esrun to support decorator & tsconfig-paths, fix #207
+- 30bc2f6: Add `@midwayjs/serve` to serve static files in FaaS environments, fix [#196](https://github.com/midwayjs/hooks/issues/196)
+- e991c98: hooks-kit now support file-route
+
 ## 3.0.0-rc.10
 
 ### Patch Changes
