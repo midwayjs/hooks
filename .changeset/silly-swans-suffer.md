@@ -10,4 +10,4 @@
 '@midwayjs/serve': patch
 ---
 
-Add `@midwayjs/serve` to serve static files in FaaS environments
+Add `@midwayjs/serve` to serve static files in FaaS environments, fix [#196](https://github.com/midwayjs/hooks/issues/196)
