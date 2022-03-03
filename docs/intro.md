@@ -97,7 +97,7 @@ Midway 是一个有着 8 年历史的 Node.js 框架，具有强大的后端功�
 
 ## 创建应用
 
-Midway Hooks 目前提供了如下模版：
+Midway Hooks 目前提供了如下模板：
 
 - 全栈应用
   - [react](https://github.com/midwayjs/hooks/blob/main/examples/react)
