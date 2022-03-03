@@ -21,6 +21,7 @@
     "@midwayjs/hooks": "^3.0.0-rc.11",
     "@midwayjs/hooks-bundler": "^3.0.0-rc.11",
     "@midwayjs/hooks-core": "^3.0.0-rc.11",
+    "@midwayjs/serve": "^3.0.0-rc.11",
     "@midwayjs/mock": "^3.0.11",
     "cac": "^6.7.12",
     "consola": "^2.15.3",

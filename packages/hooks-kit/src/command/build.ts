@@ -112,27 +112,7 @@ async function executePromise(promise: Promise<any> | any) {
 }
 
 function createRender(dist: string) {
-  const code = `
-  const { Api, Get, Middleware } = require('@midwayjs/hooks');
-  const cache = require('koa-static-cache');
-  const path = require('path');
-  
-  const client = path.join(__dirname, '..', '_client');
-
-  exports.default = Api(
-    Get('/*'),
-    Middleware(
-      cache({
-        dir: client,
-        dynamic: true,
-        alias: { '/': 'index.html' },
-        buffer: true,
-      })
-    ),
-    async () => {}
-  );
-  `
-
+  const code = `exports.default = require('@midwayjs/serve').Serve('/*', { dir: '_client', isKit: true });`
   const file = join(dist, '_serve/index.js')
   fs.ensureFileSync(file)
   fs.writeFileSync(file, code, 'utf-8')

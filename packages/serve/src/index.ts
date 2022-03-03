@@ -1,16 +1,18 @@
 import { useContext, Get, Api, Middleware } from '@midwayjs/hooks'
 import KoaStaticCache, { Options } from 'koa-static-cache'
-import { join, isAbsolute } from 'path'
+import { join } from 'path'
 
-export { Options } from 'koa-static-cache'
+export interface ServeOptions extends Options {
+  isKit?: boolean
+}
 
-const defaultOptions: Options = {
+const defaultOptions: ServeOptions = {
   dynamic: true,
   alias: { '/': 'index.html' },
   buffer: true,
 }
 
-export const serve = (options: Options) => {
+export const serve = (options: ServeOptions) => {
   let middleware: any
 
   return async (next: any) => {
@@ -18,8 +20,8 @@ export const serve = (options: Options) => {
 
     if (!middleware) {
       const baseDir: string = await ctx.requestContext.get('baseDir')
-      options.dir = isAbsolute(options.dir)
-        ? options.dir
+      options.dir = options.isKit
+        ? join(baseDir, options.dir)
         : join(baseDir, '..', options.dir)
 
       middleware = KoaStaticCache({
