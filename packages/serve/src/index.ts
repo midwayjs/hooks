@@ -13,7 +13,7 @@ const defaultOptions: ServeOptions = {
 }
 
 export const serve = (options: ServeOptions) => {
-  let middleware: any
+  let middleware: ReturnType<typeof KoaStaticCache>
 
   return async (next: any) => {
     const ctx = useContext()
@@ -35,5 +35,9 @@ export const serve = (options: ServeOptions) => {
 }
 
 export function Serve(url: string, options: Options) {
-  return Api(Get(url), Middleware(serve(options)), async () => {})
+  return Api(Get(url), Middleware(serve(options)), async () => {
+    const ctx = useContext()
+    ctx.status = 404
+    return 'Not Found'
+  })
 }
