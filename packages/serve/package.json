@@ -1,7 +1,7 @@
 {
-  "name": "@midwayjs/rpc",
+  "name": "@midwayjs/serve",
   "version": "3.0.0-rc.11",
-  "description": "A rpc client for Midway Hooks",
+  "description": "Static Middleware for midway hooks",
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
   "license": "MIT",
@@ -14,18 +14,14 @@
     "midway",
     "hooks"
   ],
-  "main": "dist/midwayjs-rpc.cjs.js",
-  "module": "dist/midwayjs-rpc.esm.js",
-  "devDependencies": {
-    "@midwayjs/hooks-core": "^3.0.0-rc.11",
-    "@types/koa-compose": "3"
-  },
+  "main": "dist/midwayjs-serve.cjs.js",
+  "module": "dist/midwayjs-serve.esm.js",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "isomorphic-unfetch": "^3.1.0",
-    "koa-compose": "^4.1.0",
-    "redaxios": "^0.4.1"
+    "@midwayjs/hooks": "^3.0.0-rc.11",
+    "koa-static-cache": "5.1.4",
+    "@types/koa-static-cache": "5.1.1"
   }
 }

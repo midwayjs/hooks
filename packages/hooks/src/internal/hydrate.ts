@@ -5,7 +5,7 @@ type Mod = {
   mod: any
 }
 
-type HydateOptions = {
+type HydrateOptions = {
   modules: Mod[]
 }
 
@@ -15,12 +15,12 @@ export function isHydrate() {
   return !!globalThis[MIDWAY_HOOKS_HYDRATE_OPTIONS]
 }
 
-export function setHydrateOptions(options: HydateOptions) {
+export function setHydrateOptions(options: HydrateOptions) {
   setProjectRoot('/')
   setConfig({})
   globalThis[MIDWAY_HOOKS_HYDRATE_OPTIONS] = options
 }
 
-export function getHydrateOptions(): HydateOptions {
+export function getHydrateOptions(): HydrateOptions {
   return globalThis[MIDWAY_HOOKS_HYDRATE_OPTIONS]
 }

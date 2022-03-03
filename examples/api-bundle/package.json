@@ -8,16 +8,16 @@
     "build": "mw build && hcc && ncc build scripts/bootstrap -o build"
   },
   "dependencies": {
-    "@midwayjs/bootstrap": "^3.0.6",
-    "@midwayjs/hooks": "^3.0.0-rc.8",
-    "@midwayjs/koa": "^3.0.6"
+    "@midwayjs/bootstrap": "^3.0.11",
+    "@midwayjs/hooks": "^3.0.0-rc.10",
+    "@midwayjs/koa": "^3.0.11"
   },
   "devDependencies": {
-    "@midwayjs/hcc": "^3.0.0-rc.8",
-    "@midwayjs/cli": "^1.2.95",
-    "@midwayjs/cli-plugin-build": "^1.2.95",
+    "@midwayjs/hcc": "^3.0.0-rc.10",
+    "@midwayjs/cli": "^1.3.0",
+    "@midwayjs/cli-plugin-build": "^1.2.97",
     "@vercel/ncc": "^0.33.3",
-    "@midwayjs/mock": "^3.0.6",
+    "@midwayjs/mock": "^3.0.11",
     "typescript": "^4.3.5"
   }
 }

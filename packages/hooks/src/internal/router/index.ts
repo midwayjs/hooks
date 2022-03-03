@@ -2,11 +2,11 @@ import {
   AbstractRouter,
   ApiRoute,
   ApiRouter,
+  createDebug,
   urlJoin,
 } from '@midwayjs/hooks-core'
 import { getConfig, getProjectRoot } from '../config'
 import { join } from 'upath'
-import { createDebug } from '@midwayjs/hooks-core'
 import { run } from '@midwayjs/glob'
 import { FileSystemRouter } from './file'
 

@@ -1,8 +1,8 @@
 import type {
-  RequestArgs,
-  RequestRoute,
   ApiRoute,
   HttpTrigger,
+  RequestArgs,
+  RequestRoute,
 } from '@midwayjs/hooks-core'
 
 type TranspileApiFunction = {
