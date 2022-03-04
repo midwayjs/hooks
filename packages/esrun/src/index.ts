@@ -10,7 +10,7 @@ export function register() {
 
   registerSWC(options)
 
-  if (Array.isArray(options.paths) && options.paths.length) {
+  if (options.paths && Object.keys(options.paths).length) {
     require('tsconfig-paths/register')
   }
 }
