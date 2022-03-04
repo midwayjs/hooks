@@ -8,7 +8,5 @@ test('register', async () => {
   register()
 
   expect(originRegister).toHaveBeenCalled()
-  expect(require('tsconfig-paths/register')).toEqual(
-    'is tsconfig-paths/register mock'
-  )
+  expect(require('./mock').isRegisterCalled).toEqual(true)
 })
