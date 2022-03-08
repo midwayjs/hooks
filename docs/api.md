@@ -230,14 +230,13 @@ import { Api, Get, Params, useContext } from '@midwayjs/hooks'
 
 export default Api(
   Get('/article/:id'),
-  Params<{ id: string }>(,
-    async () => {
-      const ctx = useContext()
-      return {
-        article: ctx.params.id
-      }
+  Params<{ id: string }>(),
+  async () => {
+    const ctx = useContext()
+    return {
+      article: ctx.params.id
     }
-  )
+  }
 )
 ```
 
