@@ -2,20 +2,21 @@ import { z } from 'zod'
 import { HttpStatus, MidwayHttpError, registerErrorCode } from '@midwayjs/core'
 import { Operator, setValidator, useContext } from '@midwayjs/hooks-core'
 
-const HooksValidateErrorCode = registerErrorCode('HOOKS_VALIDATE', {
-  VALIDATE_FAIL: 10000,
+const HooksValidateErrorCode = registerErrorCode('Validation', {
+  FAILED: 'FAILED',
 })
 
 class HooksValidationError extends MidwayHttpError {
   constructor(message: string, status: number, cause: any) {
-    super(message, status, HooksValidateErrorCode.VALIDATE_FAIL, { cause })
+    super(message, status, HooksValidateErrorCode.FAILED, { cause })
   }
 }
 
 export { Validate } from '@midwayjs/hooks-core'
 
-setValidator(async (schema: z.Schema<any>, input: any) => {
-  const result = await schema.safeParseAsync(input)
+setValidator(async (schemas: any, inputs: any[]) => {
+  const result = await z.tuple(schemas).safeParseAsync(inputs)
+
   if (result.success === false) {
     throw new HooksValidationError(
       result.error.message,
@@ -44,11 +45,8 @@ export function ValidateHttp(options: ValidateHttpOption): Operator<void> {
         if (options.headers) await options.headers.parseAsync(ctx.headers)
         if (options.data) {
           const inputs = getInputArguments()
-          for (let i = 0; i < options.data.length; i++) {
-            const schema = options.data[i]
-            const input = inputs[i]
-            await schema.parseAsync(input)
-          }
+          const tuple = z.tuple(options.data as any)
+          await tuple.parseAsync(inputs)
         }
       } catch (error) {
         throw new HooksValidationError(
