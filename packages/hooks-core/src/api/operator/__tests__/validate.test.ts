@@ -42,9 +42,9 @@ describe('validator', () => {
   })
 
   it('should support custom validator', async () => {
-    const validator: Validator = (schema, input) => {
-      if (schema === String) {
-        if (typeof input !== 'string') {
+    const validator: Validator = (schemas, inputs) => {
+      if (schemas[0] === String) {
+        if (typeof inputs[0] !== 'string') {
           throw new Error('input must be a string')
         }
       } else {

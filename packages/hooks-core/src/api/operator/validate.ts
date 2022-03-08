@@ -6,7 +6,7 @@ import { Operator } from '../type'
  * Validate input arguments.
  * Default lib is zod.
  */
-export type Validator = (schema: any, input: any) => any | Promise<any>
+export type Validator = (schemas: any[], input: any[]) => any | Promise<any>
 
 let validator: Validator = (schemas: any, input: any[]) => {
   const tuple = z.tuple(schemas as any)
