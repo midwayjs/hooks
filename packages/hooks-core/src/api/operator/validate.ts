@@ -6,10 +6,12 @@ import { Operator } from '../type'
  * Validate input arguments.
  * Default lib is zod.
  */
-export type Validator = (schema: any, input: any) => any | Promise<any>
+export type Validator = (schemas: any[], input: any[]) => any | Promise<any>
 
-let validator: Validator = (schema: z.Schema<any>, input: any) =>
-  schema.parseAsync(input)
+let validator: Validator = (schemas: any, input: any[]) => {
+  const tuple = z.tuple(schemas as any)
+  return tuple.parseAsync(input)
+}
 
 export function setValidator(newValidator: Validator) {
   validateFunction(newValidator, 'newValidator')
@@ -20,17 +22,9 @@ export function Validate(...schemas: any[]): Operator<void> {
   return {
     name: 'Validate',
     async execute({ getInputArguments }, next) {
+      validateFunction(validator, 'validator')
       const inputs = getInputArguments()
-
-      // validate args using valdiators
-      for (let i = 0; i < schemas.length; i++) {
-        const schema = schemas[i]
-        const input = inputs[i]
-
-        validateFunction(validator, 'validator')
-        await validator(schema, input)
-      }
-
+      await validator(schemas, inputs)
       return next()
     },
   }

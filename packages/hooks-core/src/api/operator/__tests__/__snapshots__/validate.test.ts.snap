@@ -11,6 +11,7 @@ exports[`validator should throw error 1`] = `
     \\"expected\\": \\"string\\",
     \\"received\\": \\"number\\",
     \\"path\\": [
+      0,
       \\"name\\"
     ],
     \\"message\\": \\"Expected string, received number\\"
@@ -25,6 +26,7 @@ exports[`validator should throw error 2`] = `
     \\"expected\\": \\"number\\",
     \\"received\\": \\"string\\",
     \\"path\\": [
+      0,
       \\"age\\"
     ],
     \\"message\\": \\"Expected number, received string\\"
