@@ -67,3 +67,24 @@ export function HSF(): Operator<void> {
     },
   }
 }
+
+export interface MQTrigger extends BaseTrigger {
+  type: ServerlessTriggerType.MQ
+  options: FaaSMetadata.MQTriggerOptions
+}
+
+export function MQ(options: FaaSMetadata.MQTriggerOptions): Operator<void> {
+  return {
+    name: ServerlessTriggerType.MQ,
+    metadata({ setMetadata }) {
+      setMetadata<MQTrigger>(OperatorType.Trigger, {
+        type: ServerlessTriggerType.MQ,
+        options,
+        parseArgs,
+        handlerDecorators: [
+          ServerlessTrigger(ServerlessTriggerType.MQ, options),
+        ],
+      })
+    },
+  }
+}
