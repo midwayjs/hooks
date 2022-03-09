@@ -1,5 +1,13 @@
 # @midwayjs/hooks-core
 
+## 3.0.0-rc.12
+
+### Patch Changes
+
+- e1feaea: Fix #239, use tuple to validate input args and update docs
+- 3d6e603: Fix [#241](https://github.com/midwayjs/hooks/issues/241)
+- a7e15f4: support spa for hooks-kit Fixed #238
+
 ## 3.0.0-rc.11
 
 ### Patch Changes
