@@ -226,18 +226,23 @@ fetch('/api/articles?page=0&limit=10')
 如果希望接口路径是 `/article/100`，并获取 id 为 `100` 的值，可以这样写：
 
 ```ts
-import { Api, Get, Params, useContext } from '@midwayjs/hooks'
+import {
+  Api,
+  Get,
+  Params,
+  useContext,
+} from '@midwayjs/hooks';
 
 export default Api(
   Get('/article/:id'),
   Params<{ id: string }>(),
   async () => {
-    const ctx = useContext()
+    const ctx = useContext();
     return {
-      article: ctx.params.id
-    }
+      article: ctx.params.id,
+    };
   }
-)
+);
 ```
 
 前端调用

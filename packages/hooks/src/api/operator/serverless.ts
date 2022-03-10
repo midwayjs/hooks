@@ -1,14 +1,11 @@
-import {
-  FaaSMetadata,
-  ServerlessTrigger,
-  ServerlessTriggerType,
-} from '@midwayjs/decorator'
-import { BaseTrigger, Operator, OperatorType } from '@midwayjs/hooks-core'
+import { ServerlessTrigger, ServerlessTriggerType } from '@midwayjs/decorator'
+import { Operator, OperatorType } from '@midwayjs/hooks-core'
 import { HooksTrigger } from './type'
+import type { FaaSMetadata } from '@midwayjs/decorator'
 
-export interface ServerlessTimerTrigger extends HooksTrigger {
-  type: ServerlessTriggerType.TIMER
-  options: FaaSMetadata.TimerTriggerOptions
+export interface ServerlessTrigger extends HooksTrigger {
+  type: any
+  options: any
 }
 
 function parseArgs({ args }) {
@@ -16,75 +13,31 @@ function parseArgs({ args }) {
   return event?.args || []
 }
 
-export function ServerlessTimer(
-  options: FaaSMetadata.TimerTriggerOptions
-): Operator<void> {
-  return {
-    name: ServerlessTriggerType.TIMER,
-    metadata({ setMetadata }) {
-      setMetadata<ServerlessTimerTrigger>(OperatorType.Trigger, {
-        type: ServerlessTriggerType.TIMER,
-        options,
-        parseArgs,
-        handlerDecorators: [
-          ServerlessTrigger(ServerlessTriggerType.TIMER, options),
-        ],
-      })
-    },
+function createServerlessTrigger<O>(type: any) {
+  return (options: O): Operator<void> => {
+    return {
+      name: type,
+      metadata({ setMetadata }) {
+        setMetadata<ServerlessTrigger>(OperatorType.Trigger, {
+          type,
+          options,
+          parseArgs,
+          handlerDecorators: [ServerlessTrigger(type, options)],
+        })
+      },
+    }
   }
 }
 
-export interface MTopTrigger extends HooksTrigger {
-  type: ServerlessTriggerType.MTOP
-}
-
-export function MTop(): Operator<void> {
-  return {
-    name: ServerlessTriggerType.MTOP,
-    metadata({ setMetadata }) {
-      setMetadata<MTopTrigger>(OperatorType.Trigger, {
-        type: ServerlessTriggerType.MTOP,
-        parseArgs,
-        handlerDecorators: [ServerlessTrigger(ServerlessTriggerType.MTOP)],
-      })
-    },
-  }
-}
-
-export interface HSFTrigger extends BaseTrigger {
-  type: ServerlessTriggerType.HSF
-}
-
-export function HSF(): Operator<void> {
-  return {
-    name: ServerlessTriggerType.HSF,
-    metadata({ setMetadata }) {
-      setMetadata<HSFTrigger>(OperatorType.Trigger, {
-        type: ServerlessTriggerType.HSF,
-        parseArgs,
-        handlerDecorators: [ServerlessTrigger(ServerlessTriggerType.HSF)],
-      })
-    },
-  }
-}
-
-export interface MQTrigger extends BaseTrigger {
-  type: ServerlessTriggerType.MQ
-  options: FaaSMetadata.MQTriggerOptions
-}
-
-export function MQ(options: FaaSMetadata.MQTriggerOptions): Operator<void> {
-  return {
-    name: ServerlessTriggerType.MQ,
-    metadata({ setMetadata }) {
-      setMetadata<MQTrigger>(OperatorType.Trigger, {
-        type: ServerlessTriggerType.MQ,
-        options,
-        parseArgs,
-        handlerDecorators: [
-          ServerlessTrigger(ServerlessTriggerType.MQ, options),
-        ],
-      })
-    },
-  }
-}
+export const Timer = createServerlessTrigger<FaaSMetadata.TimerTriggerOptions>(
+  ServerlessTriggerType.TIMER
+)
+export const MTop = createServerlessTrigger<FaaSMetadata.MTopTriggerOptions>(
+  ServerlessTriggerType.MTOP
+)
+export const HSF = createServerlessTrigger<FaaSMetadata.HSFTriggerOptions>(
+  ServerlessTriggerType.HSF
+)
+export const MQ = createServerlessTrigger<FaaSMetadata.MQTriggerOptions>(
+  ServerlessTriggerType.MQ
+)
