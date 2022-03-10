@@ -52,7 +52,7 @@ export type RuntimeConfig = {
   /**
    * @description global middleware, only available in http mode
    */
-  middleware?: HooksMiddleware[]
+  middleware?: HooksMiddleware[] | any[]
 }
 
 /**

@@ -2,7 +2,7 @@ import parseArgs from 'fn-args'
 import debug from 'debug'
 
 export function isHooksMiddleware(fn: (...args: any[]) => any) {
-  return parseArgs(fn).length === 1
+  return typeof fn === 'function' && parseArgs(fn).length === 1
 }
 
 export function extractMetadata(target: any) {
