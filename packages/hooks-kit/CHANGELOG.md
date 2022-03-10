@@ -1,5 +1,17 @@
 # @midwayjs/hooks-kit
 
+## 3.0.0-rc.13
+
+### Patch Changes
+
+- 563430f: Hooks middleware now accept any types 589853fc001751f8ca94b2e04a0b5b416cdfe83f
+- Updated dependencies [563430f]
+  - @midwayjs/esrun@3.0.0-rc.13
+  - @midwayjs/hooks@3.0.0-rc.13
+  - @midwayjs/hooks-bundler@3.0.0-rc.13
+  - @midwayjs/hooks-core@3.0.0-rc.13
+  - @midwayjs/serve@3.0.0-rc.13
+
 ## 3.0.0-rc.12
 
 ### Patch Changes

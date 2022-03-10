@@ -1,5 +1,11 @@
 # @midwayjs/rpc
 
+## 3.0.0-rc.13
+
+### Patch Changes
+
+- 563430f: Hooks middleware now accept any types 589853fc001751f8ca94b2e04a0b5b416cdfe83f
+
 ## 3.0.0-rc.12
 
 ### Patch Changes
