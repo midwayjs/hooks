@@ -1,5 +1,14 @@
 # @midwayjs/bundler
 
+## 3.0.0-rc.14
+
+### Patch Changes
+
+- a11ce76: Fix class middleware support
+- Updated dependencies [a11ce76]
+  - @midwayjs/hooks-core@3.0.0-rc.14
+  - @midwayjs/esrun@3.0.0-rc.14
+
 ## 3.0.0-rc.13
 
 ### Patch Changes
