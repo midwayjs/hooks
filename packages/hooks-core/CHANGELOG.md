@@ -1,5 +1,11 @@
 # @midwayjs/hooks-core
 
+## 3.0.0-rc.14
+
+### Patch Changes
+
+- a11ce76: Fix class middleware support
+
 ## 3.0.0-rc.13
 
 ### Patch Changes
