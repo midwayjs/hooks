@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@swc-node/register": "1.4.2",
-    "tsconfig-paths": "3.13.0"
+    "tsconfig-paths": "3.14.0"
   },
   "files": [
     "dist",
