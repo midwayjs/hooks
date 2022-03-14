@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-core",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Midway Hooks Core",
   "keywords": [
     "midway",
@@ -27,6 +27,7 @@
     "es-module-lexer": "^0.4.0",
     "fn-args": "^5.0.0",
     "globby": "^11.0.4",
+    "is-class": "^0.0.9",
     "jiti": "^1.10.1",
     "koa-static-cache": "^5.1.4",
     "lodash": "^4.17.21",
