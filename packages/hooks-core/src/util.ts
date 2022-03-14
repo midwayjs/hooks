@@ -1,6 +1,7 @@
 import parseArgs from 'fn-args'
 import { last } from 'lodash'
 import { relative, resolve, sep } from 'path'
+import isClass from 'is-class'
 
 export function isDevelopment() {
   if (
@@ -23,12 +24,16 @@ export function useHooksMiddleware(fn: (...args: any[]) => any) {
      * Hooks middleware
      * const middleware = (next) => { const ctx = useContext() }
      */
-    if (parseArgs(fn).length === 1) {
+    if (isHooksMiddleware(fn)) {
       const next = last(args)
       return fn(next)
     }
     return fn(...args)
   }
+}
+
+export function isHooksMiddleware (fn: any) {
+  return typeof fn === 'function' && parseArgs(fn).length === 1 && !isClass(fn)
 }
 
 export function formatCode(code: string) {
