@@ -14612,10 +14612,10 @@ unpipe@1.0.0, unpipe@~1.0.0:
   resolved "https://registry.npmjs.org/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
   integrity sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
 
-unplugin@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.4.0.tgz#43a923f0267f8834118a926c406131d1d84a1358"
-  integrity sha512-4ScITEmzlz1iZW3tkz+3L1V5k/xMQ6kjgm4lEXKxH0ozd8/OUWfiSA7RMRyrawsvq/t50JIzPpp1UyuSL/AXkA==
+unplugin@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.5.0.tgz#d250a886ad60e825e381b4a8c7fd30e1a22cf97c"
+  integrity sha512-vx4YvhGOUbVB4TeunGVqQgmdLn63sRKag60YcfzwgPX0iKpwotcajD1fJoY1jsqLRDcb1Hj2mZqjawa651VXCA==
   dependencies:
     chokidar "^3.5.3"
     webpack-virtual-modules "^0.4.3"
