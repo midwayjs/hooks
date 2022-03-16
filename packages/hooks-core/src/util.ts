@@ -18,17 +18,11 @@ export function isDevelopment() {
   return false
 }
 
-export function useHooksMiddleware(fn: (...args: any[]) => any) {
+export function useHooksMiddleware(mw: (...args: any[]) => any) {
+  if (!isHooksMiddleware(mw)) return mw
   return (...args: any[]) => {
-    /**
-     * Hooks middleware
-     * const middleware = (next) => { const ctx = useContext() }
-     */
-    if (isHooksMiddleware(fn)) {
-      const next = last(args)
-      return fn(next)
-    }
-    return fn(...args)
+    const next = last(args)
+    return mw(next)
   }
 }
 
