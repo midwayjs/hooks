@@ -14,7 +14,7 @@ function parseArgs({ args }) {
 }
 
 function createServerlessTrigger<O>(type: any) {
-  return (options: O): Operator<void> => {
+  return (options?: O): Operator<void> => {
     return {
       name: type,
       metadata({ setMetadata }) {

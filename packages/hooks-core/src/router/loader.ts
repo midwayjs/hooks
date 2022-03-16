@@ -1,5 +1,4 @@
 import parseFunctionArgs from 'fn-args'
-import isFunction from 'lodash/isFunction'
 import pickBy from 'lodash/pickBy'
 import {
   ApiModule,
@@ -19,7 +18,7 @@ import {
 } from '../api'
 import { ApiFunction, Route } from '../types'
 import { AbstractRouter } from './base'
-import { createDebug } from '../common'
+import { createDebug, isFunction } from '../common'
 
 const debug = createDebug('hooks-core: loader')
 
