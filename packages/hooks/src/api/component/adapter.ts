@@ -163,15 +163,15 @@ export class MidwayFrameworkAdapter {
     return await ContextManager.run({ ctx }, async () => await next())
   }
 
-  private useHooksMiddleware(fn: (...args: any[]) => any) {
-    if (!isHooksMiddleware(fn)) return fn
+  private useHooksMiddleware(mw: (...args: any[]) => any | any) {
+    if (!isHooksMiddleware(mw)) return mw
 
     return (...args: any[]) => {
       const next =
         this.frameworkType === MidwayFrameworkType.WEB_EXPRESS
           ? args[args.length - 1]
           : args[1]
-      return fn(next)
+      return mw(next)
     }
   }
 
