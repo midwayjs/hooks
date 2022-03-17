@@ -72,8 +72,7 @@ function loadHydrateModules(router: AbstractRouter) {
 }
 
 function loadApiModules(source: string, router: AbstractRouter) {
-  const routes = loadApiFiles(source, router).map((file) =>
-    parseApiModule(require(file), file, router)
-  )
+  const { apis } = loadApiFiles(source, router)
+  const routes = apis.map((file) => parseApiModule(require(file), file, router))
   return flattenDeep(routes)
 }

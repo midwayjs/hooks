@@ -56,6 +56,7 @@ export function parseApiModule(
     // default is http trigger
     let trigger: Trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
 
+    // File Router
     if (!trigger) {
       // default is http
       const HttpMethod = parseFunctionArgs(fn).length === 0 ? Get : Post
@@ -66,6 +67,7 @@ export function parseApiModule(
       trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
     }
 
+    // Http Path
     if (trigger.type === HttpTriggerType) {
       trigger.path ??= router.functionToHttpPath(
         file,
@@ -75,6 +77,7 @@ export function parseApiModule(
       debug('trigger: %o', trigger)
     }
 
+    // Middleware
     const fnMiddleware = Reflect.getMetadata(OperatorType.Middleware, fn) || []
     const fileMiddleware = mod?.config?.middleware || []
     const middleware = [...fnMiddleware, ...fileMiddleware]
