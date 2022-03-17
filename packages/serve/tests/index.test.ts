@@ -15,6 +15,6 @@ describe('serve handler', () => {
   test('should serve index.html', async () => {
     const request = createHttpRequest(app)
     const response = await request.get('/kit').expect(200)
-    expect(response.text).toEqual('<h1>This is Client</h1>\n')
+    expect(response.text.includes('This is Client')).toBeTruthy()
   })
 })
