@@ -62,12 +62,16 @@ export function loadApiFiles(source: string, router: AbstractRouter) {
 
   debug('scan files: %O', files)
 
-  const apiFiles = files.filter(
+  const apis = files.filter(
     (file) =>
       router.isSourceFile(file, source) &&
       router.isApiFile({ file, mod: require(file) })
   )
 
-  debug('api files: %O', apiFiles)
-  return apiFiles
+  debug('api files: %O', apis)
+
+  return {
+    apis,
+    files,
+  }
 }
