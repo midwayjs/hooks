@@ -1,5 +1,14 @@
 # @midwayjs/hcc
 
+## 3.0.0-rc.15
+
+### Patch Changes
+
+- f342e0a: @midwayjs/serve, fix path issue at windows, fixes #255
+- Updated dependencies [f342e0a]
+  - @midwayjs/hooks@3.0.0-rc.15
+  - @midwayjs/hooks-core@3.0.0-rc.15
+
 ## 3.0.0-rc.14
 
 ### Patch Changes
