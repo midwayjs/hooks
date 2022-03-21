@@ -1,6 +1,6 @@
 import cac from 'cac'
 import { join } from 'path'
-import { buildEntry } from './midway'
+import { hcc } from './midway'
 
 const cli = cac('hcc')
 
@@ -11,7 +11,7 @@ cli
     default: false,
   })
   .action(async (root: string, options: { clean: boolean }) => {
-    await buildEntry()
+    await hcc()
   })
 
 cli.version(require(join(__dirname, '../package.json')).version)

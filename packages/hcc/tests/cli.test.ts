@@ -2,7 +2,7 @@ import execa from 'execa'
 import { join } from 'path'
 import { existsSync } from 'fs'
 import { remove } from 'fs-extra'
-import { buildEntry } from '../src/midway'
+import { hcc } from '../src/midway'
 import fetch from 'isomorphic-unfetch'
 import { setProjectRoot } from '@midwayjs/hooks/internal'
 
@@ -15,7 +15,7 @@ describe('hcc', () => {
 
     await remove(join(fixture, 'dist'))
     await execa('npm', ['run', 'build'], { cwd: fixture })
-    await buildEntry()
+    await hcc()
 
     expect(existsSync(join(fixture, 'dist/hcc.js'))).toBe(true)
 
@@ -45,7 +45,6 @@ describe('hcc', () => {
         }
       })
     })
-
     await promise
   })
 })
