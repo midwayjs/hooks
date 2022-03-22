@@ -3,7 +3,16 @@ import { Api } from '../..'
 import { Post } from '../http'
 import { setValidator, Validate, Validator } from '../validate'
 
+const validator: Validator = (schemas: any, input: any[]) => {
+  const tuple = z.tuple(schemas as any)
+  return tuple.parseAsync(input)
+}
+
 describe('validator', () => {
+  beforeEach(() => {
+    setValidator(validator)
+  })
+
   it('use default validator', async () => {
     const schema = z.number()
 

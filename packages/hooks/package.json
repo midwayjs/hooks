@@ -28,10 +28,11 @@
     "@midwayjs/decorator": "^3.0.10",
     "@midwayjs/core": "^3.1.0"
   },
+  "devDependencies": {
+    "zod": "^3.11.6"
+  },
   "peerDependencies": {
-    "zod": ">=3.0.0",
-    "@midwayjs/decorator": ">=3.0.0",
-    "@midwayjs/core": ">=3.0.0"
+    "zod": ">=3.0.0"
   },
   "publishConfig": {
     "access": "public"

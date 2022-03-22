@@ -29,10 +29,10 @@
     "proper-url-join": "^2.1.1",
     "reflect-metadata": "^0.1.13",
     "upath": "^2.0.1",
-    "zod": "^3.11.6",
     "type-fest": "2.12.1"
   },
   "devDependencies": {
+    "zod": "^3.11.6",
     "@types/debug": "4.1.7",
     "@types/lodash": "4.14.180",
     "@types/proper-url-join": "2.1.1"

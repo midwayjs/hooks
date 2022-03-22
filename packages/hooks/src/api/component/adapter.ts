@@ -19,7 +19,6 @@ import {
   Del,
   Get,
   Head,
-  MidwayFrameworkType,
   Options,
   Patch,
   Post,
@@ -40,10 +39,6 @@ export class MidwayFrameworkAdapter {
     public app: MidwayApplication,
     public container: IMidwayContainer
   ) {}
-
-  private get frameworkType() {
-    return this.app.getFrameworkType()
-  }
 
   private controllers = []
   bindControllers() {
@@ -144,19 +139,10 @@ export class MidwayFrameworkAdapter {
   }
 
   registerGlobalMiddleware(middlewares: HooksMiddleware[] = []) {
-    const runtime =
-      this.frameworkType === MidwayFrameworkType.WEB_EXPRESS
-        ? this.useExpressRuntime
-        : this.useUniversalRuntime
-
-    this.app.use?.(runtime)
+    this.app.use?.(this.useUniversalRuntime)
     for (const mw of middlewares) {
       this.app.use?.(this.useHooksMiddleware(mw))
     }
-  }
-
-  private async useExpressRuntime(req: any, res: any, next: any) {
-    throw new Error('Express runtime is not supported. Please use koa.')
   }
 
   private async useUniversalRuntime(ctx: any, next: any) {
@@ -167,10 +153,7 @@ export class MidwayFrameworkAdapter {
     if (!isHooksMiddleware(mw)) return mw
 
     return (...args: any[]) => {
-      const next =
-        this.frameworkType === MidwayFrameworkType.WEB_EXPRESS
-          ? args[args.length - 1]
-          : args[1]
+      const next = args[1]
       return mw(next)
     }
   }

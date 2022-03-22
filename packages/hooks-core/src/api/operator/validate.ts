@@ -1,4 +1,3 @@
-import { z } from 'zod'
 import { validateFunction } from '../../'
 import { Operator } from '../type'
 
@@ -9,8 +8,7 @@ import { Operator } from '../type'
 export type Validator = (schemas: any[], input: any[]) => any | Promise<any>
 
 let validator: Validator = (schemas: any, input: any[]) => {
-  const tuple = z.tuple(schemas as any)
-  return tuple.parseAsync(input)
+  throw new Error('validator is not set')
 }
 
 export function setValidator(newValidator: Validator) {
