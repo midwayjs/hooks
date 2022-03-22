@@ -10,7 +10,7 @@ export type ArrayToObject<T, R = {}> = T extends [infer First, ...infer Rest]
   : R
 
 export type ApiRunner<
-  Input extends object | void,
+  Input extends object | void | unknown,
   Handler extends AsyncFunction
 > = (
   ...args: Input extends void
