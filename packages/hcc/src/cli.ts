@@ -1,6 +1,7 @@
 import cac from 'cac'
 import { join } from 'path'
 import { hcc } from './midway'
+import { register } from '@midwayjs/esrun'
 
 const cli = cac('hcc')
 
@@ -11,6 +12,7 @@ cli
     default: false,
   })
   .action(async (root: string, options: { clean: boolean }) => {
+    register()
     await hcc()
   })
 

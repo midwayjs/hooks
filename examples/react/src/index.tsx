@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="app">
-      <img src="/logo.png" className="logo"></img>
+      <img src="/logo.png" className="logo" />
       <h2>Hello Midway Hooks</h2>
       <p style={{ textAlign: 'center' }}>
         Edit <code>src/api/*.ts</code> and watch it change.
