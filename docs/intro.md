@@ -66,7 +66,9 @@ import hello from './api';
 try {
   await hello(null, null);
 } catch (error) {
-  console.log(error.message); // 'name must be a string'
+  console.log(
+    JSON.parse(error.data.message)
+  );
   console.log(error.status); // 422
 }
 ```
