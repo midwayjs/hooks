@@ -11,7 +11,7 @@ test('args', () => {
 })
 
 test('parseRequestArgs useInputMetadata', () => {
-  const { route, inputMetadata, args } = parseRequestArgs([
+  const { trigger, metadata, args } = parseRequestArgs([
     'a',
     'b',
     {
@@ -28,15 +28,12 @@ test('parseRequestArgs useInputMetadata', () => {
     } as RequestRoute<HttpTrigger>,
   ])
 
-  expect(route).toEqual({
-    trigger: {
-      path: '/foo/:bar',
-      method: 'GET',
-    },
-    useInputMetadata: true,
+  expect(trigger).toEqual({
+    path: '/foo/:bar',
+    method: 'GET',
   })
 
-  expect(inputMetadata).toEqual({
+  expect(metadata).toEqual({
     params: {
       bar: 'baz',
     },
@@ -46,7 +43,7 @@ test('parseRequestArgs useInputMetadata', () => {
 })
 
 test('parseRequestArgs without useInputMetadata', () => {
-  const { route, inputMetadata, args } = parseRequestArgs([
+  const { trigger, metadata, args } = parseRequestArgs([
     'a',
     'b',
     {
@@ -63,16 +60,12 @@ test('parseRequestArgs without useInputMetadata', () => {
     } as RequestRoute<HttpTrigger>,
   ])
 
-  expect(route).toEqual({
-    trigger: {
-      path: '/foo/:bar',
-      method: 'GET',
-    },
-    useInputMetadata: false,
+  expect(trigger).toEqual({
+    path: '/foo/:bar',
+    method: 'GET',
   })
 
-  expect(inputMetadata).toEqual(null)
-
+  expect(metadata).toEqual(null)
   expect(args).toEqual([
     'a',
     'b',

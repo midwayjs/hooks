@@ -1,4 +1,5 @@
 import { BaseTrigger, HttpMethod } from '..'
+import { HttpTrigger } from '../api'
 
 export type FunctionId = string
 
@@ -17,16 +18,21 @@ export type ApiModule = {
 
 export type HooksMiddleware = (next: () => any | Promise<any>) => any
 
+export type RawRequestOptions = {
+  trigger: BaseTrigger
+  args?: any
+  metadata?: any
+}
+
 export type HttpRequestOptions = {
   url: string
   method: HttpMethod
-  data?: {
-    args: any[]
-  }
+  data?: { args: any[] } | FormData
 
   // query & headers
   query?: Record<string, string>
   headers?: Record<string, string>
+  files?: Record<string, File | FileList>
 }
 
 export type RequestRoute<T = any> = {

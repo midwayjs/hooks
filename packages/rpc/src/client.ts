@@ -1,46 +1,26 @@
-import type { HttpRequestOptions } from '@midwayjs/hooks-core'
-import axios, { Options } from 'redaxios'
-import fetch from 'isomorphic-unfetch'
+import type { BaseTrigger, RawRequestOptions } from '@midwayjs/hooks-core'
+import { Middleware, RequestContext } from './type'
+import type { RequestArgs } from '@midwayjs/hooks-core'
+import compose from 'koa-compose'
+import { parseRequestArgs } from './util'
 
-export type Context = {
-  req: HttpRequestOptions
-  res: any
-}
+export type RequestOptionsCreator<T> = (req: RawRequestOptions) => T
 
-export type Middleware = (ctx: Context, next: () => Promise<any>) => void
+export function createClient<
+  T extends RequestContext<any>,
+  R = T extends RequestContext<infer Req> ? Req : null
+>(
+  requestOptionsCreator: RequestOptionsCreator<R>,
+  getMiddlewares: () => Middleware<T>[]
+) {
+  return async (...requestArgs: RequestArgs<BaseTrigger, any>) => {
+    const rawOptions = parseRequestArgs(requestArgs)
+    const req = requestOptionsCreator(rawOptions)
 
-export const client: SetupOptions = {
-  baseURL: '',
-  async fetcher(req: HttpRequestOptions, options: SetupOptions) {
-    const res = await axios({
-      method: req.method as Options['method'],
-      url: req.url,
-      data: req.data,
-      params: req.query,
-      headers: req.headers,
-      baseURL: options.baseURL,
-      withCredentials: options.withCredentials,
-      fetch,
-    })
-    return res.data
-  },
-  middleware: [],
-  withCredentials: false,
-}
+    const ctx = { req, res: null } as unknown as T
+    const stack = getMiddlewares()
+    await compose(stack)(ctx)
 
-export type SetupOptions = {
-  fetcher?: Fetcher
-  middleware?: Middleware[]
-  // request config
-  baseURL?: string
-  withCredentials?: boolean
-}
-
-export type Fetcher = (
-  req: HttpRequestOptions,
-  options: SetupOptions
-) => Promise<any>
-
-export function setupHttpClient(options: SetupOptions) {
-  Object.assign(client, options)
+    return ctx.res
+  }
 }

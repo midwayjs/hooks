@@ -1,1 +1,1 @@
-# @midwayjs/rpc
+# @midwayjs/serve

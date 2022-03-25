@@ -1,54 +1,90 @@
-import type {
-  HttpInputMetadata,
-  HttpRequestOptions,
-  HttpTrigger,
-  RequestArgs,
-} from '@midwayjs/hooks-core'
-import { args, parseRequestArgs } from './util'
-import compose from 'koa-compose'
-import { client, Context, Middleware } from './client'
+import type { HttpRequestOptions } from '@midwayjs/hooks-core'
+import { args } from './util'
+import { createClient, RequestOptionsCreator } from './client'
+import { HttpContext, Middleware, SetupOptions } from './type'
+import axios, { Options } from 'redaxios'
+import fetch from 'isomorphic-unfetch'
 
-export async function http(
-  ...requestArgs: RequestArgs<HttpTrigger, HttpInputMetadata | any>
-) {
-  const options = buildRequestOptions(requestArgs)
-  const handler: Middleware = async (ctx, next) => {
-    ctx.res = await client.fetcher(options, client)
-    return next()
-  }
-  const ctx: Context = { req: options, res: null }
-  const stack = [...client.middleware, handler]
-  await compose(stack)(ctx)
-
-  return ctx.res
+export const client: SetupOptions = {
+  baseURL: '',
+  async fetcher(req: HttpRequestOptions, options: SetupOptions) {
+    const res = await axios({
+      method: req.method as Options['method'],
+      url: req.url,
+      data: req.data,
+      params: req.query,
+      headers: req.headers,
+      baseURL: options.baseURL,
+      withCredentials: options.withCredentials,
+      fetch,
+    })
+    return res.data
+  },
+  middleware: [],
+  withCredentials: false,
 }
 
-export function buildRequestOptions(
-  requestArgs: RequestArgs<HttpTrigger, HttpInputMetadata | any>
-) {
-  const {
-    route: { trigger },
-    inputMetadata,
-    args: inputs,
-  } = parseRequestArgs(requestArgs)
+export function setupHttpClient(options: SetupOptions) {
+  Object.assign(client, options)
+}
 
-  const options: HttpRequestOptions = {
+export const creator: RequestOptionsCreator<HttpRequestOptions> = (req) => {
+  const { trigger, metadata, args: inputs } = req
+
+  return {
     method: trigger.method,
     url:
-      typeof inputMetadata?.params === 'object'
-        ? format(trigger.path, inputMetadata.params)
+      typeof metadata?.params === 'object'
+        ? format(trigger.path, metadata.params)
         : trigger.path,
     data: inputs.length > 0 ? args(...inputs) : null,
 
-    query: inputMetadata?.query,
+    query: metadata?.query,
     headers: {
       accept: 'application/json',
-      ...inputMetadata?.headers,
+      ...metadata?.headers,
     },
+    files: metadata?.files,
+  }
+}
+
+const request: Middleware<HttpContext> = async (ctx, next) => {
+  ctx.res = await client.fetcher(ctx.req, client)
+  return next()
+}
+
+const uploader: Middleware<HttpContext> = async (ctx, next) => {
+  const files: Record<string, File | FileList> = ctx.req.files
+  if (!files) {
+    throw new Error('no files')
   }
 
-  return options
+  const formdata = new FormData()
+  for (const [key, value] of Object.entries(files)) {
+    if (value instanceof FileList) {
+      for (const file of value) {
+        formdata.append(key, file)
+      }
+    } else {
+      formdata.append(key, value)
+    }
+  }
+
+  ctx.req.data = formdata
+
+  return next()
 }
+
+export const http = createClient<HttpContext>(creator, () => [
+  ...client.middleware,
+  request,
+])
+
+export const upload = createClient<HttpContext>(creator, () => [
+  ...client.middleware,
+  uploader,
+  request,
+])
 
 export function format(url: string, params: Record<string, string>) {
   let result = url

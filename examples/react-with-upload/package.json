@@ -1,0 +1,28 @@
+{
+  "name": "hooks-react-with-upload-starter",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "hooks start",
+    "dev": "hooks dev",
+    "build": "hooks build"
+  },
+  "dependencies": {
+    "@midwayjs/hooks": "^3.0.0-rc.15",
+    "@midwayjs/hooks-upload": "^3.0.0-rc.15",
+    "@midwayjs/hooks-kit": "^3.0.0-rc.15",
+    "@midwayjs/koa": "^3.1.0",
+    "@midwayjs/rpc": "^3.0.0-rc.15",
+    "@midwayjs/upload": "3",
+    "ahooks": "^3.1.2",
+    "isomorphic-unfetch": "^3.1.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.13",
+    "@types/react-dom": "^17.0.8",
+    "@vitejs/plugin-react": "^1.1.3",
+    "typescript": "^4.3.5"
+  }
+}

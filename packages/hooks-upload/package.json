@@ -1,0 +1,33 @@
+{
+  "name": "@midwayjs/hooks-upload",
+  "version": "3.0.0-rc.15",
+  "description": "Static Middleware for midway hooks",
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "keywords": [
+    "rpc",
+    "midway",
+    "hooks"
+  ],
+  "main": "dist/midwayjs-hooks-upload.cjs.js",
+  "module": "dist/midwayjs-hooks-upload.esm.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "lodash.groupby": "4.6.0",
+    "@midwayjs/hooks-core": "^3.0.0-rc.15"
+  },
+  "peerDependencies": {
+    "@midwayjs/upload": "3"
+  },
+  "devDependencies": {
+    "@midwayjs/upload": "3",
+    "@types/lodash.groupby": "^4.6.6"
+  }
+}

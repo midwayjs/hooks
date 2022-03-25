@@ -5,7 +5,9 @@ import {
 } from '@midwayjs/hooks-core'
 import { http, Middleware, setupHttpClient } from '..'
 
-import { buildRequestOptions, format } from '../http'
+import { creator, format } from '../http'
+import { HttpContext } from '../type'
+import { parseRequestArgs } from '../util'
 
 it('format', () => {
   expect(format('/foo/:bar', { bar: 'baz' })).toBe('/foo/baz')
@@ -15,8 +17,8 @@ it('format', () => {
   )
 })
 
-it('buildRequestOptions', () => {
-  const options = buildRequestOptions([
+it('parseRequestArgs & creator', () => {
+  const rawOptions = parseRequestArgs([
     'a',
     'b',
     {
@@ -33,9 +35,10 @@ it('buildRequestOptions', () => {
     } as RequestRoute<HttpTrigger>,
   ])
 
-  expect(options).toMatchSnapshot()
+  expect(rawOptions).toMatchSnapshot()
+  expect(creator(rawOptions)).toMatchSnapshot()
 
-  const options2 = buildRequestOptions([
+  const rawOptions2 = parseRequestArgs([
     {
       trigger: {
         path: '/foo',
@@ -45,7 +48,8 @@ it('buildRequestOptions', () => {
     } as RequestRoute<HttpTrigger>,
   ])
 
-  expect(options2).toMatchSnapshot()
+  expect(rawOptions2).toMatchSnapshot()
+  expect(creator(rawOptions2)).toMatchSnapshot()
 })
 
 describe('http', () => {
@@ -70,7 +74,7 @@ describe('http', () => {
     const fetcher = jest.fn()
     fetcher.mockReturnValue({ isTest: true })
 
-    const middleware: Middleware = async (ctx, next) => {
+    const middleware: Middleware<HttpContext> = async (ctx, next) => {
       expect(ctx.req.method).toEqual('GET')
       expect(ctx.req.url).toEqual('/foo')
       await next()
