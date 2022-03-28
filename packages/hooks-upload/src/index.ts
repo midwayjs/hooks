@@ -5,6 +5,7 @@ import {
   OperatorType,
   HttpTrigger,
   useContext,
+  FileRecord,
 } from '@midwayjs/hooks-core'
 import type { UploadFileInfo } from '@midwayjs/upload'
 import groupBy from 'lodash.groupby'
@@ -20,9 +21,11 @@ export function useFields(): Record<string, string> {
   return ctx.fields
 }
 
-export function Upload(
-  path?: string
-): Operator<{ files: Record<string, File | FileList> }> {
+type Input = {
+  files: FileRecord
+}
+
+export function Upload(path?: string): Operator<Input> {
   return {
     name: 'Upload',
     input: true,

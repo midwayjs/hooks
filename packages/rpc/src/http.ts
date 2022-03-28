@@ -1,4 +1,4 @@
-import type { HttpRequestOptions } from '@midwayjs/hooks-core'
+import type { FileRecord, HttpRequestOptions } from '@midwayjs/hooks-core'
 import { args } from './util'
 import { createClient, RequestOptionsCreator } from './client'
 import { HttpContext, Middleware, SetupOptions } from './type'
@@ -53,8 +53,8 @@ const request: Middleware<HttpContext> = async (ctx, next) => {
   return next()
 }
 
-const uploader: Middleware<HttpContext> = async (ctx, next) => {
-  const files: Record<string, File | FileList> = ctx.req.files
+const formdata: Middleware<HttpContext> = async (ctx, next) => {
+  const files: FileRecord = ctx.req.files
   if (!files) {
     throw new Error('no files')
   }
@@ -82,7 +82,7 @@ export const http = createClient<HttpContext>(creator, () => [
 
 export const upload = createClient<HttpContext>(creator, () => [
   ...client.middleware,
-  uploader,
+  formdata,
   request,
 ])
 

@@ -24,6 +24,8 @@ export type RawRequestOptions = {
   metadata?: any
 }
 
+export type FileRecord = Record<string, File | FileList>
+
 export type HttpRequestOptions = {
   url: string
   method: HttpMethod
@@ -32,7 +34,7 @@ export type HttpRequestOptions = {
   // query & headers
   query?: Record<string, string>
   headers?: Record<string, string>
-  files?: Record<string, File | FileList>
+  files?: FileRecord
 }
 
 export type RequestRoute<T = any> = {
