@@ -15463,10 +15463,10 @@ yocto-queue@^0.1.0:
   resolved "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-zod@3.14.2:
-  version "3.14.2"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-3.14.2.tgz#0b4ed79085c471adce0e7f2c0a4fbb5ddc516ba2"
-  integrity sha512-iF+wrtzz7fQfkmn60PG6XFxaWBhYYKzp2i+nv24WbLUWb2JjymdkHlzBwP0erpc78WotwP5g9AAu7Sk8GWVVNw==
+zod@3.14.3:
+  version "3.14.3"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.14.3.tgz#60e86341c05883c281fe96a0e79acea48a09f123"
+  integrity sha512-OzwRCSXB1+/8F6w6HkYHdbuWysYWnAF4fkRgKDcSFc54CE+Sv0rHXKfeNUReGCrHukm1LNpi6AYeXotznhYJbQ==
 
 zod@^3.11.6:
   version "3.11.6"
