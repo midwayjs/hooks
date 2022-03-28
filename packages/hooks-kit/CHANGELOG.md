@@ -1,5 +1,17 @@
 # @midwayjs/hooks-kit
 
+## 3.0.0-rc.16
+
+### Patch Changes
+
+- 02c1e72: feat: add @midwayjs/hooks-upload component
+- Updated dependencies [02c1e72]
+  - @midwayjs/hooks-core@3.0.0-rc.16
+  - @midwayjs/serve@3.0.0-rc.16
+  - @midwayjs/esrun@3.0.0-rc.16
+  - @midwayjs/hooks@3.0.0-rc.16
+  - @midwayjs/hooks-bundler@3.0.0-rc.16
+
 ## 3.0.0-rc.15
 
 ### Patch Changes

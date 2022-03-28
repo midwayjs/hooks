@@ -1,5 +1,11 @@
 # @midwayjs/rpc
 
+## 3.0.0-rc.16
+
+### Patch Changes
+
+- 02c1e72: feat: add @midwayjs/hooks-upload component
+
 ## 3.0.0-rc.15
 
 ### Patch Changes
