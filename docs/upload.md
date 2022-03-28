@@ -128,7 +128,7 @@ fetch('/api/upload', {
 
 ```ts
 // frontend
-await upload({ pdf });
+await upload({ files: pdf });
 
 // backend
 const files = useFiles();
