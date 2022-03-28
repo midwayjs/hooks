@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import type { Schema } from 'zod'
 import { HttpStatus, MidwayHttpError, registerErrorCode } from '@midwayjs/core'
 import { Operator, setValidator, useContext } from '@midwayjs/hooks-core'
 
@@ -15,6 +15,7 @@ class HooksValidationError extends MidwayHttpError {
 export { Validate } from '@midwayjs/hooks-core'
 
 setValidator(async (schemas: any, inputs: any[]) => {
+  const { z } = require('zod')
   const result = await z.tuple(schemas).safeParseAsync(inputs)
 
   if (result.success === false) {
@@ -27,10 +28,10 @@ setValidator(async (schemas: any, inputs: any[]) => {
 })
 
 type ValidateHttpOption = {
-  query?: z.Schema<any>
-  data?: z.Schema<any>[]
-  params?: z.Schema<any>
-  headers?: z.Schema<any>
+  query?: Schema<any>
+  data?: Schema<any>[]
+  params?: Schema<any>
+  headers?: Schema<any>
 }
 
 export function ValidateHttp(options: ValidateHttpOption): Operator<void> {
@@ -45,6 +46,7 @@ export function ValidateHttp(options: ValidateHttpOption): Operator<void> {
         if (options.headers) await options.headers.parseAsync(ctx.headers)
         if (options.data) {
           const inputs = getInputArguments()
+          const { z } = require('zod')
           const tuple = z.tuple(options.data as any)
           await tuple.parseAsync(inputs)
         }
