@@ -1,39 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`buildRequestOptions 1`] = `
-Object {
-  "data": Object {
-    "args": Array [
-      "a",
-      "b",
-    ],
-  },
-  "headers": Object {
-    "accept": "application/json",
-  },
-  "method": "GET",
-  "query": undefined,
-  "url": "/foo/baz",
-}
-`;
-
-exports[`buildRequestOptions 2`] = `
-Object {
-  "data": null,
-  "headers": Object {
-    "accept": "application/json",
-  },
-  "method": "GET",
-  "query": undefined,
-  "url": "/foo",
-}
-`;
-
 exports[`http normal 1`] = `
 Array [
   Array [
     Object {
       "data": null,
+      "files": undefined,
       "headers": Object {
         "accept": "application/json",
       },
@@ -59,4 +31,64 @@ Array [
     },
   ],
 ]
+`;
+
+exports[`parseRequestArgs & creator 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "b",
+  ],
+  "metadata": Object {
+    "params": Object {
+      "bar": "baz",
+    },
+  },
+  "trigger": Object {
+    "method": "GET",
+    "path": "/foo/:bar",
+  },
+}
+`;
+
+exports[`parseRequestArgs & creator 2`] = `
+Object {
+  "data": Object {
+    "args": Array [
+      "a",
+      "b",
+    ],
+  },
+  "files": undefined,
+  "headers": Object {
+    "accept": "application/json",
+  },
+  "method": "GET",
+  "query": undefined,
+  "url": "/foo/baz",
+}
+`;
+
+exports[`parseRequestArgs & creator 3`] = `
+Object {
+  "args": Array [],
+  "metadata": null,
+  "trigger": Object {
+    "method": "GET",
+    "path": "/foo",
+  },
+}
+`;
+
+exports[`parseRequestArgs & creator 4`] = `
+Object {
+  "data": null,
+  "files": undefined,
+  "headers": Object {
+    "accept": "application/json",
+  },
+  "method": "GET",
+  "query": undefined,
+  "url": "/foo",
+}
 `;

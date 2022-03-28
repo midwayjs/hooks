@@ -1,4 +1,4 @@
-export * from './http'
+export { setupHttpClient, creator, http, upload } from './http'
+export * from './client'
+export * from './type'
 export { args, getHttpTrigger } from './util'
-export { setupHttpClient } from './client'
-export type { Context, Middleware, SetupOptions } from './client'
