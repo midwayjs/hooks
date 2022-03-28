@@ -17,7 +17,9 @@
     "hooks-api-bundle-starter": "1.0.0",
     "@midwayjs/hcc": "3.0.0-rc.8",
     "@midwayjs/esrun": "3.0.0-rc.10",
-    "@midwayjs/serve": "3.0.0-rc.10"
+    "@midwayjs/serve": "3.0.0-rc.10",
+    "hooks-react-with-upload-starter": "1.0.0",
+    "@midwayjs/hooks-upload": "3.0.0-rc.15"
   },
   "changesets": [
     "beige-colts-tell",
@@ -34,6 +36,7 @@
     "light-boats-perform",
     "light-suits-design",
     "moody-fireants-sing",
+    "nervous-turtles-learn",
     "nine-readers-shop",
     "rare-tables-fail",
     "serious-kids-reflect",
