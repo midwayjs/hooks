@@ -1,6 +1,6 @@
 {
-  "projectName": "midwayjs",
-  "projectOwner": "hooks",
+  "projectName": "hooks",
+  "projectOwner": "midwayjs",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
@@ -62,7 +62,17 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "rojer95",
+      "name": "rojer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20662049?v=4",
+      "profile": "https://github.com/rojer95",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }
