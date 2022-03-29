@@ -86,9 +86,6 @@ export const createArticle = Api(
     };
   }
 );
-
-
-
 ```
 
 </sub>
