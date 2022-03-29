@@ -6,7 +6,7 @@ const HooksValidateErrorCode = registerErrorCode('Validation', {
   FAILED: 'FAILED',
 })
 
-class HooksValidationError extends MidwayHttpError {
+export class HooksValidationError extends MidwayHttpError {
   constructor(message: string, status: number, cause: any) {
     super(message, status, HooksValidateErrorCode.FAILED, { cause })
   }
