@@ -1,4 +1,4 @@
-import { HttpRequestOptions, RawRequestOptions } from '@midwayjs/hooks-core'
+import { HttpRequestOptions } from '@midwayjs/hooks-core'
 
 export type RequestContext<T, R = any> = {
   req: T
