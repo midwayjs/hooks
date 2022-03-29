@@ -1,5 +1,16 @@
 # @midwayjs/bundler
 
+## 3.0.0-rc.17
+
+### Patch Changes
+
+- 468ffa4: fix: lazy load zod
+- 711d651: feat: export HooksValidationError(#282)
+- Updated dependencies [468ffa4]
+- Updated dependencies [711d651]
+  - @midwayjs/esrun@3.0.0-rc.17
+  - @midwayjs/hooks-core@3.0.0-rc.17
+
 ## 3.0.0-rc.16
 
 ### Patch Changes
