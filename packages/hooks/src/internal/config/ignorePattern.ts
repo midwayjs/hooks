@@ -1,4 +1,4 @@
-import url from 'url'
+import { parse } from 'url'
 import type { IgnorePattern } from './type'
 
 // Ignore Vite dev server
@@ -63,28 +63,18 @@ const DEFAULT_ASSETS_RE = new RegExp(
 export const PROCESS_BY_BUNDLER = true
 export const PROCESS_BY_MIDWAY = false
 
+const includes = (keywords: string[], url: string) =>
+  Array.isArray(keywords) && keywords.some((item) => url.includes(item))
+
 export function createIgnorePattern(
   include?: string[],
   exclude?: string[]
 ): IgnorePattern {
-  return (req) => {
-    if (Array.isArray(include)) {
-      if (include.some((api) => req.url.includes(api))) {
-        return PROCESS_BY_MIDWAY
-      }
-    }
-
-    if (Array.isArray(exclude)) {
-      if (exclude.some((api) => req.url.includes(api))) {
-        return PROCESS_BY_BUNDLER
-      }
-    }
-
-    if (VITE_REQUEST.some((api) => req.url.includes(api))) {
-      return PROCESS_BY_BUNDLER
-    }
-
-    const { pathname, query } = url.parse(req.url)
+  return ({ url }) => {
+    if (includes(include, url)) return PROCESS_BY_MIDWAY
+    if (includes(exclude, url)) return PROCESS_BY_BUNDLER
+    if (includes(VITE_REQUEST, url)) return PROCESS_BY_BUNDLER
+    const { pathname, query } = parse(url)
     return DEFAULT_ASSETS_RE.test(pathname) || DEFAULT_ASSETS_RE.test(query)
   }
 }
