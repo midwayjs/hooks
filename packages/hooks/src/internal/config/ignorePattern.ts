@@ -60,11 +60,31 @@ const DEFAULT_ASSETS_RE = new RegExp(
   `\\.(` + KNOWN_ASSET_TYPES.join('|') + `)(\\?.*)?$`
 )
 
-export const ignorePattern: IgnorePattern = (req) => {
-  if (VITE_REQUEST.some((api) => req.url.includes(api))) {
-    return true
-  }
+export const PROCESS_BY_BUNDLER = true
+export const PROCESS_BY_MIDWAY = false
 
-  const { pathname, query } = url.parse(req.url)
-  return DEFAULT_ASSETS_RE.test(pathname) || DEFAULT_ASSETS_RE.test(query)
+export function createIgnorePattern(
+  include?: string[],
+  exclude?: string[]
+): IgnorePattern {
+  return (req) => {
+    if (Array.isArray(include)) {
+      if (include.some((api) => req.url.includes(api))) {
+        return PROCESS_BY_MIDWAY
+      }
+    }
+
+    if (Array.isArray(exclude)) {
+      if (exclude.some((api) => req.url.includes(api))) {
+        return PROCESS_BY_BUNDLER
+      }
+    }
+
+    if (VITE_REQUEST.some((api) => req.url.includes(api))) {
+      return PROCESS_BY_BUNDLER
+    }
+
+    const { pathname, query } = url.parse(req.url)
+    return DEFAULT_ASSETS_RE.test(pathname) || DEFAULT_ASSETS_RE.test(query)
+  }
 }

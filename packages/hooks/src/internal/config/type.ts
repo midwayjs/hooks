@@ -38,6 +38,8 @@ export interface ProjectConfig {
     /**
      * @description If the function returns true, the server will ignore the request
      */
+    include?: string[]
+    exclude?: string[]
     ignorePattern?: IgnorePattern
   }
   /**
