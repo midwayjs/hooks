@@ -1,5 +1,45 @@
 # @midwayjs/serve
 
+## 3.0.0
+
+### Major Changes
+
+- 2d722ae: release 3.0
+
+### Patch Changes
+
+- 468ffa4: fix: lazy load zod
+- 02c1e72: feat: add @midwayjs/hooks-upload component
+- 711d651: feat: export HooksValidationError(#282)
+- Updated dependencies [08e4944]
+- Updated dependencies [e991c98]
+- Updated dependencies [56f3508]
+- Updated dependencies [db6874a]
+- Updated dependencies [f05ce94]
+- Updated dependencies [563430f]
+- Updated dependencies [f342e0a]
+- Updated dependencies [56f3508]
+- Updated dependencies [08e4944]
+- Updated dependencies [e1feaea]
+- Updated dependencies [2d722ae]
+- Updated dependencies [29d6d05]
+- Updated dependencies [5883056]
+- Updated dependencies [47b7842]
+- Updated dependencies [468ffa4]
+- Updated dependencies [a11ce76]
+- Updated dependencies [02c1e72]
+- Updated dependencies [3d6e603]
+- Updated dependencies [74d16d9]
+- Updated dependencies [4a27b18]
+- Updated dependencies [30bc2f6]
+- Updated dependencies [f3eaaa2]
+- Updated dependencies [a7e15f4]
+- Updated dependencies [74d16d9]
+- Updated dependencies [e991c98]
+- Updated dependencies [49f5113]
+- Updated dependencies [711d651]
+  - @midwayjs/hooks-core@3.0.0
+
 ## 3.0.0-rc.17
 
 ### Patch Changes

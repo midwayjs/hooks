@@ -1,5 +1,40 @@
 # @midwayjs/rpc
 
+## 3.0.0
+
+### Major Changes
+
+- 2d722ae: release 3.0
+
+### Patch Changes
+
+- 08e4944: fix https://github.com/midwayjs/midway/issues/1641
+- e991c98: use midway.config.js for api server project, fix #195
+- 56f3508: Fix bugs
+- db6874a: Release 3.0.0 rc version
+- f05ce94: Add support for serverless worker
+- 563430f: Hooks middleware now accept any types 589853fc001751f8ca94b2e04a0b5b416cdfe83f
+- f342e0a: @midwayjs/serve, fix path issue at windows, fixes #255
+- 56f3508: Build
+- 08e4944: fix https://github.com/midwayjs/hooks/issues/193
+- e1feaea: Fix #239, use tuple to validate input args and update docs
+- 29d6d05: Add midwayjs deps to @midwayjs/hooks
+- 5883056: add @midwayjs/esrun to support decorator & tsconfig-paths, fix #207
+- 47b7842: add @midwayjs/hcc to compile project into single file
+- 468ffa4: fix: lazy load zod
+- a11ce76: Fix class middleware support
+- 02c1e72: feat: add @midwayjs/hooks-upload component
+- 3d6e603: Fix [#241](https://github.com/midwayjs/hooks/issues/241)
+- 74d16d9: Set correct version for examples
+- 4a27b18: refactor: remove @midwayjs/hooks/test, import from @midwayjs/hooks directly
+- 30bc2f6: Add `@midwayjs/serve` to serve static files in FaaS environments, fix [#196](https://github.com/midwayjs/hooks/issues/196)
+- f3eaaa2: Add missing deps
+- a7e15f4: support spa for hooks-kit Fixed #238
+- 74d16d9: Build after publish
+- e991c98: hooks-kit now support file-route
+- 49f5113: Fix the duplicate path issue(#199)
+- 711d651: feat: export HooksValidationError(#282)
+
 ## 3.0.0-rc.17
 
 ### Patch Changes

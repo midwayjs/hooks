@@ -1,5 +1,25 @@
 # @midwayjs/rpc
 
+## 3.0.0
+
+### Major Changes
+
+- 2d722ae: release 3.0
+
+### Patch Changes
+
+- 563430f: Hooks middleware now accept any types 589853fc001751f8ca94b2e04a0b5b416cdfe83f
+- f342e0a: @midwayjs/serve, fix path issue at windows, fixes #255
+- e1feaea: Fix #239, use tuple to validate input args and update docs
+- 5883056: add @midwayjs/esrun to support decorator & tsconfig-paths, fix #207
+- 468ffa4: fix: lazy load zod
+- a11ce76: Fix class middleware support
+- 02c1e72: feat: add @midwayjs/hooks-upload component
+- 3d6e603: Fix [#241](https://github.com/midwayjs/hooks/issues/241)
+- 30bc2f6: Add `@midwayjs/serve` to serve static files in FaaS environments, fix [#196](https://github.com/midwayjs/hooks/issues/196)
+- a7e15f4: support spa for hooks-kit Fixed #238
+- 711d651: feat: export HooksValidationError(#282)
+
 ## 3.0.0-rc.17
 
 ### Patch Changes
