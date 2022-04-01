@@ -145,8 +145,13 @@ Midway Hooks currently provide the following templates:
   - [react](https://github.com/midwayjs/hooks/blob/main/examples/react)
   - [vue](https://github.com/midwayjs/hooks/blob/main/examples/vue)
   - [prisma](https://github.com/midwayjs/hooks/blob/main/examples/prisma)
+  - [react-with-upload](https://github.com/midwayjs/hooks/blob/main/examples/react-with-upload)
+- Serverless
+  - [react-faas](https://github.com/midwayjs/hooks/blob/main/examples/react-faas)
+  - [vue-faas](https://github.com/midwayjs/hooks/blob/main/examples/vue-faas)
 - Api Server
   - [api](https://github.com/midwayjs/hooks/blob/main/examples/api)
+  - [api-bundle](https://github.com/midwayjs/hooks/blob/main/examples/api-bundle)
 
 You can create applications quickly with templates:
 

@@ -99,12 +99,17 @@ Midway 是一个有着 8 年历史的 Node.js 框架，具有强大的后端功�
 
 Midway Hooks 目前提供了如下模板：
 
-- 全栈应用
+- Fullstack
   - [react](https://github.com/midwayjs/hooks/blob/main/examples/react)
   - [vue](https://github.com/midwayjs/hooks/blob/main/examples/vue)
   - [prisma](https://github.com/midwayjs/hooks/blob/main/examples/prisma)
+  - [react-with-upload](https://github.com/midwayjs/hooks/blob/main/examples/react-with-upload)
+- Serverless
+  - [react-faas](https://github.com/midwayjs/hooks/blob/main/examples/react-faas)
+  - [vue-faas](https://github.com/midwayjs/hooks/blob/main/examples/vue-faas)
 - Api Server
   - [api](https://github.com/midwayjs/hooks/blob/main/examples/api)
+  - [api-bundle](https://github.com/midwayjs/hooks/blob/main/examples/api-bundle)
 
 基于指定创建应用命令如下：
 

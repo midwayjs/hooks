@@ -145,8 +145,13 @@ Midway Hooks 提供如下模版：
   - [react](https://github.com/midwayjs/hooks/blob/main/examples/react)
   - [vue](https://github.com/midwayjs/hooks/blob/main/examples/vue)
   - [prisma](https://github.com/midwayjs/hooks/blob/main/examples/prisma)
+  - [react-with-upload](https://github.com/midwayjs/hooks/blob/main/examples/react-with-upload)
+- Serverless
+  - [react-faas](https://github.com/midwayjs/hooks/blob/main/examples/react-faas)
+  - [vue-faas](https://github.com/midwayjs/hooks/blob/main/examples/vue-faas)
 - Api Server
   - [api](https://github.com/midwayjs/hooks/blob/main/examples/api)
+  - [api-bundle](https://github.com/midwayjs/hooks/blob/main/examples/api-bundle)
 
 你可以使用下面的命令快速创建应用:
 
