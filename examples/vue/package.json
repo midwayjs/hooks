@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "vue": "^3.2.25",
-    "@midwayjs/hooks-kit": "^3.0.0-rc.10",
-    "@midwayjs/hooks": "^3.0.0-rc.10",
-    "@midwayjs/rpc": "^3.0.0-rc.10",
+    "@midwayjs/hooks-kit": "^3.0.0",
+    "@midwayjs/hooks": "^3.0.0",
+    "@midwayjs/rpc": "^3.0.0",
     "@midwayjs/koa": "^3.1.0",
     "isomorphic-unfetch": "^3.1.0"
   },
