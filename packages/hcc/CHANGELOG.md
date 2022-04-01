@@ -1,5 +1,60 @@
 # @midwayjs/hcc
 
+## 3.0.0
+
+### Major Changes
+
+- 2d722ae: release 3.0
+
+### Patch Changes
+
+- e991c98: use midway.config.js for api server project, fix #195
+- 563430f: Hooks middleware now accept any types 589853fc001751f8ca94b2e04a0b5b416cdfe83f
+- f342e0a: @midwayjs/serve, fix path issue at windows, fixes #255
+- e1feaea: Fix #239, use tuple to validate input args and update docs
+- 29d6d05: Add midwayjs deps to @midwayjs/hooks
+- 5883056: add @midwayjs/esrun to support decorator & tsconfig-paths, fix #207
+- 47b7842: add @midwayjs/hcc to compile project into single file
+- 468ffa4: fix: lazy load zod
+- a11ce76: Fix class middleware support
+- 02c1e72: feat: add @midwayjs/hooks-upload component
+- 3d6e603: Fix [#241](https://github.com/midwayjs/hooks/issues/241)
+- 30bc2f6: Add `@midwayjs/serve` to serve static files in FaaS environments, fix [#196](https://github.com/midwayjs/hooks/issues/196)
+- a7e15f4: support spa for hooks-kit Fixed #238
+- e991c98: hooks-kit now support file-route
+- 49f5113: Fix the duplicate path issue(#199)
+- 711d651: feat: export HooksValidationError(#282)
+- Updated dependencies [08e4944]
+- Updated dependencies [e991c98]
+- Updated dependencies [56f3508]
+- Updated dependencies [db6874a]
+- Updated dependencies [f05ce94]
+- Updated dependencies [563430f]
+- Updated dependencies [f342e0a]
+- Updated dependencies [56f3508]
+- Updated dependencies [08e4944]
+- Updated dependencies [e1feaea]
+- Updated dependencies [2d722ae]
+- Updated dependencies [29d6d05]
+- Updated dependencies [5883056]
+- Updated dependencies [47b7842]
+- Updated dependencies [468ffa4]
+- Updated dependencies [a11ce76]
+- Updated dependencies [02c1e72]
+- Updated dependencies [3d6e603]
+- Updated dependencies [74d16d9]
+- Updated dependencies [4a27b18]
+- Updated dependencies [30bc2f6]
+- Updated dependencies [f3eaaa2]
+- Updated dependencies [a7e15f4]
+- Updated dependencies [74d16d9]
+- Updated dependencies [e991c98]
+- Updated dependencies [49f5113]
+- Updated dependencies [711d651]
+  - @midwayjs/hooks@3.0.0
+  - @midwayjs/hooks-core@3.0.0
+  - @midwayjs/esrun@3.0.0
+
 ## 3.0.0-rc.17
 
 ### Patch Changes
