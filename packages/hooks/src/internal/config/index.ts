@@ -1,11 +1,11 @@
 import { existsSync } from 'fs'
 import defaultsDeep from 'lodash/defaultsDeep'
 import path, { dirname } from 'upath'
-import { createDebug } from '@midwayjs/hooks-core'
-import { ignorePattern } from './ignorePattern'
+import { createDebug, isFunction } from '@midwayjs/hooks-core'
 import { ProjectConfig, UserConfig } from './type'
 import findUp from 'find-up'
 import { PRE_DEFINE_PROJECT_CONFIG, PROJECT_ROOT } from '../const'
+import { createIgnorePattern } from './ignorePattern'
 
 const debug = createDebug('hooks: config')
 
@@ -41,6 +41,10 @@ export function getConfig(cwd = getProjectRoot()): ProjectConfig {
   const userConfig: UserConfig = preDefineConfig
     ? JSON.parse(preDefineConfig)
     : getConfigFromFile(cwd)
+
+  const ignorePattern =
+    isFunction(userConfig.dev?.ignorePattern) ||
+    createIgnorePattern(userConfig.dev?.include, userConfig.dev?.exclude)
 
   return defaultsDeep({}, userConfig, {
     source: './src/api',
