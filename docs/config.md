@@ -14,9 +14,26 @@ title: 项目配置
 
 启用文件系统路由并配置，默认为 `undefined`。具体格式参考 [简易模式 & 文件系统路由](./file-route)。
 
+## dev.include: string[]
+
+配置全栈应用下，如果请求的 URL 中包含 `dev.include` 的关键词，则请求将由后端 Server 处理。
+
+## dev.exclude: string[]
+
+配置全栈应用下，如果请求的 URL 中包含 `dev.exclude` 的关键词，则请求将由前端的 Dev Server 处理。
+
 ## dev.ignorePattern: IgnorePattern
 
-配置全栈应用下，本地开发的哪些请求应该忽略，不进入服务端处理。
+配置全栈应用下，本地开发的哪些请求应该忽略，不进入服务端处理。当传入自定义 `ignorePattern`，`dev.include` & `dev.exclude` 无效。
+
+```ts
+function ignorePattern(req) {
+  if (req.url.includes('api')) {
+    return false; // 后端服务处理
+  }
+  return true; // 前端 Dev Server 处理
+}
+```
 
 ## build.outDir: string
 
