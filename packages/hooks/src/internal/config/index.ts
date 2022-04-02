@@ -43,7 +43,7 @@ export function getConfig(cwd = getProjectRoot()): ProjectConfig {
     : getConfigFromFile(cwd)
 
   const ignorePattern =
-    isFunction(userConfig.dev.ignorePattern) ||
+    isFunction(userConfig.dev?.ignorePattern) ||
     createIgnorePattern(userConfig.dev?.include, userConfig.dev?.exclude)
 
   return defaultsDeep({}, userConfig, {
