@@ -3194,10 +3194,10 @@
   dependencies:
     raw-body "2.5.1"
 
-"@midwayjs/upload@3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@midwayjs/upload/-/upload-3.3.0.tgz#991b2507a9345b9323e37513b002cc7a42e8f9fe"
-  integrity sha512-6NVDu1vBeRU/+TcBugd+cgFSl9k81kmQpq/WG9VpZf4c7Ty8prW/tfu1xSSyjAOEDclazps026AbkVr+8jZ4Aw==
+"@midwayjs/upload@3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@midwayjs/upload/-/upload-3.3.3.tgz#4d7f3fb9f7749c5d883d66400c5c0d945ca881b2"
+  integrity sha512-fakcO7YvzFCUEeV7o+79KRrF7fTAOa6h16EY1hcvFGYd/wOBLFsvGwrXt7xQh62OXLYs6wqNwTZkHM9AhIG+1A==
   dependencies:
     raw-body "2.5.1"
 
