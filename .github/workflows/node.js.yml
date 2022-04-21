@@ -32,8 +32,13 @@ jobs:
           timeout_minutes: 10
           max_attempts: 3
           command: yarn
-      - name: Test
-        run: if [ "${{ matrix.node }}" = "18" ]; then NODE_OPTIONS=--openssl-legacy-provider yarn ci; else yarn ci; fi
+      - name: Test Node.js 18
+        if: ${{ matrix.node }} == 18
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
+        run: yarn ci
+      - name: Test Node.js
+        run: yarn ci
       - name: Build
         run: yarn build
       - name: Upload coverage to Codecov
