@@ -33,7 +33,7 @@ jobs:
           max_attempts: 3
           command: yarn
       - name: Test Node.js 18
-        if: ${{ matrix.node }} == 18
+        if: ${{ matrix.node == 18 }}
         env:
           NODE_OPTIONS: --openssl-legacy-provider
         run: yarn ci
