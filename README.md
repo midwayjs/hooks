@@ -80,7 +80,7 @@ export const createArticle = Api(
   Post(),
   Validate(ArticleSchema),
   async (article: z.infer<typeof ArticleSchema>) => {
-    const newArticle = await database.articles.create(article);
+    const newArticle = await db.articles.create(article);
     return {
       id: newArticle.id,
     };
