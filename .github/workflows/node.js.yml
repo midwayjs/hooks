@@ -16,9 +16,7 @@ jobs:
         os: [ubuntu-latest]
         include:
           - node: 14.x
-            os: windows-latest
-          - node: 14.x
-            os: macos-latest
+            os: [windows-latest, macos-latest]
 
     runs-on: ${{ matrix.os }}
     steps:
