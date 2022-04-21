@@ -26,7 +26,7 @@ jobs:
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
-          node: ${{ matrix.node }}
+          node-version: ${{ matrix.node }}
       - uses: nick-invision/retry@v2
         with:
           timeout_minutes: 10
