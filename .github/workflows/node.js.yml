@@ -12,11 +12,13 @@ jobs:
   test:
     strategy:
       matrix:
-        node: [12.x, 14.x, 16.x, 18.x]
+        node: [12, 14, 16, 18]
         os: [ubuntu-latest]
         include:
-          - node: 14.x
-            os: [windows-latest, macos-latest]
+          - node: 14
+            os: windows-latest
+          - node: 14
+            os: macos-latest
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -31,7 +33,7 @@ jobs:
           max_attempts: 3
           command: yarn
       - name: Test
-        run: if [ "${{ matrix.node }}" = "18.x" ]; then NODE_OPTIONS=--openssl-legacy-provider yarn ci; else yarn ci; fi
+        run: if [ "${{ matrix.node }}" = "18" ]; then NODE_OPTIONS=--openssl-legacy-provider yarn ci; else yarn ci; fi
       - name: Build
         run: yarn build
       - name: Upload coverage to Codecov
