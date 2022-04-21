@@ -9,7 +9,17 @@ on:
       - 'docs/**'
 
 jobs:
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@master
+
   test:
+    needs: pre_job
+    if: ${{ needs.pre_job.outputs.should_skip != 'true' }}
     strategy:
       matrix:
         node: [12, 14, 16, 18]
@@ -19,7 +29,6 @@ jobs:
             os: windows-latest
           - node: 14
             os: macos-latest
-
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
