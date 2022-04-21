@@ -38,6 +38,7 @@ jobs:
           NODE_OPTIONS: --openssl-legacy-provider
         run: yarn ci
       - name: Test Node.js
+        if: ${{ matrix.node != 18 }}
         run: yarn ci
       - name: Build
         run: yarn build
