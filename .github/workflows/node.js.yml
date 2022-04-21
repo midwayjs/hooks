@@ -32,7 +32,11 @@ jobs:
           timeout_minutes: 10
           max_attempts: 3
           command: yarn
-      - run: yarn ci
-      - run: yarn build
+      - name: Test
+        env:
+          NODE_OPTIONS: '--openssl-legacy-provider'
+        run: yarn test
+      - name: Build
+        run: yarn build
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
