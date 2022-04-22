@@ -214,6 +214,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://www.yuque.com/eward/blog"><img src="https://avatars.githubusercontent.com/u/452899?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eward</b></sub></a><br /><a href="https://github.com/midwayjs/hooks/commits?author=shepherdwind" title="Code">💻</a></td>
     <td align="center"><a href="https://linbudu.top/"><img src="https://avatars.githubusercontent.com/u/48507806?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Linbudu</b></sub></a><br /><a href="https://github.com/midwayjs/hooks/commits?author=linbudu599" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/rojer95"><img src="https://avatars.githubusercontent.com/u/20662049?v=4?s=100" width="100px;" alt=""/><br /><sub><b>rojer</b></sub></a><br /><a href="https://github.com/midwayjs/hooks/commits?author=rojer95" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Thetiso"><img src="https://avatars.githubusercontent.com/u/8968567?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Thetiso</b></sub></a><br /><a href="https://github.com/midwayjs/hooks/commits?author=Thetiso" title="Documentation">📖</a></td>
   </tr>
 </table>
 

@@ -71,6 +71,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Thetiso",
+      "name": "Thetiso",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8968567?v=4",
+      "profile": "https://github.com/Thetiso",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
