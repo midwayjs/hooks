@@ -2,6 +2,7 @@ import kebabCase from 'lodash/kebabCase'
 import last from 'lodash/last'
 import { extname, join, relative, removeExt, toUnix } from 'upath'
 import { AbstractRouter, Route, urlJoin } from '@midwayjs/hooks-core'
+import { camelCase } from 'lodash'
 
 export enum RouteKeyword {
   INDEX = 'index',
@@ -12,6 +13,7 @@ export enum RouteKeyword {
 export interface FileSystemRouterConfig {
   source: string
   routes: Route[]
+  legacy?: boolean
 }
 
 type Part = {
@@ -35,7 +37,7 @@ export class FileSystemRouter extends AbstractRouter {
     // src/apis/lambda/index.ts -> apis-lambda-index
     const id = kebabCase(removeExt(relativePath, extname(relativePath)))
     const name = [id, isExportDefault ? '' : `-${functionName}`].join('')
-    return name.toLowerCase()
+    return this.config.legacy ? name.toLowerCase() : camelCase(name)
   }
 
   getRoute(file: string) {
