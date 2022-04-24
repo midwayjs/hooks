@@ -17,10 +17,10 @@ type GetSourceOptions = {
 }
 
 export function getRouter(source: string): AbstractRouter {
-  const { routes } = getConfig()
+  const { routes, legacy } = getConfig()
 
   if (Array.isArray(routes) && routes.length > 0) {
-    return new FileSystemRouter({ source, routes })
+    return new FileSystemRouter({ source, routes, legacy })
   }
 
   return new ApiRouter()

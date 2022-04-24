@@ -28,9 +28,13 @@ export interface ProjectConfig {
    * @example [{ baseDir: 'lambda', basePath: '/api' }]
    */
   routes?: MidwayRoute[]
+
   /**
-   * @description customize the request client
+   * @description add fallback behavior for @midwayjs/hooks v2
+   * @default false
    */
+  legacy?: boolean
+
   /**
    * @description customize dev server
    */
