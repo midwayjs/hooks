@@ -92,3 +92,59 @@ Object {
   "url": "/foo",
 }
 `;
+
+exports[`parseRequestArgs & creator 5`] = `
+Object {
+  "args": Array [],
+  "metadata": null,
+  "trigger": Object {
+    "method": "ALL",
+    "path": "/foo",
+  },
+}
+`;
+
+exports[`parseRequestArgs & creator 6`] = `
+Object {
+  "data": null,
+  "files": undefined,
+  "headers": Object {
+    "accept": "application/json",
+  },
+  "method": "GET",
+  "query": undefined,
+  "url": "/foo",
+}
+`;
+
+exports[`parseRequestArgs & creator 7`] = `
+Object {
+  "args": Array [
+    "a",
+    "b",
+  ],
+  "metadata": null,
+  "trigger": Object {
+    "method": "ALL",
+    "path": "/foo",
+  },
+}
+`;
+
+exports[`parseRequestArgs & creator 8`] = `
+Object {
+  "data": Object {
+    "args": Array [
+      "a",
+      "b",
+    ],
+  },
+  "files": undefined,
+  "headers": Object {
+    "accept": "application/json",
+  },
+  "method": "POST",
+  "query": undefined,
+  "url": "/foo",
+}
+`;

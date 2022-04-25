@@ -105,6 +105,8 @@ export default Api(Get(), async () => {
 | `Head(path?: string)`    | 接受 HEAD 请求              |
 | `Options(path?: string)` | 接受 OPTIONS 请求           |
 
+当生成前端 SDK 时，如果 Method 为 `All`，则 Method 生成规则为：有参数 -> `Post`，没参数 -> `Get`。
+
 ## 请求 Request
 
 ### 传递参数 Data
