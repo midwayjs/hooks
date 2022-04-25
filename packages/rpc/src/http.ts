@@ -31,8 +31,15 @@ export function setupHttpClient(options: SetupOptions) {
 export const creator: RequestOptionsCreator<HttpRequestOptions> = (req) => {
   const { trigger, metadata, args: inputs } = req
 
+  const method =
+    trigger.method === 'ALL'
+      ? inputs.length > 0
+        ? 'POST'
+        : 'GET'
+      : trigger.method
+
   return {
-    method: trigger.method,
+    method,
     url:
       typeof metadata?.params === 'object'
         ? format(trigger.path, metadata.params)

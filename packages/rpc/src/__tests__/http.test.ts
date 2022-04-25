@@ -18,38 +18,74 @@ it('format', () => {
 })
 
 it('parseRequestArgs & creator', () => {
-  const rawOptions = parseRequestArgs([
-    'a',
-    'b',
-    {
-      params: {
-        bar: 'baz',
-      },
-    } as HttpInputMetadata,
-    {
-      trigger: {
-        path: '/foo/:bar',
-        method: 'GET',
-      },
-      useInputMetadata: true,
-    } as RequestRoute<HttpTrigger>,
-  ])
+  {
+    const rawOptions = parseRequestArgs([
+      'a',
+      'b',
+      {
+        params: {
+          bar: 'baz',
+        },
+      } as HttpInputMetadata,
+      {
+        trigger: {
+          path: '/foo/:bar',
+          method: 'GET',
+        },
+        useInputMetadata: true,
+      } as RequestRoute<HttpTrigger>,
+    ])
 
-  expect(rawOptions).toMatchSnapshot()
-  expect(creator(rawOptions)).toMatchSnapshot()
+    expect(rawOptions).toMatchSnapshot()
+    expect(creator(rawOptions)).toMatchSnapshot()
+  }
 
-  const rawOptions2 = parseRequestArgs([
-    {
-      trigger: {
-        path: '/foo',
-        method: 'GET',
-      },
-      useInputMetadata: false,
-    } as RequestRoute<HttpTrigger>,
-  ])
+  {
+    const rawOptionsWithoutArgs = parseRequestArgs([
+      {
+        trigger: {
+          path: '/foo',
+          method: 'GET',
+        },
+        useInputMetadata: false,
+      } as RequestRoute<HttpTrigger>,
+    ])
 
-  expect(rawOptions2).toMatchSnapshot()
-  expect(creator(rawOptions2)).toMatchSnapshot()
+    expect(rawOptionsWithoutArgs).toMatchSnapshot()
+    expect(creator(rawOptionsWithoutArgs)).toMatchSnapshot()
+  }
+
+  {
+    const methodAll = parseRequestArgs([
+      {
+        trigger: {
+          path: '/foo',
+          method: 'ALL',
+        },
+        useInputMetadata: false,
+      } as RequestRoute<HttpTrigger>,
+    ])
+
+    expect(methodAll).toMatchSnapshot()
+    expect(creator(methodAll)).toMatchSnapshot()
+  }
+
+  {
+    const methodAllWithArgs = parseRequestArgs([
+      'a',
+      'b',
+      {
+        trigger: {
+          path: '/foo',
+          method: 'ALL',
+        },
+        useInputMetadata: false,
+      } as RequestRoute<HttpTrigger>,
+    ])
+
+    expect(methodAllWithArgs).toMatchSnapshot()
+    expect(creator(methodAllWithArgs)).toMatchSnapshot()
+  }
 })
 
 describe('http', () => {
