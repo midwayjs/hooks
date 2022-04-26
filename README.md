@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="https://img.alicdn.com/imgextra/i4/O1CN01AJ1lNS20vkL7tTuUj_!!6000000006912-2-tps-1060-868.png" height="300" alt="Midway Logo" />
-</p>
+<h1 align="center">Functional Fullstack Framework</h1>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@midwayjs/hooks">
@@ -12,8 +10,6 @@
   </a>
   <img src="https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge">
 </p>
-
-<h1 align="center">Functional Fullstack Framework</h1>
 
 <h5 align="center">"Zero" Api & Type Safe & Fullstack Kit & Powerful Backend</h5>
 <h5 align="center">At Alibaba, 2800+ full-stack applications are developed based on Midway Hooks (2022.01)</h5>

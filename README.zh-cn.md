@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="https://img.alicdn.com/imgextra/i4/O1CN01AJ1lNS20vkL7tTuUj_!!6000000006912-2-tps-1060-868.png" height="300" alt="Midway Logo" />
-</p>
+<h1 align="center">函数式全栈框架</h1>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@midwayjs/hooks">
@@ -12,8 +10,6 @@
   </a>
   <img src="https://img.shields.io/npm/l/@midwayjs/hooks?style=for-the-badge">
 </p>
-
-<h1 align="center">函数式全栈框架</h1>
 
 <h5 align="center">"零" Api & 类型安全 & 全栈套件 & 强大后端</h5>
 <h5 align="center">在阿里巴巴，有 2800+ 全栈应用基于 Midway Hooks 开发（2022.01）</h5>
