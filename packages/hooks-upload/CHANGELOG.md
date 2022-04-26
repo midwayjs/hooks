@@ -1,5 +1,15 @@
 # @midwayjs/serve
 
+## 3.0.1
+
+### Patch Changes
+
+- 027d494: feat: add legacy mode to support midway hooks 2.0
+- 374db95: fix: support all method for rpc client
+- Updated dependencies [027d494]
+- Updated dependencies [374db95]
+  - @midwayjs/hooks-core@3.0.1
+
 ## 3.0.0
 
 ### Major Changes

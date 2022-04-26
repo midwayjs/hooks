@@ -1,5 +1,12 @@
 # @midwayjs/rpc
 
+## 3.0.1
+
+### Patch Changes
+
+- 027d494: feat: add legacy mode to support midway hooks 2.0
+- 374db95: fix: support all method for rpc client
+
 ## 3.0.0
 
 ### Major Changes
