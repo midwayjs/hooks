@@ -30,7 +30,7 @@
     "@preconstruct/cli": "2.1.5",
     "@types/jest": "27.4.1",
     "execa": "4.1.0",
-    "husky": "7.0.4",
+    "husky": "8.0.1",
     "jest": "28.0.2",
     "jest-serializer-path": "0.1.15",
     "jest-snapshot-serializer-raw": "1.2.0",
