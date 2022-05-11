@@ -13,11 +13,11 @@ import {
 import cloneDeep from 'lodash/cloneDeep'
 
 export class MidwayBundlerAdapter extends AbstractBundlerAdapter {
-  private root: string
-  private source: string
-  private router: AbstractRouter
+  protected root: string
+  protected source: string
+  protected router: AbstractRouter
 
-  private projectConfig: ProjectConfig
+  protected projectConfig: ProjectConfig
 
   constructor() {
     const source = getSource({ useSourceFile: true })

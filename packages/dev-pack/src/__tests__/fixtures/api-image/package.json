@@ -1,0 +1,21 @@
+{
+  "name": "hooks-api-devpack-image-test",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node scripts/bootstrap",
+    "dev": "mw dev --fast",
+    "build": "mw build"
+  },
+  "dependencies": {
+    "@midwayjs/bootstrap": "^3.1.0",
+    "@midwayjs/hooks": "^3.0.0",
+    "@midwayjs/koa": "^3.1.0"
+  },
+  "devDependencies": {
+    "@midwayjs/cli": "^1.3.0",
+    "@midwayjs/cli-plugin-build": "^1.2.97",
+    "@midwayjs/mock": "^3.1.0",
+    "typescript": "^4.3.5"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "@midwayjs/dev-pack",
+  "version": "3.0.1",
+  "description": "Midway Fullstak Dev Pack",
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "keywords": [
+    "midway",
+    "hooks",
+    "dev-pack"
+  ],
+  "main": "dist/midwayjs-dev-pack.cjs.js",
+  "module": "dist/midwayjs-dev-pack.esm.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@midwayjs/esrun": "^3.0.1",
+    "@midwayjs/hooks": "^3.0.1",
+    "@midwayjs/hooks-core": "^3.0.1",
+    "chokidar": "^3.5.3",
+    "detect-port": "1.3.0",
+    "http-proxy-middleware": "^2.0.6",
+    "p-event": "4.2.0",
+    "path-to-regexp": "^1.7.0",
+    "@midwayjs/mock": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/detect-port": "1.3.2"
+  },
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "app.ts"
+    ]
+  }
+}

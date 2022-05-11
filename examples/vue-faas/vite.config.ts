@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import { vite } from '@midwayjs/hooks-bundler';
+import { ServerlessBundlerPlugin } from '@midwayjs/hooks-bundler';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,5 +8,5 @@ export default defineConfig({
     outDir: 'build',
     emptyOutDir: true,
   },
-  plugins: [vite(), vue()],
+  plugins: [ServerlessBundlerPlugin.vite(), vue()],
 });

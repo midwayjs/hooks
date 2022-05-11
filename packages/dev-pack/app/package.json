@@ -1,0 +1,4 @@
+{
+  "main": "dist/midwayjs-dev-pack-app.cjs.js",
+  "module": "dist/midwayjs-dev-pack-app.esm.js"
+}
