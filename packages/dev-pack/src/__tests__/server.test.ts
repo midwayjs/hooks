@@ -2,6 +2,11 @@ import { DevServer } from '../server'
 import { resolve } from 'path'
 import fetch from 'isomorphic-unfetch'
 import detectPort from 'detect-port'
+import { useRandomPort } from './util'
+
+beforeEach(async () => {
+  await useRandomPort()
+})
 
 test('dev server', async () => {
   const server = new DevServer({
