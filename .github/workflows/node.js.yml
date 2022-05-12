@@ -31,7 +31,7 @@ jobs:
         with:
           timeout_minutes: 10
           max_attempts: 3
-          command: yarn
+          command: yarn install --ignore-engines
       - name: Test Node.js 18
         if: ${{ matrix.node == 18 }}
         env:
