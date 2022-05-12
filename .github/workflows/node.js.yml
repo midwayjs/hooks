@@ -20,6 +20,10 @@ jobs:
             os: windows-latest
           - node: 14
             os: macos-latest
+          - node: 16
+            os: windows-latest
+          - node: 16
+            os: macos-latest
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
