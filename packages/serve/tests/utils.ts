@@ -4,6 +4,7 @@ import { close, createApp as createMockApp } from '@midwayjs/mock'
 import { setProjectRoot } from '@midwayjs/hooks/internal'
 
 export async function createApp(name: string): Promise<IMidwayKoaApplication> {
+  process.env.MIDWAY_HTTP_PORT = '3456'
   const fixture = join(__dirname, 'fixtures', name)
   setProjectRoot(fixture)
   return createMockApp<Framework>(fixture)
