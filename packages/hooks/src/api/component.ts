@@ -18,6 +18,7 @@ import {
 import { createConfiguration } from './configuration'
 import flattenDeep from 'lodash/flattenDeep'
 import { MidwayApplication, MidwayFrameworkAdapter } from './component/adapter'
+import { MidwayApplicationManager } from '@midwayjs/core'
 
 const debug = createDebug('hooks: component')
 
@@ -50,10 +51,14 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
 
   const Configuration = createConfiguration({
     namespace: '@midwayjs/hooks',
-    async onReady(container: IMidwayContainer, app: MidwayApplication) {
+    async onReady(container: IMidwayContainer) {
       midway.container = container
-      midway.app = app
-
+      const applicationManager = await container.getAsync(
+        MidwayApplicationManager
+      )
+      applicationManager
+        .getApplications(['koa', 'faas'])
+        .forEach((app) => (midway.app = app))
       midway.registerGlobalMiddleware(runtimeConfig.middleware)
       midway.bindControllers()
     },

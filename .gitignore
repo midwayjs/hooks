@@ -21,6 +21,7 @@ pnpm-lock.yaml
 logs
 pids
 *.cpuprofile
+.audit
 
 # coverage
 .nyc_output

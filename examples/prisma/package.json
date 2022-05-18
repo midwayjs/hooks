@@ -8,7 +8,7 @@
     "build": "hooks build"
   },
   "dependencies": {
-    "@midwayjs/koa": "^3.1.0",
+    "@midwayjs/koa": "^3.3.5",
     "@midwayjs/hooks": "^3.0.0",
     "@midwayjs/rpc": "^3.0.0",
     "@midwayjs/hooks-kit": "^3.0.0",
