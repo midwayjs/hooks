@@ -1,6 +1,7 @@
 import pEvent from 'p-event'
 import { EventEmitter } from 'events'
 import { ChildProcess } from 'child_process'
+import { createDebug } from '@midwayjs/hooks-core'
 
 export const enum ServerEvents {
   Close = 'server:close',
@@ -42,8 +43,11 @@ type HttpTrigger = {
   handler: string
 }
 
+const debug = createDebug('hooks-dev-pack:ipc')
+
 export const ipc = {
   on<T = any>(emitter: EventEmitter, type: IPCEvents): Promise<IPCMessage<T>> {
+    debug(`on %s`, type)
     return pEvent(
       emitter,
       'message',
@@ -55,7 +59,8 @@ export const ipc = {
     type: IPCEvents,
     data?: T
   ): void {
-    proc.send({ type, data })
+    debug(`send %s, data: %O`, type, data)
+    proc?.send?.({ type, data })
   },
 }
 

@@ -38,20 +38,14 @@ export class DevServer {
   }
 
   registerHooks() {
-    ;['SIGINT', 'SIGTERM'].forEach((signal) =>
+    ;['SIGINT', 'SIGTERM', 'exit'].forEach((signal) =>
       process.on(signal, async () => {
-        await this.close()
-        process.exit()
+        await this.close(signal)
+        if (signal !== 'exit') {
+          process.exit()
+        }
       })
     )
-
-    process.on('exit', async () => {
-      await this.close()
-    })
-    process.on('uncaughtException', async (error: any) => {
-      console.error(error)
-      await this.close()
-    })
   }
 
   async start() {
@@ -118,19 +112,20 @@ export class DevServer {
   }
 
   async restart() {
-    await this.close()
+    await this.close('restart')
     await this.start()
   }
 
-  async close() {
-    debug('dev server closing')
+  async close(reason?: string) {
+    debug(`dev server closing, reason: %s`, reason)
+
     if (!this.app || !this.app.connected) {
       return
     }
 
     ipc.send(this.app, ServerEvents.Close)
     await pEvent(this.app, 'exit')
-    this.app.kill?.()
+    this.app?.kill?.()
     this.app = null
   }
 

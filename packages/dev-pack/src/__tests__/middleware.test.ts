@@ -36,7 +36,7 @@ test('dev pack middleware', async () => {
     expect(res.body.id).toEqual('jake')
   }
 
-  await server.close()
+  await server.close('middleware test')
 })
 
 test('image', async () => {
@@ -54,5 +54,5 @@ test('image', async () => {
     expect(res.header['content-type']).toEqual('image/png')
   }
 
-  await server.close()
+  await server.close('middleware test')
 })

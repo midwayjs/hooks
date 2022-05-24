@@ -32,7 +32,7 @@ test('dev server', async () => {
   // isMatch
   expect(await server.isMatch('/')).toBeTruthy()
 
-  await server.close()
+  await server.close('server test')
   const port = await detectPort(server.port)
   // port should be free
   expect(port).toBe(server.port)
