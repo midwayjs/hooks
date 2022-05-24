@@ -107,15 +107,27 @@ export function createBundlerPlugin(adapter: AbstractBundlerAdapter) {
 
         return router.isApiFile({
           file: id,
-          mod: require(id),
+          mod: requireWithoutCache(id),
         })
       },
       async transform(code: string, id: string) {
-        const apis = parseApiModule(require(id), id, adapter.getRouter())
+        const apis = parseApiModule(
+          requireWithoutCache(id),
+          id,
+          adapter.getRouter()
+        )
         const transformedApis = adapter.transformApiRoutes(apis)
         return adapter.generateClient(transformedApis)
       },
       ...adapter.getUnplugin(),
     }
   })
+}
+
+/**
+ * In dev mode, ensure get latest module content when file changes
+ */
+export function requireWithoutCache(module: string) {
+  delete require.cache[require.resolve(module)]
+  return require(module)
 }

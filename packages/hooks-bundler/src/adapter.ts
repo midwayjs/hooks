@@ -1,5 +1,5 @@
 import { AbstractRouter, ApiRoute, HttpTriggerType } from '@midwayjs/hooks-core'
-import { AbstractBundlerAdapter } from '@midwayjs/bundler'
+import { AbstractBundlerAdapter, requireWithoutCache } from '@midwayjs/bundler'
 import { join } from 'upath'
 import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
 import {
@@ -55,7 +55,10 @@ export class MidwayBundlerAdapter extends AbstractBundlerAdapter {
             process.env.NODE_ENV !== 'production' &&
             importer &&
             ctx.router.isSourceFile(importer, ctx.source) &&
-            ctx.router.isApiFile({ mod: require(importer), file: importer })
+            ctx.router.isApiFile({
+              mod: requireWithoutCache(importer),
+              file: importer,
+            })
           ) {
             return 'MIDWAY_HOOKS_VIRTUAL_FILE'
           }
