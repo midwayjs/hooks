@@ -69,7 +69,9 @@ export const ipc = {
     data?: T
   ): void {
     debug(`send %s, data: %O`, type, data)
-    proc?.send?.({ type, data })
+    if (proc && typeof proc.send === 'function') {
+      proc.send({ type, data })
+    }
   },
 }
 
