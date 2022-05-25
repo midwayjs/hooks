@@ -2,6 +2,7 @@ import pEvent from 'p-event'
 import { EventEmitter } from 'events'
 import { ChildProcess } from 'child_process'
 import { createDebug } from '@midwayjs/hooks-core'
+import consola from 'consola'
 
 export const enum ServerEvents {
   Close = 'server:close',
@@ -14,9 +15,17 @@ export const enum ServerlessAppEvents {
 }
 
 export const enum AppEvents {
-  Start = 'app:start',
-  Exit = 'app:exit',
+  Started = 'app:start:success',
   StartError = 'app:start:error',
+  Exit = 'app:exit',
+  UncaughtException = 'app:uncaughtException',
+}
+
+export const enum ServerState {
+  Closed,
+  Started,
+  Error,
+  Restarting,
 }
 
 type IPCEvents = ServerEvents | AppEvents | ServerlessAppEvents
@@ -67,3 +76,5 @@ export const ipc = {
 export function wait(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
+
+export const logger = consola.withTag('Midway')

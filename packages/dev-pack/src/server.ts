@@ -10,6 +10,8 @@ import {
   ServerlessAppFunction,
   ServerlessAppEvents,
   ipc,
+  ServerState,
+  logger,
 } from './share'
 import pathToRegexp from 'path-to-regexp'
 import pEvent from 'p-event'
@@ -25,6 +27,8 @@ export type CreateOptions = {
 export class DevServer {
   app: ChildProcess
   port: number
+
+  state: ServerState = ServerState.Closed
 
   constructor(public options: CreateOptions) {}
 
@@ -48,6 +52,18 @@ export class DevServer {
     )
   }
 
+  async ready() {
+    if (
+      this.state === ServerState.Closed ||
+      this.state === ServerState.Restarting
+    ) {
+      return new Promise((resolve, reject) => {
+        this.waitingList.push({ resolve, reject })
+      })
+    }
+  }
+
+  private waitingList: { resolve: Function; reject: Function }[] = []
   async start() {
     const port = await this.ensurePort(7001)
     debug('dev server port: %s', port)
@@ -84,8 +100,41 @@ export class DevServer {
     this.app.stdout.on('data', (data) => process.stdout.write(data))
     this.app.stderr.on('data', (data) => process.stderr.write(data))
 
-    await ipc.on(this.app, AppEvents.Start)
-    debug('dev server started')
+    const event = await Promise.race([
+      ipc.on<AppEvents>(this.app, AppEvents.Started),
+      ipc.on<AppEvents>(this.app, AppEvents.StartError),
+    ])
+
+    switch (event.type) {
+      case AppEvents.Started:
+        debug('dev server started')
+        await this.handleStarted()
+        break
+      case AppEvents.StartError:
+        debug('dev server start error')
+        await this.handleError(event.data)
+        logger.error(event.data)
+    }
+
+    ipc.on(this.app, AppEvents.UncaughtException).then(async (event) => {
+      debug('dev server uncaught exception')
+      logger.error(event.data)
+      await this.handleError(event.data)
+      await this.restart()
+    })
+  }
+
+  private handleStarted = async () => {
+    this.functions = await this.getFunctions()
+    this.state = ServerState.Started
+    this.waitingList.forEach((waiting) => waiting.resolve())
+    this.waitingList = []
+  }
+
+  private handleError = async (err: any) => {
+    this.state = ServerState.Error
+    this.waitingList.forEach((waiting) => waiting.reject(err))
+    this.waitingList = []
   }
 
   async watch() {
@@ -112,6 +161,8 @@ export class DevServer {
   }
 
   async restart() {
+    this.state = ServerState.Restarting
+
     await this.close('restart')
     await this.start()
   }
@@ -127,12 +178,13 @@ export class DevServer {
     await pEvent(this.app, 'exit')
     this.app?.kill?.()
     this.app = null
+    this.state = ServerState.Closed
   }
 
-  async isMatch(url: string) {
-    const functions = await this.getFunctions()
+  private functions: Record<string, ServerlessAppFunction> = null
 
-    for (const func of Object.values(functions)) {
+  isMatch(url: string) {
+    for (const func of Object.values(this.functions)) {
       for (const event of func.events) {
         if (!event.http) continue
         if (pathToRegexp(event.http.path).test(url)) {

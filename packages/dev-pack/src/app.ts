@@ -1,5 +1,5 @@
 import { createFunctionApp, close } from '@midwayjs/mock'
-import { Framework } from '@midwayjs/faas'
+import { Framework, IMidwayFaaSApplication } from '@midwayjs/faas'
 import { createDebug } from '@midwayjs/hooks-core'
 import { AppEvents, ipc, IPCMessage, ServerEvents } from './share'
 
@@ -14,22 +14,26 @@ async function bootstrap() {
   const options: AppOptions = JSON.parse(process.argv[2])
   debug('app options: %O', options)
 
-  const app = await createFunctionApp<Framework>(process.cwd(), options)
-  ipc.send(process, AppEvents.Start)
+  ipc.on(process, ServerEvents.Close).then(() => closeApp())
 
-  async function closeApp() {
-    await close(app)
-    process.exit()
-  }
-
-  process.on('message', async (message: IPCMessage) => {
-    if (message.type === ServerEvents.Close) {
-      await closeApp()
-    }
-  })
-  process.on('exit', async () => {
+  process.on('uncaughtException', async (err: Error) => {
+    debug('uncaughtException: %O', err)
+    ipc.send(process, AppEvents.UncaughtException, err)
     await closeApp()
   })
+
+  let app: IMidwayFaaSApplication
+  try {
+    app = await createFunctionApp<Framework>(process.cwd(), options)
+    ipc.send(process, AppEvents.Started)
+  } catch (error) {
+    ipc.send(process, AppEvents.StartError, error)
+  }
+
+  async function closeApp() {
+    if (app) await close(app)
+    process.exit(0)
+  }
 }
 
 bootstrap()

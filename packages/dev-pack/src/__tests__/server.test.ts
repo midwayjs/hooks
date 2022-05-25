@@ -30,7 +30,7 @@ test('dev server', async () => {
   expect(res.message).toEqual('Hello World!')
 
   // isMatch
-  expect(await server.isMatch('/')).toBeTruthy()
+  expect(server.isMatch('/')).toBeTruthy()
 
   await server.close('server test')
   const port = await detectPort(server.port)
