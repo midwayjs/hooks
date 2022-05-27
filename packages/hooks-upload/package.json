@@ -27,7 +27,7 @@
     "@midwayjs/upload": "3"
   },
   "devDependencies": {
-    "@midwayjs/upload": "3.3.9",
+    "@midwayjs/upload": "3.3.11",
     "@types/lodash.groupby": "4.6.7"
   }
 }
