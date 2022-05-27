@@ -3343,10 +3343,10 @@
   dependencies:
     raw-body "2.5.1"
 
-"@midwayjs/upload@3.3.6":
-  version "3.3.6"
-  resolved "https://registry.yarnpkg.com/@midwayjs/upload/-/upload-3.3.6.tgz#26309d54a4315ca2cb77291b50792725ccecef6e"
-  integrity sha512-tEk5W8mek7FGuCKvCh4PP1WjknfyA0fTwDp6NFEIB/g+MpZilWYQsIM4EHbJhnj6lc4Qg47weBY+cCM1TI8UTA==
+"@midwayjs/upload@3.3.9":
+  version "3.3.9"
+  resolved "https://registry.yarnpkg.com/@midwayjs/upload/-/upload-3.3.9.tgz#b441b7ec7cd1ba9ab5d54e72f82cc08879d20411"
+  integrity sha512-zyMTkokk6Fq/7fRakClGd0M7BXA9e9KoY81m6jQkqy/ArTjdBxLbAB7Mq99sE9aC2+E69Am5eSNnyHl9UuBK9A==
   dependencies:
     raw-body "2.5.1"
 
