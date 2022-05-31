@@ -3,6 +3,7 @@ import {
   ApiRoute,
   ContextManager,
   createDebug,
+  EXPORT_DEFAULT_FUNCTION_ALIAS,
   HooksMiddleware,
   HttpTrigger,
   HttpTriggerType,
@@ -26,6 +27,8 @@ import {
 } from '@midwayjs/decorator'
 import { createFunctionContainer, isDev, normalizeUrl } from '../../internal'
 import { HooksTrigger } from '../operator/type'
+import { FileSystemRouter } from '../../internal/router/file'
+import { relative } from 'upath'
 
 const debug = createDebug('hooks: MidwayFrameworkAdapter')
 
@@ -35,6 +38,7 @@ export interface MidwayApplication extends IMidwayApplication {
 
 export class MidwayFrameworkAdapter {
   constructor(
+    public source: string,
     public router: AbstractRouter,
     public app: MidwayApplication,
     public container: IMidwayContainer
@@ -79,20 +83,21 @@ export class MidwayFrameworkAdapter {
   }
 
   createServerlessApi(api: ApiRoute<HooksTrigger>) {
-    const { functionId, fn, trigger } = api
+    const { fn, trigger } = api
+    const providerId = this.getUniqueProviderId(api)
 
-    debug('create %s api: %s', trigger.type, functionId)
+    debug('create %s api: %s', trigger.type, providerId)
 
     return createFunctionContainer({
       fn,
-      functionId,
+      providerId,
       parseArgs: trigger.parseArgs,
       handlerDecorators: trigger.handlerDecorators,
     })
   }
 
   createHttpApi(api: ApiRoute) {
-    const { functionId, fn, trigger } = api
+    const { fn, trigger } = api
 
     validateOneOf(
       trigger.method,
@@ -102,7 +107,13 @@ export class MidwayFrameworkAdapter {
     const Method = this.methodDecorators[trigger.method]
     const url = normalizeUrl(this.router, api)
 
-    debug('create http api: %s %s %s', functionId, trigger.method, url)
+    const providerId = this.getUniqueProviderId(api)
+    debug(
+      'create http api. providerId: %s, trigger.method: %s, url: %s',
+      providerId,
+      trigger.method,
+      url
+    )
 
     if (isDev()) {
       // Midway Cli
@@ -111,20 +122,33 @@ export class MidwayFrameworkAdapter {
         type: HttpTriggerType.toLowerCase(),
         path: url,
         method: trigger.method,
-        functionId,
-        handler: `${functionId}.handler`,
+        functionId: providerId,
+        handler: `${providerId}.handler`,
       })
     }
 
     return createFunctionContainer({
       fn,
-      functionId,
+      providerId,
       parseArgs({ ctx }) {
         return ctx.request?.body?.args || []
       },
       classDecorators: [Controller()],
       handlerDecorators: [Method(url, { middleware: api.middleware })],
     })
+  }
+
+  private getUniqueProviderId(api: ApiRoute) {
+    if (this.router instanceof FileSystemRouter) return api.functionId
+    if (api.functionName !== EXPORT_DEFAULT_FUNCTION_ALIAS)
+      return api.functionId
+
+    // api router & export default function
+    const router = new FileSystemRouter({
+      source: this.source,
+      routes: [],
+    })
+    return router.getFunctionId(api.file, api.functionName, true)
   }
 
   private methodDecorators = {

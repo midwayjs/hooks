@@ -4,7 +4,7 @@ import { ApiFunction } from '@midwayjs/hooks-core'
 
 export type CreateOptions = {
   fn: ApiFunction
-  functionId: string
+  providerId: string
   parseArgs: (inputs: { ctx: any; args: any[] }) => any[]
   handlerDecorators?: any[]
   classDecorators?: any[]
@@ -13,7 +13,7 @@ export type CreateOptions = {
 export function createFunctionContainer(options: CreateOptions) {
   const {
     fn,
-    functionId,
+    providerId,
     parseArgs,
     handlerDecorators = [],
     classDecorators = [],
@@ -31,7 +31,7 @@ export function createFunctionContainer(options: CreateOptions) {
   }
 
   Object.defineProperty(FunctionContainer, 'name', {
-    value: functionId,
+    value: providerId,
   })
 
   __decorate([Inject()], FunctionContainer.prototype, 'ctx', void 0)
@@ -42,7 +42,7 @@ export function createFunctionContainer(options: CreateOptions) {
     null
   )
   FunctionContainer = __decorate(
-    [Provide(functionId), ...classDecorators],
+    [Provide(providerId), ...classDecorators],
     FunctionContainer
   )
   return FunctionContainer

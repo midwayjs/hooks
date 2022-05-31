@@ -51,6 +51,8 @@ test('ApiRouter functionToHttpPath', () => {
   const cases: [string, string, boolean, string][] = [
     ['/index.ts', 'foo', false, '/api/foo'],
     ['/index.ts', 'foo', true, '/api/index'],
+    ['/about/index.ts', 'foo', false, '/api/foo'],
+    ['/about/index.ts', 'foo', true, '/api/index'],
     ['/api/[slot].ts', 'foo', false, '/api/foo'],
     ['/api/[slot].ts', 'foo', true, '/api/[slot]'],
   ]

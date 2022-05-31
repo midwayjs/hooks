@@ -32,7 +32,7 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
 
   const source = getSource({ useSourceFile })
   const router = getRouter(source)
-  const midway = new MidwayFrameworkAdapter(router, null, null)
+  const midway = new MidwayFrameworkAdapter(source, router, null, null)
 
   useFrameworkAdapter({
     name: 'Midway',
