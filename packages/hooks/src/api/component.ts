@@ -17,7 +17,7 @@ import {
 } from '../internal'
 import { createConfiguration } from './configuration'
 import flattenDeep from 'lodash/flattenDeep'
-import { MidwayApplication, MidwayFrameworkAdapter } from './component/adapter'
+import { MidwayFrameworkAdapter } from './component/adapter'
 import { MidwayApplicationManager } from '@midwayjs/core'
 
 const debug = createDebug('hooks: component')

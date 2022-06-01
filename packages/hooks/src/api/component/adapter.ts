@@ -28,7 +28,6 @@ import {
 import { createFunctionContainer, isDev, normalizeUrl } from '../../internal'
 import { HooksTrigger } from '../operator/type'
 import { FileSystemRouter } from '../../internal/router/file'
-import { relative } from 'upath'
 
 const debug = createDebug('hooks: MidwayFrameworkAdapter')
 
@@ -86,7 +85,7 @@ export class MidwayFrameworkAdapter {
     const { fn, trigger } = api
     const providerId = this.getUniqueProviderId(api)
 
-    debug('create %s api: %s', trigger.type, providerId)
+    debug('create trigger: %s, providerId: %s', trigger.type, providerId)
 
     return createFunctionContainer({
       fn,
