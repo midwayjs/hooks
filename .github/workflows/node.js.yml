@@ -40,10 +40,13 @@ jobs:
         if: ${{ matrix.node == 18 }}
         env:
           NODE_OPTIONS: --openssl-legacy-provider
+          DEBUG: hooks*
         run: yarn ci
       - name: Test Node.js
         if: ${{ matrix.node != 18 }}
         run: yarn ci
+        env:
+          DEBUG: hooks*
       - name: Build
         run: yarn build
       - name: Upload coverage to Codecov
