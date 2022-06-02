@@ -28,7 +28,7 @@
     "@changesets/cli": "2.22.0",
     "@jest/expect": "28.1.0",
     "@preconstruct/cli": "2.1.5",
-    "@types/jest": "27.5.1",
+    "@types/jest": "28.1.0",
     "execa": "4.1.0",
     "husky": "7.0.4",
     "jest": "28.1.0",
