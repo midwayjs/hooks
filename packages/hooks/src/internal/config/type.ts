@@ -1,10 +1,5 @@
 import type { HooksMiddleware, Route } from '@midwayjs/hooks-core'
 
-export type IgnorePattern = (req: {
-  url: string
-  [key: string]: any
-}) => boolean
-
 type HTTPRoute = {
   /**
    * @description http api prefix
@@ -35,17 +30,6 @@ export interface ProjectConfig {
    */
   legacy?: boolean
 
-  /**
-   * @description customize dev server
-   */
-  dev?: {
-    /**
-     * @description If the function returns true, the server will ignore the request
-     */
-    include?: string[]
-    exclude?: string[]
-    ignorePattern?: IgnorePattern
-  }
   /**
    * @description customize project build config
    */
