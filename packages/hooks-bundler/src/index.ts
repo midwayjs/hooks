@@ -6,4 +6,10 @@ const plugin = createBundlerPlugin(new MidwayBundlerAdapter())
 export const webpack = plugin.webpack
 export const vite = plugin.vite
 
-export { plugin as ServerlessBundlerPlugin } from './serverless-adapter'
+export const ServerlessBundlerPlugin = {
+  get vite() {
+    throw new Error(
+      `ServerlessBundlerPlugin is deprecated, use import { vite } from '@midwayjs/hooks-bundler' directly.`
+    )
+  },
+}

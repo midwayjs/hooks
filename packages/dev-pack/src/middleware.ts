@@ -3,6 +3,9 @@ import { CreateOptions, DevServer } from './server'
 import { createProxyMiddleware } from 'http-proxy-middleware'
 import { parse } from 'url'
 import { ServerState } from './share'
+import { createDebug } from '@midwayjs/hooks-core'
+
+const debug = createDebug('hooks-dev-pack: middleware')
 
 export async function createExpressDevPack(options: CreateOptions) {
   options.cwd ??= process.cwd()
@@ -17,11 +20,12 @@ export async function createExpressDevPack(options: CreateOptions) {
     followRedirects: true,
   })
 
-  const middleware = async (
+  const MidwayHooksDevPackMiddleware = async (
     req: Request,
     res: Response,
     next: NextFunction
   ) => {
+    // debugger
     const path = parse(req.url).pathname
 
     const internalServerError = () => {
@@ -43,7 +47,9 @@ export async function createExpressDevPack(options: CreateOptions) {
       return internalServerError()
     }
 
-    if (server.isMatch(path)) {
+    const isMatch = server.isMatch(path)
+    debug('isMatch %s, path: %s', isMatch, path)
+    if (isMatch) {
       proxy(req, res, next)
     } else {
       next()
@@ -51,7 +57,7 @@ export async function createExpressDevPack(options: CreateOptions) {
   }
 
   return {
-    middleware,
+    middleware: MidwayHooksDevPackMiddleware,
     server,
   }
 }

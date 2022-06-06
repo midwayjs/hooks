@@ -8,10 +8,10 @@ import {
   AppEvents,
   ServerEvents,
   ServerlessAppFunction,
-  ServerlessAppEvents,
   ipc,
   ServerState,
   logger,
+  AppType,
 } from './share'
 import pathToRegexp from 'path-to-regexp'
 import pEvent from 'p-event'
@@ -81,6 +81,7 @@ export class DevServer {
         JSON.stringify({
           baseDir: this.options.sourceDir,
           port,
+          type: this.isServerlessApp() ? AppType.Serverless : AppType.Server,
         }),
       ],
       {
@@ -122,6 +123,10 @@ export class DevServer {
       await this.handleError(event.data)
       await this.restart()
     })
+  }
+
+  private isServerlessApp() {
+    return existsSync(resolve(this.options.cwd, 'f.yml'))
   }
 
   private handleStarted = async () => {
@@ -197,11 +202,11 @@ export class DevServer {
   }
 
   async getFunctions() {
-    ipc.send(this.app, ServerlessAppEvents.GetFunctions)
+    ipc.send(this.app, ServerEvents.GetApis)
 
     const message = await ipc.on<Record<string, ServerlessAppFunction>>(
       this.app,
-      ServerlessAppEvents.GetFunctionsResult
+      AppEvents.GetApisResult
     )
 
     return message.data

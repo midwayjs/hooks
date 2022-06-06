@@ -1,7 +1,7 @@
 import { AbstractRouter, ApiRoute, HttpTriggerType } from '@midwayjs/hooks-core'
 import { AbstractBundlerAdapter, requireWithoutCache } from '@midwayjs/bundler'
 import { join } from 'upath'
-import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
+import { createExpressDevPack } from '@midwayjs/dev-pack'
 import {
   getConfig,
   getProjectRoot,
@@ -10,6 +10,7 @@ import {
   normalizeUrl,
   ProjectConfig,
 } from '@midwayjs/hooks/internal'
+import type { ViteDevServer } from 'vite'
 import cloneDeep from 'lodash/cloneDeep'
 
 export class MidwayBundlerAdapter extends AbstractBundlerAdapter {
@@ -65,19 +66,15 @@ export class MidwayBundlerAdapter extends AbstractBundlerAdapter {
 
           return null
         },
-        async configureServer(server) {
-          // TODO support custom plugins
-          const devPack = getExpressDevPack(ctx.root, {
+        async configureServer(server: ViteDevServer) {
+          const { middleware } = await createExpressDevPack({
+            cwd: ctx.root,
             sourceDir: join(ctx.root, ctx.projectConfig.source),
-            plugins: [],
+            watch: true,
           })
 
-          server.middlewares.use(
-            devPack({
-              functionDir: ctx.root,
-              ignorePattern: ctx.projectConfig.dev.ignorePattern,
-            })
-          )
+          const connect = server.middlewares
+          connect.use(middleware)
         },
         config() {
           return {

@@ -5,13 +5,14 @@ import { createDebug } from '@midwayjs/hooks-core'
 import consola from 'consola'
 
 export const enum ServerEvents {
+  // hard code at @midwayjs/serverless-app
+  GetApis = 'functions',
   Close = 'server:close',
 }
 
-// for @midwayjs/serverless-app
-export const enum ServerlessAppEvents {
-  GetFunctions = 'functions',
-  GetFunctionsResult = 'dev:functions',
+export const enum AppType {
+  Server,
+  Serverless,
 }
 
 export const enum AppEvents {
@@ -19,6 +20,8 @@ export const enum AppEvents {
   StartError = 'app:start:error',
   Exit = 'app:exit',
   UncaughtException = 'app:uncaughtException',
+  // hard code at @midwayjs/serverless-app
+  GetApisResult = 'dev:functions',
 }
 
 export const enum ServerState {
@@ -28,7 +31,7 @@ export const enum ServerState {
   Restarting,
 }
 
-type IPCEvents = ServerEvents | AppEvents | ServerlessAppEvents
+type IPCEvents = ServerEvents | AppEvents
 
 export type IPCMessage<T = any> = {
   type: IPCEvents
