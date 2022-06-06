@@ -1,6 +1,7 @@
 import type { IMidwayContainer } from '@midwayjs/core'
 import {
   AbstractRouter,
+  ApiRouter,
   createDebug,
   parseApiModule,
   useFrameworkAdapter,
@@ -19,6 +20,7 @@ import { createConfiguration } from './configuration'
 import flattenDeep from 'lodash/flattenDeep'
 import { MidwayFrameworkAdapter } from './component/adapter'
 import { MidwayApplicationManager } from '@midwayjs/core'
+import { HOOKS_DEV_MODULE_PATH } from '../internal/const'
 
 const debug = createDebug('hooks: component')
 
@@ -45,6 +47,16 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
 
   if (apis.length === 0) {
     console.warn('No api routes found, source is:', source)
+  }
+
+  debug('HOOKS_DEV_MODULE_PATH', process.env[HOOKS_DEV_MODULE_PATH])
+  if (process.env[HOOKS_DEV_MODULE_PATH]) {
+    const devApis = loadApiModules(
+      process.env[HOOKS_DEV_MODULE_PATH],
+      new ApiRouter()
+    )
+    debug('load dev apis %O', devApis)
+    apis.push(...devApis)
   }
 
   midway.registerApiRoutes(apis)

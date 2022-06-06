@@ -61,6 +61,9 @@ export function loadApiFiles(source: string, router: AbstractRouter) {
   })
 
   debug('scan files: %O', files)
+  if (files.length === 0) {
+    console.warn('No api files found, source is:', source)
+  }
 
   const apis = files.filter(
     (file) =>

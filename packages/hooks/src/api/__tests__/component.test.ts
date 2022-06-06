@@ -9,7 +9,7 @@ import { HooksComponent } from '../component'
 import { MidwayFrameworkAdapter } from '../component/adapter'
 
 describe('component', () => {
-  const framework = new MidwayFrameworkAdapter(null, null, null)
+  const framework = new MidwayFrameworkAdapter(null, null, null, null)
 
   it('component should validate arguments', () => {
     expect(() =>

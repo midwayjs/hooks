@@ -4,6 +4,8 @@ import { closeApp, createApp, createHttpRequest } from './utils'
 import * as index from './fixtures/api-router/src/api/index'
 import { args } from '@midwayjs/rpc'
 import supertest from 'supertest'
+import { HOOKS_DEV_MODULE_PATH } from '../src/internal/const'
+import { resolve } from 'path'
 
 describe('test koa with api router', () => {
   let app: IMidwayKoaApplication
@@ -122,5 +124,28 @@ describe('test koa with api router', () => {
     expect(body.header.header).toEqual('header')
     expect(body.query.query).toEqual('query')
     expect(body.params.slot).toEqual('slot')
+  })
+})
+
+describe('load dev modules', () => {
+  let app: IMidwayKoaApplication
+
+  process.env[HOOKS_DEV_MODULE_PATH] = resolve(
+    __dirname,
+    './fixtures/api-router/dev'
+  )
+
+  beforeEach(async () => {
+    app = await createApp('api-router')
+  })
+
+  afterEach(async () => {
+    await closeApp(app)
+  })
+
+  test('load dev modules', async () => {
+    const { status, text } = await createHttpRequest(app).get('/dev_only')
+    expect(status).toEqual(200)
+    expect(text).toEqual('/dev_only')
   })
 })
