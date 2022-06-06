@@ -129,6 +129,8 @@ npx degit https://github.com/midwayjs/hooks/examples/react ./hooks-app
 npx degit https://github.com/midwayjs/hooks/examples/api ./hooks-app
 ```
 
+> 如果是 Windows，并提示 swc binding 无法找到，请安装 https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170
+
 ## 下一步
 
 - 了解如何开发接口并提供给前端调用：[接口开发](./api.md)
