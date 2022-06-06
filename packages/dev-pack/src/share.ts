@@ -58,7 +58,7 @@ type HttpTrigger = {
 const debug = createDebug('hooks-dev-pack:ipc')
 
 export const ipc = {
-  async on<T = any>(
+  async once<T = any>(
     emitter: EventEmitter,
     type: IPCEvents
   ): Promise<IPCMessage<T>> {
@@ -70,6 +70,19 @@ export const ipc = {
     )
     debug(`on %s success, message: %O`, type, message)
     return message
+  },
+  async onMultiple<T = any>(
+    emitter: EventEmitter,
+    type: IPCEvents,
+    callback: (message: IPCMessage<T>) => void
+  ) {
+    debug(`onMultiple %s`, type)
+    emitter.on('message', (message: IPCMessage) => {
+      if (message.type === type) {
+        debug(`onMultiple %s success, message: %O`, type, message)
+        callback(message)
+      }
+    })
   },
   send<T = any>(
     proc: NodeJS.Process | ChildProcess,

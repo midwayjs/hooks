@@ -102,8 +102,8 @@ export class DevServer {
     this.app.stderr.on('data', (data) => process.stderr.write(data))
 
     const event = await Promise.race([
-      ipc.on<AppEvents>(this.app, AppEvents.Started),
-      ipc.on<AppEvents>(this.app, AppEvents.StartError),
+      ipc.once<AppEvents>(this.app, AppEvents.Started),
+      ipc.once<AppEvents>(this.app, AppEvents.StartError),
     ])
 
     switch (event.type) {
@@ -117,7 +117,7 @@ export class DevServer {
         logger.error(event.data)
     }
 
-    ipc.on(this.app, AppEvents.UncaughtException).then(async (event) => {
+    ipc.once(this.app, AppEvents.UncaughtException).then(async (event) => {
       debug('dev server uncaught exception')
       logger.error(event.data)
       await this.handleError(event.data)
@@ -204,7 +204,7 @@ export class DevServer {
   async getFunctions() {
     ipc.send(this.app, ServerEvents.GetApis)
 
-    const message = await ipc.on<Record<string, ServerlessAppFunction>>(
+    const message = await ipc.once<Record<string, ServerlessAppFunction>>(
       this.app,
       AppEvents.GetApisResult
     )

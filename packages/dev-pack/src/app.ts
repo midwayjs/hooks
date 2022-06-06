@@ -41,15 +41,13 @@ function registerHooks() {
     await closeApp()
   })
 
-  ipc.on(process, ServerEvents.Close).then(() => closeApp())
+  ipc.once(process, ServerEvents.Close).then(() => closeApp())
 
   // implement for get server
   if (isServer) {
-    ipc.on(process, ServerEvents.GetApis).then(async () => {
-      const functions = await analysisDecorator(
-        options.baseDir || process.cwd()
-      )
-      ipc.send(process, AppEvents.GetApisResult, functions)
+    ipc.onMultiple(process, ServerEvents.GetApis, async () => {
+      const apis = await analysisDecorator(options.baseDir || process.cwd())
+      ipc.send(process, AppEvents.GetApisResult, apis)
     })
   }
 }
