@@ -32,6 +32,10 @@ export class FileSystemRouter extends AbstractRouter {
     return join(this.config.source, baseDir)
   }
 
+  /**
+   * legacy: index-handler
+   * now: indexHandler
+   */
   getFunctionId(file: string, functionName: string, isExportDefault: boolean) {
     const relativePath = relative(this.config.source, file)
     // src/apis/lambda/index.ts -> apis-lambda-index

@@ -53,7 +53,7 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
   if (process.env[HOOKS_DEV_MODULE_PATH]) {
     const devApis = loadApiModules(
       process.env[HOOKS_DEV_MODULE_PATH],
-      new ApiRouter()
+      router instanceof ApiRouter ? router : new ApiRouter()
     )
     debug('load dev apis %O', devApis)
     apis.push(...devApis)
