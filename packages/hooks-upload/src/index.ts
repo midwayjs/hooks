@@ -8,7 +8,7 @@ import {
   FileRecord,
 } from '@midwayjs/hooks-core'
 import type { UploadFileInfo } from '@midwayjs/upload'
-import groupBy from 'lodash.groupby'
+import groupBy from 'lodash/groupby'
 
 export function useFiles<T = string>() {
   const ctx = useContext()
