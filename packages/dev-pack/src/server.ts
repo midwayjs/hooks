@@ -1,17 +1,17 @@
 import { createDebug } from '@midwayjs/hooks-core'
-import { fork, ChildProcess } from 'child_process'
+import { ChildProcess, fork } from 'child_process'
 import detectPort from 'detect-port'
 import chokidar from 'chokidar'
 import { existsSync } from 'fs'
 import { resolve } from 'path'
 import {
   AppEvents,
+  AppType,
+  ipc,
+  logger,
   ServerEvents,
   ServerlessAppFunction,
-  ipc,
   ServerState,
-  logger,
-  AppType,
 } from './share'
 import pathToRegexp from 'path-to-regexp'
 import pEvent from 'p-event'
@@ -79,7 +79,7 @@ export class DevServer {
       app,
       [
         JSON.stringify({
-          baseDir: this.options.sourceDir,
+          sourceDir: this.options.sourceDir,
           port,
           type: this.isServerlessApp() ? AppType.Serverless : AppType.Server,
         }),

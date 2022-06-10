@@ -68,18 +68,18 @@ export const ipc = {
       'message',
       (message: IPCMessage) => message.type === type
     )
-    debug(`on %s success, message: %O`, type, message)
+    debug(`once %s success, message: %O`, type, message)
     return message
   },
-  async onMultiple<T = any>(
+  async on<T = any>(
     emitter: EventEmitter,
     type: IPCEvents,
     callback: (message: IPCMessage<T>) => void
   ) {
-    debug(`onMultiple %s`, type)
+    debug(`on %s`, type)
     emitter.on('message', (message: IPCMessage) => {
       if (message.type === type) {
-        debug(`onMultiple %s success, message: %O`, type, message)
+        debug(`on %s success, message: %O`, type, message)
         callback(message)
       }
     })

@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@midwayjs/esrun": "^3.0.1",
-    "@midwayjs/hooks": "^3.0.1",
     "@midwayjs/hooks-core": "^3.0.1",
     "chokidar": "^3.5.3",
     "consola": "^2.15.3",
