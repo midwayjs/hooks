@@ -25,7 +25,7 @@
     "@babel/plugin-proposal-private-property-in-object": "7.17.12",
     "@babel/preset-env": "7.18.2",
     "@babel/preset-typescript": "7.17.12",
-    "@changesets/cli": "2.22.0",
+    "@changesets/cli": "2.23.0",
     "@jest/expect": "28.1.1",
     "@preconstruct/cli": "2.1.5",
     "@types/jest": "28.1.1",
