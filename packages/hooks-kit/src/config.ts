@@ -1,4 +1,5 @@
-import { getConfig, UserConfig } from '@midwayjs/hooks/internal'
+import { getConfig } from '@midwayjs/hooks-config'
+import type { UserConfig } from '@midwayjs/hooks-config'
 import type { UserConfig as ViteConfig } from 'vite'
 
 export interface KitConfig extends Omit<UserConfig, 'source'> {
