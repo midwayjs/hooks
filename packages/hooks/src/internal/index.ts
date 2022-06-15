@@ -1,6 +1,5 @@
-export * from './config'
+export * from '@midwayjs/hooks-config'
 export * from './router'
-export * from './config/type'
 export * from './container'
 export * from './util'
 export * from './hydrate'

@@ -1,6 +1,6 @@
 import { join } from 'upath'
 import { getConfig, setConfig } from '../'
-import { PRE_DEFINE_PROJECT_CONFIG } from '../../const'
+import { PRE_DEFINE_PROJECT_CONFIG } from '../const'
 
 beforeEach(() => {
   delete process.env[PRE_DEFINE_PROJECT_CONFIG]

@@ -23,6 +23,7 @@
     "lodash": "^4.17.21",
     "upath": "^2.0.1",
     "find-up": "5.0.0",
+    "@midwayjs/hooks-config": "^3.0.1",
     "@midwayjs/hooks-core": "^3.0.1",
     "@midwayjs/glob": "^1.0.6",
     "@midwayjs/decorator": "^3.0.10",

@@ -5,7 +5,7 @@ import {
   createDebug,
   urlJoin,
 } from '@midwayjs/hooks-core'
-import { getConfig, getProjectRoot } from '../config'
+import { getConfig, getProjectRoot } from '@midwayjs/hooks-config'
 import { join } from 'upath'
 import { run } from '@midwayjs/glob'
 import { FileSystemRouter } from './file'

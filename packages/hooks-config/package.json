@@ -1,0 +1,31 @@
+{
+  "name": "@midwayjs/hooks-config",
+  "version": "3.0.1",
+  "description": "TODO",
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "keywords": [
+    "midway",
+    "hooks",
+    "hooks-config"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "upath": "^2.0.1",
+    "find-up": "5.0.0",
+    "debug": "^4.3.3"
+  },
+  "devDependencies": {
+    "@midwayjs/hooks-core": "^3.0.1"
+  },
+  "main": "dist/midwayjs-hooks-config.cjs.js",
+  "module": "dist/midwayjs-hooks-config.esm.js",
+  "publishConfig": {
+    "access": "public"
+  }
+}
