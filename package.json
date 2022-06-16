@@ -52,6 +52,10 @@
     ]
   },
   "devDependencies": {
-    "all-contributors-cli": "6.20.5"
+    "all-contributors-cli": "6.20.5",
+    "@types/babel__core": "7.1.19",
+    "@types/babel__preset-env": "7.9.2",
+    "@types/dedent": "^0.7.0",
+    "@types/prettier": "2.6.2"
   }
 }

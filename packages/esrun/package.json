@@ -32,5 +32,6 @@
       "index.ts",
       "register.ts"
     ]
-  }
+  },
+  "devDependencies": {}
 }

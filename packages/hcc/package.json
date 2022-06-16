@@ -33,6 +33,7 @@
     "@midwayjs/hooks-core": "^3.0.1"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.182",
     "isomorphic-unfetch": "3.1.0"
   },
   "files": [

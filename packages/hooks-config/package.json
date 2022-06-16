@@ -21,7 +21,9 @@
     "debug": "^4.3.3"
   },
   "devDependencies": {
-    "@midwayjs/hooks-core": "^3.0.1"
+    "@midwayjs/hooks-core": "^3.0.1",
+    "@types/debug": "^4.1.7",
+    "@types/lodash": "^4.14.182"
   },
   "main": "dist/midwayjs-hooks-config.cjs.js",
   "module": "dist/midwayjs-hooks-config.esm.js",
