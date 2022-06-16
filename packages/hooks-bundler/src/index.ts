@@ -5,6 +5,8 @@ const plugin = createBundlerPlugin(new MidwayBundlerAdapter())
 
 export const webpack = plugin.webpack
 export const vite = plugin.vite
+export const esbuild = plugin.esbuild
+export const rollup = plugin.rollup
 
 export const ServerlessBundlerPlugin = {
   get vite() {
