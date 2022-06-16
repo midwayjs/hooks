@@ -72,8 +72,7 @@ export class MidwayBundlerAdapter extends AbstractBundlerAdapter {
             watch: true,
           })
 
-          const connect = server.middlewares
-          connect.use(middleware)
+          server.middlewares.use(middleware)
         },
         config() {
           return {
