@@ -42,6 +42,7 @@
   ],
   "preconstruct": {
     "entrypoints": [
+      "index.ts",
       "cli.ts"
     ]
   }
