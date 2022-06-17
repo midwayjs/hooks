@@ -6,7 +6,7 @@ import { hcc } from '../src/midway'
 import fetch from 'isomorphic-unfetch'
 import { setProjectRoot } from '@midwayjs/hooks/internal'
 
-describe.skip('hcc', () => {
+describe('hcc', () => {
   test('build api project', async () => {
     const fixture = join(__dirname, 'fixtures/api')
 

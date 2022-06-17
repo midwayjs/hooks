@@ -11,7 +11,7 @@ module.exports = {
   ],
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '^test.ts$'],
   snapshotSerializers: ['jest-serializer-path', 'jest-snapshot-serializer-raw'],
-  testTimeout: 1000 * 30,
+  testTimeout: 1000 * 60,
   watchPlugins: [
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
