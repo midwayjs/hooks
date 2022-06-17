@@ -1,9 +1,9 @@
 import { join } from 'upath'
 import { getConfig, setConfig } from '../'
-import { PRE_DEFINE_PROJECT_CONFIG } from '../const'
+import { HOOKS_PROJECT_CONFIG } from '../../const'
 
 beforeEach(() => {
-  delete process.env[PRE_DEFINE_PROJECT_CONFIG]
+  delete process.env[HOOKS_PROJECT_CONFIG]
 })
 
 test('load pre defined config', async () => {

@@ -1,6 +1,1 @@
-export * from '@midwayjs/hooks-config'
-export * from './router'
-export * from './container'
-export * from './util'
-export * from './hydrate'
-export * from './const'
+export * from '@midwayjs/hooks-internal'

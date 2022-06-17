@@ -1,41 +1,21 @@
-import { existsSync } from 'fs'
-import defaultsDeep from 'lodash/defaultsDeep'
 import get from 'lodash/get'
-import path, { dirname } from 'upath'
+import defaultsDeep from 'lodash/defaultsDeep'
+import path from 'upath'
+import { existsSync } from 'fs'
+import { createDebug } from '@midwayjs/hooks-core'
+import { getProjectRoot } from '../root'
+import { HOOKS_PROJECT_CONFIG } from '../const'
 import { ProjectConfig, UserConfig } from './type'
-import findUp from 'find-up'
-import { PRE_DEFINE_PROJECT_CONFIG, PROJECT_ROOT } from './const'
-import createDebug from 'debug'
 
-const debug = createDebug('hooks: config')
-
-export * from './type'
-
-export function setProjectRoot(root: string) {
-  debug('setProjectRoot: %s', root)
-  process.env[PROJECT_ROOT] = root
-}
-
-export function getProjectRoot(cwd?: string) {
-  if (process.env[PROJECT_ROOT]) {
-    return process.env[PROJECT_ROOT]
-  }
-
-  const pkg = findUp.sync('package.json', { cwd })
-  if (pkg) {
-    return dirname(pkg)
-  }
-
-  return process.cwd()
-}
+const debug = createDebug('hooks-internal:config')
 
 export function setConfig(config: Partial<ProjectConfig>) {
   debug('setConfig: %O', config)
-  process.env[PRE_DEFINE_PROJECT_CONFIG] = JSON.stringify(config)
+  process.env[HOOKS_PROJECT_CONFIG] = JSON.stringify(config)
 }
 
 export function getConfig(cwd = getProjectRoot()): ProjectConfig {
-  const preDefineConfig = process.env[PRE_DEFINE_PROJECT_CONFIG]
+  const preDefineConfig = process.env[HOOKS_PROJECT_CONFIG]
   if (preDefineConfig) {
     debug('getConfig from PRE_DEFINE_PROJECT_CONFIG')
   }

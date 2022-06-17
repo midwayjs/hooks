@@ -1,11 +1,11 @@
 import {
+  FileRecord,
   HttpMethod,
+  HttpTrigger,
   HttpTriggerType,
   Operator,
   OperatorType,
-  HttpTrigger,
   useContext,
-  FileRecord,
 } from '@midwayjs/hooks-core'
 import type { UploadFileInfo } from '@midwayjs/upload'
 import { groupBy } from 'lodash'

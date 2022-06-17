@@ -1,7 +1,7 @@
+import type { FaaSMetadata } from '@midwayjs/decorator'
 import { ServerlessTrigger, ServerlessTriggerType } from '@midwayjs/decorator'
 import { Operator, OperatorType } from '@midwayjs/hooks-core'
 import { HooksTrigger } from './type'
-import type { FaaSMetadata } from '@midwayjs/decorator'
 
 export interface ServerlessTrigger extends HooksTrigger {
   type: any

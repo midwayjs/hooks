@@ -1,4 +1,4 @@
-import { useContext, Get, Api, Middleware } from '@midwayjs/hooks'
+import { Api, Get, Middleware, useContext } from '@midwayjs/hooks'
 import KoaStaticCache, { Options } from 'koa-static-cache'
 import { join } from 'path'
 

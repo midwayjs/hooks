@@ -1,4 +1,5 @@
 import type { IMidwayContainer } from '@midwayjs/core'
+import { MidwayApplicationManager } from '@midwayjs/core'
 import {
   AbstractRouter,
   ApiRouter,
@@ -11,16 +12,15 @@ import {
   getHydrateOptions,
   getRouter,
   getSource,
+  HOOKS_DEV_MODULE_PATH,
   isDev,
   isHydrate,
   loadApiFiles,
   RuntimeConfig,
-} from '../internal'
+} from '@midwayjs/hooks-internal'
 import { createConfiguration } from './configuration'
 import flattenDeep from 'lodash/flattenDeep'
 import { MidwayFrameworkAdapter } from './component/adapter'
-import { MidwayApplicationManager } from '@midwayjs/core'
-import { HOOKS_DEV_MODULE_PATH } from '../internal/const'
 
 const debug = createDebug('hooks: component')
 

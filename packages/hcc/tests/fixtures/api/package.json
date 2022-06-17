@@ -10,6 +10,7 @@
   "dependencies": {
     "@midwayjs/bootstrap": "^3.3.5",
     "@midwayjs/hooks": "^3.0.0",
+    "@midwayjs/hooks-internal": "^3.0.1",
     "@midwayjs/koa": "^3.3.5"
   },
   "devDependencies": {

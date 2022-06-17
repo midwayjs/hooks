@@ -13,7 +13,7 @@ import {
   useContext,
   validateOneOf,
 } from '@midwayjs/hooks-core'
-import { IMidwayApplication, IMidwayContainer } from '@midwayjs/core'
+import type { IMidwayApplication, IMidwayContainer } from '@midwayjs/core'
 import {
   All,
   Controller,
@@ -25,9 +25,9 @@ import {
   Post,
   Put,
 } from '@midwayjs/decorator'
-import { createFunctionContainer, isDev, normalizeUrl } from '../../internal'
+import { FileSystemRouter, isDev, normalizeUrl } from '@midwayjs/hooks-internal'
 import { HooksTrigger } from '../operator/type'
-import { FileSystemRouter } from '../../internal/router/file'
+import { createFunctionContainer } from '../container'
 
 const debug = createDebug('hooks: MidwayFrameworkAdapter')
 

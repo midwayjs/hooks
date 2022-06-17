@@ -3,12 +3,13 @@ import { AbstractBundlerAdapter, requireWithoutCache } from '@midwayjs/bundler'
 import { join } from 'upath'
 import { createExpressDevPack } from '@midwayjs/dev-pack'
 import {
+  getConfig,
+  getProjectRoot,
   getRouter,
   getSource,
   normalizeUrl,
   ProjectConfig,
-} from '@midwayjs/hooks/internal'
-import { getConfig, getProjectRoot } from '@midwayjs/hooks-config'
+} from '@midwayjs/hooks-internal'
 import type { ViteDevServer } from 'vite'
 import cloneDeep from 'lodash/cloneDeep'
 

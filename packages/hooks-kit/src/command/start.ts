@@ -1,7 +1,7 @@
 import { CAC } from 'cac'
 import { resolve } from 'path'
 import { Bootstrap } from '@midwayjs/bootstrap'
-import { setConfig, setProjectRoot } from '@midwayjs/hooks/internal'
+import { setConfig, setProjectRoot } from '@midwayjs/hooks-internal'
 import consola from 'consola'
 import { resolveConfig } from '../config'
 

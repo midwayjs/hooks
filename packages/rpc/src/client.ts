@@ -1,6 +1,9 @@
-import type { BaseTrigger, RawRequestOptions } from '@midwayjs/hooks-core'
+import type {
+  BaseTrigger,
+  RawRequestOptions,
+  RequestArgs,
+} from '@midwayjs/hooks-core'
 import { Middleware, RequestContext } from './type'
-import type { RequestArgs } from '@midwayjs/hooks-core'
 import compose from 'koa-compose'
 import { parseRequestArgs } from './util'
 

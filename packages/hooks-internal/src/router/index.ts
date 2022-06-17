@@ -5,12 +5,12 @@ import {
   createDebug,
   urlJoin,
 } from '@midwayjs/hooks-core'
-import { getConfig, getProjectRoot } from '@midwayjs/hooks-config'
+import { getConfig, getProjectRoot } from '../config'
 import { join } from 'upath'
 import { run } from '@midwayjs/glob'
 import { FileSystemRouter } from './file'
 
-const debug = createDebug('hooks: router')
+const debug = createDebug('hooks-internal:router')
 
 type GetSourceOptions = {
   useSourceFile: boolean

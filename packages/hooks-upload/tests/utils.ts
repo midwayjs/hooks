@@ -1,7 +1,7 @@
 import { join } from 'path'
 import { Framework, IMidwayKoaApplication } from '@midwayjs/koa'
 import { close, createApp as createMockApp } from '@midwayjs/mock'
-import { setProjectRoot } from '@midwayjs/hooks/internal'
+import { setProjectRoot } from '@midwayjs/hooks-internal'
 
 export async function createApp(name: string): Promise<IMidwayKoaApplication> {
   const fixture = join(__dirname, 'fixtures', name)

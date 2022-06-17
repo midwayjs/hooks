@@ -24,5 +24,7 @@
     "koa-static-cache": "5.1.4",
     "@types/koa-static-cache": "5.1.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@midwayjs/hooks-internal": "^3.0.1"
+  }
 }

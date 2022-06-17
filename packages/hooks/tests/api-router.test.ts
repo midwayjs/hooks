@@ -4,7 +4,7 @@ import { closeApp, createApp, createHttpRequest } from './utils'
 import * as index from './fixtures/api-router/src/api/index'
 import { args } from '@midwayjs/rpc'
 import supertest from 'supertest'
-import { HOOKS_DEV_MODULE_PATH } from '../src/internal/const'
+import { HOOKS_DEV_MODULE_PATH } from '@midwayjs/hooks-internal'
 import { resolve } from 'path'
 
 describe('test koa with api router', () => {

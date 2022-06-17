@@ -4,7 +4,7 @@ import { existsSync } from 'fs'
 import { remove } from 'fs-extra'
 import { hcc } from '../src/midway'
 import fetch from 'isomorphic-unfetch'
-import { setProjectRoot } from '@midwayjs/hooks/internal'
+import { setProjectRoot } from '@midwayjs/hooks-internal'
 
 describe('hcc', () => {
   test('build api project', async () => {

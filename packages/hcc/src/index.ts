@@ -1,4 +1,4 @@
-import { getSource, getRouter, setProjectRoot } from '@midwayjs/hooks/internal'
+import { getRouter, getSource, setProjectRoot } from '@midwayjs/hooks-internal'
 import { GenerateTarget, getEntryCode } from './midway'
 
 export async function getPreloadCode(cwd: string) {
