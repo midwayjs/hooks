@@ -6,7 +6,7 @@ import { analysisDecorator } from './analysis'
 const debug = createDebug('hooks-dev-pack:app')
 
 export type AppOptions = {
-  sourceDir: string
+  baseDir: string
   port: number
   type: AppType
 }
@@ -46,7 +46,7 @@ function registerHooks() {
   // implement for get server
   if (isServer) {
     ipc.on(process, ServerEvents.GetApis, async () => {
-      const apis = await analysisDecorator(options.sourceDir)
+      const apis = await analysisDecorator(options.baseDir)
       ipc.send(process, AppEvents.GetApisResult, apis)
     })
   }

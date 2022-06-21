@@ -15,6 +15,7 @@ import {
 } from './share'
 import pathToRegexp from 'path-to-regexp'
 import pEvent from 'p-event'
+import { AppOptions } from './app'
 
 const debug = createDebug('hooks-dev-pack:server')
 
@@ -79,10 +80,10 @@ export class DevServer {
       app,
       [
         JSON.stringify({
-          sourceDir: this.options.sourceDir,
+          baseDir: this.options.sourceDir,
           port,
           type: this.isServerlessApp() ? AppType.Serverless : AppType.Server,
-        }),
+        } as AppOptions),
       ],
       {
         cwd: this.options.cwd,
