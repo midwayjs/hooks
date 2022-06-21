@@ -2,8 +2,8 @@ import { basename, extname, removeExt } from 'upath'
 import { AbstractRouter } from './base'
 import urlJoin from 'proper-url-join'
 import some from 'lodash/some'
-import { OperatorType } from '../api'
-import { API_BASE_PATH, isFunction } from '../common'
+import { isApiFunction } from '../api/common'
+import { API_BASE_PATH } from '../common'
 
 export type ApiRouterConfig = {
   basePath?: string
@@ -20,12 +20,7 @@ export class ApiRouter extends AbstractRouter {
   }
 
   hasExportApiRoutes(mod: any) {
-    return some(
-      mod,
-      (exportVariable) =>
-        isFunction(exportVariable) &&
-        !!Reflect.getMetadata(OperatorType.Trigger, exportVariable)
-    )
+    return some(mod, isApiFunction)
   }
 
   getFunctionId(

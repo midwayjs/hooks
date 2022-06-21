@@ -18,11 +18,6 @@ export type ApiRunner<
     : [...args: Parameters<Handler>, input: Input]
 ) => ReturnType<Handler>
 
-export enum OperatorType {
-  Trigger = 'Trigger',
-  Middleware = 'Middleware',
-}
-
 export type MetadataHelper = {
   setMetadata: <T = any>(key: any, value: T) => void
   getMetadata: <T = any>(key: any) => T

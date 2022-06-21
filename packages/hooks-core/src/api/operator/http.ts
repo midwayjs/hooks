@@ -1,4 +1,5 @@
-import { BaseTrigger, MetadataHelper, Operator, OperatorType } from '../type'
+import { BaseTrigger, MetadataHelper, Operator } from '../type'
+import { OperatorType } from '../common'
 
 export const HttpTriggerType = 'HTTP'
 

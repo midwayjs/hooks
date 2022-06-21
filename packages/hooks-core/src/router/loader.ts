@@ -6,10 +6,16 @@ import {
   HooksMiddleware,
 } from '../'
 import { USE_INPUT_METADATA } from '../common/const'
-import { BaseTrigger, HttpTrigger, HttpTriggerType, OperatorType } from '../api'
+import {
+  BaseTrigger,
+  HttpTrigger,
+  HttpTriggerType,
+  isApiFunction,
+  OperatorType,
+} from '../api'
 import { ApiFunction } from '../types'
 import { AbstractRouter } from './base'
-import { createDebug, isFunction } from '../common'
+import { createDebug } from '../common'
 
 const debug = createDebug('hooks-core: loader')
 
@@ -32,13 +38,12 @@ export function parseApiModule(
   router: AbstractRouter
 ) {
   const apis: ApiRoute[] = []
-  for (const [name, fn] of Object.entries(pickBy(mod, isFunction))) {
+  for (const [name, fn] of Object.entries(pickBy(mod, isApiFunction))) {
     const exportDefault = name === 'default'
     const functionName = exportDefault ? EXPORT_DEFAULT_FUNCTION_ALIAS : name
     const functionId = router.getFunctionId(file, functionName, exportDefault)
 
     const trigger: Trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
-    if (!trigger) continue
 
     // Http Trigger
     if (trigger.type === HttpTriggerType) {
