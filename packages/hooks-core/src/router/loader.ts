@@ -1,4 +1,3 @@
-import parseFunctionArgs from 'fn-args'
 import pickBy from 'lodash/pickBy'
 import {
   ApiModule,
@@ -7,26 +6,12 @@ import {
   HooksMiddleware,
 } from '../'
 import { USE_INPUT_METADATA } from '../common/const'
-import {
-  Api,
-  BaseTrigger,
-  Get,
-  HttpTrigger,
-  HttpTriggerType,
-  OperatorType,
-  Post,
-} from '../api'
-import { ApiFunction, Route } from '../types'
+import { BaseTrigger, HttpTrigger, HttpTriggerType, OperatorType } from '../api'
+import { ApiFunction } from '../types'
 import { AbstractRouter } from './base'
 import { createDebug, isFunction } from '../common'
 
 const debug = createDebug('hooks-core: loader')
-
-export type LoadConfig = {
-  root: string
-  source: string
-  routes: Route[]
-}
 
 type Trigger = BaseTrigger | HttpTrigger
 
@@ -47,25 +32,13 @@ export function parseApiModule(
   router: AbstractRouter
 ) {
   const apis: ApiRoute[] = []
-  const funcs = pickBy(mod, isFunction)
-  for (let [name, fn] of Object.entries(funcs)) {
+  for (const [name, fn] of Object.entries(pickBy(mod, isFunction))) {
     const exportDefault = name === 'default'
     const functionName = exportDefault ? EXPORT_DEFAULT_FUNCTION_ALIAS : name
     const functionId = router.getFunctionId(file, functionName, exportDefault)
 
-    // default is http trigger
-    let trigger: Trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
-
-    // File Router
-    if (!trigger) {
-      // default is http
-      const HttpMethod = parseFunctionArgs(fn).length === 0 ? Get : Post
-      // wrap pure function
-      fn = Api(HttpMethod(), fn)
-      mod[name] = fn
-      // get trigger
-      trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
-    }
+    const trigger: Trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
+    if (!trigger) continue
 
     // Http Path
     if (trigger.type === HttpTriggerType) {

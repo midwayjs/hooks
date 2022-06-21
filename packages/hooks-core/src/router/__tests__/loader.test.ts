@@ -76,3 +76,17 @@ it('load middleware', () => {
   expect(routes[0].middleware.length).toBe(2)
   expect(routes[1].middleware.length).toBe(3)
 })
+
+it('should ignore pure function', () => {
+  const routes = parseApiModule(
+    {
+      get() {},
+      name: 'foo',
+      age: 1,
+    },
+    '/index.ts',
+    router
+  )
+
+  expect(routes.length).toBe(0)
+})

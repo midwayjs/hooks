@@ -4,7 +4,6 @@ import {
   AbstractRouter,
   ApiRouter,
   createDebug,
-  parseApiModule,
   useFrameworkAdapter,
   validateArray,
 } from '@midwayjs/hooks-core'
@@ -17,6 +16,7 @@ import {
   isHydrate,
   loadApiFiles,
   RuntimeConfig,
+  parseApiModule,
 } from '@midwayjs/hooks-internal'
 import { createConfiguration } from './configuration'
 import flattenDeep from 'lodash/flattenDeep'
