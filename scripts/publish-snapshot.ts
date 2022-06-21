@@ -4,6 +4,7 @@ import { command } from 'execa'
 import assert from 'node:assert'
 import { execSync } from 'node:child_process'
 import dedent from 'dedent'
+import consola from 'consola'
 
 const dist = path.resolve(__dirname, '../.changeset')
 const cwd = path.resolve(__dirname, '..')
@@ -20,7 +21,7 @@ type LernaPackage = {
 }
 
 async function publishSnapshot() {
-  console.log(`Generate snapshot changeset for ${tag}`)
+  consola.info(`Generate snapshot changeset for ${tag}`)
   const pkgs: LernaPackage[] = JSON.parse(
     execSync('npx lerna ls --json').toString()
   )
@@ -37,10 +38,10 @@ async function publishSnapshot() {
     stdio: 'ignore',
   })
 
-  console.log(`Build packages`)
+  consola.info(`Build packages`)
   await command(`npm run build`, { cwd, stdio: 'inherit' })
 
-  console.log(`Publish snapshot changeset for ${tag}`)
+  consola.info(`Publish snapshot changeset for ${tag}`)
   await command(`yarn changeset publish --no-git-tag --tag ${tag}`, {
     cwd,
     stdio: 'inherit',
@@ -48,7 +49,7 @@ async function publishSnapshot() {
 
   await command(`git checkout -- */CHANGELOG.md`, { cwd })
   await command(`git checkout -- packages/*/package.json`, { cwd })
-  console.log(`\nSnapshot changeset published`)
+  consola.success(`Snapshot changeset published`)
 }
 
 function createChangeset(pkgs: string[]) {
