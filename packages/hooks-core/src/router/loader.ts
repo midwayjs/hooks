@@ -40,7 +40,7 @@ export function parseApiModule(
     const trigger: Trigger = Reflect.getMetadata(OperatorType.Trigger, fn)
     if (!trigger) continue
 
-    // Http Path
+    // Http Trigger
     if (trigger.type === HttpTriggerType) {
       trigger.path ??= router.functionToHttpPath(
         file,
