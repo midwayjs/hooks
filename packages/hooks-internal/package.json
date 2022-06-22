@@ -9,6 +9,9 @@
     "type": "git",
     "url": "git@github.com:midwayjs/hooks.git"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "midway",
     "hooks",

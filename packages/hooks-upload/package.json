@@ -30,5 +30,8 @@
     "@midwayjs/upload": "3.5.3",
     "@midwayjs/hooks-internal": "^3.0.1",
     "@types/lodash": "4.14.180"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

@@ -38,5 +38,9 @@
       "index.ts",
       "app.ts"
     ]
-  }
+  },
+  "files": [
+    "app",
+    "dist"
+  ]
 }

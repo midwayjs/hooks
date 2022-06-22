@@ -26,5 +26,8 @@
   },
   "devDependencies": {
     "@midwayjs/hooks-internal": "^3.0.1"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
