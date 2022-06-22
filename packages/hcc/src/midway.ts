@@ -25,12 +25,15 @@ export async function hcc() {
 export function getEntryCode(
   source: string,
   router: AbstractRouter,
-  target: GenerateTarget
+  target: GenerateTarget,
+  filter: (file: string) => boolean = () => true
 ) {
   const result = loadApiFiles(source, router)
 
   const relativePath = (file: string) => relative(source, file)
-  const files = difference(result.files, result.apis).map(relativePath)
+  const files = difference(result.files, result.apis)
+    .map(relativePath)
+    .filter((file) => filter(file))
   const apis = result.apis.map(relativePath)
 
   return target === GenerateTarget.JS
