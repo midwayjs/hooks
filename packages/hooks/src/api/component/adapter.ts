@@ -28,6 +28,7 @@ import {
 import { FileSystemRouter, isDev, normalizeUrl } from '@midwayjs/hooks-internal'
 import { HooksTrigger } from '../operator/type'
 import { createFunctionContainer } from '../container'
+import camelCase from 'lodash/camelCase'
 
 const debug = createDebug('hooks: MidwayFrameworkAdapter')
 
@@ -140,7 +141,7 @@ export class MidwayFrameworkAdapter {
   private getUniqueProviderId(api: ApiRoute) {
     if (this.router instanceof FileSystemRouter) return api.functionId
     if (api.functionName !== EXPORT_DEFAULT_FUNCTION_ALIAS)
-      return api.functionId
+      return camelCase(api.functionId)
 
     // api router & export default function
     const router = new FileSystemRouter({
