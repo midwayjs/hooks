@@ -14,14 +14,16 @@ export class HooksValidationError extends MidwayHttpError {
 
 export { Validate } from '@midwayjs/hooks-core'
 
-setValidator(async (schemas: any, inputs: any[]) => {
-  let z: typeof Zod
+function getZod(): typeof Zod {
   try {
-    z = require('zod').z
+    return require('zod').z
   } catch (e) {
-    throw new Error(`package zod is required for validation`, { cause: e })
+    throw new Error(`Package zod is required for validation`, { cause: e })
   }
+}
 
+setValidator(async (schemas: any, inputs: any[]) => {
+  const z = getZod()
   const result = await z.tuple(schemas).safeParseAsync(inputs)
 
   if (result.success === false) {
@@ -52,7 +54,7 @@ export function ValidateHttp(options: ValidateHttpOption): Operator<void> {
         if (options.headers) await options.headers.parseAsync(ctx.headers)
         if (options.data) {
           const inputs = getInputArguments()
-          const { z } = require('zod')
+          const z = getZod()
           const tuple = z.tuple(options.data as any)
           await tuple.parseAsync(inputs)
         }
