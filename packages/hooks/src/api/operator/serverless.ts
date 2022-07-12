@@ -22,7 +22,6 @@ function createServerlessTrigger<O>(type: any) {
           type,
           options,
           parseArgs,
-          handlerDecorators: [ServerlessTrigger(type, options)],
         })
       },
     }

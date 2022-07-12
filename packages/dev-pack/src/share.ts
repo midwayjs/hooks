@@ -5,9 +5,8 @@ import { createDebug } from '@midwayjs/hooks-core'
 import consola from 'consola'
 
 export const enum ServerEvents {
-  // hard code at @midwayjs/serverless-app
-  GetApis = 'functions',
   Close = 'server:close',
+  IsMatch = 'server:isMatch',
 }
 
 export const enum AppType {
@@ -18,10 +17,8 @@ export const enum AppType {
 export const enum AppEvents {
   Started = 'app:start:success',
   StartError = 'app:start:error',
-  Exit = 'app:exit',
   UncaughtException = 'app:uncaughtException',
-  // hard code at @midwayjs/serverless-app
-  GetApisResult = 'dev:functions',
+  IsMatchResult = 'app:isMatch:result',
 }
 
 export const enum ServerState {
@@ -38,21 +35,9 @@ export type IPCMessage<T = any> = {
   data?: T
 }
 
-export type ServerlessAppFunction = {
-  handler: string
-  events: Triggers[]
-}
-
-type Triggers = {
-  http: HttpTrigger
-}
-
-type HttpTrigger = {
-  type: string
+export type MatchInfo = {
   path: string
   method: string
-  functionId: string
-  handler: string
 }
 
 const debug = createDebug('hooks-dev-pack:ipc')
@@ -62,7 +47,6 @@ export const ipc = {
     emitter: EventEmitter,
     type: IPCEvents
   ): Promise<IPCMessage<T>> {
-    debug(`on %s`, type)
     const message = await pEvent(
       emitter,
       'message',
@@ -71,12 +55,11 @@ export const ipc = {
     debug(`once %s success, message: %O`, type, message)
     return message
   },
-  async on<T = any>(
+  on<T = any>(
     emitter: EventEmitter,
     type: IPCEvents,
     callback: (message: IPCMessage<T>) => void
   ) {
-    debug(`on %s`, type)
     emitter.on('message', (message: IPCMessage) => {
       if (message.type === type) {
         debug(`on %s success, message: %O`, type, message)
@@ -94,10 +77,6 @@ export const ipc = {
       proc.send({ type, data })
     }
   },
-}
-
-export function wait(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 export const logger = consola.withTag('Midway')

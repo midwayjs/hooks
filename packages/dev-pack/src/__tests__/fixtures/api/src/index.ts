@@ -9,6 +9,11 @@ export default Api(Get('/'), async () => {
   }
 })
 
+export const handleQuery = Api(Get('/api/query'), async () => {
+  const ctx = useContext()
+  return { query: ctx.query }
+})
+
 export const handleApi = Api(Get('/api/:id'), async () => {
   const ctx = useContext<Context>()
   return {

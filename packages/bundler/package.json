@@ -27,7 +27,7 @@
   "module": "dist/midwayjs-bundler.esm.js",
   "dependencies": {
     "@midwayjs/hooks-core": "^3.0.1",
-    "unplugin": "^0.6.0",
+    "unplugin": "^0.7.1",
     "@midwayjs/esrun": "^3.0.1"
   },
   "devDependencies": {

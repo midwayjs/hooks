@@ -20,6 +20,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@midwayjs/core": "^3.3.5",
     "@midwayjs/esrun": "^3.0.1",
     "@midwayjs/hooks-core": "^3.0.1",
     "chokidar": "^3.5.3",

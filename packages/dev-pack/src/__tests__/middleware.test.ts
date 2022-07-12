@@ -26,9 +26,15 @@ test('dev pack middleware', async () => {
   app.get('/express_only', (req, res, next) => {
     res.send('handle by express')
   })
+
   {
     const res = await supertest(app).get('/express_only').expect(200)
     expect(res.text).toEqual('handle by express')
+  }
+
+  {
+    const res = await supertest(app).get('/api/query?foo=bar').expect(200)
+    expect(res.body.query).toEqual({ foo: 'bar' })
   }
 
   {

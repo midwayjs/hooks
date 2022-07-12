@@ -4,6 +4,7 @@ service:
 provider:
   name: aliyun
   runtime: nodejs12
+  starter: '@midwayjs/fc-starter'
 
 aggregation:
   all:

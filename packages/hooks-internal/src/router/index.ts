@@ -20,7 +20,7 @@ import { getProjectRoot } from '../root'
 import pickBy from 'lodash/pickBy'
 import parseFunctionArgs from 'fn-args'
 
-const debug = createDebug('hooks-internal:router')
+const debug = createDebug('hooks-internal: router')
 
 type GetSourceOptions = {
   useSourceFile: boolean
@@ -46,7 +46,7 @@ export function getSource(options: GetSourceOptions) {
   return join(root, options.useSourceFile ? source : outDir)
 }
 
-export function normalizeUrl(router: AbstractRouter, api: ApiRoute) {
+export function normalizePath(router: AbstractRouter, api: ApiRoute) {
   const { trigger, file } = api
 
   if (router instanceof FileSystemRouter) {

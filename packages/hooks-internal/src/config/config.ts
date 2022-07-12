@@ -7,7 +7,7 @@ import { getProjectRoot } from '../root'
 import { HOOKS_PROJECT_CONFIG } from '../const'
 import { ProjectConfig, UserConfig } from './type'
 
-const debug = createDebug('hooks-internal:config')
+const debug = createDebug('hooks-internal: config')
 
 export function setConfig(config: Partial<ProjectConfig>) {
   debug('setConfig: %O', config)
@@ -16,9 +16,6 @@ export function setConfig(config: Partial<ProjectConfig>) {
 
 export function getConfig(cwd = getProjectRoot()): ProjectConfig {
   const preDefineConfig = process.env[HOOKS_PROJECT_CONFIG]
-  if (preDefineConfig) {
-    debug('getConfig from PRE_DEFINE_PROJECT_CONFIG')
-  }
 
   const userConfig: UserConfig = preDefineConfig
     ? JSON.parse(preDefineConfig)

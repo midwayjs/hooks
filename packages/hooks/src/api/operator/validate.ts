@@ -18,7 +18,7 @@ function getZod(): typeof Zod {
   try {
     return require('zod').z
   } catch (e) {
-    throw new Error(`Package zod is required for validation`, { cause: e })
+    throw new Error(`Package zod is required for Validation`, { cause: e })
   }
 }
 

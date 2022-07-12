@@ -9,11 +9,10 @@ import {
   AppType,
   ipc,
   logger,
+  MatchInfo,
   ServerEvents,
-  ServerlessAppFunction,
   ServerState,
 } from './share'
-import pathToRegexp from 'path-to-regexp'
 import pEvent from 'p-event'
 import { AppOptions } from './app'
 
@@ -38,7 +37,7 @@ export class DevServer {
 
     await this.start()
     if (this.options.watch) {
-      await this.watch()
+      this.watch()
     }
   }
 
@@ -131,7 +130,6 @@ export class DevServer {
   }
 
   private handleStarted = async () => {
-    this.functions = await this.getFunctions()
     this.state = ServerState.Started
     this.waitingList.forEach((waiting) => waiting.resolve())
     this.waitingList = []
@@ -143,7 +141,7 @@ export class DevServer {
     this.waitingList = []
   }
 
-  async watch() {
+  watch() {
     const watcher = chokidar.watch('**/*.ts', {
       ignored: /(^|[\/\\])\../,
       persistent: true,
@@ -187,29 +185,13 @@ export class DevServer {
     this.state = ServerState.Closed
   }
 
-  private functions: Record<string, ServerlessAppFunction> = null
-
-  isMatch(url: string) {
-    for (const func of Object.values(this.functions)) {
-      for (const event of func.events) {
-        if (!event.http) continue
-        if (pathToRegexp(event.http.path).test(url)) {
-          return true
-        }
-      }
-    }
-
-    return false
-  }
-
-  async getFunctions() {
-    ipc.send(this.app, ServerEvents.GetApis)
-
-    const message = await ipc.once<Record<string, ServerlessAppFunction>>(
+  async isMatch(path: string, method: string) {
+    ipc.send<MatchInfo>(this.app, ServerEvents.IsMatch, { path, method })
+    const message = await ipc.once<ServerEvents>(
       this.app,
-      AppEvents.GetApisResult
+      AppEvents.IsMatchResult
     )
-
+    debug('isMatch %s, path: %s, method: %s', message.data, path, method)
     return message.data
   }
 

@@ -7,7 +7,7 @@ import {
   getProjectRoot,
   getRouter,
   getSource,
-  normalizeUrl,
+  normalizePath,
   ProjectConfig,
 } from '@midwayjs/hooks-internal'
 import type { ViteDevServer } from 'vite'
@@ -37,7 +37,7 @@ export class MidwayBundlerAdapter extends AbstractBundlerAdapter {
     apis = cloneDeep(apis)
     for (const api of apis) {
       if (api.trigger.type === HttpTriggerType) {
-        api.trigger.path = normalizeUrl(this.router, api)
+        api.trigger.path = normalizePath(this.router, api)
       }
     }
     return apis

@@ -27,11 +27,13 @@ describe('test koa with api router', () => {
     return request
   }
 
-  test('api case', async () => {
+  test('get', async () => {
     const get = await createRequest(index.get)
     expect(get.status).toEqual(200)
     expect(get.text).toEqual('/api/get')
+  })
 
+  test('post', async () => {
     const post = await createRequest(index.post).send(args('foo'))
     expect(post.status).toEqual(200)
     expect(post.body).toEqual({

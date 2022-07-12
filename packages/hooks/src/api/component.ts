@@ -1,5 +1,6 @@
-import type { IMidwayContainer } from '@midwayjs/core'
-import { MidwayApplicationManager } from '@midwayjs/core'
+import { IMidwayContainer } from '@midwayjs/core'
+import { ApplicationContext, Configuration, Init } from '@midwayjs/decorator'
+import { __decorate } from 'tslib'
 import {
   AbstractRouter,
   ApiRouter,
@@ -15,10 +16,9 @@ import {
   isDev,
   isHydrate,
   loadApiFiles,
-  RuntimeConfig,
   parseApiModule,
+  RuntimeConfig,
 } from '@midwayjs/hooks-internal'
-import { createConfiguration } from './configuration'
 import flattenDeep from 'lodash/flattenDeep'
 import { MidwayFrameworkAdapter } from './component/adapter'
 
@@ -34,7 +34,7 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
 
   const source = getSource({ useSourceFile })
   const router = getRouter(source)
-  const midway = new MidwayFrameworkAdapter(source, router, null, null)
+  const midway = new MidwayFrameworkAdapter(source, router, null)
 
   useFrameworkAdapter({
     name: 'Midway',
@@ -59,24 +59,40 @@ export function HooksComponent(runtimeConfig: RuntimeConfig = {}) {
     apis.push(...devApis)
   }
 
-  midway.registerApiRoutes(apis)
-
-  const Configuration = createConfiguration({
-    namespace: '@midwayjs/hooks',
-    async onReady(container: IMidwayContainer) {
-      midway.container = container
-      const applicationManager = await container.getAsync(
-        MidwayApplicationManager
-      )
-      applicationManager
-        .getApplications(['koa', 'faas'])
-        .forEach((app) => (midway.app = app))
-      midway.registerGlobalMiddleware(runtimeConfig.middleware)
-      midway.bindControllers()
-    },
+  const Configuration = createConfiguration(async (container) => {
+    await midway.initialize(container, apis, runtimeConfig.middleware)
   })
 
   return { Configuration }
+}
+
+// source: https://www.typescriptlang.org/play?target=99&moduleResolution=99&importHelpers=true&emitDecoratorMetadata=false&pretty=true#code/JYWwDg9gTgLgBAbzgSQHbBgGjgQTGAG2AGMBDGYCVAYSpgFMAPLOW1AM2AHMBXKcyqjgBfOOygQQcAEQABEMAAmAd1IBPAFYBnAPSL6xaOWjSA3AChL52W069+FKgAoE5uHFSkQ9LWFLF6AC4ZeSVVTV0ACwgIAGstaUxzYQBKc2ICUi0tOAAJGPjbbgdBRDc4WTxCEgEqNgZmJzT3Q1QYUmBUeihg0lQ1C3LZNAwm8qy1VGI4TtGUsvdFuFJVDDgqEZgnGEjgLQA6VvbO7uaRZPMgA
+function createConfiguration(
+  onInit: (container: IMidwayContainer) => Promise<void>
+) {
+  let HooksConfiguration = class HooksConfiguration {
+    container: any
+    async init() {
+      await onInit(this.container)
+    }
+  }
+  __decorate(
+    [ApplicationContext()],
+    HooksConfiguration.prototype,
+    'container',
+    void 0
+  )
+  __decorate([Init()], HooksConfiguration.prototype, 'init', null)
+  HooksConfiguration = __decorate(
+    [
+      Configuration({
+        namespace: '@midwayjs/hooks',
+      }),
+    ],
+    HooksConfiguration
+  )
+
+  return HooksConfiguration
 }
 
 function loadHydrateModules(router: AbstractRouter) {
