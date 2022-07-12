@@ -2,9 +2,7 @@ import { HttpTriggerType } from '@midwayjs/hooks-core'
 import { setConfig, setProjectRoot } from '@midwayjs/hooks/internal'
 import { MidwayBundlerAdapter } from '../adapter'
 
-const desc = process.version.startsWith('v12') ? describe.skip : describe
-
-desc('file system router', () => {
+describe('file system router', () => {
   beforeEach(() => {
     setProjectRoot('/')
     setConfig({

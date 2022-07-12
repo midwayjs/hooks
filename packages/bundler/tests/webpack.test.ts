@@ -31,9 +31,7 @@ const testBundlerAdapter = new TestBundlerAdapter({
 
 const { webpack: WebpackPlugin } = createBundlerPlugin(testBundlerAdapter)
 
-const desc = process.version.startsWith('v12') ? describe.skip : describe
-
-desc('unplugin-hooks webpack', () => {
+describe('unplugin-hooks webpack', () => {
   const getEntry = (path: string) => {
     return pathResolve(root, path)
   }
