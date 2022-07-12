@@ -1,4 +1,3 @@
-import { deprecate } from 'util'
 import {
   Api,
   ApiFunction,
@@ -11,6 +10,8 @@ import {
 type Controller = {
   middleware?: HooksMiddleware[]
 }
+
+const { deprecate } = require('util')
 
 /**
  * @deprecated Use `Api(Middleware(...middlewares))` instead

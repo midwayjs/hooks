@@ -18,6 +18,10 @@
   },
   "main": "dist/midwayjs-hooks.cjs.js",
   "module": "dist/midwayjs-hooks.esm.js",
+  "browser": {
+    "./dist/midwayjs-hooks.cjs.js": "./dist/midwayjs-hooks.browser.cjs.js",
+    "./dist/midwayjs-hooks.esm.js": "./dist/midwayjs-hooks.browser.esm.js"
+  },
   "dependencies": {
     "tslib": "^2.3.0",
     "lodash": "^4.17.21",
