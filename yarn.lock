@@ -3474,10 +3474,10 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@preconstruct/cli@2.1.5":
-  version "2.1.5"
-  resolved "https://registry.npmjs.org/@preconstruct/cli/-/cli-2.1.5.tgz#f7f6d06809f382521589af15f67b87009b240c58"
-  integrity sha512-bMnGTkaotxq+xoOkXoUOfTFvxBX/ZUxukcacf3mx3G7Iz5m/T4ZGzSOU12pxl64e+rVWGTKlUsgaDSgyFkup0A==
+"@preconstruct/cli@2.1.8":
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/@preconstruct/cli/-/cli-2.1.8.tgz#7adb77d1db4e88b4bb33ce0ac31a3df5dc17d414"
+  integrity sha512-s5nrYvNxNDZOgwcjaNfqdkDClbKEDO15ZlH2l7CSunO99/Atj0kHSpKXho6mipJtSRYXGiMzOVN2qH7Dl29XzQ==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.7"
