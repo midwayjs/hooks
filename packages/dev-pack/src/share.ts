@@ -2,7 +2,7 @@ import pEvent from 'p-event'
 import { EventEmitter } from 'events'
 import { ChildProcess } from 'child_process'
 import { createDebug } from '@midwayjs/hooks-core'
-import consola from 'consola'
+import colors from 'picocolors'
 
 export const enum ServerEvents {
   Close = 'server:close',
@@ -73,10 +73,28 @@ export const ipc = {
     data?: T
   ): void {
     debug(`send %s`, type)
-    if (proc && typeof proc.send === 'function') {
+    if (proc && typeof proc.send === 'function' && proc.connected) {
       proc.send({ type, data })
     }
   },
 }
 
-export const logger = consola.withTag('Midway')
+export const logger = {
+  sameCount: 0,
+  lastMsg: '',
+  tag: colors.cyan(colors.bold('[Midway]')),
+  info(...args: any[]) {
+    const timestamp = colors.dim(new Date().toLocaleTimeString())
+    if (logger.lastMsg === args[0]) {
+      logger.sameCount++
+      args.push(colors.yellow(`(x${logger.sameCount + 1})`))
+    } else {
+      logger.sameCount = 0
+    }
+    console.log(timestamp, logger.tag, ...args)
+    logger.lastMsg = args[0]
+  },
+  error(msg: string) {
+    console.error(logger.tag, msg)
+  },
+}

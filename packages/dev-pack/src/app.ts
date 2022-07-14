@@ -44,6 +44,10 @@ function registerHooks() {
     await closeApp()
   })
 
+  process.on('exit', () => {
+    console.log('child process exit')
+  })
+
   ipc.once(process, ServerEvents.Close).then(() => closeApp())
 
   let service: MidwayWebRouterService

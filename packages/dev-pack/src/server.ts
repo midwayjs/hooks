@@ -2,8 +2,9 @@ import { createDebug } from '@midwayjs/hooks-core'
 import { ChildProcess, fork } from 'child_process'
 import detectPort from 'detect-port'
 import chokidar from 'chokidar'
+import colors from 'picocolors'
 import { existsSync } from 'fs'
-import { resolve } from 'path'
+import { resolve, relative } from 'path'
 import {
   AppEvents,
   AppType,
@@ -15,6 +16,8 @@ import {
 } from './share'
 import pEvent from 'p-event'
 import { AppOptions } from './app'
+import Spinner from 'light-spinner'
+import chalk from 'chalk'
 
 const debug = createDebug('hooks-dev-pack:server')
 
@@ -29,6 +32,7 @@ export class DevServer {
   port: number
 
   state: ServerState = ServerState.Closed
+  spinner: Spinner
 
   constructor(public options: CreateOptions) {}
 
@@ -65,6 +69,14 @@ export class DevServer {
 
   private waitingList: { resolve: Function; reject: Function }[] = []
   async start() {
+    this.spinner = new Spinner({
+      text:
+        this.state === ServerState.Restarting
+          ? `${logger.tag} Restarting`
+          : `${logger.tag} Starting`,
+    })
+    this.spinner.start()
+
     const port = await this.ensurePort(7001)
     debug('dev server port: %s', port)
 
@@ -89,7 +101,6 @@ export class DevServer {
         env: {
           ...process.env,
           // https://dwz.ee/20n
-          IN_CHILD_PROCESS: 'true',
           MIDWAY_SERVER_ENV: 'local',
         },
         execArgv: ['-r', '@midwayjs/esrun/register'],
@@ -116,6 +127,8 @@ export class DevServer {
         await this.handleError(event.data)
         logger.error(event.data)
     }
+
+    this.spinner.stop()
 
     ipc.once(this.app, AppEvents.UncaughtException).then(async (event) => {
       debug('dev server uncaught exception')
@@ -146,7 +159,7 @@ export class DevServer {
       ignored: /(^|[\/\\])\../,
       persistent: true,
       ignoreInitial: true,
-      cwd: this.options.sourceDir,
+      cwd: this.options.cwd,
     })
 
     ;['midway.config.ts', 'midway.config.js', 'f.yml']
@@ -159,15 +172,18 @@ export class DevServer {
       createPromiseLock(async (event: string, path: string) => {
         debug('watch event: %s, path: %s', event, path)
         await this.restart()
-        debug('dev server restarted')
+        logger.info(
+          `${colors.green('Auto Reload')} ${chalk.hex('#666666')(
+            `[${event}] ${path}`
+          )}`
+        )
       })
     )
   }
 
   async restart() {
-    this.state = ServerState.Restarting
-
     await this.close('restart')
+    this.state = ServerState.Restarting
     await this.start()
   }
 
