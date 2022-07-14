@@ -28,7 +28,7 @@ export function getEntryCode(
   target: GenerateTarget,
   filter: (file: string) => boolean = () => true
 ) {
-  const result = loadApiFiles(source, router)
+  const result = loadApiFiles({ source, router })
 
   const relativePath = (file: string) => relative(source, file)
   const files = difference(result.files, result.apis)

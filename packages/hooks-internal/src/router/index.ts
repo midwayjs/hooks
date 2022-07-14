@@ -57,7 +57,14 @@ export function normalizePath(router: AbstractRouter, api: ApiRoute) {
   return trigger.path
 }
 
-export function loadApiFiles(source: string, router: AbstractRouter) {
+type LoadOptions = {
+  source: string
+  router: AbstractRouter
+}
+
+export function loadApiFiles(options: LoadOptions) {
+  const { source, router } = options
+
   debug('load source: %s', source)
 
   const files = run(['**/*.{ts,js}'], {
@@ -67,6 +74,7 @@ export function loadApiFiles(source: string, router: AbstractRouter) {
       '**/*.d.ts',
       '**/*.{test,spec}.{ts,tsx,js,jsx,mjs}',
       '**/_client/**/*.js',
+      '**/configuration.{ts,js}',
     ],
   })
 
