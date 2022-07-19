@@ -6,10 +6,8 @@ import {
   EXPORT_DEFAULT_FUNCTION_ALIAS,
   HooksMiddleware,
   HttpTrigger,
-  isHooksMiddleware,
   ResponseMetaData,
   ResponseMetaType,
-  useContext,
   validateOneOf,
 } from '@midwayjs/hooks-core'
 import type { IMidwayApplication, IMidwayContainer } from '@midwayjs/core'
@@ -32,6 +30,8 @@ import {
 import { FileSystemRouter, normalizePath } from '@midwayjs/hooks-internal'
 import camelCase from 'lodash/camelCase'
 import { ServerlessTrigger } from '../operator/serverless'
+import { useHooksMiddleware } from '../middleware'
+import { useContext } from '../hooks'
 
 const debug = createDebug('hooks: MidwayFrameworkAdapter')
 
@@ -113,7 +113,7 @@ export class MidwayFrameworkAdapter {
 
     return {
       path: normalizePath(this.router, api),
-      middleware: api.middleware?.map((mw) => this.useHooksMiddleware(mw)),
+      middleware: api.middleware?.map(useHooksMiddleware),
       handler: this.createHandler(api.fn, parseHTTPArgs),
       method: api.trigger.method.toLowerCase(),
     }
@@ -190,23 +190,13 @@ export class MidwayFrameworkAdapter {
   }
 
   registerGlobalMiddleware(middlewares: HooksMiddleware[] = []) {
-    this.app.use?.(this.useUniversalRuntime)
     for (const mw of middlewares) {
-      this.app.use?.(this.useHooksMiddleware(mw))
+      this.app.use?.(useHooksMiddleware(mw))
     }
   }
 
   private async useUniversalRuntime(ctx: any, next: any) {
     return await ContextManager.run({ ctx }, async () => await next())
-  }
-
-  private useHooksMiddleware(mw: (...args: any[]) => any | any) {
-    if (!isHooksMiddleware(mw)) return mw
-
-    return (...args: any[]) => {
-      const next = args[1]
-      return mw(next)
-    }
   }
 
   async handleResponseMetaData(metadata: ResponseMetaData[]): Promise<any> {

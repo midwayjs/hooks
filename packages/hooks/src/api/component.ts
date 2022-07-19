@@ -87,6 +87,15 @@ function createConfiguration(
     [
       Configuration({
         namespace: '@midwayjs/hooks',
+        importConfigs: [
+          {
+            default: {
+              asyncContextManager: {
+                enable: true,
+              },
+            },
+          },
+        ],
       }),
     ],
     HooksConfiguration

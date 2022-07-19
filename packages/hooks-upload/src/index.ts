@@ -5,8 +5,8 @@ import {
   HttpTriggerType,
   Operator,
   OperatorType,
-  useContext,
 } from '@midwayjs/hooks-core'
+import { useContext } from '@midwayjs/hooks'
 import type { UploadFileInfo } from '@midwayjs/upload'
 import { groupBy } from 'lodash'
 

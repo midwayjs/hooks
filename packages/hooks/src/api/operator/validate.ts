@@ -1,6 +1,7 @@
 import type { Schema, z as Zod } from 'zod'
 import { HttpStatus, MidwayHttpError, registerErrorCode } from '@midwayjs/core'
-import { Operator, setValidator, useContext } from '@midwayjs/hooks-core'
+import { Operator, setValidator } from '@midwayjs/hooks-core'
+import { useContext } from '../hooks'
 
 const HooksValidateErrorCode = registerErrorCode('Validation', {
   FAILED: 'FAILED',
