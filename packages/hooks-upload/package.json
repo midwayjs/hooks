@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "@midwayjs/hooks-core": "^3.0.1"
+    "@midwayjs/hooks-core": "^3.0.1",
+    "@midwayjs/hooks": "^3.0.1"
   },
   "peerDependencies": {
     "@midwayjs/upload": "3"
