@@ -3474,10 +3474,10 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@preconstruct/cli@2.1.8":
-  version "2.1.8"
-  resolved "https://registry.yarnpkg.com/@preconstruct/cli/-/cli-2.1.8.tgz#7adb77d1db4e88b4bb33ce0ac31a3df5dc17d414"
-  integrity sha512-s5nrYvNxNDZOgwcjaNfqdkDClbKEDO15ZlH2l7CSunO99/Atj0kHSpKXho6mipJtSRYXGiMzOVN2qH7Dl29XzQ==
+"@preconstruct/cli@2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@preconstruct/cli/-/cli-2.2.1.tgz#fafff5b5124f895ae933445ca8e2d674006f614f"
+  integrity sha512-G+sUV9o8l6Ds/82qJZYTXkCsVqPXLuD+bv+nVQeo3OL+eqzO/uAiBBFVp0DMcBJiyQYeU9nb+V8q22/PPaepDw==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.7"
@@ -3487,7 +3487,7 @@
     "@rollup/plugin-alias" "^3.1.1"
     "@rollup/plugin-commonjs" "^15.0.0"
     "@rollup/plugin-json" "^4.1.0"
-    "@rollup/plugin-node-resolve" "^9.0.0"
+    "@rollup/plugin-node-resolve" "^11.2.1"
     "@rollup/plugin-replace" "^2.4.1"
     builtin-modules "^3.1.0"
     chalk "^4.1.0"
@@ -3571,17 +3571,17 @@
   dependencies:
     "@rollup/pluginutils" "^3.0.8"
 
-"@rollup/plugin-node-resolve@^9.0.0":
-  version "9.0.0"
-  resolved "https://registry.npmjs.org/@rollup/plugin-node-resolve/-/plugin-node-resolve-9.0.0.tgz#39bd0034ce9126b39c1699695f440b4b7d2b62e6"
-  integrity sha512-gPz+utFHLRrd41WMP13Jq5mqqzHL3OXrfj3/MkSyB6UBIcuNt9j60GCbarzMzdf1VHFpOxfQh/ez7wyadLMqkg==
+"@rollup/plugin-node-resolve@^11.2.1":
+  version "11.2.1"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-11.2.1.tgz#82aa59397a29cd4e13248b106e6a4a1880362a60"
+  integrity sha512-yc2n43jcqVyGE2sqV5/YCmocy9ArjVAP/BeXyTtADTBBX6V0e5UMqwO8CdQ0kzjb6zu5P1qMzsScCMRvE9OlVg==
   dependencies:
     "@rollup/pluginutils" "^3.1.0"
     "@types/resolve" "1.17.1"
     builtin-modules "^3.1.0"
     deepmerge "^4.2.2"
     is-module "^1.0.0"
-    resolve "^1.17.0"
+    resolve "^1.19.0"
 
 "@rollup/plugin-replace@^2.4.1":
   version "2.4.2"
@@ -8891,6 +8891,13 @@ is-core-module@^2.8.0, is-core-module@^2.8.1:
   dependencies:
     has "^1.0.3"
 
+is-core-module@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.9.0.tgz#e1c34429cd51c6dd9e09e0799e396e27b19a9c69"
+  integrity sha512-+5FPy5PnwmO3lvfMb0AsoPaBG+5KHUI0wYFXOtYPnVVVspTFUuMZNfNaNVRt3FZadstu2c8x23vykRW/NBoU6A==
+  dependencies:
+    has "^1.0.3"
+
 is-data-descriptor@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npmjs.org/is-data-descriptor/-/is-data-descriptor-0.1.4.tgz#0b5ee648388e2c860282e793f1856fec3f301b56"
@@ -13301,6 +13308,15 @@ resolve@^1.15.1:
   integrity sha512-3wCbTpk5WJlyE4mSOtDLhqQmGFi0/TD9VPwmiolnk8U0wRgMEktqCXd3vy5buTO3tljvalNvKrjHEfrd2WpEKA==
   dependencies:
     is-core-module "^2.8.0"
+    path-parse "^1.0.7"
+    supports-preserve-symlinks-flag "^1.0.0"
+
+resolve@^1.19.0:
+  version "1.22.1"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.22.1.tgz#27cb2ebb53f91abb49470a928bba7558066ac177"
+  integrity sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==
+  dependencies:
+    is-core-module "^2.9.0"
     path-parse "^1.0.7"
     supports-preserve-symlinks-flag "^1.0.0"
 
