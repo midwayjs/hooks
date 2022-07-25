@@ -27,8 +27,8 @@
     "lodash": "^4.17.21",
     "@midwayjs/hooks-internal": "^3.0.1",
     "@midwayjs/hooks-core": "^3.0.1",
-    "@midwayjs/decorator": "^3.0.10",
-    "@midwayjs/core": "^3.3.5"
+    "@midwayjs/decorator": "^3.4.1",
+    "@midwayjs/core": "^3.4.3"
   },
   "devDependencies": {
     "zod": "3.19.1"

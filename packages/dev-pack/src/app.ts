@@ -53,11 +53,10 @@ function registerHooks() {
   let service: MidwayWebRouterService
   ipc.on<MatchInfo>(process, ServerEvents.IsMatch, async ({ data }) => {
     if (!service) {
+      const appCtx = app.getApplicationContext()
       service = isServer
-        ? await app.getApplicationContext().getAsync(MidwayWebRouterService)
-        : await app
-            .getApplicationContext()
-            .getAsync(MidwayServerlessFunctionService)
+        ? await appCtx.getAsync(MidwayWebRouterService)
+        : await appCtx.getAsync(MidwayServerlessFunctionService)
     }
 
     const info = await service.getMatchedRouterInfo(data.path, data.method)

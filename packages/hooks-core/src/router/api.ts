@@ -1,9 +1,9 @@
 import { basename, extname, removeExt } from 'upath'
 import { AbstractRouter } from './base'
 import urlJoin from 'proper-url-join'
-import some from 'lodash/some'
 import { isApiFunction } from '../api/common'
 import { API_BASE_PATH } from '../common'
+import isObject from 'lodash/isObject'
 
 export type ApiRouterConfig = {
   basePath?: string
@@ -19,8 +19,8 @@ export class ApiRouter extends AbstractRouter {
     return this.hasExportApiRoutes(options.mod)
   }
 
-  hasExportApiRoutes(mod: any) {
-    return some(mod, isApiFunction)
+  hasExportApiRoutes(mod: object) {
+    return isObject(mod) && Object.values(mod).some(isApiFunction)
   }
 
   getFunctionId(

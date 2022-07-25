@@ -8,7 +8,7 @@ import { setProjectRoot } from '@midwayjs/hooks-internal'
 
 // AsyncContext Loss
 // Ref: https://github.com/nodejs/node/issues/37207
-describe.skip('hcc', () => {
+describe('hcc', () => {
   test('build api project', async () => {
     const fixture = join(__dirname, 'fixtures/api')
 

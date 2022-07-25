@@ -12,7 +12,7 @@
     "@midwayjs/hooks-kit": "^3.0.0",
     "@midwayjs/hooks": "^3.0.0",
     "@midwayjs/rpc": "^3.0.0",
-    "@midwayjs/koa": "^3.3.5",
+    "@midwayjs/koa": "^3.4.3",
     "isomorphic-unfetch": "^3.1.0"
   },
   "devDependencies": {
