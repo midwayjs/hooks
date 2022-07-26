@@ -1,9 +1,13 @@
-const execa = require('execa')
+import execa from 'execa'
 
 const failed = []
 const finished = []
 
-async function checkSyncStatus(packages, pkg, clients) {
+async function checkSyncStatus(
+  packages: string[],
+  pkg: string,
+  clients: string[]
+) {
   const versions = await Promise.all(
     clients.map((client) => execa(client, ['show', pkg, 'version']))
   )
@@ -26,7 +30,7 @@ async function checkSyncStatus(packages, pkg, clients) {
   }
 }
 
-module.exports = async function check(packages, clients) {
+export default async function check(packages: string[], clients: string[]) {
   const task = packages.map((pkg) =>
     checkSyncStatus(packages, pkg, ['npm', ...clients])
   )
