@@ -18,7 +18,7 @@ export async function createExpressDevPack(options: CreateOptions) {
   const proxy = createProxyMiddleware({
     target: `http://localhost:${server.port}`,
     logLevel: 'error',
-    followRedirects: true,
+    followRedirects: false,
   })
 
   const MidwayHooksDevPackMiddleware = async (
