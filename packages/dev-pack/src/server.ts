@@ -4,7 +4,7 @@ import detectPort from 'detect-port'
 import chokidar from 'chokidar'
 import colors from 'picocolors'
 import { existsSync } from 'fs'
-import { resolve, relative } from 'path'
+import { resolve } from 'path'
 import {
   AppEvents,
   AppType,
@@ -75,7 +75,6 @@ export class DevServer {
           ? `${logger.tag} Restarting`
           : `${logger.tag} Starting`,
     })
-    this.spinner.start()
 
     const port = await this.ensurePort(7001)
     debug('dev server port: %s', port)

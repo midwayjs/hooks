@@ -21,8 +21,8 @@ export function createClient<
     const req = requestOptionsCreator(rawOptions)
 
     const ctx = { req, res: null } as unknown as T
-    const stack = getMiddlewares()
-    await compose(stack)(ctx)
+    const middlewares = getMiddlewares()
+    await compose(middlewares)(ctx)
 
     return ctx.res
   }
