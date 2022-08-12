@@ -144,6 +144,7 @@ export class MidwayFrameworkAdapter {
           metadata: {
             method: http.method as any,
             path: http.path,
+            middleware: http.middleware,
           },
           functionName: 'handler',
           handlerName: `${providerId}.handler`,
