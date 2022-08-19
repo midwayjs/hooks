@@ -2,8 +2,7 @@ import { als as AsyncLocalStoragePolyfill } from 'asynchronous-local-storage'
 import { __decorate } from 'tslib'
 
 import { Inject, Provide } from '@midwayjs/decorator'
-
-import { ApiFunction } from '..'
+import { ApiFunction } from '../types/common'
 
 export type HooksContext = {
   ctx: any
@@ -19,11 +18,9 @@ export const als = {
   getStore(key: string) {
     return AsyncLocalStoragePolyfill.get<any>(key)
   },
-  run(ctx: HooksContext, callback: any) {
-    return new Promise((resolve) => {
-      AsyncLocalStoragePolyfill.runWith(async () => {
-        resolve(await callback())
-      }, ctx)
+  run(ctx: HooksContext, callback: () => Promise<any>) {
+    return new Promise((resolve, reject) => {
+      AsyncLocalStoragePolyfill.runWith(() => callback().then(resolve).catch(reject), ctx)
     })
   },
 }
