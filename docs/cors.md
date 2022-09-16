@@ -9,7 +9,7 @@ title: 跨域 CORS
 安装 `@koa/cors` 依赖。
 
 ```
-npm install @koa/cors
+npm install @koa/cors --save
 ```
 
 在 `configuration.ts` 启用 `@koa/cors` 中间件。
