@@ -108,8 +108,8 @@ Midway Hooks 目前提供了如下模板：
   - [react-faas](https://github.com/midwayjs/hooks/blob/main/examples/react-faas)
   - [vue-faas](https://github.com/midwayjs/hooks/blob/main/examples/vue-faas)
 - Api Server
-  - [api](https://github.com/midwayjs/hooks/blob/main/examples/api)
-  - [api-bundle](https://github.com/midwayjs/hooks/blob/main/examples/api-bundle)
+  - [api](https://github.com/midwayjs/hooks/blob/main/examples/api) 后端接口服务
+  - [api-bundle](https://github.com/midwayjs/hooks/blob/main/examples/api-bundle) 在上面案例的基础上，通过 [@vercel/ncc](https://www.npmjs.com/package/@vercel/ncc) 构建为单文件
 
 基于指定创建应用命令如下：
 
