@@ -29,7 +29,7 @@
     "proper-url-join": "^2.1.1",
     "reflect-metadata": "^0.1.13",
     "upath": "^2.0.1",
-    "type-fest": "2.19.0"
+    "type-fest": "3.0.0"
   },
   "devDependencies": {
     "zod": "3.19.1",
