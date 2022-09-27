@@ -20,7 +20,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@swc-node/register": "1.5.1",
+    "@swc-node/register": "1.5.2",
     "tsconfig-paths": "4.0.0"
   },
   "files": [
