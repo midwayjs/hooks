@@ -3630,10 +3630,10 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@preconstruct/cli@2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@preconstruct/cli/-/cli-2.2.1.tgz#fafff5b5124f895ae933445ca8e2d674006f614f"
-  integrity sha512-G+sUV9o8l6Ds/82qJZYTXkCsVqPXLuD+bv+nVQeo3OL+eqzO/uAiBBFVp0DMcBJiyQYeU9nb+V8q22/PPaepDw==
+"@preconstruct/cli@2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@preconstruct/cli/-/cli-2.2.2.tgz#2327aa2486f7c3650cfa726e667a9d80007e50d8"
+  integrity sha512-7Zk8g/G+SPusoL1Ir3oslj19QDoFuAKeQO8B6fnNkRRgvIntxnylGZyC4wdKVX/eeDHwca1LNLT/GyjXx1f1nA==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.7"
