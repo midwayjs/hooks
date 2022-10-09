@@ -142,6 +142,7 @@ export class MidwayFrameworkAdapter {
         midwayServerlessFunctionService.addServerlessFunction(http.handler, {
           type: ServerlessTriggerType.HTTP,
           metadata: {
+            name: ServerlessTriggerType.HTTP,
             method: http.method as any,
             path: http.path,
             middleware: http.middleware,
@@ -153,14 +154,16 @@ export class MidwayFrameworkAdapter {
       }
 
       if (this.isServerlessTrigger(api)) {
+        // TODO add name field
         midwayServerlessFunctionService.addServerlessFunction(
           this.createHandler(api.fn, api.trigger.parseArgs),
           {
+            name: api.trigger.type,
             type: api.trigger.type,
             metadata: api.trigger.options,
             functionName: 'handler',
             handlerName: `${providerId}.handler`,
-          }
+          } as any
         )
       }
     }
