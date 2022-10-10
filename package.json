@@ -52,6 +52,6 @@
     ]
   },
   "devDependencies": {
-    "all-contributors-cli": "6.20.5"
+    "all-contributors-cli": "6.24.0"
   }
 }
