@@ -6,11 +6,8 @@ export type { ApiParam, ApiHttpMethod } from '../types/http'
 
 export const defaults = {
   async request(param: ApiParam) {
-    const response = await axios({
-      baseURL: defaults.baseURL,
-      ...param,
-    })
-
+    const requestConfig = Object.assign({ baseURL: defaults.baseURL }, param)
+    const response = await axios(requestConfig)
     return response?.data
   },
   baseURL: '',
