@@ -1,4 +1,5 @@
-prefer-workspace-packages: true
+link-workspace-packages: deep
 packages:
   - 'packages/*'
+  - 'packages/hcc/tests/fixtures/*'
   - 'examples/*'

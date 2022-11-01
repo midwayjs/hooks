@@ -9,7 +9,6 @@ module.exports = {
     'fixtures',
     '__tests__',
   ],
-  testPathIgnorePatterns: ['<rootDir>/node_modules/', '^test.ts$'],
   snapshotSerializers: ['jest-serializer-path', 'jest-snapshot-serializer-raw'],
   testTimeout: 1000 * 60,
   watchPlugins: [
