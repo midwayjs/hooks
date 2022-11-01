@@ -1,10 +1,7 @@
 {
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "packages": ["packages/*", "examples/*"],
   "command": {
-    "bootstrap": {
-      "noCi": true,
-      "npmClientArgs": ["--no-package-lock"]
-    },
     "publish": {
       "message": "chore(release): publish %s",
       "registry": "https://registry.npmjs.org/"
