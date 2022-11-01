@@ -1,11 +1,11 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn pretty-quick --staged
+pnpm pretty-quick --staged
 
-if [ -f yarn.lock ]; then
-  if grep -q 'registry.npm.alibaba-inc.com' yarn.lock; then
-    echo 'yarn.lock contains "registry.npm.alibaba-inc.com"'
+if [ -f pnpm-lock.yaml ]; then
+  if grep -q 'registry.npm.alibaba-inc.com' pnpm-lock.yaml; then
+    echo 'pnpm-lock.yaml contains "registry.npm.alibaba-inc.com"'
     exit 1
   fi
 fi

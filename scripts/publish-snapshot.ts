@@ -22,7 +22,7 @@ async function publishSnapshot() {
   await writeFile(path.resolve(dist, `changeset-${Date.now()}.md`), changeset, {
     encoding: 'utf-8',
   })
-  await command(`yarn changeset version --snapshot ${tag}`, {
+  await command(`pnpm changeset version --snapshot ${tag}`, {
     cwd,
     stdio: 'ignore',
   })
@@ -31,7 +31,7 @@ async function publishSnapshot() {
   await command(`npm run build`, { cwd, stdio: 'inherit' })
 
   consola.info(`Publish snapshot changeset for ${tag}`)
-  await command(`yarn changeset publish --no-git-tag --tag ${tag}`, {
+  await command(`pnpm changeset publish --no-git-tag --tag ${tag}`, {
     cwd,
     stdio: 'inherit',
   })

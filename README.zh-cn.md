@@ -169,30 +169,30 @@ npx degit https://github.com/midwayjs/hooks/examples/react
 4. 推送到刚才创建的分支: `git push origin my-new-feature`
 5. 提交 Pull Request :D
 
-我们使用 yarn + lerna 管理项目
+我们使用 pnpm + lerna 管理项目
 
 - install dependencies
 
 ```bash
-$ yarn
+$ pnpm install
 ```
 
 - build
 
 ```bash
-$ yarn build
+$ pnpm build
 ```
 
 - watch
 
 ```bash
-$ yarn watch
+$ pnpm watch
 ```
 
 - test
 
 ```bash
-$ yarn test
+$ pnpm test
 ```
 
 ## 关于我们
