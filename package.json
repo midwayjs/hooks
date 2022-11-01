@@ -10,7 +10,7 @@
     "cov": "yarn dev && yarn test --coverage",
     "ci": "yarn cov --ci",
     "format": "pretty-quick",
-    "format-dist": "prettier packages/**/dist --write --loglevel=error",
+    "format-dist": "prettier packages/**/dist/**/*.js --write --loglevel=error",
     "publish-local": "lerna exec yalc publish",
     "push-local": "lerna exec yalc push",
     "publish-release": "yarn build && changeset publish",
