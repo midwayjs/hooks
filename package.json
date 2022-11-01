@@ -3,18 +3,18 @@
   "version": "3.0.0",
   "private": true,
   "scripts": {
-    "build": "preconstruct build && yarn format-dist",
+    "build": "preconstruct build && pnpm format-dist",
     "dev": "preconstruct dev",
     "watch": "preconstruct watch",
     "test": "jest --passWithNoTests",
-    "cov": "yarn dev && yarn test --coverage",
-    "ci": "yarn cov --ci",
+    "cov": "pnpm dev && pnpm test --coverage",
+    "ci": "pnpm cov --ci",
     "format": "pretty-quick",
     "format-dist": "prettier packages/**/dist/**/*.js --write --loglevel=error",
     "publish-local": "lerna exec yalc publish",
     "push-local": "lerna exec yalc push",
-    "publish-release": "yarn build && changeset publish",
-    "publish-next": "yarn build && lerna publish --dist-tag=next",
+    "publish-release": "pnpm build && changeset publish",
+    "publish-next": "pnpm build && lerna publish --dist-tag=next",
     "postinstall": "patch-package",
     "prepare": "husky install"
   },
@@ -25,7 +25,10 @@
     "@changesets/cli": "2.25.0",
     "@jest/expect": "28.1.3",
     "@preconstruct/cli": "2.2.2",
+    "all-contributors-cli": "6.20.5",
+    "consola": "^2.15.3",
     "execa": "4.1.0",
+    "globby": "^13.1.2",
     "husky": "7.0.4",
     "jest": "28.1.3",
     "jest-serializer-path": "0.1.15",
@@ -36,32 +39,27 @@
     "prettier": "2.7.1",
     "pretty-quick": "3.1.3",
     "typescript": "4.8.4",
-    "yalc": "1.0.0-pre.53",
-    "all-contributors-cli": "6.20.5"
+    "yalc": "1.0.0-pre.53"
   },
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ],
   "preconstruct": {
     "packages": [
       "packages/*"
     ]
   },
   "devDependencies": {
-    "@types/jest": "28.1.8",
     "@types/babel__core": "7.1.19",
     "@types/babel__preset-env": "7.9.2",
     "@types/dedent": "^0.7.0",
+    "@types/jest": "28.1.8",
     "@types/prettier": "2.6.2"
   },
   "resolutions": {
-    "@midwayjs/faas": "3.5.3",
-    "@midwayjs/core": "3.5.3",
-    "@midwayjs/decorator": "3.4.11",
-    "@midwayjs/fc-starter": "3.5.3",
-    "@midwayjs/koa": "3.5.3",
-    "@midwayjs/mock": "3.5.3",
-    "@midwayjs/bootstrap": "3.5.3"
+    "@midwayjs/faas": "3.7.0",
+    "@midwayjs/core": "3.7.0",
+    "@midwayjs/decorator": "3.7.0",
+    "@midwayjs/fc-starter": "3.7.0",
+    "@midwayjs/koa": "3.7.0",
+    "@midwayjs/mock": "3.7.0",
+    "@midwayjs/bootstrap": "3.7.0"
   }
 }

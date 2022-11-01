@@ -1,13 +1,12 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
-  "packages": ["packages/*", "examples/*"],
   "command": {
     "publish": {
       "message": "chore(release): publish %s",
       "registry": "https://registry.npmjs.org/"
     }
   },
-  "npmClient": "yarn",
+  "npmClient": "pnpm",
   "version": "3.0.0-alpha.0",
   "useWorkspaces": true
 }

@@ -31,7 +31,8 @@
     "@midwayjs/core": "^3.4.3"
   },
   "devDependencies": {
-    "zod": "3.19.1"
+    "zod": "3.19.1",
+    "@midwayjs/rpc": "3.0.1"
   },
   "peerDependencies": {
     "zod": ">=3.0.0"

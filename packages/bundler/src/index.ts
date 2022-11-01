@@ -8,6 +8,8 @@ import {
 } from '@midwayjs/hooks-core'
 import '@midwayjs/esrun/register'
 
+export { EsbuildPlugin, VitePlugin, RollupPlugin } from 'unplugin'
+
 const debug = createDebug('hooks-bundler')
 
 const omit = (key: string, { [key]: _, ...obj }) => obj
