@@ -102,7 +102,7 @@ export class DevServer {
           // https://dwz.ee/20n
           MIDWAY_SERVER_ENV: 'local',
         },
-        execArgv: ['-r', '@midwayjs/esrun/register'],
+        execArgv: ['-r', require.resolve('@midwayjs/esrun/register')],
         serialization: 'advanced',
         silent: true,
       }
