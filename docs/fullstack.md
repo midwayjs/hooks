@@ -37,3 +37,45 @@ Options:
   --clean         [boolean] clean output directory before build (default: false)
   -h, --help      Display this message
 ```
+
+## 自定义构建产物目录
+
+自定义构建目录可以通过以下两种方式。
+
+### 设置 midway.config.[ts|js]
+
+以 `Vue 一体化项目` 为例，`build.outDir` 为构建产物的输出目录。
+
+```js
+import vue from '@vitejs/plugin-vue';
+import { defineConfig } from '@midwayjs/hooks-kit';
+
+export default defineConfig({
+  vite: {
+    plugins: [vue()],
+  },
+  build: {
+    outDir: 'build',
+  },
+});
+```
+
+### 设置命令行参数
+
+在使用 `hooks build` 时，可以设置 `--outDir` 参数设置构建产物的输出目录。
+
+例子：
+
+```
+hooks build --outDir build
+```
+
+## 启动时指定构建产物目录
+
+通过 `hooks start [root]` 可以指定启动时的目录。
+
+例子：
+
+```
+hooks start ./build
+```
