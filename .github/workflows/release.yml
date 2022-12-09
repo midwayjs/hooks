@@ -20,11 +20,11 @@ jobs:
         with:
           version: 7
 
-      - name: Setup Node.js 14.x
+      - name: Setup Node.js 16.x
         uses: actions/setup-node@v3
         with:
           cache: 'pnpm'
-          node-version: 14.x
+          node-version: 16.x
 
       - name: Install Dependencies
         run: pnpm install
