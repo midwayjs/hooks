@@ -9,12 +9,21 @@ assert(typeof tag === 'string', 'Tag must be a string')
 
 async function removeTags() {
   const pkgs = getPackages().map((pkg) => pkg.name)
+  const failedPackages: string[] = []
 
   for (const pkg of pkgs) {
     try {
       await command(`npm dist-tag rm ${pkg} ${tag}`, { stdio: 'ignore' })
       consola.success(`${pkg}@${tag} removed!`)
-    } catch {}
+    } catch {
+      failedPackages.push(pkg)
+    }
+  }
+
+  if (failedPackages.length) {
+    consola.error(
+      `Failed to remove tag ${tag} from ${failedPackages.join(', ')}`
+    )
   }
 }
 
