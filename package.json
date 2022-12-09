@@ -26,7 +26,7 @@
     "@preconstruct/cli": "2.2.2",
     "all-contributors-cli": "6.24.0",
     "consola": "^2.15.3",
-    "execa": "4.1.0",
+    "execa": "6.1.0",
     "globby": "^13.1.2",
     "husky": "8.0.2",
     "jest": "28.1.3",
