@@ -32,7 +32,7 @@
     "@midwayjs/hooks-internal": "^3.0.1"
   },
   "devDependencies": {
-    "fs-extra": "10.1.0",
+    "fs-extra": "11.1.0",
     "@types/fs-extra": "9.0.13",
     "@midwayjs/hooks": "^3.0.1",
     "@midwayjs/hooks-core": "^3.0.1",
