@@ -27,7 +27,7 @@
   "devDependencies": {
     "@midwayjs/koa": "^3.8.0",
     "@midwayjs/mock": "^3.8.0",
-    "@midwayjs/hooks-internal": "^3.0.1"
+    "@midwayjs/hooks-internal": "^0.0.0-dev-pack-temp-20220725074016"
   },
   "files": [
     "dist"

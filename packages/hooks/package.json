@@ -25,7 +25,7 @@
   "dependencies": {
     "tslib": "^2.3.0",
     "lodash": "^4.17.21",
-    "@midwayjs/hooks-internal": "^3.0.1",
+    "@midwayjs/hooks-internal": "^0.0.0-dev-pack-temp-20220725074016",
     "@midwayjs/hooks-core": "^3.0.1",
     "@midwayjs/decorator": "^3.4.1",
     "@midwayjs/core": "^3.8.0"
