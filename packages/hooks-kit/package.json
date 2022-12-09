@@ -28,7 +28,7 @@
     "consola": "^2.15.3",
     "detect-port": "1.5.1",
     "koa-static-cache": "^5.1.4",
-    "vite": "^2.7.9",
+    "vite": "^4.0.0",
     "fs-extra": "11.1.0",
     "@midwayjs/esrun": "^3.0.1"
   },
