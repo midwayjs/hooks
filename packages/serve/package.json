@@ -25,8 +25,8 @@
     "@types/koa-static-cache": "5.1.1"
   },
   "devDependencies": {
-    "@midwayjs/koa": "^3.4.3",
-    "@midwayjs/mock": "^3.4.3",
+    "@midwayjs/koa": "^3.8.0",
+    "@midwayjs/mock": "^3.8.0",
     "@midwayjs/hooks-internal": "^3.0.1"
   },
   "files": [

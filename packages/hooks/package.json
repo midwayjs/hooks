@@ -28,7 +28,7 @@
     "@midwayjs/hooks-internal": "^3.0.1",
     "@midwayjs/hooks-core": "^3.0.1",
     "@midwayjs/decorator": "^3.4.1",
-    "@midwayjs/core": "^3.4.3"
+    "@midwayjs/core": "^3.8.0"
   },
   "devDependencies": {
     "zod": "3.19.1",

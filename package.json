@@ -51,14 +51,5 @@
     "@types/dedent": "^0.7.0",
     "@types/jest": "28.1.8",
     "@types/prettier": "2.6.2"
-  },
-  "resolutions": {
-    "@midwayjs/faas": "3.7.0",
-    "@midwayjs/core": "3.7.0",
-    "@midwayjs/decorator": "3.7.0",
-    "@midwayjs/fc-starter": "3.7.0",
-    "@midwayjs/koa": "3.7.0",
-    "@midwayjs/mock": "3.7.0",
-    "@midwayjs/bootstrap": "3.7.0"
   }
 }
