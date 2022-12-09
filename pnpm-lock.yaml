@@ -464,7 +464,7 @@ importers:
       '@midwayjs/asynchronous-local-storage': ^1.0.2
       '@types/debug': 4.1.7
       '@types/koa-compose': ^3.2.5
-      '@types/lodash': 4.14.180
+      '@types/lodash': 4.14.191
       '@types/proper-url-join': 2.1.1
       debug: ^4.3.3
       fn-args: ^5.0.0
@@ -490,7 +490,7 @@ importers:
     devDependencies:
       '@types/debug': 4.1.7
       '@types/koa-compose': 3.2.5
-      '@types/lodash': 4.14.180
+      '@types/lodash': 4.14.191
       '@types/proper-url-join': 2.1.1
       zod: 3.19.1
 
@@ -566,7 +566,7 @@ importers:
       '@midwayjs/koa': ^3.8.0
       '@midwayjs/mock': ^3.8.0
       '@midwayjs/upload': 3.5.3
-      '@types/lodash': 4.14.180
+      '@types/lodash': 4.14.191
       lodash: ^4.17.21
     dependencies:
       '@midwayjs/hooks': link:../hooks
@@ -577,7 +577,7 @@ importers:
       '@midwayjs/koa': 3.8.0
       '@midwayjs/mock': 3.8.0
       '@midwayjs/upload': 3.5.3
-      '@types/lodash': 4.14.180
+      '@types/lodash': 4.14.191
 
   packages/rpc:
     specifiers:
@@ -4414,12 +4414,12 @@ packages:
       '@types/koa-compose': 3.2.5
       '@types/node': 18.11.9
 
-  /@types/lodash/4.14.180:
-    resolution: {integrity: sha512-XOKXa1KIxtNXgASAnwj7cnttJxS4fksBRywK/9LzRV5YxrF80BXZIGeQSuoESQ/VkUj30Ae0+YcuHc15wJCB2g==}
-    dev: true
-
   /@types/lodash/4.14.187:
     resolution: {integrity: sha512-MrO/xLXCaUgZy3y96C/iOsaIqZSeupyTImKClHunL5GrmaiII2VwvWmLBu2hwa0Kp0sV19CsyjtrTc/Fx8rg/A==}
+    dev: true
+
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
     dev: true
 
   /@types/mdast/3.0.10:
