@@ -10,7 +10,7 @@ importers:
       '@changesets/cli': 2.25.0
       '@jest/expect': 28.1.3
       '@preconstruct/cli': 2.2.2
-      '@types/babel__core': 7.1.19
+      '@types/babel__core': 7.1.20
       '@types/babel__preset-env': 7.9.2
       '@types/dedent': ^0.7.0
       '@types/jest': 28.1.8
@@ -53,7 +53,7 @@ importers:
       typescript: 4.8.4
       yalc: 1.0.0-pre.53
     devDependencies:
-      '@types/babel__core': 7.1.19
+      '@types/babel__core': 7.1.20
       '@types/babel__preset-env': 7.9.2
       '@types/dedent': 0.7.0
       '@types/jest': 28.1.8
@@ -4271,8 +4271,8 @@ packages:
     dependencies:
       '@types/node': 18.11.9
 
-  /@types/babel__core/7.1.19:
-    resolution: {integrity: sha512-WEOTgRsbYkvA/KCsDwVEGkd7WAr1e3g31VHQ8zy5gul/V1qKullU/BU5I68X5v7V3GnB9eotmom4v5a5gjxorw==}
+  /@types/babel__core/7.1.20:
+    resolution: {integrity: sha512-PVb6Bg2QuscZ30FvOU7z4guG6c926D9YRvOxEaelzndpMsvP+YM74Q/dAFASpg2l6+XLalxSGxcq/lrgYWZtyQ==}
     dependencies:
       '@babel/parser': 7.20.0
       '@babel/types': 7.20.0
@@ -5239,7 +5239,7 @@ packages:
     dependencies:
       '@babel/core': 7.19.3
       '@jest/transform': 28.1.3
-      '@types/babel__core': 7.1.19
+      '@types/babel__core': 7.1.20
       babel-plugin-istanbul: 6.1.1
       babel-preset-jest: 28.1.3_@babel+core@7.19.3
       chalk: 4.1.2
@@ -5268,7 +5268,7 @@ packages:
     dependencies:
       '@babel/template': 7.18.10
       '@babel/types': 7.20.0
-      '@types/babel__core': 7.1.19
+      '@types/babel__core': 7.1.20
       '@types/babel__traverse': 7.18.2
     dev: false
 
@@ -5407,6 +5407,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -7586,6 +7587,7 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -10710,6 +10712,7 @@ packages:
 
   /nan/2.17.0:
     resolution: {integrity: sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==}
+    requiresBuild: true
     dev: true
     optional: true
 
