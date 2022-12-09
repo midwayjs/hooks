@@ -565,7 +565,7 @@ importers:
       '@midwayjs/hooks-internal': ^3.0.1
       '@midwayjs/koa': ^3.8.0
       '@midwayjs/mock': ^3.8.0
-      '@midwayjs/upload': 3.5.3
+      '@midwayjs/upload': 3.8.0
       '@types/lodash': 4.14.191
       lodash: ^4.17.21
     dependencies:
@@ -576,7 +576,7 @@ importers:
       '@midwayjs/hooks-internal': link:../hooks-internal
       '@midwayjs/koa': 3.8.0
       '@midwayjs/mock': 3.8.0
-      '@midwayjs/upload': 3.5.3
+      '@midwayjs/upload': 3.8.0
       '@types/lodash': 4.14.191
 
   packages/rpc:
@@ -3512,19 +3512,19 @@ packages:
     resolution: {integrity: sha512-0VwK++J76FlvRUj0zfpD1vjV/PTJf8hnZ/OVsMwEUJWVSm2L4bEbcHa+ERKLiprK9tk+fIrDgeX3JB9K8iuGfw==}
     engines: {node: '>= 10'}
 
-  /@midwayjs/upload/3.5.3:
-    resolution: {integrity: sha512-f3pQlJQsvNFNN6ZlGHVp8gFioWHncItxU4JSBFL3fM+MiXwrF6wGfnt9KTcEt3J0cFAcovelSHCr2omp6WBNPA==}
-    engines: {node: '>=12'}
-    dependencies:
-      raw-body: 2.5.1
-    dev: true
-
   /@midwayjs/upload/3.7.1:
     resolution: {integrity: sha512-1nyf2SzijVcCYdy8oUfCTmAnMHEQ8xx09btfFxNRukBANKWoZGAAoVEluNFPJHWezniv77DQxBrc5trW7xtsDQ==}
     engines: {node: '>=12'}
     dependencies:
       raw-body: 2.5.1
     dev: false
+
+  /@midwayjs/upload/3.8.0:
+    resolution: {integrity: sha512-0Ytsj2gSKVaIXPlA1ipNqT1OgiNjcZMMSSyfbNcY+ojPA43HYnyxFSTAKAw3tFHKgGw1ry0lJKmmZ8wzU25OBg==}
+    engines: {node: '>=12'}
+    dependencies:
+      raw-body: 2.5.1
+    dev: true
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
