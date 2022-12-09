@@ -30,7 +30,7 @@
     "http-proxy-middleware": "^2.0.6",
     "light-spinner": "1.0.4",
     "p-event": "4.2.0",
-    "path-to-regexp": "^1.7.0",
+    "path-to-regexp": "^6.0.0",
     "picocolors": "^1.0.0"
   },
   "devDependencies": {

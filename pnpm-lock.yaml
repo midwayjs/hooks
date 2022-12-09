@@ -339,7 +339,7 @@ importers:
       http-proxy-middleware: ^2.0.6
       light-spinner: 1.0.4
       p-event: 4.2.0
-      path-to-regexp: ^1.7.0
+      path-to-regexp: ^6.0.0
       picocolors: ^1.0.0
     dependencies:
       '@midwayjs/core': 3.8.0
@@ -352,7 +352,7 @@ importers:
       http-proxy-middleware: 2.0.6
       light-spinner: 1.0.4
       p-event: 4.2.0
-      path-to-regexp: 1.8.0
+      path-to-regexp: 6.2.1
       picocolors: 1.0.0
     devDependencies:
       '@midwayjs/hooks': link:../hooks
@@ -8922,10 +8922,6 @@ packages:
       is-docker: 2.2.1
     dev: false
 
-  /isarray/0.0.1:
-    resolution: {integrity: sha512-D2S+3GLxWH+uhrNEcoh/fnmYeP8E8/zHl644d/jdA0g2uyXvy3sb0qxotE+ne0LtccHknQzWwZEzhak7oJ0COQ==}
-    dev: false
-
   /isarray/1.0.0:
     resolution: {integrity: sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==}
 
@@ -11458,12 +11454,6 @@ packages:
   /path-to-regexp/0.1.7:
     resolution: {integrity: sha512-5DFkuoqlv1uYQKxy8omFBeJPQcdoE07Kv2sferDCrAq1ohOU+MSDswDIbnx3YAM60qIOnYa53wBhXW0EbMonrQ==}
     dev: true
-
-  /path-to-regexp/1.8.0:
-    resolution: {integrity: sha512-n43JRhlUKUAlibEJhPeir1ncUID16QnEjNpwzNdO3Lm4ywrBpBZ5oLD0I6br9evr1Y9JTqwRtAh7JLoOzAQdVA==}
-    dependencies:
-      isarray: 0.0.1
-    dev: false
 
   /path-to-regexp/6.2.1:
     resolution: {integrity: sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==}
