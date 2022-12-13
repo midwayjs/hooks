@@ -1,0 +1,33 @@
+{
+  "name": "@midwayjs/test-util",
+  "version": "3.0.1",
+  "description": "TODO",
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "keywords": [
+    "midway",
+    "hooks",
+    "test-util"
+  ],
+  "main": "dist/midwayjs-test-util.cjs.js",
+  "module": "dist/midwayjs-test-util.esm.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@midwayjs/hooks-internal": "^3.0.1",
+    "@midwayjs/koa": "^3.8.0",
+    "@midwayjs/mock": "^3.8.0",
+    "@types/supertest": "^2.0.12",
+    "isomorphic-unfetch": "^3.1.0",
+    "supertest": "^6.3.3"
+  }
+}

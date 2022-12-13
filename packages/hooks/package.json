@@ -31,6 +31,7 @@
     "@midwayjs/core": "^3.8.0"
   },
   "devDependencies": {
+    "@midwayjs/test-util": "^3.0.1",
     "zod": "3.19.1",
     "@midwayjs/rpc": "3.0.1"
   },

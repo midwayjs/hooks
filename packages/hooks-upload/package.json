@@ -28,10 +28,8 @@
     "@midwayjs/upload": "3"
   },
   "devDependencies": {
-    "@midwayjs/koa": "^3.8.0",
-    "@midwayjs/mock": "^3.8.0",
+    "@midwayjs/test-util": "^3.0.1",
     "@midwayjs/upload": "3.8.0",
-    "@midwayjs/hooks-internal": "^3.0.1",
     "@types/lodash": "4.14.191"
   },
   "files": [

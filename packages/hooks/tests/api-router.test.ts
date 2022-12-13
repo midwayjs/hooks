@@ -1,17 +1,22 @@
 import { getApiTrigger, HttpTrigger } from '../src'
-import { IMidwayKoaApplication } from '@midwayjs/koa'
-import { closeApp, createApp, createHttpRequest } from './utils'
+import {
+  closeApp,
+  createApp,
+  createHttpRequest,
+  supertest,
+  IMidwayKoaApplication,
+} from '@midwayjs/test-util'
 import * as index from './fixtures/api-router/src/api/index'
 import { args } from '@midwayjs/rpc'
-import supertest from 'supertest'
 import { HOOKS_DEV_MODULE_PATH } from '@midwayjs/hooks-internal'
-import { resolve } from 'path'
+import { resolve, join } from 'path'
 
 describe('test koa with api router', () => {
   let app: IMidwayKoaApplication
 
   beforeAll(async () => {
-    app = await createApp('api-router')
+    const fixture = join(__dirname, 'fixtures', 'api-router')
+    app = await createApp(fixture)
   })
 
   afterAll(async () => {
@@ -138,7 +143,8 @@ describe('load dev modules', () => {
   )
 
   beforeEach(async () => {
-    app = await createApp('api-router')
+    const fixture = join(__dirname, 'fixtures', 'api-router')
+    app = await createApp(fixture)
   })
 
   afterEach(async () => {
