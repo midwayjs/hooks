@@ -8,6 +8,7 @@ import {
 } from '@midwayjs/hooks-core'
 import '@midwayjs/esrun/register'
 
+export type { WebpackPluginInstance } from 'webpack'
 export { EsbuildPlugin, VitePlugin, RollupPlugin } from 'unplugin'
 
 const debug = createDebug('hooks-bundler')
