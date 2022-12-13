@@ -101,7 +101,7 @@ function compile(context: string, entry: string): Promise<string> {
         return
       }
 
-      const info = stats.toJson()
+      const info = stats.toJson({ source: true })
 
       if (stats.hasErrors()) {
         console.error(info.errors)
@@ -112,7 +112,7 @@ function compile(context: string, entry: string): Promise<string> {
       }
 
       const module = info.modules.find((mod) => mod.identifier.includes(entry))
-      resolve(module.source)
+      resolve(module.source.toString())
     })
   })
 }
