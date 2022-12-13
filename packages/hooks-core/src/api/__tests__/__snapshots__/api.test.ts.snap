@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`defineMeta 1`] = `
-Object {
+{
   "Http_Headers": true,
   "Http_Params": true,
   "Http_Query": true,
-  "Middleware": Array [
+  "Middleware": [
     [Function],
   ],
-  "Trigger": Object {
+  "Trigger": {
     "method": "GET",
     "path": undefined,
-    "requestClient": Object {
+    "requestClient": {
       "client": "@midwayjs/rpc",
       "fetcher": "http",
     },

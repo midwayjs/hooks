@@ -105,7 +105,7 @@ import { ws as rpc$1 } from '@midwayjs/rpc'
           return rpc$0(...args, route)
         };
         get.route = {
-          trigger: {\\"type\\":\\"HTTP\\",\\"method\\":\\"GET\\",\\"path\\":\\"/api/get\\"},
+          trigger: {"type":"HTTP","method":"GET","path":"/api/get"},
           functionId: 'get',
           useInputMetadata: false,
         };
@@ -116,7 +116,7 @@ import { ws as rpc$1 } from '@midwayjs/rpc'
           return rpc$1(...args, route)
         };
         custom.route = {
-          trigger: {\\"type\\":\\"Custom\\",\\"isCustom\\":true},
+          trigger: {"type":"Custom","isCustom":true},
           functionId: 'custom',
           useInputMetadata: false,
         };
