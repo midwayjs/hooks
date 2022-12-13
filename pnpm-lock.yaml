@@ -427,7 +427,7 @@ importers:
       '@midwayjs/test-util': ^3.0.1
       lodash: ^4.17.21
       tslib: ^2.3.0
-      zod: 3.19.1
+      zod: 3.20.2
     dependencies:
       '@midwayjs/core': 3.8.0
       '@midwayjs/decorator': 3.8.0
@@ -438,7 +438,7 @@ importers:
     devDependencies:
       '@midwayjs/rpc': link:../rpc
       '@midwayjs/test-util': link:../test-util
-      zod: 3.19.1
+      zod: 3.20.2
 
   packages/hooks-bundler:
     specifiers:
@@ -477,7 +477,7 @@ importers:
       reflect-metadata: ^0.1.13
       type-fest: 3.3.0
       upath: ^2.0.1
-      zod: 3.19.1
+      zod: 3.20.2
     dependencies:
       '@midwayjs/asynchronous-local-storage': 1.0.2
       debug: 4.3.4
@@ -494,7 +494,7 @@ importers:
       '@types/koa-compose': 3.2.5
       '@types/lodash': 4.14.191
       '@types/proper-url-join': 2.1.1
-      zod: 3.19.1
+      zod: 3.20.2
 
   packages/hooks-internal:
     specifiers:
@@ -12764,10 +12764,5 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  /zod/3.19.1:
-    resolution: {integrity: sha512-LYjZsEDhCdYET9ikFu6dVPGp2YH9DegXjdJToSzD9rO6fy4qiRYFoyEYwps88OseJlPyl2NOe2iJuhEhL7IpEA==}
-    dev: true
-
   /zod/3.20.2:
     resolution: {integrity: sha512-1MzNQdAvO+54H+EaK5YpyEy0T+Ejo/7YLHS93G3RnYWh5gaotGHwGeN/ZO687qEDU2y4CdStQYXVHIgrUl5UVQ==}
-    dev: false

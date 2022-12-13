@@ -32,7 +32,7 @@
     "type-fest": "3.3.0"
   },
   "devDependencies": {
-    "zod": "3.19.1",
+    "zod": "3.20.2",
     "@types/debug": "4.1.7",
     "@types/koa-compose": "^3.2.5",
     "@types/lodash": "4.14.191",
