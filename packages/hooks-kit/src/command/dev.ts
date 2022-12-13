@@ -52,10 +52,7 @@ export function setupDevCommand(cli: CAC) {
           host: options.host,
           force: options.force,
         },
-        plugins: [
-          require('@midwayjs/hooks-bundler').vite(),
-          process.env.HOOKS_KIT_INSPECT && require('vite-plugin-inspect')(),
-        ],
+        plugins: [require('@midwayjs/hooks-bundler').vite()],
       }
 
       const config = mergeConfig(defaultConfig, userConfig?.vite)
