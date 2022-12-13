@@ -1,9 +1,12 @@
-import { createBundlerPlugin } from '@midwayjs/bundler'
+import {
+  createBundlerPlugin,
+  type WebpackPluginInstance,
+} from '@midwayjs/bundler'
 import { MidwayBundlerAdapter } from './adapter'
 
 const plugin = createBundlerPlugin(new MidwayBundlerAdapter())
 
-export const webpack = plugin.webpack
+export const webpack: WebpackPluginInstance = plugin.webpack
 export const vite = plugin.vite
 export const esbuild = plugin.esbuild
 export const rollup = plugin.rollup
