@@ -27,7 +27,7 @@
   "module": "dist/midwayjs-hooks-bundler.esm.js",
   "dependencies": {
     "@midwayjs/hooks": "^3.0.1",
-    "@midwayjs/hooks-internal": "^3.0.1",
+    "@midwayjs/hooks-internal": "^0.0.0-dev-pack-temp-20220725074016",
     "@midwayjs/hooks-core": "^3.0.1",
     "@midwayjs/bundler": "^3.0.1",
     "@midwayjs/dev-pack": "^3.0.1",
