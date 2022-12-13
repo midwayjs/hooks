@@ -1,7 +1,6 @@
-const path = require('path')
+import type { Config } from 'jest'
 
-/** @type {import('@jest/types').Config.InitialOptions} */
-module.exports = {
+const config: Config = {
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
   coveragePathIgnorePatterns: [
     'node_modules',
@@ -16,3 +15,5 @@ module.exports = {
     'jest-watch-typeahead/testname',
   ],
 }
+
+export default config
