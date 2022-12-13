@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`load user config 1`] = `
-Object {
-  "build": Object {
+{
+  "build": {
     "outDir": "./dist",
   },
-  "routes": Array [
-    Object {
+  "routes": [
+    {
       "baseDir": "lambda",
       "basePath": "/api",
     },
@@ -16,12 +16,12 @@ Object {
 `;
 
 exports[`load user config 2`] = `
-Object {
-  "build": Object {
+{
+  "build": {
     "outDir": "./dist",
   },
-  "routes": Array [
-    Object {
+  "routes": [
+    {
       "baseDir": "lambda",
       "basePath": "/api",
     },
@@ -31,12 +31,12 @@ Object {
 `;
 
 exports[`load user config 3`] = `
-Object {
-  "build": Object {
+{
+  "build": {
     "outDir": "./dist",
   },
-  "routes": Array [
-    Object {
+  "routes": [
+    {
       "baseDir": "lambda",
       "basePath": "/api",
     },

@@ -7,14 +7,14 @@ exports[`validator should support custom validator 2`] = `"unsupported schema"`;
 exports[`validator should throw error 1`] = `
 "[
   {
-    \\"code\\": \\"invalid_type\\",
-    \\"expected\\": \\"string\\",
-    \\"received\\": \\"number\\",
-    \\"path\\": [
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "number",
+    "path": [
       0,
-      \\"name\\"
+      "name"
     ],
-    \\"message\\": \\"Expected string, received number\\"
+    "message": "Expected string, received number"
   }
 ]"
 `;
@@ -22,14 +22,14 @@ exports[`validator should throw error 1`] = `
 exports[`validator should throw error 2`] = `
 "[
   {
-    \\"code\\": \\"invalid_type\\",
-    \\"expected\\": \\"number\\",
-    \\"received\\": \\"string\\",
-    \\"path\\": [
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
       0,
-      \\"age\\"
+      "age"
     ],
-    \\"message\\": \\"Expected number, received string\\"
+    "message": "Expected number, received string"
   }
 ]"
 `;
