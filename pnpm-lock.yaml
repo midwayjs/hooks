@@ -310,12 +310,12 @@ importers:
       memory-fs: 0.5.0
       prettier: 2.8.1
       ts-loader: 8.4.0
-      unplugin: 1.0.0
+      unplugin: 1.0.1
       webpack: 4.46.0
     dependencies:
       '@midwayjs/esrun': link:../esrun
       '@midwayjs/hooks-core': link:../hooks-core
-      unplugin: 1.0.0
+      unplugin: 1.0.1
     devDependencies:
       '@types/memory-fs': 0.3.3
       '@types/prettier': 2.7.1
@@ -427,7 +427,7 @@ importers:
       '@midwayjs/test-util': ^3.0.1
       lodash: ^4.17.21
       tslib: ^2.3.0
-      zod: 3.19.1
+      zod: 3.20.2
     dependencies:
       '@midwayjs/core': 3.8.0
       '@midwayjs/decorator': 3.8.0
@@ -438,7 +438,7 @@ importers:
     devDependencies:
       '@midwayjs/rpc': link:../rpc
       '@midwayjs/test-util': link:../test-util
-      zod: 3.19.1
+      zod: 3.20.2
 
   packages/hooks-bundler:
     specifiers:
@@ -477,7 +477,7 @@ importers:
       reflect-metadata: ^0.1.13
       type-fest: 3.3.0
       upath: ^2.0.1
-      zod: 3.19.1
+      zod: 3.20.2
     dependencies:
       '@midwayjs/asynchronous-local-storage': 1.0.2
       debug: 4.3.4
@@ -494,7 +494,7 @@ importers:
       '@types/koa-compose': 3.2.5
       '@types/lodash': 4.14.191
       '@types/proper-url-join': 2.1.1
-      zod: 3.19.1
+      zod: 3.20.2
 
   packages/hooks-internal:
     specifiers:
@@ -5564,6 +5564,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -7560,6 +7561,7 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -10790,6 +10792,7 @@ packages:
 
   /nan/2.17.0:
     resolution: {integrity: sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -13734,13 +13737,13 @@ packages:
     resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}
     engines: {node: '>= 0.8'}
 
-  /unplugin/1.0.0:
-    resolution: {integrity: sha512-H5UnBUxfhTXBXGo2AwKsl0UaLSHzSNDZNehPQSgdhVfO/t+XAS1Yoj3vmLrrlBrS9ZwtH5tejbX/TCp5DcyCKg==}
+  /unplugin/1.0.1:
+    resolution: {integrity: sha512-aqrHaVBWW1JVKBHmGo33T5TxeL0qWzfvjWokObHA9bYmN7eNDkwOxmLjhioHl9878qDFMAaT51XNroRyuz7WxA==}
     dependencies:
       acorn: 8.8.1
       chokidar: 3.5.3
       webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.4.6
+      webpack-virtual-modules: 0.5.0
     dev: false
 
   /unset-value/1.0.0:
@@ -14014,8 +14017,8 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
-  /webpack-virtual-modules/0.4.6:
-    resolution: {integrity: sha512-5tyDlKLqPfMqjT3Q9TAqf2YqjwmnUleZwzJi1A5qXnlBCdj2AtOJ6wAWdglTIDOPgOiOrXeBeFcsQ8+aGQ6QbA==}
+  /webpack-virtual-modules/0.5.0:
+    resolution: {integrity: sha512-kyDivFZ7ZM0BVOUteVbDFhlRt7Ah/CSPwJdi8hBpkK7QLumUqdLtVfm/PX/hkcnrvr0i77fO5+TjZ94Pe+C9iw==}
     dev: false
 
   /webpack/4.46.0:
@@ -14358,10 +14361,5 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  /zod/3.19.1:
-    resolution: {integrity: sha512-LYjZsEDhCdYET9ikFu6dVPGp2YH9DegXjdJToSzD9rO6fy4qiRYFoyEYwps88OseJlPyl2NOe2iJuhEhL7IpEA==}
-    dev: true
-
   /zod/3.20.2:
     resolution: {integrity: sha512-1MzNQdAvO+54H+EaK5YpyEy0T+Ejo/7YLHS93G3RnYWh5gaotGHwGeN/ZO687qEDU2y4CdStQYXVHIgrUl5UVQ==}
-    dev: false
