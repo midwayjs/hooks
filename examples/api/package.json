@@ -1,6 +1,5 @@
 {
   "name": "hooks-api-starter",
-  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node scripts/bootstrap",
