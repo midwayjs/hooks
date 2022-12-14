@@ -1,5 +1,10 @@
 lockfileVersion: 5.4
 
+patchedDependencies:
+  '@manypkg/get-packages@1.1.3':
+    hash: 4tgrhz3tjghjrdpcadnrrl36ii
+    path: patches/@manypkg__get-packages@1.1.3.patch
+
 importers:
 
   .:
@@ -25,7 +30,6 @@ importers:
       jest-snapshot-serializer-raw: 1.2.0
       jest-watch-typeahead: 2.2.1
       lerna: ^6.0.1
-      patch-package: 6.5.0
       prettier: 2.8.1
       pretty-quick: 3.1.3
       typescript: 4.9.4
@@ -47,7 +51,6 @@ importers:
       jest-snapshot-serializer-raw: 1.2.0
       jest-watch-typeahead: 2.2.1_jest@29.3.1
       lerna: 6.1.0
-      patch-package: 6.5.0
       prettier: 2.8.1
       pretty-quick: 3.1.3_prettier@2.8.1
       typescript: 4.9.4
@@ -1863,7 +1866,7 @@ packages:
       '@changesets/get-version-range-type': 0.3.2
       '@changesets/git': 1.5.0
       '@changesets/types': 5.2.0
-      '@manypkg/get-packages': 1.1.3
+      '@manypkg/get-packages': 1.1.3_4tgrhz3tjghjrdpcadnrrl36ii
       detect-indent: 6.1.0
       fs-extra: 7.0.1
       lodash.startcase: 4.4.0
@@ -1880,7 +1883,7 @@ packages:
       '@changesets/errors': 0.1.4
       '@changesets/get-dependents-graph': 1.3.4
       '@changesets/types': 5.2.0
-      '@manypkg/get-packages': 1.1.3
+      '@manypkg/get-packages': 1.1.3_4tgrhz3tjghjrdpcadnrrl36ii
       semver: 5.7.1
     dev: false
 
@@ -1908,7 +1911,7 @@ packages:
       '@changesets/read': 0.5.8
       '@changesets/types': 5.2.0
       '@changesets/write': 0.2.2
-      '@manypkg/get-packages': 1.1.3
+      '@manypkg/get-packages': 1.1.3_4tgrhz3tjghjrdpcadnrrl36ii
       '@types/is-ci': 3.0.0
       '@types/semver': 6.2.3
       ansi-colors: 4.1.3
@@ -1936,7 +1939,7 @@ packages:
       '@changesets/get-dependents-graph': 1.3.4
       '@changesets/logger': 0.0.5
       '@changesets/types': 5.2.0
-      '@manypkg/get-packages': 1.1.3
+      '@manypkg/get-packages': 1.1.3_4tgrhz3tjghjrdpcadnrrl36ii
       fs-extra: 7.0.1
       micromatch: 4.0.5
     dev: false
@@ -1951,7 +1954,7 @@ packages:
     resolution: {integrity: sha512-+C4AOrrFY146ydrgKOo5vTZfj7vetNu1tWshOID+UjPUU9afYGDXI8yLnAeib1ffeBXV3TuGVcyphKpJ3cKe+A==}
     dependencies:
       '@changesets/types': 5.2.0
-      '@manypkg/get-packages': 1.1.3
+      '@manypkg/get-packages': 1.1.3_4tgrhz3tjghjrdpcadnrrl36ii
       chalk: 2.4.2
       fs-extra: 7.0.1
       semver: 5.7.1
@@ -1966,7 +1969,7 @@ packages:
       '@changesets/pre': 1.0.13
       '@changesets/read': 0.5.8
       '@changesets/types': 5.2.0
-      '@manypkg/get-packages': 1.1.3
+      '@manypkg/get-packages': 1.1.3_4tgrhz3tjghjrdpcadnrrl36ii
     dev: false
 
   /@changesets/get-version-range-type/0.3.2:
@@ -1979,7 +1982,7 @@ packages:
       '@babel/runtime': 7.20.6
       '@changesets/errors': 0.1.4
       '@changesets/types': 5.2.0
-      '@manypkg/get-packages': 1.1.3
+      '@manypkg/get-packages': 1.1.3_4tgrhz3tjghjrdpcadnrrl36ii
       is-subdir: 1.2.0
       spawndamnit: 2.0.0
     dev: false
@@ -2003,7 +2006,7 @@ packages:
       '@babel/runtime': 7.20.6
       '@changesets/errors': 0.1.4
       '@changesets/types': 5.2.0
-      '@manypkg/get-packages': 1.1.3
+      '@manypkg/get-packages': 1.1.3_4tgrhz3tjghjrdpcadnrrl36ii
       fs-extra: 7.0.1
     dev: false
 
@@ -3298,7 +3301,7 @@ packages:
       fs-extra: 8.1.0
     dev: false
 
-  /@manypkg/get-packages/1.1.3:
+  /@manypkg/get-packages/1.1.3_4tgrhz3tjghjrdpcadnrrl36ii:
     resolution: {integrity: sha512-fo+QhuU3qE/2TQMQmbVMqaQ6EWbMhi4ABWP+O4AM1NqPBuy0OrApV5LO6BrrgnhtAHS2NH6RrVk9OL181tTi8A==}
     dependencies:
       '@babel/runtime': 7.20.6
@@ -3308,6 +3311,7 @@ packages:
       globby: 11.1.0
       read-yaml-file: 1.1.0
     dev: false
+    patched: true
 
   /@midwayjs/async-hooks-context-manager/3.8.0:
     resolution: {integrity: sha512-v+0CjUMhatMWm56I+5Yg44hAXiSI+0PqZrf5h82AtrwwhS6hOhIdpSqT74PXiRRD2XrhZuHj8GZC5c2UEyY3UA==}
@@ -6085,17 +6089,6 @@ packages:
       which: 1.3.1
     dev: false
 
-  /cross-spawn/6.0.5:
-    resolution: {integrity: sha512-eTVLrBSt7fjbDygz805pMnstIs2VTBNkRm0qxZd+M7A5XDdxVRWO5MxGBXZhjY4cqLYLdtrGqRf8mBPmzwSpWQ==}
-    engines: {node: '>=4.8'}
-    dependencies:
-      nice-try: 1.0.5
-      path-key: 2.0.1
-      semver: 5.7.1
-      shebang-command: 1.2.0
-      which: 1.3.1
-    dev: false
-
   /cross-spawn/7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -7065,12 +7058,6 @@ packages:
     dependencies:
       locate-path: 6.0.0
       path-exists: 4.0.0
-    dev: false
-
-  /find-yarn-workspace-root/2.0.0:
-    resolution: {integrity: sha512-1IMnbjt4KzsQfnhnzNd8wUEgXZ44IzZaZmnLYx7D5FZlaHt2gW20Cri8Q+E/t5tIj4+epTBub+2Zxu/vNILzqQ==}
-    dependencies:
-      micromatch: 4.0.5
     dev: false
 
   /find-yarn-workspace-root2/1.2.16:
@@ -8869,12 +8856,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /klaw-sync/6.0.0:
-    resolution: {integrity: sha512-nIeuVSzdCCs6TDPTqI8w1Yre34sSq7AkZ4B3sfOBbI2CgVSB4Du4aLQijFU2+lhAFCwt9+42Hel6lQNIv6AntQ==}
-    dependencies:
-      graceful-fs: 4.2.10
-    dev: false
-
   /kleur/3.0.3:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
@@ -9815,10 +9796,6 @@ packages:
   /neo-async/2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  /nice-try/1.0.5:
-    resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
-    dev: false
-
   /no-case/2.3.2:
     resolution: {integrity: sha512-rmTZ9kz+f3rCvK2TD1Ue/oZlns7OGoIWP4fc3llxxRXlOkHKoWPPWJOfFYpITabSow43QJbRIoHQXtt10VldyQ==}
     dependencies:
@@ -10143,14 +10120,6 @@ packages:
   /only/0.0.2:
     resolution: {integrity: sha512-Fvw+Jemq5fjjyWz6CpKx6w9s7xxqo3+JCyM0WXWeCSOboZ8ABkyvP8ID4CZuChA/wxSx+XSJmdOm8rGVyJ1hdQ==}
 
-  /open/7.4.2:
-    resolution: {integrity: sha512-MVHddDVweXZF3awtlAS+6pgKLlm/JgxZ90+/NBurBoQctVOOB/zDdVjcyPzQ+0laDGbsWgrRkflI65sQeOgT9Q==}
-    engines: {node: '>=8'}
-    dependencies:
-      is-docker: 2.2.1
-      is-wsl: 2.2.0
-    dev: false
-
   /open/8.4.0:
     resolution: {integrity: sha512-XgFPPM+B28FtCCgSb9I+s9szOC1vZRSwgWsRUA5ylIxRTgKozqjOCrVOqGsYABPYK5qnfqClxZTFBa8PKt2v6Q==}
     engines: {node: '>=12'}
@@ -10416,27 +10385,6 @@ packages:
     resolution: {integrity: sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==}
     engines: {node: '>= 0.8'}
 
-  /patch-package/6.5.0:
-    resolution: {integrity: sha512-tC3EqJmo74yKqfsMzELaFwxOAu6FH6t+FzFOsnWAuARm7/n2xB5AOeOueE221eM9gtMuIKMKpF9tBy/X2mNP0Q==}
-    engines: {node: '>=10', npm: '>5'}
-    hasBin: true
-    dependencies:
-      '@yarnpkg/lockfile': 1.1.0
-      chalk: 4.1.2
-      cross-spawn: 6.0.5
-      find-yarn-workspace-root: 2.0.0
-      fs-extra: 7.0.1
-      is-ci: 2.0.0
-      klaw-sync: 6.0.0
-      minimist: 1.2.7
-      open: 7.4.2
-      rimraf: 2.7.1
-      semver: 5.7.1
-      slash: 2.0.0
-      tmp: 0.0.33
-      yaml: 1.10.2
-    dev: false
-
   /path-exists/3.0.0:
     resolution: {integrity: sha512-bpC7GYwiDYQ4wYLe+FA8lhRjhQCMcQGuSgGGqDkg/QerRWw9CmGRT0iSOVRSZJ29NMLZgIzqaljJ63oaL4NIJQ==}
     engines: {node: '>=4'}
@@ -10450,11 +10398,6 @@ packages:
   /path-is-absolute/1.0.1:
     resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
     engines: {node: '>=0.10.0'}
-
-  /path-key/2.0.1:
-    resolution: {integrity: sha512-fEHGKCSmUSDPv4uoj8AlD+joPlq3peND+HRYyxFz4KPw4z926S/b8rIuFs2FYJg3BwsxJf6A9/3eIdLaYC+9Dw==}
-    engines: {node: '>=4'}
-    dev: false
 
   /path-key/3.1.1:
     resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
@@ -11145,13 +11088,6 @@ packages:
   /reusify/1.0.4:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
-
-  /rimraf/2.7.1:
-    resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
-    hasBin: true
-    dependencies:
-      glob: 7.2.3
-    dev: false
 
   /rimraf/3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}

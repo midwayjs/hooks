@@ -14,7 +14,6 @@
     "push-local": "lerna exec yalc push",
     "publish-release": "pnpm build && changeset publish",
     "publish-next": "pnpm build && lerna publish --dist-tag=next",
-    "postinstall": "patch-package",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -34,7 +33,6 @@
     "jest-snapshot-serializer-raw": "1.2.0",
     "jest-watch-typeahead": "2.2.1",
     "lerna": "^6.0.1",
-    "patch-package": "6.5.0",
     "prettier": "2.8.1",
     "pretty-quick": "3.1.3",
     "typescript": "4.9.4",
@@ -51,5 +49,10 @@
     "@types/dedent": "^0.7.0",
     "@types/jest": "29.2.4",
     "@types/prettier": "2.7.1"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@manypkg/get-packages@1.1.3": "patches/@manypkg__get-packages@1.1.3.patch"
+    }
   }
 }
