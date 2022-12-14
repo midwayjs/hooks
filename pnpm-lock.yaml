@@ -475,7 +475,7 @@ importers:
       lodash: ^4.17.21
       proper-url-join: ^2.1.1
       reflect-metadata: ^0.1.13
-      type-fest: 3.3.0
+      type-fest: 3.4.0
       upath: ^2.0.1
       zod: 3.20.2
     dependencies:
@@ -487,7 +487,7 @@ importers:
       lodash: 4.17.21
       proper-url-join: 2.1.1
       reflect-metadata: 0.1.13
-      type-fest: 3.3.0
+      type-fest: 3.4.0
       upath: 2.0.1
     devDependencies:
       '@types/debug': 4.1.7
@@ -5097,7 +5097,7 @@ packages:
     resolution: {integrity: sha512-IG23inYII3dWlU2EyiAiGj6Bwal5GzsgPMwjYGvc1HPE2dgbj4ZB5ToWBKSquKw74nB3TIuOwaI6/jSULzfgrw==}
     engines: {node: '>=14.16'}
     dependencies:
-      type-fest: 3.3.0
+      type-fest: 3.4.0
     dev: false
 
   /ansi-regex/5.0.1:
@@ -12076,8 +12076,8 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /type-fest/3.3.0:
-    resolution: {integrity: sha512-gezeeOIZyQLGW5uuCeEnXF1aXmtt2afKspXz3YqoOcZ3l/YMJq1pujvgT+cz/Nw1O/7q/kSav5fihJHsC/AOUg==}
+  /type-fest/3.4.0:
+    resolution: {integrity: sha512-PEPg6RHlB9cFwoTMNENNrQFL0cXX04voWr2UPwQBJ3pVs7Mt8Y1oLWdUeMdGEwZE8HFFlujq8gS9enmyiQ8pLg==}
     engines: {node: '>=14.16'}
     dev: false
 
