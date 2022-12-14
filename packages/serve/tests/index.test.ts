@@ -1,5 +1,9 @@
-import { IMidwayKoaApplication } from '@midwayjs/koa'
-import { closeApp, createApp, createHttpRequest } from '@midwayjs/test-util'
+import {
+  closeApp,
+  createApp,
+  createHttpRequest,
+  IMidwayKoaApplication,
+} from '@midwayjs/test-util'
 import { join } from 'path'
 
 describe('serve handler', () => {

@@ -13,7 +13,7 @@ export default createConfiguration({
       default: {
         keys: 'session_keys',
         koa: {
-          port: 7001,
+          port: 5678,
         },
       } as MidwayConfig,
     },

@@ -1,4 +1,3 @@
-import { join } from 'path'
 import { Framework, IMidwayKoaApplication } from '@midwayjs/koa'
 import { close, createApp as createMockApp } from '@midwayjs/mock'
 import { setProjectRoot } from '@midwayjs/hooks-internal'
