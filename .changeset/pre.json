@@ -1,0 +1,29 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "hooks-api-starter": "1.0.0",
+    "hooks-api-bundle-starter": "1.0.0",
+    "hooks-prisma-starter": "1.0.0",
+    "hooks-react-starter": "1.0.0",
+    "hooks-react-faas-starter": "1.0.0",
+    "hooks-react-with-upload-starter": "1.0.0",
+    "hooks-vue-starter": "1.0.0",
+    "hooks-vue-faas-starter": "1.0.0",
+    "@midwayjs/bundler": "3.0.1",
+    "@midwayjs/dev-pack": "3.0.1",
+    "@midwayjs/esrun": "3.0.1",
+    "@midwayjs/hcc": "3.0.1",
+    "api-bundle-test": "1.0.0",
+    "@midwayjs/hooks": "3.0.1",
+    "@midwayjs/hooks-bundler": "3.0.1",
+    "@midwayjs/hooks-core": "3.0.1",
+    "@midwayjs/hooks-internal": "3.0.1",
+    "@midwayjs/hooks-kit": "3.0.1",
+    "@midwayjs/hooks-upload": "3.0.1",
+    "@midwayjs/rpc": "3.0.1",
+    "@midwayjs/serve": "3.0.1",
+    "@midwayjs/test-util": "3.0.1"
+  },
+  "changesets": []
+}
