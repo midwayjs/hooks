@@ -566,7 +566,7 @@ importers:
       '@midwayjs/hooks': ^3.0.1
       '@midwayjs/hooks-core': ^3.0.1
       '@midwayjs/test-util': ^3.0.1
-      '@midwayjs/upload': 3.9.0
+      '@midwayjs/upload': 3.9.1
       '@types/lodash': 4.14.191
       lodash: ^4.17.21
     dependencies:
@@ -575,7 +575,7 @@ importers:
       lodash: 4.17.21
     devDependencies:
       '@midwayjs/test-util': link:../test-util
-      '@midwayjs/upload': 3.9.0
+      '@midwayjs/upload': 3.9.1
       '@types/lodash': 4.14.191
 
   packages/rpc:
@@ -3674,8 +3674,8 @@ packages:
       raw-body: 2.5.1
     dev: false
 
-  /@midwayjs/upload/3.9.0:
-    resolution: {integrity: sha512-eQbiRQXPuskYZP85c7ake2HWCI6eNgJu0gZmEX+MUKWh06JH3YfwgG3PjTQZs+4xt0Ylx1HVE9Uo5OqY16wclg==}
+  /@midwayjs/upload/3.9.1:
+    resolution: {integrity: sha512-x8uz8J+WE8QtZdS4wZ0+n5Ykc+7FdU7llc9UlBP4T+2RxhRSSgTQGhTvfGY5+b5XsG7O8tzvxr5OoYSH/xuCHA==}
     engines: {node: '>=12'}
     dependencies:
       raw-body: 2.5.1
