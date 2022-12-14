@@ -25,6 +25,7 @@ export type CreateOptions = {
   watch?: boolean
   cwd?: string
   sourceDir?: string
+  hideSpinner?: boolean
 }
 
 export class DevServer {
@@ -46,14 +47,16 @@ export class DevServer {
   }
 
   registerHooks() {
-    ;['SIGINT', 'SIGTERM', 'exit'].forEach((signal) =>
-      process.on(signal, async () => {
-        await this.close(signal)
-        if (signal !== 'exit') {
-          process.exit()
-        }
+    process.on('SIGINT', async () => {
+      process.exit(0)
+    })
+
+    process.on('SIGTERM', async () => {
+      ipc.once(this.app, AppEvents.Closed).then(() => {
+        process.exit(0)
       })
-    )
+      await this.close('SIGTERM')
+    })
   }
 
   async ready() {
@@ -69,12 +72,16 @@ export class DevServer {
 
   private waitingList: { resolve: Function; reject: Function }[] = []
   async start() {
-    this.spinner = new Spinner({
-      text:
-        this.state === ServerState.Restarting
-          ? `${logger.tag} Restarting`
-          : `${logger.tag} Starting`,
-    })
+    if (!this.options.hideSpinner) {
+      this.spinner = new Spinner({
+        text:
+          this.state === ServerState.Restarting
+            ? `${logger.tag} Restarting`
+            : `${logger.tag} Starting`,
+      })
+
+      this.spinner.start()
+    }
 
     const port = await this.ensurePort(7001)
     debug('dev server port: %s', port)
@@ -127,7 +134,7 @@ export class DevServer {
         logger.error(event.data)
     }
 
-    this.spinner.stop()
+    !this.options.hideSpinner && this.spinner.stop()
 
     ipc.once(this.app, AppEvents.UncaughtException).then(async (event) => {
       debug('dev server uncaught exception')
@@ -200,13 +207,18 @@ export class DevServer {
     this.state = ServerState.Closed
   }
 
+  private matched = new Map<string, boolean>()
+
   async isMatch(path: string, method: string) {
+    const key = `${method} ${path}`
+    if (this.matched.has(key)) {
+      return this.matched.get(key)
+    }
+
     ipc.send<MatchInfo>(this.app, ServerEvents.IsMatch, { path, method })
-    const message = await ipc.once<ServerEvents>(
-      this.app,
-      AppEvents.IsMatchResult
-    )
-    debug('isMatch %s, path: %s, method: %s', message.data, path, method)
+    const message = await ipc.once<boolean>(this.app, AppEvents.IsMatchResult)
+    debug('isMatch %s %s %s', message.data, method, path)
+    this.matched.set(key, message.data)
     return message.data
   }
 

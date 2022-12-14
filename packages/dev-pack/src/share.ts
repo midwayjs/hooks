@@ -19,6 +19,7 @@ export const enum AppEvents {
   StartError = 'app:start:error',
   UncaughtException = 'app:uncaughtException',
   IsMatchResult = 'app:isMatch:result',
+  Closed = 'app:closed',
 }
 
 export const enum ServerState {
@@ -74,7 +75,11 @@ export const ipc = {
   ): void {
     debug(`send %s`, type)
     if (proc && typeof proc.send === 'function' && proc.connected) {
-      proc.send({ type, data })
+      proc.send({ type, data }, (error) => {
+        if (error) {
+          console.error(colors.red(`send ${type} error: ${error.message}`))
+        }
+      })
     }
   },
 }

@@ -14,6 +14,7 @@ export async function createExpressDevPack(options: CreateOptions) {
   const server = new DevServer(options)
   debug('options', options)
   await server.run()
+  await server.ready()
 
   const proxy = createProxyMiddleware({
     target: `http://localhost:${server.port}`,
@@ -33,7 +34,7 @@ export async function createExpressDevPack(options: CreateOptions) {
       const send = typeof res.send === 'function' ? res.send : res.end
       send.call(
         res,
-        `Server error, please check the console output and fix the problem\n服务器错误，请查看控制台输出并修复问题`
+        `Server error, please check the console output and fix the problem\n服务端错误，请查看控制台输出并修复问题`
       )
     }
 

@@ -22,11 +22,6 @@ debug('app options: %O', options)
 
 let app: IMidwayApplication
 
-async function closeApp() {
-  if (app) await close(app)
-  process.exit(0)
-}
-
 async function bootstrap() {
   try {
     app = isServer
@@ -38,17 +33,23 @@ async function bootstrap() {
   }
 }
 
+async function closeApp(exitCode: 0 | 1) {
+  if (app) await close(app)
+  ipc.send(process, AppEvents.Closed)
+  process.exit(exitCode)
+}
+
 function registerHooks() {
   process.on('uncaughtException', async (err: Error) => {
     ipc.send(process, AppEvents.UncaughtException, err)
-    await closeApp()
+    await closeApp(1)
   })
 
-  process.on('exit', () => {
-    console.log('child process exit')
+  process.on('SIGINT', async () => {
+    await closeApp(0)
   })
 
-  ipc.once(process, ServerEvents.Close).then(() => closeApp())
+  ipc.once(process, ServerEvents.Close).then(() => closeApp(0))
 
   let service: MidwayWebRouterService
   ipc.on<MatchInfo>(process, ServerEvents.IsMatch, async ({ data }) => {
