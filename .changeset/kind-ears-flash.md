@@ -14,4 +14,4 @@
 '@midwayjs/test-util': minor
 ---
 
-release beta for dev-pack
+Add @midwayjs/dev-pack and fix bugs
