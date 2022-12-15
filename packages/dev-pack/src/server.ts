@@ -208,15 +208,29 @@ export class DevServer {
   }
 
   private matched = new Map<string, boolean>()
+  private bundlerAssets = [
+    '/node_modules/.vite/',
+    '@react-refresh',
+    '@id',
+    '@fs',
+    '@vite',
+  ]
 
   async isMatch(path: string, method: string) {
+    if (this.bundlerAssets.some((asset) => path.includes(asset))) {
+      return false
+    }
+
     const key = `${method} ${path}`
     if (this.matched.has(key)) {
       return this.matched.get(key)
     }
 
     ipc.send<MatchInfo>(this.app, ServerEvents.IsMatch, { path, method })
-    const message = await ipc.once<boolean>(this.app, AppEvents.IsMatchResult)
+    const message = await ipc.once<boolean>(
+      this.app,
+      `${AppEvents.IsMatchResult} ${key}`
+    )
     debug('isMatch %s %s %s', message.data, method, path)
     this.matched.set(key, message.data)
     return message.data

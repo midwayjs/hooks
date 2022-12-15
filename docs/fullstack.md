@@ -79,3 +79,27 @@ hooks build --outDir build
 ```
 hooks start ./build
 ```
+
+## 升级至 Vite 4
+
+在 `@midwayjs/hooks-kit` 3.0 版本中，我们使用 Vite 2。在 3.1.0 版本中，我们升级至 Vite 4。如果你的项目使用了 Vite 2 的配置，可以通过以下方式升级。
+
+### React
+
+升级项目依赖 `"@vitejs/plugin-react` 至 3.0.0 版本。
+
+### Vue
+
+升级项目依赖 `"@vitejs/plugin-vue` 至 4.0.0 版本。
+
+### 使用 pnpm
+
+在项目中增加 `@midwayjs/serve` 依赖。
+
+```json
+{
+  "dependencies": {
+    "@midwayjs/serve": "^3.1.0"
+  }
+}
+```

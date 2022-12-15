@@ -10,9 +10,9 @@
     "@midwayjs/faas": "^3.8.0",
     "@midwayjs/hooks": "^3.0.0",
     "@midwayjs/rpc": "^3.0.0",
-    "@midwayjs/serve": "^3.0.0",
+    "@midwayjs/serve": "^3.0.1",
     "isomorphic-unfetch": "^3.1.0",
-    "vite": "^2.8.6",
+    "vite": "^4.0.1",
     "vue": "^3.2.31"
   },
   "devDependencies": {
@@ -22,7 +22,7 @@
     "@midwayjs/hooks-bundler": "^3.0.0",
     "@midwayjs/mock": "^3.8.0",
     "@midwayjs/fc-starter": "^3.8.0",
-    "@vitejs/plugin-vue": "^2.0.0",
-    "typescript": "^4.4.4"
+    "@vitejs/plugin-vue": "^4.0.0",
+    "typescript": "^4.9.4"
   }
 }

@@ -29,7 +29,7 @@ export const enum ServerState {
   Restarting,
 }
 
-type IPCEvents = ServerEvents | AppEvents
+type IPCEvents = ServerEvents | AppEvents | string
 
 export type IPCMessage<T = any> = {
   type: IPCEvents

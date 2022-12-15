@@ -1,5 +1,6 @@
-import type { Merge } from 'type-fest'
 import { AsyncFunction } from '../types/common'
+
+type Merge<T, U> = T & Omit<U, keyof T>
 
 export type ArrayToObject<T, R = {}> = T extends [infer First, ...infer Rest]
   ? First extends PromiseLike<infer PromiseValue>

@@ -14,7 +14,6 @@ export async function createExpressDevPack(options: CreateOptions) {
   const server = new DevServer(options)
   debug('options', options)
   await server.run()
-  await server.ready()
 
   const proxy = createProxyMiddleware({
     target: `http://localhost:${server.port}`,

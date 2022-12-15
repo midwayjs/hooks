@@ -51,21 +51,6 @@ export class MidwayBundlerAdapter extends AbstractBundlerAdapter {
     const ctx = this
     return {
       vite: {
-        resolveId(_: string, importer: string) {
-          if (
-            process.env.NODE_ENV !== 'production' &&
-            importer &&
-            ctx.router.isSourceFile(importer, ctx.source) &&
-            ctx.router.isApiFile({
-              mod: requireWithoutCache(importer),
-              file: importer,
-            })
-          ) {
-            return 'MIDWAY_HOOKS_VIRTUAL_FILE'
-          }
-
-          return null
-        },
         async configureServer(server: ViteDevServer) {
           const { middleware } = await createExpressDevPack({
             cwd: ctx.root,

@@ -61,7 +61,8 @@ function registerHooks() {
     }
 
     const info = await service.getMatchedRouterInfo(data.path, data.method)
-    ipc.send(process, AppEvents.IsMatchResult, !!info)
+    const key = `${data.method} ${data.path}`
+    ipc.send(process, `${AppEvents.IsMatchResult} ${key}`, !!info)
   })
 }
 
