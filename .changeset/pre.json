@@ -16,5 +16,5 @@
     "@midwayjs/serve": "3.0.1",
     "@midwayjs/test-util": "3.0.1"
   },
-  "changesets": []
+  "changesets": ["kind-ears-flash"]
 }

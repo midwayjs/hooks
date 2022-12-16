@@ -1,4 +1,4 @@
-# @midwayjs/dev-pack
+# @midwayjs/test-util
 
 ## 3.1.0-beta.0
 
@@ -9,5 +9,4 @@
 ### Patch Changes
 
 - Updated dependencies [615e94b2]
-  - @midwayjs/esrun@3.1.0-beta.0
-  - @midwayjs/hooks-core@3.1.0-beta.0
+  - @midwayjs/hooks-internal@3.1.0-beta.0
