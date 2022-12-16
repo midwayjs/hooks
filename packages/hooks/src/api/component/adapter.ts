@@ -147,7 +147,7 @@ export class MidwayFrameworkAdapter {
             path: http.path,
             middleware: http.middleware,
           },
-          functionName: 'handler',
+          functionName: providerId,
           handlerName: `${providerId}.handler`,
         })
         continue
@@ -161,7 +161,7 @@ export class MidwayFrameworkAdapter {
             name: api.trigger.type,
             type: api.trigger.type,
             metadata: api.trigger.options,
-            functionName: 'handler',
+            functionName: providerId,
             handlerName: `${providerId}.handler`,
           } as any
         )
