@@ -22,7 +22,7 @@
   "dependencies": {
     "@midwayjs/asynchronous-local-storage": "^1.0.2",
     "debug": "^4.3.3",
-    "fn-args": "^5.0.0",
+    "fn-args": "^6.0.0",
     "is-class": "^0.0.9",
     "koa-compose": "^4.1.0",
     "lodash": "^4.17.21",

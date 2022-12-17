@@ -482,7 +482,7 @@ importers:
       '@types/lodash': 4.14.191
       '@types/proper-url-join': 2.1.1
       debug: ^4.3.3
-      fn-args: ^5.0.0
+      fn-args: ^6.0.0
       is-class: ^0.0.9
       koa-compose: ^4.1.0
       lodash: ^4.17.21
@@ -493,7 +493,7 @@ importers:
     dependencies:
       '@midwayjs/asynchronous-local-storage': 1.0.2
       debug: 4.3.4
-      fn-args: 5.0.0
+      fn-args: 6.0.0
       is-class: 0.0.9
       koa-compose: 4.1.0
       lodash: 4.17.21
@@ -513,14 +513,14 @@ importers:
       '@midwayjs/hooks-core': ^3.1.0-beta.0
       '@types/lodash': ^4.14.182
       find-up: 5.0.0
-      fn-args: ^5.0.0
+      fn-args: ^6.0.0
       lodash: ^4.17.21
       upath: ^2.0.1
     dependencies:
       '@midwayjs/glob': 1.1.0
       '@midwayjs/hooks-core': link:../hooks-core
       find-up: 5.0.0
-      fn-args: 5.0.0
+      fn-args: 6.0.0
       lodash: 4.17.21
       upath: 2.0.1
     devDependencies:
@@ -6837,9 +6837,9 @@ packages:
     hasBin: true
     dev: false
 
-  /fn-args/5.0.0:
-    resolution: {integrity: sha512-CtbfI3oFFc3nbdIoHycrfbrxiGgxXBXXuyOl49h47JawM1mYrqpiRqnH5CB2mBatdXvHHOUO6a+RiAuuvKt0lw==}
-    engines: {node: '>=8'}
+  /fn-args/6.0.0:
+    resolution: {integrity: sha512-da4veZTtOBKQ+H0V4RRQzfIxxZzNGE0+0R0WrwCsOeHYGMhm4lM46Tfh8v3ihlHXd1z0hpySN2+B7US22YzmCw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: false
 
   /fn.name/1.1.0:
