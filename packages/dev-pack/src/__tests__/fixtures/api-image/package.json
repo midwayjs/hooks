@@ -1,6 +1,7 @@
 {
   "name": "hooks-api-devpack-image-test",
   "private": true,
+  "version": "3.0.1",
   "scripts": {
     "start": "node scripts/bootstrap",
     "dev": "mw dev --fast",

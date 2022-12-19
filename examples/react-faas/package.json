@@ -1,6 +1,7 @@
 {
   "name": "hooks-react-faas-starter",
   "private": true,
+  "version": "3.0.1",
   "scripts": {
     "dev": "NODE_ENV=development vite",
     "build": "vite build && mw build",
@@ -8,9 +9,9 @@
   },
   "dependencies": {
     "@midwayjs/faas": "^3.8.0",
-    "@midwayjs/hooks": "^3.1.0-beta.0",
-    "@midwayjs/rpc": "^3.1.0-beta.0",
-    "@midwayjs/serve": "^3.1.0-beta.0",
+    "@midwayjs/hooks": "^3.1.0-beta.1",
+    "@midwayjs/rpc": "^3.1.0-beta.1",
+    "@midwayjs/serve": "^3.1.0-beta.1",
     "ahooks": "^3.1.2",
     "isomorphic-unfetch": "^3.1.0",
     "react": "^17.0.0",
@@ -21,7 +22,7 @@
     "@midwayjs/cli": "^1.3.0",
     "@midwayjs/cli-plugin-faas": "^1.3.0",
     "@midwayjs/fcli-plugin-fc": "^1.3.0",
-    "@midwayjs/hooks-bundler": "^3.1.0-beta.0",
+    "@midwayjs/hooks-bundler": "^3.1.0-beta.1",
     "@midwayjs/mock": "^3.8.0",
     "@midwayjs/fc-starter": "^3.8.0",
     "@types/react": "^17.0.13",

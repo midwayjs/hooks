@@ -1,5 +1,13 @@
 # @midwayjs/test-util
 
+## 3.1.0-beta.1
+
+### Patch Changes
+
+- 886e6041: fix: use providerId for functionName
+- Updated dependencies [886e6041]
+  - @midwayjs/hooks-internal@3.1.0-beta.1
+
 ## 3.1.0-beta.0
 
 ### Minor Changes

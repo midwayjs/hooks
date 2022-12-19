@@ -1,5 +1,11 @@
 # @midwayjs/hooks-core
 
+## 3.1.0-beta.1
+
+### Patch Changes
+
+- 886e6041: fix: use providerId for functionName
+
 ## 3.1.0-beta.0
 
 ### Minor Changes

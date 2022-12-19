@@ -14,7 +14,16 @@
     "@midwayjs/hooks-upload": "3.0.1",
     "@midwayjs/rpc": "3.0.1",
     "@midwayjs/serve": "3.0.1",
-    "@midwayjs/test-util": "3.0.1"
+    "@midwayjs/test-util": "3.0.1",
+    "hooks-api-starter": "3.0.1",
+    "hooks-api-bundle-starter": "3.0.1",
+    "hooks-prisma-starter": "3.0.1",
+    "hooks-react-starter": "3.0.1",
+    "hooks-react-faas-starter": "3.0.1",
+    "hooks-react-with-upload-starter": "3.0.1",
+    "hooks-vue-starter": "3.0.1",
+    "hooks-vue-faas-starter": "3.0.1",
+    "api-bundle-test": "3.0.1"
   },
-  "changesets": ["kind-ears-flash"]
+  "changesets": ["heavy-badgers-watch", "kind-ears-flash"]
 }

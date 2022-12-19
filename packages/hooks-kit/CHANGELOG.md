@@ -1,5 +1,18 @@
 # @midwayjs/hooks-kit
 
+## 3.1.0-beta.1
+
+### Patch Changes
+
+- 886e6041: fix: use providerId for functionName
+- Updated dependencies [886e6041]
+  - @midwayjs/esrun@3.1.0-beta.1
+  - @midwayjs/hooks@3.1.0-beta.1
+  - @midwayjs/hooks-bundler@3.1.0-beta.1
+  - @midwayjs/hooks-core@3.1.0-beta.1
+  - @midwayjs/hooks-internal@3.1.0-beta.1
+  - @midwayjs/serve@3.1.0-beta.1
+
 ## 3.1.0-beta.0
 
 ### Minor Changes

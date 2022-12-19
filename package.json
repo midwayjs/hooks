@@ -1,7 +1,7 @@
 {
   "name": "hooks-project",
-  "version": "3.0.0",
   "private": true,
+  "version": "3.0.1",
   "scripts": {
     "build": "preconstruct build && pnpm format-dist",
     "dev": "preconstruct dev",
