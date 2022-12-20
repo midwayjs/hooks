@@ -2,10 +2,3 @@
 . "$(dirname "$0")/_/husky.sh"
 
 pnpm pretty-quick --staged
-
-if [ -f pnpm-lock.yaml ]; then
-  if grep -q 'registry.npm.alibaba-inc.com' pnpm-lock.yaml; then
-    echo 'pnpm-lock.yaml contains "registry.npm.alibaba-inc.com"'
-    exit 1
-  fi
-fi
