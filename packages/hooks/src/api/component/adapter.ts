@@ -154,7 +154,6 @@ export class MidwayFrameworkAdapter {
       }
 
       if (this.isServerlessTrigger(api)) {
-        // TODO add name field
         midwayServerlessFunctionService.addServerlessFunction(
           this.createHandler(api.fn, api.trigger.parseArgs),
           {
