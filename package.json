@@ -10,10 +10,8 @@
     "ci": "pnpm dev && jest --coverage --ci",
     "format": "pretty-quick",
     "format-dist": "prettier packages/**/dist/**/*.js --write --loglevel=error",
-    "publish-local": "lerna exec yalc publish",
-    "push-local": "lerna exec yalc push",
-    "publish-release": "pnpm build && changeset publish",
-    "publish-next": "pnpm build && lerna publish --dist-tag=next",
+    "publish-local": "pnpm -r exec yalc publish",
+    "publish": "pnpm build && changeset publish",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -22,6 +20,7 @@
     "@babel/preset-typescript": "7.18.6",
     "@changesets/cli": "2.26.0",
     "@jest/expect": "29.3.1",
+    "@manypkg/get-packages": "^1.1.3",
     "@preconstruct/cli": "2.2.2",
     "all-contributors-cli": "6.24.0",
     "consola": "^2.15.3",
@@ -32,7 +31,6 @@
     "jest-serializer-path": "0.1.15",
     "jest-snapshot-serializer-raw": "1.2.0",
     "jest-watch-typeahead": "2.2.1",
-    "lerna": "^6.0.1",
     "prettier": "2.8.1",
     "pretty-quick": "3.1.3",
     "typescript": "4.9.4",
@@ -44,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "@changesets/types": "^5.2.1",
     "@types/babel__core": "7.1.20",
     "@types/babel__preset-env": "7.9.2",
     "@types/dedent": "^0.7.0",

@@ -1,20 +1,15 @@
-import { execSync } from 'node:child_process'
+import { getPackagesSync } from '@manypkg/get-packages'
+import type { PackageJSON } from '@changesets/types'
 
-export type LernaPackage = {
-  name: string
-  version: string
-  private: boolean
-  location: string
-}
+export function getPackages(): PackageJSON[] {
+  const pkgs = getPackagesSync(process.cwd())
 
-export function getPackages() {
-  const pkgs: LernaPackage[] = JSON.parse(
-    execSync('npx lerna ls --json').toString()
-  )
+  const midwayPackages = pkgs.packages
+    .filter(
+      (pkg) =>
+        !pkg.packageJson.private && pkg.packageJson.name.startsWith('@midwayjs')
+    )
+    .map((pkg) => pkg.packageJson)
 
-  const publicPkgs = pkgs.filter(
-    (pkg) => !pkg.private && pkg.name.startsWith('@midwayjs')
-  )
-
-  return publicPkgs
+  return midwayPackages
 }

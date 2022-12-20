@@ -169,7 +169,7 @@ npx degit https://github.com/midwayjs/hooks/examples/react
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-We use pnpm + lerna to manage the project.
+We use pnpm to manage the project.
 
 - install dependencies
 
