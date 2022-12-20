@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  PNPM_CACHE_FOLDER: .pnpm-store
+
 jobs:
   release:
     name: Release
@@ -23,8 +26,10 @@ jobs:
       - name: Setup Node.js 16.x
         uses: actions/setup-node@v3
         with:
-          cache: 'pnpm'
           node-version: 16.x
+
+      - name: Setup pnpm Config
+        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
 
       - name: Install Dependencies
         run: pnpm install

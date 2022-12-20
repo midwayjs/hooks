@@ -9,6 +9,10 @@ on:
     paths-ignore:
       - 'docs/**'
 
+env:
+  DEBUG: hooks*
+  PNPM_CACHE_FOLDER: .pnpm-store
+
 jobs:
   test:
     strategy:
@@ -30,28 +34,33 @@ jobs:
       - uses: pnpm/action-setup@v2.2.4
         with:
           version: 7
+
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
-          cache: 'pnpm'
           node-version: ${{ matrix.node }}
+
+      - name: Setup pnpm Config
+        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
+
       - uses: nick-invision/retry@v2
         with:
           timeout_minutes: 10
           max_attempts: 3
           command: pnpm install
+
       - name: Test Node.js 18
         if: ${{ matrix.node == 18 }}
         env:
           NODE_OPTIONS: --openssl-legacy-provider
-          DEBUG: hooks*
         run: pnpm ci
+
       - name: Test Node.js
         if: ${{ matrix.node != 18 }}
         run: pnpm ci
-        env:
-          DEBUG: hooks*
+
       - name: Build
         run: pnpm build
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
