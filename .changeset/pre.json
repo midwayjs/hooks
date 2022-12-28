@@ -25,5 +25,5 @@
     "hooks-vue-faas-starter": "3.0.1",
     "api-bundle-test": "3.0.1"
   },
-  "changesets": ["heavy-badgers-watch", "kind-ears-flash"]
+  "changesets": ["eighty-buses-work", "heavy-badgers-watch", "kind-ears-flash"]
 }

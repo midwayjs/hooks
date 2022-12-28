@@ -1,5 +1,14 @@
 # @midwayjs/hooks
 
+## 3.1.0-beta.2
+
+### Patch Changes
+
+- fix: pass empty object when serverless trigger options is undefined
+- Updated dependencies
+  - @midwayjs/hooks-internal@3.1.0-beta.2
+  - @midwayjs/hooks-core@3.1.0-beta.2
+
 ## 3.1.0-beta.1
 
 ### Patch Changes

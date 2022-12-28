@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/bundler",
-  "version": "3.1.0-beta.1",
+  "version": "3.1.0-beta.2",
   "description": "Midway Hooks bundler plugin for Webpack & Vite",
   "keywords": [
     "midway",
@@ -26,9 +26,9 @@
   "main": "dist/midwayjs-bundler.cjs.js",
   "module": "dist/midwayjs-bundler.esm.js",
   "dependencies": {
-    "@midwayjs/hooks-core": "^3.1.0-beta.1",
+    "@midwayjs/hooks-core": "^3.1.0-beta.2",
     "unplugin": "1.0.1",
-    "@midwayjs/esrun": "^3.1.0-beta.1"
+    "@midwayjs/esrun": "^3.1.0-beta.2"
   },
   "devDependencies": {
     "@types/memory-fs": "0.3.3",
