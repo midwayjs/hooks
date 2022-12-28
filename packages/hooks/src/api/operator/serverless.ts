@@ -20,7 +20,7 @@ function createServerlessTrigger<O>(type: any) {
       metadata({ setMetadata }) {
         setMetadata<ServerlessTrigger>(OperatorType.Trigger, {
           type,
-          options,
+          options: options || {},
           parseArgs,
         })
       },
