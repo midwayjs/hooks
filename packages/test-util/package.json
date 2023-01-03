@@ -27,7 +27,7 @@
     "@midwayjs/koa": "^3.8.0",
     "@midwayjs/mock": "^3.8.0",
     "@types/supertest": "^2.0.12",
-    "isomorphic-unfetch": "^3.1.0",
+    "isomorphic-unfetch": "^4.0.0",
     "supertest": "^6.3.3"
   }
 }

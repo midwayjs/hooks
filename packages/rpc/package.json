@@ -24,7 +24,7 @@
     "access": "public"
   },
   "dependencies": {
-    "isomorphic-unfetch": "^3.1.0",
+    "isomorphic-unfetch": "^4.0.0",
     "koa-compose": "^4.1.0",
     "redaxios": "^0.5.0"
   },
