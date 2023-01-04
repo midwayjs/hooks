@@ -1,5 +1,16 @@
 # @midwayjs/rpc
 
+## 3.1.0
+
+### Minor Changes
+
+- 615e94b2: Add @midwayjs/dev-pack / use vite 4 / drop nodejs v12 support
+
+### Patch Changes
+
+- 0c223958: fix: pass empty object when serverless trigger options is undefined
+- 886e6041: fix: use providerId for functionName
+
 ## 3.1.0-beta.2
 
 ### Patch Changes
