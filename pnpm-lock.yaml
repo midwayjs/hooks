@@ -431,7 +431,7 @@ importers:
       '@midwayjs/decorator': ^3.4.1
       '@midwayjs/hooks-core': ^3.1.0
       '@midwayjs/hooks-internal': ^3.1.0
-      '@midwayjs/rpc': 3.1.0
+      '@midwayjs/rpc': 3.0.1
       '@midwayjs/test-util': ^3.1.0
       lodash: ^4.17.21
       tslib: ^2.3.0
@@ -444,7 +444,7 @@ importers:
       lodash: 4.17.21
       tslib: 2.4.1
     devDependencies:
-      '@midwayjs/rpc': link:../rpc
+      '@midwayjs/rpc': 3.0.1
       '@midwayjs/test-util': link:../test-util
       zod: 3.20.2
 
@@ -2978,6 +2978,16 @@ packages:
       source-map: 0.7.4
       source-map-support: 0.5.21
       typescript: 4.6.4
+
+  /@midwayjs/rpc/3.0.1:
+    resolution: {integrity: sha512-xI3whNVyDb5pdce2IL7RpW4RYREBGSxAq64BvNcqFjcyHjPt6nKAIjBth6X+krVwAYVV6SPN764deLy81/mA3Q==}
+    dependencies:
+      isomorphic-unfetch: 3.1.0
+      koa-compose: 4.1.0
+      redaxios: 0.4.1
+    transitivePeerDependencies:
+      - encoding
+    dev: true
 
   /@midwayjs/serverless-http-parser/3.6.0:
     resolution: {integrity: sha512-8oBa05q6zszcGSndXzE3426HkLqqnytAk9oWJ8MoT45+jWmCM9BRCp37akq8XMiyHz1KLI6Dsbylsnv3lW6pbg==}
@@ -8214,6 +8224,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+
+  /redaxios/0.4.1:
+    resolution: {integrity: sha512-+Jhh1j8/H0KBro+Hih/MrDEJ1PICaU10JA6iu5b3+uvgRI+5n2M7qpMNXq7eC/0fspP0tTq49ONXlGWFdRoNLg==}
+    dev: true
 
   /redaxios/0.5.1:
     resolution: {integrity: sha512-FSD2AmfdbkYwl7KDExYQlVvIrFz6Yd83pGfaGjBzM9F6rpq8g652Q4Yq5QD4c+nf4g2AgeElv1y+8ajUPiOYMg==}

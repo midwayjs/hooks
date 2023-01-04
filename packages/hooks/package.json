@@ -33,7 +33,7 @@
   "devDependencies": {
     "@midwayjs/test-util": "^3.1.0",
     "zod": "3.20.2",
-    "@midwayjs/rpc": "3.1.0"
+    "@midwayjs/rpc": "3.0.1"
   },
   "peerDependencies": {
     "zod": ">=3.0.0"
