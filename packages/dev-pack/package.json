@@ -22,7 +22,7 @@
   "dependencies": {
     "@midwayjs/core": "^3.8.0",
     "@midwayjs/esrun": "^3.1.0",
-    "@midwayjs/hooks-core": "^3.1.0",
+    "@midwayjs/hooks-core": "^3.1.0-beta",
     "@midwayjs/mock": "^3.8.0",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",

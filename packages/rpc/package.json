@@ -17,7 +17,7 @@
   "main": "dist/midwayjs-rpc.cjs.js",
   "module": "dist/midwayjs-rpc.esm.js",
   "devDependencies": {
-    "@midwayjs/hooks-core": "^3.1.0",
+    "@midwayjs/hooks-core": "^3.1.0-beta",
     "@types/koa-compose": "3"
   },
   "publishConfig": {

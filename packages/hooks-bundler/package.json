@@ -28,7 +28,7 @@
   "dependencies": {
     "@midwayjs/hooks": "^3.1.0",
     "@midwayjs/hooks-internal": "^3.1.0",
-    "@midwayjs/hooks-core": "^3.1.0",
+    "@midwayjs/hooks-core": "^3.1.0-beta",
     "@midwayjs/bundler": "^3.1.0",
     "@midwayjs/dev-pack": "^3.1.0",
     "upath": "^2.0.1",

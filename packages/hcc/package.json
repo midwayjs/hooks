@@ -35,7 +35,7 @@
     "fs-extra": "11.1.0",
     "@types/fs-extra": "9.0.13",
     "@midwayjs/hooks": "^3.1.0",
-    "@midwayjs/hooks-core": "^3.1.0",
+    "@midwayjs/hooks-core": "^3.1.0-beta",
     "@types/lodash": "^4.14.182",
     "isomorphic-unfetch": "3.1.0"
   },
