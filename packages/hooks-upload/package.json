@@ -28,7 +28,7 @@
     "@midwayjs/upload": "3"
   },
   "devDependencies": {
-    "@midwayjs/test-util": "^3.1.0",
+    "@midwayjs/test-util": "^3.1.0-beta",
     "@midwayjs/upload": "3.9.1",
     "@types/lodash": "4.14.191"
   },
