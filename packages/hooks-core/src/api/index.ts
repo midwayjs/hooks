@@ -1,4 +1,5 @@
-import { BaseTrigger, OperatorType } from './type'
+import { OperatorType } from './common'
+import { BaseTrigger } from './type'
 
 export function getApiTrigger<T extends BaseTrigger = BaseTrigger>(
   target: any
@@ -8,6 +9,7 @@ export function getApiTrigger<T extends BaseTrigger = BaseTrigger>(
 
 export * from './api'
 export * from './type'
+export * from './common'
 
 export * from './operator/middleware'
 export * from './operator/http'

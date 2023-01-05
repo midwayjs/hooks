@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`load file route with custom trigger 1`] = `
-Array [
-  Object {
+[
+  {
     "file": "/index.ts",
     "fn": [Function],
     "functionId": "custom",
     "functionName": "custom",
-    "middleware": Array [],
-    "trigger": Object {
+    "middleware": [],
+    "trigger": {
       "isCustom": true,
       "type": "Custom",
     },
@@ -18,17 +18,17 @@ Array [
 `;
 
 exports[`load file route with http trigger 1`] = `
-Array [
-  Object {
+[
+  {
     "file": "/index.ts",
     "fn": [Function],
     "functionId": "get",
     "functionName": "get",
-    "middleware": Array [],
-    "trigger": Object {
+    "middleware": [],
+    "trigger": {
       "method": "GET",
       "path": "/api/get",
-      "requestClient": Object {
+      "requestClient": {
         "client": "@midwayjs/rpc",
         "fetcher": "http",
       },
@@ -36,16 +36,16 @@ Array [
     },
     "useInputMetadata": false,
   },
-  Object {
+  {
     "file": "/index.ts",
     "fn": [Function],
     "functionId": "post",
     "functionName": "post",
-    "middleware": Array [],
-    "trigger": Object {
+    "middleware": [],
+    "trigger": {
       "method": "POST",
       "path": "/api/post",
-      "requestClient": Object {
+      "requestClient": {
         "client": "@midwayjs/rpc",
         "fetcher": "http",
       },
@@ -53,16 +53,16 @@ Array [
     },
     "useInputMetadata": false,
   },
-  Object {
+  {
     "file": "/index.ts",
     "fn": [Function],
     "functionId": "put",
     "functionName": "put",
-    "middleware": Array [],
-    "trigger": Object {
+    "middleware": [],
+    "trigger": {
       "method": "PUT",
       "path": "/api/put",
-      "requestClient": Object {
+      "requestClient": {
         "client": "@midwayjs/rpc",
         "fetcher": "http",
       },
@@ -70,16 +70,16 @@ Array [
     },
     "useInputMetadata": false,
   },
-  Object {
+  {
     "file": "/index.ts",
     "fn": [Function],
     "functionId": "del",
     "functionName": "del",
-    "middleware": Array [],
-    "trigger": Object {
+    "middleware": [],
+    "trigger": {
       "method": "DELETE",
       "path": "/api/del",
-      "requestClient": Object {
+      "requestClient": {
         "client": "@midwayjs/rpc",
         "fetcher": "http",
       },
@@ -87,16 +87,16 @@ Array [
     },
     "useInputMetadata": false,
   },
-  Object {
+  {
     "file": "/index.ts",
     "fn": [Function],
     "functionId": "patch",
     "functionName": "patch",
-    "middleware": Array [],
-    "trigger": Object {
+    "middleware": [],
+    "trigger": {
       "method": "PATCH",
       "path": "/api/patch",
-      "requestClient": Object {
+      "requestClient": {
         "client": "@midwayjs/rpc",
         "fetcher": "http",
       },
@@ -104,16 +104,16 @@ Array [
     },
     "useInputMetadata": false,
   },
-  Object {
+  {
     "file": "/index.ts",
     "fn": [Function],
     "functionId": "head",
     "functionName": "head",
-    "middleware": Array [],
-    "trigger": Object {
+    "middleware": [],
+    "trigger": {
       "method": "HEAD",
       "path": "/api/head",
-      "requestClient": Object {
+      "requestClient": {
         "client": "@midwayjs/rpc",
         "fetcher": "http",
       },
@@ -121,16 +121,16 @@ Array [
     },
     "useInputMetadata": false,
   },
-  Object {
+  {
     "file": "/index.ts",
     "fn": [Function],
     "functionId": "options",
     "functionName": "options",
-    "middleware": Array [],
-    "trigger": Object {
+    "middleware": [],
+    "trigger": {
       "method": "OPTIONS",
       "path": "/api/options",
-      "requestClient": Object {
+      "requestClient": {
         "client": "@midwayjs/rpc",
         "fetcher": "http",
       },
@@ -138,16 +138,16 @@ Array [
     },
     "useInputMetadata": false,
   },
-  Object {
+  {
     "file": "/index.ts",
     "fn": [Function],
     "functionId": "index",
     "functionName": "$default",
-    "middleware": Array [],
-    "trigger": Object {
+    "middleware": [],
+    "trigger": {
       "method": "ALL",
       "path": "/api/index",
-      "requestClient": Object {
+      "requestClient": {
         "client": "@midwayjs/rpc",
         "fetcher": "http",
       },

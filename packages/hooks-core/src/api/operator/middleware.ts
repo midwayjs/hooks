@@ -1,5 +1,6 @@
 import { HooksMiddleware } from '../../index'
-import { Operator, OperatorType } from '../type'
+import { Operator } from '../type'
+import { OperatorType } from '../common'
 
 export function Middleware(
   middleware: HooksMiddleware[] | any[]

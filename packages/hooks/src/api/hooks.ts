@@ -1,12 +1,17 @@
 import type { IMidwayContainer } from '@midwayjs/core'
-import { MidwayConfigService } from '@midwayjs/core'
 import {
-  ERR_INVALID_ARG_TYPE,
-  useContext,
-  validateString,
-} from '@midwayjs/hooks-core'
+  MidwayConfigService,
+  getCurrentAsyncContextManager,
+  ASYNC_CONTEXT_KEY,
+} from '@midwayjs/core'
+import { ERR_INVALID_ARG_TYPE, validateString } from '@midwayjs/hooks-core'
 
-export { useContext } from '@midwayjs/hooks-core'
+export function useContext<T = any>(): T {
+  const ctx = getCurrentAsyncContextManager()
+    .active()
+    .getValue(ASYNC_CONTEXT_KEY)
+  return ctx as T
+}
 
 export function useLogger() {
   const ctx = useContext()

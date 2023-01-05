@@ -14,13 +14,13 @@ build
 # dependencies
 node_modules
 package-lock.json
-pnpm-lock.yaml
 
 # logs & pids
 *.log
 logs
 pids
 *.cpuprofile
+.audit
 
 # coverage
 .nyc_output

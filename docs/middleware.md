@@ -16,7 +16,9 @@ Midway Hooks 支持通过函数 + `useContext()` 来定义 Web 中间件。
 import { Context } from '@midwayjs/koa';
 import { useContext } from '@midwayjs/hooks';
 
-export const logger = async (next: any) => {
+export const logger = async (
+  next: any
+) => {
   const ctx = useContext<Context>();
 
   console.log(

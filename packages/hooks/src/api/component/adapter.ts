@@ -3,19 +3,21 @@ import {
   ApiRoute,
   ContextManager,
   createDebug,
+  EXPORT_DEFAULT_FUNCTION_ALIAS,
   HooksMiddleware,
   HttpTrigger,
-  HttpTriggerType,
-  isHooksMiddleware,
   ResponseMetaData,
   ResponseMetaType,
-  useContext,
   validateOneOf,
 } from '@midwayjs/hooks-core'
-import { IMidwayApplication, IMidwayContainer } from '@midwayjs/core'
+import type { IMidwayApplication, IMidwayContainer } from '@midwayjs/core'
+import {
+  MidwayApplicationManager,
+  MidwayServerlessFunctionService,
+  MidwayWebRouterService,
+} from '@midwayjs/core'
 import {
   All,
-  Controller,
   Del,
   Get,
   Head,
@@ -23,9 +25,13 @@ import {
   Patch,
   Post,
   Put,
+  ServerlessTriggerType,
 } from '@midwayjs/decorator'
-import { createFunctionContainer, isDev, normalizeUrl } from '../../internal'
-import { HooksTrigger } from '../operator/type'
+import { FileSystemRouter, normalizePath } from '@midwayjs/hooks-internal'
+import camelCase from 'lodash/camelCase'
+import { ServerlessTrigger } from '../operator/serverless'
+import { useHooksMiddleware } from '../middleware'
+import { useContext } from '../hooks'
 
 const debug = createDebug('hooks: MidwayFrameworkAdapter')
 
@@ -35,96 +41,144 @@ export interface MidwayApplication extends IMidwayApplication {
 
 export class MidwayFrameworkAdapter {
   constructor(
+    public source: string,
     public router: AbstractRouter,
-    public app: MidwayApplication,
-    public container: IMidwayContainer
+    public app: MidwayApplication
   ) {}
 
-  private controllers = []
-  bindControllers() {
-    for (const controller of this.controllers) {
-      this.container.bind(controller)
+  async initialize(
+    container: IMidwayContainer,
+    apis: ApiRoute[],
+    globalMiddlewares: HooksMiddleware[]
+  ) {
+    const applicationManager = await container.getAsync(
+      MidwayApplicationManager
+    )
+
+    const faas = applicationManager.getApplication('faas')
+    const koa = applicationManager.getApplication('koa')
+
+    if (faas) {
+      this.app = faas
+      this.createServerlessApi(
+        apis,
+        await container.getAsync(MidwayServerlessFunctionService)
+      )
+    } else {
+      this.app = koa
+      this.createWebApi(apis, await container.getAsync(MidwayWebRouterService))
     }
+
+    this.registerGlobalMiddleware(globalMiddlewares)
   }
 
   isHttpTrigger(api: ApiRoute): api is ApiRoute<HttpTrigger> {
     return api.trigger.type === 'HTTP'
   }
 
-  isHooksTrigger(api: ApiRoute): api is ApiRoute<HooksTrigger> {
-    return typeof (api.trigger as HooksTrigger)?.parseArgs === 'function'
+  isServerlessTrigger(api: ApiRoute): api is ApiRoute<ServerlessTrigger> {
+    return typeof (api.trigger as ServerlessTrigger)?.parseArgs === 'function'
   }
 
-  registerApiRoutes(apis: ApiRoute[]) {
+  createWebApi(
+    apis: ApiRoute[],
+    midwayWebRouterService: MidwayWebRouterService
+  ) {
     for (const api of apis) {
-      const type = api.trigger.type
+      const providerId = this.getUniqueProviderId(api)
+
+      debug('create trigger: %s, providerId: %s', api.trigger.type, providerId)
 
       if (this.isHttpTrigger(api)) {
-        api.middleware = api.middleware?.map((mw) =>
-          this.useHooksMiddleware(mw)
-        )
-        this.controllers.push(this.createHttpApi(api))
-        continue
+        const http = this.createHttpApi(api)
+        midwayWebRouterService.addRouter(http.handler, {
+          url: http.path,
+          middleware: http.middleware,
+          requestMethod: http.method,
+        })
       }
-
-      if (this.isHooksTrigger(api)) {
-        this.controllers.push(
-          this.createServerlessApi(api as ApiRoute<HooksTrigger>)
-        )
-        continue
-      }
-
-      throw new Error(`Unsupported trigger type: ${type}`)
     }
   }
 
-  createServerlessApi(api: ApiRoute<HooksTrigger>) {
-    const { functionId, fn, trigger } = api
-
-    debug('create %s api: %s', trigger.type, functionId)
-
-    return createFunctionContainer({
-      fn,
-      functionId,
-      parseArgs: trigger.parseArgs,
-      handlerDecorators: trigger.handlerDecorators,
-    })
-  }
-
-  createHttpApi(api: ApiRoute) {
-    const { functionId, fn, trigger } = api
-
+  createHttpApi(api: ApiRoute<HttpTrigger>) {
     validateOneOf(
-      trigger.method,
+      api.trigger.method,
       'trigger.method',
       Object.keys(this.methodDecorators)
     )
-    const Method = this.methodDecorators[trigger.method]
-    const url = normalizeUrl(this.router, api)
 
-    debug('create http api: %s %s %s', functionId, trigger.method, url)
-
-    if (isDev()) {
-      // Midway Cli
-      globalThis['HOOKS_ROUTER'] ??= []
-      globalThis['HOOKS_ROUTER'].push({
-        type: HttpTriggerType.toLowerCase(),
-        path: url,
-        method: trigger.method,
-        functionId,
-        handler: `${functionId}.handler`,
-      })
+    const parseHTTPArgs = ({ ctx }) => {
+      return ctx.request?.body?.args || []
     }
 
-    return createFunctionContainer({
-      fn,
-      functionId,
-      parseArgs({ ctx }) {
-        return ctx.request?.body?.args || []
-      },
-      classDecorators: [Controller()],
-      handlerDecorators: [Method(url, { middleware: api.middleware })],
+    return {
+      path: normalizePath(this.router, api),
+      middleware: api.middleware?.map(useHooksMiddleware),
+      handler: this.createHandler(api.fn, parseHTTPArgs),
+      method: api.trigger.method.toLowerCase(),
+    }
+  }
+
+  private createHandler(
+    fn: Function,
+    parseArgs: (inputs: { ctx: any; args: any[] }) => any[]
+  ) {
+    return (ctx: any, ...args: unknown[]) => {
+      return fn(...parseArgs({ ctx, args }))
+    }
+  }
+
+  createServerlessApi(
+    apis: ApiRoute[],
+    midwayServerlessFunctionService: MidwayServerlessFunctionService
+  ) {
+    for (const api of apis) {
+      const providerId = this.getUniqueProviderId(api)
+
+      debug('create trigger: %s, providerId: %s', api.trigger.type, providerId)
+
+      if (this.isHttpTrigger(api)) {
+        const http = this.createHttpApi(api)
+        midwayServerlessFunctionService.addServerlessFunction(http.handler, {
+          type: ServerlessTriggerType.HTTP,
+          metadata: {
+            name: ServerlessTriggerType.HTTP,
+            method: http.method as any,
+            path: http.path,
+            middleware: http.middleware,
+          },
+          functionName: providerId,
+          handlerName: `${providerId}.handler`,
+        })
+        continue
+      }
+
+      if (this.isServerlessTrigger(api)) {
+        midwayServerlessFunctionService.addServerlessFunction(
+          this.createHandler(api.fn, api.trigger.parseArgs),
+          {
+            name: api.trigger.type,
+            type: api.trigger.type,
+            metadata: api.trigger.options,
+            functionName: providerId,
+            handlerName: `${providerId}.handler`,
+          } as any
+        )
+      }
+    }
+  }
+
+  private getUniqueProviderId(api: ApiRoute) {
+    if (this.router instanceof FileSystemRouter) return api.functionId
+    if (api.functionName !== EXPORT_DEFAULT_FUNCTION_ALIAS)
+      return camelCase(api.functionId)
+
+    // api router & export default function
+    const router = new FileSystemRouter({
+      source: this.source,
+      routes: [],
     })
+    return router.getFunctionId(api.file, api.functionName, true)
   }
 
   private methodDecorators = {
@@ -139,23 +193,13 @@ export class MidwayFrameworkAdapter {
   }
 
   registerGlobalMiddleware(middlewares: HooksMiddleware[] = []) {
-    this.app.use?.(this.useUniversalRuntime)
     for (const mw of middlewares) {
-      this.app.use?.(this.useHooksMiddleware(mw))
+      this.app.use?.(useHooksMiddleware(mw))
     }
   }
 
   private async useUniversalRuntime(ctx: any, next: any) {
     return await ContextManager.run({ ctx }, async () => await next())
-  }
-
-  private useHooksMiddleware(mw: (...args: any[]) => any | any) {
-    if (!isHooksMiddleware(mw)) return mw
-
-    return (...args: any[]) => {
-      const next = args[1]
-      return mw(next)
-    }
   }
 
   async handleResponseMetaData(metadata: ResponseMetaData[]): Promise<any> {

@@ -169,30 +169,30 @@ npx degit https://github.com/midwayjs/hooks/examples/react
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-We use yarn + lerna to manage the project.
+We use pnpm to manage the project.
 
 - install dependencies
 
 ```bash
-$ yarn
+$ pnpm install
 ```
 
 - build
 
 ```bash
-$ yarn build
+$ pnpm build
 ```
 
 - watch
 
 ```bash
-$ yarn watch
+$ pnpm watch
 ```
 
 - test
 
 ```bash
-$ yarn test
+$ pnpm test
 ```
 
 ## Contributors ✨

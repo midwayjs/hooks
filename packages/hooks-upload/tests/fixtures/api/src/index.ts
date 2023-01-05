@@ -1,5 +1,5 @@
 import { Api } from '@midwayjs/hooks'
-import { Upload, useFiles, useFields } from '../../../../src'
+import { Upload, useFields, useFiles } from '../../../../src'
 
 export const fields = Api(Upload('/fields'), async () => {
   const fields = useFields()

@@ -1,14 +1,14 @@
 import {
+  FileRecord,
   HttpMethod,
+  HttpTrigger,
   HttpTriggerType,
   Operator,
   OperatorType,
-  HttpTrigger,
-  useContext,
-  FileRecord,
 } from '@midwayjs/hooks-core'
+import { useContext } from '@midwayjs/hooks'
 import type { UploadFileInfo } from '@midwayjs/upload'
-import groupBy from 'lodash.groupby'
+import { groupBy } from 'lodash'
 
 export function useFiles<T = string>() {
   const ctx = useContext()

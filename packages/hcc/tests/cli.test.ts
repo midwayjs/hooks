@@ -4,8 +4,10 @@ import { existsSync } from 'fs'
 import { remove } from 'fs-extra'
 import { hcc } from '../src/midway'
 import fetch from 'isomorphic-unfetch'
-import { setProjectRoot } from '@midwayjs/hooks/internal'
+import { setProjectRoot } from '@midwayjs/hooks-internal'
 
+// AsyncContext Loss
+// Ref: https://github.com/nodejs/node/issues/37207
 describe('hcc', () => {
   test('build api project', async () => {
     const fixture = join(__dirname, 'fixtures/api')

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileSystemRouter should load pure function as api 1`] = `
+{
+  "method": "GET",
+  "path": "/get",
+  "requestClient": {
+    "client": "@midwayjs/rpc",
+    "fetcher": "http",
+  },
+  "type": "HTTP",
+}
+`;
+
+exports[`FileSystemRouter should load pure function as api 2`] = `
+{
+  "method": "POST",
+  "path": "/post",
+  "requestClient": {
+    "client": "@midwayjs/rpc",
+    "fetcher": "http",
+  },
+  "type": "HTTP",
+}
+`;
+
+exports[`FileSystemRouter should load pure function as api 3`] = `
+{
+  "method": "DELETE",
+  "path": "/del",
+  "requestClient": {
+    "client": "@midwayjs/rpc",
+    "fetcher": "http",
+  },
+  "type": "HTTP",
+}
+`;

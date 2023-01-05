@@ -1,0 +1,36 @@
+{
+  "name": "@midwayjs/hooks-internal",
+  "version": "3.1.0",
+  "description": "TODO",
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "midway",
+    "hooks",
+    "hooks-internal"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "upath": "^2.0.1",
+    "find-up": "5.0.0",
+    "fn-args": "^5.0.0",
+    "@midwayjs/glob": "^1.0.6",
+    "@midwayjs/hooks-core": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.182"
+  },
+  "main": "dist/midwayjs-hooks-internal.cjs.js",
+  "module": "dist/midwayjs-hooks-internal.esm.js",
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,4 +1,8 @@
 {
   "main": "dist/midwayjs-hooks-internal.cjs.js",
-  "module": "dist/midwayjs-hooks-internal.esm.js"
+  "module": "dist/midwayjs-hooks-internal.esm.js",
+  "browser": {
+    "./dist/midwayjs-hooks-internal.cjs.js": "./dist/midwayjs-hooks-internal.browser.cjs.js",
+    "./dist/midwayjs-hooks-internal.esm.js": "./dist/midwayjs-hooks-internal.browser.esm.js"
+  }
 }

@@ -1,6 +1,7 @@
 export * from './hooks'
 export * from './hoc'
 export * from './configuration'
+export * from './middleware'
 export { HooksComponent as hooks } from './component'
 export {
   Api,

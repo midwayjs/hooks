@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/rpc",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "A rpc client for Midway Hooks",
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
@@ -17,7 +17,7 @@
   "main": "dist/midwayjs-rpc.cjs.js",
   "module": "dist/midwayjs-rpc.esm.js",
   "devDependencies": {
-    "@midwayjs/hooks-core": "^3.0.1",
+    "@midwayjs/hooks-core": "^3.1.0",
     "@types/koa-compose": "3"
   },
   "publishConfig": {
@@ -27,5 +27,8 @@
     "isomorphic-unfetch": "^3.1.0",
     "koa-compose": "^4.1.0",
     "redaxios": "^0.5.0"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

@@ -1,11 +1,17 @@
-import { IMidwayKoaApplication } from '@midwayjs/koa'
-import { closeApp, createApp, createHttpRequest } from './utils'
+import {
+  closeApp,
+  createApp,
+  createHttpRequest,
+  IMidwayKoaApplication,
+} from '@midwayjs/test-util'
+import { join } from 'path'
 
 describe('serve handler', () => {
   let app: IMidwayKoaApplication
 
   beforeAll(async () => {
-    app = await createApp('api')
+    const fixture = join(__dirname, 'fixtures', 'api')
+    app = await createApp(fixture)
   })
 
   afterAll(async () => {

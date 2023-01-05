@@ -1,0 +1,25 @@
+diff --git a/dist/get-packages.cjs.dev.js b/dist/get-packages.cjs.dev.js
+index 7ebb3c698ee59d776b7e0d3aa2b741d3af41ed67..344f33f2b7a58bc5431fdec5ae4446da0af683c8 100644
+--- a/dist/get-packages.cjs.dev.js
++++ b/dist/get-packages.cjs.dev.js
+@@ -37,7 +37,10 @@ function (_Error) {
+   return PackageJsonMissingNameError;
+ }(_wrapNativeSuper(Error));
+ function getPackages(_x) {
+-  return _getPackages.apply(this, arguments);
++  return Promise.resolve(_getPackages.apply(this, arguments)).then(packages => {
++    packages.packages =  packages.packages.filter(pkg => pkg.packageJson.name.startsWith('@midwayjs'))
++    return packages
++  });
+ }
+ 
+ function _getPackages() {
+@@ -359,6 +362,8 @@ function getPackagesSync(dir) {
+     throw new PackageJsonMissingNameError(pkgJsonsMissingNameField);
+   }
+ 
++  results.packages = results.packages.filter(pkg => pkg.packageJson.name.startsWith('@midwayjs'))
++
+   return {
+     tool: tool.type,
+     root: {

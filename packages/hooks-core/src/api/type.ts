@@ -1,5 +1,6 @@
-import type { Merge } from 'type-fest'
 import { AsyncFunction } from '../types/common'
+
+type Merge<T, U> = T & Omit<U, keyof T>
 
 export type ArrayToObject<T, R = {}> = T extends [infer First, ...infer Rest]
   ? First extends PromiseLike<infer PromiseValue>
@@ -17,11 +18,6 @@ export type ApiRunner<
     ? Parameters<Handler>
     : [...args: Parameters<Handler>, input: Input]
 ) => ReturnType<Handler>
-
-export enum OperatorType {
-  Trigger = 'Trigger',
-  Middleware = 'Middleware',
-}
 
 export type MetadataHelper = {
   setMetadata: <T = any>(key: any, value: T) => void

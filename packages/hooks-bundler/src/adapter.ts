@@ -1,23 +1,24 @@
 import { AbstractRouter, ApiRoute, HttpTriggerType } from '@midwayjs/hooks-core'
-import { AbstractBundlerAdapter } from '@midwayjs/bundler'
+import { AbstractBundlerAdapter, requireWithoutCache } from '@midwayjs/bundler'
 import { join } from 'upath'
-import { getExpressDevPack } from '@midwayjs/serverless-dev-pack'
+import { createExpressDevPack } from '@midwayjs/dev-pack'
 import {
   getConfig,
   getProjectRoot,
   getRouter,
   getSource,
-  normalizeUrl,
+  normalizePath,
   ProjectConfig,
-} from '@midwayjs/hooks/internal'
+} from '@midwayjs/hooks-internal'
+import type { ViteDevServer } from 'vite'
 import cloneDeep from 'lodash/cloneDeep'
 
 export class MidwayBundlerAdapter extends AbstractBundlerAdapter {
-  private root: string
-  private source: string
-  private router: AbstractRouter
+  protected root: string
+  protected source: string
+  protected router: AbstractRouter
 
-  private projectConfig: ProjectConfig
+  protected projectConfig: ProjectConfig
 
   constructor() {
     const source = getSource({ useSourceFile: true })
@@ -36,7 +37,7 @@ export class MidwayBundlerAdapter extends AbstractBundlerAdapter {
     apis = cloneDeep(apis)
     for (const api of apis) {
       if (api.trigger.type === HttpTriggerType) {
-        api.trigger.path = normalizeUrl(this.router, api)
+        api.trigger.path = normalizePath(this.router, api)
       }
     }
     return apis
@@ -50,31 +51,14 @@ export class MidwayBundlerAdapter extends AbstractBundlerAdapter {
     const ctx = this
     return {
       vite: {
-        resolveId(_: string, importer: string) {
-          if (
-            process.env.NODE_ENV !== 'production' &&
-            importer &&
-            ctx.router.isSourceFile(importer, ctx.source) &&
-            ctx.router.isApiFile({ mod: require(importer), file: importer })
-          ) {
-            return 'MIDWAY_HOOKS_VIRTUAL_FILE'
-          }
-
-          return null
-        },
-        async configureServer(server) {
-          // TODO support custom plugins
-          const devPack = getExpressDevPack(ctx.root, {
+        async configureServer(server: ViteDevServer) {
+          const { middleware } = await createExpressDevPack({
+            cwd: ctx.root,
             sourceDir: join(ctx.root, ctx.projectConfig.source),
-            plugins: [],
+            watch: true,
           })
 
-          server.middlewares.use(
-            devPack({
-              functionDir: ctx.root,
-              ignorePattern: ctx.projectConfig.dev.ignorePattern,
-            })
-          )
+          server.middlewares.use(middleware)
         },
         config() {
           return {

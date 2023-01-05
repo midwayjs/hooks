@@ -1,6 +1,7 @@
-import type { Schema } from 'zod'
+import type { Schema, z as Zod } from 'zod'
 import { HttpStatus, MidwayHttpError, registerErrorCode } from '@midwayjs/core'
-import { Operator, setValidator, useContext } from '@midwayjs/hooks-core'
+import { Operator, setValidator } from '@midwayjs/hooks-core'
+import { useContext } from '../hooks'
 
 const HooksValidateErrorCode = registerErrorCode('Validation', {
   FAILED: 'FAILED',
@@ -14,8 +15,16 @@ export class HooksValidationError extends MidwayHttpError {
 
 export { Validate } from '@midwayjs/hooks-core'
 
+function getZod(): typeof Zod {
+  try {
+    return require('zod').z
+  } catch (e) {
+    throw new Error(`Package zod is required for Validation`, { cause: e })
+  }
+}
+
 setValidator(async (schemas: any, inputs: any[]) => {
-  const { z } = require('zod')
+  const z = getZod()
   const result = await z.tuple(schemas).safeParseAsync(inputs)
 
   if (result.success === false) {
@@ -46,7 +55,7 @@ export function ValidateHttp(options: ValidateHttpOption): Operator<void> {
         if (options.headers) await options.headers.parseAsync(ctx.headers)
         if (options.data) {
           const inputs = getInputArguments()
-          const { z } = require('zod')
+          const z = getZod()
           const tuple = z.tuple(options.data as any)
           await tuple.parseAsync(inputs)
         }

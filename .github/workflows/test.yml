@@ -1,0 +1,76 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+
+env:
+  DEBUG: hooks*
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        node: [14, 16, 18]
+        os: [ubuntu-latest]
+        include:
+          - node: 14
+            os: windows-latest
+          - node: 14
+            os: macos-latest
+          - node: 16
+            os: windows-latest
+          - node: 16
+            os: macos-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7
+
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          command: pnpm install
+
+      - name: Test Node.js 18
+        if: ${{ matrix.node == 18 }}
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
+        run: pnpm ci
+
+      - name: Test Node.js
+        if: ${{ matrix.node != 18 }}
+        run: pnpm ci
+
+      - name: Build
+        run: pnpm build
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3

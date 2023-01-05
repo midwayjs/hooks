@@ -1,0 +1,25 @@
+{
+  "name": "@midwayjs/{packageName}",
+  "version": "3.0.0",
+  "description": "TODO",
+  "author": "Lxxyx <lxxyxzj@gmail.com>",
+  "homepage": "https://github.com/midwayjs/hooks",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:midwayjs/hooks.git"
+  },
+  "keywords": [
+    "midway",
+    "hooks",
+    "{packageName}"
+  ],
+  "main": "dist/midwayjs-{packageName}.cjs.js",
+  "module": "dist/midwayjs-{packageName}.esm.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ]
+}

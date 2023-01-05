@@ -1,5 +1,4 @@
 import { createConfiguration, hooks } from '@midwayjs/hooks'
-import { MidwayConfig } from '@midwayjs/core'
 import * as Koa from '@midwayjs/koa'
 
 /**
@@ -14,7 +13,7 @@ export default createConfiguration({
         koa: {
           port: 7001,
         },
-      } as MidwayConfig,
+      },
     },
   ],
 })

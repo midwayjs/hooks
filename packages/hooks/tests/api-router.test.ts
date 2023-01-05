@@ -1,15 +1,22 @@
 import { getApiTrigger, HttpTrigger } from '../src'
-import { IMidwayKoaApplication } from '@midwayjs/koa'
-import { closeApp, createApp, createHttpRequest } from './utils'
+import {
+  closeApp,
+  createApp,
+  createHttpRequest,
+  supertest,
+  IMidwayKoaApplication,
+} from '@midwayjs/test-util'
 import * as index from './fixtures/api-router/src/api/index'
 import { args } from '@midwayjs/rpc'
-import supertest from 'supertest'
+import { HOOKS_DEV_MODULE_PATH } from '@midwayjs/hooks-internal'
+import { resolve, join } from 'path'
 
 describe('test koa with api router', () => {
   let app: IMidwayKoaApplication
 
   beforeAll(async () => {
-    app = await createApp('api-router')
+    const fixture = join(__dirname, 'fixtures', 'api-router')
+    app = await createApp(fixture)
   })
 
   afterAll(async () => {
@@ -25,11 +32,13 @@ describe('test koa with api router', () => {
     return request
   }
 
-  test('api case', async () => {
+  test('get', async () => {
     const get = await createRequest(index.get)
     expect(get.status).toEqual(200)
     expect(get.text).toEqual('/api/get')
+  })
 
+  test('post', async () => {
     const post = await createRequest(index.post).send(args('foo'))
     expect(post.status).toEqual(200)
     expect(post.body).toEqual({
@@ -122,5 +131,29 @@ describe('test koa with api router', () => {
     expect(body.header.header).toEqual('header')
     expect(body.query.query).toEqual('query')
     expect(body.params.slot).toEqual('slot')
+  })
+})
+
+describe('load dev modules', () => {
+  let app: IMidwayKoaApplication
+
+  process.env[HOOKS_DEV_MODULE_PATH] = resolve(
+    __dirname,
+    './fixtures/api-router/dev'
+  )
+
+  beforeEach(async () => {
+    const fixture = join(__dirname, 'fixtures', 'api-router')
+    app = await createApp(fixture)
+  })
+
+  afterEach(async () => {
+    await closeApp(app)
+  })
+
+  test('load dev modules', async () => {
+    const { status, text } = await createHttpRequest(app).get('/dev_only')
+    expect(status).toEqual(200)
+    expect(text).toEqual('/dev_only')
   })
 })

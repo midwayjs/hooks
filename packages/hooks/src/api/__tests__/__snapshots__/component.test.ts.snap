@@ -5,51 +5,21 @@ exports[`component component should validate arguments 1`] = `"[ERR_INVALID_ARG_
 exports[`component component should validate arguments 2`] = `"[ERR_INVALID_ARG_VALUE]: The argument 'ERROR' must be one of: 'GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS', 'ALL' . Received type string ('trigger.method')"`;
 
 exports[`component should register api route as Controller 1`] = `
-Object {
-  "controller": Object {
-    "prefix": "/",
-    "routerOptions": Object {
-      "middleware": Array [],
-      "sensitive": true,
-    },
-  },
-  "route": Array [
-    Object {
-      "description": "",
-      "ignoreGlobalPrefix": false,
-      "method": "handler",
-      "middleware": Array [],
-      "path": "/",
-      "requestMethod": "get",
-      "routerName": undefined,
-      "summary": "",
-    },
-  ],
+{
+  "handler": [Function],
+  "method": "get",
+  "middleware": [],
+  "path": "/",
 }
 `;
 
 exports[`component should register api route as Controller 2`] = `
-Object {
-  "controller": Object {
-    "prefix": "/",
-    "routerOptions": Object {
-      "middleware": Array [],
-      "sensitive": true,
-    },
-  },
-  "route": Array [
-    Object {
-      "description": "",
-      "ignoreGlobalPrefix": false,
-      "method": "handler",
-      "middleware": Array [
-        [Function],
-      ],
-      "path": "/post",
-      "requestMethod": "post",
-      "routerName": undefined,
-      "summary": "",
-    },
+{
+  "handler": [Function],
+  "method": "post",
+  "middleware": [
+    [Function],
   ],
+  "path": "/post",
 }
 `;

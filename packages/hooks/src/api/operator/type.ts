@@ -1,9 +1,5 @@
 import { BaseTrigger } from '@midwayjs/hooks-core'
-import { CreateOptions } from '../../internal'
 
-export interface HooksTrigger
-  extends BaseTrigger,
-    Pick<
-      CreateOptions,
-      'parseArgs' | 'handlerDecorators' | 'classDecorators'
-    > {}
+export interface HooksTrigger extends BaseTrigger {
+  parseArgs: (inputs: { ctx: any; args: any[] }) => any[]
+}

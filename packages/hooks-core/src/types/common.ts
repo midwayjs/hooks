@@ -1,5 +1,4 @@
 import { BaseTrigger, HttpMethod } from '..'
-import { HttpTrigger } from '../api'
 
 export type FunctionId = string
 

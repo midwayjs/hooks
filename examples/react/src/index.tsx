@@ -36,7 +36,7 @@ function App() {
         <p>
           <span className="lambda">λ POST</span>
           <span className="lambda">fetchStars('midwayjs/midway')</span>
-          <span>Github Stars: {loading ? 'Fetching...' : repo.stars}</span>
+          <span>Github Stars: {loading ? 'Fetching...' : repo?.stars}</span>
         </p>
         <p>
           <span className="lambda">λ GET</span>

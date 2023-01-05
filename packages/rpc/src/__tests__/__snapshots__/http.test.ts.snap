@@ -1,32 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`http normal 1`] = `
-Array [
-  Array [
-    Object {
+[
+  [
+    {
       "data": null,
       "files": undefined,
-      "headers": Object {
+      "headers": {
         "accept": "application/json",
       },
       "method": "GET",
       "query": undefined,
       "url": "/foo",
     },
-    Object {
+    {
       "baseURL": "",
       "fetcher": [MockFunction] {
         "calls": [Circular],
-        "results": Array [
-          Object {
+        "results": [
+          {
             "type": "return",
-            "value": Object {
+            "value": {
               "isTest": true,
             },
           },
         ],
       },
-      "middleware": Array [],
+      "middleware": [],
       "withCredentials": false,
     },
   ],
@@ -34,17 +34,17 @@ Array [
 `;
 
 exports[`parseRequestArgs & creator 1`] = `
-Object {
-  "args": Array [
+{
+  "args": [
     "a",
     "b",
   ],
-  "metadata": Object {
-    "params": Object {
+  "metadata": {
+    "params": {
       "bar": "baz",
     },
   },
-  "trigger": Object {
+  "trigger": {
     "method": "GET",
     "path": "/foo/:bar",
   },
@@ -52,15 +52,15 @@ Object {
 `;
 
 exports[`parseRequestArgs & creator 2`] = `
-Object {
-  "data": Object {
-    "args": Array [
+{
+  "data": {
+    "args": [
       "a",
       "b",
     ],
   },
   "files": undefined,
-  "headers": Object {
+  "headers": {
     "accept": "application/json",
   },
   "method": "GET",
@@ -70,10 +70,10 @@ Object {
 `;
 
 exports[`parseRequestArgs & creator 3`] = `
-Object {
-  "args": Array [],
+{
+  "args": [],
   "metadata": null,
-  "trigger": Object {
+  "trigger": {
     "method": "GET",
     "path": "/foo",
   },
@@ -81,10 +81,10 @@ Object {
 `;
 
 exports[`parseRequestArgs & creator 4`] = `
-Object {
+{
   "data": null,
   "files": undefined,
-  "headers": Object {
+  "headers": {
     "accept": "application/json",
   },
   "method": "GET",
@@ -94,10 +94,10 @@ Object {
 `;
 
 exports[`parseRequestArgs & creator 5`] = `
-Object {
-  "args": Array [],
+{
+  "args": [],
   "metadata": null,
-  "trigger": Object {
+  "trigger": {
     "method": "ALL",
     "path": "/foo",
   },
@@ -105,10 +105,10 @@ Object {
 `;
 
 exports[`parseRequestArgs & creator 6`] = `
-Object {
+{
   "data": null,
   "files": undefined,
-  "headers": Object {
+  "headers": {
     "accept": "application/json",
   },
   "method": "GET",
@@ -118,13 +118,13 @@ Object {
 `;
 
 exports[`parseRequestArgs & creator 7`] = `
-Object {
-  "args": Array [
+{
+  "args": [
     "a",
     "b",
   ],
   "metadata": null,
-  "trigger": Object {
+  "trigger": {
     "method": "ALL",
     "path": "/foo",
   },
@@ -132,15 +132,15 @@ Object {
 `;
 
 exports[`parseRequestArgs & creator 8`] = `
-Object {
-  "data": Object {
-    "args": Array [
+{
+  "data": {
+    "args": [
       "a",
       "b",
     ],
   },
   "files": undefined,
-  "headers": Object {
+  "headers": {
     "accept": "application/json",
   },
   "method": "POST",

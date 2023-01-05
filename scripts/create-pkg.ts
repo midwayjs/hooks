@@ -1,6 +1,6 @@
 import { readFile, cp, writeFile } from 'node:fs/promises'
 import path from 'node:path'
-import { sync } from 'globby'
+import { globbySync } from 'globby'
 
 function validateArgs(args: string[]) {
   if (typeof args[0] !== 'string') {
@@ -13,13 +13,13 @@ const args = process.argv.slice(2)
 validateArgs(args)
 
 const packageName = args[0]
-const template = path.resolve(__dirname, '../template')
+const template = path.resolve(__dirname, '../template/package')
 const target = path.resolve(__dirname, '../packages', packageName)
 
 async function createPackage() {
   await cp(template, target, { recursive: true })
 
-  for (const file of sync(['**/*'], {
+  for (const file of globbySync(['**/*'], {
     cwd: target,
     absolute: true,
   })) {

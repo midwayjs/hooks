@@ -7,15 +7,5 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [],
-  "fixed": [
-    [
-      "@midwayjs/bundler",
-      "@midwayjs/hcc",
-      "@midwayjs/hooks-bundler",
-      "@midwayjs/hooks-core",
-      "@midwayjs/hooks-kit",
-      "@midwayjs/hooks",
-      "@midwayjs/rpc"
-    ]
-  ]
+  "fixed": []
 }

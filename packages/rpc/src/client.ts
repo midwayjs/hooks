@@ -1,6 +1,9 @@
-import type { BaseTrigger, RawRequestOptions } from '@midwayjs/hooks-core'
+import type {
+  BaseTrigger,
+  RawRequestOptions,
+  RequestArgs,
+} from '@midwayjs/hooks-core'
 import { Middleware, RequestContext } from './type'
-import type { RequestArgs } from '@midwayjs/hooks-core'
 import compose from 'koa-compose'
 import { parseRequestArgs } from './util'
 
@@ -18,8 +21,8 @@ export function createClient<
     const req = requestOptionsCreator(rawOptions)
 
     const ctx = { req, res: null } as unknown as T
-    const stack = getMiddlewares()
-    await compose(stack)(ctx)
+    const middlewares = getMiddlewares()
+    await compose(middlewares)(ctx)
 
     return ctx.res
   }
