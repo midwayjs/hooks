@@ -46,4 +46,4 @@ jobs:
 
       - run: pnpm install
       - run: npm i cnpm -g
-      - run: node scripts/sync cnpm
+      - run: npx esno scripts/sync cnpm
