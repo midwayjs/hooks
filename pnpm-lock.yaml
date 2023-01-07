@@ -313,8 +313,8 @@ importers:
 
   packages/bundler:
     specifiers:
-      '@midwayjs/esrun': ^3.1.0
-      '@midwayjs/hooks-core': ^3.1.0
+      '@midwayjs/esrun': ^3.1.1
+      '@midwayjs/hooks-core': ^3.1.1
       '@types/memory-fs': 0.3.3
       '@types/prettier': 2.7.2
       memory-fs: 0.5.0
@@ -337,9 +337,9 @@ importers:
   packages/dev-pack:
     specifiers:
       '@midwayjs/core': ^3.8.0
-      '@midwayjs/esrun': ^3.1.0
-      '@midwayjs/hooks': ^3.1.0
-      '@midwayjs/hooks-core': ^3.1.0
+      '@midwayjs/esrun': ^3.1.1
+      '@midwayjs/hooks': ^3.1.1
+      '@midwayjs/hooks-core': ^3.1.1
       '@midwayjs/mock': ^3.8.0
       '@types/detect-port': 1.3.2
       chalk: ^4.1.2
@@ -381,10 +381,10 @@ importers:
 
   packages/hcc:
     specifiers:
-      '@midwayjs/esrun': ^3.1.0
-      '@midwayjs/hooks': ^3.1.0
-      '@midwayjs/hooks-core': ^3.1.0
-      '@midwayjs/hooks-internal': ^3.1.0
+      '@midwayjs/esrun': ^3.1.1
+      '@midwayjs/hooks': ^3.1.1
+      '@midwayjs/hooks-core': ^3.1.1
+      '@midwayjs/hooks-internal': ^3.1.1
       '@types/fs-extra': 9.0.13
       '@types/lodash': ^4.14.182
       art-template: ^4.1.3
@@ -431,10 +431,10 @@ importers:
     specifiers:
       '@midwayjs/core': ^3.8.0
       '@midwayjs/decorator': ^3.4.1
-      '@midwayjs/hooks-core': ^3.1.0
-      '@midwayjs/hooks-internal': ^3.1.0
-      '@midwayjs/rpc': 3.1.0
-      '@midwayjs/test-util': ^3.1.0
+      '@midwayjs/hooks-core': ^3.1.1
+      '@midwayjs/hooks-internal': ^3.1.1
+      '@midwayjs/rpc': 3.1.1
+      '@midwayjs/test-util': ^3.1.1
       lodash: ^4.17.21
       tslib: ^2.3.0
       zod: 3.20.2
@@ -452,11 +452,11 @@ importers:
 
   packages/hooks-bundler:
     specifiers:
-      '@midwayjs/bundler': ^3.1.0
-      '@midwayjs/dev-pack': ^3.1.0
-      '@midwayjs/hooks': ^3.1.0
-      '@midwayjs/hooks-core': ^3.1.0
-      '@midwayjs/hooks-internal': ^3.1.0
+      '@midwayjs/bundler': ^3.1.1
+      '@midwayjs/dev-pack': ^3.1.1
+      '@midwayjs/hooks': ^3.1.1
+      '@midwayjs/hooks-core': ^3.1.1
+      '@midwayjs/hooks-internal': ^3.1.1
       '@types/lodash': ^4.14.182
       lodash: ^4.17.21
       upath: ^2.0.1
@@ -509,7 +509,7 @@ importers:
   packages/hooks-internal:
     specifiers:
       '@midwayjs/glob': ^1.0.6
-      '@midwayjs/hooks-core': ^3.1.0
+      '@midwayjs/hooks-core': ^3.1.1
       '@types/lodash': ^4.14.182
       find-up: 5.0.0
       fn-args: ^5.0.0
@@ -530,13 +530,13 @@ importers:
       '@midwayjs/bootstrap': ^3.8.0
       '@midwayjs/cli-plugin-build': ^1.2.97
       '@midwayjs/command-core': ^1.2.97
-      '@midwayjs/esrun': ^3.1.0
-      '@midwayjs/hooks': ^3.1.0
-      '@midwayjs/hooks-bundler': ^3.1.0
-      '@midwayjs/hooks-core': ^3.1.0
-      '@midwayjs/hooks-internal': ^3.1.0
+      '@midwayjs/esrun': ^3.1.1
+      '@midwayjs/hooks': ^3.1.1
+      '@midwayjs/hooks-bundler': ^3.1.1
+      '@midwayjs/hooks-core': ^3.1.1
+      '@midwayjs/hooks-internal': ^3.1.1
       '@midwayjs/mock': ^3.8.0
-      '@midwayjs/serve': ^3.1.0
+      '@midwayjs/serve': ^3.1.1
       '@types/detect-port': 1.3.2
       '@types/fs-extra': 9.0.13
       '@types/koa-static-cache': ^5.1.1
@@ -572,9 +572,9 @@ importers:
 
   packages/hooks-upload:
     specifiers:
-      '@midwayjs/hooks': ^3.1.0
-      '@midwayjs/hooks-core': ^3.1.0
-      '@midwayjs/test-util': ^3.1.0
+      '@midwayjs/hooks': ^3.1.1
+      '@midwayjs/hooks-core': ^3.1.1
+      '@midwayjs/test-util': ^3.1.1
       '@midwayjs/upload': 3.9.1
       '@types/lodash': 4.14.191
       lodash: ^4.17.21
@@ -589,7 +589,7 @@ importers:
 
   packages/rpc:
     specifiers:
-      '@midwayjs/hooks-core': ^3.1.0
+      '@midwayjs/hooks-core': ^3.1.1
       '@types/koa-compose': '3'
       isomorphic-unfetch: ^3.1.0
       koa-compose: ^4.1.0
@@ -604,8 +604,8 @@ importers:
 
   packages/serve:
     specifiers:
-      '@midwayjs/hooks': ^3.1.0
-      '@midwayjs/test-util': ^3.1.0
+      '@midwayjs/hooks': ^3.1.1
+      '@midwayjs/test-util': ^3.1.1
       '@types/koa-static-cache': 5.1.1
       koa-static-cache: 5.1.4
     dependencies:
@@ -617,7 +617,7 @@ importers:
 
   packages/test-util:
     specifiers:
-      '@midwayjs/hooks-internal': ^3.1.0
+      '@midwayjs/hooks-internal': ^3.1.1
       '@midwayjs/koa': ^3.8.0
       '@midwayjs/mock': ^3.8.0
       '@types/supertest': ^2.0.12
