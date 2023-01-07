@@ -1,5 +1,13 @@
 # @midwayjs/test-util
 
+## 3.1.1
+
+### Patch Changes
+
+- 22fe58b1: fix: export user config as type, https://github.com/midwayjs/hooks/pull/513
+- Updated dependencies [22fe58b1]
+  - @midwayjs/hooks-internal@3.1.1
+
 ## 3.1.0
 
 ### Minor Changes

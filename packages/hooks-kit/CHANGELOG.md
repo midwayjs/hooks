@@ -1,5 +1,18 @@
 # @midwayjs/hooks-kit
 
+## 3.1.1
+
+### Patch Changes
+
+- 22fe58b1: fix: export user config as type, https://github.com/midwayjs/hooks/pull/513
+- Updated dependencies [22fe58b1]
+  - @midwayjs/esrun@3.1.1
+  - @midwayjs/hooks@3.1.1
+  - @midwayjs/hooks-bundler@3.1.1
+  - @midwayjs/hooks-core@3.1.1
+  - @midwayjs/hooks-internal@3.1.1
+  - @midwayjs/serve@3.1.1
+
 ## 3.1.0
 
 ### Minor Changes
