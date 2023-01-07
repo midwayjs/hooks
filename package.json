@@ -11,7 +11,8 @@
     "format": "pretty-quick",
     "format-dist": "prettier packages/**/dist/**/*.js --write --loglevel=error",
     "publish-local": "pnpm -r exec yalc publish",
-    "publish": "pnpm build && changeset publish",
+    "ci:version": "changeset version && pnpm install --frozen-lockfile false",
+    "ci:publish": "pnpm build && changeset publish",
     "prepare": "husky install"
   },
   "dependencies": {
