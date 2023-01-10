@@ -12,6 +12,7 @@ import { register } from '@midwayjs/esrun'
 type BuildOptions = {
   outDir: string
   clean: boolean
+  skipClient: boolean
 }
 
 export function setupBuildCommand(cli: CAC) {
@@ -21,12 +22,16 @@ export function setupBuildCommand(cli: CAC) {
     .option('--clean', `[boolean] clean output directory before build`, {
       default: false,
     })
+    .option('--skipClient', `[boolean] skip build client`, {
+      default: false,
+    })
     .action(async (root: string, options: BuildOptions) => {
       register()
 
       const projectRoot = getProjectRoot()
       const userConfig = resolveConfig(projectRoot)
       const outDir = options.outDir || userConfig.build.outDir
+      const isSkipClient = options.skipClient
 
       if (options.clean && fs.existsSync(outDir)) {
         consola.info('clean output directory before build')
@@ -47,11 +52,18 @@ export function setupBuildCommand(cli: CAC) {
       }
 
       try {
-        consola.info('Building client...')
-        const clientBuild = await executePromise(
-          build(mergeConfig(defaultConfig, userConfig?.vite))
-        )
-        consola.success(`Client built in ${clientBuild.time}ms`)
+        if (!isSkipClient) {
+          consola.info('Building client...')
+          const clientBuild = await executePromise(
+            build(mergeConfig(defaultConfig, userConfig?.vite))
+          )
+          consola.success(`Client built in ${clientBuild.time}ms`)
+        } else {
+          consola.info('Skip Building client')
+          if (!fs.existsSync(outDir)) {
+            await fs.promises.mkdir(outDir, { recursive: true })
+          }
+        }
 
         consola.info('Building server...')
         if (userConfig.static) {
