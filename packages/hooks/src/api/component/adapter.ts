@@ -157,7 +157,11 @@ export class MidwayFrameworkAdapter {
           {
             name: api.trigger.type,
             type: api.trigger.type,
-            metadata: api.trigger.options,
+            metadata: {
+              ...api.trigger.options,
+              name: api.trigger.type,
+              functionName: providerId,
+            },
             functionName: providerId,
             handlerName: `${providerId}.handler`,
           } as any

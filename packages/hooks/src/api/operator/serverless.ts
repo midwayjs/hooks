@@ -44,6 +44,10 @@ export const MQ = createServerlessTrigger<FaaSMetadata.MQTriggerOptions>(
   ServerlessTriggerType.MQ
 )
 
-export const SSR = createServerlessTrigger<FaaSMetadata.SSRTriggerOptions>(
+const SSRTrigger = createServerlessTrigger<FaaSMetadata.SSRTriggerOptions>(
   ServerlessTriggerType.SSR
 )
+export const SSR = (path: string, options?: FaaSMetadata.SSRTriggerOptions) => {
+  const metadata = Object.assign({}, options, { path, method: 'get' })
+  return SSRTrigger(metadata)
+}
