@@ -8,15 +8,15 @@
     "build": "mw build && hcc && ncc build scripts/bootstrap -o build"
   },
   "dependencies": {
-    "@midwayjs/bootstrap": "^3.8.0",
+    "@midwayjs/bootstrap": "^3.10.6",
     "@midwayjs/hooks": "^3.1.0",
-    "@midwayjs/koa": "^3.8.0"
+    "@midwayjs/koa": "^3.10.6"
   },
   "devDependencies": {
     "@midwayjs/cli": "^1.3.0",
     "@midwayjs/cli-plugin-build": "^1.2.97",
     "@midwayjs/hcc": "^3.1.0",
-    "@midwayjs/mock": "^3.8.0",
+    "@midwayjs/mock": "^3.10.6",
     "@vercel/ncc": "^0.33.3",
     "typescript": "^4.9.4"
   }

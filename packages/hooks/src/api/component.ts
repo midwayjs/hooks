@@ -1,5 +1,9 @@
-import { IMidwayContainer } from '@midwayjs/core'
-import { ApplicationContext, Configuration, Init } from '@midwayjs/decorator'
+import {
+  IMidwayContainer,
+  ApplicationContext,
+  Configuration,
+  Init,
+} from '@midwayjs/core'
 import { __decorate } from 'tslib'
 import {
   AbstractRouter,

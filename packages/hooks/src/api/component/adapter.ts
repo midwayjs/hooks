@@ -15,8 +15,6 @@ import {
   MidwayApplicationManager,
   MidwayServerlessFunctionService,
   MidwayWebRouterService,
-} from '@midwayjs/core'
-import {
   All,
   Del,
   Get,
@@ -26,7 +24,7 @@ import {
   Post,
   Put,
   ServerlessTriggerType,
-} from '@midwayjs/decorator'
+} from '@midwayjs/core'
 import { FileSystemRouter, normalizePath } from '@midwayjs/hooks-internal'
 import camelCase from 'lodash/camelCase'
 import { ServerlessTrigger } from '../operator/serverless'
@@ -159,7 +157,11 @@ export class MidwayFrameworkAdapter {
           {
             name: api.trigger.type,
             type: api.trigger.type,
-            metadata: api.trigger.options,
+            metadata: {
+              ...api.trigger.options,
+              name: api.trigger.type,
+              functionName: providerId,
+            },
             functionName: providerId,
             handlerName: `${providerId}.handler`,
           } as any
