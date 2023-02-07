@@ -63,43 +63,43 @@ importers:
 
   examples/api:
     specifiers:
-      '@midwayjs/bootstrap': ^3.8.0
+      '@midwayjs/bootstrap': ^3.10.6
       '@midwayjs/cli': ^1.3.0
       '@midwayjs/cli-plugin-build': ^1.2.97
       '@midwayjs/hooks': ^3.1.0
-      '@midwayjs/koa': ^3.8.0
-      '@midwayjs/mock': ^3.8.0
+      '@midwayjs/koa': ^3.10.6
+      '@midwayjs/mock': ^3.10.6
       typescript: ^4.9.4
     dependencies:
-      '@midwayjs/bootstrap': 3.8.0
+      '@midwayjs/bootstrap': 3.10.6
       '@midwayjs/hooks': link:../../packages/hooks
-      '@midwayjs/koa': 3.8.0
+      '@midwayjs/koa': 3.10.6
     devDependencies:
-      '@midwayjs/cli': 1.3.20_vyu4rgiu3wboov3u554fahbrk4
+      '@midwayjs/cli': 1.3.20_3fplujotpmr3itfztrvj62c6py
       '@midwayjs/cli-plugin-build': 1.3.19
-      '@midwayjs/mock': 3.8.0
+      '@midwayjs/mock': 3.10.6
       typescript: 4.9.4
 
   examples/api-bundle:
     specifiers:
-      '@midwayjs/bootstrap': ^3.8.0
+      '@midwayjs/bootstrap': ^3.10.6
       '@midwayjs/cli': ^1.3.0
       '@midwayjs/cli-plugin-build': ^1.2.97
       '@midwayjs/hcc': ^3.1.0
       '@midwayjs/hooks': ^3.1.0
-      '@midwayjs/koa': ^3.8.0
-      '@midwayjs/mock': ^3.8.0
+      '@midwayjs/koa': ^3.10.6
+      '@midwayjs/mock': ^3.10.6
       '@vercel/ncc': ^0.33.3
       typescript: ^4.9.4
     dependencies:
-      '@midwayjs/bootstrap': 3.8.0
+      '@midwayjs/bootstrap': 3.10.6
       '@midwayjs/hooks': link:../../packages/hooks
-      '@midwayjs/koa': 3.8.0
+      '@midwayjs/koa': 3.10.6
     devDependencies:
-      '@midwayjs/cli': 1.3.20_vyu4rgiu3wboov3u554fahbrk4
+      '@midwayjs/cli': 1.3.20_3fplujotpmr3itfztrvj62c6py
       '@midwayjs/cli-plugin-build': 1.3.19
       '@midwayjs/hcc': link:../../packages/hcc
-      '@midwayjs/mock': 3.8.0
+      '@midwayjs/mock': 3.10.6
       '@vercel/ncc': 0.33.4
       typescript: 4.9.4
 
@@ -107,7 +107,7 @@ importers:
     specifiers:
       '@midwayjs/hooks': ^3.1.0
       '@midwayjs/hooks-kit': ^3.1.0
-      '@midwayjs/koa': ^3.8.0
+      '@midwayjs/koa': ^3.10.6
       '@midwayjs/rpc': ^3.1.0
       '@midwayjs/serve': ^3.1.0
       '@prisma/client': 3.8.1
@@ -126,7 +126,7 @@ importers:
     dependencies:
       '@midwayjs/hooks': link:../../packages/hooks
       '@midwayjs/hooks-kit': link:../../packages/hooks-kit
-      '@midwayjs/koa': 3.8.0
+      '@midwayjs/koa': 3.10.6
       '@midwayjs/rpc': link:../../packages/rpc
       '@midwayjs/serve': link:../../packages/serve
       '@prisma/client': 3.8.1_prisma@3.15.2
@@ -148,7 +148,7 @@ importers:
     specifiers:
       '@midwayjs/hooks': ^3.1.0
       '@midwayjs/hooks-kit': ^3.1.0
-      '@midwayjs/koa': ^3.8.0
+      '@midwayjs/koa': ^3.10.6
       '@midwayjs/rpc': ^3.1.0
       '@midwayjs/serve': ^3.1.0
       '@types/react': ^17.0.13
@@ -162,7 +162,7 @@ importers:
     dependencies:
       '@midwayjs/hooks': link:../../packages/hooks
       '@midwayjs/hooks-kit': link:../../packages/hooks-kit
-      '@midwayjs/koa': 3.8.0
+      '@midwayjs/koa': 3.10.6
       '@midwayjs/rpc': link:../../packages/rpc
       '@midwayjs/serve': link:../../packages/serve
       ahooks: 3.7.2_react@17.0.2
@@ -179,12 +179,12 @@ importers:
     specifiers:
       '@midwayjs/cli': ^1.3.0
       '@midwayjs/cli-plugin-faas': ^1.3.0
-      '@midwayjs/faas': ^3.8.0
-      '@midwayjs/fc-starter': ^3.8.0
+      '@midwayjs/faas': ^3.10.6
+      '@midwayjs/fc-starter': ^3.10.6
       '@midwayjs/fcli-plugin-fc': ^1.3.0
       '@midwayjs/hooks': ^3.1.0
       '@midwayjs/hooks-bundler': ^3.1.0
-      '@midwayjs/mock': ^3.8.0
+      '@midwayjs/mock': ^3.10.6
       '@midwayjs/rpc': ^3.1.0
       '@midwayjs/serve': ^3.1.0
       '@types/react': ^17.0.13
@@ -197,7 +197,7 @@ importers:
       typescript: ^4.9.4
       vite: ^4.0.1
     dependencies:
-      '@midwayjs/faas': 3.8.1
+      '@midwayjs/faas': 3.10.6
       '@midwayjs/hooks': link:../../packages/hooks
       '@midwayjs/rpc': link:../../packages/rpc
       '@midwayjs/serve': link:../../packages/serve
@@ -207,12 +207,12 @@ importers:
       react-dom: 17.0.2_react@17.0.2
       vite: 4.0.1_@types+node@18.11.14
     devDependencies:
-      '@midwayjs/cli': 1.3.20_vyu4rgiu3wboov3u554fahbrk4
+      '@midwayjs/cli': 1.3.20_3fplujotpmr3itfztrvj62c6py
       '@midwayjs/cli-plugin-faas': 1.3.20
-      '@midwayjs/fc-starter': 3.8.0
+      '@midwayjs/fc-starter': 3.10.6
       '@midwayjs/fcli-plugin-fc': 1.3.20
       '@midwayjs/hooks-bundler': link:../../packages/hooks-bundler
-      '@midwayjs/mock': 3.8.0
+      '@midwayjs/mock': 3.10.6
       '@types/react': 17.0.52
       '@types/react-dom': 17.0.18
       '@vitejs/plugin-react': 3.0.0_vite@4.0.1
@@ -223,7 +223,7 @@ importers:
       '@midwayjs/hooks': ^3.1.0
       '@midwayjs/hooks-kit': ^3.1.0
       '@midwayjs/hooks-upload': ^3.1.0
-      '@midwayjs/koa': ^3.8.0
+      '@midwayjs/koa': ^3.10.6
       '@midwayjs/rpc': ^3.1.0
       '@midwayjs/serve': ^3.1.0
       '@midwayjs/upload': '3'
@@ -239,7 +239,7 @@ importers:
       '@midwayjs/hooks': link:../../packages/hooks
       '@midwayjs/hooks-kit': link:../../packages/hooks-kit
       '@midwayjs/hooks-upload': link:../../packages/hooks-upload
-      '@midwayjs/koa': 3.8.0
+      '@midwayjs/koa': 3.10.6
       '@midwayjs/rpc': link:../../packages/rpc
       '@midwayjs/serve': link:../../packages/serve
       '@midwayjs/upload': 3.8.0
@@ -257,7 +257,7 @@ importers:
     specifiers:
       '@midwayjs/hooks': ^3.1.0
       '@midwayjs/hooks-kit': ^3.1.0
-      '@midwayjs/koa': ^3.8.0
+      '@midwayjs/koa': ^3.10.6
       '@midwayjs/rpc': ^3.1.0
       '@midwayjs/serve': ^3.1.0
       '@vitejs/plugin-vue': ^4.0.0
@@ -267,7 +267,7 @@ importers:
     dependencies:
       '@midwayjs/hooks': link:../../packages/hooks
       '@midwayjs/hooks-kit': link:../../packages/hooks-kit
-      '@midwayjs/koa': 3.8.0
+      '@midwayjs/koa': 3.10.6
       '@midwayjs/rpc': link:../../packages/rpc
       '@midwayjs/serve': link:../../packages/serve
       isomorphic-unfetch: 3.1.0
@@ -280,12 +280,12 @@ importers:
     specifiers:
       '@midwayjs/cli': ^1.3.0
       '@midwayjs/cli-plugin-faas': ^1.3.0
-      '@midwayjs/faas': ^3.8.0
-      '@midwayjs/fc-starter': ^3.8.0
+      '@midwayjs/faas': ^3.10.6
+      '@midwayjs/fc-starter': ^3.10.6
       '@midwayjs/fcli-plugin-fc': ^1.3.0
       '@midwayjs/hooks': ^3.1.0
       '@midwayjs/hooks-bundler': ^3.1.0
-      '@midwayjs/mock': ^3.8.0
+      '@midwayjs/mock': ^3.10.6
       '@midwayjs/rpc': ^3.1.0
       '@midwayjs/serve': ^3.1.0
       '@vitejs/plugin-vue': ^4.0.0
@@ -294,7 +294,7 @@ importers:
       vite: ^4.0.1
       vue: ^3.2.31
     dependencies:
-      '@midwayjs/faas': 3.8.1
+      '@midwayjs/faas': 3.10.6
       '@midwayjs/hooks': link:../../packages/hooks
       '@midwayjs/rpc': link:../../packages/rpc
       '@midwayjs/serve': link:../../packages/serve
@@ -302,12 +302,12 @@ importers:
       vite: 4.0.1_@types+node@18.11.14
       vue: 3.2.45
     devDependencies:
-      '@midwayjs/cli': 1.3.20_vyu4rgiu3wboov3u554fahbrk4
+      '@midwayjs/cli': 1.3.20_3fplujotpmr3itfztrvj62c6py
       '@midwayjs/cli-plugin-faas': 1.3.20
-      '@midwayjs/fc-starter': 3.8.0
+      '@midwayjs/fc-starter': 3.10.6
       '@midwayjs/fcli-plugin-fc': 1.3.20
       '@midwayjs/hooks-bundler': link:../../packages/hooks-bundler
-      '@midwayjs/mock': 3.8.0
+      '@midwayjs/mock': 3.10.6
       '@vitejs/plugin-vue': 4.0.0_vite@4.0.1+vue@3.2.45
       typescript: 4.9.4
 
@@ -336,11 +336,11 @@ importers:
 
   packages/dev-pack:
     specifiers:
-      '@midwayjs/core': ^3.8.0
+      '@midwayjs/core': ^3.10.6
       '@midwayjs/esrun': ^3.1.1
       '@midwayjs/hooks': ^3.1.1
       '@midwayjs/hooks-core': ^3.1.1
-      '@midwayjs/mock': ^3.8.0
+      '@midwayjs/mock': ^3.10.6
       '@types/detect-port': 1.3.2
       chalk: ^4.1.2
       chokidar: ^3.5.3
@@ -352,10 +352,10 @@ importers:
       path-to-regexp: ^6.0.0
       picocolors: ^1.0.0
     dependencies:
-      '@midwayjs/core': 3.8.0
+      '@midwayjs/core': 3.10.6
       '@midwayjs/esrun': link:../esrun
       '@midwayjs/hooks-core': link:../hooks-core
-      '@midwayjs/mock': 3.8.0
+      '@midwayjs/mock': 3.10.6
       chalk: 4.1.2
       chokidar: 3.5.3
       detect-port: 1.5.1
@@ -410,20 +410,20 @@ importers:
 
   packages/hcc/tests/fixtures/api:
     specifiers:
-      '@midwayjs/bootstrap': ^3.8.0
+      '@midwayjs/bootstrap': ^3.10.6
       '@midwayjs/cli': ^1.3.0
       '@midwayjs/cli-plugin-build': ^1.2.97
       '@midwayjs/hooks': ^3.1.0
       '@midwayjs/hooks-internal': ^3.1.0
-      '@midwayjs/koa': ^3.8.0
+      '@midwayjs/koa': ^3.10.6
       typescript: ^4.9.4
     dependencies:
-      '@midwayjs/bootstrap': 3.8.0
+      '@midwayjs/bootstrap': 3.10.6
       '@midwayjs/hooks': link:../../../../hooks
       '@midwayjs/hooks-internal': link:../../../../hooks-internal
-      '@midwayjs/koa': 3.8.0
+      '@midwayjs/koa': 3.10.6
     devDependencies:
-      '@midwayjs/cli': 1.3.20_vyu4rgiu3wboov3u554fahbrk4
+      '@midwayjs/cli': 1.3.20_3fplujotpmr3itfztrvj62c6py
       '@midwayjs/cli-plugin-build': 1.3.19
       typescript: 4.9.4
 
@@ -525,7 +525,7 @@ importers:
 
   packages/hooks-kit:
     specifiers:
-      '@midwayjs/bootstrap': ^3.8.0
+      '@midwayjs/bootstrap': ^3.10.6
       '@midwayjs/cli-plugin-build': ^1.2.97
       '@midwayjs/command-core': ^1.2.97
       '@midwayjs/esrun': ^3.1.1
@@ -533,7 +533,7 @@ importers:
       '@midwayjs/hooks-bundler': ^3.1.1
       '@midwayjs/hooks-core': ^3.1.1
       '@midwayjs/hooks-internal': ^3.1.1
-      '@midwayjs/mock': ^3.8.0
+      '@midwayjs/mock': ^3.10.6
       '@midwayjs/serve': ^3.1.1
       '@types/detect-port': 1.3.2
       '@types/fs-extra': 9.0.13
@@ -546,7 +546,7 @@ importers:
       koa-static-cache: ^5.1.4
       vite: ^4.0.1
     dependencies:
-      '@midwayjs/bootstrap': 3.8.0
+      '@midwayjs/bootstrap': 3.10.6
       '@midwayjs/cli-plugin-build': 1.3.19
       '@midwayjs/command-core': 1.3.19
       '@midwayjs/esrun': link:../esrun
@@ -554,7 +554,7 @@ importers:
       '@midwayjs/hooks-bundler': link:../hooks-bundler
       '@midwayjs/hooks-core': link:../hooks-core
       '@midwayjs/hooks-internal': link:../hooks-internal
-      '@midwayjs/mock': 3.8.0
+      '@midwayjs/mock': 3.10.6
       '@midwayjs/serve': link:../serve
       cac: 6.7.14
       compare-versions: 5.0.3
@@ -616,15 +616,15 @@ importers:
   packages/test-util:
     specifiers:
       '@midwayjs/hooks-internal': ^3.1.1
-      '@midwayjs/koa': ^3.8.0
-      '@midwayjs/mock': ^3.8.0
+      '@midwayjs/koa': ^3.10.6
+      '@midwayjs/mock': ^3.10.6
       '@types/supertest': ^2.0.12
       isomorphic-unfetch: ^3.1.0
       supertest: ^6.3.3
     dependencies:
       '@midwayjs/hooks-internal': link:../hooks-internal
-      '@midwayjs/koa': 3.8.0
-      '@midwayjs/mock': 3.8.0
+      '@midwayjs/koa': 3.10.6
+      '@midwayjs/mock': 3.10.6
       '@types/supertest': 2.0.12
       isomorphic-unfetch: 3.1.0
       supertest: 6.3.3
@@ -2663,8 +2663,8 @@ packages:
       read-yaml-file: 1.1.0
     dev: false
 
-  /@midwayjs/async-hooks-context-manager/3.8.0:
-    resolution: {integrity: sha512-v+0CjUMhatMWm56I+5Yg44hAXiSI+0PqZrf5h82AtrwwhS6hOhIdpSqT74PXiRRD2XrhZuHj8GZC5c2UEyY3UA==}
+  /@midwayjs/async-hooks-context-manager/3.10.6:
+    resolution: {integrity: sha512-9r0L68VTAo4eQtfz5ajw3+Mq4/EMKrzMxwF3sjhZwrn7zrCe5p70PnpPpR0y75FLY4pF/sVmt1/EvONweXRiVQ==}
     engines: {node: '>=12.17.0'}
 
   /@midwayjs/asynchronous-local-storage/1.0.2:
@@ -2674,11 +2674,12 @@ packages:
       cls-hooked: 4.2.2
     dev: false
 
-  /@midwayjs/bootstrap/3.8.0:
-    resolution: {integrity: sha512-rxEHuFSwBQGU7GXBb1dPtaKb0hEcqzMFY9crJ1W08o1QX697owFZD7+GxjyoYHRbLISrHrShC6+9fivyqk6f2w==}
-    engines: {node: '>=12'}
+  /@midwayjs/bootstrap/3.10.6:
+    resolution: {integrity: sha512-XkJOcXpvul+hl15kdqswqJECCL8O9C0B7G1y4NbFRDfqaECf9wMucv0ykibUvx7bYtbvTEUJtyN08+Yz8tAbYw==}
+    engines: {node: '>=12.11.0'}
     dependencies:
-      '@midwayjs/async-hooks-context-manager': 3.8.0
+      '@midwayjs/async-hooks-context-manager': 3.10.6
+      '@midwayjs/event-bus': 1.4.2
     dev: false
 
   /@midwayjs/cli-plugin-build/1.3.19:
@@ -2715,7 +2716,7 @@ packages:
       fs-extra: 8.1.0
     dev: true
 
-  /@midwayjs/cli-plugin-dev/1.3.20_@midwayjs+mock@3.8.0:
+  /@midwayjs/cli-plugin-dev/1.3.20_@midwayjs+mock@3.10.6:
     resolution: {integrity: sha512-L+YT0yAPBrOAFl2L8LTyWk5sflmQcjORo0/phwCzD8Y1IaFuYkATFQ5v1BaOwFMsR6DB20FYR0uvskT3ZlPaiw==}
     engines: {node: '>= 10'}
     peerDependencies:
@@ -2724,7 +2725,7 @@ packages:
       '@koa/router': 10.1.1
       '@midwayjs/command-core': 1.3.19
       '@midwayjs/debugger': 1.0.9
-      '@midwayjs/mock': 3.8.0
+      '@midwayjs/mock': 3.10.6
       chalk: 4.1.2
       chokidar: 3.5.3
       detect-port: 1.5.1
@@ -2766,7 +2767,7 @@ packages:
       - '@types/node'
     dev: true
 
-  /@midwayjs/cli/1.3.20_vyu4rgiu3wboov3u554fahbrk4:
+  /@midwayjs/cli/1.3.20_3fplujotpmr3itfztrvj62c6py:
     resolution: {integrity: sha512-m+r0AQcT2XuWcD9kKt9SLYtriq2aYkuoIcToGvEQ7w38IsKkoyENnI9CX+b0ZZ9/mA3ffUqFsn0UvxKm0olY2w==}
     engines: {node: '>= 10.0.0'}
     hasBin: true
@@ -2775,7 +2776,7 @@ packages:
       '@midwayjs/cli-plugin-build': 1.3.19
       '@midwayjs/cli-plugin-check': 1.3.19
       '@midwayjs/cli-plugin-clean': 1.3.19
-      '@midwayjs/cli-plugin-dev': 1.3.20_@midwayjs+mock@3.8.0
+      '@midwayjs/cli-plugin-dev': 1.3.20_@midwayjs+mock@3.10.6
       '@midwayjs/cli-plugin-test': 1.3.19_@types+node@18.11.14
       '@midwayjs/command-core': 1.3.19
       enquirer: 2.3.6
@@ -2819,17 +2820,6 @@ packages:
       class-transformer: 0.5.1
       picomatch: 2.3.1
       reflect-metadata: 0.1.13
-    dev: false
-
-  /@midwayjs/core/3.8.0:
-    resolution: {integrity: sha512-MV5CsMd/dkIOCKISAviHlCPo9rfOfhyrhFRn7E1LpgimAt7coZK+PtI2sGfJD5LviCjh5C01ZUv66oaQzzb/Dw==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@midwayjs/glob': 1.1.0
-      '@midwayjs/logger': 2.17.0
-      class-transformer: 0.5.1
-      picomatch: 2.3.1
-      reflect-metadata: 0.1.13
 
   /@midwayjs/debugger/1.0.9:
     resolution: {integrity: sha512-weDe6otEd75wxndIYRt5eKkhrI/e14leVn1ctwE1nXrxt0EVGda/ZTfMDB3TkF3ogwYJYoDQxUBiA9TUY5qgQQ==}
@@ -2843,6 +2833,11 @@ packages:
       - utf-8-validate
     dev: true
 
+  /@midwayjs/event-bus/1.4.2:
+    resolution: {integrity: sha512-Q+M2+vl0w1sFh8p0DYQgFGwpcB0+n7IwSv1mV3uVK1EFUr+yhniWY5vyE0XZdgg9DAELrNaAYTDO+9uYDw1Lgw==}
+    engines: {node: '>=12.11.0'}
+    dev: false
+
   /@midwayjs/faas-code-analysis/1.3.19:
     resolution: {integrity: sha512-gZIGQbeXISy2B2InkvuYBRM3MrV/x/pRc75eX4pMTeUhgdSha6mx028WxVSWc36jAulmmTxff/okx9i37oAhAg==}
     dependencies:
@@ -2855,22 +2850,22 @@ packages:
     resolution: {integrity: sha512-ZNNJ/V2PfA9fDGTSRWA6EpOWDdv5viSxKEspBmyPvkmhSGkgD9ueOmIuuoLt54Lox6osEqhI838+oNS0cIWHww==}
     engines: {node: '>=12'}
 
-  /@midwayjs/faas/3.8.1:
-    resolution: {integrity: sha512-4Jqh0WqW7/uB+btqy7nT6WZq36z/mMOalV6Z3FwEYaqKgND899sm/BRqQyFdqQ7AX27GvRp2GjLpHZvisCgD6A==}
+  /@midwayjs/faas/3.10.6:
+    resolution: {integrity: sha512-4V7bJaySotdQHCgnLjGRjsjY+JJ/6OaqaphrjpCs8tKG9NYsurB1MZXTUOVTTRdmyvGmyIc7yJWBeZP8UEq4Nw==}
     engines: {node: '>=12'}
     dependencies:
-      '@midwayjs/core': 3.8.0
+      '@midwayjs/core': 3.10.6
       '@midwayjs/faas-typings': 3.6.0
       '@midwayjs/logger': 2.17.0
-      '@midwayjs/serverless-http-parser': 3.6.0
+      '@midwayjs/serverless-http-parser': 3.10.0
       '@midwayjs/simple-lock': 1.2.2
 
-  /@midwayjs/fc-starter/3.8.0:
-    resolution: {integrity: sha512-1r9Ex40oU8p7+28Oat8H8/KpS9VFd3/YJCGOIln01cCMrAUdqw8sluiMQohnaBDjKr6qwuMNS32o5RSWjQhjfQ==}
+  /@midwayjs/fc-starter/3.10.6:
+    resolution: {integrity: sha512-+Zjp6E5gm8x+j/POYYtZMvyyLXMpqdWvcIFCZHXpVJfrxYHaaUqtqE1ZVUCk/WWTLf8wjErkiWU5F5b4EO5dRw==}
     engines: {node: '>=12'}
     dependencies:
-      '@midwayjs/async-hooks-context-manager': 3.8.0
-      '@midwayjs/faas': 3.8.1
+      '@midwayjs/async-hooks-context-manager': 3.10.6
+      '@midwayjs/faas': 3.10.6
       raw-body: 2.5.1
     dev: true
 
@@ -2918,15 +2913,15 @@ packages:
     dependencies:
       picomatch: 2.3.1
 
-  /@midwayjs/koa/3.8.0:
-    resolution: {integrity: sha512-4FJNMIulNOvBPpaVZ7pIbd42Y63eS5XjGnnjz4VLtNUGJ+V2dK15eqAbcQpjWX3iVBHJ1bhD0dXWu2a6RaZl9Q==}
+  /@midwayjs/koa/3.10.6:
+    resolution: {integrity: sha512-eElHvHCJNqxfSWWxTWP88dUiyiEQMtcGQhFias3kzlG0JnxJYAX8EyouX5Bz9ey1o6mbzrbMh3sZ/IHwPMlMcg==}
     engines: {node: '>=12'}
     dependencies:
       '@koa/router': 11.0.1
       '@midwayjs/cookies': 1.0.5
-      '@midwayjs/core': 3.8.0
-      '@midwayjs/session': 3.8.0
-      koa: 2.13.4
+      '@midwayjs/core': 3.10.6
+      '@midwayjs/session': 3.10.6
+      koa: 2.14.1
       koa-bodyparser: 4.3.0
     transitivePeerDependencies:
       - supports-color
@@ -2961,17 +2956,16 @@ packages:
       supports-color: 8.1.1
     dev: true
 
-  /@midwayjs/mock/3.8.0:
-    resolution: {integrity: sha512-bDuXgzuhNLzhWOEjAh9Ggqj/fHMzYY9Ir+aAfq1P7pF9bmDqrGpuYP3WswQgbhkooGpO8buUfWDp0nFy3g3Z3Q==}
+  /@midwayjs/mock/3.10.6:
+    resolution: {integrity: sha512-7bd4BpsgU2qdpiRV8pSOjAJYgnNDkMYymdXLN8pYA6yIcMqdtPVcnm/YWbMJDZGN7DVl3sZcOl25/9ItuzMoFA==}
     engines: {node: '>=12'}
     dependencies:
-      '@midwayjs/async-hooks-context-manager': 3.8.0
+      '@midwayjs/async-hooks-context-manager': 3.10.6
       '@types/superagent': 4.1.14
       '@types/supertest': 2.0.12
-      fs-extra: 10.0.1
       js-yaml: 4.1.0
       raw-body: 2.5.1
-      supertest: 6.3.0
+      supertest: 6.3.3
     transitivePeerDependencies:
       - supports-color
 
@@ -2983,8 +2977,8 @@ packages:
       source-map-support: 0.5.21
       typescript: 4.6.4
 
-  /@midwayjs/serverless-http-parser/3.6.0:
-    resolution: {integrity: sha512-8oBa05q6zszcGSndXzE3426HkLqqnytAk9oWJ8MoT45+jWmCM9BRCp37akq8XMiyHz1KLI6Dsbylsnv3lW6pbg==}
+  /@midwayjs/serverless-http-parser/3.10.0:
+    resolution: {integrity: sha512-xuN5WOULOofScxbZHratKuKfHwPjwrUfW1C/v+Ijw6bD+rlMskRrqCGK7m7vewT4x+7CiLP1oA4RrERV8oHA9A==}
     engines: {node: '>=12'}
     dependencies:
       '@midwayjs/cookies': 1.0.5
@@ -3010,8 +3004,8 @@ packages:
       mkdirp: 0.5.6
     dev: true
 
-  /@midwayjs/session/3.8.0:
-    resolution: {integrity: sha512-IznPko3ToEsdRi69J16MI+DacgtJcEf6G2GIvmaAIiYwmcHyrNJc9hE5hmKReWbsnXhK4rFTFdh8/cbxP98B8g==}
+  /@midwayjs/session/3.10.6:
+    resolution: {integrity: sha512-XYAQwWUEhiIL8vf7MAbNuaD90doB3nyGEDNRBteUOiUEeXCwLVFKIBh7uRhELG7JtLDrC3gkBLeC/CnwhGxWgw==}
     engines: {node: '>=12'}
     dependencies:
       '@midwayjs/cookies': 1.0.5
@@ -5508,14 +5502,6 @@ packages:
     resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
     engines: {node: '>= 0.6'}
 
-  /fs-extra/10.0.1:
-    resolution: {integrity: sha512-NbdoVMZso2Lsrn/QwLXOy6rm0ufY2zEOKCDzJR/0kBsb0E6qed0P3iYK+Ath3BfvXEeu4JhEtXLgILx5psUfag==}
-    engines: {node: '>=12'}
-    dependencies:
-      graceful-fs: 4.2.10
-      jsonfile: 6.1.0
-      universalify: 2.0.0
-
   /fs-extra/11.1.0:
     resolution: {integrity: sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==}
     engines: {node: '>=14.14'}
@@ -6934,37 +6920,6 @@ packages:
       - supports-color
     dev: false
 
-  /koa/2.13.4:
-    resolution: {integrity: sha512-43zkIKubNbnrULWlHdN5h1g3SEKXOEzoAlRsHOTFpnlDu8JlAOZSMJBLULusuXRequboiwJcj5vtYXKB3k7+2g==}
-    engines: {node: ^4.8.4 || ^6.10.1 || ^7.10.1 || >= 8.1.4}
-    dependencies:
-      accepts: 1.3.8
-      cache-content-type: 1.0.1
-      content-disposition: 0.5.4
-      content-type: 1.0.4
-      cookies: 0.8.0
-      debug: 4.3.4
-      delegates: 1.0.0
-      depd: 2.0.0
-      destroy: 1.2.0
-      encodeurl: 1.0.2
-      escape-html: 1.0.3
-      fresh: 0.5.2
-      http-assert: 1.5.0
-      http-errors: 1.8.1
-      is-generator-function: 1.0.10
-      koa-compose: 4.1.0
-      koa-convert: 2.0.0
-      on-finished: 2.4.1
-      only: 0.0.2
-      parseurl: 1.3.3
-      statuses: 1.5.0
-      type-is: 1.6.18
-      vary: 1.1.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /koa/2.14.1:
     resolution: {integrity: sha512-USJFyZgi2l0wDgqkfD27gL4YGno7TfUkcmOe6UOLFOVuN+J7FwnNu4Dydl4CUQzraM1lBAiGed0M9OVJoT0Kqw==}
     engines: {node: ^4.8.4 || ^6.10.1 || ^7.10.1 || >= 8.1.4}
@@ -6994,7 +6949,6 @@ packages:
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /kuler/2.0.0:
     resolution: {integrity: sha512-Xq9nH7KlWZmXAtodXDDRE7vs6DU1gTU8zYDHDiWLSip45Egwq3plLHzPn27NgvzL2r1LMPC1vdqh98sQxtqj4A==}
@@ -8857,15 +8811,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /supertest/6.3.0:
-    resolution: {integrity: sha512-QgWju1cNoacP81Rv88NKkQ4oXTzGg0eNZtOoxp1ROpbS4OHY/eK5b8meShuFtdni161o5X0VQvgo7ErVyKK+Ow==}
-    engines: {node: '>=6.4.0'}
-    dependencies:
-      methods: 1.1.2
-      superagent: 8.0.6
-    transitivePeerDependencies:
-      - supports-color
-
   /supertest/6.3.3:
     resolution: {integrity: sha512-EMCG6G8gDu5qEqRQ3JjjPs6+FYT1a7Hv5ApHvtSghmOFJYtsU5S+pSb6Y2EUeCEY3CmEL3mmQ8YWlPOzQomabA==}
     engines: {node: '>=6.4.0'}
@@ -8874,7 +8819,6 @@ packages:
       superagent: 8.0.6
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /supports-color/5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
