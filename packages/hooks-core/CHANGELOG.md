@@ -1,5 +1,11 @@
 # @midwayjs/hooks-core
 
+## 3.1.2
+
+### Patch Changes
+
+- 88e551a8: feat: add ssr trigger and refactor to use @midwayjs/core
+
 ## 3.1.1
 
 ### Patch Changes
