@@ -7,7 +7,7 @@ Midway 提供了一系列的组件，包含 Cache / Http / Redis 等。
 
 ## 引入组件
 
-Midway Hooks 在 `configuration.ts` 中使用 `createConfiguration()` 来配置项目，其 Api 与 `@midwayjs/decorator` 提供的 `@Configuration()` 一致。
+Midway Hooks 在 `configuration.ts` 中使用 `createConfiguration()` 来配置项目，其 Api 与 `@midwayjs/core` 提供的 `@Configuration()` 一致。
 
 以 `@midwayjs/cache` 组件为例：
 

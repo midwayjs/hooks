@@ -15,8 +15,6 @@ import {
   MidwayApplicationManager,
   MidwayServerlessFunctionService,
   MidwayWebRouterService,
-} from '@midwayjs/core'
-import {
   All,
   Del,
   Get,
@@ -26,7 +24,7 @@ import {
   Post,
   Put,
   ServerlessTriggerType,
-} from '@midwayjs/decorator'
+} from '@midwayjs/core'
 import { FileSystemRouter, normalizePath } from '@midwayjs/hooks-internal'
 import camelCase from 'lodash/camelCase'
 import { ServerlessTrigger } from '../operator/serverless'

@@ -1,6 +1,8 @@
 import isFunction from 'lodash/isFunction'
-import { createConfiguration as createConfigurationFromCore } from '@midwayjs/core'
-import { InjectionConfigurationOptions } from '@midwayjs/decorator'
+import {
+  createConfiguration as createConfigurationFromCore,
+  InjectionConfigurationOptions,
+} from '@midwayjs/core'
 
 type FunctionalConfiguration = ReturnType<typeof createConfigurationFromCore>
 type FirstArgument<T> = T extends (arg: infer A, ...args: any[]) => any

@@ -1,5 +1,8 @@
-import type { FaaSMetadata } from '@midwayjs/decorator'
-import { ServerlessTrigger, ServerlessTriggerType } from '@midwayjs/decorator'
+import {
+  FaaSMetadata,
+  ServerlessTrigger,
+  ServerlessTriggerType,
+} from '@midwayjs/core'
 import { Operator, OperatorType } from '@midwayjs/hooks-core'
 import { HooksTrigger } from './type'
 
@@ -39,4 +42,8 @@ export const HSF = createServerlessTrigger<FaaSMetadata.HSFTriggerOptions>(
 )
 export const MQ = createServerlessTrigger<FaaSMetadata.MQTriggerOptions>(
   ServerlessTriggerType.MQ
+)
+
+export const SSR = createServerlessTrigger<FaaSMetadata.SSRTriggerOptions>(
+  ServerlessTriggerType.SSR
 )
