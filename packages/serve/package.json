@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/serve",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Static Middleware for midway hooks",
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
@@ -20,12 +20,12 @@
     "access": "public"
   },
   "dependencies": {
-    "@midwayjs/hooks": "^3.1.1",
+    "@midwayjs/hooks": "^3.1.2",
     "koa-static-cache": "5.1.4",
     "@types/koa-static-cache": "5.1.1"
   },
   "devDependencies": {
-    "@midwayjs/test-util": "^3.1.1"
+    "@midwayjs/test-util": "^3.1.2"
   },
   "files": [
     "dist"
