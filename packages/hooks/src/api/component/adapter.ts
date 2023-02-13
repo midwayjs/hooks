@@ -161,6 +161,7 @@ export class MidwayFrameworkAdapter {
               ...api.trigger.options,
               name: api.trigger.type,
               functionName: providerId,
+              middleware: api.middleware?.map(useHooksMiddleware),
             },
             functionName: providerId,
             handlerName: `${providerId}.handler`,
