@@ -1,5 +1,11 @@
 # @midwayjs/hooks-core
 
+## 3.1.4
+
+### Patch Changes
+
+- 75014614: fix: use commonjs by default for esrun
+
 ## 3.1.3
 
 ### Patch Changes
