@@ -1,5 +1,13 @@
 # @midwayjs/serve
 
+## 3.1.3
+
+### Patch Changes
+
+- 8123743d: feat: add middleware for serverless trigger
+- Updated dependencies [8123743d]
+  - @midwayjs/hooks@3.1.3
+
 ## 3.1.2
 
 ### Patch Changes

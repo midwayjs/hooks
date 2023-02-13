@@ -1,5 +1,11 @@
 # @midwayjs/hooks-core
 
+## 3.1.3
+
+### Patch Changes
+
+- 8123743d: feat: add middleware for serverless trigger
+
 ## 3.1.2
 
 ### Patch Changes
