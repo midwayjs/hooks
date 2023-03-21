@@ -168,11 +168,11 @@ export class DevServer {
       ignored: /(^|[\/\\])\../,
       persistent: true,
       ignoreInitial: true,
-      cwd: this.options.cwd,
+      cwd: resolve(this.options.cwd, this.options.sourceDir),
     })
 
     ;['midway.config.ts', 'midway.config.js', 'f.yml']
-      .map((file) => resolve(this.options.sourceDir, file))
+      .map((file) => resolve(this.options.cwd, file))
       .filter((file) => existsSync(file))
       .forEach((file) => watcher.add(file))
 
