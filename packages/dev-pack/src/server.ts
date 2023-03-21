@@ -145,7 +145,10 @@ export class DevServer {
   }
 
   private isServerlessApp() {
-    return existsSync(resolve(this.options.cwd, 'f.yml'))
+    return (
+      existsSync(resolve(this.options.cwd, 'f.yml')) &&
+      !existsSync(resolve(this.options.cwd, 'bootstrap'))
+    )
   }
 
   private handleStarted = async () => {
