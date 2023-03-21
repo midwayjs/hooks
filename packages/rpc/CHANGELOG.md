@@ -1,5 +1,11 @@
 # @midwayjs/rpc
 
+## 3.1.5
+
+### Patch Changes
+
+- bdab5e69: fix: support custom container(aliyun fc)
+
 ## 3.1.4
 
 ### Patch Changes

@@ -1,5 +1,18 @@
 # @midwayjs/hooks-kit
 
+## 3.1.5
+
+### Patch Changes
+
+- bdab5e69: fix: support custom container(aliyun fc)
+- Updated dependencies [bdab5e69]
+  - @midwayjs/esrun@3.1.5
+  - @midwayjs/hooks@3.1.5
+  - @midwayjs/hooks-bundler@3.1.5
+  - @midwayjs/hooks-core@3.1.5
+  - @midwayjs/hooks-internal@3.1.5
+  - @midwayjs/serve@3.1.5
+
 ## 3.1.4
 
 ### Patch Changes
