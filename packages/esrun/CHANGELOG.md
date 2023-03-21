@@ -1,5 +1,11 @@
 # @midwayjs/rpc
 
+## 3.1.6
+
+### Patch Changes
+
+- 63ed55c5: fix: dev-pack may cause memory leak
+
 ## 3.1.5
 
 ### Patch Changes
