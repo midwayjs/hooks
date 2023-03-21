@@ -1,5 +1,14 @@
 # @midwayjs/serve
 
+## 3.1.6
+
+### Patch Changes
+
+- 63ed55c5: fix: dev-pack may cause memory leak
+- Updated dependencies [63ed55c5]
+  - @midwayjs/hooks@3.1.6
+  - @midwayjs/hooks-core@3.1.6
+
 ## 3.1.5
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@midwayjs/hooks-upload",
-  "version": "3.1.5",
+  "version": "3.1.6",
   "description": "Static Middleware for midway hooks",
   "author": "Lxxyx <lxxyxzj@gmail.com>",
   "homepage": "https://github.com/midwayjs/hooks",
@@ -21,14 +21,14 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "@midwayjs/hooks-core": "^3.1.5",
-    "@midwayjs/hooks": "^3.1.5"
+    "@midwayjs/hooks-core": "^3.1.6",
+    "@midwayjs/hooks": "^3.1.6"
   },
   "peerDependencies": {
     "@midwayjs/upload": "3"
   },
   "devDependencies": {
-    "@midwayjs/test-util": "^3.1.5",
+    "@midwayjs/test-util": "^3.1.6",
     "@midwayjs/upload": "3.9.1",
     "@types/lodash": "4.14.191"
   },
