@@ -1,5 +1,14 @@
 # @midwayjs/hcc
 
+## 3.1.5
+
+### Patch Changes
+
+- bdab5e69: fix: support custom container(aliyun fc)
+- Updated dependencies [bdab5e69]
+  - @midwayjs/esrun@3.1.5
+  - @midwayjs/hooks-internal@3.1.5
+
 ## 3.1.4
 
 ### Patch Changes
