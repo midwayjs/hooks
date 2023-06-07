@@ -91,11 +91,13 @@ export function setupBuildCommand(cli: CAC) {
         if (pkg.dependencies['@midwayjs/koa']) {
           consola.info('Use `npm start` to start server!')
         }
+        // https://github.com/midwayjs/hooks/issues/527
+        process.exit(0)
       } catch (e) {
-        consola.error(`error during build:\n${e.stack}`),
-          {
-            error: e,
-          }
+        consola.error(`error during build:\n${e.stack}`, {
+          error: e,
+        })
+        process.exit(1)
       }
     })
 }
