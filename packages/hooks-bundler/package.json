@@ -35,7 +35,7 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "vite": "^4.0.1",
+    "vite": "^4.0.5",
     "@types/lodash": "^4.14.182"
   }
 }
