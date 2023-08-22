@@ -8,6 +8,7 @@ import { getProjectRoot } from '@midwayjs/hooks-internal'
 import { KitConfig, resolveConfig } from '../config'
 import consola from 'consola'
 import { register } from '@midwayjs/esrun'
+import { ServeOptions } from '@midwayjs/serve'
 
 type BuildOptions = {
   outDir: string
@@ -58,7 +59,8 @@ export function setupBuildCommand(cli: CAC) {
           consola.info(
             'Static files and html will be automatically served from server'
           )
-          createRender(join(root, outDir))
+          const options = typeof userConfig.static === 'object' ? userConfig.static : undefined
+          createRender(join(root, outDir), options)
         } else {
           consola.info(
             'Serve static disabled, you should serve static files manually'
@@ -111,8 +113,13 @@ async function executePromise(promise: Promise<any> | any) {
   }
 }
 
-function createRender(dist: string) {
-  const code = `exports.default = require('@midwayjs/serve').Serve('/*', { dir: '_client', isKit: true });`
+function createRender(dist: string, options?: ServeOptions) {
+  options = {
+    dir: '_client',
+    isKit: true,
+    ...options
+  }
+  const code = `exports.default = require('@midwayjs/serve').Serve('/*', ${JSON.stringify(options)});`
   const file = join(dist, '_serve/index.js')
   fs.ensureFileSync(file)
   fs.writeFileSync(file, code, 'utf-8')
