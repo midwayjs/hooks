@@ -14,6 +14,11 @@ title: 项目配置
 
 启用文件系统路由并配置，默认为 `undefined`。具体格式参考 [简易模式 & 文件系统路由](./file-route)。
 
+## static: ServeOptions | boolean
+
+构建产物的静态托管配置，默认为 `true`，表示使用内置的 `@midwayjs/serve` 组件托管静态文件。设置为 `false` 时，需要自行托管构建产物。
+如果像使用内置的组件托管，并配置更多的托管参数，可以传入 `ServeOptions` 对象， 其值可以参考 [midway 文档](https://midwayjs.org/docs/extensions/static_file#%E5%8F%AF%E7%94%A8%E9%85%8D%E7%BD%AE)。
+
 ## dev.include: string[]
 
 配置全栈应用下，如果请求的 URL 中包含 `dev.include` 的关键词，则请求将由后端 Server 处理。
